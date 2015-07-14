@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -77,10 +79,12 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
     }
 
     private void notification(Context context,String newsTitle,String content,String ticker){
+        Uri alertSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationCompat=new NotificationCompat.Builder(context);
         notificationCompat.setAutoCancel(true)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setTicker(ticker)
+                .setSound(alertSound)
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(newsTitle)
                 .setContentText(content);
