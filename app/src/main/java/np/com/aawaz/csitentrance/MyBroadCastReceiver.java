@@ -26,15 +26,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MyBroadCastReceiver extends BroadcastReceiver {
+    ArrayList<String> topic = new ArrayList<>(),
+            subTopic = new ArrayList<>(),
+            imageURL = new ArrayList<>(),
+            content = new ArrayList<>(),
+            author = new ArrayList<>();
     public MyBroadCastReceiver() {
 
 
     }
-    ArrayList<String> topic=new ArrayList<>(),
-            subTopic=new ArrayList<>(),
-            imageURL=new ArrayList<>(),
-            content=new ArrayList<>(),
-            author=new ArrayList<>();
 
     @Override
     public void onReceive(final Context context, Intent intent) {
