@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <color name="primary1">#999999</color>
+        <color name="primary2">#1de9b6</color>
+        <color name="primary3">#ffeb3c</color>
+        <color name="primary4">#03a9f5</color>
+        <color name="primary5">#8bc34a</color>
+        <color name="primary6">#ff5353</color>
+        <color name="primary7">#1de9b6</color>
+        <color name="primary8">#7e57c2</color>
+        <color name="primary9">#03a9f5</color>
+        <color name="primary10">#8bc34a</color>
+
+        <color name="dark1">#F5F5F5</color>
+        <color name="dark2">#b9f6ca</color>
+        <color name="dark3">#ffff8d</color>
+        <color name="dark4">#83ffff</color>
+        <color name="dark5">#81c784</color>
+        <color name="dark6">#ff8a80</color>
+        <color name="dark7">#b9f6ca</color>
+        <color name="dark8">#b388fe</color>
+        <color name="dark9">#83ffff</color>
+        <color name="dark10">#81c784</color>
+
+        <color name="back">#eee</color>
+        <color name="darkQue">#666</color>
+
+        <color name="toolbar_color">#00BAD1</color>
+</resources>

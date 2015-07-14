@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.gc.materialdesign.views.Card
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginTop="-3dp"
+    android:layout_marginBottom="-3dp"
+    android:background="#009966"
+    android:id="@+id/mainLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/mainImg" />
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:background="#000"
+            android:id="@+id/baseLayout"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/play"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/title"
+        android:textColor="#555"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_toLeftOf="@+id/baseLayout"
+        android:layout_toRightOf="@+id/mainImg"
+        android:layout_toEndOf="@+id/mainImg"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/mainImg"
+        android:layout_marginLeft="5dp"
+        android:gravity="center_vertical" />
+</com.gc.materialdesign.views.Card>
+

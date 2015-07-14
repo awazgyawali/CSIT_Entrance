@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gc.materialdesign.views.Card xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="tested"
+        android:id="@+id/ques"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5dp"
+        android:maxLines="3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="tested"
+        android:id="@+id/answ"
+        android:layout_marginLeft="30dp"
+        android:maxLines="1"
+        android:layout_below="@+id/ques"
+        android:layout_alignLeft="@+id/ques"
+        android:layout_alignStart="@+id/ques"
+        android:layout_marginStart="31dp" />
+</com.gc.materialdesign.views.Card>

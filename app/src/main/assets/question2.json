@@ -1,0 +1,795 @@
+{
+  "questions": [
+    {
+      "question": "1. If A and B are any two sets, then A-(A-is equal to",
+      "a": "B-A",
+      "b": "A intersection B",
+      "c": "A union B",
+      "d": "Empty Set",
+      "ans": "a"
+    },
+    {
+      "question": "2. The range of the function y=, a>0 is equals to",
+      "a": "[-a,a]",
+      "b": "(-a,a)",
+      "c": "[0,a]",
+      "d": "(0,a)",
+      "ans": "b"
+    },
+    {
+      "question": "3. What is the value of a?",
+      "a": "4",
+      "b": "3",
+      "c": "2",
+      "d": "1",
+      "ans": "c"
+    },
+    {
+      "question": "4. If A=, then  is equal to",
+      "a": "1",
+      "b": "0",
+      "c": "-1",
+      "d": "None",
+      "ans": "d"
+    },
+    {
+      "question": "5. If == and a, b, c, are in G.P. ,then x, y, z, are in",
+      "a": "G.P.",
+      "b": "A.P.",
+      "c": "H.P.",
+      "d": "None",
+      "ans": "a"
+    },
+    {
+      "question": "6.  is equal to",
+      "a": "0",
+      "b": "log(ab)",
+      "c": "log(a/b)",
+      "d": "log(b/a)",
+      "ans": "a"
+    },
+    {
+      "question": "7. The derivative of  y =with respect to x is equal to ",
+      "a": "",
+      "b": "",
+      "c": "",
+      "d": "",
+      "ans": "d"
+    },
+    {
+      "question": "8. The function f(x)=x-, xR, x0 is",
+      "a": "(-8,0)U(0,8)",
+      "b": "(-8,0)U",
+      "c": "[-1,1]",
+      "d": "(-8,8)",
+      "ans": "c"
+    },
+    {
+      "question": "9. The integral   is equal to",
+      "a": "",
+      "b": "",
+      "c": "",
+      "d": "",
+      "ans": "a"
+    },
+    {
+      "question": "10.  For what value of k will the equation 5-k+45 = 0 have equal roots?",
+      "a": "0",
+      "b": "+-3",
+      "c": "+-30",
+      "d": "+-33",
+      "ans": "b"
+    },{
+      "question": "11.  The quadratic equation whose one root  2+ is",
+      "a": "",
+      "b": "",
+      "c": "",
+      "d": "",
+      "ans": "a"
+    },
+    {
+      "question": "12.  The distance between the parallel lines  and  is",
+      "a": "",
+      "b": "",
+      "c": "",
+      "d": "",
+      "ans": "a"
+    },
+    {
+      "question": "13. Radius of the circle  is",
+      "a": "2",
+      "b": "1",
+      "c": "4",
+      "d": "3",
+      "ans": "a"
+    },
+    {
+      "question": "14. The absolute value of the complex number  is",
+      "a": "1",
+      "b": "root 2",
+      "c": "1/root 2",
+      "d": "2",
+      "ans": "a"
+    },
+    {
+      "question": "15. If z = cos θ + i sin θ, then z + n is equal to",
+      "a": "",
+      "b": "",
+      "c": "",
+      "d": "",
+      "ans": "a"
+    },
+    {
+      "question": "16. The n th term of the series: 2 + 4 + 6 + 12 + 20 +......... is",
+      "a": "n(n+1)",
+      "b": "(n+1)(n+2)",
+      "c": "n(n-1)",
+      "d": "n",
+      "ans": "a"
+    },
+    {
+      "question": "17. If |x| < 1 and y = x + x + x 3 + x 4 +........+∞, then x is equal to",
+      "a": "y/(1-y)",
+      "b": "y/(y-1)",
+      "c": "(y+1)/y",
+      "d": "y/(1+y)",
+      "ans": "a"
+    },
+    {
+      "question": "18. If a = 2, b = √6 and A = 65°, then c is equal to",
+      "a": "√2 ± 1",
+      "b": "1 ± √2",
+      "c": "√3 ± 1",
+      "d": "1 ± √3",
+      "ans": "a"
+    },
+    {
+      "question": "19. 3 cos x is equal to",
+      "a": "3x − 4x 2",
+      "b": "4x 3 − 3x",
+      "c": "4x − 3x 3",
+      "d": "3x 3 − 4x",
+      "ans": "a"
+    },
+    {
+      "question": "20. Solution of the tan ax = cot bx is",
+      "a": "",
+      "b": "",
+      "c": "",
+      "d": "",
+      "ans": "a"
+    },{
+      "question": "21. What is the value of | ω ω 2 1 |, where ω is an imaginary cube root of unity",
+      "a": "1",
+      "b": "2",
+      "c": "3",
+      "d": "4",
+      "ans": "a"
+    },
+    {
+      "question": "22. The single equation representing the pairs of lines y = x and y = −x is",
+      "a": "y<sup>2</sup>− x<sup>2</sup>= 0",
+      "b": "y − x = 0",
+      "c": "x − y = 0",
+      "d": "x<sup>2</sup>− y<sup>2</sup>= 0",
+      "ans": "a"
+    },
+    {
+      "question": "23. Let A = [−3,2] and B = [−2,3] then A − B is equal to",
+      "a": "[-3,3)",
+      "b": "[-3,2]",
+      "c": "(-2,2)",
+      "d": "(-2,1)",
+      "ans": "a"
+    },
+    {
+      "question": "24. If lim − f(x) ≠ lim + f(x) then f(x) is said to be an",
+      "a": "Infinite discontinuity",
+      "b": "removable discontinuity",
+      "c": "Jump discontinuity",
+      "d": "none",
+      "ans": "a"
+    },
+    {
+      "question": "25. Which one of the following is the area enclosed by the curve y = 3x, the x-axis and the ordinate x = 0, x = 4 ?",
+      "a": "12",
+      "b": "16",
+      "c": "20",
+      "d": "24",
+      "ans": "a"
+    },
+    {
+      "question": "26.  Inscription on a tomb is called……………..",
+      "a": "Epitaph",
+      "b": "cemetery",
+      "c": "Morgue",
+      "d": "demagogue",
+      "ans": "a"
+    },
+    {
+      "question": "27. After he finished the exam, he…….. to the teacher.",
+      "a": "Handed over it	",
+      "b": "handed it over",
+      "c": "handed it out",
+      "d": "handed out it",
+      "ans": "b"
+    },
+    {
+      "question": "28. Every week she …………. her sister in her village to talk to her.",
+      "a": "Calls over",
+      "b": "calls on",
+      "c": "calls out",
+      "d": "calls up",
+      "ans": "d"
+    },
+    {
+      "question": "29. He has a coat……..five pockets.",
+      "a": "of",
+      "b": "about",
+      "c": "with",
+      "d": "in",
+      "ans": "c"
+    },
+    {
+      "question": "30. To hit below the belt means:",
+      "a": "to use force",
+      "b": "to use unfair means",
+      "c": "to use energy",
+      "d": "to use leather",
+      "ans": "b"
+    },{
+      "question": "31.  I disapprove ……..his cheating on the exam.",
+      "a": "of",
+      "b": "at",
+      "c": "in",
+      "d": "off",
+      "ans": "d"
+    },
+    {
+      "question": "32. The lights were…………….because the room was bright.",
+      "a": "put off",
+      "b": "take off",
+      "c": "left off",
+      "d": "switched off",
+      "ans": "d"
+    },
+    {
+      "question": "33. Which of the following is a noun?",
+      "a": "thicken",
+      "b": "impoverish",
+      "c": "mercantile",
+      "d": "mercy",
+      "ans": "d"
+    },
+    {
+      "question": "34.  Which of the underlined word is an adjective?",
+      "a": "<u>Swimming</u> is good for health.",
+      "b": "Students are <u>walking</u> on the lawn.",
+      "c": "Many people like <u>smoking</u>.",
+      "d": "She is taking <u>knitting</u> classes.",
+      "ans": "d"
+    },
+    {
+      "question": "35.  Which of the following is an active voice?",
+      "a": "This work will be finished.",
+      "b": "The suspect was seen.",
+      "c": "I know him.",
+      "d": "The letter was posted.",
+      "ans": "c"
+    },
+    {
+      "question": "36.  The memoranda…………..approved",
+      "a": "have been",
+      "b": "has been",
+      "c": "was",
+      "d": "is",
+      "ans": "a"
+    },
+    {
+      "question": "37.  Which of the following takes a singular verb?",
+      "a": "police",
+      "b": "furniture",
+      "c": "families",
+      "d": "committees",
+      "ans": "b"
+    },
+    {
+      "question": "38.  Neither her nor they……….going to the college.",
+      "a": "is",
+      "b": "are",
+      "c": "has",
+      "d": "was",
+      "ans": "b"
+    },
+    {
+      "question": "39.  Which expression is incorrect?",
+      "a": "A pile of books",
+      "b": "A herd of cattle",
+      "c": "A herd of sheep",
+      "d": "A pack of wolve",
+      "ans": "c"
+    },
+    {
+      "question": "40.  They daren’t go………….?",
+      "a": "did they",
+      "b": "do they",
+      "c": "hasn't they",
+      "d": "dare they",
+      "ans": "b"
+    },{
+      "question": "41.  I am hungry and ………………..",
+      "a": "She is too",
+      "b": "they are so",
+      "c": "so aren’t they",
+      "d": "they are too",
+      "ans": "c"
+    },
+    {
+      "question": "42. Which word has the stress on the first syllable?",
+      "a": "Likelihood",
+      "b": "religious",
+      "c": "fantastic",
+      "d": "orthography",
+      "ans": "a"
+    },
+    {
+      "question": "43. How many syllables does the word ‘economical’ have?",
+      "a": "five",
+      "b": "four",
+      "c": "three",
+      "d": "six",
+      "ans": "a"
+    },
+    {
+      "question": "44.  The pair…….has the some pronunciation.",
+      "a": "Pot, port",
+      "b": "so, sow",
+      "c": "pull, pool",
+      "d": "did, dead",
+      "ans": "b"
+    },
+    {
+      "question": "45. The word ‘they’ has the same initial consonant bound as the word………..",
+      "a": "Day",
+      "b": "date",
+      "c": "thief",
+      "d": "that",
+      "ans": "d"
+    },
+    {
+      "question": "46. A professional horse rider is called ",
+      "a": "Jockey",
+      "b": "rider",
+      "c": "coach",
+      "d": "horse courser",
+      "ans": "a"
+    },
+    {
+      "question": "47. Give the opposite meaning of “appropriate”.",
+      "a": "Inevitable",
+      "b": "likely",
+      "c": "unsuitable",
+      "d": "suitable",
+      "ans": "c"
+    },
+    {
+      "question": "48. Select the right synonym to the word ‘sporadic’.",
+      "a": "Occasional",
+      "b": "frequently",
+      "c": "continuously",
+      "d": "never ending",
+      "ans": "d"
+    },
+    {
+      "question": "49. Which of the following is incorrect punctuated?",
+      "a": "The teacher said, ”Honesty is the best policy”.",
+      "b": "He said to me,” When did she come to the party”?",
+      "c": "The man received a gift, the women, a book.",
+      "d": "The man, whom he met, had excellent speech skills",
+      "ans": "b"
+    },
+    {
+      "question": "50. The word “father” takes the suffix?",
+      "a": "….is",
+      "b": "…..some",
+      "c": "….ly",
+      "d": "……y",
+      "ans": "c"
+    },{
+      "question": "51. The dimensional formula for potential difference is",
+      "a": "[ML<sup>2</sup>T<sup>-3</sup>I<sup>-1</sup>]",
+      "b": "[ML<sup>2</sup>T<sup>-3</sup>I]",
+      "c": "[ML<sup>2</sup>T<sup>3</sup>I<sup>-1</sup>]",
+      "d": "[ML<sup>2</sup>T<sup>-2</sup>I<sup>-2</sup>]",
+      "ans": "a"
+    },
+    {
+      "question": "52.  A stone is thrown vertically upward with a speed u from the top of a tower reaches the ground with a speed of 3u. The height of the tower is……………",
+      "a": "3u<sup>2</sup>/g",
+      "b": "4u<sup>2</sup>/g",
+      "c": "6u<sup>2</sup>/g",
+      "d": "9u<sup>2</sup>/g",
+      "ans": "a"
+    },
+    {
+      "question": "53.  The acceleration of a particle in S.H.M is………",
+      "a": "Always zero",
+      "b": "always constant",
+      "c": "Maximum at extreme position",
+      "d": "Maximum at the equilibrium position",
+      "ans": "a"
+    },
+    {
+      "question": "54. An iron ball is heated. The percentage increase will be largest in...........",
+      "a": "volume",
+      "b": "density",
+      "c": "diameter",
+      "d": "surface area",
+      "ans": "a"
+    },
+    {
+      "question": "55. Two wires A and B are of the same material. Their lengths are in the ratio of 1:2 and diameters are in the ratio of 2:1. If they are pulled by the same force, their increase in length will be in the ratio.",
+      "a": "2:1",
+      "b": "1:4",
+      "c": "1:8",
+      "d": "8:1",
+      "ans": "a"
+    },
+    {
+      "question": "56. Water is flowing through a tube of non-uniform cross section. If the radius of the tube at the entrance and the exit is 3:2, then the ratio of velocity of liquid entering and leaving the tube is:",
+      "a": "8:27",
+      "b": "4:9",
+      "c": "9:4",
+      "d": "1:1",
+      "ans": "a"
+    },
+    {
+      "question": "57. The thermodynamic process in which the pressure of the system remains constant is called...............",
+      "a": "isothermal",
+      "b": "adiabatic",
+      "c": "isochoric",
+      "d": "isobaric",
+      "ans": "a"
+    },
+    {
+      "question": "58. 50 g of ice at -6°C is dropped into water at 0°C. how many grams of water freeze? Sp. Heat capacity of ice=2000JKg<sub>-1</sub>C<sub>-1</sub>.", 
+      "a": "1.785 g",
+      "b": "4.25 g",
+      "c": "3.16 g",
+      "d": "9.33 g",
+      "ans": "a"
+    },
+    {
+      "question": "59. The image of an object placed at the focus of a concave mirror is at",
+      "a": "f",
+      "b": "Infinity",
+      "c": "2f",
+      "d": "f/2",
+      "ans": "a"
+    },
+    {
+      "question": "60. The temperature of source and sink of cannot engine are 400K and 300K respectively. What is its efficiency?",
+      "a": "100%",
+      "b": "75%",
+      "c": "33.3%",
+      "d": "25%",
+      "ans": "a"
+    },{
+      "question": "61. The refractive index of air with respect to glass is 2 ⁄ 3. The refractive index of diamond with respect to air is 12 ⁄ 5 . Then the refractive index of glass with respect to diamond will be......",
+      "a": "5/8",
+      "b": "8/9",
+      "c": "5/18",
+      "d": "18/5",
+      "ans": "a"
+    },
+    {
+      "question": "62. The focal length of a double convex lens for which radius of curvature of each surface is R will be........(μ = 1.5)",
+      "a": "R/2",
+      "b": "R",
+      "c": "2R",
+      "d": "4R",
+      "ans": "a"
+    },
+    {
+      "question": "63. Light of wave length 7200 Ȧ in air has a wave length in glass equal to..........(Given refractive index of glass with respect to air = 1.5).",
+      "a": "7200 Ȧ",
+      "b": "4800 Ȧ",
+      "c": "1080 Ȧ",
+      "d": "10800 Ȧ",
+      "ans": "a"
+    },
+    {
+      "question": "64. Three capacitors of capacitance 3μF, 9μF and 18μF are connected first in series and then I parallel. The ratio of C equivalent capacitance in two cases ( C<sub>I</sub> ⁄ C<sub>P</sub> ) will be",
+      "a": "1:15",
+      "b": "15:1",
+      "c": "1:1",
+      "d": "1:3",
+      "ans": "a"
+    },
+    {
+      "question": "65. Thee equal resistors each of resistance r are connected to form a triangle. The equivalent resistance across any two comes of the triangle is....",
+      "a": "2r",
+      "b": "r/3",
+      "c": "2r/3",
+      "d": "3r",
+      "ans": "a"
+    },
+    {
+      "question": "66. The resistances of two lamps are in the ratio of 1:2. Their wattage will be in the ratio of",
+      "a": "1:2",
+      "b": "2:1",
+      "c": "4:1",
+      "d": "1:4",
+      "ans": "a"
+    },
+    {
+      "question": "67. The energy stored in a 50mH inductor carrying a current of 4A is......",
+      "a": "0.1 J",
+      "b": "0.4 J",
+      "c": "0.3 J",
+      "d": "0.01 J",
+      "ans": "a"
+    },
+    {
+      "question": "68. The alternating current in an LCR circuit is  maximum when..",
+      "a": "X<sub>L</sub>=0",
+      "b": "X<sub>C</sub>=0",
+      "c": "X<sub>L</sub>=XC",
+      "d": "sqrt(X<sub>L</sub><sup>2</sup> +X<sub>C</sub><sup>2</sup>)=0",
+      "ans": "a"
+    },
+    {
+      "question": "69. A particle of mass 10<sup>-31</sup> Kg is moving with a speed of 10<sup>5</sup>m/s. The de Broglie wavelength of the particle is.....",
+      "a": "6.63 × 10<sup>−8</sup> m",
+      "b": "6.63 Ȧ",
+      "c": "66.3 Ȧ",
+      "d": "6.63 × 10<sup>−7</sup> m",
+      "ans": "a"
+    },
+    {
+      "question": "70. Two waves of the same wavelength and amplitude interfere to give a minimum when their phase difference is",
+      "a": "π",
+      "b": "π/2",
+      "c": "3π/2",
+      "d": "0",
+      "ans": "a"
+    },{
+      "question": "71. Hard X-rays as compared to soft X-rays have",
+      "a": "Higher intensity",
+      "b": "lower frequency",
+      "c": "Higher frequency",
+      "d": "higher speed",
+      "ans": "a"
+    },
+    {
+      "question": "72. The mass of α-particle is",
+      "a": "Equal to the mass of four protons",
+      "b": "Equal to the mass of four neutrons",
+      "c": "Equal to the masses of 2 protons and 2 neutrons",
+      "d": "Less than the sum of masses of 2 protons and 2 neutrons",
+      "ans": "a"
+    },
+    {
+      "question": "73. A common emitter transistor amplifier has a current gain of 50. If the load resistance is 4 KΩ and the input resistance is 500 Ω. The voltage gain of the amplifier is..........",
+      "a": "400",
+      "b": "6.2",
+      "c": "500",
+      "d": "300",
+      "ans": "a"
+    },
+    {
+      "question": "74. A tube closed at one end has a resonating length 1 meter. The air column in the pipe can resonate for sound of frequency.....(V = 320ms<sup>−1</sup>)",
+      "a": "166 Hz",
+      "b": "249 Hz",
+      "c": "575 Hz",
+      "d": "80 Hz",
+      "ans": "a"
+    },
+    {
+      "question": "75. A displacement wave is represented by y = .025 sin(500t − 0.0025x), where y, t and x are in cm, second and meter respectively. The wave length of wave is.......",
+      "a": "20π m",
+      "b": "40π m",
+      "c": "60π m",
+      "d": "80π m",
+      "ans": "a"
+    },
+    {
+      "question": "76. The gas obtained by adding water on aluminum carbide is",
+      "a": "Ethyne",
+      "b": "ethane",
+      "c": "methane",
+      "d": "ethane",
+      "ans": "a"
+    },
+    {
+      "question": "77. The mixture of HCl and ZnCl<sub>2</sub> is known as",
+      "a": "Tollen’s reagent",
+      "b": "Baeyer’s reagent",
+      "c": "Lucas reagent",
+      "d": "Nessler’s reagent",
+      "ans": "a"
+    },
+    {
+      "question": "78. The IUPAC name of n-valeric acid is",
+      "a": "Pentanoic acid",
+      "b": "butanoic acid",
+      "c": "Propanoic acid",
+      "d": "ethanoic acid",
+      "ans": "a"
+    },
+    {
+      "question": "79. A blood red colouration of ferric sulphocyanide obtained by addition of ferric chloride in sodium extract confirms the presence of",
+      "a": "Sulphur",
+      "b": "nitrogen",
+      "c": "both a and b",
+      "d": "halogens",
+      "ans": "a"
+    },
+    {
+      "question": "80. Which of the following compounds has highest boiling point?",
+      "a": "CH<sub>4</sub>",
+      "b": "CH<sub>3</sub>Cl",
+      "c": "CH<sub>3</sub>Br",
+      "d": "CH<sub>3</sub>OH",
+      "ans": "a"
+    },{
+      "question": "81. The compound that undergoes Cannizzaro reaction is",
+      "a": "CH<sub>3</sub>COOH",
+      "b": "C<sub>2</sub>H<sub>5</sub>CHO",
+      "c": "HCHO",
+      "d": "CH<sub>3</sub>OCH<sub>3</sub>",
+      "ans": "a"
+    },
+    {
+      "question": "82. Benzene is converted to toluene by",
+      "a": "Friedel Craft reaction",
+      "b": "Grignard reaction",
+      "c": "Wurtz reaction",
+      "d": "Perkin reaction",
+      "ans": "a"
+    },
+    {
+      "question": "83. The compound that gives positive carbylamines reaction is",
+      "a": "(CH<sub>3</sub>)<sub>2</sub>NH",
+      "b": "(CH<sub>3</sub>)<sub>3</sub>N",
+      "c": "(CH<sub>3</sub>)<sub>4</sub>N<sup>+</sup>",
+      "d": "CH<sub>3</sub>NH<sub>2</sub>",
+      "ans": "a"
+    },
+    {
+      "question": "84. Hematite is an ore of",
+      "a": "silver",
+      "b": "iron",
+      "c": "mercury",
+      "d": "copper",
+      "ans": "b"
+    },
+    {
+      "question": "85. Na<sub>2</sub>O is a",
+      "a": "Neutral oxide",
+      "b": "acidic oxide",
+      "c": "Basic oxide",
+      "d": "amphoteric oxide",
+      "ans": "a"
+    },
+    {
+      "question": "86. Which of the following elements has highest electro-negativity?",
+      "a": "Bromine",
+      "b": "iodine",
+      "c": "chlorine",
+      "d": "fluorine",
+      "ans": "a"
+    },
+    {
+      "question": "87. Zinc sulphate(ZnSO<sub>4</sub>.7H<sub>2</sub>O) is also called",
+      "a": "White vitriol",
+      "b": "green vitriol",
+      "c": "Blue vitriol",
+      "d": "corrosive sublimate",
+      "ans": "a"
+    },
+    {
+      "question": "88. Brass is an alloy of",
+      "a": "Copper and zinc",
+      "b": "copper and nickel",
+      "c": "Copper and tin",
+      "d": "copper and lead",
+      "ans": "a"
+    },
+    {
+      "question": "89. The formula of dolomite is",
+      "a": "CaCO<sub>3</sub>",
+      "b": "CaCO<sub>3</sub>,MgCO<sub>3</sub>",
+      "c": "CaSO<sub>4</sub>.2H<sub>2</sub>O",
+      "d": "CaF<sub>2</sub>",
+      "ans": "a"
+    },
+    {
+      "question": "90. The general electronic configuration of zinc is",
+      "a": "[Ar]4s<sup>2</sup>3d<sup>10</sup>",
+      "b": "[Ar]4s<sup>1</sup>3d<sup>10</sup>",
+      "c": "[Ar]4s<sup>2</sup>3d<sup>8</sup>",
+      "d": "[Ar]4s<sup>2</sup>3d<sup>7</sup>",
+      "ans": "a"
+    },{
+      "question": "91. Equivalent weight of KMnO<sub>4</sub> in neutral medium is",
+      "a": "52.6",
+      "b": "158.0",
+      "c": "31.6",
+      "d": "63.0",
+      "ans": "a"
+    },
+    {
+      "question": "92. Bohr’s model was modified by",
+      "a": "Rutherford",
+      "b": "Sommerfeld",
+      "c": "Dalton",
+      "d": "Pauli",
+      "ans": "a"
+    },
+    {
+      "question": "93. How many oxygen atoms are there in 8.0g of oxygen atoms?",
+      "a": "3.011 × 10<sub>23</sub> atoms",
+      "b": "3.011 × 10<sub>22</sub> atoms",
+      "c": "3.011 × 10<sub>20</sub> atoms",
+      "d": "3.011 × 10<sub>19</sub> atoms",
+      "ans": "a"
+    },
+    {
+      "question": "94. What is the pH of 0.001 M HCl?",
+      "a": "2.0",
+      "b": "3.0",
+      "c": "4.0",
+      "d": "5.0",
+      "ans": "a"
+    },
+    {
+      "question": "95. The rate of reaction is independent of",
+      "a": "Temperature",
+      "b": "concentration",
+      "c": "Particle size of reactant",
+      "d": "molecularity",
+      "ans": "a"
+    },
+    {
+      "question": "96. The CGS unit of specific conductance is",
+      "a": "Siemen cm<sub>-1</sub>",
+      "b": "ohm<sub>-1</sub>cm<sub>2</sub>equiv<sub>-1</sub>",
+      "c": "Siemen",
+      "d": "ohm<sub>-1</sub>",
+      "ans": "a"
+    },
+    {
+      "question": "97. Hess’s law deals with",
+      "a": "Total change in heat of reaction",
+      "b": "Rate of reaction",
+      "c": "Equilibrium constant of reaction",
+      "d": "Influence on pressure of volume of gas",
+      "ans": "a"
+    },
+    {
+      "question": "98. The degree of dissociation of an electrolyte",
+      "a": "Decreases with dilution",
+      "b": "Increases with dilution",
+      "c": "May increase or decrease with dilution",
+      "d": "Is not affected by dilution",
+      "ans": "a"
+    },
+    {
+      "question": "99. The weight of 100 ml of NH<sub>3</sub> gas at NTP is",
+      "a": "0.0759 g",
+      "b": "0.0579 g",
+      "c": "0.0459 g",
+      "d": "0.0359 g",
+      "ans": "a"
+    },
+    {
+      "question": "100. The law of multiple proportions was given by",
+      "a": "Richter",
+      "b": "John Dalton",
+      "c": "Albert Einstein",
+      "d": "Gay Lussac",
+      "ans": "a"
+    }
+  ]
+}
