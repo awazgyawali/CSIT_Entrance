@@ -1,7 +1,5 @@
 package np.com.aawaz.csitentrance;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -42,7 +40,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        backgroundTaskStart();
 
         callAllAvatarImage();
         pref=getSharedPreferences("info",MODE_PRIVATE);
@@ -196,16 +193,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         a10.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
         a11.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
         a12.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
-    }
-
-    PendingIntent pendingIntent;
-
-    public void backgroundTaskStart(){
-        Intent alarmIntent=new Intent(this,MyBroadCastReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
-
-        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        int interval=1000*10; //milisec*sec*min
-        manager.setRepeating(AlarmManager.RTC_WAKEUP,System.currentTimeMillis(),interval,pendingIntent);
     }
 }

@@ -6,10 +6,8 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,13 +16,12 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-import java.util.Calendar;
-
 
 public class MainActivity extends Activity implements MainRecyclerAdapter.ClickListner {
     RecyclerView recycler;
     SharedPreferences pref;
     TextView points;
+    PendingIntent pendingIntent;
     MainRecyclerAdapter adapter;
 
 
@@ -33,6 +30,8 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         infoAboutDelay();
+
+        backgroundTaskStart();
 
         loadAd();
 
@@ -130,5 +129,14 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
+    }
+
+    public void backgroundTaskStart() {
+        Intent alarmIntent = new Intent(this, MyBroadCastReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
+
+        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        int interval = 1000 * 10; //milisec*sec*min
+        manager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
     }
 }
