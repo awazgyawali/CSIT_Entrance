@@ -17,6 +17,7 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
     LayoutInflater inflater;
     ArrayList<String> messages;
     ArrayList<Integer> flag;
+    int[] avatar;
 
 
 
@@ -25,6 +26,10 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
         this.flag=flag;
         this.messages=messages;
         inflater = LayoutInflater.from(context);
+        avatar = new int[]{R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five,
+                R.drawable.six, R.drawable.seven, R.drawable.eight, R.drawable.nine, R.drawable.ten,
+                R.drawable.eleven, R.drawable.twelve};
+
     }
 
     @Override
@@ -38,9 +43,12 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
         if(flag.get(position)==0){
             holder.rightText.setText(messages.get(position));
             holder.leftImg.setVisibility(View.GONE);
+            holder.rightImg.setVisibility(View.VISIBLE);
+            holder.rightImg.setImageResource(avatar[context.getSharedPreferences("info", Context.MODE_PRIVATE).getInt("Avatar", 1) - 1]);
         } else {
             holder.leftText.setText(messages.get(position));
             holder.leftImg.setVisibility(View.VISIBLE);
+            holder.rightImg.setVisibility(View.GONE);
         }
     }
 
@@ -53,7 +61,6 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
         messages.add(text);
         flag.add(0);
         notifyItemInserted(messages.size());
-
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
