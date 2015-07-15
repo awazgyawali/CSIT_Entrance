@@ -3,6 +3,7 @@ package np.com.aawaz.csitentrance;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -214,16 +215,17 @@ public class EntranceNews extends AppCompatActivity implements NewsAdapter.Click
 
     @Override
     public void itemClicked(View view, int position) {
-        MaterialDialog.Builder dialog=new MaterialDialog.Builder(this);
-        dialog.title(topic.get(position));
-        dialog.content(content.get(position));
-        dialog.neutralText(author.get(position));
-        dialog.autoDismiss(false);
-        dialog.show();
+        Intent intent = new Intent(this, EntranceNewsHolder.class);
+        intent.putExtra("title", topic.get(position));
+        intent.putExtra("subTopic", subTopic.get(position));
+        intent.putExtra("author", author.get(position));
+        intent.putExtra("content", content.get(position));
+        intent.putExtra("imageURL", imageURL.get(position));
+        startActivity(intent);
     }
 
     public void loadAd(){
-        AdView mAdView = (AdView) findViewById(R.id.newsAd);
+        AdView mAdView = (AdView) findViewById(R.id.eachNewsAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
