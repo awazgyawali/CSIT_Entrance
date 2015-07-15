@@ -21,8 +21,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':library-3.0.0')
-    compile project(':library-1.2.0')
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:recyclerview-v7:22.2.0'
     compile 'com.melnykov:floatingactionbutton:1.3.0'
@@ -36,4 +34,5 @@ dependencies {
     compile 'com.github.mrengineer13:snackbar:1.2.0'
     compile 'com.android.support:support-v4:22.2.0'
     compile 'com.facebook.android:facebook-android-sdk:4.0.0'
+    compile 'com.sothree.slidinguppanel:library:3.0.0'
 }

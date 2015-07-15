@@ -136,7 +136,7 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
         pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
 
         AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        int interval = 1000 * 10; //milisec*sec*min
+        int interval = 1000 * 60 * 5; //milisec*sec*min
         manager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
     }
 }

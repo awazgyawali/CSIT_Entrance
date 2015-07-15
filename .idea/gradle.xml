@@ -11,8 +11,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/library-1.2.0" />
-            <option value="$PROJECT_DIR$/library-3.0.0" />
           </set>
         </option>
       </GradleProjectSettings>

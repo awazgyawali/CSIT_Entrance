@@ -38,14 +38,12 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        Log.d("Debug","Trying");
+        final RequestQueue requestQueue = Volley.newRequestQueue(context);
         String url=context.getString(R.string.url);
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
-
                 try {
                     JSONArray jsonArray = response.getJSONArray("news");
                     int no=0;
@@ -58,7 +56,6 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                         author.add(jo_inside.getString("author"));
                         no++;
                     }
-                    Log.d("Debug",no+">"+noOfRows(context));
                     if(no>noOfRows(context)) {
                         notification(context, topic.get(0), content.get(0),topic.get(0));
                         storeToDb(context);

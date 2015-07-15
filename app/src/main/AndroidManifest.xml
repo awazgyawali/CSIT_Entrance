@@ -94,6 +94,10 @@
             android:enabled="true"
             android:exported="true" >
         </receiver>
+
+        <activity
+            android:name=".EntranceNewsHolder"
+            android:label="@string/title_activity_entrance_news_holder"></activity>
     </application>
 
 </manifest>
