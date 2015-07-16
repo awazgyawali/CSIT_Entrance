@@ -53,9 +53,6 @@ public class EntranceNews extends AppCompatActivity implements NewsAdapter.Click
 
         context=this;
 
-        NewsDataBase dataBase=new NewsDataBase(this);
-        SQLiteDatabase database= dataBase.getWritableDatabase();
-
         //Toolbar
         setSupportActionBar((Toolbar) findViewById(R.id.newsToolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

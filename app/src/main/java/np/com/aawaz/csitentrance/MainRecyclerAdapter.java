@@ -66,6 +66,10 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     }
 
 
+    public interface ClickListner {
+        void itemClicked(View view, int position);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView mainImg;
         ImageView playImg;
@@ -88,10 +92,6 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
             });
         }
 
-    }
-
-    public interface ClickListner{
-        void itemClicked(View view,int position);
     }
 }
 

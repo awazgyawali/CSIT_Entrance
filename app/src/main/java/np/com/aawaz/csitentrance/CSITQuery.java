@@ -1,8 +1,11 @@
 package np.com.aawaz.csitentrance;
 
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +14,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -70,14 +72,15 @@ public class CSITQuery extends AppCompatActivity {
         id = pref.getString("fbId", "0");
         queue = Volley.newRequestQueue(this);
 
-        if (id.equals("0")) {
-            onStartHandler();
-        } else {
-            initialFetch();
-        }
+
         send = (Button) findViewById(R.id.sendBtn);
         text = (EditText) findViewById(R.id.text);
         recyclerView = (RecyclerView) findViewById(R.id.recyQuery);
+        if (id.equals("0")) {
+            onStartHandler();
+        } else {
+            intialFetchFromDb();
+        }
         text.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -101,14 +104,42 @@ public class CSITQuery extends AppCompatActivity {
         });
     }
 
-    private void initialFetch() {
+    private void intialFetchFromDb() {
+        NewsDataBase databaseClass = new NewsDataBase(this);
+        SQLiteDatabase database = databaseClass.getWritableDatabase();
+        Cursor cursor = database.query("query", new String[]{"flag,Question,Answer"}, null, null, null, null, null);
+        messages.clear();
+        flag.clear();
+        while (cursor.moveToNext()) {
+            if (cursor.getInt(cursor.getColumnIndex("flag")) == 0) {
+                messages.add(cursor.getString(cursor.getColumnIndex("Question")));
+                flag.add(0);
+            } else {
+                messages.add(cursor.getString(cursor.getColumnIndex("Answer")));
+                flag.add(1);
+            }
+        }
+
+        adapter = new QueryAdapter(getApplicationContext(), messages, flag);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setAdapter(adapter);
+        recyclerView.scrollToPosition(messages.size());
+
+        cursor.close();
+        database.close();
+
+        fetchFromInternet();
+    }
+
+    private void fetchFromInternet() {
         String url = getString(R.string.queryFetchUrl);
-        Log.d("Debug", url + id);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + id, new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + id, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     JSONArray query = response.getJSONArray("query");
+                    messages.clear();
+                    flag.clear();
                     for (int i = 0; i < query.length(); i++) {
                         JSONObject jo_inside = query.getJSONObject(i);
                         if (!jo_inside.getString("Question").equals("")) {
@@ -120,11 +151,11 @@ public class CSITQuery extends AppCompatActivity {
                             flag.add(1);
                         }
                     }
-
+                    storeToDb();
                     adapter = new QueryAdapter(getApplicationContext(), messages, flag);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerView.setAdapter(adapter);
-
+                    recyclerView.scrollToPosition(messages.size());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -132,10 +163,29 @@ public class CSITQuery extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Debug", error + "Volley error");
+
             }
         });
         queue.add(jsonObjectRequest);
+    }
+
+    private void storeToDb() {
+        NewsDataBase dataBase = new NewsDataBase(this);
+        SQLiteDatabase database = dataBase.getWritableDatabase();
+        database.delete("query", null, null);
+        ContentValues values = new ContentValues();
+        for (int i = 0; i < messages.size(); i++) {
+            values.clear();
+            if (flag.get(i) == 0) {
+                values.put("Question", messages.get(i));
+                values.put("flag", flag.get(i));
+            } else {
+                values.put("Answer", messages.get(i));
+                values.put("flag", flag.get(i));
+            }
+            database.insert("query", null, values);
+        }
+        database.close();
     }
 
     private void onStartHandler() {
@@ -169,7 +219,6 @@ public class CSITQuery extends AppCompatActivity {
                             protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
                                 SharedPreferences.Editor editor = pref.edit();
                                 editor.putString("fbId", profile2.getId() + "");
-                                Log.d("Deubg", profile2.getId() + "");
                                 editor.putString("First", profile2.getName() + "");
                                 editor.apply();
                                 dialog.dismiss();
@@ -177,16 +226,18 @@ public class CSITQuery extends AppCompatActivity {
                             }
                         };
                         mProfileTracker.startTracking();
+                        fetchFromInternet();
 
                     }
 
                     @Override
                     public void onCancel() {
+                        finish();
                     }
 
                     @Override
                     public void onError(FacebookException e) {
-
+                        finish();
                     }
 
 

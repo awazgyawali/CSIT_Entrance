@@ -14,6 +14,8 @@ public class NewsDataBase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE news(title VARCHAR(255),subTopic VARCHAR(255),content TEXT,imageURL VARCHAR(255),author VARCHAR(255));");
+        sqLiteDatabase.execSQL("CREATE TABLE query(flag INTEGER,Question VARCHAR(255),Answer VARCHAR(255));");
+
     }
 
     @Override
