@@ -33,4 +33,5 @@
     <string name="fullque_ad_id">ca-app-pub-3751722582271673/7031436744</string>
     <string name="title_activity_entrance_news_holder">Entrance News</string>
     <string name="quertyPostUrl">http://www.aawaz.com.np/jsonFeed/addQuery.php</string>
+    <string name="queryFetchUrl">http://www.aawaz.com.np/jsonFeed/fetchAll.php?fbId=</string>
 </resources>

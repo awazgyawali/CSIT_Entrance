@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -28,10 +29,13 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -42,13 +46,17 @@ public class CSITQuery extends AppCompatActivity {
 
     Button send;
     EditText text;
-    RecyclerView query;
+    RecyclerView recyclerView;
     QueryAdapter adapter;
     RequestQueue queue;
 
+    ArrayList<Integer> flag = new ArrayList<>();
+    ArrayList<String> messages = new ArrayList<>();
     CallbackManager callbackManager;
     LoginButton button;
     SharedPreferences pref;
+    String id;
+    private ProfileTracker mProfileTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,25 +67,17 @@ public class CSITQuery extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         pref = getSharedPreferences("details", MODE_PRIVATE);
-
-        if (pref.getString("fbId", "0").equals("0")) {
-            onStartHandler();
-        }
+        id = pref.getString("fbId", "0");
         queue = Volley.newRequestQueue(this);
 
-        ArrayList<String> messages=new ArrayList<>();
-
-
-        ArrayList<Integer> flag = new ArrayList<>();
-
+        if (id.equals("0")) {
+            onStartHandler();
+        } else {
+            initialFetch();
+        }
         send = (Button) findViewById(R.id.sendBtn);
         text = (EditText) findViewById(R.id.text);
-        query = (RecyclerView) findViewById(R.id.recyQuery);
-
-        adapter = new QueryAdapter(this, messages, flag);
-        query.setLayoutManager(new LinearLayoutManager(this));
-        query.setAdapter(adapter);
-
+        recyclerView = (RecyclerView) findViewById(R.id.recyQuery);
         text.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -99,6 +99,43 @@ public class CSITQuery extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void initialFetch() {
+        String url = getString(R.string.queryFetchUrl);
+        Log.d("Debug", url + id);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + id, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray query = response.getJSONArray("query");
+                    for (int i = 0; i < query.length(); i++) {
+                        JSONObject jo_inside = query.getJSONObject(i);
+                        if (!jo_inside.getString("Question").equals("")) {
+                            messages.add(jo_inside.getString("Question"));
+                            flag.add(0);
+                        }
+                        if (!jo_inside.getString("Answer").equals("")) {
+                            messages.add(jo_inside.getString("Answer"));
+                            flag.add(1);
+                        }
+                    }
+
+                    adapter = new QueryAdapter(getApplicationContext(), messages, flag);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    recyclerView.setAdapter(adapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Debug", error + "Volley error");
+            }
+        });
+        queue.add(jsonObjectRequest);
     }
 
     private void onStartHandler() {
@@ -127,16 +164,19 @@ public class CSITQuery extends AppCompatActivity {
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-
-                        Profile profile = Profile.getCurrentProfile();
-                        if (profile != null) {
-                            SharedPreferences.Editor editor = pref.edit();
-                            editor.putString("fbId", profile.getId());
-                            editor.putString("First", profile.getName());
-                            editor.apply();
-                            dialog.dismiss();
-                        }
-
+                        mProfileTracker = new ProfileTracker() {
+                            @Override
+                            protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
+                                SharedPreferences.Editor editor = pref.edit();
+                                editor.putString("fbId", profile2.getId() + "");
+                                Log.d("Deubg", profile2.getId() + "");
+                                editor.putString("First", profile2.getName() + "");
+                                editor.apply();
+                                dialog.dismiss();
+                                mProfileTracker.stopTracking();
+                            }
+                        };
+                        mProfileTracker.startTracking();
 
                     }
 
@@ -173,7 +213,7 @@ public class CSITQuery extends AppCompatActivity {
         String url = getString(R.string.quertyPostUrl);
         Uri.Builder uri = new Uri.Builder();
         String values = uri.authority("")
-                .appendQueryParameter("Question", text.getText().toString())
+                .appendQueryParameter("Question", text.getText().toString().replace("\"", "").replace("}", "").replace("{", "").replace(",", ""))
                 .appendQueryParameter("fbId", pref.getString("fbId", ""))
                 .build().toString();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {

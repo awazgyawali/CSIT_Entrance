@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 <RelativeLayout
     android:layout_width="wrap_content"
-    android:layout_margin="5dp"
-    android:layout_height="60dp">
+    android:layout_height="60dp"
+    android:layout_margin="5dp">
     <ImageView
+        android:id="@+id/leftImg"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/leftImg"
         android:layout_centerVertical="true"
         android:layout_marginLeft="6dp"
         android:src="@mipmap/ic_launcher" />
     <TextView
+        android:id="@+id/leftText"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/leftText"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="16dp"
         android:layout_toRightOf="@+id/leftImg"
         android:gravity="center_vertical"
-        android:layout_marginLeft="10dp" />
+        android:textColor="#000" />
     <ImageView
+        android:id="@+id/rightImg"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/rightImg"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         android:layout_marginRight="6dp"/>
     <TextView
+        android:id="@+id/rightText"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/rightText"
-        android:gravity="center_vertical|right"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="10dp"
         android:layout_toLeftOf="@+id/rightImg"
-        android:layout_marginRight="10dp" />
+        android:gravity="center_vertical|right"
+        android:textColor="#000" />
 </RelativeLayout>
 </RelativeLayout>
