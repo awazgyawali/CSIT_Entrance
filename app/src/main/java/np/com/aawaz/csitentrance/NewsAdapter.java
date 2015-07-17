@@ -49,6 +49,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         return topic.size();
     }
 
+    public void setClickListner(ClickNews clickNews) {
+        this.clickNews = clickNews;
+
+    }
+
+    public interface ClickNews {
+        void itemClicked(View view, int position);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView title;
         TextView themeNews;
@@ -61,18 +70,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    clickNews.itemClicked(view,getPosition());
+                    clickNews.itemClicked(view, getAdapterPosition());
                 }
             });
         }
-    }
-
-    public void setClickListner(ClickNews clickNews){
-        this.clickNews=clickNews;
-
-    }
-
-    public interface ClickNews{
-        void itemClicked(View view,int position);
     }
 }

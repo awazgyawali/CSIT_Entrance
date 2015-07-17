@@ -19,6 +19,9 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     int primaryColor[];
     int darkColor[];
     int icon[];
+    int images[] = {R.drawable.scoreboard, R.drawable.ico2069, R.drawable.ico2070, R.drawable.ico2071, R.drawable.model,
+            R.drawable.more, R.drawable.full_que, R.drawable.colleges, R.drawable.news, R.drawable.query, R.drawable.about};
+
     ClickListner clickListner;
     LayoutInflater inflater;
     Context context;
@@ -45,7 +48,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-
+        holder.mainImg.setImageResource(images[position]);
             YoYo.with(Techniques.Landing)
                     .duration(500)
                     .playOn(holder.mainLayout);

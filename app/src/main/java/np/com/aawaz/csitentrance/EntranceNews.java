@@ -77,8 +77,6 @@ public class EntranceNews extends AppCompatActivity implements NewsAdapter.Click
         recy.setAdapter(newsAdapter);
         newsAdapter.setClickListner(this);
 
-
-
         recy.setLayoutManager(new LinearLayoutManager(this));
 
         refreshLayout.setRefreshing(false);

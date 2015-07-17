@@ -266,6 +266,7 @@ public class CSITQuery extends AppCompatActivity {
         String values = uri.authority("")
                 .appendQueryParameter("Question", text.getText().toString().replace("\"", "").replace("}", "").replace("{", "").replace(",", ""))
                 .appendQueryParameter("fbId", pref.getString("fbId", ""))
+                .appendQueryParameter("Name", pref.getString("First", ""))
                 .build().toString();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
             @Override

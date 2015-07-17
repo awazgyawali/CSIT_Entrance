@@ -57,10 +57,9 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                         no++;
                     }
                     if(no>noOfRows(context)) {
-                        notification(context, topic.get(0), content.get(0),topic.get(0));
-                        storeToDb(context);
+                        notification(context, topic.get(0), content.get(0), topic.get(0));
                     }
-
+                    storeToDb(context);
                 } catch (Exception e) {
 
                 }

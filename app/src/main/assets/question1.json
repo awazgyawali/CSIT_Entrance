@@ -14,7 +14,7 @@
       "b": "{-2,2}",
       "c": "(-2,2)",
       "d": "[-2,2]",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "3. If A, B and C are non-empty sets and A C B then A <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAIAAAA2bnI+AAAAvklEQVR4nGP5//8/A1mAhTxtI13nvw+npxUUTD325j8TE69ubOeUMidxDIVYdP6+OzMy7XT0yrPz1bgYfz3bXhUS3DJ1V4MhFyGd385NnMfXuCMaqA3IY5PybJ6416F9b95KXyFGvDr/vD5zgce1XBChilPDXeXRrvs/fYU48Or89/3DL3Z1TiYkISYuPoZP3/8S9icDZnLElkAHRXyyqRbtWsXMhyzEbd6704Cdm6CdzJz8fOiKuPkx1Q2EPwEocDo03oOcMQAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\"> B is ",
