@@ -31,10 +31,6 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
             imageURL = new ArrayList<>(),
             content = new ArrayList<>(),
             author = new ArrayList<>();
-    public MyBroadCastReceiver() {
-
-
-    }
 
     @Override
     public void onReceive(final Context context, Intent intent) {
@@ -65,6 +61,7 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                 }
             }
         }, new Response.ErrorListener() {
+
             @Override
             public void onErrorResponse(VolleyError error) {
 

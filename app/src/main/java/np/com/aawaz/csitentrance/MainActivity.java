@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
 
 
 public class MainActivity extends Activity implements MainRecyclerAdapter.ClickListner {
@@ -23,6 +25,8 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
     TextView points;
     PendingIntent pendingIntent;
     MainRecyclerAdapter adapter;
+    Tracker tracker;
+    GoogleAnalytics analytics;
 
 
     @Override
@@ -31,6 +35,14 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
         setContentView(R.layout.activity_main);
         infoAboutDelay();
 
+        analytics = GoogleAnalytics.getInstance(this);
+        analytics.setLocalDispatchPeriod(1800);
+
+        tracker = analytics.newTracker("UA-63920529-5");
+        tracker.enableExceptionReporting(true);
+        tracker.enableAdvertisingIdCollection(true);
+        tracker.enableAutoActivityTracking(true);
+        
         backgroundTaskStart();
 
         loadAd();

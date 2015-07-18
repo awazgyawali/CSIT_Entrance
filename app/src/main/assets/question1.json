@@ -14,7 +14,7 @@
       "b": "{-2,2}",
       "c": "(-2,2)",
       "d": "[-2,2]",
-      "ans": "b"
+      "ans": "c"
     },
     {
       "question": "3. If A, B and C are non-empty sets and A C B then A <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAIAAAA2bnI+AAAAvklEQVR4nGP5//8/A1mAhTxtI13nvw+npxUUTD325j8TE69ubOeUMidxDIVYdP6+OzMy7XT0yrPz1bgYfz3bXhUS3DJ1V4MhFyGd385NnMfXuCMaqA3IY5PybJ6416F9b95KXyFGvDr/vD5zgce1XBChilPDXeXRrvs/fYU48Or89/3DL3Z1TiYkISYuPoZP3/8S9icDZnLElkAHRXyyqRbtWsXMhyzEbd6704Cdm6CdzJz8fOiKuPkx1Q2EPwEocDo03oOcMQAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\"> B is ",
@@ -22,7 +22,7 @@
       "b": "A",
       "c": "empty set",
       "d": "C",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "4. The smallest prime number is",
@@ -30,7 +30,7 @@
       "b": "0",
       "c": "2",
       "d": "-1",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "5. The curve y<sup>2</sup>=4x is symmetrical about",
@@ -93,7 +93,7 @@
       "b": "option",
       "c": "option",
       "d": "option",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "13que",
@@ -141,7 +141,7 @@
       "b": "option",
       "c": "option",
       "d": "option",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "19que",
@@ -149,7 +149,7 @@
       "b": "option",
       "c": "option",
       "d": "option",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "20que",
@@ -164,7 +164,7 @@
       "b": "option",
       "c": "option",
       "d": "option",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "22que",
@@ -188,7 +188,7 @@
       "b": "option",
       "c": "option",
       "d": "option",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "25que",
@@ -615,7 +615,7 @@
       "b": "option",
       "c": "option",
       "d": "option",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "79. Aniline on warming with Benz aldehyde forms",
@@ -623,7 +623,7 @@
       "b": "benzalinide",
       "c": "schiff’s base",
       "d": "phenol",
-      "ans": "a"
+      "ans": "c"
     },{
       "question": "80. Which of the following compounds is used as the best anti-knocking agent?",
       "a": "Tetraethyl lead	",
@@ -638,7 +638,7 @@
       "b": "chloropicrin",
       "c": "carbon tetrachloride",
       "d": "carbonyl chloride",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "82. Which of the following reagents is used to detect the aldehyde group?",
@@ -646,7 +646,7 @@
       "b": "Tollen’s reagent",
       "c": "Grignard reagent",
       "d": "Baeyer’s reagent",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "83. Terylene is a",
@@ -662,7 +662,7 @@
       "b": "ZnS",
       "c": "ZnO",
       "d": "ZnO.Fe2O3",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "85. The oxidation state of iron in Mohr’s salt is",
@@ -678,7 +678,7 @@
       "b": "CO2",
       "c": "CO",
       "d": "CaO",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "87. The structure of ammonia molecule is",
@@ -686,7 +686,7 @@
       "b": "tetrahedral",
       "c": "linear",
       "d": "trigonal pyramidal",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "88. Orthophosphoric acid is",
@@ -694,7 +694,7 @@
       "b": "dibasic acid",
       "c": "Tribasic acid",
       "d": "tetrabasic acid",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "89. The formula of Epsom salt is",
@@ -709,7 +709,7 @@
       "b": "nitric acid",
       "c": "ammonia",
       "d": "white phosphorus",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "91. Among the following elements, the one having highest electron affinity is",
@@ -733,7 +733,7 @@
       "b": "Mol. wt/6",
       "c": "Mol. wt/3",
       "d": "Mol. wt/5",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "94. The weight of sodium carbonate required to prepare 100 mL of N/10 sodium carbonate solution is",
@@ -749,7 +749,7 @@
       "b": "dynes.cm-1",
       "c": "dynes.cm2",
       "d": "dynes.cm-2",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "96. Electrons will distribute themselves in degenerate orbitals so as to retain parallel spin as much as possible. This is called",
@@ -762,10 +762,10 @@
     {
       "question": "97. The actual electronic configuration of copper is",
       "a": "[Ar]4s23d8",
-      "b": "[Ar]4s23d10	",
+      "b": "[Ar]4s13d10	",
       "c": "[Ar]4s23d10",
       "d": "[Ar]4s23d8",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "98. If the pH of a solution is 5.2, the hydrogen ion concentration of the solution is",
@@ -773,7 +773,7 @@
       "b": "6.3 × 10-6 M",
       "c": "6.3 × 10-7 M",
       "d": "6.3 × 10-4 M",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "99. The unit of rate constant for first order reaction is",
@@ -789,7 +789,7 @@
       "b": "Always negative",
       "c": "Can be positive or negative",
       "d": "Unpredictable",
-      "ans": "a"
+      "ans": "c"
     }
   ]
 }
