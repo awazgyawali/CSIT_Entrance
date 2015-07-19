@@ -1,10 +1,15 @@
 package np.com.aawaz.csitentrance;
 
 import android.content.Context;
+import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,7 +23,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     ArrayList<String> content=new ArrayList<>();
     ArrayList<String> author=new ArrayList<>();
     LayoutInflater inflater;
-    ClickNews clickNews;
+    private int expandedPosition = -1;
 
 
 
@@ -38,10 +43,47 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.title.setText(topic.get(position));
         holder.themeNews.setText(content.get(position));
         holder.time.setText(subTopic.get(position));
+        holder.mainLayout.setCardElevation(10);
+        holder.titleEach.setText(topic.get(position));
+        holder.contentEach.setText(content.get(position));
+        holder.authorEach.setText(author.get(position));
+        holder.subTopicEach.setText(subTopic.get(position));
+        holder.newsImage.setImageURI(Uri.parse(imageURL.get(position)));
+        if (position == expandedPosition) {
+            holder.mainLayout.setCardElevation(30);
+            holder.llExpandArea.setVisibility(View.VISIBLE);
+            holder.headings.setVisibility(View.GONE);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(5, 10, 5, 10);
+            holder.mainLayout.setLayoutParams(layoutParams);
+        } else {
+            holder.headings.setVisibility(View.VISIBLE);
+            holder.llExpandArea.setVisibility(View.GONE);
+        }
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (expandedPosition == position) {
+                    int pre = expandedPosition;
+                    expandedPosition = -1;
+                    notifyItemChanged(pre);
+                } else if (expandedPosition > -1) {
+                    int pre = expandedPosition;
+                    expandedPosition = position;
+                    notifyItemChanged(pre);
+                    notifyItemChanged(expandedPosition);
+                } else {
+                    expandedPosition = position;
+                    notifyItemChanged(expandedPosition);
+                }
+            }
+        });
+
     }
 
     @Override
@@ -49,30 +91,33 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         return topic.size();
     }
 
-    public void setClickListner(ClickNews clickNews) {
-        this.clickNews = clickNews;
 
-    }
-
-    public interface ClickNews {
-        void itemClicked(View view, int position);
-    }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView title;
+        TextView titleEach;
+        TextView contentEach;
+        TextView authorEach;
+        TextView subTopicEach;
         TextView themeNews;
         TextView time;
+        ImageView newsImage;
+        CardView mainLayout;
+        RelativeLayout headings;
+        LinearLayout llExpandArea;
         public ViewHolder(View itemView) {
             super(itemView);
+            mainLayout = (CardView) itemView.findViewById(R.id.mainLayout);
+            titleEach = (TextView) itemView.findViewById(R.id.eachNewsTitle);
+            contentEach = (TextView) itemView.findViewById(R.id.newsContent);
+            authorEach = (TextView) itemView.findViewById(R.id.newsAuthor);
+            subTopicEach = (TextView) itemView.findViewById(R.id.newsSubTitle);
+            newsImage = (ImageView) itemView.findViewById(R.id.newsImage);
             title= (TextView) itemView.findViewById(R.id.newsTitle);
             themeNews= (TextView) itemView.findViewById(R.id.themeNews);
             time= (TextView) itemView.findViewById(R.id.time);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    clickNews.itemClicked(view, getAdapterPosition());
-                }
-            });
+            headings = (RelativeLayout) itemView.findViewById(R.id.headings);
+            llExpandArea = (LinearLayout) itemView.findViewById(R.id.llExpandArea);
         }
     }
 }

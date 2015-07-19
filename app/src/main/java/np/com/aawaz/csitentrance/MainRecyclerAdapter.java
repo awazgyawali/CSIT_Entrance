@@ -1,12 +1,12 @@
 package np.com.aawaz.csitentrance;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -58,8 +58,9 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         else
             holder.title.setTextColor(context.getResources().getColor(R.color.darkQue));
         holder.title.setText(titles[position]);
-        holder.mainLayout.setBackgroundColor(context.getResources().getColor(darkColor[position]));
-        holder.baseLayout.setBackgroundColor(context.getResources().getColor(primaryColor[position]));
+        holder.mainLayout.setCardBackgroundColor(context.getResources().getColor(darkColor[position]));
+        holder.mainLayout.setRadius(10);
+        holder.baseLayout.setCardBackgroundColor(context.getResources().getColor(primaryColor[position]));
         holder.playImg.setImageResource(icon[position]);
     }
 
@@ -77,15 +78,15 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         ImageView mainImg;
         ImageView playImg;
         TextView title;
-        RelativeLayout mainLayout;
-        RelativeLayout baseLayout;
+        CardView mainLayout;
+        CardView baseLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mainImg= (ImageView) itemView.findViewById(R.id.mainImg);
             playImg= (ImageView) itemView.findViewById(R.id.play);
-            mainLayout= (RelativeLayout) itemView.findViewById(R.id.mainLayout);
-            baseLayout= (RelativeLayout) itemView.findViewById(R.id.baseLayout);
+            mainLayout = (CardView) itemView.findViewById(R.id.mainLayout);
+            baseLayout = (CardView) itemView.findViewById(R.id.baseLayout);
             title= (TextView) itemView.findViewById(R.id.title);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

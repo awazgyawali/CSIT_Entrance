@@ -1,37 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.gc.materialdesign.views.Card xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
-    android:layout_marginTop="-3dp"
-    android:layout_marginBottom="-3dp"
     android:layout_height="wrap_content"
-    >
-    <TextView
+    android:layout_marginBottom="1dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginTop="2dp"
+    android:animateLayoutChanges="true"
+    android:background="#fff"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Demo Title"
-        android:textSize="17dp"
-        android:id="@+id/newsTitle"
-        android:textColor="#3a88cd"
-        android:layout_toLeftOf="@+id/time"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="5dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Demo content"
-        android:maxLines="2"
-        android:paddingBottom="5dp"
-        android:id="@+id/themeNews"
-        android:layout_below="@+id/newsTitle"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="25dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Time and day"
-        android:id="@+id/time"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"/>
-</com.gc.materialdesign.views.Card>
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/headings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/newsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_toLeftOf="@+id/time"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Demo Title"
+                android:textColor="#3a88cd"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/themeNews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/newsTitle"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="25dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingBottom="5dp"
+                android:text="Demo content" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Time and day" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/llExpandArea"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/eachNewsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Demo Title"
+                    android:textColor="@color/primary4"
+                    android:textSize="17dp" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/eachNewsTitle"
+                    android:background="@color/primary3" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/divider"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/newsImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp" />
+
+                    <TextView
+                        android:id="@+id/newsSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="hello" />
+
+
+                    <TextView
+                        android:id="@+id/newsContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:textAlignment="inherit" />
+
+                    <TextView
+                        android:id="@+id/newsAuthor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="5dp"
+                        android:text="Aawaz Gyawali"
+                        android:textColor="#000" />
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

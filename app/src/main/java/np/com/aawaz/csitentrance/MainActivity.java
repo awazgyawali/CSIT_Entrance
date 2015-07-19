@@ -37,12 +37,11 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
 
         analytics = GoogleAnalytics.getInstance(this);
         analytics.setLocalDispatchPeriod(1800);
-
         tracker = analytics.newTracker("UA-63920529-5");
         tracker.enableExceptionReporting(true);
-        tracker.enableAdvertisingIdCollection(true);
         tracker.enableAutoActivityTracking(true);
-        
+
+
         backgroundTaskStart();
 
         loadAd();

@@ -3,7 +3,6 @@ package np.com.aawaz.csitentrance;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -33,7 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class EntranceNews extends AppCompatActivity implements NewsAdapter.ClickNews {
+public class EntranceNews extends AppCompatActivity {
 
     ArrayList<String> topic=new ArrayList<>(),
             subTopic=new ArrayList<>(),
@@ -75,8 +73,6 @@ public class EntranceNews extends AppCompatActivity implements NewsAdapter.Click
         recy= (RecyclerView) findViewById(R.id.newsFeedRecy);
         NewsAdapter newsAdapter=new NewsAdapter(this,topic,subTopic,imageURL,content,author);
         recy.setAdapter(newsAdapter);
-        newsAdapter.setClickListner(this);
-
         recy.setLayoutManager(new LinearLayoutManager(this));
 
         refreshLayout.setRefreshing(false);
@@ -206,17 +202,6 @@ public class EntranceNews extends AppCompatActivity implements NewsAdapter.Click
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void itemClicked(View view, int position) {
-        Intent intent = new Intent(this, EntranceNewsHolder.class);
-        intent.putExtra("title", topic.get(position));
-        intent.putExtra("subTopic", subTopic.get(position));
-        intent.putExtra("author", author.get(position));
-        intent.putExtra("content", content.get(position));
-        intent.putExtra("imageURL", imageURL.get(position));
-        startActivity(intent);
     }
 
     public void loadAd(){
