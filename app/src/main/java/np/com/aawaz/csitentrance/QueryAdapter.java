@@ -43,11 +43,15 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
         if(flag.get(position)==0){
             holder.rightText.setText(messages.get(position));
             holder.leftImg.setVisibility(View.GONE);
+            holder.leftText.setVisibility(View.GONE);
             holder.rightImg.setVisibility(View.VISIBLE);
+            holder.rightText.setVisibility(View.VISIBLE);
             holder.rightImg.setImageResource(avatar[context.getSharedPreferences("info", Context.MODE_PRIVATE).getInt("Avatar", 1) - 1]);
         } else {
             holder.leftText.setText(messages.get(position));
+            holder.leftText.setVisibility(View.VISIBLE);
             holder.leftImg.setVisibility(View.VISIBLE);
+            holder.rightText.setVisibility(View.GONE);
             holder.rightImg.setVisibility(View.GONE);
         }
     }
