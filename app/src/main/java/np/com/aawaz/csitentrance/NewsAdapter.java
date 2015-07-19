@@ -54,7 +54,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.subTopicEach.setText(subTopic.get(position));
         holder.newsImage.setImageURI(Uri.parse(imageURL.get(position)));
         if (position == expandedPosition) {
-            holder.mainLayout.setCardElevation(30);
+            holder.mainLayout.setCardElevation(50);
             holder.llExpandArea.setVisibility(View.VISIBLE);
             holder.headings.setVisibility(View.GONE);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
