@@ -23,6 +23,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     ArrayList<String> content=new ArrayList<>();
     ArrayList<String> author=new ArrayList<>();
     LayoutInflater inflater;
+
     private int expandedPosition = -1;
 
 
@@ -65,6 +66,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             holder.headings.setVisibility(View.VISIBLE);
             holder.llExpandArea.setVisibility(View.GONE);
         }
+
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

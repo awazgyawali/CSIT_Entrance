@@ -40,7 +40,6 @@ public class FullQuestion extends AppCompatActivity implements QueAdater.ClickLi
         listRecy.setAdapter(adater);
         listRecy.setLayoutManager(new LinearLayoutManager(this));
         adater.setClickListner(this);
-
     }
 
 

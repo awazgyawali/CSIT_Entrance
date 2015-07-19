@@ -91,7 +91,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    clickListner.itemClicked(view,getPosition());
+                    clickListner.itemClicked(view, getAdapterPosition());
                 }
             });
         }
