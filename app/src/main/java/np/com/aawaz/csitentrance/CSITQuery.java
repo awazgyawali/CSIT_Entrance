@@ -1,11 +1,10 @@
 package np.com.aawaz.csitentrance;
 
-import android.content.ContentValues;
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Request;
@@ -35,6 +35,7 @@ import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.github.mrengineer13.snackbar.SnackBar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,6 +59,7 @@ public class CSITQuery extends AppCompatActivity {
     LoginButton button;
     SharedPreferences pref;
     String id;
+    Context context;
     private ProfileTracker mProfileTracker;
 
     @Override
@@ -72,6 +74,7 @@ public class CSITQuery extends AppCompatActivity {
         id = pref.getString("fbId", "0");
         queue = Volley.newRequestQueue(this);
 
+        context = this;
 
         send = (Button) findViewById(R.id.sendBtn);
         text = (EditText) findViewById(R.id.text);
@@ -79,7 +82,12 @@ public class CSITQuery extends AppCompatActivity {
         if (id.equals("0")) {
             onStartHandler();
         } else {
-            intialFetchFromDb();
+            MaterialDialog dialogInitial = new MaterialDialog.Builder(this)
+                    .content("Please wait...")
+                    .progress(true, 0)
+                    .build();
+            dialogInitial.show();
+            fetchFromInternet(dialogInitial, true);
         }
         text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -104,34 +112,8 @@ public class CSITQuery extends AppCompatActivity {
         });
     }
 
-    private void intialFetchFromDb() {
-        NewsDataBase databaseClass = new NewsDataBase(this);
-        SQLiteDatabase database = databaseClass.getWritableDatabase();
-        Cursor cursor = database.query("query", new String[]{"flag,Question,Answer"}, null, null, null, null, null);
-        messages.clear();
-        flag.clear();
-        while (cursor.moveToNext()) {
-            if (cursor.getInt(cursor.getColumnIndex("flag")) == 0) {
-                messages.add(cursor.getString(cursor.getColumnIndex("Question")));
-                flag.add(0);
-            } else {
-                messages.add(cursor.getString(cursor.getColumnIndex("Answer")));
-                flag.add(1);
-            }
-        }
 
-        adapter = new QueryAdapter(getApplicationContext(), messages, flag);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setAdapter(adapter);
-        recyclerView.scrollToPosition(messages.size());
-
-        cursor.close();
-        database.close();
-
-        fetchFromInternet();
-    }
-
-    private void fetchFromInternet() {
+    private void fetchFromInternet(final MaterialDialog initial, final boolean finish) {
         String url = getString(R.string.queryFetchUrl);
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + id, new Response.Listener<JSONObject>() {
             @Override
@@ -150,47 +132,34 @@ public class CSITQuery extends AppCompatActivity {
                             messages.add(jo_inside.getString("Answer"));
                             flag.add(1);
                         }
+                        getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", messages.size()).apply();
                     }
-                    storeToDb();
-                    adapter = new QueryAdapter(getApplicationContext(), messages, flag);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    adapter = new QueryAdapter(context, messages, flag);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(context));
                     recyclerView.setAdapter(adapter);
                     recyclerView.scrollToPosition(messages.size());
+                    initial.dismiss();
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    if (finish)
+                        finish();
+                    Toast.makeText(context, "Application error. Please report us.", Toast.LENGTH_SHORT).show();
+
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                if (finish)
+                    finish();
+                Toast.makeText(context, "Server down. Try again later.", Toast.LENGTH_SHORT).show();
             }
         });
         queue.add(jsonObjectRequest);
     }
 
-    private void storeToDb() {
-        NewsDataBase dataBase = new NewsDataBase(this);
-        SQLiteDatabase database = dataBase.getWritableDatabase();
-        database.delete("query", null, null);
-        ContentValues values = new ContentValues();
-        for (int i = 0; i < messages.size(); i++) {
-            values.clear();
-            if (flag.get(i) == 0) {
-                values.put("Question", messages.get(i));
-                values.put("flag", flag.get(i));
-            } else {
-                values.put("Answer", messages.get(i));
-                values.put("flag", flag.get(i));
-            }
-            database.insert("query", null, values);
-        }
-        database.close();
-    }
-
     private void onStartHandler() {
         //Initialize Facebook SDK
-        FacebookSdk.sdkInitialize(getApplicationContext());
+        FacebookSdk.sdkInitialize(context);
 
         button = new LoginButton(this);
 
@@ -226,7 +195,7 @@ public class CSITQuery extends AppCompatActivity {
                             }
                         };
                         mProfileTracker.startTracking();
-                        fetchFromInternet();
+                        fetchFromInternet(new MaterialDialog.Builder(context).build(), false);
 
                     }
 
@@ -262,6 +231,12 @@ public class CSITQuery extends AppCompatActivity {
 
     public void sendSms(View v) {
         String url = getString(R.string.quertyPostUrl);
+        final MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .content("Please wait...")
+                .progress(true, 0)
+                .cancelable(false)
+                .build();
+        dialog.show();
         Uri.Builder uri = new Uri.Builder();
         String values = uri.authority("")
                 .appendQueryParameter("Question", text.getText().toString().replace("\"", "").replace("}", "").replace("{", "").replace(",", ""))
@@ -271,13 +246,28 @@ public class CSITQuery extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                adapter.added(text.getText().toString());
-                text.setText("");
+                try {
+                    response.getString("feedBack");
+                    adapter.added(text.getText().toString());
+                    text.setText("");
+                    new SnackBar.Builder((Activity) context)
+                            .withMessage("Question posted successfully. We will reply you soon.")
+                            .show();
+                    getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", getSharedPreferences("data", MODE_PRIVATE).getInt("query", 1)).apply();
+                } catch (JSONException e) {
+                    new SnackBar.Builder((Activity) context)
+                            .withMessage("Application Error. Please report us.")
+                            .show();
+                }
+                dialog.dismiss();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                dialog.dismiss();
+                new SnackBar.Builder((Activity) context)
+                        .withMessage("Seems server is currently down. Please try again later.")
+                        .show();
             }
         });
         queue.add(jsonObjectRequest);

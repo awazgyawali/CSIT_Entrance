@@ -21,6 +21,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -30,7 +31,9 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
             subTopic = new ArrayList<>(),
             imageURL = new ArrayList<>(),
             content = new ArrayList<>(),
-            author = new ArrayList<>();
+            author = new ArrayList<>(),
+            messages = new ArrayList<>();
+
 
     @Override
     public void onReceive(final Context context, Intent intent) {
@@ -53,7 +56,7 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                         no++;
                     }
                     if(no>noOfRows(context)) {
-                        notification(context, topic.get(0), content.get(0), topic.get(0));
+                        notification(context, topic.get(0), content.get(0), topic.get(0), 12345, new Intent(context, EntranceNews.class));
                     }
                     storeToDb(context);
                 } catch (Exception e) {
@@ -69,9 +72,37 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
         });
         requestQueue.add(jsonObjectRequest);
 
+        url = context.getString(R.string.queryFetchUrl);
+        final JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.GET, url + context.getSharedPreferences("details", Context.MODE_PRIVATE).getString("fbId", "0"), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray query = response.getJSONArray("query");
+                    messages.clear();
+                    for (int i = 0; i < query.length(); i++) {
+                        JSONObject jo_inside = query.getJSONObject(i);
+                        if (!jo_inside.getString("Question").equals("")) {
+                            messages.add(jo_inside.getString("Question"));
+                        }
+                        if (!jo_inside.getString("Answer").equals("")) {
+                            messages.add(jo_inside.getString("Answer"));
+                        }
+                    }
+                    if (messages.size() > context.getSharedPreferences("data", Context.MODE_PRIVATE).getInt("query", 0)) {
+                        notification(context, "Reply for your pre-posted query.", messages.get(messages.size() - 1), "New query received.", 54321, new Intent(context, CSITQuery.class));
+                    }
+                } catch (JSONException e) {
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+        requestQueue.add(jsonObjectRequest1);
     }
 
-    private void notification(Context context,String newsTitle,String content,String ticker){
+    private void notification(Context context, String newsTitle, String content, String ticker, int notifyNumber, Intent intent1) {
         Uri alertSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationCompat=new NotificationCompat.Builder(context);
         notificationCompat.setAutoCancel(true)
@@ -81,12 +112,10 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(newsTitle)
                 .setContentText(content);
-        Intent intent1=new Intent(context,EntranceNews.class);
         PendingIntent pendingIntent=PendingIntent.getActivity(context,0,intent1,PendingIntent.FLAG_UPDATE_CURRENT);
         notificationCompat.setContentIntent(pendingIntent);
-
         NotificationManager notificationManagerCompat= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManagerCompat.notify(12345, notificationCompat.build());
+        notificationManagerCompat.notify(notifyNumber, notificationCompat.build());
 
     }
 
