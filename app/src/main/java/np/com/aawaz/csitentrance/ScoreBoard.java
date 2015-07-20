@@ -106,7 +106,7 @@ public class ScoreBoard extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialogInitial.dismiss();
-                Toast.makeText(getApplicationContext(), "Unable to get the scores. Please check your internet connection.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
                 finish();
 
             }

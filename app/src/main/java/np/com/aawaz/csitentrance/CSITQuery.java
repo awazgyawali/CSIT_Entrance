@@ -150,7 +150,7 @@ public class CSITQuery extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 if (finish)
                     finish();
-                Toast.makeText(context, "Server down. Try again later.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
             }
         });
         queue.add(jsonObjectRequest);

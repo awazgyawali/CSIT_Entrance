@@ -2,7 +2,6 @@ package np.com.aawaz.csitentrance;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,7 +25,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MyBroadCastReceiver extends BroadcastReceiver {
+import me.tatarka.support.job.JobParameters;
+import me.tatarka.support.job.JobService;
+
+public class BackgroundTaskHandler extends JobService {
     ArrayList<String> topic = new ArrayList<>(),
             subTopic = new ArrayList<>(),
             imageURL = new ArrayList<>(),
@@ -35,26 +37,40 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
             messages = new ArrayList<>();
     RequestQueue requestQueue;
     Context context;
+    JobParameters jobParameters;
 
+
+    public BackgroundTaskHandler() {
+
+        context = this;
+    }
 
     @Override
-    public void onReceive(final Context context, Intent intent) {
+    public boolean onStartJob(JobParameters jobParameters) {
+        this.jobParameters = jobParameters;
         requestQueue = VolleySingleton.getInstance().getRequestQueue();
-        this.context = context;
+        Toast.makeText(this, "Running", Toast.LENGTH_SHORT).show();
+
         updateNews();
 
         updateQuery();
 
         uploadScore();
 
+        return false;
+    }
+
+    @Override
+    public boolean onStopJob(JobParameters jobParameters) {
+        return false;
     }
 
     private void uploadScore() {
-        String url = context.getString(R.string.postScoreurl);
+        String url = getString(R.string.postScoreurl);
         Uri.Builder uri = new Uri.Builder();
         String values = uri.authority("")
-                .appendQueryParameter("key", context.getSharedPreferences("info", Context.MODE_PRIVATE).getString("uniqueID", "trash"))
-                .appendQueryParameter("name", context.getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "trash"))
+                .appendQueryParameter("key", getSharedPreferences("info", Context.MODE_PRIVATE).getString("uniqueID", "trash"))
+                .appendQueryParameter("name", getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "trash"))
                 .appendQueryParameter("score", getTotal() + "")
                 .build().toString();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
@@ -62,6 +78,7 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
             @Override
             public void onResponse(JSONObject response) {
 
+                jobFinished(jobParameters, false);
             }
 
         }, new Response.ErrorListener() {
@@ -75,7 +92,7 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
     }
 
     private void updateNews() {
-        String url = context.getString(R.string.url);
+        String url = getString(R.string.url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
 
             @Override
@@ -92,10 +109,10 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                         author.add(jo_inside.getString("author"));
                         no++;
                     }
-                    if (no > noOfRows(context)) {
-                        notification(context, topic.get(0), content.get(0), topic.get(0), 12345, new Intent(context, EntranceNews.class));
+                    if (no > noOfRows()) {
+                        notification(topic.get(0), content.get(0), topic.get(0), 12345, new Intent(context, EntranceNews.class));
                     }
-                    storeToDb(context);
+                    storeToDb();
                 } catch (Exception e) {
 
                 }
@@ -111,8 +128,8 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
     }
 
     private void updateQuery() {
-        String url = context.getString(R.string.queryFetchUrl);
-        final JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.GET, url + context.getSharedPreferences("details", Context.MODE_PRIVATE).getString("fbId", "0"), new Response.Listener<JSONObject>() {
+        String url = getString(R.string.queryFetchUrl);
+        final JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.GET, url + getSharedPreferences("details", Context.MODE_PRIVATE).getString("fbId", "0"), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -127,9 +144,9 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                             messages.add(jo_inside.getString("Answer"));
                         }
                     }
-                    if (messages.size() > context.getSharedPreferences("data", Context.MODE_PRIVATE).getInt("query", 0)) {
-                        notification(context, "Reply for your pre-posted query.", messages.get(messages.size() - 1), "New query received.", 54321, new Intent(context, CSITQuery.class));
-                        context.getSharedPreferences("data", Context.MODE_PRIVATE).edit().putInt("query", messages.size()).apply();
+                    if (messages.size() > getSharedPreferences("data", Context.MODE_PRIVATE).getInt("query", 0)) {
+                        notification("Reply for your pre-posted query.", messages.get(messages.size() - 1), "New query received.", 54321, new Intent(context, CSITQuery.class));
+                        getSharedPreferences("data", Context.MODE_PRIVATE).edit().putInt("query", messages.size()).apply();
                     }
                 } catch (JSONException e) {
                 }
@@ -142,9 +159,9 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
         requestQueue.add(jsonObjectRequest1);
     }
 
-    private void notification(Context context, String newsTitle, String content, String ticker, int notifyNumber, Intent intent1) {
+    private void notification(String newsTitle, String content, String ticker, int notifyNumber, Intent intent1) {
         Uri alertSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(context);
+        NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(this);
         notificationCompat.setAutoCancel(true)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setTicker(ticker)
@@ -152,15 +169,15 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(newsTitle)
                 .setContentText(content);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
         notificationCompat.setContentIntent(pendingIntent);
-        NotificationManager notificationManagerCompat = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManagerCompat = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManagerCompat.notify(notifyNumber, notificationCompat.build());
 
     }
 
-    private void storeToDb(Context context) {
-        NewsDataBase dataBase = new NewsDataBase(context);
+    private void storeToDb() {
+        NewsDataBase dataBase = new NewsDataBase(this);
         SQLiteDatabase database = dataBase.getWritableDatabase();
         database.delete("news", null, null);
         ContentValues values = new ContentValues();
@@ -176,26 +193,26 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
         database.close();
     }
 
-    public int noOfRows(Context context) {
-        NewsDataBase dataBase = new NewsDataBase(context);
+    public int noOfRows() {
+        NewsDataBase dataBase = new NewsDataBase(this);
         SQLiteDatabase database = dataBase.getWritableDatabase();
         Cursor cursor = database.query("news", new String[]{"title"}, null, null, null, null, null);
         int i = 0;
         while (cursor.moveToNext()) {
             i++;
         }
-        Log.d("Debug", i + "");
+        database.close();
+        cursor.close();
+        dataBase.close();
         return i;
-
     }
 
     private int getTotal() {
-        SharedPreferences pref = context.getSharedPreferences("values", Context.MODE_PRIVATE);
+        SharedPreferences pref = getSharedPreferences("values", Context.MODE_PRIVATE);
         int grand = 0;
         for (int i = 1; i < 8; i++)
             grand = grand + pref.getInt("score" + i, 0);
         return grand;
     }
-
 
 }

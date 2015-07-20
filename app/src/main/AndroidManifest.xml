@@ -114,16 +114,12 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <receiver
-            android:name=".MyBroadCastReceiver"
+        <service
+            android:name=".BackgroundTaskHandler"
             android:enabled="true"
-            android:exported="true" >
-        </receiver>
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"></service>
 
-
-        <activity
-            android:name=".EntranceNewsHolder"
-            android:label="@string/title_activity_entrance_news_holder"></activity>
     </application>
 
 </manifest>

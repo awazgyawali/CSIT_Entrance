@@ -1,8 +1,7 @@
 package np.com.aawaz.csitentrance;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,12 +17,16 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
+import me.tatarka.support.job.JobInfo;
+import me.tatarka.support.job.JobScheduler;
+
 
 public class MainActivity extends Activity implements MainRecyclerAdapter.ClickListner {
+    private static final int JOB_ID = 100;
     RecyclerView recycler;
     SharedPreferences pref;
     TextView points;
-    PendingIntent pendingIntent;
+    JobScheduler mJobScheduler;
     MainRecyclerAdapter adapter;
     Tracker tracker;
     GoogleAnalytics analytics;
@@ -35,13 +38,16 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
         setContentView(R.layout.activity_main);
         infoAboutDelay();
 
+        mJobScheduler = JobScheduler.getInstance(this);
+
+        ConstructJob();
+
         analytics = GoogleAnalytics.getInstance(this);
         analytics.setLocalDispatchPeriod(1800);
         tracker = analytics.newTracker("UA-63920529-5");
         tracker.enableExceptionReporting(true);
         tracker.enableAutoActivityTracking(true);
 
-        backgroundTaskStart();
 
         loadAd();
 
@@ -141,12 +147,12 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
 
     }
 
-    public void backgroundTaskStart() {
-        Intent alarmIntent = new Intent(this, MyBroadCastReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
-
-        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        int interval = 1000 * 60; //milisec*sec*min
-        manager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
+    public void ConstructJob() {
+        JobInfo builder = new JobInfo.Builder(JOB_ID, new ComponentName(this, BackgroundTaskHandler.class))
+                .setPeriodic(10000)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
+                .setPersisted(true)
+                .build();
+        mJobScheduler.schedule(builder);
     }
 }
