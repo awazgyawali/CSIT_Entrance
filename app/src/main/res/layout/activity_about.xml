@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coreAbout"
     android:layout_width="match_parent"
@@ -13,413 +12,366 @@
         android:id="@+id/toolbarAbout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary10"
-        app:theme="@style/Theme.AppCompat" />
+        android:background="@color/primary3" />
 
-    <com.gc.materialdesign.views.Card
+    <android.support.v7.widget.CardView
         android:id="@+id/cardOne"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="-5dp">
+        android:layout_margin="5dp">
 
-        <ImageView
-            android:id="@+id/logo"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/ic_launcher" />
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/appName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/logo"
-            android:text="@string/app_name"
-            android:textColor="@color/primary4"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/moto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/appName"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/logo"
-            android:text="Your key to CSIT Entrance." />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/moto"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:text="@string/versionNum"
-            android:textColor="@color/primary10"
-            android:textSize="13sp" />
-
-    </com.gc.materialdesign.views.Card>
-
-
-    <com.gc.materialdesign.views.Card
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="-5dp">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/bottomLayout">
-
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/logo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/dvlTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="Developed By"
-                    android:textColor="#000"
-                    android:textSize="15sp" />
-
-                <View
-                    android:id="@+id/liineDev"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/dvlTitle"
-                    android:background="#009988" />
-
-                <TextView
-                    android:id="@+id/myName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/liineDev"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Aawaz Gyawali"
-                    android:textColor="@color/primary5"
-                    android:textSize="18dp" />
-
-                <TextView
-                    android:id="@+id/det"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/myName"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:text="@string/developerPara"
-                    android:textAlignment="inherit"
-                    android:textSize="10dp" />
-
-
-                <TextView
-                    android:id="@+id/splTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/det"
-                    android:layout_centerHorizontal="true"
-                    android:text="Special thanks"
-                    android:textColor="#000"
-                    android:textSize="15sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/splTitle"
-                    android:background="#009988">
-
-                </View>
-
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/splTitle"
-                    android:orientation="horizontal">
-
-                    <TableRow>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@mipmap/ic_launcher" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Prasanna Mishra\nUI designer" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@mipmap/ic_launcher" />
-
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Buddhiraj Nagarkoti\nGraphics Designer" />
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@mipmap/ic_launcher" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Gopal Nepal\nHead Advisor" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@mipmap/ic_launcher" />
-
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Rameshwor Dhakal\nFeed Writer" />
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:src="@mipmap/ic_launcher" />
-
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="Bishal Rana Magar\nAdvisor" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:src="@mipmap/ic_launcher" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="Amrit Science Campus" />
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:src="@mipmap/ic_launcher" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="Ksitiz Khanal\nQuestion Manager" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:src="@mipmap/ic_launcher" />
-
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="Praveen Pokhrel\nQuestion Typer" />
-
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:src="@mipmap/ic_launcher" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="Roshan Gautam\nAdvisor" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:src="@mipmap/ic_launcher" />
-
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="Rupak Pandey\nQuestion Typer" />
-
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:src="@mipmap/ic_launcher" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="Swopnil Dangol\nQuestion Typer" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:src="@mipmap/ic_launcher" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="ANNFSU Ascol" />
-                        </LinearLayout>
-
-                    </TableRow>
-                </TableLayout>
-            </RelativeLayout>
-        </ScrollView>
-
-        <LinearLayout
-            android:id="@+id/bottomLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical">
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/primary3"/>
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/appName"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="If you have got any recommendation or bug report.Please give feedback"
-                android:textColor="@color/primary6"/>
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/logo"
+                android:text="@string/app_name"
+                android:textColor="@color/primary4"
+                android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/fed"
+            <TextView
+                android:id="@+id/moto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/appName"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/logo"
+                android:text="Your key to CSIT Entrance." />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/moto"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:text="@string/versionNum"
+                android:textColor="@color/primary10"
+                android:textSize="13sp" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bottomLayout">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/dvlTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="Developed By"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:id="@+id/liineDev"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/dvlTitle"
+                        android:background="#009988" />
+
+                    <TextView
+                        android:id="@+id/myName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/liineDev"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Aawaz Gyawali"
+                        android:textColor="@color/primary5"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/det"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/myName"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="@string/developerPara"
+                        android:textAlignment="inherit"
+                        android:textSize="10dp" />
+
+
+                    <TextView
+                        android:id="@+id/splTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/det"
+                        android:layout_centerHorizontal="true"
+                        android:text="Special thanks"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/splTitle"
+                        android:background="#009988">
+
+                    </View>
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/splTitle"
+                        android:orientation="horizontal">
+
+                        <TableRow>
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:src="@mipmap/ic_launcher" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="Prasanna Mishra\nUI designer" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_weight="1"
+
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:src="@mipmap/ic_launcher" />
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="Buddhiraj Nagarkoti\nGraphics Designer" />
+                            </LinearLayout>
+                        </TableRow>
+
+                        <TableRow>
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:src="@mipmap/ic_launcher" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="Gopal Nepal\nHead Advisor" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:src="@mipmap/ic_launcher" />
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="Rameshwor Dhakal\nFeed Writer" />
+                            </LinearLayout>
+                        </TableRow>
+
+                        <TableRow>
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Bishal Rana Magar\nAdvisor" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Amrit Science Campus" />
+                            </LinearLayout>
+                        </TableRow>
+
+                        <TableRow android:paddingTop="5dp">
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Ksitiz Khanal\nQuestion Manager" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Praveen Pokhrel\nQuestion Typer" />
+
+                            </LinearLayout>
+                        </TableRow>
+
+                        <TableRow android:paddingTop="5dp">
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Roshan Gautam\nAdvisor" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Rupak Pandey\nQuestion Typer" />
+
+                            </LinearLayout>
+                        </TableRow>
+
+                        <TableRow android:paddingTop="5dp">
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Swopnil Dangol\nQuestion Typer" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="ANNFSU Ascol" />
+                            </LinearLayout>
+
+                        </TableRow>
+                    </TableLayout>
+                </RelativeLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:id="@+id/bottomLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:onClick="feedBack"
-                android:text="Give FeedBack"
-                android:textAllCaps="false" />
+                android:orientation="vertical">
 
-        </LinearLayout>
-    </com.gc.materialdesign.views.Card>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/primary3" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="If you have got any recommendation or bug report.Please give feedback"
+                    android:textColor="@color/primary6" />
+
+                <Button
+                    android:id="@+id/fed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:onClick="feedBack"
+                    android:text="Give FeedBack"
+                    android:textAllCaps="false" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

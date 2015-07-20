@@ -8,7 +8,7 @@
         android:id="@+id/queryToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary8"
+        android:background="@color/primary5"
         android:theme="@style/Theme.AppCompat" />
 
 

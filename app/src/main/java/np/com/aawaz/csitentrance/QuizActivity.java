@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -47,6 +48,8 @@ public class QuizActivity extends AppCompatActivity {
     ProgressBarDeterminate pb;
 
     String[] colors = {" #1de9b6", " #ffeb3c", "#03a9f5", "#8bc34a"};
+    Handler handler;
+
 
 
     WebView question;
@@ -413,7 +416,7 @@ public class QuizActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = getSharedPreferences("values", MODE_PRIVATE).edit();
         editor.putInt("played" + code, qNo);
         editor.putInt("score" + code, score);
-        editor.commit();
+        editor.apply();
         finish();
     }
 
@@ -421,7 +424,6 @@ public class QuizActivity extends AppCompatActivity {
         AdView mAdView = (AdView) findViewById(R.id.QuizAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
     }
 
 
@@ -436,11 +438,18 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        if (slideLayout.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED) {
-            slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-        } else {
+        if (slideLayout.getPanelState() == SlidingUpPanelLayout.PanelState.COLLAPSED) {
             finish();
+        } else {
+            handler = new Handler();
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+                }
+            });
         }
     }
+
+
 }
