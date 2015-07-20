@@ -27,21 +27,20 @@ public class FullQuestion extends AppCompatActivity implements QueAdater.ClickLi
 
         loadAd();
 
-        int primaryColors[] = {R.color.primary2,  R.color.primary4, R.color.primary5,
+        int primaryColors[] = {R.color.primary2, R.color.primary4, R.color.primary5,
                 R.color.primary6, R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10};
-        int darkColors[] = { R.color.dark2,  R.color.dark4, R.color.dark5,
+        int darkColors[] = {R.color.dark2, R.color.dark4, R.color.dark5,
                 R.color.dark6, R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10};
-        int icon[] = {R.drawable.ic_arrow_forward_white_24dp,R.drawable.ic_arrow_forward_white_24dp,
-                R.drawable.ic_arrow_forward_white_24dp,R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp};
+        int icon[] = {R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp,
+                R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp};
 
         //Recyc
-        QueAdater adater=new QueAdater(this,primaryColors,darkColors,icon);
-        listRecy= (RecyclerView) findViewById(R.id.onlineRecyc);
+        QueAdater adater = new QueAdater(this, primaryColors, darkColors, icon);
+        listRecy = (RecyclerView) findViewById(R.id.onlineRecyc);
         listRecy.setAdapter(adater);
         listRecy.setLayoutManager(new LinearLayoutManager(this));
         adater.setClickListner(this);
     }
-
 
 
     @Override
@@ -62,12 +61,12 @@ public class FullQuestion extends AppCompatActivity implements QueAdater.ClickLi
 
     @Override
     public void itemClicked(View view, int position) {
-        Intent intent=new Intent(this,WebViewActivity.class);
-        intent.putExtra("code",position+1);
+        Intent intent = new Intent(this, WebViewActivity.class);
+        intent.putExtra("code", position + 1);
         startActivity(intent);
     }
 
-    public void loadAd(){
+    public void loadAd() {
         AdView mAdView = (AdView) findViewById(R.id.fullQueAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);

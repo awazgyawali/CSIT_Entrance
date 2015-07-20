@@ -46,7 +46,7 @@ public class QuizActivity extends AppCompatActivity {
     FloatingActionButton fab;
     ProgressBarDeterminate pb;
 
-    String[] colors={" #1de9b6"," #ffeb3c","#03a9f5","#8bc34a"};
+    String[] colors = {" #1de9b6", " #ffeb3c", "#03a9f5", "#8bc34a"};
 
 
     WebView question;
@@ -68,12 +68,23 @@ public class QuizActivity extends AppCompatActivity {
 
     SlidingUpPanelLayout slideLayout;
 
-    String[] titles = {"Score Board","2069 Entrance Question", "2070 Entrance Question", "2071 Entrance Question","Model Question"};
+    String[] titles = {"Score Board", "2069 Entrance Question", "2070 Entrance Question", "2071 Entrance Question", "Model Question"};
 
-    int qNo=0;
+    int qNo = 0;
     int code;
-    int score=0;
-    int clickedAns=0;
+    int score = 0;
+    int clickedAns = 0;
+
+    public static String AssetJSONFile(String filename, Context c) throws IOException {
+        AssetManager manager = c.getAssets();
+
+        InputStream file = manager.open(filename);
+        byte[] formArray = new byte[file.available()];
+        file.read(formArray);
+        file.close();
+
+        return new String(formArray);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,39 +102,39 @@ public class QuizActivity extends AppCompatActivity {
                 .playOn(findViewById(R.id.quizMainLayout));
 
         //Initializing colors array
-        int primaryColors[]={R.color.primary1,R.color.primary2,R.color.primary3,R.color.primary4,R.color.primary5,
-                R.color.primary6,R.color.primary7,R.color.primary8,R.color.primary9,R.color.primary10};
-        int darkColors[]={R.color.dark1,R.color.dark2,R.color.dark3,R.color.dark4,R.color.dark5,
-                R.color.dark6,R.color.dark7,R.color.dark8,R.color.dark9,R.color.dark10};
+        int primaryColors[] = {R.color.primary1, R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5,
+                R.color.primary6, R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10};
+        int darkColors[] = {R.color.dark1, R.color.dark2, R.color.dark3, R.color.dark4, R.color.dark5,
+                R.color.dark6, R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10};
 
         //Initlilixing view's
-        Toolbar toolbar= (Toolbar) findViewById(R.id.quizToolbar);
-        RelativeLayout questionLayout= (RelativeLayout) findViewById(R.id.relativeLayout);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.quizToolbar);
+        RelativeLayout questionLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
         fab = (FloatingActionButton) findViewById(R.id.AnswerFab);
         fab.bringToFront();
 
 
-        int avatar[] = {R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.four,R.drawable.five,
-                R.drawable.six,R.drawable.seven,R.drawable.eight,R.drawable.nine,R.drawable.ten,
-                R.drawable.eleven,R.drawable.twelve};
+        int avatar[] = {R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five,
+                R.drawable.six, R.drawable.seven, R.drawable.eight, R.drawable.nine, R.drawable.ten,
+                R.drawable.eleven, R.drawable.twelve};
 
-        ImageView img= (ImageView) findViewById(R.id.profQue);
-        img.setImageDrawable(getResources().getDrawable(avatar[(getSharedPreferences("info",MODE_PRIVATE).getInt("Avatar", 1))-1]));
+        ImageView img = (ImageView) findViewById(R.id.profQue);
+        img.setImageDrawable(getResources().getDrawable(avatar[(getSharedPreferences("info", MODE_PRIVATE).getInt("Avatar", 1)) - 1]));
         pb = (ProgressBarDeterminate) findViewById(R.id.progressBar);
-        TextView topic= (TextView) findViewById(R.id.topic);
-        slideLayout= (SlidingUpPanelLayout) findViewById(R.id.progressReport);
+        TextView topic = (TextView) findViewById(R.id.topic);
+        slideLayout = (SlidingUpPanelLayout) findViewById(R.id.progressReport);
         question = (WebView) findViewById(R.id.question);
         option1 = (WebView) findViewById(R.id.option1);
         option2 = (WebView) findViewById(R.id.option2);
         option3 = (WebView) findViewById(R.id.option3);
         option4 = (WebView) findViewById(R.id.option4);
-        feedback= (TextView) findViewById(R.id.feedback);
-        scoreTxt= (TextView) findViewById(R.id.score);
-        qNoTxt= (TextView) findViewById(R.id.noOfQuestion);
-        op1= (LayoutRipple) findViewById(R.id.rpl1);
-        op2= (LayoutRipple) findViewById(R.id.rpl2);
-        op3= (LayoutRipple) findViewById(R.id.rpl3);
-        op4= (LayoutRipple) findViewById(R.id.rpl4);
+        feedback = (TextView) findViewById(R.id.feedback);
+        scoreTxt = (TextView) findViewById(R.id.score);
+        qNoTxt = (TextView) findViewById(R.id.noOfQuestion);
+        op1 = (LayoutRipple) findViewById(R.id.rpl1);
+        op2 = (LayoutRipple) findViewById(R.id.rpl2);
+        op3 = (LayoutRipple) findViewById(R.id.rpl3);
+        op4 = (LayoutRipple) findViewById(R.id.rpl4);
         op1.bringToFront();
         op2.bringToFront();
         op3.bringToFront();
@@ -133,10 +144,10 @@ public class QuizActivity extends AppCompatActivity {
         rplHandler();
 
         //Receiving intent
-        code=getIntent().getExtras().getInt("position");
+        code = getIntent().getExtras().getInt("position");
         topic.setText(titles[code]);
 
-        RelativeLayout coreLayout= (RelativeLayout) findViewById(R.id.coreLayout);
+        RelativeLayout coreLayout = (RelativeLayout) findViewById(R.id.coreLayout);
         coreLayout.setBackgroundColor(getResources().getColor(darkColors[code]));
 
 
@@ -147,12 +158,12 @@ public class QuizActivity extends AppCompatActivity {
 
         //Initial Notification
 
-        if(qNo==0){
+        if (qNo == 0) {
             feedback.setText("GO!");
             feedback.setBackgroundColor(getResources().getColor(R.color.primary4));
-        } else{
-            if(qNo<9)
-                feedback.setText("0"+(qNo+1)+"");
+        } else {
+            if (qNo < 9)
+                feedback.setText("0" + (qNo + 1) + "");
             else
                 feedback.setText((qNo + 1) + "");
 
@@ -188,47 +199,49 @@ public class QuizActivity extends AppCompatActivity {
         fillTexts(qNo);
         onClickOption();
     }
-public void rplHandler(){
 
-    op1.setBackgroundColor(getResources().getColor(R.color.back));
-    op2.setBackgroundColor(getResources().getColor(R.color.back));
-    op3.setBackgroundColor(getResources().getColor(R.color.back));
-    op4.setBackgroundColor(getResources().getColor(R.color.back));
-    op1.setRippleColor(getResources().getColor(R.color.toolbar_color));
-    op2.setRippleColor(getResources().getColor(R.color.toolbar_color));
-    op3.setRippleColor(getResources().getColor(R.color.toolbar_color));
-    op4.setRippleColor(getResources().getColor(R.color.toolbar_color));
-}
+    public void rplHandler() {
+
+        op1.setBackgroundColor(getResources().getColor(R.color.back));
+        op2.setBackgroundColor(getResources().getColor(R.color.back));
+        op3.setBackgroundColor(getResources().getColor(R.color.back));
+        op4.setBackgroundColor(getResources().getColor(R.color.back));
+        op1.setRippleColor(getResources().getColor(R.color.toolbar_color));
+        op2.setRippleColor(getResources().getColor(R.color.toolbar_color));
+        op3.setRippleColor(getResources().getColor(R.color.toolbar_color));
+        op4.setRippleColor(getResources().getColor(R.color.toolbar_color));
+    }
+
     private void fillAnsRecyclerView() {
         ansRecy = (RecyclerView) findViewById(R.id.ansRecycle);
-        slideUpPanelAdapter = new SlideUpPanelAdapter(this,qNo,code);
+        slideUpPanelAdapter = new SlideUpPanelAdapter(this, qNo, code);
         ansRecy.setAdapter(slideUpPanelAdapter);
         ansRecy.setLayoutManager(new LinearLayoutManager(this));
         ansRecy.scrollToPosition(slideUpPanelAdapter.size - 1);
     }
 
     private void fetchFromSp() {
-        qNo=getSharedPreferences("values",MODE_PRIVATE).getInt("played"+code,0);
-        score=getSharedPreferences("values",MODE_PRIVATE).getInt("score"+code,0);
-        
+        qNo = getSharedPreferences("values", MODE_PRIVATE).getInt("played" + code, 0);
+        score = getSharedPreferences("values", MODE_PRIVATE).getInt("score" + code, 0);
+
     }
 
     private void fillTexts(int posi) {
         String htm;
-        if (posi<100) {
-            if(code==4){
-                htm = "<body bgcolor=\""+colors[code-1]+"\">"+questions.get(posi);
-            } else  {
-                htm = "<body bgcolor=\""+colors[code-1]+"\">"+questions.get(posi);
+        if (posi < 100) {
+            if (code == 4) {
+                htm = "<body bgcolor=\"" + colors[code - 1] + "\">" + questions.get(posi);
+            } else {
+                htm = "<body bgcolor=\"" + colors[code - 1] + "\">" + questions.get(posi);
             }
-            question.loadDataWithBaseURL("",htm,"text/html","UTF-8","");
-            option1.loadDataWithBaseURL("","a) " + a.get(posi),"text/html","UTF-8","");
-            option2.loadDataWithBaseURL("","b) " + b.get(posi),"text/html","UTF-8","");
-            option3.loadDataWithBaseURL("","c) " + c.get(posi),"text/html","UTF-8","");
-            option4.loadDataWithBaseURL("","d) " + d.get(posi),"text/html","UTF-8","");
+            question.loadDataWithBaseURL("", htm, "text/html", "UTF-8", "");
+            option1.loadDataWithBaseURL("", "a) " + a.get(posi), "text/html", "UTF-8", "");
+            option2.loadDataWithBaseURL("", "b) " + b.get(posi), "text/html", "UTF-8", "");
+            option3.loadDataWithBaseURL("", "c) " + c.get(posi), "text/html", "UTF-8", "");
+            option4.loadDataWithBaseURL("", "d) " + d.get(posi), "text/html", "UTF-8", "");
 
         } else {
-            question.loadDataWithBaseURL("","You have successfully completed your game with "+score+" score. Good Luck!!","text/html","UTF-8","");
+            question.loadDataWithBaseURL("", "You have successfully completed your game with " + score + " score. Good Luck!!", "text/html", "UTF-8", "");
             gameCompletedHandler();
         }
     }
@@ -242,7 +255,7 @@ public void rplHandler(){
 
     }
 
-    private void onClickOption(){
+    private void onClickOption() {
         op1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -340,9 +353,9 @@ public void rplHandler(){
         });
     }
 
-    public void checkAnswer(){
-        if ((clickedAns==1 && answer.get(qNo).equals("a")) || (clickedAns==2 && answer.get(qNo).equals("b")) ||
-                (clickedAns==3 && answer.get(qNo).equals("c")) || (clickedAns==4 && answer.get(qNo).equals("d"))){
+    public void checkAnswer() {
+        if ((clickedAns == 1 && answer.get(qNo).equals("a")) || (clickedAns == 2 && answer.get(qNo).equals("b")) ||
+                (clickedAns == 3 && answer.get(qNo).equals("c")) || (clickedAns == 4 && answer.get(qNo).equals("d"))) {
             feedback.setText("+1");
             feedback.setBackgroundColor(getResources().getColor(R.color.primary5));
             score++;
@@ -352,20 +365,20 @@ public void rplHandler(){
         }
     }
 
-    public void nextQueAndReset(){
+    public void nextQueAndReset() {
         qNo++;
         op1.setBackgroundColor(getResources().getColor(R.color.back));
         op2.setBackgroundColor(getResources().getColor(R.color.back));
         op3.setBackgroundColor(getResources().getColor(R.color.back));
         op4.setBackgroundColor(getResources().getColor(R.color.back));
-        clickedAns=0;
+        clickedAns = 0;
         fab.setColorNormal(getResources().getColor(R.color.dark1));
         fab.setImageResource(R.drawable.ic_done_black_18dp);
         fillTexts(qNo);
         haldleProgresss();
     }
 
-    private  void haldleProgresss(){
+    private void haldleProgresss() {
         qNoTxt.setText((qNo + 1) + " / 100");
         scoreTxt.setText(score + "");
         pb.setProgress(21 + qNo);
@@ -394,27 +407,17 @@ public void rplHandler(){
         }
     }
 
-    public static String AssetJSONFile(String filename, Context c) throws IOException {
-        AssetManager manager = c.getAssets();
-
-        InputStream file = manager.open(filename);
-        byte[] formArray = new byte[file.available()];
-        file.read(formArray);
-        file.close();
-
-        return new String(formArray);
-    }
-
     @Override
     protected void onPause() {
         super.onPause();
-        SharedPreferences.Editor editor=getSharedPreferences("values",MODE_PRIVATE).edit();
-        editor.putInt("played"+code,qNo);
-        editor.putInt("score"+code,score);
+        SharedPreferences.Editor editor = getSharedPreferences("values", MODE_PRIVATE).edit();
+        editor.putInt("played" + code, qNo);
+        editor.putInt("score" + code, score);
         editor.commit();
         finish();
     }
-    public void loadAd(){
+
+    public void loadAd() {
         AdView mAdView = (AdView) findViewById(R.id.QuizAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -424,8 +427,8 @@ public void rplHandler(){
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id=item.getItemId();
-        if(id==android.R.id.home){
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -434,7 +437,7 @@ public void rplHandler(){
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if(slideLayout.getPanelState()==SlidingUpPanelLayout.PanelState.EXPANDED){
+        if (slideLayout.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED) {
             slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
         } else {
             finish();

@@ -14,8 +14,8 @@ import com.daimajia.androidanimations.library.YoYo;
 
 
 public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder> {
-    String[] titles={"Score Board","2069 question","2070 question","2071 question","Model Question","More...","View Full Question",
-            "Colleges for Admission","Entrance News","CSIT Query","About Us"};
+    String[] titles = {"Score Board", "2069 question", "2070 question", "2071 question", "Model Question", "More...", "View Full Question",
+            "Colleges for Admission", "Entrance News", "CSIT Query", "About Us"};
     int primaryColor[];
     int darkColor[];
     int icon[];
@@ -25,35 +25,36 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     ClickListner clickListner;
     LayoutInflater inflater;
     Context context;
-    int lastPosi=10;
-    MainRecyclerAdapter(Context context, int primaryColor[], int darkColor[], int icon[]){
+    int lastPosi = 10;
+
+    MainRecyclerAdapter(Context context, int primaryColor[], int darkColor[], int icon[]) {
         inflater = LayoutInflater.from(context);
-        this.darkColor=darkColor;
-        this.primaryColor=primaryColor;
-        this.icon=icon;
-        this.context=context;
+        this.darkColor = darkColor;
+        this.primaryColor = primaryColor;
+        this.icon = icon;
+        this.context = context;
     }
 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.grid_item_resource, parent, false);
+        View view = inflater.inflate(R.layout.grid_item_resource, parent, false);
         return new ViewHolder(view);
     }
 
-    public void setClickListner(ClickListner clickListner){
-        this.clickListner=clickListner;
+    public void setClickListner(ClickListner clickListner) {
+        this.clickListner = clickListner;
 
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.mainImg.setImageResource(images[position]);
-            YoYo.with(Techniques.Landing)
-                    .duration(500)
-                    .playOn(holder.mainLayout);
-        lastPosi=position;
-        if(position==4 || position==5 || position==7)
+        YoYo.with(Techniques.Landing)
+                .duration(500)
+                .playOn(holder.mainLayout);
+        lastPosi = position;
+        if (position == 4 || position == 5 || position == 7)
             holder.title.setTextColor(context.getResources().getColor(R.color.abc_primary_text_material_dark));
         else
             holder.title.setTextColor(context.getResources().getColor(R.color.darkQue));
@@ -83,11 +84,11 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mainImg= (ImageView) itemView.findViewById(R.id.mainImg);
-            playImg= (ImageView) itemView.findViewById(R.id.play);
+            mainImg = (ImageView) itemView.findViewById(R.id.mainImg);
+            playImg = (ImageView) itemView.findViewById(R.id.play);
             mainLayout = (CardView) itemView.findViewById(R.id.mainLayout);
             baseLayout = (CardView) itemView.findViewById(R.id.baseLayout);
-            title= (TextView) itemView.findViewById(R.id.title);
+            title = (TextView) itemView.findViewById(R.id.title);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

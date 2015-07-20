@@ -25,7 +25,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -72,7 +71,7 @@ public class CSITQuery extends AppCompatActivity {
 
         pref = getSharedPreferences("details", MODE_PRIVATE);
         id = pref.getString("fbId", "0");
-        queue = Volley.newRequestQueue(this);
+        queue = VolleySingleton.getInstance().getRequestQueue();
 
         context = this;
 
@@ -253,7 +252,7 @@ public class CSITQuery extends AppCompatActivity {
                     new SnackBar.Builder((Activity) context)
                             .withMessage("Question posted successfully. We will reply you soon.")
                             .show();
-                    getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", getSharedPreferences("data", MODE_PRIVATE).getInt("query", 1)).apply();
+                    getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", getSharedPreferences("data", MODE_PRIVATE).getInt("query", 1) + 1).apply();
                 } catch (JSONException e) {
                     new SnackBar.Builder((Activity) context)
                             .withMessage("Application Error. Please report us.")
@@ -273,5 +272,8 @@ public class CSITQuery extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 }

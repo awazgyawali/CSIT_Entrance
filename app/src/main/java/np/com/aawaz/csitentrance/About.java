@@ -27,10 +27,11 @@ public class About extends AppCompatActivity {
                 .playOn(findViewById(R.id.coreAbout));
 
     }
-    public void feedBack(View view){
+
+    public void feedBack(View view) {
         Intent sendMail = new Intent(Intent.ACTION_SEND);
         sendMail.setData(Uri.parse("mailto:"));
-        String[] to = {"android@aawaz.com.np","dhakalramu2070@gmail.com"};
+        String[] to = {"android@aawaz.com.np", "dhakalramu2070@gmail.com"};
         sendMail.putExtra(Intent.EXTRA_EMAIL, to);
         sendMail.putExtra(Intent.EXTRA_SUBJECT, "Regarding CSIT Entrance Android Application.");
         sendMail.setType("message/rfc822");

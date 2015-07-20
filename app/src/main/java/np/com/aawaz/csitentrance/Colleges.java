@@ -21,12 +21,20 @@ import java.util.ArrayList;
 
 
 public class Colleges extends AppCompatActivity {
-    ArrayList<String> names=new ArrayList<>(),
-            desc=new ArrayList<>(),
-            website=new ArrayList<>(),
-            address=new ArrayList<>();
-    ArrayList<String> phNo=new ArrayList<>();
+    ArrayList<String> names = new ArrayList<>(),
+            desc = new ArrayList<>(),
+            website = new ArrayList<>(),
+            address = new ArrayList<>();
+    ArrayList<String> phNo = new ArrayList<>();
 
+    public static String AssetJSONFile(String filename, Context c) throws IOException {
+        AssetManager manager = c.getAssets();
+        InputStream file = manager.open(filename);
+        byte[] formArray = new byte[file.available()];
+        file.read(formArray);
+        file.close();
+        return new String(formArray);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +44,7 @@ public class Colleges extends AppCompatActivity {
         loadAd();
 
         //Toolbar Stuff's
-        Toolbar toolbar= (Toolbar) findViewById(R.id.toolbarColz);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarColz);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -45,10 +53,10 @@ public class Colleges extends AppCompatActivity {
         setDataToArrayList();
 
         //Recycler view handler
-        RecyclerView colzRecy= (RecyclerView) findViewById(R.id.colzRecy);
-        colzAdapter adapter=new colzAdapter(this,names,address,desc,website,phNo);
+        RecyclerView colzRecy = (RecyclerView) findViewById(R.id.colzRecy);
+        colzAdapter adapter = new colzAdapter(this, names, address, desc, website, phNo);
         colzRecy.setAdapter(adapter);
-        colzRecy.setLayoutManager(new GridLayoutManager(this,1));
+        colzRecy.setLayoutManager(new GridLayoutManager(this, 1));
     }
 
     public void setDataToArrayList() {
@@ -70,15 +78,6 @@ public class Colleges extends AppCompatActivity {
         }
     }
 
-    public static String AssetJSONFile(String filename, Context c) throws IOException {
-        AssetManager manager = c.getAssets();
-        InputStream file = manager.open(filename);
-        byte[] formArray = new byte[file.available()];
-        file.read(formArray);
-        file.close();
-        return new String(formArray);
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -94,7 +93,8 @@ public class Colleges extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void loadAd(){
+
+    public void loadAd() {
         AdView mAdView = (AdView) findViewById(R.id.colzAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);

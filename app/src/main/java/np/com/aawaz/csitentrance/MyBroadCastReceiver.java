@@ -19,7 +19,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,7 +39,7 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        requestQueue = Volley.newRequestQueue(context);
+        requestQueue = VolleySingleton.getInstance().getRequestQueue();
         this.context = context;
         updateNews();
 
@@ -76,14 +75,14 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
     }
 
     private void updateNews() {
-        String url=context.getString(R.string.url);
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
+        String url = context.getString(R.string.url);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     JSONArray jsonArray = response.getJSONArray("news");
-                    int no=0;
+                    int no = 0;
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jo_inside = jsonArray.getJSONObject(i);
                         topic.add(jo_inside.getString("topic"));
@@ -93,7 +92,7 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                         author.add(jo_inside.getString("author"));
                         no++;
                     }
-                    if(no>noOfRows(context)) {
+                    if (no > noOfRows(context)) {
                         notification(context, topic.get(0), content.get(0), topic.get(0), 12345, new Intent(context, EntranceNews.class));
                     }
                     storeToDb(context);
@@ -130,7 +129,7 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                     }
                     if (messages.size() > context.getSharedPreferences("data", Context.MODE_PRIVATE).getInt("query", 0)) {
                         notification(context, "Reply for your pre-posted query.", messages.get(messages.size() - 1), "New query received.", 54321, new Intent(context, CSITQuery.class));
-                        context.getSharedPreferences("data", Context.MODE_PRIVATE).edit().putInt("query", messages.size());
+                        context.getSharedPreferences("data", Context.MODE_PRIVATE).edit().putInt("query", messages.size()).apply();
                     }
                 } catch (JSONException e) {
                 }
@@ -145,7 +144,7 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
 
     private void notification(Context context, String newsTitle, String content, String ticker, int notifyNumber, Intent intent1) {
         Uri alertSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationCompat=new NotificationCompat.Builder(context);
+        NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(context);
         notificationCompat.setAutoCancel(true)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setTicker(ticker)
@@ -155,34 +154,34 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                 .setContentText(content);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
         notificationCompat.setContentIntent(pendingIntent);
-        NotificationManager notificationManagerCompat= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManagerCompat = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManagerCompat.notify(notifyNumber, notificationCompat.build());
 
     }
 
     private void storeToDb(Context context) {
-        NewsDataBase dataBase=new NewsDataBase(context);
-        SQLiteDatabase database= dataBase.getWritableDatabase();
+        NewsDataBase dataBase = new NewsDataBase(context);
+        SQLiteDatabase database = dataBase.getWritableDatabase();
         database.delete("news", null, null);
-        ContentValues values=new ContentValues();
-        for(int i=0;i<topic.size();i++) {
+        ContentValues values = new ContentValues();
+        for (int i = 0; i < topic.size(); i++) {
             values.clear();
             values.put("title", topic.get(i));
             values.put("subTopic", subTopic.get(i));
             values.put("content", content.get(i));
             values.put("imageURL", imageURL.get(i));
             values.put("author", author.get(i));
-            database.insert("news",null,values);
+            database.insert("news", null, values);
         }
         database.close();
     }
 
-    public int noOfRows(Context context){
-        NewsDataBase dataBase=new NewsDataBase(context);
-        SQLiteDatabase database= dataBase.getWritableDatabase();
-        Cursor cursor=database.query("news", new String[]{"title"}, null, null, null, null, null);
-        int i=0;
-        while(cursor.moveToNext()){
+    public int noOfRows(Context context) {
+        NewsDataBase dataBase = new NewsDataBase(context);
+        SQLiteDatabase database = dataBase.getWritableDatabase();
+        Cursor cursor = database.query("news", new String[]{"title"}, null, null, null, null, null);
+        int i = 0;
+        while (cursor.moveToNext()) {
             i++;
         }
         Log.d("Debug", i + "");

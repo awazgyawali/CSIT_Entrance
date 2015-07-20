@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class SlideUpPanelAdapter extends RecyclerView.Adapter<SlideUpPanelAdapter.ViewHolder> {
     LayoutInflater inflater;
-    int size,code;
+    int size, code;
     Context context;
 
     //Array list decleration
@@ -29,11 +29,11 @@ public class SlideUpPanelAdapter extends RecyclerView.Adapter<SlideUpPanelAdapte
     ArrayList<String> d = new ArrayList<>();
     ArrayList<String> answer = new ArrayList<>();
 
-    public SlideUpPanelAdapter(Context context,int size,int code){
-        inflater=LayoutInflater.from(context);
-        this.size=size;
-        this.code=code;
-        this.context=context;
+    public SlideUpPanelAdapter(Context context, int size, int code) {
+        inflater = LayoutInflater.from(context);
+        this.size = size;
+        this.code = code;
+        this.context = context;
         setDataToArrayList();
     }
 
@@ -50,11 +50,11 @@ public class SlideUpPanelAdapter extends RecyclerView.Adapter<SlideUpPanelAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.answer_item_holder, parent, false);
+        View view = inflater.inflate(R.layout.answer_item_holder, parent, false);
         return new ViewHolder(view);
     }
 
-    public void increaseSize(){
+    public void increaseSize() {
         size++;
         notifyItemInserted(size);
     }
@@ -74,7 +74,7 @@ public class SlideUpPanelAdapter extends RecyclerView.Adapter<SlideUpPanelAdapte
     public void setDataToArrayList() {
         //Reading from json file and insillizing inside arrayList
         try {
-            JSONObject obj = new JSONObject(AssetJSONFile("question" + code + ".json",context));
+            JSONObject obj = new JSONObject(AssetJSONFile("question" + code + ".json", context));
             JSONArray m_jArry = obj.getJSONArray("questions");
             for (int i = 0; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
@@ -90,14 +90,14 @@ public class SlideUpPanelAdapter extends RecyclerView.Adapter<SlideUpPanelAdapte
         }
     }
 
-    public String ansFinder(int position){
-        if(answer.get(position).equals("a")) {
+    public String ansFinder(int position) {
+        if (answer.get(position).equals("a")) {
             return a.get(position);
-        } else if(answer.get(position).equals("b")) {
+        } else if (answer.get(position).equals("b")) {
             return b.get(position);
-        } else if(answer.get(position).equals("c")) {
+        } else if (answer.get(position).equals("c")) {
             return c.get(position);
-        } else if(answer.get(position).equals("d")) {
+        } else if (answer.get(position).equals("d")) {
             return d.get(position);
         } else {
             return "Somthing went wrong";

@@ -41,34 +41,33 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
         tracker.enableExceptionReporting(true);
         tracker.enableAutoActivityTracking(true);
 
-
         backgroundTaskStart();
 
         loadAd();
 
 
-        int avatar[] = {R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.four,R.drawable.five,
-                R.drawable.six,R.drawable.seven,R.drawable.eight,R.drawable.nine,R.drawable.ten,
-                R.drawable.eleven,R.drawable.twelve};
+        int avatar[] = {R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five,
+                R.drawable.six, R.drawable.seven, R.drawable.eight, R.drawable.nine, R.drawable.ten,
+                R.drawable.eleven, R.drawable.twelve};
 
         pref = getSharedPreferences("info", MODE_PRIVATE);
         TextView name = (TextView) findViewById(R.id.nameView);
         points = (TextView) findViewById(R.id.pointView);
         name.setText(pref.getString("Name", "") + " " + pref.getString("Surname", ""));
         points.setText(getTotal() + " pts");
-        ImageView img= (ImageView) findViewById(R.id.profPic);
-        img.setImageDrawable(getResources().getDrawable(avatar[(pref.getInt("Avatar", 1))-1]));
+        ImageView img = (ImageView) findViewById(R.id.profPic);
+        img.setImageDrawable(getResources().getDrawable(avatar[(pref.getInt("Avatar", 1)) - 1]));
         View shadow = findViewById(R.id.shadow);
         shadow.bringToFront();
         int primaryColors[] = {R.color.primary1, R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5,
                 R.color.primary6, R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10,
-                R.color.primary2,R.color.primary4};
+                R.color.primary2, R.color.primary4};
         int darkColors[] = {R.color.dark1, R.color.dark2, R.color.dark3, R.color.dark4, R.color.dark5,
                 R.color.dark6, R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10,
                 R.color.dark2, R.color.dark4};
         int icon[] = {R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_play_arrow_white_24dp,
                 R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_play_arrow_white_24dp,
-                R.drawable.ic_arrow_forward_white_24dp,R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp,R.drawable.ic_arrow_forward_white_24dp,R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp};
+                R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp};
 
         recycler = (RecyclerView) findViewById(R.id.gridView);
         adapter = new MainRecyclerAdapter(this, primaryColors, darkColors, icon);
@@ -79,10 +78,10 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
     }
 
     private int getTotal() {
-        SharedPreferences pref=getSharedPreferences("values",MODE_PRIVATE);
-        int grand=0;
-        for(int i=1;i<8;i++)
-            grand=grand+pref.getInt("score"+i,0);
+        SharedPreferences pref = getSharedPreferences("values", MODE_PRIVATE);
+        int grand = 0;
+        for (int i = 1; i < 8; i++)
+            grand = grand + pref.getInt("score" + i, 0);
         return grand;
     }
 
@@ -102,40 +101,40 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
             Intent intent = new Intent(this, QuizActivity.class);
             intent.putExtra("position", position);
             startActivity(intent);
-        } else  if(position==5){
+        } else if (position == 5) {
             Intent intent = new Intent(this, More.class);
             startActivity(intent);
-        }else  if(position==6){
+        } else if (position == 6) {
             Intent intent = new Intent(this, FullQuestion.class);
             startActivity(intent);
-        }else  if(position==7){
+        } else if (position == 7) {
             Intent intent = new Intent(this, Colleges.class);
             startActivity(intent);
-        }else  if(position==8){
+        } else if (position == 8) {
             Intent intent = new Intent(this, EntranceNews.class);
             startActivity(intent);
-        }else  if(position==9){
+        } else if (position == 9) {
             Intent intent = new Intent(this, CSITQuery.class);
             startActivity(intent);
-        }else  if(position==10){
+        } else if (position == 10) {
             Intent intent = new Intent(this, About.class);
             startActivity(intent);
         }
     }
 
-    public void infoAboutDelay(){
-        Boolean first=getSharedPreferences("first",MODE_PRIVATE).getBoolean("IsFisrt",true);
-        if(first){
-            MaterialDialog.Builder dialog=new MaterialDialog.Builder(this);
+    public void infoAboutDelay() {
+        Boolean first = getSharedPreferences("first", MODE_PRIVATE).getBoolean("IsFisrt", true);
+        if (first) {
+            MaterialDialog.Builder dialog = new MaterialDialog.Builder(this);
             dialog.title("Information!")
                     .content(R.string.info)
                     .positiveText("Got it")
                     .show();
-            getSharedPreferences("first", MODE_PRIVATE).edit().putBoolean("IsFisrt",false).commit();
+            getSharedPreferences("first", MODE_PRIVATE).edit().putBoolean("IsFisrt", false).commit();
         }
     }
 
-    public void loadAd(){
+    public void loadAd() {
         AdView mAdView = (AdView) findViewById(R.id.MainAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -147,7 +146,7 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
         pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
 
         AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        int interval = 1000 * 10; //milisec*sec*min
+        int interval = 1000 * 60; //milisec*sec*min
         manager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
     }
 }

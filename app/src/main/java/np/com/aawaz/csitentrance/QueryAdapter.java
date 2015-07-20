@@ -20,11 +20,10 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
     int[] avatar;
 
 
-
-    QueryAdapter(Context context,ArrayList<String> messages,ArrayList<Integer> flag){
-        this.context=context;
-        this.flag=flag;
-        this.messages=messages;
+    QueryAdapter(Context context, ArrayList<String> messages, ArrayList<Integer> flag) {
+        this.context = context;
+        this.flag = flag;
+        this.messages = messages;
         inflater = LayoutInflater.from(context);
         avatar = new int[]{R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five,
                 R.drawable.six, R.drawable.seven, R.drawable.eight, R.drawable.nine, R.drawable.ten,
@@ -34,13 +33,13 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.query_layout,parent,false);
+        View view = inflater.inflate(R.layout.query_layout, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        if(flag.get(position)==0){
+        if (flag.get(position) == 0) {
             holder.rightText.setText(messages.get(position));
             holder.leftImg.setVisibility(View.GONE);
             holder.leftText.setVisibility(View.GONE);
@@ -72,12 +71,13 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
         ImageView rightImg;
         TextView leftText;
         TextView rightText;
+
         public ViewHolder(View itemView) {
             super(itemView);
-            leftImg= (ImageView) itemView.findViewById(R.id.leftImg);
-            rightImg= (ImageView) itemView.findViewById(R.id.rightImg);
-            rightText= (TextView) itemView.findViewById(R.id.rightText);
-            leftText= (TextView) itemView.findViewById(R.id.leftText);
+            leftImg = (ImageView) itemView.findViewById(R.id.leftImg);
+            rightImg = (ImageView) itemView.findViewById(R.id.rightImg);
+            rightText = (TextView) itemView.findViewById(R.id.rightText);
+            leftText = (TextView) itemView.findViewById(R.id.leftText);
         }
     }
 

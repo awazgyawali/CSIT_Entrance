@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "np.com.aawaz.csitentrance"
-        minSdkVersion 9
+        minSdkVersion 10
         targetSdkVersion 22
         versionCode 1
         versionName "1.1"
@@ -26,7 +26,7 @@ dependencies {
     compile 'com.android.support:cardview-v7:22.2.0'
     compile 'com.android.support:support-v4:22.2.0'
     compile 'com.google.android.gms:play-services-ads:7.5.0'
-
+    compile 'me.tatarka.support:jobscheduler:0.1.1'
     compile 'com.mcxiaoke.volley:library:1.0.16'
     compile 'com.melnykov:floatingactionbutton:1.3.0'
     compile 'com.nineoldandroids:library:2.4.0'

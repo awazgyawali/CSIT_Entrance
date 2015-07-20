@@ -12,32 +12,33 @@ import android.widget.TextView;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
-public class QueAdater extends RecyclerView.Adapter<QueAdater.ViewHolder>{
-    String[] titles={"2069 Question","2070 Question","2071 Question","Model Question"};
+public class QueAdater extends RecyclerView.Adapter<QueAdater.ViewHolder> {
+    String[] titles = {"2069 Question", "2070 Question", "2071 Question", "Model Question"};
     int primaryColor[];
     int darkColor[];
     int icon[];
     ClickListner clickListner;
     LayoutInflater inflater;
     Context context;
-    int lastPosi=10;
-    QueAdater (Context context, int primaryColor[], int darkColor[], int icon[]){
+    int lastPosi = 10;
+
+    QueAdater(Context context, int primaryColor[], int darkColor[], int icon[]) {
         inflater = LayoutInflater.from(context);
-        this.darkColor=darkColor;
-        this.primaryColor=primaryColor;
-        this.icon=icon;
-        this.context=context;
+        this.darkColor = darkColor;
+        this.primaryColor = primaryColor;
+        this.icon = icon;
+        this.context = context;
     }
 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.grid_item_resource, parent, false);
+        View view = inflater.inflate(R.layout.grid_item_resource, parent, false);
         return new ViewHolder(view);
     }
 
-    public void setClickListner(ClickListner clickListner){
-        this.clickListner=clickListner;
+    public void setClickListner(ClickListner clickListner) {
+        this.clickListner = clickListner;
 
     }
 
@@ -47,8 +48,8 @@ public class QueAdater extends RecyclerView.Adapter<QueAdater.ViewHolder>{
         YoYo.with(Techniques.Landing)
                 .duration(500)
                 .playOn(holder.mainLayout);
-        lastPosi=position;
-        if(position==2 || position==3)
+        lastPosi = position;
+        if (position == 2 || position == 3)
             holder.title.setTextColor(context.getResources().getColor(R.color.abc_primary_text_material_dark));
         else
             holder.title.setTextColor(context.getResources().getColor(R.color.darkQue));
@@ -78,11 +79,11 @@ public class QueAdater extends RecyclerView.Adapter<QueAdater.ViewHolder>{
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mainImg= (ImageView) itemView.findViewById(R.id.mainImg);
-            playImg= (ImageView) itemView.findViewById(R.id.play);
+            mainImg = (ImageView) itemView.findViewById(R.id.mainImg);
+            playImg = (ImageView) itemView.findViewById(R.id.play);
             mainLayout = (CardView) itemView.findViewById(R.id.mainLayout);
             baseLayout = (CardView) itemView.findViewById(R.id.baseLayout);
-            title= (TextView) itemView.findViewById(R.id.title);
+            title = (TextView) itemView.findViewById(R.id.title);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

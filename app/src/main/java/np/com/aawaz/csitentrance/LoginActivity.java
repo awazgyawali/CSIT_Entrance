@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     FloatingActionButton fab;
     SharedPreferences pref;
 
-    int avatar=0;
+    int avatar = 0;
 
     ImageView a1;
     ImageView a2;
@@ -44,16 +44,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
         callAllAvatarImage();
-        pref=getSharedPreferences("info",MODE_PRIVATE);
-        if(!pref.getString("Name","").equals("")){
+        pref = getSharedPreferences("info", MODE_PRIVATE);
+        if (!pref.getString("Name", "").equals("")) {
             finish();
-            Intent main=new Intent(getApplicationContext(),MainActivity.class);
+            Intent main = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(main);
         }
-        name= (EditText) findViewById(R.id.NameText);
-        sur= (EditText) findViewById(R.id.LastText);
-        email= (EditText) findViewById(R.id.email);
-        fab= (FloatingActionButton) findViewById(R.id.fabBtn);
+        name = (EditText) findViewById(R.id.NameText);
+        sur = (EditText) findViewById(R.id.LastText);
+        email = (EditText) findViewById(R.id.email);
+        fab = (FloatingActionButton) findViewById(R.id.fabBtn);
         name.addTextChangedListener(this);
         sur.addTextChangedListener(this);
         email.addTextChangedListener(this);
@@ -61,34 +61,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor=pref.edit();
-                editor.putString("Name",name.getText().toString());
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("Name", name.getText().toString());
                 editor.putString("Surname", sur.getText().toString());
                 editor.putString("E-mail", email.getText().toString());
                 editor.putString("uniqueID", UUID.randomUUID().toString());
                 editor.putInt("Avatar", avatar);
                 editor.commit();
                 finish();
-                Intent main=new Intent(getApplicationContext(),MainActivity.class);
+                Intent main = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(main);
             }
         });
     }
 
 
-    public void callAllAvatarImage(){
-        a1= (ImageView) findViewById(R.id.a1);
-        a2= (ImageView) findViewById(R.id.a2);
-        a3= (ImageView) findViewById(R.id.a3);
-        a4= (ImageView) findViewById(R.id.a4);
-        a5= (ImageView) findViewById(R.id.a5);
-        a6= (ImageView) findViewById(R.id.a6);
-        a7= (ImageView) findViewById(R.id.a7);
-        a8= (ImageView) findViewById(R.id.a8);
-        a9= (ImageView) findViewById(R.id.a9);
-        a10= (ImageView) findViewById(R.id.a10);
-        a11= (ImageView) findViewById(R.id.a11);
-        a12= (ImageView) findViewById(R.id.a12);
+    public void callAllAvatarImage() {
+        a1 = (ImageView) findViewById(R.id.a1);
+        a2 = (ImageView) findViewById(R.id.a2);
+        a3 = (ImageView) findViewById(R.id.a3);
+        a4 = (ImageView) findViewById(R.id.a4);
+        a5 = (ImageView) findViewById(R.id.a5);
+        a6 = (ImageView) findViewById(R.id.a6);
+        a7 = (ImageView) findViewById(R.id.a7);
+        a8 = (ImageView) findViewById(R.id.a8);
+        a9 = (ImageView) findViewById(R.id.a9);
+        a10 = (ImageView) findViewById(R.id.a10);
+        a11 = (ImageView) findViewById(R.id.a11);
+        a12 = (ImageView) findViewById(R.id.a12);
         a1.setOnClickListener(this);
         a2.setOnClickListener(this);
         a3.setOnClickListener(this);
@@ -108,53 +108,53 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         resetAllBack();
 
 
-        if(view==a1){
-            avatar=1;
+        if (view == a1) {
+            avatar = 1;
             a1.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
-        } else if(view==a2){
-            avatar=2;
+        } else if (view == a2) {
+            avatar = 2;
             a2.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
-        } else if(view==a3){
-            avatar=3;
+        } else if (view == a3) {
+            avatar = 3;
             a3.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
-        } else if(view==a4){
-            avatar=4;
+        } else if (view == a4) {
+            avatar = 4;
             a4.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
-        } else if(view==a5){
-            avatar=5;
+        } else if (view == a5) {
+            avatar = 5;
             a5.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
 
-        } else if(view==a6){
-            avatar=6;
+        } else if (view == a6) {
+            avatar = 6;
             a6.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
-        } else if(view==a7){
-            avatar=7;
+        } else if (view == a7) {
+            avatar = 7;
             a7.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
-        } else if(view==a8){
-            avatar=8;
+        } else if (view == a8) {
+            avatar = 8;
             a8.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
-        } else if(view==a9){
-            avatar=9;
+        } else if (view == a9) {
+            avatar = 9;
             a9.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
-        } else if(view==a10){
-            avatar=10;
+        } else if (view == a10) {
+            avatar = 10;
             a10.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
-        } else if(view==a11){
-            avatar=11;
+        } else if (view == a11) {
+            avatar = 11;
             a11.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
-        } else if(view==a12){
-            avatar=12;
+        } else if (view == a12) {
+            avatar = 12;
             a12.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
         }
@@ -170,7 +170,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        if(!name.getText().toString().equals("") && !sur.getText().toString().equals("") && !email.getText().toString().equals("") && avatar!=0){
+        if (!name.getText().toString().equals("") && !sur.getText().toString().equals("") && !email.getText().toString().equals("") && avatar != 0) {
             fab.setVisibility(View.VISIBLE);
         } else {
             fab.setVisibility(View.INVISIBLE);
@@ -182,7 +182,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    public void resetAllBack(){
+    public void resetAllBack() {
         a1.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
         a2.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
         a3.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));

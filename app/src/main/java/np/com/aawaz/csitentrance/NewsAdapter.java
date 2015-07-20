@@ -17,30 +17,29 @@ import java.util.ArrayList;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     Context context;
-    ArrayList<String> topic=new ArrayList<>();
-    ArrayList<String> subTopic=new ArrayList<>();
-    ArrayList<String> imageURL=new ArrayList<>();
-    ArrayList<String> content=new ArrayList<>();
-    ArrayList<String> author=new ArrayList<>();
+    ArrayList<String> topic = new ArrayList<>();
+    ArrayList<String> subTopic = new ArrayList<>();
+    ArrayList<String> imageURL = new ArrayList<>();
+    ArrayList<String> content = new ArrayList<>();
+    ArrayList<String> author = new ArrayList<>();
     LayoutInflater inflater;
 
     private int expandedPosition = -1;
 
 
-
-    public NewsAdapter(Context context,ArrayList<String> topic,ArrayList<String> subTopic,ArrayList<String> imageURL,ArrayList<String> content,ArrayList<String> author){
-        this.context=context;
-        this.topic=topic;
-        inflater=LayoutInflater.from(context);
-        this.subTopic=subTopic;
-        this.imageURL=imageURL;
-        this.content=content;
-        this.author=author;
+    public NewsAdapter(Context context, ArrayList<String> topic, ArrayList<String> subTopic, ArrayList<String> imageURL, ArrayList<String> content, ArrayList<String> author) {
+        this.context = context;
+        this.topic = topic;
+        inflater = LayoutInflater.from(context);
+        this.subTopic = subTopic;
+        this.imageURL = imageURL;
+        this.content = content;
+        this.author = author;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(inflater.inflate(R.layout.news_item,parent,false));
+        return new ViewHolder(inflater.inflate(R.layout.news_item, parent, false));
     }
 
     @Override
@@ -94,7 +93,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     }
 
 
-
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView title;
         TextView titleEach;
@@ -107,6 +105,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         CardView mainLayout;
         RelativeLayout headings;
         LinearLayout llExpandArea;
+
         public ViewHolder(View itemView) {
             super(itemView);
             mainLayout = (CardView) itemView.findViewById(R.id.mainLayout);
@@ -115,9 +114,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             authorEach = (TextView) itemView.findViewById(R.id.newsAuthor);
             subTopicEach = (TextView) itemView.findViewById(R.id.newsSubTitle);
             newsImage = (ImageView) itemView.findViewById(R.id.newsImage);
-            title= (TextView) itemView.findViewById(R.id.newsTitle);
-            themeNews= (TextView) itemView.findViewById(R.id.themeNews);
-            time= (TextView) itemView.findViewById(R.id.time);
+            title = (TextView) itemView.findViewById(R.id.newsTitle);
+            themeNews = (TextView) itemView.findViewById(R.id.themeNews);
+            time = (TextView) itemView.findViewById(R.id.time);
             headings = (RelativeLayout) itemView.findViewById(R.id.headings);
             llExpandArea = (LinearLayout) itemView.findViewById(R.id.llExpandArea);
         }

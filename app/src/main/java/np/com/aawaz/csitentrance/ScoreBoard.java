@@ -15,7 +15,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.ads.AdRequest;
@@ -82,7 +81,7 @@ public class ScoreBoard extends AppCompatActivity {
     }
 
     private void fetchFromInternet() {
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
         String url = getString(R.string.fetchScoreurl);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
 

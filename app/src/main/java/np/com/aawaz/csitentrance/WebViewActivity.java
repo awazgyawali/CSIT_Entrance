@@ -11,7 +11,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -29,21 +28,21 @@ public class WebViewActivity extends AppCompatActivity {
 
         loadAd();
 
-        webView= (WebView) findViewById(R.id.webView);
+        webView = (WebView) findViewById(R.id.webView);
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String url=getResources().getString(R.string.url);
-        final MaterialDialog dialog= new MaterialDialog.Builder(this)
+        RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
+        String url = getResources().getString(R.string.url);
+        final MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .content("Please wait...")
                 .cancelable(false)
                 .progress(true, 0)
                 .show();
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
                 dialog.dismiss();
-                webView.loadUrl("file:///android_asset/question"+getIntent().getExtras().getInt("code")+".html");
+                webView.loadUrl("file:///android_asset/question" + getIntent().getExtras().getInt("code") + ".html");
 
             }
         }, new Response.ErrorListener() {
@@ -57,12 +56,13 @@ public class WebViewActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
-    public void loadAd(){
+    public void loadAd() {
         AdView mAdView = (AdView) findViewById(R.id.webViewAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
