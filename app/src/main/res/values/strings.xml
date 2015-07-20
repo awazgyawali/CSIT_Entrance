@@ -33,5 +33,6 @@
     <string name="queryFetchUrl">http://www.aawaz.com.np/jsonFeed/fetchAll.php?fbId=</string>
     <string name="score_board_ad">ca-app-pub-3751722582271673/7368220346</string>
     <string name="postScoreurl">http://www.aawaz.com.np/jsonFeed/uploadScore.php</string>
+    <string name="fetchScoreurl">http://aawaz.com.np/jsonFeed/downloadScore.php</string>
 
 </resources>

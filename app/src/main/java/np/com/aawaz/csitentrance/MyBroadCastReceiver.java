@@ -130,6 +130,7 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                     }
                     if (messages.size() > context.getSharedPreferences("data", Context.MODE_PRIVATE).getInt("query", 0)) {
                         notification(context, "Reply for your pre-posted query.", messages.get(messages.size() - 1), "New query received.", 54321, new Intent(context, CSITQuery.class));
+                        context.getSharedPreferences("data", Context.MODE_PRIVATE).edit().putInt("query", messages.size());
                     }
                 } catch (JSONException e) {
                 }

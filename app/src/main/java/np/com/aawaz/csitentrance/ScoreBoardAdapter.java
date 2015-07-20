@@ -15,7 +15,7 @@ import com.daimajia.androidanimations.library.YoYo;
 import java.util.ArrayList;
 
 public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.ViewHolder> {
-    ArrayList<String> score;
+    ArrayList<Integer> scores;
     ArrayList<String> names;
     LayoutInflater inflater;
     int primaryColors[];
@@ -23,21 +23,17 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
     private Context context;
 
 
-    ScoreBoardAdapter(Context context, ArrayList<String> names, ArrayList<String> scores) {
+    ScoreBoardAdapter(Context context, ArrayList<String> names, ArrayList<Integer> scores) {
         inflater = LayoutInflater.from(context);
         this.context = context;
         this.names = names;
-        this.score = scores;
+        this.scores = scores;
         this.primaryColors = new int[]{R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5,
                 R.color.primary6, R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10,
-                R.color.primary2, R.color.primary4, R.color.primary3, R.color.primary4, R.color.primary5,
-                R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10,
-                R.color.primary2, R.color.primary3};
+                R.color.primary2};
         this.darkColors = new int[]{R.color.dark2, R.color.dark3, R.color.dark4, R.color.dark5,
                 R.color.dark6, R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10,
-                R.color.dark2, R.color.dark4, R.color.dark3, R.color.dark4, R.color.dark5,
-                R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10,
-                R.color.dark2, R.color.dark3};
+                R.color.dark2};
 
     }
 
@@ -54,15 +50,14 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
                 .playOn(holder.upper);
 
         holder.name.setText(names.get(position));
-        holder.score.setText(score.get(position));
-
+        holder.score.setText(scores.get(position) + "");
         holder.upper.setCardBackgroundColor(context.getResources().getColor(darkColors[position]));
         holder.lower.setCardBackgroundColor(context.getResources().getColor(primaryColors[position]));
     }
 
     @Override
     public int getItemCount() {
-        return names.size();
+        return names.size() > 10 ? 10 : names.size();
     }
 
 
