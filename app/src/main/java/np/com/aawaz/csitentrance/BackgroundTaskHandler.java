@@ -11,7 +11,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -41,15 +40,15 @@ public class BackgroundTaskHandler extends JobService {
 
 
     public BackgroundTaskHandler() {
-
         context = this;
     }
 
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
+
         this.jobParameters = jobParameters;
+
         requestQueue = VolleySingleton.getInstance().getRequestQueue();
-        Toast.makeText(this, "Running", Toast.LENGTH_SHORT).show();
 
         updateNews();
 
@@ -57,7 +56,7 @@ public class BackgroundTaskHandler extends JobService {
 
         uploadScore();
 
-        return false;
+        return true;
     }
 
     @Override
@@ -214,5 +213,4 @@ public class BackgroundTaskHandler extends JobService {
             grand = grand + pref.getInt("score" + i, 0);
         return grand;
     }
-
 }

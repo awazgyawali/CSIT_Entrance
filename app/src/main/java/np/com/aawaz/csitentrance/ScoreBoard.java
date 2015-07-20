@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -57,7 +56,6 @@ public class ScoreBoard extends AppCompatActivity {
     }
 
     private void callFillRecyclerView() {
-        Log.d("debug", names + " and " + scores);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.scoreBoardRecyclerView);
         mRecyclerView.setAdapter(new ScoreBoardAdapter(this, names, scores));
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));

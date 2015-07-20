@@ -27,11 +27,6 @@ public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {
     LayoutInflater inflater;
     ArrayList<String> colleges;
 
-
-    int primaryColors[] = {R.color.dark1, R.color.dark2, R.color.dark3, R.color.dark4, R.color.dark5,
-            R.color.dark6, R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10};
-
-
     colzAdapter(Context context, ArrayList<String> colleges, ArrayList<String> address, ArrayList<String> desc, ArrayList<String> website, ArrayList<String> phNo) {
         this.colleges = colleges;
         this.address = address;
@@ -53,7 +48,6 @@ public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {
         YoYo.with(Techniques.FadeInRight)
                 .duration(200)
                 .playOn(holder.coreColz);
-        holder.coreColz.setBackgroundColor(context.getResources().getColor(primaryColors[position % 10]));
         holder.colzName.setText(colleges.get(position));
         holder.address.setText(address.get(position));
         if (website.get(position).equals("null")) {

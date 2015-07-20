@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.melnykov.fab.FloatingActionButton;
 
@@ -23,6 +25,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     SharedPreferences pref;
 
     int avatar = 0;
+    Context context;
 
     ImageView a1;
     ImageView a2;
@@ -42,14 +45,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        context = this;
 
-        callAllAvatarImage();
         pref = getSharedPreferences("info", MODE_PRIVATE);
         if (!pref.getString("Name", "").equals("")) {
-            finish();
-            Intent main = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(main);
+            RelativeLayout ly = (RelativeLayout) findViewById(R.id.firstLayout);
+            ly.setVisibility(View.GONE);
+            Thread background = new Thread() {
+                public void run() {
+                    try {
+                        sleep(2 * 1000);
+
+                        Intent intent = new Intent(context, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } catch (Exception e) {
+
+                    }
+                }
+            };
+            background.start();
+        } else {
+            RelativeLayout ly = (RelativeLayout) findViewById(R.id.reqularLayout);
+            ly.setVisibility(View.GONE);
         }
+
+        callAllAvatarImage();
+
         name = (EditText) findViewById(R.id.NameText);
         sur = (EditText) findViewById(R.id.LastText);
         email = (EditText) findViewById(R.id.email);
