@@ -18,6 +18,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +38,7 @@ public class ScoreBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_board);
+        loadAd();
         Toolbar toolbar = (Toolbar) findViewById(R.id.ScoreToolbar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.primary1));
         setSupportActionBar(toolbar);
@@ -136,4 +139,12 @@ public class ScoreBoard extends AppCompatActivity {
         names.add(j, tempName);
 
     }
+
+    public void loadAd() {
+        AdView mAdView = (AdView) findViewById(R.id.scoreBoardAd);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+    }
+
 }
