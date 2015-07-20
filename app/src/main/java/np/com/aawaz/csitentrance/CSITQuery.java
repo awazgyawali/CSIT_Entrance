@@ -136,7 +136,7 @@ public class CSITQuery extends AppCompatActivity {
                     adapter = new QueryAdapter(context, messages, flag);
                     recyclerView.setLayoutManager(new LinearLayoutManager(context));
                     recyclerView.setAdapter(adapter);
-                    recyclerView.scrollToPosition(messages.size());
+                    recyclerView.scrollToPosition(messages.size() - 1);
                     initial.dismiss();
                 } catch (JSONException e) {
                     if (finish)
@@ -248,10 +248,8 @@ public class CSITQuery extends AppCompatActivity {
                 try {
                     response.getString("feedBack");
                     adapter.added(text.getText().toString());
+                    recyclerView.scrollToPosition(adapter.getItemCount() - 1);
                     text.setText("");
-                    new SnackBar.Builder((Activity) context)
-                            .withMessage("Question posted successfully. We will reply you soon.")
-                            .show();
                     getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", getSharedPreferences("data", MODE_PRIVATE).getInt("query", 1) + 1).apply();
                 } catch (JSONException e) {
                     new SnackBar.Builder((Activity) context)
