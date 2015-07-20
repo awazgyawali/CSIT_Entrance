@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.RingtoneManager;
@@ -33,11 +34,48 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
             content = new ArrayList<>(),
             author = new ArrayList<>(),
             messages = new ArrayList<>();
+    RequestQueue requestQueue;
+    Context context;
 
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        final RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue = Volley.newRequestQueue(context);
+        this.context = context;
+        updateNews();
+
+        updateQuery();
+
+        uploadScore();
+
+    }
+
+    private void uploadScore() {
+        String url = context.getString(R.string.postScoreurl);
+        Uri.Builder uri = new Uri.Builder();
+        String values = uri.authority("")
+                .appendQueryParameter("key", context.getSharedPreferences("info", Context.MODE_PRIVATE).getString("uniqueID", "trash"))
+                .appendQueryParameter("name", context.getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "trash"))
+                .appendQueryParameter("score", getTotal() + "")
+                .build().toString();
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+
+            }
+
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    private void updateNews() {
         String url=context.getString(R.string.url);
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
 
@@ -71,8 +109,10 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
             }
         });
         requestQueue.add(jsonObjectRequest);
+    }
 
-        url = context.getString(R.string.queryFetchUrl);
+    private void updateQuery() {
+        String url = context.getString(R.string.queryFetchUrl);
         final JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.GET, url + context.getSharedPreferences("details", Context.MODE_PRIVATE).getString("fbId", "0"), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -112,7 +152,7 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(newsTitle)
                 .setContentText(content);
-        PendingIntent pendingIntent=PendingIntent.getActivity(context,0,intent1,PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
         notificationCompat.setContentIntent(pendingIntent);
         NotificationManager notificationManagerCompat= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManagerCompat.notify(notifyNumber, notificationCompat.build());
@@ -144,8 +184,18 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
         while(cursor.moveToNext()){
             i++;
         }
-        Log.d("Debug",i+"");
+        Log.d("Debug", i + "");
         return i;
 
     }
+
+    private int getTotal() {
+        SharedPreferences pref = context.getSharedPreferences("values", Context.MODE_PRIVATE);
+        int grand = 0;
+        for (int i = 1; i < 8; i++)
+            grand = grand + pref.getInt("score" + i, 0);
+        return grand;
+    }
+
+
 }

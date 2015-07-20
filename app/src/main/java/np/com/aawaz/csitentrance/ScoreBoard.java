@@ -2,21 +2,29 @@ package np.com.aawaz.csitentrance;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
+import java.util.ArrayList;
 
 
 public class ScoreBoard extends AppCompatActivity {
+
+    ArrayList<String> names = new ArrayList<>();
+    ArrayList<String> scores = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_board);
-        Toolbar toolbar= (Toolbar) findViewById(R.id.ScoreToolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.ScoreToolbar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.primary1));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -25,12 +33,21 @@ public class ScoreBoard extends AppCompatActivity {
                 .duration(1500)
                 .playOn(findViewById(R.id.coreLayoutScore));
 
+
+        MaterialDialog dialogInitial = new MaterialDialog.Builder(this)
+                .content("Please wait...")
+                .progress(true, 0)
+                .build();
+        dialogInitial.show();
+
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+    private void callFillRecyclerView() {
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.scoreBoardRecyclerView);
+        mRecyclerView.setAdapter(new ScoreBoardAdapter(this, names, scores));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
     }
 
     @Override

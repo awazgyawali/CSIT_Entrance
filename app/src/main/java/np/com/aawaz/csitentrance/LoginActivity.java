@@ -12,6 +12,8 @@ import android.widget.ImageView;
 
 import com.melnykov.fab.FloatingActionButton;
 
+import java.util.UUID;
+
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
     EditText name;
@@ -59,11 +61,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 SharedPreferences.Editor editor=pref.edit();
                 editor.putString("Name",name.getText().toString());
                 editor.putString("Surname", sur.getText().toString());
                 editor.putString("E-mail", email.getText().toString());
+                editor.putString("uniqueID", UUID.randomUUID().toString());
                 editor.putInt("Avatar", avatar);
                 editor.commit();
                 finish();

@@ -3,14 +3,12 @@ package np.com.aawaz.csitentrance;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.webkit.WebView;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -39,6 +37,17 @@ public class SlideUpPanelAdapter extends RecyclerView.Adapter<SlideUpPanelAdapte
         setDataToArrayList();
     }
 
+    public static String AssetJSONFile(String filename, Context c) throws IOException {
+        AssetManager manager = c.getAssets();
+
+        InputStream file = manager.open(filename);
+        byte[] formArray = new byte[file.available()];
+        file.read(formArray);
+        file.close();
+
+        return new String(formArray);
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=inflater.inflate(R.layout.answer_item_holder, parent, false);
@@ -52,8 +61,9 @@ public class SlideUpPanelAdapter extends RecyclerView.Adapter<SlideUpPanelAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.que.setText(Html.fromHtml(questions.get(position)));
-        holder.ans.setText(Html.fromHtml(ansFinder(position)));
+        String htm = questions.get(position) + "<br>" + ansFinder(position);
+        holder.que.loadDataWithBaseURL("", htm, "text/html", "UTF-8", "");
+        ;
     }
 
     @Override
@@ -76,10 +86,7 @@ public class SlideUpPanelAdapter extends RecyclerView.Adapter<SlideUpPanelAdapte
                 answer.add(jo_inside.getString("ans"));
             }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
         }
     }
 
@@ -93,29 +100,16 @@ public class SlideUpPanelAdapter extends RecyclerView.Adapter<SlideUpPanelAdapte
         } else if(answer.get(position).equals("d")) {
             return d.get(position);
         } else {
-            return "SOmthing went wrong";
+            return "Somthing went wrong";
         }
     }
 
-    public static String AssetJSONFile(String filename, Context c) throws IOException {
-        AssetManager manager = c.getAssets();
-
-        InputStream file = manager.open(filename);
-        byte[] formArray = new byte[file.available()];
-        file.read(formArray);
-        file.close();
-
-        return new String(formArray);
-    }
-
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView que;
-        TextView ans;
+        WebView que;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            que= (TextView) itemView.findViewById(R.id.ques);
-            ans= (TextView) itemView.findViewById(R.id.answ);
+            que = (WebView) itemView.findViewById(R.id.answerHolder);
 
         }
 

@@ -23,7 +23,6 @@
 
     <string name="main_ad_id">ca-app-pub-3751722582271673/4077970348</string>
     <string name="colleges_ad_id">ca-app-pub-3751722582271673/9984903141</string>
-    <string name="each_news_ad_id">ca-app-pub-3751722582271673/4863909140</string>
     <string name="news_ad_id">ca-app-pub-3751722582271673/2461636340</string>
     <string name="question_ad_id">ca-app-pub-3751722582271673/8508169947</string>
     <string name="quiz_ad_id">ca-app-pub-3751722582271673/5554703545</string>
@@ -32,5 +31,7 @@
     <string name="title_activity_entrance_news_holder">Entrance News</string>
     <string name="quertyPostUrl">http://www.aawaz.com.np/jsonFeed/addQuery.php</string>
     <string name="queryFetchUrl">http://www.aawaz.com.np/jsonFeed/fetchAll.php?fbId=</string>
+    <string name="score_board_ad">ca-app-pub-3751722582271673/7368220346</string>
+    <string name="postScoreurl">http://www.aawaz.com.np/jsonFeed/uploadScore.php</string>
 
 </resources>
