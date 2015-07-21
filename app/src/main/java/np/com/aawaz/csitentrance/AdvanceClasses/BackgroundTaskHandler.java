@@ -28,7 +28,6 @@ import me.tatarka.support.job.JobParameters;
 import me.tatarka.support.job.JobService;
 import np.com.aawaz.csitentrance.Activities.CSITQuery;
 import np.com.aawaz.csitentrance.Activities.EntranceNews;
-import np.com.aawaz.csitentrance.Databases.NewsDataBase;
 import np.com.aawaz.csitentrance.R;
 
 public class BackgroundTaskHandler extends JobService {
@@ -52,7 +51,7 @@ public class BackgroundTaskHandler extends JobService {
 
         this.jobParameters = jobParameters;
 
-        requestQueue = VolleySingleton.getInstance().getRequestQueue();
+        requestQueue = Singleton.getInstance().getRequestQueue();
 
         updateNews();
 
@@ -180,8 +179,7 @@ public class BackgroundTaskHandler extends JobService {
     }
 
     private void storeToDb() {
-        NewsDataBase dataBase = new NewsDataBase(this);
-        SQLiteDatabase database = dataBase.getWritableDatabase();
+        SQLiteDatabase database = Singleton.getInstance().getDatabase();
         database.delete("news", null, null);
         ContentValues values = new ContentValues();
         for (int i = 0; i < topic.size(); i++) {
@@ -197,16 +195,14 @@ public class BackgroundTaskHandler extends JobService {
     }
 
     public int noOfRows() {
-        NewsDataBase dataBase = new NewsDataBase(this);
-        SQLiteDatabase database = dataBase.getWritableDatabase();
+        SQLiteDatabase database = Singleton.getInstance().getDatabase();
         Cursor cursor = database.query("news", new String[]{"title"}, null, null, null, null, null);
         int i = 0;
         while (cursor.moveToNext()) {
             i++;
         }
-        database.close();
         cursor.close();
-        dataBase.close();
+        database.close();
         return i;
     }
 

@@ -30,8 +30,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.Adapters.NewsAdapter;
-import np.com.aawaz.csitentrance.AdvanceClasses.VolleySingleton;
-import np.com.aawaz.csitentrance.Databases.NewsDataBase;
+import np.com.aawaz.csitentrance.AdvanceClasses.Singleton;
 import np.com.aawaz.csitentrance.R;
 
 
@@ -83,8 +82,7 @@ public class EntranceNews extends AppCompatActivity {
     }
 
     public void setDataToArrayListFromDb() {
-        NewsDataBase dataBase = new NewsDataBase(this);
-        SQLiteDatabase database = dataBase.getWritableDatabase();
+        SQLiteDatabase database = Singleton.getInstance().getDatabase();
         Cursor cursor = database.query("news", new String[]{"title,subTopic,content,imageURL,author"}, null, null, null, null, null);
         int i = 0;
         while (cursor.moveToNext()) {
@@ -115,7 +113,7 @@ public class EntranceNews extends AppCompatActivity {
         if (!finish) {
             dialog.dismiss();
         }
-        RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
+        RequestQueue requestQueue = Singleton.getInstance().getRequestQueue();
         String url = getString(R.string.url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
 
@@ -176,8 +174,7 @@ public class EntranceNews extends AppCompatActivity {
     }
 
     private void storeToDb() {
-        NewsDataBase dataBase = new NewsDataBase(this);
-        SQLiteDatabase database = dataBase.getWritableDatabase();
+        SQLiteDatabase database = Singleton.getInstance().getDatabase();
         database.delete("news", null, null);
         ContentValues values = new ContentValues();
         for (int i = 0; i < topic.size(); i++) {

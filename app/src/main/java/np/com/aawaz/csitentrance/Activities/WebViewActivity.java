@@ -16,7 +16,7 @@ import com.google.android.gms.ads.AdView;
 
 import org.json.JSONObject;
 
-import np.com.aawaz.csitentrance.AdvanceClasses.VolleySingleton;
+import np.com.aawaz.csitentrance.AdvanceClasses.Singleton;
 import np.com.aawaz.csitentrance.R;
 
 
@@ -33,7 +33,7 @@ public class WebViewActivity extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.webView);
 
-        RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
+        RequestQueue requestQueue = Singleton.getInstance().getRequestQueue();
         String url = getResources().getString(R.string.url);
         final MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .content("Please wait...")

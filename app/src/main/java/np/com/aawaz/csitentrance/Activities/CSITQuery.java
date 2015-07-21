@@ -44,7 +44,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import np.com.aawaz.csitentrance.Adapters.QueryAdapter;
-import np.com.aawaz.csitentrance.AdvanceClasses.VolleySingleton;
+import np.com.aawaz.csitentrance.AdvanceClasses.Singleton;
 import np.com.aawaz.csitentrance.R;
 
 
@@ -75,7 +75,7 @@ public class CSITQuery extends AppCompatActivity {
 
         pref = getSharedPreferences("details", MODE_PRIVATE);
         id = pref.getString("fbId", "0");
-        queue = VolleySingleton.getInstance().getRequestQueue();
+        queue = Singleton.getInstance().getRequestQueue();
 
         context = this;
 

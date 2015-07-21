@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.Adapters.ScoreBoardAdapter;
-import np.com.aawaz.csitentrance.AdvanceClasses.VolleySingleton;
+import np.com.aawaz.csitentrance.AdvanceClasses.Singleton;
 import np.com.aawaz.csitentrance.R;
 
 
@@ -83,7 +83,7 @@ public class ScoreBoard extends AppCompatActivity {
     }
 
     private void fetchFromInternet() {
-        RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
+        RequestQueue requestQueue = Singleton.getInstance().getRequestQueue();
         String url = getString(R.string.fetchScoreurl);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
 
