@@ -29,7 +29,7 @@ public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {
     LayoutInflater inflater;
     ArrayList<String> colleges;
 
-    colzAdapter(Context context, ArrayList<String> colleges, ArrayList<String> address, ArrayList<String> desc, ArrayList<String> website, ArrayList<String> phNo) {
+    public colzAdapter(Context context, ArrayList<String> colleges, ArrayList<String> address, ArrayList<String> desc, ArrayList<String> website, ArrayList<String> phNo) {
         this.colleges = colleges;
         this.address = address;
         this.desc = desc;

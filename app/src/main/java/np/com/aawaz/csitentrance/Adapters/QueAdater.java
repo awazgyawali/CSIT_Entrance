@@ -24,7 +24,7 @@ public class QueAdater extends RecyclerView.Adapter<QueAdater.ViewHolder> {
     Context context;
     int lastPosi = 10;
 
-    QueAdater(Context context, int primaryColor[], int darkColor[], int icon[]) {
+    public QueAdater(Context context, int primaryColor[], int darkColor[], int icon[]) {
         inflater = LayoutInflater.from(context);
         this.darkColor = darkColor;
         this.primaryColor = primaryColor;

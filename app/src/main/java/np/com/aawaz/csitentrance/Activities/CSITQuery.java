@@ -74,7 +74,6 @@ public class CSITQuery extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         pref = getSharedPreferences("details", MODE_PRIVATE);
-        id = pref.getString("fbId", "0");
         queue = Singleton.getInstance().getRequestQueue();
 
         context = this;
@@ -118,6 +117,7 @@ public class CSITQuery extends AppCompatActivity {
 
     private void fetchFromInternet(final MaterialDialog initial, final boolean finish) {
         String url = getString(R.string.queryFetchUrl);
+        id = pref.getString("fbId", "0");
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + id, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -198,7 +198,13 @@ public class CSITQuery extends AppCompatActivity {
                             }
                         };
                         mProfileTracker.startTracking();
-                        fetchFromInternet(new MaterialDialog.Builder(context).build(), false);
+                        final MaterialDialog dialog = new MaterialDialog.Builder(getApplicationContext())
+                                .content("Please wait...")
+                                .progress(true, 0)
+                                .cancelable(false)
+                                .build();
+                        dialog.show();
+                        fetchFromInternet(dialog, false);
 
                     }
 

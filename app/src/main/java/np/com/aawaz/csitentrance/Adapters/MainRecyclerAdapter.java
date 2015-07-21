@@ -29,7 +29,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     Context context;
     int lastPosi = 10;
 
-    MainRecyclerAdapter(Context context, int primaryColor[], int darkColor[], int icon[]) {
+    public MainRecyclerAdapter(Context context, int primaryColor[], int darkColor[], int icon[]) {
         inflater = LayoutInflater.from(context);
         this.darkColor = darkColor;
         this.primaryColor = primaryColor;

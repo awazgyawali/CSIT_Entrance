@@ -22,7 +22,7 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
     int[] avatar;
 
 
-    QueryAdapter(Context context, ArrayList<String> messages, ArrayList<Integer> flag) {
+    public QueryAdapter(Context context, ArrayList<String> messages, ArrayList<Integer> flag) {
         this.context = context;
         this.flag = flag;
         this.messages = messages;

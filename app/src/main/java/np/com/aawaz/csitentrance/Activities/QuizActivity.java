@@ -223,7 +223,7 @@ public class QuizActivity extends AppCompatActivity {
         slideUpPanelAdapter = new SlideUpPanelAdapter(this, qNo, code);
         ansRecy.setAdapter(slideUpPanelAdapter);
         ansRecy.setLayoutManager(new LinearLayoutManager(this));
-        ansRecy.scrollToPosition(slideUpPanelAdapter.size - 1);
+        ansRecy.scrollToPosition(slideUpPanelAdapter.getItemCount() - 1);
     }
 
     private void fetchFromSp() {
@@ -351,7 +351,7 @@ public class QuizActivity extends AppCompatActivity {
                         .playOn(findViewById(R.id.quizMainLayout));
                 nextQueAndReset();
                 slideUpPanelAdapter.increaseSize();
-                ansRecy.scrollToPosition(slideUpPanelAdapter.size - 1);
+                ansRecy.scrollToPosition(slideUpPanelAdapter.getItemCount() - 1);
 
             }
 

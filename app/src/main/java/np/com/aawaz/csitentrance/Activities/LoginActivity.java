@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.melnykov.fab.FloatingActionButton;
@@ -51,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         pref = getSharedPreferences("info", MODE_PRIVATE);
         if (!pref.getString("Name", "").equals("")) {
-            RelativeLayout ly = (RelativeLayout) findViewById(R.id.firstLayout);
+            LinearLayout ly = (LinearLayout) findViewById(R.id.firstLayout);
             ly.setVisibility(View.GONE);
             Thread background = new Thread() {
                 public void run() {
