@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance;
+package np.com.aawaz.csitentrance.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+
+import np.com.aawaz.csitentrance.R;
 
 public class QueAdater extends RecyclerView.Adapter<QueAdater.ViewHolder> {
     String[] titles = {"2069 Question", "2070 Question", "2071 Question", "Model Question"};

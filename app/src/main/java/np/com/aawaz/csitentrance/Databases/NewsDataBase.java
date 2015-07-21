@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance;
+package np.com.aawaz.csitentrance.Databases;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

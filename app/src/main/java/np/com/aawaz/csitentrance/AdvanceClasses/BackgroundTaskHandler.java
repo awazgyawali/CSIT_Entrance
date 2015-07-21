@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance;
+package np.com.aawaz.csitentrance.AdvanceClasses;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -26,6 +26,10 @@ import java.util.ArrayList;
 
 import me.tatarka.support.job.JobParameters;
 import me.tatarka.support.job.JobService;
+import np.com.aawaz.csitentrance.Activities.CSITQuery;
+import np.com.aawaz.csitentrance.Activities.EntranceNews;
+import np.com.aawaz.csitentrance.Databases.NewsDataBase;
+import np.com.aawaz.csitentrance.R;
 
 public class BackgroundTaskHandler extends JobService {
     ArrayList<String> topic = new ArrayList<>(),

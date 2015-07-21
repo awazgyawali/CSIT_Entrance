@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance;
+package np.com.aawaz.csitentrance.Activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -42,6 +42,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import np.com.aawaz.csitentrance.Adapters.QueryAdapter;
+import np.com.aawaz.csitentrance.AdvanceClasses.VolleySingleton;
+import np.com.aawaz.csitentrance.R;
 
 
 public class CSITQuery extends AppCompatActivity {

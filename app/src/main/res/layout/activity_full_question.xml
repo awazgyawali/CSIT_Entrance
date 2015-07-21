@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="np.com.aawaz.csitentrance.FullQuestion">
+    tools:context="np.com.aawaz.csitentrance.Activities.FullQuestion">
     <android.support.v7.widget.Toolbar
         android:id="@+id/fullQueToolbar"
         android:layout_width="match_parent"

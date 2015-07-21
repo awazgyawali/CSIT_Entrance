@@ -22,13 +22,13 @@
         android:value="@integer/google_play_services_version" />
 
     <application
-        android:name=".MyApplication"
+        android:name=".AdvanceClasses.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,39 +37,39 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".QuizActivity"
+            android:name=".Activities.QuizActivity"
             android:label="@string/title_activity_quiz" >
         </activity>
         <activity
-            android:name=".ScoreBoard"
+            android:name=".Activities.ScoreBoard"
             android:label="@string/title_activity_score_board" >
         </activity>
         <activity
-            android:name=".About"
+            android:name=".Activities.About"
             android:label="@string/title_activity_about" >
         </activity>
         <activity
-            android:name=".More"
+            android:name=".Activities.More"
             android:label="@string/title_activity_more" >
         </activity>
         <activity
-            android:name=".Colleges"
+            android:name=".Activities.Colleges"
             android:label="@string/title_activity_colleges" >
         </activity>
         <activity
-            android:name=".EntranceNews"
+            android:name=".Activities.EntranceNews"
             android:label="@string/title_activity_entrance_news" >
         </activity>
         <activity
-            android:name=".FullQuestion"
+            android:name=".Activities.FullQuestion"
             android:label="@string/title_activity_full_question" >
         </activity>
         <activity
-            android:name=".WebViewActivity"
+            android:name=".Activities.WebViewActivity"
             android:label="@string/title_activity_full_question" >
         </activity>
         <activity
@@ -77,7 +77,7 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
         <activity
-            android:name=".CSITQuery"
+            android:name=".Activities.CSITQuery"
             android:label="@string/title_activity_csitquery" >
         </activity>
         <activity
@@ -91,7 +91,7 @@
             android:value="@string/facebook_app_id" />
 
         <service
-            android:name=".BackgroundTaskHandler"
+            android:name=".AdvanceClasses.BackgroundTaskHandler"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
@@ -109,6 +109,12 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".AdvanceClasses.WifiReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 

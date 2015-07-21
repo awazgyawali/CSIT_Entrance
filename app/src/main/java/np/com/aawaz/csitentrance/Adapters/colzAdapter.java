@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance;
+package np.com.aawaz.csitentrance.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,8 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
 import java.util.ArrayList;
+
+import np.com.aawaz.csitentrance.R;
 
 
 public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {

@@ -1,13 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:sothree="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coreLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="np.com.aawaz.csitentrance.QuizActivity">
+    tools:context="np.com.aawaz.csitentrance.Activities.QuizActivity">
 
     <TextView
         android:id="@+id/feedback"
@@ -104,10 +104,10 @@
                     android:orientation="vertical">
 
                     <com.gc.materialdesign.views.LayoutRipple
-                        android:layout_width="wrap_content"
                         android:id="@+id/rpl1"
-                        android:padding="10dp"
-                        android:layout_height="wrap_content">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
 
                         <WebView
                             android:id="@+id/option1"
@@ -117,10 +117,10 @@
                     </com.gc.materialdesign.views.LayoutRipple>
 
                     <com.gc.materialdesign.views.LayoutRipple
-                        android:layout_width="wrap_content"
                         android:id="@+id/rpl2"
-                        android:padding="10dp"
-                        android:layout_height="wrap_content">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
 
                         <WebView
                             android:id="@+id/option2"
@@ -130,10 +130,10 @@
                     </com.gc.materialdesign.views.LayoutRipple>
 
                     <com.gc.materialdesign.views.LayoutRipple
-                        android:layout_width="wrap_content"
                         android:id="@+id/rpl3"
-                        android:padding="10dp"
-                        android:layout_height="wrap_content">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
 
                         <WebView
                             android:id="@+id/option3"
@@ -143,10 +143,10 @@
                     </com.gc.materialdesign.views.LayoutRipple>
 
                     <com.gc.materialdesign.views.LayoutRipple
-                        android:layout_width="wrap_content"
                         android:id="@+id/rpl4"
-                        android:padding="10dp"
-                        android:layout_height="wrap_content">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
                         <WebView
                             android:id="@+id/option4"
                             android:layout_width="match_parent"
@@ -237,13 +237,13 @@
                     android:layout_height="match_parent"
                     android:layout_above="@+id/QuizAd"/>
                 <com.google.android.gms.ads.AdView
+                    android:id="@+id/QuizAd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/QuizAd"
-                    ads:adSize="BANNER"
-                    ads:adUnitId="@string/quiz_ad_id"
                     android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="@string/quiz_ad_id" />
 
             </RelativeLayout>
         </RelativeLayout>

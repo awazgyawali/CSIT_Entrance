@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance;
+package np.com.aawaz.csitentrance.Activities;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -28,6 +28,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import np.com.aawaz.csitentrance.Adapters.NewsAdapter;
+import np.com.aawaz.csitentrance.AdvanceClasses.VolleySingleton;
+import np.com.aawaz.csitentrance.Databases.NewsDataBase;
+import np.com.aawaz.csitentrance.R;
 
 
 public class EntranceNews extends AppCompatActivity {

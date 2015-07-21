@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance;
+package np.com.aawaz.csitentrance.Activities;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -19,6 +19,9 @@ import com.google.android.gms.analytics.Tracker;
 
 import me.tatarka.support.job.JobInfo;
 import me.tatarka.support.job.JobScheduler;
+import np.com.aawaz.csitentrance.Adapters.MainRecyclerAdapter;
+import np.com.aawaz.csitentrance.AdvanceClasses.BackgroundTaskHandler;
+import np.com.aawaz.csitentrance.R;
 
 
 public class MainActivity extends Activity implements MainRecyclerAdapter.ClickListner {

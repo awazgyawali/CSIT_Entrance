@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance;
+package np.com.aawaz.csitentrance.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,8 @@ import android.widget.RelativeLayout;
 import com.melnykov.fab.FloatingActionButton;
 
 import java.util.UUID;
+
+import np.com.aawaz.csitentrance.R;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {

@@ -1,9 +1,11 @@
-package np.com.aawaz.csitentrance;
+package np.com.aawaz.csitentrance.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import np.com.aawaz.csitentrance.R;
 
 
 public class More extends AppCompatActivity {

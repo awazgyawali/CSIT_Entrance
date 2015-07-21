@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance;
+package np.com.aawaz.csitentrance.Adapters;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -14,6 +14,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+
+import np.com.aawaz.csitentrance.R;
 
 
 public class SlideUpPanelAdapter extends RecyclerView.Adapter<SlideUpPanelAdapter.ViewHolder> {

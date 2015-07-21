@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance;
+package np.com.aawaz.csitentrance.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
+import np.com.aawaz.csitentrance.Adapters.QueAdater;
+import np.com.aawaz.csitentrance.R;
 
 
 public class FullQuestion extends AppCompatActivity implements QueAdater.ClickListner {

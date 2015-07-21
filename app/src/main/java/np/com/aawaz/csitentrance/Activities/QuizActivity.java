@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance;
+package np.com.aawaz.csitentrance.Activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -32,6 +32,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+
+import np.com.aawaz.csitentrance.Adapters.SlideUpPanelAdapter;
+import np.com.aawaz.csitentrance.R;
 
 
 public class QuizActivity extends AppCompatActivity {
