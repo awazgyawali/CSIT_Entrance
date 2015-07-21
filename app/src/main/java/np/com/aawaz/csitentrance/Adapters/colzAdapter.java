@@ -3,12 +3,12 @@ package np.com.aawaz.csitentrance.Adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -120,7 +120,7 @@ public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {
         TextView website;
         TextView address;
         TextView desc;
-        RelativeLayout coreColz;
+        CardView coreColz;
         ImageView call;
 
         public ViewHolder(View itemView) {
@@ -130,7 +130,7 @@ public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {
             address = (TextView) itemView.findViewById(R.id.webSite);
             desc = (TextView) itemView.findViewById(R.id.desc);
             call = (ImageView) itemView.findViewById(R.id.call);
-            coreColz = (RelativeLayout) itemView.findViewById(R.id.coreColz);
+            coreColz = (CardView) itemView.findViewById(R.id.coreColz);
         }
     }
 

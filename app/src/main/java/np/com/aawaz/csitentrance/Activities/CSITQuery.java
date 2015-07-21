@@ -2,7 +2,6 @@ package np.com.aawaz.csitentrance.Activities;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -13,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -77,7 +77,7 @@ public class CSITQuery extends AppCompatActivity {
         queue = Singleton.getInstance().getRequestQueue();
 
         context = this;
-
+        id = pref.getString("fbId", "0");
         send = (Button) findViewById(R.id.sendBtn);
         text = (EditText) findViewById(R.id.text);
         recyclerView = (RecyclerView) findViewById(R.id.recyQuery);
@@ -172,12 +172,7 @@ public class CSITQuery extends AppCompatActivity {
 
         final MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .customView(button, false)
-                .cancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialogInterface) {
-                        finish();
-                    }
-                })
+                .cancelable(false)
                 .show();
 
         //call the login callback manager
@@ -205,7 +200,6 @@ public class CSITQuery extends AppCompatActivity {
                                 .build();
                         dialog.show();
                         fetchFromInternet(dialog, false);
-
                     }
 
                     @Override
@@ -215,6 +209,7 @@ public class CSITQuery extends AppCompatActivity {
 
                     @Override
                     public void onError(FacebookException e) {
+                        Log.d("debug", e.toString());
                         finish();
                     }
 

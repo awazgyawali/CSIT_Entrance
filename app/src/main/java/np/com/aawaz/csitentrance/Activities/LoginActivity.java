@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Thread background = new Thread() {
                 public void run() {
                     try {
-                        sleep(2 * 1000);
+                        sleep(1500);
 
                         Intent intent = new Intent(context, MainActivity.class);
                         startActivity(intent);
