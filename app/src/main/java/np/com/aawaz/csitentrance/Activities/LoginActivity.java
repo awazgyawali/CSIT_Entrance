@@ -1,15 +1,9 @@
 package np.com.aawaz.csitentrance.Activities;
 
-import android.animation.ArgbEvaluator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,8 +16,6 @@ import com.melnykov.fab.FloatingActionButton;
 
 import java.util.UUID;
 
-import np.com.aawaz.csitentrance.AdvanceClasses.CirclePageIndicator;
-import np.com.aawaz.csitentrance.Fragments.PageFragment;
 import np.com.aawaz.csitentrance.R;
 
 
@@ -52,24 +44,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     RelativeLayout splash;
     RelativeLayout first;
-    RelativeLayout viewPagerLayout;
-
-    ViewPager introViewPager;
-    CirclePageIndicator indicator;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        splash = (RelativeLayout) findViewById(R.id.reqularLayout);
         first = (RelativeLayout) findViewById(R.id.firstLayout);
-        viewPagerLayout = (RelativeLayout) findViewById(R.id.viewPagerLayout);
-
-        introViewPager = (ViewPager) findViewById(R.id.introViewPager);
-
+        splash = (RelativeLayout) findViewById(R.id.reqularLayout);
         context = this;
-
         pref = getSharedPreferences("info", MODE_PRIVATE);
         if (!pref.getString("Name", "").equals("")) {
             splash.setVisibility(View.VISIBLE);
@@ -81,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         startActivity(intent);
                         finish();
                     } catch (Exception e) {
-
+                        finish();
                     }
                 }
             };
@@ -113,51 +96,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 editor.putString("uniqueID", UUID.randomUUID().toString());
                 editor.putInt("Avatar", avatar);
                 editor.apply();
-                showViewPager();
+                startActivity(new Intent(getApplicationContext(), Introduction.class));
             }
         });
-    }
-
-    private void showViewPager() {
-        first.setVisibility(View.GONE);
-        viewPagerLayout.setVisibility(View.VISIBLE);
-        final FragmentPagerAdapter viewPager = new CustomPagerAdapter(getSupportFragmentManager());
-        introViewPager.setAdapter(viewPager);
-
-        final int colors[] = {Color.parseColor("#ff8a80"), Color.parseColor("#83ffff"), Color.parseColor("#81c784"), Color.parseColor("#ffff8d"),
-                Color.parseColor("#b388fe"), Color.parseColor("#81c784"), Color.parseColor("#ffff8d"), 0};
-        indicator = (CirclePageIndicator) findViewById(R.id.pagerIndicator);
-        indicator.setViewPager(introViewPager);
-        introViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if (android.os.Build.VERSION.SDK_INT >= 11) {
-                    ArgbEvaluator argbEvaluator = new ArgbEvaluator();
-                    introViewPager.setBackgroundColor((Integer) argbEvaluator.evaluate(positionOffset, colors[position], colors[position + 1]));
-                } else {
-                    introViewPager.setBackgroundColor(colors[position]);
-                }
-
-            }
-
-
-            @Override
-            public void onPageSelected(int position) {
-
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-    }
-
-    public void startMainActivity(View v) {
-        Intent main = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(main);
-        finish();
     }
 
     public void callAllAvatarImage() {
@@ -279,26 +220,4 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         a12.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
     }
 
-    private class CustomPagerAdapter extends FragmentPagerAdapter {
-
-
-        public CustomPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-
-            PageFragment frag = new PageFragment();
-            Bundle bundle = new Bundle();
-            bundle.putInt("position", position);
-            frag.setArguments(bundle);
-            return frag;
-        }
-
-        @Override
-        public int getCount() {
-            return 7;
-        }
-    }
 }
