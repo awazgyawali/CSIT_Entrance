@@ -22,7 +22,8 @@ import com.melnykov.fab.FloatingActionButton;
 
 import java.util.UUID;
 
-import np.com.aawaz.csitentrance.PageFragment;
+import np.com.aawaz.csitentrance.AdvanceClasses.CirclePageIndicator;
+import np.com.aawaz.csitentrance.Fragments.PageFragment;
 import np.com.aawaz.csitentrance.R;
 
 
@@ -54,6 +55,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     RelativeLayout viewPagerLayout;
 
     ViewPager introViewPager;
+    CirclePageIndicator indicator;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +72,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         pref = getSharedPreferences("info", MODE_PRIVATE);
         if (!pref.getString("Name", "").equals("")) {
-            /*splash.setVisibility(View.VISIBLE);
+            splash.setVisibility(View.VISIBLE);
             Thread background = new Thread() {
                 public void run() {
                     try {
                         sleep(1500);
-
                         Intent intent = new Intent(context, MainActivity.class);
                         startActivity(intent);
                         finish();
@@ -84,8 +86,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             };
             background.start();
-            */
-            showViewPager();
         } else {
             first.setVisibility(View.VISIBLE);
             firstTime();
@@ -112,8 +112,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 editor.putString("E-mail", email.getText().toString());
                 editor.putString("uniqueID", UUID.randomUUID().toString());
                 editor.putInt("Avatar", avatar);
-                editor.commit();
-                finish();
+                editor.apply();
                 showViewPager();
             }
         });
@@ -124,8 +123,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         viewPagerLayout.setVisibility(View.VISIBLE);
         final FragmentPagerAdapter viewPager = new CustomPagerAdapter(getSupportFragmentManager());
         introViewPager.setAdapter(viewPager);
+
         final int colors[] = {Color.parseColor("#ff8a80"), Color.parseColor("#83ffff"), Color.parseColor("#81c784"), Color.parseColor("#ffff8d"),
-                Color.parseColor("#b388fe"), 123545};
+                Color.parseColor("#b388fe"), Color.parseColor("#81c784"), Color.parseColor("#ffff8d"), 0};
+        indicator = (CirclePageIndicator) findViewById(R.id.pagerIndicator);
+        indicator.setViewPager(introViewPager);
         introViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -142,6 +144,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onPageSelected(int position) {
 
+
             }
 
             @Override
@@ -151,9 +154,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
-    private void startMainActivity() {
+    public void startMainActivity(View v) {
         Intent main = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(main);
+        finish();
     }
 
     public void callAllAvatarImage() {
@@ -294,7 +298,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         @Override
         public int getCount() {
-            return 5;
+            return 7;
         }
     }
 }

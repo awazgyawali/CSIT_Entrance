@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="CSIT Entrance"
+        android:textSize="30dp"
+        android:textColor="@color/primary4"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/btn_preview"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content" />
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/btn_preview"
+        android:layout_centerInParent="true"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:onClick="startMainActivity"
+        fancy:fb_defaultColor="#009866"
+        fancy:fb_textColor="#fff"
+        fancy:fb_focusColor="#9bd823"
+        fancy:fb_borderColor="#4d009866"
+        fancy:fb_borderWidth="5dp"
+        fancy:fb_iconResource="@drawable/play"
+        fancy:fb_radius="50dp" />
+</RelativeLayout>
