@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.GoogleAnalytics;
@@ -41,8 +40,6 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        infoAboutDelay();
-
         mJobScheduler = JobScheduler.getInstance(this);
 
         constructJob();
@@ -129,18 +126,6 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
         } else if (position == 10) {
             Intent intent = new Intent(this, About.class);
             startActivity(intent);
-        }
-    }
-
-    public void infoAboutDelay() {
-        Boolean first = getSharedPreferences("first", MODE_PRIVATE).getBoolean("IsFisrt", true);
-        if (first) {
-            MaterialDialog.Builder dialog = new MaterialDialog.Builder(this);
-            dialog.title("Information!")
-                    .content(R.string.info)
-                    .positiveText("Got it")
-                    .show();
-            getSharedPreferences("first", MODE_PRIVATE).edit().putBoolean("IsFisrt", false).commit();
         }
     }
 
