@@ -83,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_below="@+id/eachNewsTitle"
-                    android:background="@color/primary3" />
+                    android:background="@color/toolbar_color" />
 
 
                 <LinearLayout

@@ -25,11 +25,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#41837E" />
 
-        <com.wrapp.floatlabelededittext.FloatLabeledEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/NameText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,13 +38,8 @@
                 android:ems="10"
                 android:hint="First Name"
                 android:inputType="textPersonName" />
-        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
-        <com.wrapp.floatlabelededittext.FloatLabeledEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/LastText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,13 +53,8 @@
                 android:hint="Last Initial"
                 android:inputType="textPersonName"
                 android:maxLength="1" />
-        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
-        <com.wrapp.floatlabelededittext.FloatLabeledEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +67,6 @@
                 android:ems="10"
                 android:hint="E-mail"
                 android:inputType="textEmailAddress" />
-        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"

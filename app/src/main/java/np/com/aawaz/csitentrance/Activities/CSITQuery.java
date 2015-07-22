@@ -55,7 +55,7 @@ public class CSITQuery extends AppCompatActivity {
     RecyclerView recyclerView;
     QueryAdapter adapter;
     RequestQueue queue;
-
+    MaterialDialog dialog;
     ArrayList<Integer> flag = new ArrayList<>();
     ArrayList<String> messages = new ArrayList<>();
     CallbackManager callbackManager;
@@ -63,6 +63,7 @@ public class CSITQuery extends AppCompatActivity {
     SharedPreferences pref;
     String id;
     Context context;
+    String tempId;
     private ProfileTracker mProfileTracker;
 
     @Override
@@ -117,7 +118,7 @@ public class CSITQuery extends AppCompatActivity {
 
     private void fetchFromInternet(final MaterialDialog initial, final boolean finish) {
         String url = getString(R.string.queryFetchUrl);
-        id = pref.getString("fbId", "0");
+        id = pref.getString("fbId", tempId);
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + id, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -170,7 +171,7 @@ public class CSITQuery extends AppCompatActivity {
         //set fb permissions
         button.setReadPermissions(Arrays.asList("public_profile,email"));
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(this)
+        dialog = new MaterialDialog.Builder(this)
                 .customView(button, false)
                 .cancelable(false)
                 .show();
@@ -185,20 +186,14 @@ public class CSITQuery extends AppCompatActivity {
                             @Override
                             protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
                                 SharedPreferences.Editor editor = pref.edit();
+                                tempId = profile2.getId();
                                 editor.putString("fbId", profile2.getId() + "");
                                 editor.putString("First", profile2.getName() + "");
                                 editor.apply();
-                                dialog.dismiss();
                                 mProfileTracker.stopTracking();
                             }
                         };
                         mProfileTracker.startTracking();
-                        final MaterialDialog dialog = new MaterialDialog.Builder(getApplicationContext())
-                                .content("Please wait...")
-                                .progress(true, 0)
-                                .cancelable(false)
-                                .build();
-                        dialog.show();
                         fetchFromInternet(dialog, false);
                     }
 
@@ -209,7 +204,8 @@ public class CSITQuery extends AppCompatActivity {
 
                     @Override
                     public void onError(FacebookException e) {
-                        Log.d("debug", e.toString());
+                        dialog.dismiss();
+                        Log.d("debug", e + "");
                         finish();
                     }
 

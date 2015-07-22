@@ -38,5 +38,5 @@ dependencies {
     compile 'com.afollestad:material-dialogs:0.7.6.0'
     compile 'com.github.mrengineer13:snackbar:1.2.0'
     compile 'com.sothree.slidinguppanel:library:3.1.0'
-    compile 'com.wrapp.floatlabelededittext:library:0.0.6'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
 }
