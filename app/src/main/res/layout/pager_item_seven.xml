@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="CSIT Entrance"
-        android:textSize="30dp"
-        android:textColor="@color/primary4"
-        android:layout_centerHorizontal="true"
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_above="@+id/btn_preview"
-        android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content" />
-
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:src="@mipmap/ic_launcher" />
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/btn_preview"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
         android:onClick="startMainActivity"
-        fancy:fb_defaultColor="#009866"
-        fancy:fb_textColor="#fff"
-        fancy:fb_focusColor="#9bd823"
+        android:padding="10dp"
         fancy:fb_borderColor="#4d009866"
         fancy:fb_borderWidth="5dp"
-        fancy:fb_iconResource="@drawable/play"
-        fancy:fb_radius="50dp" />
+        fancy:fb_defaultColor="#3F51B5"
+        fancy:fb_focusColor="#3949AB"
+        fancy:fb_radius="100dp"
+        fancy:fb_text="Start Now"
+        fancy:fb_textColor="#fff"
+        fancy:fb_textGravity="left"
+        fancy:fb_textPosition="right"
+        fancy:fb_textSize="11dp" />
 </RelativeLayout>

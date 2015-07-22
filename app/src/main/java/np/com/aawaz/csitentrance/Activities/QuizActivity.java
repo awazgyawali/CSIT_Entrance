@@ -26,7 +26,6 @@ import com.melnykov.fab.FloatingActionButton;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -380,7 +379,16 @@ public class QuizActivity extends AppCompatActivity {
         clickedAns = 0;
         fab.setColorNormal(getResources().getColor(R.color.dark1));
         fab.setImageResource(R.drawable.ic_done_black_18dp);
-        fillTexts(qNo);
+        new Thread() {
+            public void run() {
+                try {
+                    sleep(1000);
+                    fillTexts(qNo);
+                } catch (InterruptedException e) {
+                    fillTexts(qNo);
+                }
+            }
+        }.run();
         haldleProgresss();
     }
 
@@ -406,10 +414,7 @@ public class QuizActivity extends AppCompatActivity {
                 answer.add(jo_inside.getString("ans"));
             }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
         }
     }
 
@@ -438,21 +443,4 @@ public class QuizActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void onBackPressed() {
-        if (slideLayout.getPanelState() == SlidingUpPanelLayout.PanelState.COLLAPSED) {
-            finish();
-        } else {
-            handler = new Handler();
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
-                }
-            });
-        }
-    }
-
-
 }
