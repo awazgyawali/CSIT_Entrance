@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,27 +35,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Query"
-                android:maxLength="255"
+                android:maxLength="254"
                 android:paddingLeft="3dp"
                 app:met_floatingLabel="highlight"
                 app:met_floatingLabelText="Query"
-                app:met_maxCharacters="255" />
+                app:met_maxCharacters="254" />
 
-            <Button
+            <mehdi.sakout.fancybuttons.FancyButton
                 android:id="@+id/sendBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:enabled="false"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
                 android:onClick="sendSms"
-                android:text="Ask" />
+                android:padding="10dp"
+                android:visibility="gone"
+                fancy:fb_borderColor="#4d009866"
+                fancy:fb_borderWidth="5dp"
+                fancy:fb_defaultColor="#009866"
+                fancy:fb_focusColor="#009811"
+                fancy:fb_iconResource="@drawable/ic_send_black_24dp"
+                fancy:fb_radius="50dp"
+                fancy:fb_textPosition="right"
+                fancy:fb_textSize="11dp" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

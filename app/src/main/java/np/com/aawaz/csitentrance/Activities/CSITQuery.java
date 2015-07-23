@@ -12,10 +12,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -43,6 +42,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.Adapters.QueryAdapter;
 import np.com.aawaz.csitentrance.AdvanceClasses.Singleton;
 import np.com.aawaz.csitentrance.R;
@@ -50,7 +50,7 @@ import np.com.aawaz.csitentrance.R;
 
 public class CSITQuery extends AppCompatActivity {
 
-    Button send;
+    FancyButton send;
     EditText text;
     RecyclerView recyclerView;
     QueryAdapter adapter;
@@ -64,6 +64,7 @@ public class CSITQuery extends AppCompatActivity {
     String id;
     Context context;
     String tempId;
+    Menu optionsMenu;
     private ProfileTracker mProfileTracker;
 
     @Override
@@ -79,7 +80,7 @@ public class CSITQuery extends AppCompatActivity {
 
         context = this;
         id = pref.getString("fbId", "0");
-        send = (Button) findViewById(R.id.sendBtn);
+        send = (FancyButton) findViewById(R.id.sendBtn);
         text = (EditText) findViewById(R.id.text);
         recyclerView = (RecyclerView) findViewById(R.id.recyQuery);
         if (id.equals("0")) {
@@ -101,9 +102,9 @@ public class CSITQuery extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.toString().equals("")) {
-                    send.setEnabled(false);
+                    send.setVisibility(View.GONE);
                 } else {
-                    send.setEnabled(true);
+                    send.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -114,7 +115,6 @@ public class CSITQuery extends AppCompatActivity {
             }
         });
     }
-
 
     private void fetchFromInternet(final MaterialDialog initial, final boolean finish) {
         String url = getString(R.string.queryFetchUrl);
@@ -142,27 +142,33 @@ public class CSITQuery extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(context));
                     recyclerView.setAdapter(adapter);
                     recyclerView.scrollToPosition(messages.size() - 1);
-                    initial.dismiss();
+                    if (finish) {
+                        initial.dismiss();
+                    }
                 } catch (JSONException e) {
-                    if (finish)
-                        finish();
                     Toast.makeText(context, "Application error. Please report us.", Toast.LENGTH_SHORT).show();
-
+                    if (finish) {
+                        finish();
+                    }
                 }
+                Toast.makeText(getApplicationContext(), "Fetched", Toast.LENGTH_SHORT).show();
+                setRefreshActionButtonState(false);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (finish)
-                    finish();
+                setRefreshActionButtonState(false);
                 Toast.makeText(context, "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
+                if (finish) {
+                    initial.dismiss();
+                    finish();
+                }
             }
         });
         queue.add(jsonObjectRequest);
     }
 
     private void onStartHandler() {
-        //Initialize Facebook SDK
         FacebookSdk.sdkInitialize(context);
 
         button = new LoginButton(this);
@@ -205,7 +211,6 @@ public class CSITQuery extends AppCompatActivity {
                     @Override
                     public void onError(FacebookException e) {
                         dialog.dismiss();
-                        Log.d("debug", e + "");
                         finish();
                     }
 
@@ -225,8 +230,37 @@ public class CSITQuery extends AppCompatActivity {
 
         if (id == android.R.id.home) {
             finish();
+            return true;
+        } else if (id == R.id.action_refresh) {
+            fetchFromInternet(null, false);
+            setRefreshActionButtonState(true);
+            return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_query, menu);
+        this.optionsMenu = menu;
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public void setRefreshActionButtonState(final boolean refreshing) {
+
+        if (android.os.Build.VERSION.SDK_INT >= 11) {
+            if (optionsMenu != null) {
+                final MenuItem refreshItem = optionsMenu
+                        .findItem(R.id.action_refresh);
+                if (refreshItem != null) {
+                    if (refreshing) {
+                        refreshItem.setActionView(R.layout.actionbar_indeterminate_progress);
+                    } else {
+                        refreshItem.setActionView(null);
+                    }
+                }
+            }
+        }
     }
 
     public void sendSms(View v) {
@@ -269,10 +303,5 @@ public class CSITQuery extends AppCompatActivity {
             }
         });
         queue.add(jsonObjectRequest);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
     }
 }

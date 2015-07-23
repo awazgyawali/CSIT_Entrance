@@ -35,5 +35,6 @@
     <string name="postScoreurl">http://www.aawaz.com.np/jsonFeed/uploadScore.php</string>
     <string name="fetchScoreurl">http://aawaz.com.np/jsonFeed/downloadScore.php</string>
     <string name="title_activity_introduction">Introduction</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
 </resources>

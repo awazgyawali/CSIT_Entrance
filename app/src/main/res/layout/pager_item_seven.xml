@@ -23,7 +23,7 @@
         fancy:fb_defaultColor="#3F51B5"
         fancy:fb_focusColor="#3949AB"
         fancy:fb_radius="100dp"
-        fancy:fb_text="Start Now"
+        fancy:fb_text="Continue..."
         fancy:fb_textColor="#fff"
         fancy:fb_textGravity="left"
         fancy:fb_textPosition="right"

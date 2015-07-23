@@ -123,7 +123,10 @@
 
         <activity
             android:name=".Activities.Introduction"
-            android:label="@string/title_activity_introduction"></activity>
+            android:label="@string/title_activity_introduction" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"></activity>
     </application>
 
 </manifest>

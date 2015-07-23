@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.GoogleAnalytics;
@@ -109,8 +110,12 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
             intent.putExtra("position", position);
             startActivity(intent);
         } else if (position == 5) {
-            Intent intent = new Intent(this, More.class);
-            startActivity(intent);
+            new MaterialDialog.Builder(this)
+                    .title("More...")
+                    .content("We are working hard to add new more question. Please take patience.")
+                    .positiveText("Ok")
+                    .build()
+                    .show();
         } else if (position == 6) {
             Intent intent = new Intent(this, FullQuestion.class);
             startActivity(intent);

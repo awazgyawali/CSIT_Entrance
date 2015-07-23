@@ -97,6 +97,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 editor.putInt("Avatar", avatar);
                 editor.apply();
                 startActivity(new Intent(getApplicationContext(), Introduction.class));
+                finish();
             }
         });
     }
