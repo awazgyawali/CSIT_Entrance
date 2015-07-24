@@ -147,6 +147,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="10dp">
+
                         <WebView
                             android:id="@+id/option4"
                             android:layout_width="match_parent"
@@ -235,7 +236,8 @@
                     android:id="@+id/ansRecycle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_above="@+id/QuizAd"/>
+                    android:layout_above="@+id/QuizAd" />
+
                 <com.google.android.gms.ads.AdView
                     android:id="@+id/QuizAd"
                     android:layout_width="wrap_content"
@@ -247,5 +249,5 @@
 
             </RelativeLayout>
         </RelativeLayout>
-        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 </RelativeLayout>

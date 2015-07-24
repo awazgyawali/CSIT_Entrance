@@ -5,21 +5,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.Activities.FullQuestion">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/fullQueToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primary7" />
+
     <RelativeLayout
         android:id="@+id/fragHolder"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/onlineRecyc"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </RelativeLayout>
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/fullQueAd"
         android:layout_width="match_parent"

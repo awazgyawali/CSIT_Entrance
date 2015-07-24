@@ -36,7 +36,6 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
     JobInfo builder;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

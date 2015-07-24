@@ -4,13 +4,13 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:animateLayoutChanges="true"
-    android:layout_marginTop="5dp"
-    app:cardCornerRadius="5dp"
-    android:layout_marginRight="3dp"
-    android:layout_marginLeft="5dp"
     android:layout_marginBottom="2dp"
-    android:background="#fff">
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="3dp"
+    android:layout_marginTop="5dp"
+    android:animateLayoutChanges="true"
+    android:background="#fff"
+    app:cardCornerRadius="5dp">
 
     <RelativeLayout
         android:layout_width="match_parent"

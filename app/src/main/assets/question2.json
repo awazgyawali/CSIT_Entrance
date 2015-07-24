@@ -79,7 +79,8 @@
       "c": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAASCAIAAACxX5s4AAACjElEQVR4nGP5//8/A+0BCx3sGJzW/LzWFxw86Sa7pCTP79evWYzTeyfmWwszA2X+f7k8pyB37h027p+vf2nnzJiYpM3NSIQ1X4/kRe5PXlWrz4Ek+Oft7V8RGy/XAwX/fzparGvjkap8f62/CMPHA0VeVW/7Lu8Nlfj/cI6bnmexypXp9nxIFuGw5t/Pd68+/EZLHKyyvpkR6mCLGfkMAhwE+3ftvPPdX/jrrvbFH+02uEuAPCYXXGCbH962q8UuRARhDymBxqbgFQjn/P/z8y8DjxgvM8O3m9vP/ZAqlIN4nJFb2VT6x5TtN76F2HCTZQ0S+PVw87R9zG6t8WrsDJ9f3H3LwCPKywyRYuaT4GV4c+fFTwYGHNZ8O1XmELL06V9goH17/uLLduUVHEB/s6nmbtlZoc0OVvLv9eYU77J9t+990cicvSRGgZXh36+vQBOZ2ZihQcTIwgY09OfXX/8YGJiwWsNl1nXqUReI9XlvjOu2gv29Jpxo3mAS9Z13ypfh//e7q7OddIyP7z7ercUNdMHXn3+gMfn/988/DAw83GxMSNrIDDRGTuXAyuxGtbqOI7WrJNVEGQ6+/AwMBFC4/fn07CODiIEEO7J6Eqz5/XjXti82/ppccLsYGf7++vOfU93DiHPFuYffGbTYQFno9qmn7Abu6lzIenFYw+u85IQzmtifl3unLOVx6bcCxez/zxeWLLzO511vzsso7FoZJxg8fcdzt3DJfw/WTDgqFLvRXQR39kQkAWQASwKsYroSh+JNTKVkBFl/fXj1Wchp7uHWEFBm4bPr2dKWm+PvskDw98tv6v07+x35UWzBlQSwARa5mMVnY7BKMfLopc0/lIZL56AsOge/NQD8DvmoT2PaJgAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
       "d": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAASCAIAAACxX5s4AAABoElEQVR4nGP5//8/A+0BCx3sGJzW/LzWFxw86Sa7pCTP79evWYzTeyfmWwsz4xQnbM3XI3mR+5NX1epzIAn+eXv7V8TGy/VAwf+fjhbr2nikKt9f6y+CS5yRoDX/fr579eE3WuJglfXNjFAHW8zIZxDgINi/a+ed7/4iuMS5CFqDFbApeAXCOf///PzLwCPGy4xbHAmQmQR+Pdw8bR+zW2u8GjtR4ijWfDtV5hCy9OlfYKB9e/7iy3blFRzA8GVTzd2ys0Ibou/f680p3mX7bt/7opE5e0mMAitUKy5xbNZwmXWdetQFYn3eG+O6rWB/rwknmjeYRH3nnfJl+P/97upsJx3j47uPd9vwM+IWx2YN8YCRUzmwMrtRra7jSO0Wb36C4iRY8/vxrm1fbPw14QmIkZHh768//3GJI+vFYQ2v85ITzmhif17unbKUx6XfihvI+f/5wpKF1/m86815/zzBLo7TGkQSQAawJMAqpitxKN7EVEpGkPXXh1efhZzmHm4NkWD++wu7OE5rEEkAG2CRi1l8NoZ4cZzW0A4ML2sAr1HxhjbtY6cAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
       "ans": "c"
-    },{
+    },
+    {
       "question": "11.  The quadratic equation whose one root  2+<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAIAAAABJ4pRAAACKUlEQVR4nGP5//8/AwHw//ePvywcLIyE1AEBC2ElP64tWfI3KVUfn4UwNxE27s+rm5/UnYlwGVHG/f94+6GyFi8RYUKUcd8e3BRVs2UixiwijPv19BqDZhAbmP3zWl9w8KSb7JKSPL9fv2YxTu+dmG8tzEyCcX/f3nitbsMF4fx5e/tXxMbL9focDP8/HS3WtfFIVb6/1l8EKcoJGPf59l15VS+oelZZ38wIdQ4Qk5HPIMBBsH/Xzjvf/UW4iDXu+8Mb/BpmMDVsCl6BcKn/f37+ZeAR40XxK4Zx/78/vviEX0+VDxT4v59f/67hzYHFnl8PN0/bx+zWGq/Gjtu4H/c29HVOnn0tZP/+TAUWhn/vbz1RNeJGUf/v9eYU77J9t+990cicvSRGgRXVGhTjmAVMsyfM5HSJWnI7uUaT7evdW1LqzqhphEnUd94pX6An7q7OdtIxPr77eLcNPyN241iFpPkZ/oanC3nNvljcp/voOpumPpr1UMDIqRxYmd2oVtdxpHaLNz924yBOlPTJ0eidevRt08cPGk5Isfb78a5tX2z8NeFCjIwMf3/9QcktWGKWUcgx16a2e+1RK0W7ACTxPy/3TlnK49JvBQrN/58vLFl4nc+73pyXgHEMDNwmGb53PebY7A5CTgasYroSh+JNTKVkBFl/fXj1Wchp7uHWEAkicgW7ZkKm5TttOZRUwCIXs/hsDFb1BIxjYFHKWjMFv05SjCMXAABZjMHPJqno3wAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\"> is",
       "a": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAAAUCAIAAACPhs0OAAAEvUlEQVR4nGP5//8/wyhABSwD7YDBCIgNlE/7C9LX8usIvTp7X6NuRp4BNyNNnTWwgNhAYZX2rWl30ub9uNnXsOVY0hpXXpo6a2ABsYHCqeasDaL//fnHKcLNTEMXDQJAWpny9+n21axp9SZcNHLNIAEkBMr/Lxdm9dyJn1mjzkaaHf/ebEvWDX4088VeP37SdOIBv18dmV6cM51j8pnZttykaf3/5fKcgty5d9i4f77+pZ0zY2KSNmoRSWyg/PtwelbfMZ3qGlsREvPO36ers5MWvPjpRJo2fG55f3JmXff2+48OXHwVRLLu/x8PFHlVve27vDdU4v/DOW56nsUqV6bb8yEFC5GB8v1MfUTlOmbxVdMZGDh0Kzcuj5eH6vx+eUrVPKbk9iwdDmwaf9+bV7BIIc2EoYVk1+M2nEM5vGd1ypN+o62tJBv5/82u9sUf7Ta4S4AiVy64wDY/vG1Xi12ICCJU0APl37tjE7JiijcoLX2wK0ri791pbgZNStvvzrWZePf9RGyW/Lq3duJEJscGrIHy49rk/O1OE6aKJHehS+G0CDkvYDeciVNECBjcJIQEEvh2c/u5H1KFchADGbmVTaV/TNl+41sIksXogcIkZFU4dcLhbcFTNj8NT2K/fuWPX2+9BYmZFgL+fz3TWXgmfM4iVfYNmLJUtAgOvuyLkHJe+RmrHLPr5re7fPgZfr64+5aBR5QXWggw80nwMry58+InAwPuQAECRmGnwnAhp8mzFtw5u0t7xvwoOSyK/v36/OnrH2AP4dOX3///M3358P79P6BWFi4+XnYmkIL/Hw7WVTzOWlojy8LwDrsfcFpE0HAcgMdpxaf/K/AoABn9Feh/ZjZmaGZhZGEDWvrz6y+gBXCjsZYpPGbZSbJzWvqCzpzM0ubC1nb983C6jVLBJTg/WkEITGt23LxYrsbK8O/11vLmPxWrfcXxFsvYLSJkOCWAiY2bnYHh688/0B7f/98//wDdwc2GHNjYAuXfm6MrjzNzMrx9/p0BR2ueWTJk7j7tD3+B5h8tDGhgbNjQZw1Mfsz8arJgE98f6Jq17/As4UlIevwFGA2mPDidLQ+3E4dFhAynCHBIqokyHHz5GWg6KL7+fHr2kUHEQIIdWQ2GLf/eHaiNnS7Rv3Vynl7RhAPt1j5CWAKGkUPaxFEaxPr4VYSRkcnQwcUFuQ0i4Drv/JmPf6G8j3uSnStYeg/M8daWRIQITosIGY4TfNkfJeu0/ANWOTaPLa+2e/MzcKp7GHGuOPfwO4MWG6jJcvvUU3YDd3WU5ihqoPz/dKIhsPJf2448Q97XeU55sX1bn3vGSpHeqmcWUDEwhvPe3edjYGRVMTBQh/mNahahAB7HZe//L8OvhlHYtTJOMHj6judu4ZL/HqyZcFQodqO7CO7G2+/bM1Jarhrt0Aa2ZBhFXfN9ODwrslv5J1X6yeLMyfz++//9I9X1xFqE3fDfjzdPmLLz2vUDtxjevatPyzRQs0wuidMmsuZi5LPr2dKWm+PvskDw98tv6v07+x35UTMDSqCwqpVd+VcG0yzgsfIDdQaghEIO/UfxG2UWscr6lnb6AhnzyXMOI49e2vxDabgVjA4yYQGjgYIFAAC5+CV9cRRxEwAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
       "b": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAAUCAIAAABksXYNAAAEyUlEQVR4nGP5//8/wyjAAVgG2gGDGhAbOp/2F6Sv5dcRenX2vkbdjDwDbkaaOmuQAGJDh1Xat6bdSZv342Zfw5ZjSWtceWnqrEECiA0dTjVnbRD9788/ThFuZhq6aDAB0sqdv0+3r2ZNqzfhopFrBhsgIXT+f7kwq+dO/MwadTZybPr3ZluybvCjmS/2+vGTox8r+P3qyPTinOkck8/MtuUmWff/L5fnFOTOvcPG/fP1L+2cGROTtFHLU2JD59+H07P6julU19iKkJWt/j5dnZ204MVPJ3I0Y3fR+5Mz67q333904OKrIHIM+P/xQJFX1du+y3tDJf4/nOOm51mscmW6PR9S+BAZOt/P1EdUrmMWXzWdgYFDt3Lj8nh5UvLk73vzChYppJkwtJDkfpjll6dUzWNKbs/S4UAW5lAO71md8qTfaGsrOab+f7OrffFHuw3uEqDolgsusM0Pb9vVYhcigggedD/+e3dsQlZM8QalpQ92RUn8vTvNzaBJafvduTYT776fSI4jgODHtcn5250mTBVJ7kKXwmkdcjb5dW/txIlMjg2oocPEKSIEDHcy3cTA8O3m9nM/pArlIGYyciubSv+Ysv3GtxAku9FDh0nIqnDqhMPbgqdsfhqexH79yh+/3noL0rM0HPz/eqaz8Ez4nEWq7BswZaluHRB82Rch5bzyM1Y5ZtfNb3f5gMu9ny/uvmXgEeWFFhTMfBK8DG/uvPjJwIA7dICAUdipMFzIafKsBXfO7tKeMT9KjvwG9f8PB+sqHmctrZFlYXiHXQlO6/79+vzp6x9gP+fTl9///zN9+fD+/T+gchYuPl52Jjx28jit+PR/BSGX/fv1FRgQzGzM0HzEyMIGtPfn119AO+CmY/U4j1l2kuyclr6gMyeztLlwtIq/n633T9v46i82D/M7Td3WZ8X97/XW8uY/Fat9xfGW5Nit+/Nwuo1SwSW4qmgFITCt2XHzYrkaKz4DiQFMbNzsDAxff/6BdjP///75B+gUbjbkgMcWOv/eHF15nJmT4e3z7wy4Owycxo27zjbidcH7A12z9h2eJTwJScxfgNFgyoPT2YhSHYd1zJIhc/dpfwCG/tejhQENjA0b+qyBaZ6ZX02WKp1DDkk1UYaDLz8DLQDF3Z9Pzz4yiBhIsCOrwbDo37sDtbHTJfq3Ts7TK5pwoN3aR4jsLpWA67zzZz7CUtfHPcnOFSy9B+Z4a0siggandYwc0iaO0mCNX0UYGZkMHVxciGoofdkfJeu0/ANWOTaPLa+2e4ON4VT3MOJcce7hdwYtNlDT5/app+wG7uooDV3U0Pn/6URDYOW/th15hryv85zyYvu2PveMlSK348AsoGJgDOe9u8/HwMiqYmCgDvMkla2DAh7HZe//LyOojFHYtTJOMHj6judu4ZL/HqyZcFQodqO7CO7W4O/bM1Jarhrt0Aa2iBhFXfN9ODwrslv5J1X6yVKcz7EAYq3j99//7x+m7sebJ0zZee36gVsM797Vp2UaqFkml8RpE1/fMfLZ9Wxpy83xd1kg+PvlN/X+nf2O/Kj5BCV0WNXKrvwrg2kW8Fj5gZojY0Ihh/6jeJIy61hlfUs7fYGM+WS7iJFHL23+oTTcCkZHv/CB0dDBBwCWKv3dQ8ix5AAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
@@ -158,7 +159,8 @@
       "c": "<img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">",
       "d": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAmCAIAAACkm0fCAAACE0lEQVR4nGP5//8/AwWAhRLNo/qx6f9+ptQ66Rjz2/OPJCz0hBg/XNl35rWipaOha8uiRnNugvr/fnojU7dl7Z/82Ff927MUvm7zlQz80btld6AQcfYzi3vkB3w7mv3eIEGcheHXs/O3f0oFKqHbi8f9QPD78dFr4vaqnAwMnx6cfMSsZCLDRor+/+/PH2a2D+NhgFrvp8zNSIr+T+c2vTYoArqe4dPD04+YFExk2HFox6b/7/Otk0/L56sBXf//x9tX39lEeVj//f7NyMrKRIT+P4+WpGTuV5yzgBfIYRQwjXBkzQu1CCyZMrfWWZSZsH4WufitH+NhPDbV3L0fcnE5Hrv7SQKDTT8jI66YRgDkIova9pNaHA628AOBH5c6gqNm32OTEOX68eY9j03+hJ4UQz4siReH/t+vb/xJ3HaxWJ2N4d/7fVnazi5f5e4s8RDEFjPY9HOoxZWpKoJzPJOgWbgD38w9629897DkIlI/q6yTM4L37+9/BjYuVhzJglD4/X5x/upnEVd/dU6y9H85O3Xac7fOehteHArw6f/7altp2uGAlTsS5HEqwynx99XO8tBegb4dLS4i2KMOj/7fj9fmJ6xQ79+QZ8SLPz9h0f/70ZJYp1aW3GalZwe3PgMLMQto2VkrYSuEsdVf11ZuuHvjZ0HoUoSYRtuNi5XqWCoBLPr5PDb/IDoTDsb8RwoAADqguroKwi4KAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
       "ans": "c"
-    },{
+    },
+    {
       "question": "21. What is the value of <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABGCAIAAAC8DwZEAAAEJUlEQVR4nO2be0hTURzHr7qNzamRmJpR4QMzVmASTqMHJkpWQu+EHtJTjIpILcTHIi0zRyUW9vhDraDIimKUlD1GlGBZ9CJDMkNNaJU60yzTralQVLvnnO2e4z1r5/OPTg8/f+fjPXfj++NKzGYzx+BH8u+PBgw1uvrAhXPGWvnd/wvfrq1I6HtXWXR2cZyTCeLbtVNJsAcmCAITBMFJBXXd3ZFyadQUb8PjprDc49vDlS58K51UkHRcYnbBXJWnUZc4Lb9m/cU4T76VTipIERqrGvxq6jcpfJRugJVOKmiYgfdVldLNmunugDU2CvphuF+atrVUXlJ3apZSUHOiY+5+elL7JvlE9iQZaBm6IFNH7YncoqqmZv0zwxLB7YmMqfPRyUM1U7KyZ/mAzhdn0xUkD16prdzYejji2j5h3YlPb50mKfOym9+FUsu2pmZePZc8kW8puiBXhY+35YxhafAvvrdUH8svqQnIKteoPTiu56Fm9cGvK/L2JE3mf/sVVjayuLGj+I/FfBsT/SZt7qrNm59w3PdA9ZlNquHbmjIyqyg2IWLmKpcXl5ICIEeAdFmxBfXU5izXNC67e92yjd9XiyxkTc6irJj955uW7gyRilpWZEHdtSUVLRM2pUZ5Wbbx7Ul6qPpWRkPdtkCJbEywD3fteVsfZ48gjGXFFdT/4dkLoyRsdqB88NXAF8NA6NLYcYM99RvbjJz7aHdXscuKfcTMZs5NJhnq19z7qStgwYKgwY8lfc36ewZFeEyQXOyy4gqS+Ktn+H7XXanrjI/+eH5XQUOnp/5tb3hgc0V64evgLWVzve16F8NZFl3QjxbdkaM3XtXrG7j2ds3m1PDQ6A3pa1XCPk8ro/aWp71MnjfmrFdQ3O7TN1PvrIv3y/7s4j8z5fLt/CgP8cuiC5KOT8woTLR8U2ZzvwDc/BK0DwzaX6/V1a2ZVJUV+x5EPUwQBCYIAhMEgQmCwARBoFoQ+uyBHFQLQp89kINqQeizB3JQLWgYlNkDHHvHDbQLQpw9ABE0bqBaEPrsAYyQcYMNgkhE68CaVmYPdv0/BY0bEP8iiWgdWlPx7+xh5EETRCJaJxTX4wZJEIlonVBcjx0UQSSidUJxPX7QjhiJaJ1QXI8bFEEkonVCcT1+kK4gEtE6objeGoLGDWhHjES0Tiiut4KgcQPVn6RpgAmCwARBYIIgMEEQmCAIQgXRkKsTRaggGnJ1oggVREOuThQ89yA8uTqVYBCEI1cfgsrnHIQKwpSr0/ucg0BBuHJ1ep9zgG8HOHjAlavT+5wDWBCh5wRGDAz9AwU5yOCBFxz9gwQ5yuCBDyz9AwQ5zOCBBzz9A4+YgwweeMHRP0CQwwweeMDTP+gKcpTBAx9Y+gceMQcZPPCCo38WmEFggiAwQRCYIAhMEISf/RSyXdtyvmIAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">, where ω is an imaginary cube root of unity",
       "a": "1",
       "b": "2",
@@ -237,7 +239,8 @@
       "c": "to use energy",
       "d": "to use leather",
       "ans": "b"
-    },{
+    },
+    {
       "question": "31.  I disapprove ……..his cheating on the exam.",
       "a": "of",
       "b": "at",
@@ -316,7 +319,8 @@
       "c": "hasn't they",
       "d": "dare they",
       "ans": "b"
-    },{
+    },
+    {
       "question": "41.  I am hungry and ………………..",
       "a": "She is too",
       "b": "they are so",
@@ -395,7 +399,8 @@
       "c": "….ly",
       "d": "……y",
       "ans": "c"
-    },{
+    },
+    {
       "question": "51. The dimensional formula for potential difference is",
       "a": "[ML<sup>2</sup>T<sup>-3</sup>I<sup>-1</sup>]",
       "b": "[ML<sup>2</sup>T<sup>-3</sup>I]",
@@ -452,7 +457,7 @@
       "ans": "a"
     },
     {
-      "question": "58. 50 g of ice at -6°C is dropped into water at 0°C. how many grams of water freeze? Sp. Heat capacity of ice=2000JKg<sub>-1</sub>C<sub>-1</sub>.", 
+      "question": "58. 50 g of ice at -6°C is dropped into water at 0°C. how many grams of water freeze? Sp. Heat capacity of ice=2000JKg<sub>-1</sub>C<sub>-1</sub>.",
       "a": "1.785 g",
       "b": "4.25 g",
       "c": "3.16 g",
@@ -474,7 +479,8 @@
       "c": "33.3%",
       "d": "25%",
       "ans": "a"
-    },{
+    },
+    {
       "question": "61. The refractive index of air with respect to glass is 2 ⁄ 3. The refractive index of diamond with respect to air is 12 ⁄ 5 . Then the refractive index of glass with respect to diamond will be......",
       "a": "5/8",
       "b": "8/9",
@@ -553,7 +559,8 @@
       "c": "3π/2",
       "d": "0",
       "ans": "a"
-    },{
+    },
+    {
       "question": "71. Hard X-rays as compared to soft X-rays have",
       "a": "Higher intensity",
       "b": "lower frequency",
@@ -632,7 +639,8 @@
       "c": "CH<sub>3</sub>Br",
       "d": "CH<sub>3</sub>OH",
       "ans": "d"
-    },{
+    },
+    {
       "question": "81. The compound that undergoes Cannizzaro reaction is",
       "a": "CH<sub>3</sub>COOH",
       "b": "C<sub>2</sub>H<sub>5</sub>CHO",
@@ -711,7 +719,8 @@
       "c": "[Ar]4s<sup>2</sup>3d<sup>8</sup>",
       "d": "[Ar]4s<sup>2</sup>3d<sup>7</sup>",
       "ans": "a"
-    },{
+    },
+    {
       "question": "91. Equivalent weight of KMnO<sub>4</sub> in neutral medium is",
       "a": "52.6",
       "b": "158.0",

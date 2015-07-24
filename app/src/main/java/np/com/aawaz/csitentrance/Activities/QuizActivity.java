@@ -4,19 +4,16 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -52,7 +49,6 @@ public class QuizActivity extends AppCompatActivity {
     ProgressBarDeterminate pb;
 
     String[] colors = {" #1de9b6", " #ffeb3c", "#03a9f5", "#8bc34a"};
-
 
 
     WebView question;
@@ -432,14 +428,13 @@ public class QuizActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public void onBackPressed() {
-        if(slideLayout.getPanelState() == SlidingUpPanelLayout.PanelState.COLLAPSED){
+        if (slideLayout.getPanelState() == SlidingUpPanelLayout.PanelState.COLLAPSED) {
             super.onBackPressed();
             finish();
-        } else{
-            slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED );
+        } else {
+            slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
         }
     }
 

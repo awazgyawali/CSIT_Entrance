@@ -5,20 +5,23 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_margin="10dp"
-        android:src="@drawable/splash_icon"
-        android:id="@+id/imageView2" />
+        android:src="@drawable/splash_icon" />
+
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/btn_preview"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:onClick="startMainActivity"
         android:padding="10dp"
-        android:layout_marginTop="30dp"
         fancy:fb_borderColor="#4d009866"
         fancy:fb_borderWidth="5dp"
         fancy:fb_defaultColor="#3F51B5"
@@ -28,7 +31,5 @@
         fancy:fb_textColor="#fff"
         fancy:fb_textGravity="left"
         fancy:fb_textPosition="right"
-        fancy:fb_textSize="11dp"
-        android:layout_below="@+id/imageView2"
-        android:layout_centerHorizontal="true" />
+        fancy:fb_textSize="11dp" />
 </RelativeLayout>

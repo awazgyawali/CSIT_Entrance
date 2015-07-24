@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.Activities.WebViewActivity">
+
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/webViewAd"
         android:layout_width="match_parent"

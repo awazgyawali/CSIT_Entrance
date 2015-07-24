@@ -2,7 +2,7 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
-    <item name="colorAccent">#009688</item>
+        <item name="colorAccent">#009688</item>
 
     </style>
 

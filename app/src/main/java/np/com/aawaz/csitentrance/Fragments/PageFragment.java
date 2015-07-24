@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import np.com.aawaz.csitentrance.R;
 
 
-
 public class PageFragment extends Fragment {
 
     @Override
