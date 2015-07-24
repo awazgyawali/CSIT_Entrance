@@ -64,15 +64,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             holder.llExpandArea.setVisibility(View.VISIBLE);
             holder.mainLayout.setCardElevation(10);
             holder.headings.setVisibility(View.GONE);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(5, 10, 5, 10);
-            holder.mainLayout.setLayoutParams(layoutParams);
         } else {
             holder.headings.setVisibility(View.VISIBLE);
             holder.llExpandArea.setVisibility(View.GONE);
         }
-
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +86,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                 }
             }
         });
-
     }
 
     @Override
