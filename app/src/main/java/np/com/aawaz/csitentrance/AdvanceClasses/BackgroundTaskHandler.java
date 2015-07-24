@@ -100,6 +100,11 @@ public class BackgroundTaskHandler extends JobService {
             @Override
             public void onResponse(JSONObject response) {
                 try {
+                    topic.clear();
+                    subTopic.clear();
+                    imageURL.clear();
+                    content.clear();
+                    author.clear();
                     JSONArray jsonArray = response.getJSONArray("news");
                     int no = 0;
                     for (int i = 0; i < jsonArray.length(); i++) {

@@ -52,6 +52,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.themeNews.setText(content.get(position));
         holder.time.setText(subTopic.get(position));
         holder.mainLayout.setMaxCardElevation(10);
+        holder.mainLayout.setCardElevation(3);
         holder.titleEach.setText(topic.get(position));
         holder.contentEach.setText(content.get(position));
         holder.authorEach.setText(author.get(position));
@@ -60,8 +61,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                 .load(imageURL.get(position))
                 .into(holder.newsImage);
         if (position == expandedPosition) {
-            holder.mainLayout.setMaxCardElevation(10);
             holder.llExpandArea.setVisibility(View.VISIBLE);
+            holder.mainLayout.setCardElevation(10);
             holder.headings.setVisibility(View.GONE);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
