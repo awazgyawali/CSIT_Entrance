@@ -40,4 +40,5 @@ dependencies {
     compile 'com.sothree.slidinguppanel:library:3.1.0'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile 'com.github.medyo:fancybuttons:1.4@aar'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

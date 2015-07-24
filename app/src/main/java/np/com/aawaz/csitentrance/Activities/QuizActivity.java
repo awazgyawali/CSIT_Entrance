@@ -9,12 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -50,7 +52,6 @@ public class QuizActivity extends AppCompatActivity {
     ProgressBarDeterminate pb;
 
     String[] colors = {" #1de9b6", " #ffeb3c", "#03a9f5", "#8bc34a"};
-    Handler handler;
 
 
 
@@ -127,6 +128,7 @@ public class QuizActivity extends AppCompatActivity {
         img.setImageDrawable(getResources().getDrawable(avatar[(getSharedPreferences("info", MODE_PRIVATE).getInt("Avatar", 1)) - 1]));
         pb = (ProgressBarDeterminate) findViewById(R.id.progressBar);
         TextView topic = (TextView) findViewById(R.id.topic);
+        ansRecy = (RecyclerView) findViewById(R.id.ansRecycle);
         slideLayout = (SlidingUpPanelLayout) findViewById(R.id.progressReport);
         question = (WebView) findViewById(R.id.question);
         option1 = (WebView) findViewById(R.id.option1);
@@ -145,6 +147,8 @@ public class QuizActivity extends AppCompatActivity {
         op3.bringToFront();
         op4.bringToFront();
         feedback.bringToFront();
+
+        slideLayout.setScrollableView(ansRecy);
 
         rplHandler();
 
@@ -218,7 +222,6 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void fillAnsRecyclerView() {
-        ansRecy = (RecyclerView) findViewById(R.id.ansRecycle);
         slideUpPanelAdapter = new SlideUpPanelAdapter(this, qNo, code);
         ansRecy.setAdapter(slideUpPanelAdapter);
         ansRecy.setLayoutManager(new LinearLayoutManager(this));
@@ -426,6 +429,18 @@ public class QuizActivity extends AppCompatActivity {
         editor.putInt("score" + code, score);
         editor.apply();
         finish();
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        if(slideLayout.getPanelState() == SlidingUpPanelLayout.PanelState.COLLAPSED){
+            super.onBackPressed();
+            finish();
+        } else{
+            slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED );
+        }
     }
 
     public void loadAd() {

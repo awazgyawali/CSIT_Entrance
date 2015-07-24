@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
@@ -49,14 +51,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.title.setText(topic.get(position));
         holder.themeNews.setText(content.get(position));
         holder.time.setText(subTopic.get(position));
-        holder.mainLayout.setCardElevation(10);
+        holder.mainLayout.setMaxCardElevation(10);
         holder.titleEach.setText(topic.get(position));
         holder.contentEach.setText(content.get(position));
         holder.authorEach.setText(author.get(position));
         holder.subTopicEach.setText(subTopic.get(position));
-        holder.newsImage.setImageURI(Uri.parse(imageURL.get(position)));
+        Picasso.with(context)
+                .load(imageURL.get(position))
+                .into(holder.newsImage);
         if (position == expandedPosition) {
-            holder.mainLayout.setCardElevation(50);
+            holder.mainLayout.setMaxCardElevation(10);
             holder.llExpandArea.setVisibility(View.VISIBLE);
             holder.headings.setVisibility(View.GONE);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(

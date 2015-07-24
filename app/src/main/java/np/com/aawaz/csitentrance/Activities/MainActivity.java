@@ -112,7 +112,7 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
         } else if (position == 5) {
             new MaterialDialog.Builder(this)
                     .title("More...")
-                    .content("We are working hard to add new more question. Please take patience.")
+                    .content("We are working hard to add more new question. Please take patience..")
                     .positiveText("Ok")
                     .build()
                     .show();
