@@ -143,7 +143,7 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
     protected void constructJob() {
         if (builder == null) {
             builder = new JobInfo.Builder(JOB_ID, new ComponentName(this, BackgroundTaskHandler.class))
-                    .setPeriodic(1000 * 60 * 5)
+                    .setPeriodic(1000 * 60)
                     .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
                     .setPersisted(true)
                     .build();
