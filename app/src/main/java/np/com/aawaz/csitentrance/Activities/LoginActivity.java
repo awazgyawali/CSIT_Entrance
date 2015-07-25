@@ -52,6 +52,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         first = (RelativeLayout) findViewById(R.id.firstLayout);
         splash = (RelativeLayout) findViewById(R.id.reqularLayout);
+        first.setVisibility(View.GONE);
+        splash.setVisibility(View.GONE);
         context = this;
         pref = getSharedPreferences("info", MODE_PRIVATE);
         if (!pref.getString("Name", "").equals("")) {
