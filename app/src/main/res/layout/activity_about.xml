@@ -3,7 +3,6 @@
     android:id="@+id/coreAbout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="bottom"
     android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.Activities.About">
 
@@ -66,6 +65,14 @@
     </android.support.v7.widget.CardView>
 
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/aboutRecy"
+        android:layout_above="@+id/bottomLayout">
+
+    </android.support.v7.widget.RecyclerView>
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -73,22 +80,10 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <android.support.v4.view.ViewPager
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/bottomLayout">
-
-            </android.support.v4.view.ViewPager>
-
             <LinearLayout
                 android:id="@+id/bottomLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:orientation="vertical">
 
                 <View
@@ -113,7 +108,6 @@
                     android:textAllCaps="false" />
 
             </LinearLayout>
-        </RelativeLayout>
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

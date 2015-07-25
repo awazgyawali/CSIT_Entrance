@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,10 +13,17 @@ import android.view.View;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
+import java.util.ArrayList;
+
+import np.com.aawaz.csitentrance.Adapters.AboutAdapter;
 import np.com.aawaz.csitentrance.R;
 
 
 public class About extends AppCompatActivity {
+
+    RecyclerView recyAbout;
+    String[] name,desc;
+    int[] images;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +33,26 @@ public class About extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        YoYo.with(Techniques.SlideInDown)
-                .duration(1000)
-                .playOn(findViewById(R.id.coreAbout));
+        name=new String[]{"Aawaz Gyawali\nDeveloper","Rameshwor Dhakal\nFeed writer",
+                "Buddhiraj Nagarkoti\nGraphics Designer","Prasanna Mishra\nUI Designer"};
+        desc=new String[]{"You know it's very hard to explain how hard it was to make this application. B" +
+                "ut finally it was possible due to my friend's help and guidance. I would like to thank them a lot.",
+                "Kam nai lekhne ho mero. Parichaye dine time xaina."
+                ,"Kati vane aawaz lai color dark rakha but mandai manena light color nai chaiyo re.","App ma sappaithok eakai thau ma hunu parxa yr." +
+                "Jatatai jana alxi lagxa mero vanai yo chai la. :p."};
+        images=new int[]{R.drawable.aawaz,R.drawable.ramu,R.drawable.buddhi,R.drawable.prass,};
+
+        recyAbout = (RecyclerView) findViewById(R.id.aboutRecy);
+        AboutAdapter adapter=new AboutAdapter(this,name,desc,images);
+        recyAbout.setAdapter(adapter);
+        recyAbout.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
 
     }
 
     public void feedBack(View view) {
         Intent sendMail = new Intent(Intent.ACTION_SEND);
         sendMail.setData(Uri.parse("mailto:"));
-        String[] to = {"android@aawaz.com.np", "dhakalramu2070@gmail.com"};
+        String[] to = {"info@aawaz.com.np", "dhakalramu2070@gmail.com"};
         sendMail.putExtra(Intent.EXTRA_EMAIL, to);
         sendMail.putExtra(Intent.EXTRA_SUBJECT, "Regarding CSIT Entrance Android Application.");
         sendMail.setType("message/rfc822");

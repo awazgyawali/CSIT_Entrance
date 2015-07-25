@@ -209,7 +209,6 @@ public class EntranceNews extends AppCompatActivity {
         AdView mAdView = (AdView) findViewById(R.id.eachNewsAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
     }
 
 }

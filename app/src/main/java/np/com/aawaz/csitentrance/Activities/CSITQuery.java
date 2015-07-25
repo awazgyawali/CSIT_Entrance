@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +35,8 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.github.mrengineer13.snackbar.SnackBar;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -74,6 +77,8 @@ public class CSITQuery extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.queryToolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        loadAd();
 
         pref = getSharedPreferences("details", MODE_PRIVATE);
         queue = Singleton.getInstance().getRequestQueue();
@@ -151,7 +156,6 @@ public class CSITQuery extends AppCompatActivity {
                         finish();
                     }
                 }
-                Toast.makeText(getApplicationContext(), "Fetched", Toast.LENGTH_SHORT).show();
                 setRefreshActionButtonState(false);
             }
         }, new Response.ErrorListener() {
@@ -276,6 +280,7 @@ public class CSITQuery extends AppCompatActivity {
                 .appendQueryParameter("Question", text.getText().toString().replace("\"", "").replace("}", "").replace("{", "").replace(",", ""))
                 .appendQueryParameter("fbId", pref.getString("fbId", ""))
                 .appendQueryParameter("Name", pref.getString("First", ""))
+                .appendQueryParameter("Answer", "")
                 .build().toString();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
             @Override
@@ -304,4 +309,11 @@ public class CSITQuery extends AppCompatActivity {
         });
         queue.add(jsonObjectRequest);
     }
+
+    public void loadAd() {
+        AdView mAdView = (AdView) findViewById(R.id.QueryAd);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    }
+
 }
