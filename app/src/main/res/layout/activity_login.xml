@@ -7,16 +7,19 @@
 
     <RelativeLayout
         android:id="@+id/firstLayout"
+        android:background="@color/abc_primary_text_material_dark"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"
+            android:background="@color/abc_primary_text_material_dark"
             android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/abc_primary_text_material_dark"
                 android:layout_above="@+id/fabBtn"
                 android:orientation="vertical">
 

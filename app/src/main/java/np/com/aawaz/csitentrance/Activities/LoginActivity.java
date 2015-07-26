@@ -154,7 +154,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             avatar = 5;
             a5.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
 
-
         } else if (view == a6) {
             avatar = 6;
             a6.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));

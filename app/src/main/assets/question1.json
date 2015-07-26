@@ -9,7 +9,7 @@
       "ans": "a"
     },
     {
-      "question": "2. <font style=\"font-size: 14pt\" size=\"4\">If <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAUCAIAAAB9OpirAAACSElEQVR4nGP5//8/Ayr4/+vjm2+cIgJsjAz4AJHKiAcsmEI/LjQEzA7cNduOG69OIpVR5JSBAiPQKT8udQRHzb7HJiHK9ePNex6b/Ak9KYZ8TAPhlN+vb/xJ3HaxWJ2N4d/7fVnazi5f5e4s8RBESvP0cgqHWlyZqiIbiMkkaBbuwDdzz/ob3z0suYh2yr93xyZkxRRvUFr6YFeUxN+709wMmpS2351rQ2q2YZV1ckYy9u9/BjYuVtRigIBTmISsCqdOOLwteMrmp+FJ7Nev/PHrrbdAdceXfRFSzis/Y9XP7Lr57S4fflTB3y/OX/0s4uqvzkmKU4CAUdipMFzIafKsBXfO7tKeMT9KDk0Pj9OKT/9XEDQH4fSzU6c9d+ust+FFFScmrfCYZSfJzmnpCzpzMkubi7LC9e+rbaVphwNW7kiQR7eaCKf8e3N05XFmToa3z78zUOqOneWhvQJ9O1pcRJgwZAk55d+7A7Wx0yX6t07O0yuacKDd2kcI3Tlf9kfJOi3/gFU7m8eWV9u9wWnl9+O1+Qkr1Ps35BnxYvURXqf8/3SiIbDyX9uOPEPe13lOebF9W597xkoxo6ricVz2/v8y/D76/WhJrFMrS26z0rODW5+BhZgFtOyslbgRrsLnlN+3Z6S0XDXaoc3HyMAo6prvw+FZkd3KP6nST5YVv80Y4Pu1lRvu3vhZELoUIabRduNipTobUU5hVSu78q8MymEU8Fj5Ab09QTTg89j8g5DmEVgdEgEGt1M4zfqPmhHWSaQy4gEAOBLXDhHR6lkAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\"> then the solution set is</font></p></li>",
+      "question": "2. <li><p style=\"margin-bottom: 0.08in; line-height: 0.01in\"><font style=\"font-size: 14pt\" size=\"4\">If <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAUCAIAAAB9OpirAAACSElEQVR4nGP5//8/Ayr4/+vjm2+cIgJsjAz4AJHKiAcsmEI/LjQEzA7cNduOG69OIpVR5JSBAiPQKT8udQRHzb7HJiHK9ePNex6b/Ak9KYZ8TAPhlN+vb/xJ3HaxWJ2N4d/7fVnazi5f5e4s8RBESvP0cgqHWlyZqiIbiMkkaBbuwDdzz/ob3z0suYh2yr93xyZkxRRvUFr6YFeUxN+709wMmpS2351rQ2q2YZV1ckYy9u9/BjYuVtRigIBTmISsCqdOOLwteMrmp+FJ7Nev/PHrrbdAdceXfRFSzis/Y9XP7Lr57S4fflTB3y/OX/0s4uqvzkmKU4CAUdipMFzIafKsBXfO7tKeMT9KDk0Pj9OKT/9XEDQH4fSzU6c9d+ust+FFFScmrfCYZSfJzmnpCzpzMkubi7LC9e+rbaVphwNW7kiQR7eaCKf8e3N05XFmToa3z78zUOqOneWhvQJ9O1pcRJgwZAk55d+7A7Wx0yX6t07O0yuacKDd2kcI3Tlf9kfJOi3/gFU7m8eWV9u9wWnl9+O1+Qkr1Ps35BnxYvURXqf8/3SiIbDyX9uOPEPe13lOebF9W597xkoxo6ricVz2/v8y/D76/WhJrFMrS26z0rODW5+BhZgFtOyslbgRrsLnlN+3Z6S0XDXaoc3HyMAo6prvw+FZkd3KP6nST5YVv80Y4Pu1lRvu3vhZELoUIabRduNipTobUU5hVSu78q8MymEU8Fj5Ab09QTTg89j8g5DmEVgdEgEGt1M4zfqPmhHWSaQy4gEAOBLXDhHR6lkAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\"> then the solution set is</font></p></li>",
       "a": "{2,2}",
       "b": "{-2,2}",
       "c": "(-2,2)",
@@ -79,8 +79,7 @@
       "c": "1",
       "d": "13",
       "ans": "a"
-    },
-    {
+    },{
       "question": " 11. 1 and 2 are the roots of",
       "a": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAAUCAIAAACLcx0zAAAFfUlEQVR4nGP5//8/wyjABlgG2gGDFxAbNJ/2F6Sv5dcRenX2vkbdjDwDbkaaOmswAGKDhlXat6bdSZv342Zfw5ZjSWtceWnqrMEAiA0aTjVnbRD9788/ThFuZhq6aNAA0sqav0+3r2ZNqzfhopFrBhUgIWj+f7kwq+dO/MwadTai9fy81hccPOkmu6Qkz+/Xr1mM03sn5lsLU5zoflzqCI6afY9NQpTrx5v3PDb5E3pSDPmYSDLj/5fLcwpy595h4/75+pd2zoyJSdqoBSixQfPvw+lZfcd0qmtsRUjx2J+3t39FbLxcr8/B8P/T0WJdG49U5ftr/UUoLMR/v77xJ3HbxWJgJP17vy9L29nlq9ydJR6CxBv7/+OBIq+qt32X94ZK/H84x03Ps1jlynR7PiQTiAya72fqIyrXMYuvms7AwKFbuXF5vDxROlllfTMj1DlATEY+gwAHwf5dO+989xchPkd+vzylah5TcnuWDgdCkEMtrkxVEZx4mQTNwh34Zu5Zf+O7hyXRxv5/s6t98Ue7De4SoIiWCy6wzQ9v29ViF4IUaege/Pfu2ISsmOINSksf7IqS+Ht3mptBk9L2u3NtJt59P5Fo/8ABm4JXIMI9f37+ZeAR40VKdjit44ap+HVv7cSJTI4NKEHDKuvkjGTI3/8MbFyspKTEbze3n/shVSgHMZORW9lU+seU7Te+hSAsxggaJiGrwqkTDm8LnrL5aXgS+/Urf/x66y24GSgHvx5unraP2a01Xo2dqtb9fnH+6mcRV391TqjAl30RUs4rP2NVzOy6+e0uH36Gny/uvmXgEYXFEjOfBC/DmzsvfjIw4A4aIGAUdioMF3KaPGvBnbO7tGfMj5KjrMn87/XmFO+yfbfvfdHInL0kRoGVGOv+/fr86esfYB/m05ff//8zffnw/v0/oFoWLj5edpTi9svZqdOeu3XW28AbWjxOKz79X4HfSb++AkOBmY0ZmtIYWdiAlv78+gtoB9x0rL7mMctOkp3T0hd05mSWNheOhPr9bL1/2sZXf7FIMfI7Td3WZwWNACZR33mnfBn+f7+7OttJx/j47uPdNvzIhmKx7s/D6TZKBZfgSqIVhMC0ZsfNi+Vq8MD9+2pbadrhgJU7Eogr+mCAiY0bmHS//vwD7T/+//3zD9Ad3GzIoY7NxH9vjq48zszJ8Pb5dwbcGZjTuHHX2UbincPIqRxYmd2oVtdxpHaLNz9+65glQ+bu0/4ADPevRwsDGhgbNvRZA0OamV9NFu7iv692lof2CvTtaHERIa3eBpbjkmqiDAdffgZaAMpTfz49+8ggYiDBjqwGI2j+vTtQGztdon/r5Dy9ogkH2q19hMivaX8/3rXti42/JrzmYGRk+PvrD1JfH4d1jBzSJo7SIAUfv4owMjIZOri48KOavDY/YYV6/4Y8I140933ZHyXrtPwDVgexeWx5tR0YL5zqHkacK849/M6gxQZq4tw+9ZTdwF0dpYZDDZr/n040BFb+a9uRZ8j7Os8pL7Zv63PPWCmym2h/Xu6dspTHpR+ct/5/vrBk4XU+73pzWLFArnW/Hy2JdWplyW1WenZw6zOwELOAlp21ErjNxuO47P3/ZfhNYBR2rYwTDJ6+47lbuOS/B2smHBWK3egugrvJ9/v2jJSWq0Y7tIEtH0ZR13wfDs+K7Fb+SZV+smhlJ5GAVUxX4lC8iamUjCDrrw+vPgs5zT3cGiLBTIJ1/P77//1DM/b7tZUb7t74WRC6FCGm0XbjYiXx7XRGPrueLW25Of4uCwR/v/ym3r+z35EfNfmhBA2rWtmVf2UwzQIeKz9QOMzFIhez+GwMLlmyrePz2PyD4gE4Rh69tPmH0nArGB3KwglGgwYnAAA/rEZnwdKjrwAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
       "b": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAAAUCAIAAACPhs0OAAAFcElEQVR4nGP5//8/wyhABSwD7YDBCIgNlE/7C9LX8usIvTp7X6NuRp4BNyNNnTWwgNhAYZX2rWl30ub9uNnXsOVY0hpXXpo6a2ABsYHCqeasDaL//fnHKcLNTEMXDQJAWpny9+n21axp9SZcNHLNIAEkBMr/Lxdm9dyJn1mjzkZI6c9rfcHBk26yS0ry/H79msU4vXdivrUwNdLXj0sdwVGz77FJiHL9ePOexyZ/Qk+KIR8TSWb8/3J5TkHu3Dts3D9f/9LOmTExSRu1iCQ2UP59OD2r75hOdY2tCBF++/P29q+IjZfr9TkY/n86Wqxr45GqfH+tvwjlpfPv1zf+JG67WAyMmH/v92VpO7t8lbuzxEOQeJP/fzxQ5FX1tu/y3lCJ/w/nuOl5FqtcmW7Ph2QCkYHy/Ux9ROU6ZvFV0xkYOHQrNy6Pl4fq/H55StU8puT2LB0OhHJWWd/MCHWwACOfQYCDYP+unXe++4uQlO2wmsyhFlemqghOqkyCZuEOfDP3rL/x3cOSaJP/v9nVvvij3QZ3CVDkygUX2OaHt+1qsQtBijH0QPn37tiErJjiDUpLH+yKkvh7d5qbQZPS9rtzbSbefT8RmyW/7q2dOJHJsQHF6WwKXoEIZ/z5+ZeBR4wXKYXhtIWbkMmssk7OSOb8/c/AxsVKSgL8dnP7uR9ShXIQMxm5lU2lf0zZfuNbCJLd6IHCJGRVOHXC4W3BUzY/DU9iv37lj19vvQU3A9ng18PN0/Yxu7XGq7FT25bfL85f/Szi6q/OCeJ92Rch5bzyM1aVzK6b3+7y4Qcxf764+5aBRxQWRcx8ErwMb+68+MnAgDtQgIBR2KkwXMhp8qwFd87u0p4xP0oOi6J/vz5/+voH2EP49OX3//9MXz68f/8PqJWFi4+XHVLs/Xu9OcW7bN/te180MmcviVFgJdIWwiZDwZezU6c9d+ust4E0mXicVnz6v4JQQP779RXof2Y2ZmjqYmRhA9r78+svoB1w07GWKTxm2Umyc1r6gs6czNLmwpY4/zycbqNUcAnOj1YQAtOaHTcvlquB/c8k6jvvlC/D/+93V2c76Rgf332824Yf2SzsthBhMgj8fbWtNO1wwModCfIktSqY2LiBKfbrzz/QHt//3z//AJ3CzYYc3thM/Pfm6MrjzJwMb59/Z8CRXZklQ+bu0/7wF2j+0cKABsaGDX3WwOTHzK8mi2YiI6dyYGV2o1pdx5HaLd78BG0hxuS/r3aWh/YK9O1ocREhrTYGltSSaqIMB19+BloAykF/Pj37yCBiIMGOrAYjUP69O1AbO12if+vkPL2iCQfarX2EsAQMI4e0iaM0iPXxqwgjI5Ohg4sLwsO/H+/a9sXGXxNeJTAyMvz99QepO47bFvwmgw1fm5+wQr1/Q54RL7LLvuyPknVa/gFrSLB5bHm1HRIjnOoeRpwrzj38zqDFBmqy3D71lN3AXR2l9kINlP+fTjQEVv5r25FnyPs6zykvtm/rc89YKVJbXX9e7p2ylMel3wpUdv3/fGHJwut83vXmsO4SBbb8frQk1qmVJbdZ6dnBrc/AQswCWnbWStyMPI7L3v9fRtAERmHXyjjB4Ok7nruFS/57sGbCUaHYje4iuBtvv2/PSGm5arRDG9iSYRR1zffh8KzIbuWfVOkni1ZMIgC///5//9DEWMV0JQ7Fm5hKyQiy/vrw6rOQ09zDrSESzKTZgs3k79dWbrh742dB6FKEmEbbjYuVhFvZ8FDhs+vZ0pab4++yQPD3y2/q/Tv7HflRMwNKoLCqlV35VwbTLOCx8gN5A1AscjGLz8bgkqXEFj6PzT8oHhRj5NFLm38oDbeC0UEmLGA0ULAAAFMSbfhAWgCdAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
@@ -89,7 +88,7 @@
       "ans": "a"
     },
     {
-      "question": "12. The value of <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAWCAIAAADYcoyLAAAEW0lEQVR4nGP5//8/A5XB/59ffrHxsDNS21xSnfHr6y8WbnYmVFEW6lv09frea+IeZgPuYYYfd/bclfcyFEBxCPU9/PnGRT7lcCbCCmkNGPkUxW9e/WBgKYjsY6p7+Nu9KxzSerTz759XR2eUlmxzXLM5QZqZgFpuGeGb975aGvMgiVHbw3/e3P4g7s5KZVPh4P/3Z4/ZdVX+rflDjGpmPpF/R1/9NuZBcg+1Pfzz+WNuATYqG4oAjJxyxvo/9xJbPLAJcj969oNBiXYe/v/lxXs+GRqUhOQBFn6hr6c+/GXgRSR+Krvt94fnfwW5CeUtYgx6tHnqwnMf/8EFmEVsUtKdJXC59/erI9OLc6ZzTD4z25YbIczKxfz2EzD54/bwn6d7NrwwCTIWIK/Y+fftCzMbin/JNJBVzreg1pc4O9+fnFnXvf3+owMXXwWhyTGxMX/++hdZBNXD/z8erE3tMtwfQLaHf/1kZkHKYRQbiAb+f729Z93Ko08ecC9fpRIa6CDPARTkUA7vWZ3ypN9oayu6ekYW5h9f/yGLIHn475tDE/MzFzy4fyjaY5dpwZwW6en+iTsYZSVYX1x5rla5el6yKjvDz1uzU4OyF79wL41lP7B6y+mn7HoZi3dO8ZOAROv/v38YmBipaCC6B7hVXWNrgAhJjIlTRAiYprEGECMjw5+/KE1JJA8zi9hl5Ll2rziav3RHrgILw7eTzFb9O5sd+f88mGKqVNmVFTnbmotdLbE5c9qSWi6LgvntfYx3ZnjqZ1UvKfYsUYGUhIwMjNQ1kELAyIDWdMZTaHGZ1zZD1AjKCTF9ev4JUfcxsglJiXIxMzIou/mrMXU/ePuHAeI+Ribm/39xNc7JMZBC8P8fAzNqUsHt4f/fbq3tal91i1GA9//9S3//m2FVxczCBApDmB8Z2Tj+fcbhYbIMpBD8//OXnQ2l9MDp4a8nShyjT5ZcPl6oxvZx053Fh4iygJmT+++7f1ilyDOQQvDv919uHpQoxuXhP6/PHHshZGUpQ1qriUVAkvnqt38M/BhlMpkGUgj+fP8tKIniR1QPM7Fysf17e+/VLwZ5Hglhppenjj/+aa785frFF38ZFIixgIlHgv8TMG9KslHJQMrA309v2WWN8XiYQyMyyXx6g43qfrfUvspK6/AiDd5OXc/YYHWRX/s7GtfpdPj+3zJz7b1/r3/NmLlfIVF016S19/+9/jNn6QXNFAM+YAHNISH37eUvYCsWw8AU8gwkDH4/3jxhys5r1w/cYnj3rj4t00DNMrkkThvU3vr14Yu0BCeKarQkzWVUf+JLPYzn9LYJxuyGCwa27Qtsg3Hi+g7E9aGYJ6rCc/XDHwYeFioZSBiwyvqWdoIaZfPRZf59efNX2ZgdRYzq7XxuJe2vN77+l+Ef8AEPYN/82RtNVV5UMep3bHjVtd7d+/Rff+B9/PXxM0UtXZqPaTHyatrK/vzPwDDQHv7HLGFjKIheXQAA3E4gLnaHKOwAAAAASUVORK5CYII=\" is",
+      "question": "12. The value of  src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAWCAIAAADYcoyLAAAEW0lEQVR4nGP5//8/A5XB/59ffrHxsDNS21xSnfHr6y8WbnYmVFEW6lv09frea+IeZgPuYYYfd/bclfcyFEBxCPU9/PnGRT7lcCbCCmkNGPkUxW9e/WBgKYjsY6p7+Nu9KxzSerTz759XR2eUlmxzXLM5QZqZgFpuGeGb975aGvMgiVHbw3/e3P4g7s5KZVPh4P/3Z4/ZdVX+rflDjGpmPpF/R1/9NuZBcg+1Pfzz+WNuATYqG4oAjJxyxvo/9xJbPLAJcj969oNBiXYe/v/lxXs+GRqUhOQBFn6hr6c+/GXgRSR+Krvt94fnfwW5CeUtYgx6tHnqwnMf/8EFmEVsUtKdJXC59/erI9OLc6ZzTD4z25YbIczKxfz2EzD54/bwn6d7NrwwCTIWIK/Y+fftCzMbin/JNJBVzreg1pc4O9+fnFnXvf3+owMXXwWhyTGxMX/++hdZBNXD/z8erE3tMtwfQLaHf/1kZkHKYRQbiAb+f729Z93Ko08ecC9fpRIa6CDPARTkUA7vWZ3ypN9oayu6ekYW5h9f/yGLIHn475tDE/MzFzy4fyjaY5dpwZwW6en+iTsYZSVYX1x5rla5el6yKjvDz1uzU4OyF79wL41lP7B6y+mn7HoZi3dO8ZOAROv/v38YmBipaCC6B7hVXWNrgAhJjIlTRAiYprEGECMjw5+/KE1JJA8zi9hl5Ll2rziav3RHrgILw7eTzFb9O5sd+f88mGKqVNmVFTnbmotdLbE5c9qSWi6LgvntfYx3ZnjqZ1UvKfYsUYGUhIwMjNQ1kELAyIDWdMZTaHGZ1zZD1AjKCTF9ev4JUfcxsglJiXIxMzIou/mrMXU/ePuHAeI+Ribm/39xNc7JMZBC8P8fAzNqUsHt4f/fbq3tal91i1GA9//9S3//m2FVxczCBApDmB8Z2Tj+fcbhYbIMpBD8//OXnQ2l9MDp4a8nShyjT5ZcPl6oxvZx053Fh4iygJmT+++7f1ilyDOQQvDv919uHpQoxuXhP6/PHHshZGUpQ1qriUVAkvnqt38M/BhlMpkGUgj+fP8tKIniR1QPM7Fysf17e+/VLwZ5Hglhppenjj/+aa785frFF38ZFIixgIlHgv8TMG9KslHJQMrA309v2WWN8XiYQyMyyXx6g43qfrfUvspK6/AiDd5OXc/YYHWRX/s7GtfpdPj+3zJz7b1/r3/NmLlfIVF016S19/+9/jNn6QXNFAM+YAHNISH37eUvYCsWw8AU8gwkDH4/3jxhys5r1w/cYnj3rj4t00DNMrkkThvU3vr14Yu0BCeKarQkzWVUf+JLPYzn9LYJxuyGCwa27Qtsg3Hi+g7E9aGYJ6rCc/XDHwYeFioZSBiwyvqWdoIaZfPRZf59efNX2ZgdRYzq7XxuJe2vN77+l+Ef8AEPYN/82RtNVV5UMep3bHjVtd7d+/Rff+B9/PXxM0UtXZqPaTHyatrK/vzPwDDQHv7HLGFjKIheXQAA3E4gLnaHKOwAAAAASUVORK5CYII=\" is",
       "a": "0",
       "b": "1",
       "c": "-1",
@@ -98,10 +97,10 @@
     },
     {
       "question": "13. The solution of <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAAmCAIAAAATJr/lAAAExElEQVR4nGP5//8/w9AELAPtAPLBqNOpDn6/OjK9OGc6x+Qzs225sSsZhE7/9/7kzLru7fcfHbj4KgiPukHodAYO5fCe1SlP+o22tuJTNgidzsQpIgRMMQTVDUKnEwtGnT4QYNTpAwFGnU5N8Pvx5glTdl67fuAWw7t39WmZBmqWySVx2hh16iB0Oqusb2mnL5AxH786TKf/e3diemXThudcfL+fXH0qlbtmRbYa69frK+rLJp/8I8r7+fFX7fxZE+LUORn/vT3Unly04ZOoyL+Xdz6aztjXzjk/K6Z4g9LSB7uiJP7eneZm0KS0/e5cGxyNEAoBmtP/vtqWZZNwJ3vvphm63IyfdsZH3mVj+nljkrdFM//EU3sSlNh/XmszNgroMLrQqHqtK771TcPdQ/GSTB92l07h5xAyKZw64fC24Cmbn4YnsV+/8sevt94C7O4v+yKknFd+xuoEZtfNb3f58FPm9P+fDlclzuOpvJ4FdDeQz6kdl60i9mqVb/lR3cl3Y5XYgWLsis72gjWrtjyoyf3w5P3351fvf/4vyS/g2l0DNkLYqTBcyGnyrAV3zu7SnjE/Sg5iAY/Tik//V5DsOuKd/vnE1JWv9LqCFVkhfFYZZ6//r5YnH/hpMsdbhhnqv3///v//8fH7X26z0gob60prjfOVM2bV+SlyMIIdaZadJDunpS/ozMksbS5G0lzDyEhAA3KfDtnpv5+fu/pF0FRbmBlJ8NfLq4//iTqpCTBB+P8+3Lz4kklOV5KNkdugYv8Du5mlaQUBOmdmXd2aqsDK8O/N0ZXHmTkZ3j7/zkCiu0kFyE7///f3X5DHUBQwcQhwgoIDyv3zaOPM0+yO8xyFPt+9/U9BVdQqe94+8VcKYXMPvk2WYztUGztdon/r5Dy9ogkH2q19hKD6vuyPknVa/gGrE9g8trza7g1O6yR1lJGdziZnbyNSt2Xevpc2vuL/319ct/SGUWq4nEeoRtXizde+Wppwfb82I63yqk3X6TCpb/uTm793LgwUYfz/59sPBmF1uf+nGgIr/7XtyDPkfZ3nlBfbt/W5Z6wUJAZ5HJe9/7+MeGeR6nQGHuvOVXVPEsOk+YVUdcz8C9pqlNkZGHXKNs59nhhjYSXO9+Mzn+PUk81R6uz/3rGLPi9zsZ0hyf7xyTvRkqWtEos9Wq4a7dDmY2RgFHXN9+HwrMhu5Z9U6SfLSl0nY3U6A7OIY+POB41oajjVYmccjUUVYxRy7Nh9qQNZyO3KvzKYrIDHyg9kDpL8uNQRHDX7HpuEKNePN+95bPIn9KQY8jERcvpgAL9f3/iTuO1isTobsJe6L0vb2eWr3J0lHoIYmX7wOZ1DLa5MVZENxGQSNAt34Ju5Z/2N7x6WXOgKB5/TWWWdnBG8f3//M7BxsWIrZwef05HB7xfnr34WcfVX58QiOaid/uXs1GnP3TrrbXixyQ5epwNbgqVphwNW7kiQx+7IQer0v692lof2CvTtaHERwVIugsFgdPrvx2vzE1ao92/IM+LF0w4adE7//WhJrFMrS26z0rODW5+BhZgFtOyslbjRfTHonP792soNd2/8LAhdihDTaLtxsVKdDU3loHM6n8fmH8Q1IQad04kHo04fCAAA+5fGe+MO5e4AAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">  is",
-      "a": "2n <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAASCAIAAAAym6IDAAABB0lEQVR4nGP5//8/A4mAhVQNw13P9zOl1knHmN+efyRhoSfE+OHKvjOvFS0dDV1bFjWac2PV8/fTG5m6LWv/5Me+6t+epfB1m69k4I/eLbsDhXDbwyzukR/w7Wj2e4MEcRaGX8/O3/4pFajEzYAO0P3z+/HRa+L2qpwMDJ8enHzErGQiw0ZIz//35w8z24fxMECt8VPmZiSk59O5Ta8NioAuY/j08PQjJgUTGXYMLah6/j7fOvm0fL4a0GX/f7x99Z1NlIf13+/fjKysTDj0/Hm0JCVzv+KcBbxADqOAaYQja16oRWDJlLm1zqLM2PWwyMVv/RgP47Gp5u79kIvpMEz/EAXopQcAGxhfnFS86XAAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
+      "a": "2n<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAASCAIAAAAym6IDAAABB0lEQVR4nGP5//8/A4mAhVQNw13P9zOl1knHmN+efyRhoSfE+OHKvjOvFS0dDV1bFjWac2PV8/fTG5m6LWv/5Me+6t+epfB1m69k4I/eLbsDhXDbwyzukR/w7Wj2e4MEcRaGX8/O3/4pFajEzYAO0P3z+/HRa+L2qpwMDJ8enHzErGQiw0ZIz//35w8z24fxMECt8VPmZiSk59O5Ta8NioAuY/j08PQjJgUTGXYMLah6/j7fOvm0fL4a0GX/f7x99Z1NlIf13+/fjKysTDj0/Hm0JCVzv+KcBbxADqOAaYQja16oRWDJlLm1zqLM2PWwyMVv/RgP47Gp5u79kIvpMEz/EAXopQcAGxhfnFS86XAAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
       "b": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAASCAIAAABaaCA7AAACn0lEQVR4nGP5//8/A40BC60tINeOX1cb9WxPddzZEiDESCM7/jzdu/GZVr65AMiCn9f6goMn3WSXlOT5/fo1i3F678R8a2FmCu349/rImjtKIbaiTGAL397+FbHxcr0+B8P/T0eLdW08UpXvr/UXQfIg6Xb8/3B65RUJ36nSEK2ssr6ZEeocICYjn0GAg2D/rp13vvuLcOGw4/uZUuukY8xvzz+SsNATYvxwZd+Z14qWjoauLYsazbmhir5eWn2G26VGmR3CZVPwCkTY/+fnXwYeMV6UoEKx4++nNzJ1W9b+yY991b89S+HrNl/JwB+9W3YHCiG74/r6Q/+s52pxMWCAXw83T9vH7NYar8aO0w5mcY/8gG9Hs98bJIizMPx6dv72T6lAJW5Uc+5v3/nRqM2QF1nw3+vNKd5l+27f+6KROXtJjAIrqt3o8fH78dFr4vaqnAwMnx6cfMSsZCLDhiz959m+Dc+0ciBJCg6YRH3nnfJl+P/97upsJx3j47uPd9vwI1Sg2fH//fnDzPZhPAxQb/gpcyOb9u/NkdV3FILtxFADHAoYOZUDK7Mb1eo6jtRu8ebHZcenc5teGxQBQ4rh08PTj5gUTGSQg/b/x9MrL4v5TJJFBMbvx7u2fbHx14RHDyMjw99ff1DKJxQ7/j7fOvm0fL4aMKT+/3j76jubKA/rv9+/GVlZwVmB4evF1ac5nStVkez983LvlKU8Lv1WoGj7//nCkoXX+bzrzXlx2PHn0ZKUzP2KcxaAFDAKmEY4suaFWgSWTJlb6ywKCpzv1zcc/GM1Wxs5SbGK6UocijcxlZIRZP314dVnIae5h1tDJHDlcxa5+K0f42E8NtXcvR9yUQKS03TCwzcMqIBFLmbx2RgGvGDQlruD0A4ACAL917Otc5AAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
-      "c": "2n <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAASCAIAAABw2NGUAAADGklEQVR4nGP5//8/w6AHLAPtAKLAALny19VGPdtTHXe2BAgxEqF8YFz55+nejc+08s0FQE78ea0vOHjSTXZJSZ7fr1+zGKf3Tsy3Fmamhiu/HsmL3J+8qlafgwzN/14fWXNHKcRWlAns5Le3f0VsvFwPNOr/p6PFujYeqcr31/qLIAUyua789/Pdqw+/yct4/z+cXnlFwneqNMRyVlnfzAh1sG8Z+QwCHAT7d+28891fhAuHK7+fKbVOOsb89vwjCQs9IcYPV/adea1o6Wjo2rKo0ZybSDcQNuTrpdVnuF1qlNkhGtgUvAIRPvjz8y8DjxgvSoSjuPLvpzcydVvW/smPfdW/PUvh6zZfycAfvVt2BwoR6UDiDPl+ff2hf9ZztbgwNf96uHnaPma31ng1dpyuZBb3yA/4djT7vUGCOAvDr2fnb/+UClRCDsNvp8ocQpY+/QuM8W/PX3zZrryCA5h62FRzt+ys0GYnzpBf97fv/GjUZsiL7Ix/rzeneJftu33vi0bm7CUxCqyorkdPl78fH70mbq/KycDw6cHJR8xKJjJsSLJcZl2nHnWBWJ/3xrhuK9jfa8KJJTzxGfLn2b4Nz7RyINkbDphEfeed8mX4//3u6mwnHePju4932/AjVKC58v/784eZ7cN4GKCh4KfMTUx5Rrwh/94cWX1HIdhOjBmbTkZO5cDK7Ea1uo4jtVu8+XG58tO5Ta8NioBRxfDp4elHTAomMuwMJAM8hvz/eHrlZTGfSbKIKP39eNe2Lzb+mvBkysjI8PfXH5TiA8WVf59vnXxaPl8NGFX/f7x99Z1NlIf13+/fjKysTOgu4XVecsIZqxvxGvL14urTnM6Vqkh+//Ny75SlPC79VqC0+//zhSULr/N515ujJFskV/55tCQlc7/inAUgBYwCphGOrHmhFoElU+bWOotCIgiRe5ABcu7Bb8j36xsO/rGarY2cvVnFdCUOxZuYSskIsv768OqzkNPcw60hErjqHha5+K0f45Gs3vshFy2cELkHF8BvCKfphIdvMHTELD4bg8/M0TYRNcHQcCUAvYyJNutFhL4AAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
-      "d": "2n <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAASCAIAAAB0LQGpAAADRElEQVR4nGP5//8/wyAGLAPtAAJgINz362qjnu2pjjtbAoQYCakdAPf9ebp34zOtfHMBxp/X+oKDJ91kl5Tk+f36NYtxeu/EfGth5oF137/XR9bcUQqxFWVi+Pn29q+IjZfr9TkY/n86Wqxr45GqfH+tvwhSqJLlvu+Xp1TNY0puz9LhIFnv/w+nV16R8J0qDbT5n6xvZoQ62AxGPoMAB8H+XTvvfPcX4cLhvu9nSq2TjjG/Pf9IwkJPiPHDlX1nXitaOhq6tixqNOdGqPt1b+3EiUyODWjuI0r710urz3C71CizA9lsCl6BCIf/+fmXgUeMFyV6Udz399Mbmbota//kx77q356l8HWbr2Tgj94tuwOFiAoZorR/v77+0D/ruVpcaJp/Pdw8bR+zW2u8GjtO9zGLe+QHfDua/d4gQZyF4dez87d/SgUqIcLt36/Pn77+ARaXn778/v+f6cuH9+//AWOGhYuPl52JsHawM+5v3/nRqM2QF2Ho680p3mX7bt/7opE5e0mMAiuqu9HT3+/HR6+J26tyAh3x4OQjZiUTGTaY1J+H022UCi7BlUYrQAJGs+PmxXI1VkLawUY827fhmVYOMOvChZhEfeed8mX4//3u6mwnHePju4932/AjpNHc9//9+cPM9mE8DFD/+ylzw9UyS4bM3af94S8wDR0tDGhgbNjQZw0MHWZ+NVkWIrSDwurNkdV3FILtxFDTGAgwcioHVmY3qtV1HKnd4s2Py32fzm16bVAEjB6GTw9PP2JSMJFBJAdGDmkTR2kQ6+NXEUZGJkMHFxd+4rUDXf/x9MrLYj6TZKFx+Pvxrm1fbPw14WmRkZHh768/KPUtivv+Pt86+bR8vhowev7/ePvqO5soD+u/378ZWVmZMDyMBRDS/vXi6tOczpWqMDf/ebl3ylIel34rUBr9//nCkoXX+bzrzXmRzURy359HS1Iy9yvOWQBSwChgGuHImhdqEVgyZW6tsyhKjPD77//3D911BLV/v77h4B+r2drw4GIV05U4FG9iKiUjyPrrw6vPQk5zD7eGSOCqP1jk4rd+jIfx2FRz937IJSbYiNXOaTrh4RtUHTGLz8YQMJUEFwwEGHUfZQAAN6yNiMtXjIIAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
+      "c": "2n<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAASCAIAAABw2NGUAAADGklEQVR4nGP5//8/w6AHLAPtAKLAALny19VGPdtTHXe2BAgxEqF8YFz55+nejc+08s0FQE78ea0vOHjSTXZJSZ7fr1+zGKf3Tsy3Fmamhiu/HsmL3J+8qlafgwzN/14fWXNHKcRWlAns5Le3f0VsvFwPNOr/p6PFujYeqcr31/qLIAUyua789/Pdqw+/yct4/z+cXnlFwneqNMRyVlnfzAh1sG8Z+QwCHAT7d+28891fhAuHK7+fKbVOOsb89vwjCQs9IcYPV/adea1o6Wjo2rKo0ZybSDcQNuTrpdVnuF1qlNkhGtgUvAIRPvjz8y8DjxgvSoSjuPLvpzcydVvW/smPfdW/PUvh6zZfycAfvVt2BwoR6UDiDPl+ff2hf9ZztbgwNf96uHnaPma31ng1dpyuZBb3yA/4djT7vUGCOAvDr2fnb/+UClRCDsNvp8ocQpY+/QuM8W/PX3zZrryCA5h62FRzt+ys0GYnzpBf97fv/GjUZsiL7Ix/rzeneJftu33vi0bm7CUxCqyorkdPl78fH70mbq/KycDw6cHJR8xKJjJsSLJcZl2nHnWBWJ/3xrhuK9jfa8KJJTzxGfLn2b4Nz7RyINkbDphEfeed8mX4//3u6mwnHePju4932/AjVKC58v/784eZ7cN4GKCh4KfMTUx5Rrwh/94cWX1HIdhOjBmbTkZO5cDK7Ea1uo4jtVu8+XG58tO5Ta8NioBRxfDp4elHTAomMuwMJAM8hvz/eHrlZTGfSbKIKP39eNe2Lzb+mvBkysjI8PfXH5TiA8WVf59vnXxaPl8NGFX/f7x99Z1NlIf13+/fjKysTOgu4XVecsIZqxvxGvL14urTnM6Vqkh+//Ny75SlPC79VqC0+//zhSULr/N515ujJFskV/55tCQlc7/inAUgBYwCphGOrHmhFoElU+bWOotCIgiRe5ABcu7Bb8j36xsO/rGarY2cvVnFdCUOxZuYSskIsv768OqzkNPcw60hErjqHha5+K0f45Gs3vshFy2cELkHF8BvCKfphIdvMHTELD4bg8/M0TYRNcHQcCUAvYyJNutFhL4AAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
+      "d": "2n<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAASCAIAAAB0LQGpAAADRElEQVR4nGP5//8/wyAGLAPtAAJgINz362qjnu2pjjtbAoQYCakdAPf9ebp34zOtfHMBxp/X+oKDJ91kl5Tk+f36NYtxeu/EfGth5oF137/XR9bcUQqxFWVi+Pn29q+IjZfr9TkY/n86Wqxr45GqfH+tvwhSqJLlvu+Xp1TNY0puz9LhIFnv/w+nV16R8J0qDbT5n6xvZoQ62AxGPoMAB8H+XTvvfPcX4cLhvu9nSq2TjjG/Pf9IwkJPiPHDlX1nXitaOhq6tixqNOdGqPt1b+3EiUyODWjuI0r710urz3C71CizA9lsCl6BCIf/+fmXgUeMFyV6Udz399Mbmbota//kx77q356l8HWbr2Tgj94tuwOFiAoZorR/v77+0D/ruVpcaJp/Pdw8bR+zW2u8GjtO9zGLe+QHfDua/d4gQZyF4dez87d/SgUqIcLt36/Pn77+ARaXn778/v+f6cuH9+//AWOGhYuPl52JsHawM+5v3/nRqM2QF2Ho680p3mX7bt/7opE5e0mMAiuqu9HT3+/HR6+J26tyAh3x4OQjZiUTGTaY1J+H022UCi7BlUYrQAJGs+PmxXI1VkLawUY827fhmVYOMOvChZhEfeed8mX4//3u6mwnHePju4932/AjpNHc9//9+cPM9mE8DFD/+ylzw9UyS4bM3af94S8wDR0tDGhgbNjQZw0MHWZ+NVkWIrSDwurNkdV3FILtxFDTGAgwcioHVmY3qtV1HKnd4s2Py32fzm16bVAEjB6GTw9PP2JSMJFBJAdGDmkTR2kQ6+NXEUZGJkMHFxd+4rUDXf/x9MrLYj6TZKFx+Pvxrm1fbPw14WmRkZHh768/KPUtivv+Pt86+bR8vhowev7/ePvqO5soD+u/378ZWVmZMDyMBRDS/vXi6tOczpWqMDf/ebl3ylIel34rUBr9//nCkoXX+bzrzXmRzURy359HS1Iy9yvOWQBSwChgGuHImhdqEVgyZW6tsyhKjPD77//3D911BLV/v77h4B+r2drw4GIV05U4FG9iKiUjyPrrw6vPQk5zD7eGSOCqP1jk4rd+jIfx2FRz937IJSbYiNXOaTrh4RtUHTGLz8YQMJUEFwwEGHUfZQAAN6yNiMtXjIIAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
       "ans": "a"
     },
     {
@@ -113,7 +112,7 @@
       "ans": "a"
     },
     {
-      "question": "15. The angle between the lines 2x2+xy-2y2=0 is",
+      "question": "15. The angle between the lines 2x<sup>2</sup>+xy-2y<sup>2</sup>=0 is",
       "a": "0°",
       "b": "45°",
       "c": "135°",
@@ -121,7 +120,7 @@
       "ans": "a"
     },
     {
-      "question": "16. Center of the circle x2 + y2 - 2x – 4y + 1 = 0 is",
+      "question": "16. Center of the circle x<sup>2</sup>+y<sup>2</sup>-2x–4y+1=0 is",
       "a": "(1,2)",
       "b": "(0,0)",
       "c": " (2,1)",
@@ -129,7 +128,7 @@
       "ans": "a"
     },
     {
-      "question": "17. Equation of tangent to the circle x2 + y2= 10 at (2,3) is",
+      "question": "17. Equation of tangent to the circle x<sup>2</sup>+y<sup>2</sup>=10 at (2,3) is",
       "a": "x + y=10",
       "b": "x + 2y =10",
       "c": "2x + 3y = 10",
@@ -159,9 +158,8 @@
       "c": "x = -2	",
       "d": " x = 1",
       "ans": "a"
-    },
-    {
-      "question": "21. If the derivative of x2 + 3x is 1, the value of x is",
+    },{
+      "question": "21. If the derivative of x<sup>2</sup>+3x is 1, the value of x is",
       "a": "0",
       "b": "-1",
       "c": "2",
@@ -169,7 +167,7 @@
       "ans": "b"
     },
     {
-      "question": "22. If x = 2t + 1 and y = t2, then dy/dt is",
+      "question": "22. If x = 2t + 1 and y = t<sup>2</sup>, then dy/dt is",
       "a": "t",
       "b": "1/t",
       "c": "t2",
@@ -177,7 +175,7 @@
       "ans": "a"
     },
     {
-      "question": "23. The points of inflection for the curve x3 + 4x is",
+      "question": "23. The points of inflection for the curve x<sup>3</sup>+4x is",
       "a": "0",
       "b": "1",
       "c": "6",
@@ -185,7 +183,7 @@
       "ans": "a"
     },
     {
-      "question": "24. 2 <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAtCAIAAACxjaXwAAAEVklEQVR4nGP5//8/w6ABLAPtABSAxzV/Xh2dUVqyzXHN5gRp5gF2zf/vzx6z66r8W/OHPg7B7xpGTjlj/Z97GenoliGUbgYADBHX/P96e8+6lUefPOBevkolNNBBnmMgXcPIreoaWwNEdHAEYdcMCBharvnzbGtdau2qUzfeSsfO3jI1RIamzsdv+K+bEyJb2Pp2r99irdcwq2tnXVCyNNNAuebLye6JT6w3agtKfgiPCP8T6yVOS6cQcM3362t3PPkXy8zAJOLcuNyZtg4h5Jp/76+ceMrw69svShpAf18fmtbUUDfluO22F5s8+cl3za/Xt14yMPz89OMfBa5hFrVLS7OeOP2ZuSInYdV4XPP308vPDAw/Pv+kxDVA8P3BmadsaoaSbBS55v/vb78YGH5/pyimgEH84tL9P3IxxAQNXtf8+wMMlX9/cTec/707NiErpniD0tIHu6Ik/t6d5mbQpLT97lwb7n8fLyxqaFhxl4n92/0zh26yehhJsbw71oddMVGuIQyYhKwKp044vC14yuan4Uns16/88eutt+D+//FIhW3A4YgdO/tM+H5dbdDRX26myIlDMbFhQxRgFHYqDBdymjxrwZ2zu7RnzI+SY/l2qjGm/3f+xWITPmDL8dudE4/Z1Iyk2LArRjWN8oKexyw7SXZOS1/QmZNZ2lyMDJ9PTl7wUL0qUpUdJPvz0clbv2UTYakGXTEaIMY1eNvG/94cXXmcmZPh7fPvYIW/np04817Q1FSSFST7/8udk0/YVCFBg6mYBNcwMjIBdbCw4em9/Ht3oDZ2ukT/1sl5ekUTDrRb+wj9//nlJwM84f+4f+TWH7lUcNBgUYzuInyuYWEHyjJyseGonP5/OtEQWPmvbUeeIe/rPKe82L6tzz1jJaXNtDnbtvSvvKLu+HZ1U8msJ2yOxtJs2BVLofkUn2vYeIBRzyrJhz1wft+ekdJy1WiHNjCtMoq65vtweFZkt/JPqvTomxzumZWsp2+d211sJ77gzLWFi87LfMeu2E+WlTjXMLFzA2NbRFUUeyHKqlZ25V8ZzOUCHis/wMul5BV3kldA2XH/eyEMXIqRAd6Y4mBlEDbQFaFTtxera/6+PjipYxtPTE30369/BG0Cdbjo5hhM1/x/s7OyqO+4Aluorcxp7qgOB0E6dn4xXMMoYOhrxnb8wrLEOOO4hQuseennFmwxxa5deeJLzoefHAI8rPQdE8CRihlZeQVZsUnQGgyV/tS3K9PLZr+W5Xl8X7agP0ObmMYSzVzz7+Wm6pWKPbuL5a7X2lduCtoQLkbj3gs+1/y4s/cmt78YKwO7nInAzS23f4SL0aHcweWav9/e/2ZnBQUHEzvnnw/f/tLeKXhcw8wtxPbzF6i38Pf7N1YhbvrUDrhcw6HirPblxsvfvhyPznxQd1Glx1gSbtcwifm2hBX1NbYIPH+b2O4jSockjMc1DAxcutkzZtDFDQgwuEo/AIA5zbdEL+28AAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\"> is equal to",
+      "question": "24. 2<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAtCAIAAACxjaXwAAAEVklEQVR4nGP5//8/w6ABLAPtABSAxzV/Xh2dUVqyzXHN5gRp5gF2zf/vzx6z66r8W/OHPg7B7xpGTjlj/Z97GenoliGUbgYADBHX/P96e8+6lUefPOBevkolNNBBnmMgXcPIreoaWwNEdHAEYdcMCBharvnzbGtdau2qUzfeSsfO3jI1RIamzsdv+K+bEyJb2Pp2r99irdcwq2tnXVCyNNNAuebLye6JT6w3agtKfgiPCP8T6yVOS6cQcM3362t3PPkXy8zAJOLcuNyZtg4h5Jp/76+ceMrw69svShpAf18fmtbUUDfluO22F5s8+cl3za/Xt14yMPz89OMfBa5hFrVLS7OeOP2ZuSInYdV4XPP308vPDAw/Pv+kxDVA8P3BmadsaoaSbBS55v/vb78YGH5/pyimgEH84tL9P3IxxAQNXtf8+wMMlX9/cTec/707NiErpniD0tIHu6Ik/t6d5mbQpLT97lwb7n8fLyxqaFhxl4n92/0zh26yehhJsbw71oddMVGuIQyYhKwKp044vC14yuan4Uns16/88eutt+D+//FIhW3A4YgdO/tM+H5dbdDRX26myIlDMbFhQxRgFHYqDBdymjxrwZ2zu7RnzI+SY/l2qjGm/3f+xWITPmDL8dudE4/Z1Iyk2LArRjWN8oKexyw7SXZOS1/QmZNZ2lyMDJ9PTl7wUL0qUpUdJPvz0clbv2UTYakGXTEaIMY1eNvG/94cXXmcmZPh7fPvYIW/np04817Q1FSSFST7/8udk0/YVCFBg6mYBNcwMjIBdbCw4em9/Ht3oDZ2ukT/1sl5ekUTDrRb+wj9//nlJwM84f+4f+TWH7lUcNBgUYzuInyuYWEHyjJyseGonP5/OtEQWPmvbUeeIe/rPKe82L6tzz1jJaXNtDnbtvSvvKLu+HZ1U8msJ2yOxtJs2BVLofkUn2vYeIBRzyrJhz1wft+ekdJy1WiHNjCtMoq65vtweFZkt/JPqvTomxzumZWsp2+d211sJ77gzLWFi87LfMeu2E+WlTjXMLFzA2NbRFUUeyHKqlZ25V8ZzOUCHis/wMul5BV3kldA2XH/eyEMXIqRAd6Y4mBlEDbQFaFTtxera/6+PjipYxtPTE30369/BG0Cdbjo5hhM1/x/s7OyqO+4Aluorcxp7qgOB0E6dn4xXMMoYOhrxnb8wrLEOOO4hQuseennFmwxxa5deeJLzoefHAI8rPQdE8CRihlZeQVZsUnQGgyV/tS3K9PLZr+W5Xl8X7agP0ObmMYSzVzz7+Wm6pWKPbuL5a7X2lduCtoQLkbj3gs+1/y4s/cmt78YKwO7nInAzS23f4SL0aHcweWav9/e/2ZnBQUHEzvnnw/f/tLeKXhcw8wtxPbzF6i38Pf7N1YhbvrUDrhcw6HirPblxsvfvhyPznxQd1Glx1gSbtcwifm2hBX1NbYIPH+b2O4jSockjMc1DAxcutkzZtDFDQgwuEo/AIA5zbdEL+28AAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\"> is equal to",
       "a": "0",
       "b": "1",
       "c": "-1",
@@ -239,8 +237,7 @@
       "c": "to discuss",
       "d": "discussing",
       "ans": "a"
-    },
-    {
+    },{
       "question": "31. The river Narayani flow through Narayanghat.",
       "a": "an",
       "b": "a",
@@ -319,8 +316,7 @@
       "c": "comparable",
       "d": "fancy",
       "ans": "a"
-    },
-    {
+    },{
       "question": "41. Which of the following does not take a prefix?",
       "a": "provided",
       "b": "poisonous",
@@ -399,8 +395,7 @@
       "c": "He congratulated that I passed.",
       "d": "He said that I deserved congratulations. ",
       "ans": "a"
-    },
-    {
+    },{
       "question": "51. The duration in which the displacement becomes half the amplitude in the case of a simple harmonic motion if its period is 12 second, is",
       "a": "6 sec",
       "b": "3 sec",
@@ -466,13 +461,12 @@
     },
     {
       "question": "59. The critical angel of glass-water interface is",
-      "a": "sin-1(8/9)",
-      "b": "sin-1(4/5)",
-      "c": "sin-1(3/4)",
-      "d": "sin-1(2/3)",
+      "a": "sin<sup>-1</sup>(8/9)",
+      "b": "sin<sup>-1</sup>(4/5)",
+      "c": "sin<sup>-1</sup>(3/4)",
+      "d": "sin<sup>-1</sup>(2/3)",
       "ans": "a"
-    },
-    {
+    },{
       "question": "60. A diffraction grating has 5000 lines per cm. The maximum order visible with the radiation of wavelength 600 nm in diffraction experiment",
       "a": "2",
       "b": "3",
@@ -551,8 +545,7 @@
       "c": "4 ×1016 Hz",
       "d": "6 ×1017 Hz",
       "ans": "a"
-    },
-    {
+    },{
       "question": "70. A radioactive material of half life 5 days has its initial mass of 1 Kg. the amount decayed after20 days will be",
       "a": "125 g",
       "b": "250 g",
@@ -610,14 +603,14 @@
     },
     {
       "question": "77. A green color is formed in Lassaigne’s test if nitrogen is present in an organic compound. This green color is due to the formation of",
-      "a": "Fe4[Fe(CN)6]3",
+      "a": "Fe<sub>4</sub>[Fe(CN)<sub>6</sub>]<sub>3</sub>",
       "b": "Fe(CNS)",
-      "c": "Na4[Fe(CN)5NOS]",
-      "d": "Na[Fe(CN)6",
+      "c": "Na<sub>4</sub>[Fe(CN)<sub>5</sub>NOS]",
+      "d": "Na[Fe(CN)<sub>6</sub>]",
       "ans": "a"
     },
     {
-      "question": "78. Al4C3 reacts with water to give",
+      "question": "78. Al<sub>4</sub>C<sub>3</sub> reacts with water to give",
       "a": "option",
       "b": "option",
       "c": "option",
@@ -631,8 +624,7 @@
       "c": "schiff’s base",
       "d": "phenol",
       "ans": "c"
-    },
-    {
+    },{
       "question": "80. Which of the following compounds is used as the best anti-knocking agent?",
       "a": "Tetraethyl lead	",
       "b": "methane",
@@ -666,10 +658,10 @@
     },
     {
       "question": "84. The formula of Zinc blende is",
-      "a": "ZnCO3",
+      "a": "ZnCO<sub>3</sub>",
       "b": "ZnS",
       "c": "ZnO",
-      "d": "ZnO.Fe2O3",
+      "d": "ZnO.Fe<sub>2</sub>O<sub>3</sub>",
       "ans": "b"
     },
     {
@@ -706,13 +698,12 @@
     },
     {
       "question": "89. The formula of Epsom salt is",
-      "a": "MgSO4.7H2O",
+      "a": "MgSO.7H<sub>2</sub>O",
       "b": "MgO",
-      "c": "CaSO4.2H2O",
+      "c": "CaSO<sub>4</sub>.2H<sub>2</sub>O",
       "d": "CaO",
       "ans": "a"
-    },
-    {
+    },{
       "question": "90. Ostwald’s process is used for the manufacture of",
       "a": "Sulphuric acid",
       "b": "nitric acid",
@@ -730,10 +721,10 @@
     },
     {
       "question": "92. 44 gm of CO2 is equal to",
-      "a": "6.023 × 1023 no of CO2 molecule",
-      "b": "6.023 × 1021 no of CO2 molecule",
-      "c": "6.023 × 1019 no of CO2 molecule",
-      "d": "6.023 × 1018 no of CO2 molecule",
+      "a": "6.023×10<sup>23</sup> no of CO<sup>2</sup> molecule",
+      "b": "6.023×10<sup>21</sup> no of CO<sup>2</sup> molecule",
+      "c": "6.023×10<sup>19</sup> no of CO<sup>2</sup> molecule",
+      "d": "6.023×10<sup>18</sup> no of CO<sup>2</sup> molecule",
       "ans": "a"
     },
     {
@@ -755,9 +746,9 @@
     {
       "question": "95. Which of the following is the unit of surface tension?",
       "a": "dynes.cm",
-      "b": "dynes.cm-1",
-      "c": "dynes.cm2",
-      "d": "dynes.cm-2",
+      "b": "dynes.cm<sup>-1</sup>",
+      "c": "dynes.cm<sup>2</sup>",
+      "d": "dynes.cm<sup>-2</sup>",
       "ans": "b"
     },
     {
@@ -770,26 +761,26 @@
     },
     {
       "question": "97. The actual electronic configuration of copper is",
-      "a": "[Ar]4s23d8",
-      "b": "[Ar]4s13d10	",
-      "c": "[Ar]4s23d10",
-      "d": "[Ar]4s23d8",
+      "a": "[Ar]4s<sub>2</sub>3d<sub>8</sub>",
+      "b": "[Ar]4s<sub>1</sub>3d<sub>10</sub>",
+      "c": "[Ar]4s<sub>2</sub>3d<sub>10</sub>",
+      "d": "[Ar]4s<sub>2</sub>3d<sub>8</sub>",
       "ans": "b"
     },
     {
       "question": "98. If the pH of a solution is 5.2, the hydrogen ion concentration of the solution is",
-      "a": "6.3 × 10-5 M",
-      "b": "6.3 × 10-6 M",
-      "c": "6.3 × 10-7 M",
-      "d": "6.3 × 10-4 M",
+      "a": "6.3 × 10<sup>-5</sup> M",
+      "b": "6.3 × 10<sup>-6</sup> M",
+      "c": "6.3 × 10<sup>-7</sup> M",
+      "d": "6.3 × 10<sup>-4</sup> M",
       "ans": "b"
     },
     {
       "question": "99. The unit of rate constant for first order reaction is",
-      "a": "Sec-1",
-      "b": "mol sec-1",
-      "c": "mol-1 sec-1",
-      "d": "liter2mol-2s-1",
+      "a": "Sec<sup>-1</sup>",
+      "b": "mol sec<sup>-1</sup>",
+      "c": "mol<sup>-1</sup> sec<sup>-1</sup>",
+      "d": "liter<sup>2</sup>mol<sup>-2</sup>s<sup>-1</sup>",
       "ans": "a"
     },
     {

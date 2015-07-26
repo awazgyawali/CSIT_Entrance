@@ -92,12 +92,8 @@ public class CSITQuery extends AppCompatActivity {
         if (id.equals("0")) {
             onStartHandler();
         } else {
-            MaterialDialog dialogInitial = new MaterialDialog.Builder(this)
-                    .content("Please wait...")
-                    .progress(true, 0)
-                    .build();
-            dialogInitial.show();
-            fetchFromInternet(dialogInitial, true);
+
+            fetchFromInternet(true);
         }
         text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -122,7 +118,12 @@ public class CSITQuery extends AppCompatActivity {
         });
     }
 
-    private void fetchFromInternet(final MaterialDialog initial, final boolean finish) {
+    private void fetchFromInternet(final boolean finish) {
+        final MaterialDialog initial = new MaterialDialog.Builder(this)
+                .content("Please wait...")
+                .progress(true, 0)
+                .build();
+        initial.show();
         String url = getString(R.string.queryFetchUrl);
         id = pref.getString("fbId", tempId);
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + id, new Response.Listener<JSONObject>() {
@@ -148,11 +149,13 @@ public class CSITQuery extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(context));
                     recyclerView.setAdapter(adapter);
                     recyclerView.scrollToPosition(messages.size() - 1);
+                    initial.dismiss();
                     if (finish) {
-                        initial.dismiss();
+                        finish();
                     }
                 } catch (JSONException e) {
                     Toast.makeText(context, "Application error. Please report us.", Toast.LENGTH_SHORT).show();
+                    initial.dismiss();
                     if (finish) {
                         finish();
                     }
@@ -163,9 +166,9 @@ public class CSITQuery extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 setRefreshActionButtonState(false);
+                initial.dismiss();
                 Toast.makeText(context, "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
                 if (finish) {
-                    initial.dismiss();
                     finish();
                 }
             }
@@ -189,6 +192,7 @@ public class CSITQuery extends AppCompatActivity {
                         finish();
                     }
                 })
+                .title("You must login with facebook to continue")
                 .show();
 
         //call the login callback manager
@@ -206,11 +210,11 @@ public class CSITQuery extends AppCompatActivity {
                                 editor.putString("First", profile2.getName() + "");
                                 editor.apply();
                                 mProfileTracker.stopTracking();
+                                fetchFromInternet(true);
+                                dialog.dismiss();
                             }
                         };
                         mProfileTracker.startTracking();
-                        dialog.dismiss();
-                        fetchFromInternet(dialog, false);
                     }
 
                     @Override
@@ -242,7 +246,7 @@ public class CSITQuery extends AppCompatActivity {
             finish();
             return true;
         } else if (id == R.id.action_refresh) {
-            fetchFromInternet(null, false);
+            fetchFromInternet(false);
             setRefreshActionButtonState(true);
             return true;
         }
@@ -296,7 +300,7 @@ public class CSITQuery extends AppCompatActivity {
                     adapter.added(text.getText().toString());
                     recyclerView.scrollToPosition(adapter.getItemCount() - 1);
                     text.setText("");
-                    getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", getSharedPreferences("data", MODE_PRIVATE).getInt("query", 1) + 1).apply();
+                    getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", getSharedPreferences("data", MODE_PRIVATE).getInt("query", 0) + 1).apply();
                 } catch (JSONException e) {
                     new SnackBar.Builder((Activity) context)
                             .withMessage("Application Error. Please report us.")

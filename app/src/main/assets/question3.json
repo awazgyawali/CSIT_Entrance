@@ -79,8 +79,7 @@
       "c": "Inconsistent and dependent",
       "d": "Consistent and independent",
       "ans": "c"
-    },
-    {
+    },{
       "question": "11.The value of i<sup>7</sup> + 1/i<sup>4</sup> is",
       "a": "1",
       "b": "-1",
@@ -159,8 +158,7 @@
       "c": "x<sup>b</sup>ln|b|",
       "d": " b<sup>x</sup>ln|b|",
       "ans": "d"
-    },
-    {
+    },{
       "question": "21.The derivative of y= <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> is",
       "a": "<img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">",
       "b": "<img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">",
@@ -239,8 +237,7 @@
       "c": "salt/mark",
       "d": "pair/tear",
       "ans": "a"
-    },
-    {
+    },{
       "question": "31.I completely differ ………… you ………… this point.",
       "a": "From: at",
       "b": "from: in",
@@ -319,8 +316,7 @@
       "c": "must be buying",
       "d": "must buying",
       "ans": "a"
-    },
-    {
+    },{
       "question": "41.Although they are similar, chipmunks are ………… most other ground squirrels.",
       "a": "Alike",
       "b": "like as",
@@ -399,8 +395,7 @@
       "c": "perception",
       "d": "moral",
       "ans": "a"
-    },
-    {
+    },{
       "question": "51.The dimensions of (h/e) are same as that of",
       "a": "Magnetic field",
       "b": "electric field",
@@ -471,8 +466,7 @@
       "c": "1/T",
       "d": "T",
       "ans": "a"
-    },
-    {
+    },{
       "question": "60.The efficiency of Carnot engine working between steam point and ice point is:",
       "a": "16.8%",
       "b": "26.81%",
@@ -545,14 +539,13 @@
       "ans": "a"
     },
     {
-      "question": "69.The radius of Earth is 6400 km. The capacitance is",
+      "question": "69.The radius of Earth is 6400 km. The capacitance is:",
       "a": "6400 MF ",
       "b": "6400 F",
       "c": "1 F",
       "d": "711 µF",
       "ans": "a"
-    },
-    {
+    },{
       "question": "70.Two wires of same material have lengths L and 2L and cross reaction areas 4A and A respectively. The ratio of their specific resistances would be",
       "a": "1:1",
       "b": "1:8",
@@ -631,8 +624,7 @@
       "c": "-1",
       "d": "+3",
       "ans": "a"
-    },
-    {
+    },{
       "question": "80.Hemoglobin contains 0.33% of iron by weight. Molecular weight of hemoglobin is 67200. The number of iron atoms (At wt of Fe = 55.85) ion one molecule of hemoglobin is",
       "a": "2",
       "b": "4",
@@ -657,7 +649,7 @@
       "ans": "a"
     },
     {
-      "question": "83.In which of the following compound the molecular geometry cannot be predicted by the use of VSEPR theory",
+      "question": "83.In which of the following compound the molecular geometry cannot be predicted by the use of VSEPR theory?",
       "a": "NaCl",
       "b": "H<sub>2</sub>O",
       "c": "CH<sub>4</sub>",
@@ -689,7 +681,7 @@
       "ans": "a"
     },
     {
-      "question": "87.Which of the following metals generate H<sub>2</sub>O on treatment with dil.HNO<sub>3</sub>.",
+      "question": "87.Which of the following metals generate H<sub>2</sub>O on treatment with dil.HNO<sub>3</sub>?",
       "a": "Zn",
       "b": "Mn",
       "c": "Cu",
@@ -711,8 +703,7 @@
       "c": "heavy hydrogen",
       "d": "nascent hydrogen",
       "ans": "a"
-    },
-    {
+    },{
       "question": "90.Ammonia is manufactured by the use of",
       "a": "Solvay's process",
       "b": "Haber's process",
@@ -784,7 +775,7 @@
       "d": "Analgesic drug",
       "ans": "a"
     },
-    {
+	{
       "question": "99.Enzymes are",
       "a": "Carbohydrates",
       "b": "Proteins",
