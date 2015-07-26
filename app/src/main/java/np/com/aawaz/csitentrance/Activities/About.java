@@ -29,16 +29,10 @@ public class About extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         name = new String[]{"Aawaz Gyawali\nDeveloper", "Rameshwor Dhakal\nFeed writer",
-                "Buddhiraj Nagarkoti\nGraphics Designer", "Prasanna Mishra\nUI Designer"};
-        desc = new String[]{"You know it's very hard to explain how hard it was to make this application. B" +
-                "ut finally it was possible due to my friend's help and guidance. I would like to thank them a lot.",
-                "Kam nai lekhne ho mero. Parichaye dine time xaina."
-                , "Kati vane aawaz lai color dark rakha but mandai manena light color nai chaiyo re.", "App ma sappaithok eakai thau ma hunu parxa yr." +
-                "Jatatai jana alxi lagxa mero vanai yo chai la. :p."};
-        images = new int[]{R.drawable.aawaz, R.drawable.ramu, R.drawable.buddhi, R.drawable.prass,};
-
+                "Buddhiraj Nagarkoti\nGraphics Designer", "Prasanna Mishra\nUI Designer",
+                "Gopal Nepal","Bishal Rana Magar","Ksitiz Khanal","ANFSU","Amrit Science Campus"};
         recyAbout = (RecyclerView) findViewById(R.id.aboutRecy);
-        AboutAdapter adapter = new AboutAdapter(this, name, desc, images);
+        AboutAdapter adapter = new AboutAdapter(this, name);
         recyAbout.setAdapter(adapter);
         recyAbout.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 

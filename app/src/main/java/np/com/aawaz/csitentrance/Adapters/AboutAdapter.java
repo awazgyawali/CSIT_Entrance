@@ -13,13 +13,12 @@ import np.com.aawaz.csitentrance.R;
 
 public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> {
     LayoutInflater inflater;
-    String[] names, desc;
+    String[] names;
 
 
-    public AboutAdapter(Context context, String[] names, String[] desc) {
+    public AboutAdapter(Context context, String[] names) {
         inflater = LayoutInflater.from(context);
         this.names = names;
-        this.desc = desc;
     }
 
     @Override
@@ -31,7 +30,6 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.name.setText(names[position]);
-        holder.descri.setText(desc[position]);
     }
 
     @Override
@@ -42,13 +40,10 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
     class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView name;
-        TextView descri;
-        ImageView image;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            descri = (TextView) itemView.findViewById(R.id.detailInfo);
-            image = (ImageView) itemView.findViewById(R.id.imageMan);
+            name= (TextView) itemView.findViewById(R.id.name);
         }
     }
 }
