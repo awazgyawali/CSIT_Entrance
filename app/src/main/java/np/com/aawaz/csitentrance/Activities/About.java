@@ -10,11 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
-
-import java.util.ArrayList;
-
 import np.com.aawaz.csitentrance.Adapters.AboutAdapter;
 import np.com.aawaz.csitentrance.R;
 
@@ -22,7 +17,7 @@ import np.com.aawaz.csitentrance.R;
 public class About extends AppCompatActivity {
 
     RecyclerView recyAbout;
-    String[] name,desc;
+    String[] name, desc;
     int[] images;
 
     @Override
@@ -33,19 +28,19 @@ public class About extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        name=new String[]{"Aawaz Gyawali\nDeveloper","Rameshwor Dhakal\nFeed writer",
-                "Buddhiraj Nagarkoti\nGraphics Designer","Prasanna Mishra\nUI Designer"};
-        desc=new String[]{"You know it's very hard to explain how hard it was to make this application. B" +
+        name = new String[]{"Aawaz Gyawali\nDeveloper", "Rameshwor Dhakal\nFeed writer",
+                "Buddhiraj Nagarkoti\nGraphics Designer", "Prasanna Mishra\nUI Designer"};
+        desc = new String[]{"You know it's very hard to explain how hard it was to make this application. B" +
                 "ut finally it was possible due to my friend's help and guidance. I would like to thank them a lot.",
                 "Kam nai lekhne ho mero. Parichaye dine time xaina."
-                ,"Kati vane aawaz lai color dark rakha but mandai manena light color nai chaiyo re.","App ma sappaithok eakai thau ma hunu parxa yr." +
+                , "Kati vane aawaz lai color dark rakha but mandai manena light color nai chaiyo re.", "App ma sappaithok eakai thau ma hunu parxa yr." +
                 "Jatatai jana alxi lagxa mero vanai yo chai la. :p."};
-        images=new int[]{R.drawable.aawaz,R.drawable.ramu,R.drawable.buddhi,R.drawable.prass,};
+        images = new int[]{R.drawable.aawaz, R.drawable.ramu, R.drawable.buddhi, R.drawable.prass,};
 
         recyAbout = (RecyclerView) findViewById(R.id.aboutRecy);
-        AboutAdapter adapter=new AboutAdapter(this,name,desc,images);
+        AboutAdapter adapter = new AboutAdapter(this, name, desc, images);
         recyAbout.setAdapter(adapter);
-        recyAbout.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        recyAbout.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
     }
 

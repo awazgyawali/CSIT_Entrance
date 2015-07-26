@@ -117,8 +117,8 @@ public class BackgroundTaskHandler extends JobService {
                         no++;
                     }
                     if (no > noOfRows()) {
-                        if(no-noOfRows()>1)
-                            notification(no-noOfRows() +" news updated.", "Check them out now!", "News updated", 12345, new Intent(context, EntranceNews.class));
+                        if (no - noOfRows() > 1)
+                            notification(no - noOfRows() + " news updated.", "Check them out now!", "News updated", 12345, new Intent(context, EntranceNews.class));
                         else
                             notification(topic.get(0), content.get(0), "News updated", 12345, new Intent(context, EntranceNews.class));
                     }

@@ -230,7 +230,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private void fillTexts(int posi) {
         String htm;
-        if(posi==2){
+        if (posi == 2) {
             slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
         }
         if (posi < 100) {

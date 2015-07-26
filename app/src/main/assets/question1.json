@@ -79,7 +79,8 @@
       "c": "1",
       "d": "13",
       "ans": "a"
-    },{
+    },
+    {
       "question": " 11. 1 and 2 are the roots of",
       "a": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAAUCAIAAACLcx0zAAAFfUlEQVR4nGP5//8/wyjABlgG2gGDFxAbNJ/2F6Sv5dcRenX2vkbdjDwDbkaaOmswAGKDhlXat6bdSZv342Zfw5ZjSWtceWnqrMEAiA0aTjVnbRD9788/ThFuZhq6aNAA0sqav0+3r2ZNqzfhopFrBhUgIWj+f7kwq+dO/MwadTai9fy81hccPOkmu6Qkz+/Xr1mM03sn5lsLU5zoflzqCI6afY9NQpTrx5v3PDb5E3pSDPmYSDLj/5fLcwpy595h4/75+pd2zoyJSdqoBSixQfPvw+lZfcd0qmtsRUjx2J+3t39FbLxcr8/B8P/T0WJdG49U5ftr/UUoLMR/v77xJ3HbxWJgJP17vy9L29nlq9ydJR6CxBv7/+OBIq+qt32X94ZK/H84x03Ps1jlynR7PiQTiAya72fqIyrXMYuvms7AwKFbuXF5vDxROlllfTMj1DlATEY+gwAHwf5dO+989xchPkd+vzylah5TcnuWDgdCkEMtrkxVEZx4mQTNwh34Zu5Zf+O7hyXRxv5/s6t98Ue7De4SoIiWCy6wzQ9v29ViF4IUaege/Pfu2ISsmOINSksf7IqS+Ht3mptBk9L2u3NtJt59P5Fo/8ABm4JXIMI9f37+ZeAR40VKdjit44ap+HVv7cSJTI4NKEHDKuvkjGTI3/8MbFyspKTEbze3n/shVSgHMZORW9lU+seU7Te+hSAsxggaJiGrwqkTDm8LnrL5aXgS+/Urf/x66y24GSgHvx5unraP2a01Xo2dqtb9fnH+6mcRV391TqjAl30RUs4rP2NVzOy6+e0uH36Gny/uvmXgEYXFEjOfBC/DmzsvfjIw4A4aIGAUdioMF3KaPGvBnbO7tGfMj5KjrMn87/XmFO+yfbfvfdHInL0kRoGVGOv+/fr86esfYB/m05ff//8zffnw/v0/oFoWLj5edpTi9svZqdOeu3XW28AbWjxOKz79X4HfSb++AkOBmY0ZmtIYWdiAlv78+gtoB9x0rL7mMctOkp3T0hd05mSWNheOhPr9bL1/2sZXf7FIMfI7Td3WZwWNACZR33mnfBn+f7+7OttJx/j47uPdNvzIhmKx7s/D6TZKBZfgSqIVhMC0ZsfNi+Vq8MD9+2pbadrhgJU7Eogr+mCAiY0bmHS//vwD7T/+//3zD9Ad3GzIoY7NxH9vjq48zszJ8Pb5dwbcGZjTuHHX2UbincPIqRxYmd2oVtdxpHaLNz9+65glQ+bu0/4ADPevRwsDGhgbNvRZA0OamV9NFu7iv692lof2CvTtaHERIa3eBpbjkmqiDAdffgZaAMpTfz49+8ggYiDBjqwGI2j+vTtQGztdon/r5Dy9ogkH2q19hMivaX8/3rXti42/JrzmYGRk+PvrD1JfH4d1jBzSJo7SIAUfv4owMjIZOri48KOavDY/YYV6/4Y8I140933ZHyXrtPwDVgexeWx5tR0YL5zqHkacK849/M6gxQZq4tw+9ZTdwF0dpYZDDZr/n040BFb+a9uRZ8j7Os8pL7Zv63PPWCmym2h/Xu6dspTHpR+ct/5/vrBk4XU+73pzWLFArnW/Hy2JdWplyW1WenZw6zOwELOAlp21ErjNxuO47P3/ZfhNYBR2rYwTDJ6+47lbuOS/B2smHBWK3egugrvJ9/v2jJSWq0Y7tIEtH0ZR13wfDs+K7Fb+SZV+smhlJ5GAVUxX4lC8iamUjCDrrw+vPgs5zT3cGiLBTIJ1/P77//1DM/b7tZUb7t74WRC6FCGm0XbjYiXx7XRGPrueLW25Of4uCwR/v/ym3r+z35EfNfmhBA2rWtmVf2UwzQIeKz9QOMzFIhez+GwMLlmyrePz2PyD4gE4Rh69tPmH0nArGB3KwglGgwYnAAA/rEZnwdKjrwAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
       "b": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAAAUCAIAAACPhs0OAAAFcElEQVR4nGP5//8/wyhABSwD7YDBCIgNlE/7C9LX8usIvTp7X6NuRp4BNyNNnTWwgNhAYZX2rWl30ub9uNnXsOVY0hpXXpo6a2ABsYHCqeasDaL//fnHKcLNTEMXDQJAWpny9+n21axp9SZcNHLNIAEkBMr/Lxdm9dyJn1mjzkZI6c9rfcHBk26yS0ry/H79msU4vXdivrUwNdLXj0sdwVGz77FJiHL9ePOexyZ/Qk+KIR8TSWb8/3J5TkHu3Dts3D9f/9LOmTExSRu1iCQ2UP59OD2r75hOdY2tCBF++/P29q+IjZfr9TkY/n86Wqxr45GqfH+tvwjlpfPv1zf+JG67WAyMmH/v92VpO7t8lbuzxEOQeJP/fzxQ5FX1tu/y3lCJ/w/nuOl5FqtcmW7Ph2QCkYHy/Ux9ROU6ZvFV0xkYOHQrNy6Pl4fq/H55StU8puT2LB0OhHJWWd/MCHWwACOfQYCDYP+unXe++4uQlO2wmsyhFlemqghOqkyCZuEOfDP3rL/x3cOSaJP/v9nVvvij3QZ3CVDkygUX2OaHt+1qsQtBijH0QPn37tiErJjiDUpLH+yKkvh7d5qbQZPS9rtzbSbefT8RmyW/7q2dOJHJsQHF6WwKXoEIZ/z5+ZeBR4wXKYXhtIWbkMmssk7OSOb8/c/AxsVKSgL8dnP7uR9ShXIQMxm5lU2lf0zZfuNbCJLd6IHCJGRVOHXC4W3BUzY/DU9iv37lj19vvQU3A9ng18PN0/Yxu7XGq7FT25bfL85f/Szi6q/OCeJ92Rch5bzyM1aVzK6b3+7y4Qcxf764+5aBRxQWRcx8ErwMb+68+MnAgDtQgIBR2KkwXMhp8qwFd87u0p4xP0oOi6J/vz5/+voH2EP49OX3//9MXz68f/8PqJWFi4+XHVLs/Xu9OcW7bN/te180MmcviVFgJdIWwiZDwZezU6c9d+ust4E0mXicVnz6v4JQQP779RXof2Y2ZmjqYmRhA9r78+svoB1w07GWKTxm2Umyc1r6gs6czNLmwpY4/zycbqNUcAnOj1YQAtOaHTcvlquB/c8k6jvvlC/D/+93V2c76Rgf332824Yf2SzsthBhMgj8fbWtNO1wwModCfIktSqY2LiBKfbrzz/QHt//3z//AJ3CzYYc3thM/Pfm6MrjzJwMb59/Z8CRXZklQ+bu0/7wF2j+0cKABsaGDX3WwOTHzK8mi2YiI6dyYGV2o1pdx5HaLd78BG0hxuS/r3aWh/YK9O1ocREhrTYGltSSaqIMB19+BloAykF/Pj37yCBiIMGOrAYjUP69O1AbO12if+vkPL2iCQfarX2EsAQMI4e0iaM0iPXxqwgjI5Ohg4sLwsO/H+/a9sXGXxNeJTAyMvz99QepO47bFvwmgw1fm5+wQr1/Q54RL7LLvuyPknVa/gFrSLB5bHm1HRIjnOoeRpwrzj38zqDFBmqy3D71lN3AXR2l9kINlP+fTjQEVv5r25FnyPs6zykvtm/rc89YKVJbXX9e7p2ylMel3wpUdv3/fGHJwut83vXmsO4SBbb8frQk1qmVJbdZ6dnBrc/AQswCWnbWStyMPI7L3v9fRtAERmHXyjjB4Ok7nruFS/57sGbCUaHYje4iuBtvv2/PSGm5arRDG9iSYRR1zffh8KzIbuWfVOkni1ZMIgC///5//9DEWMV0JQ7Fm5hKyQiy/vrw6rOQ09zDrSESzKTZgs3k79dWbrh742dB6FKEmEbbjYuVhFvZ8FDhs+vZ0pab4++yQPD3y2/q/Tv7HflRMwNKoLCqlV35VwbTLOCx8gN5A1AscjGLz8bgkqXEFj6PzT8oHhRj5NFLm38oDbeC0UEmLGA0ULAAAFMSbfhAWgCdAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
@@ -158,7 +159,8 @@
       "c": "x = -2	",
       "d": " x = 1",
       "ans": "a"
-    },{
+    },
+    {
       "question": "21. If the derivative of x<sup>2</sup>+3x is 1, the value of x is",
       "a": "0",
       "b": "-1",
@@ -237,7 +239,8 @@
       "c": "to discuss",
       "d": "discussing",
       "ans": "a"
-    },{
+    },
+    {
       "question": "31. The river Narayani flow through Narayanghat.",
       "a": "an",
       "b": "a",
@@ -316,7 +319,8 @@
       "c": "comparable",
       "d": "fancy",
       "ans": "a"
-    },{
+    },
+    {
       "question": "41. Which of the following does not take a prefix?",
       "a": "provided",
       "b": "poisonous",
@@ -395,7 +399,8 @@
       "c": "He congratulated that I passed.",
       "d": "He said that I deserved congratulations. ",
       "ans": "a"
-    },{
+    },
+    {
       "question": "51. The duration in which the displacement becomes half the amplitude in the case of a simple harmonic motion if its period is 12 second, is",
       "a": "6 sec",
       "b": "3 sec",
@@ -466,7 +471,8 @@
       "c": "sin<sup>-1</sup>(3/4)",
       "d": "sin<sup>-1</sup>(2/3)",
       "ans": "a"
-    },{
+    },
+    {
       "question": "60. A diffraction grating has 5000 lines per cm. The maximum order visible with the radiation of wavelength 600 nm in diffraction experiment",
       "a": "2",
       "b": "3",
@@ -545,7 +551,8 @@
       "c": "4 ×1016 Hz",
       "d": "6 ×1017 Hz",
       "ans": "a"
-    },{
+    },
+    {
       "question": "70. A radioactive material of half life 5 days has its initial mass of 1 Kg. the amount decayed after20 days will be",
       "a": "125 g",
       "b": "250 g",
@@ -624,7 +631,8 @@
       "c": "schiff’s base",
       "d": "phenol",
       "ans": "c"
-    },{
+    },
+    {
       "question": "80. Which of the following compounds is used as the best anti-knocking agent?",
       "a": "Tetraethyl lead	",
       "b": "methane",
@@ -703,7 +711,8 @@
       "c": "CaSO<sub>4</sub>.2H<sub>2</sub>O",
       "d": "CaO",
       "ans": "a"
-    },{
+    },
+    {
       "question": "90. Ostwald’s process is used for the manufacture of",
       "a": "Sulphuric acid",
       "b": "nitric acid",

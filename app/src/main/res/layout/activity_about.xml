@@ -66,13 +66,14 @@
 
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/aboutRecy"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/aboutRecy"
-        android:layout_above="@+id/bottomLayout">
+        android:layout_above="@+id/bottomLayout"
+        android:layout_weight="1">
 
     </android.support.v7.widget.RecyclerView>
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,34 +81,34 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp">
 
-            <LinearLayout
-                android:id="@+id/bottomLayout"
+        <LinearLayout
+            android:id="@+id/bottomLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/primary3" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:text="If you have got any recommendation or bug report.Please give feedback"
+                android:textColor="@color/primary6" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/primary3" />
+            <Button
+                android:id="@+id/fed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:onClick="feedBack"
+                android:text="Give FeedBack"
+                android:textAllCaps="false" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="If you have got any recommendation or bug report.Please give feedback"
-                    android:textColor="@color/primary6" />
-
-                <Button
-                    android:id="@+id/fed"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:onClick="feedBack"
-                    android:text="Give FeedBack"
-                    android:textAllCaps="false" />
-
-            </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
