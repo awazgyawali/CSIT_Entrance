@@ -144,8 +144,6 @@ public class QuizActivity extends AppCompatActivity {
         op4.bringToFront();
         feedback.bringToFront();
 
-        slideLayout.setScrollableView(ansRecy);
-
         rplHandler();
 
         //Receiving intent
@@ -232,6 +230,9 @@ public class QuizActivity extends AppCompatActivity {
 
     private void fillTexts(int posi) {
         String htm;
+        if(posi==2){
+            slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+        }
         if (posi < 100) {
             if (code == 4) {
                 htm = "<body bgcolor=\"" + colors[code - 1] + "\">" + questions.get(posi);
@@ -378,16 +379,7 @@ public class QuizActivity extends AppCompatActivity {
         clickedAns = 0;
         fab.setColorNormal(getResources().getColor(R.color.dark1));
         fab.setImageResource(R.drawable.ic_done_black_18dp);
-        new Thread() {
-            public void run() {
-                try {
-                    sleep(1000);
-                    fillTexts(qNo);
-                } catch (InterruptedException e) {
-                    fillTexts(qNo);
-                }
-            }
-        }.run();
+        fillTexts(qNo);
         haldleProgresss();
     }
 

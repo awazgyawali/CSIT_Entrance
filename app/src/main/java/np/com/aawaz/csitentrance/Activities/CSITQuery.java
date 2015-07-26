@@ -2,6 +2,7 @@ package np.com.aawaz.csitentrance.Activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -177,13 +178,17 @@ public class CSITQuery extends AppCompatActivity {
 
         button = new LoginButton(this);
 
-
         //set fb permissions
         button.setReadPermissions(Arrays.asList("public_profile,email"));
 
         dialog = new MaterialDialog.Builder(this)
                 .customView(button, false)
-                .cancelable(false)
+                .cancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        finish();
+                    }
+                })
                 .show();
 
         //call the login callback manager
@@ -204,6 +209,7 @@ public class CSITQuery extends AppCompatActivity {
                             }
                         };
                         mProfileTracker.startTracking();
+                        dialog.dismiss();
                         fetchFromInternet(dialog, false);
                     }
 
