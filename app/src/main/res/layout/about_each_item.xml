@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:fancy="http://schemas.android.com/apk/res-auto"
-    android:layout_marginBottom="2dp"
+    android:layout_marginBottom="1dp"
+    fancy:cardCornerRadius="10dp"
     android:layout_marginLeft="2dp"
     android:layout_marginRight="2dp"
-    android:layout_marginTop="3dp"
+    android:layout_marginTop="1dp"
     android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/name"
@@ -24,46 +25,50 @@
             android:gravity="center"
             android:text="Aawaz Gyawali"
             android:textColor="#000"
-            android:textSize="18dp" />
+            android:textSize="15dp" />
+
         <TextView
-            android:layout_width="wrap_content"
             android:id="@+id/twitterHandle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="\@awazgyawali"/>
+            android:text="\@awazgyawali" />
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-        <mehdi.sakout.fancybuttons.FancyButton
-            android:id="@+id/btn_preview"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:padding="10dp"
-            android:layout_below="@+id/imageView2"
-            android:layout_centerHorizontal="true"
-            fancy:fb_borderColor="#3b5999"
-            fancy:fb_defaultColor="#fff"
-            fancy:fb_focusColor="#4d3b5999"
-            fancy:fb_borderWidth="2dp"
-            android:layout_marginRight="10dp"
-            fancy:fb_iconResource="@drawable/social_facebook_box_white"
-            fancy:fb_radius="200dp">
+            android:orientation="horizontal">
 
-        </mehdi.sakout.fancybuttons.FancyButton>
-        <mehdi.sakout.fancybuttons.FancyButton
-            android:id="@+id/btn_twitter"
-            android:padding="5dp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            fancy:fb_defaultColor="#fff"
-            fancy:fb_focusColor="#4d55acee"
-            android:layout_below="@+id/imageView2"
-            android:layout_centerHorizontal="true"
-            fancy:fb_borderColor="#55acee"
-            fancy:fb_borderWidth="2dp"
-            fancy:fb_iconResource="@drawable/twitter"
-            fancy:fb_radius="200dp" />
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/btn_fb"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/imageView2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                fancy:fb_borderColor="#3b5999"
+                fancy:fb_borderWidth="2dp"
+                fancy:fb_defaultColor="#fff"
+                fancy:fb_focusColor="#4d3b5999"
+                fancy:fb_iconResource="@drawable/social_facebook_box_white"
+                fancy:fb_radius="200dp">
+
+            </mehdi.sakout.fancybuttons.FancyButton>
+
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/btn_twitter"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/imageView2"
+                android:layout_centerHorizontal="true"
+                android:padding="5dp"
+                fancy:fb_borderColor="#55acee"
+                fancy:fb_borderWidth="2dp"
+                fancy:fb_defaultColor="#fff"
+                fancy:fb_focusColor="#4d55acee"
+                fancy:fb_iconResource="@drawable/twitter"
+                fancy:fb_radius="200dp" />
         </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>
