@@ -17,8 +17,7 @@ import np.com.aawaz.csitentrance.R;
 public class About extends AppCompatActivity {
 
     RecyclerView recyAbout;
-    String[] name, desc;
-    int[] images;
+    String[] name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
