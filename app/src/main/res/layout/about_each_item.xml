@@ -12,18 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageMan"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp" />
-
         <TextView
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageMan"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:gravity="center"

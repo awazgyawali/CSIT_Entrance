@@ -16,6 +16,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="35dp"
         android:gravity="center"
-        android:text="Colleges infomation at your figure tip!"
+        android:text="Colleges infomation at your finger tip!"
         android:textColor="#fff" />
 </RelativeLayout>

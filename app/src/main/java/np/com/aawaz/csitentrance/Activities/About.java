@@ -47,7 +47,7 @@ public class About extends AppCompatActivity {
     public void feedBack(View view) {
         Intent sendMail = new Intent(Intent.ACTION_SEND);
         sendMail.setData(Uri.parse("mailto:"));
-        String[] to = {"info@aawaz.com.np", "dhakalramu2070@gmail.com"};
+        String[] to = {"contact@aawaz.com.np", "dhakalramu2070@gmail.com"};
         sendMail.putExtra(Intent.EXTRA_EMAIL, to);
         sendMail.putExtra(Intent.EXTRA_SUBJECT, "Regarding CSIT Entrance Android Application.");
         sendMail.setType("message/rfc822");

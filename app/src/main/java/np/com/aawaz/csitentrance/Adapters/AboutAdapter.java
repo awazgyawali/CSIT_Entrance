@@ -14,14 +14,12 @@ import np.com.aawaz.csitentrance.R;
 public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> {
     LayoutInflater inflater;
     String[] names, desc;
-    int[] images;
 
 
-    public AboutAdapter(Context context, String[] names, String[] desc, int[] images) {
+    public AboutAdapter(Context context, String[] names, String[] desc) {
         inflater = LayoutInflater.from(context);
         this.names = names;
         this.desc = desc;
-        this.images = images;
     }
 
     @Override
@@ -34,7 +32,6 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.name.setText(names[position]);
         holder.descri.setText(desc[position]);
-        holder.image.setImageResource(images[position]);
     }
 
     @Override
@@ -50,7 +47,6 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.name);
             descri = (TextView) itemView.findViewById(R.id.detailInfo);
             image = (ImageView) itemView.findViewById(R.id.imageMan);
         }
