@@ -1,8 +1,10 @@
 package np.com.aawaz.csitentrance.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,6 +32,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 import np.com.aawaz.csitentrance.Adapters.SlideUpPanelAdapter;
 import np.com.aawaz.csitentrance.R;
@@ -379,7 +383,7 @@ public class QuizActivity extends AppCompatActivity {
         clickedAns = 0;
         fab.setColorNormal(getResources().getColor(R.color.dark1));
         fab.setImageResource(R.drawable.ic_done_black_18dp);
-        fillTexts(qNo);
+        new fillTexts().execute();
         haldleProgresss();
     }
 
@@ -444,5 +448,23 @@ public class QuizActivity extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    class fillTexts extends AsyncTask<Void,Void,Void>{
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Thread background = new Thread() {
+                public void run() {
+                    try {
+                        sleep(1400);
+                        fillTexts(qNo);
+                    } catch (Exception e) {
+                        fillTexts(qNo);
+                    }
+                }
+            };
+            background.start();
+            return null;
+        }
     }
 }
