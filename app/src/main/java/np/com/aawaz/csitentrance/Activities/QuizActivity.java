@@ -457,14 +457,18 @@ public class QuizActivity extends AppCompatActivity {
                 public void run() {
                     try {
                         sleep(1400);
-                        fillTexts(qNo);
                     } catch (Exception e) {
-                        fillTexts(qNo);
                     }
                 }
             };
             background.start();
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            fillTexts(qNo);
         }
     }
 }
