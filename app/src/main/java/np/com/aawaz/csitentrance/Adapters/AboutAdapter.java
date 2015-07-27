@@ -25,13 +25,13 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
         this.context=context;
         names = new String[]{"Aawaz Gyawali\nDeveloper", "Rameshwor Dhakal\nFeed writer",
                 "Buddhiraj Nagarkoti\nGraphics Designer", "Prasanna Mishra\nUI Designer",
-                "Gopal Nepal","Bishal Rana Magar","Ksitiz Khanal","ANFSU","Amrit Science Campus"};
+                "Gopal Nepal","Bishal Rana Magar","Ksitiz Khanal"};
         twitterHandle=new String[]{"AawazGyawali","RameshworDhakal","","Prascq56",
-                "","","","",""};
+                "","",""};
         fbLink=new String[]{"https://www.facebook.com/muskangyawali","https://www.facebook.com/ranjit.sharma.39904",
                 "https://www.facebook.com/Fcukyna","https://www.facebook.com/prasanna.mishra.79",
                 "https://www.facebook.com/gopal.nepal.376","https://www.facebook.com/bishalr",
-                "https://www.facebook.com/kshitij.khanal.5","",""};
+                "https://www.facebook.com/kshitij.khanal.5"};
     }
 
     @Override
