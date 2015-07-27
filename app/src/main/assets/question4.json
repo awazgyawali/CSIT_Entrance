@@ -1,8 +1,8 @@
-
 {
   "questions": [
     {
       "question": "1._____ was present at the party.",
+      "a":"All but she",
       "b": "All but herself",
       "c": "All but her",
       "d": "All but myself",
@@ -208,20 +208,204 @@
       "ans": "b"
     },
     {
-      "question": "26.",
-      "a": "",
-      "b": "",
-      "c": "",
-      "d": "",
-      "ans": ""
+      "question": "26.If A and B are two sets, A-B is equal to",
+      "a": "A ⋂ B̅",
+      "b": "A ⋃ B̅",
+      "c": "A̅ ⋂ B",
+      "d": "A̅ ⋃ B",
+      "ans": "a"
     },
     {
-      "question": "27.",
-      "a": "",
-      "b": "",
-      "c": "",
-      "d": "",
-      "ans": ""
+      "question": "27.If the ordered pairs (x+y,1) and (2,2x-y) are equal then",
+      "a": "x=0,y=1",
+      "b": "x=1,y=0",
+      "c": "x=1,y=1",
+      "d": "x=1,y=-1",
+      "ans": "c"
+    },
+    {
+      "question": "28.The range of the function y=x<sup>2</sup>-6x+6 is:",
+      "a": "(-3,∞)",
+      "b": "[-3,∞)",
+      "c": "(0,∞)",
+      "d": "[0,∞)",
+      "ans": "b"
+    },
+    {
+      "question": "29.What is the value of log<sub>a</sub><img width=\"64\" height=\"38\" src=\"question4s_files/image002.png\" v:shapes=\"_x0000_i1025\"> ",
+      "a": "4",
+      "b": "3",
+      "c": "2",
+      "d": "1",
+      "ans": "d"
+    },
+    {
+      "question": "30.The value of cosA+cos(120°+A)+cos(120°-A) is",
+      "a": "0",
+      "b": "1",
+      "c": "-1",
+      "d": "2",
+      "ans": "a"
+    },
+    {
+      "question": "31. Solve :2cos<sup>2</sup>x-5cosx+2=0 for 180°<x<360°",
+      "a": "300°",
+      "b": "60°",
+      "c": "240°",
+      "d": "360°",
+      "ans": "a"
+    },
+    {
+      "question": "32.In triangle ABC, if a = 3, b = 4 and c = 5, find cos A/2.",
+      "a": "<img width=\"19\" height=\"29\" src=\"question4s_files/image006.png\" v:shapes=\"_x0000_i1025\">",
+      "b": "<img width=\"19\" height=\"29\" src=\"question4s_files/image008.png\" v:shapes=\"_x0000_i1025\">",
+      "c": "<img width=\"23\" height=\"29\" src=\"question4s_files/image010.png\" v:shapes=\"_x0000_i1025\">",
+      "d": "<img width=\"19\" height=\"29\" src=\"question4s_files/image012.png\" v:shapes=\"_x0000_i1025\">",
+      "ans": "c"
+    },
+    {
+      "question": "33.In a triangle if A = 75° and B=60° then the ratio a:b:c is",
+      "a": "<img width=\"21\" height=\"22\" src=\"question4s_files/image014.png\" v:shapes=\"_x0000_i1025\">:<img width=\"64\" height=\"22\" src=\"question4s_files/image016.png\" v:shapes=\"_x0000_i1025\">",
+      "b": "<img width=\"43\" height=\"22\" src=\"question4s_files/image018.png\" v:shapes=\"_x0000_i1025\">:<img width=\"24\" height=\"22\" src=\"question4s_files/image020.png\" v:shapes=\"_x0000_i1025\">:2",
+      "c": "2:<img width=\"43\" height=\"22\" src=\"question4s_files/image018.png\" v:shapes=\"_x0000_i1025\">:<img width=\"24\" height=\"22\" src=\"question4s_files/image020.png\" v:shapes=\"_x0000_i1025\">",
+      "d": "<img width=\"24\" height=\"22\" src=\"question4s_files/image020.png\" v:shapes=\"_x0000_i1025\">:2:<img width=\"43\" height=\"22\" src=\"question4s_files/image018.png\" v:shapes=\"_x0000_i1025\">",
+      "ans": "b"
+    },
+    {
+      "question": "34.The sum 1+<img width=\"68\" height=\"28\" src=\"question4s_files/image028.png\" v:shapes=\"_x0000_i1025\">…… to infinity is",
+      "a": "6",
+      "b": "7",
+      "c": "8",
+      "d": "9",
+      "ans": "a"
+    },
+    {
+      "question": "35.Solve for x. <img width=\"85\" height=\"49\" src=\"question4s_files/image030.png\" v:shapes=\"_x0000_i1025\">= 0",
+      "a": "-5",
+      "b": "5",
+      "c": "0",
+      "d": "4",
+      "ans": "a"
+    },
+    {
+      "question": "36.Simplify : <img width=\"154\" height=\"22\" src=\"question4s_files/image032.png\" v:shapes=\"_x0000_i1025\">",
+      "a": "-i",
+      "b": "1",
+      "c": "i",
+      "d": "-1",
+      "ans": "c"
+    },
+    {
+      "question": "37.Express <img width=\"60\" height=\"22\" src=\"question4s_files/image038.png\" v:shapes=\"_x0000_i1025\"> in polar form.",
+      "a": "4(cos30°+isin30°)",
+      "b": "4(cos60°+isin60°)",
+      "c": "4(cos90°+isin90°)",
+      "d": "4(cos120°+isin120°)",
+      "ans": "b"
+    },
+    {
+      "question": "38.The equation whose one root is <img width=\"43\" height=\"22\" src=\"question4s_files/image048.png\" v:shapes=\"_x0000_i1025\"> is",
+      "a": "x<sup>2</sup>+4x+1=0",
+      "b": "x<sup>2</sup>+4x-1=0",
+      "c": "x<sup>2</sup>-4x+1=0",
+      "d": "x<sup>2</sup>-4x-1=0",
+      "ans": "c"
+    },
+    {
+      "question": "39.The acute angle between the lines x-3y-6=0 and y=2x+5 is",
+      "a": "30°",
+      "b": "60°",
+      "c": "45°",
+      "d": "135°",
+      "ans": "c"
+    },
+    {
+      "question": "40.Length of perpendicular from (1,1) to line 4x+3y-12=0 is",
+      "a": "2",
+      "b": "1",
+      "c": "3",
+      "d": "4",
+      "ans": "b"
+    },
+    {
+      "question": "41.The length of the intercept made by the straight line x+y=3 with the circle x<sup>2</sup>+y<sup>2</sup>-2x-3=0 is",
+      "a": "2",
+      "b": "2<img width=\"18\" height=\"22\" src=\"question4s_files/image062.png\" v:shapes=\"_x0000_i1025\">",
+      "c": "2<img width=\"24\" height=\"22\" src=\"question4s_files/image064.png\" v:shapes=\"_x0000_i1025\">",
+      "d": "2<img width=\"18\" height=\"22\" src=\"question4s_files/image066.png\" v:shapes=\"_x0000_i1025\">",
+      "ans": "c"
+    },
+    {
+      "question": "42.Evaluate <img width=\"84\" height=\"30\" src=\"question4s_files/image068.png\" v:shapes=\"_x0000_i1025\">",
+      "a": "0",
+      "b": "3",
+      "c": "∞",
+      "d": "5",
+      "ans": "b"
+    },
+    {
+      "question": "43.Evaluate <img width=\"80\" height=\"27\" src=\"question4s_files/image070.png\" v:shapes=\"_x0000_i1025\">",
+      "a": "1",
+      "b": "0",
+      "c": "-1",
+      "d": "∞",
+      "ans": "a"
+    },
+    {
+      "question": "44.If <img width=\"57\" height=\"27\" src=\"question4s_files/image072.png\" v:shapes=\"_x0000_i1025\"> and <img width=\"57\" height=\"27\" src=\"question4s_files/image074.png\" v:shapes=\"_x0000_i1025\"> find <img width=\"14\" height=\"28\" src=\"question4s_files/image076.png\" v:shapes=\"_x0000_i1025\">.",
+      "a": "<img width=\"25\" height=\"30\" src=\"question4s_files/image078.png\" v:shapes=\"_x0000_i1025\">",
+      "b": "<img width=\"35\" height=\"30\" src=\"question4s_files/image080.png\" v:shapes=\"_x0000_i1025\">",
+      "c": "<img width=\"25\" height=\"28\" src=\"question4s_files/image082.png\" v:shapes=\"_x0000_i1025\">",
+      "d": "<img width=\"25\" height=\"28\" src=\"question4s_files/image084.png\" v:shapes=\"_x0000_i1025\">",
+      "ans": "b"
+    },
+    {
+      "question": "45.Find the derivative of <img width=\"39\" height=\"27\" src=\"question4s_files/image086.png\" v:shapes=\"_x0000_i1025\">",
+      "a": "sinx+cosx",
+      "b": "sinx-cosx",
+      "c": "cosx-sinx",
+      "d": "-sinx-cosx",
+      "ans": "d"
+    },
+    {
+      "question": "46.Find the interval in which the function f(x)=2x<sup>3</sup>-15x<sup>2</sup>+36x+1 is increasing",
+      "a": "(-∞,2)⋃(3,∞)",
+      "b": "(-∞,2)",
+      "c": "(3,∞)",
+      "d": " (-∞,2]⋃[3,∞)",
+      "ans": "a"
+    },
+    {
+      "question": "47.The maximum value of f(x)=2x<sup>3</sup>-3x<sup>2</sup>-36 is",
+      "a": "-81",
+      "b": "81",
+      "c": "-44",
+      "d": "44",
+      "ans": "d"
+    },
+    {
+      "question": "48.Evaluate <img width=\"102\" height=\"22\" src=\"question4s_files/image088.png\" v:shapes=\"_x0000_i1025\">",
+      "a": "sinx+cosx+c",
+      "b": "sinx-cosx+c",
+      "c": "cosx-sinx+c",
+      "d": "-sinx-cosx+c",
+      "ans": "c"
+    },
+    {
+      "question": "49.Calculate the integral <img width=\"63\" height=\"21\" src=\"question4s_files/image090.png\" v:shapes=\"_x0000_i1025\">",
+      "a": "xlogx-x+c",
+      "b": "logx+c",
+      "c": "xlogx+x+c",
+      "d": "-logx+c",
+      "ans": "a"
+    },
+    {
+      "question": "50.Evaluate <img width=\"67\" height=\"46\" src=\"question4s_files/image092.png\" v:shapes=\"_x0000_i1025\">",
+      "a": "<img width=\"7\" height=\"26\" src=\"question4s_files/image094.png\" v:shapes=\"_x0000_i1025\">",
+      "b": "<img width=\"14\" height=\"26\" src=\"question4s_files/image096.png\" v:shapes=\"_x0000_i1025\">",
+      "c": "<img width=\"7\" height=\"26\" src=\"question4s_files/image098.png\" v:shapes=\"_x0000_i1025\">",
+      "d": "<img width=\"9\" height=\"20\" src=\"question4s_files/image100.png\" v:shapes=\"_x0000_i1025\">",
+      "ans": "b"
     },
     {
       "question": "51.The alkene may be represented by a general formula:",
