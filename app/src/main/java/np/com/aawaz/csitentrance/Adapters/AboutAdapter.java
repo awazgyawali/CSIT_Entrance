@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import mehdi.sakout.fancybuttons.FancyButton;
@@ -61,7 +60,7 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
                     Intent i;
                     try {
                         context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
-                        i = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/"+fbId[position]));
+                        i = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://profile/"+fbId[position]));
                     } catch (Exception e) {
                         i=new Intent(Intent.ACTION_VIEW, Uri.parse(fbLink[position]));
                     }
