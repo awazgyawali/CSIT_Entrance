@@ -205,7 +205,8 @@ public class CSITQuery extends AppCompatActivity {
                             protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
                                 SharedPreferences.Editor editor = pref.edit();
                                 tempId = profile2.getId();
-                                editor.putString("fbId", profile2.getId() + "");
+                                editor.putString("fbId", profile2.getId() + " gn" +
+                                        "");
                                 editor.putString("First", profile2.getName() + "");
                                 editor.apply();
                                 mProfileTracker.stopTracking();

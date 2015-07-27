@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -35,11 +36,14 @@ public class ScoreBoard extends AppCompatActivity {
     ArrayList<String> names = new ArrayList<>();
     MaterialDialog dialogInitial;
     ArrayList<Integer> scores = new ArrayList<>();
+    RequestQueue requestQueue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_board);
+
         loadAd();
         Toolbar toolbar = (Toolbar) findViewById(R.id.ScoreToolbar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.primary1));
@@ -83,7 +87,7 @@ public class ScoreBoard extends AppCompatActivity {
     }
 
     private void fetchFromInternet() {
-        RequestQueue requestQueue = Singleton.getInstance().getRequestQueue();
+        requestQueue = Singleton.getInstance().getRequestQueue();
         String url = getString(R.string.fetchScoreurl);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
 
@@ -108,13 +112,13 @@ public class ScoreBoard extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialogInitial.dismiss();
+                Log.d("Debug", error + "");
                 Toast.makeText(getApplicationContext(), "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
                 finish();
 
             }
         });
         requestQueue.add(jsonObjectRequest);
-
     }
 
     private void sortScoreAndName() {

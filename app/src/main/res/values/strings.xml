@@ -34,7 +34,7 @@
     <string name="quertyPostUrl">http://www.avaaj.com.np/jsonFeed/addQuery.php</string>
     <string name="queryFetchUrl">http://www.avaaj.com.np/jsonFeed/fetchAll.php?fbId=</string>
     <string name="postScoreurl">http://www.avaaj.com.np/jsonFeed/uploadScore.php</string>
-    <string name="fetchScoreurl">http://avaaj.com.np/jsonFeed/downloadScore.php</string>
+    <string name="fetchScoreurl">http://www.avaaj.com.np/jsonFeed/downloadScore.php</string>
     <string name="url">http://www.avaaj.com.np/jsonFeed/news_feed.html</string>
 
 </resources>
