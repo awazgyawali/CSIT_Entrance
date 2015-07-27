@@ -17,7 +17,7 @@ import np.com.aawaz.csitentrance.R;
 public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> {
     LayoutInflater inflater;
     Context context;
-    String[] names,fbLink,twitterHandle;
+    String[] names,fbLink,twitterHandle,fbId;
 
 
     public AboutAdapter(Context context) {
@@ -32,6 +32,8 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
                 "https://www.facebook.com/Fcukyna","https://www.facebook.com/prasanna.mishra.79",
                 "https://www.facebook.com/gopal.nepal.376","https://www.facebook.com/bishalr",
                 "https://www.facebook.com/kshitij.khanal.5"};
+        fbId=new String[]{"1011525682198565","669107896567041","823871820995107","949421761742563","803413353107871",
+                "812230398798953","685992274877992"};
     }
 
     @Override
@@ -56,8 +58,14 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
             holder.facebook.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(fbLink[position]));
+                    Intent i;
+                    try {
+                        context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+                        i = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/"+fbId[position]));
+                    } catch (Exception e) {
+                        i=new Intent(Intent.ACTION_VIEW, Uri.parse(fbLink[position]));
+                    }
+
                     context.startActivity(i);
                 }
             });

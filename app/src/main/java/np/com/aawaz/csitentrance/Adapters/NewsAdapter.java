@@ -55,8 +55,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.mainLayout.setMaxCardElevation(10);
         holder.mainLayout.setCardElevation(3);
         holder.titleEach.setText(topic.get(position));
-        holder.contentEach.setText(Html.fromHtml(content.get(position)));
-        holder.contentEach.setMovementMethod(LinkMovementMethod.getInstance());
+        holder.contentEach.setText(content.get(position));
         holder.authorEach.setText(author.get(position));
         holder.subTopicEach.setText(subTopic.get(position));
         Picasso.with(context)

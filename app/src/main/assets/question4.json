@@ -1,804 +1,636 @@
+
 {
   "questions": [
     {
-      "question": "Sample Question 1",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "DEMo ho vai",
-      "d": "Option 4",
+      "question": "1._____ was present at the party.",
+      "b": "All but herself",
+      "c": "All but her",
+      "d": "All but myself",
       "ans": "a"
     },
     {
-      "question": "Sample Question 2",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question 3",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question unk",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "2.Quinine is a drug ____ malaria.",
+      "a": "for",
+      "b": "to",
+      "c": "against",
+      "d": "on",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
-    },
-    {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "3.During rainy season, the Koshi was",
+      "a": "overflow",
+      "b": "overflown",
+      "c": "overfly",
+      "d": "overflying",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "4.He is as stubborn as a _____.",
+      "a": "child",
+      "b": "bull",
+      "c": "donkey",
+      "d": "mule",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "5.The principal told the class____ without permission",
+      "a": "not to enter",
+      "b": "Not to have entered",
+      "c": "Not entering",
+      "d": "do not enter",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "6.I must go____ before the shops are closed",
+      "a": "shopping",
+      "b": "to shop",
+      "c": "to shopping",
+      "d": "shop",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "7.A horse neighs so as goats _____.",
+      "a": "howl",
+      "b": "roar",
+      "c": "bleat",
+      "d": "grunt",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "8.The teacher has authority ___ his students.",
+      "a": "to",
+      "b": "over",
+      "c": "with",
+      "d": "for",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "9.This is the place ____ we lived in.",
+      "a": "where",
+      "b": "which",
+      "c": "when",
+      "d": "how",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "10.They have gone shopping,______",
+      "a": "Havent't they?",
+      "b": "Didn't they?",
+      "c": "Had they?",
+      "d": "Have they?",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "11.Only after meeting him,_____ him well",
+      "a": "Did I know",
+      "b": "Had I know",
+      "c": "Had I known",
+      "d": "I know",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "12.Which of the following is not a synonym of splendid",
+      "a": "superb",
+      "b": "sordid",
+      "c": "excellent",
+      "d": "marvelous",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "13.Feminine of deer is",
+      "a": "Do",
+      "b": "Doa",
+      "c": "Doe",
+      "d": "Doae",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "14.______ I open the present for you?",
+      "a": "Would",
+      "b": "Must",
+      "c": "Shall",
+      "d": "Going to",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "15.He is ___ man of high esteem",
+      "a": "an",
+      "b": "a",
+      "c": "some",
+      "d": "none",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "16.He has a remarkable ____ for the arts.",
+      "a": "talence",
+      "b": "talency",
+      "c": "talent",
+      "d": "talents",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "17.Snow is falling ____north of the mountains.",
+      "a": "into",
+      "b": "over",
+      "c": "off",
+      "d": "down",
+      "ans": "b"
     },
+
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "18.I don’t think he ___ come to the meeting tomorrow.",
+      "a": "would",
+      "b": "shall",
+      "c": "used to",
+      "d": "might",
       "ans": "a"
     },
+
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "19.He is ____ one eyed man.",
+      "a": "the",
+      "b": "an",
+      "c": "a",
+      "d": "none",
+      "ans": "c"
     },
+
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "20.Study of mountains is called:",
+      "a": "geology",
+      "b": "geography",
+      "c": "chromatics",
+      "d": "orology",
+      "ans": "d"
     },
+
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "21.The opposite of the word Pernicious is:",
+      "a": "Beneficial",
+      "b": "Advantageous",
+      "c": "Satisfactory",
+      "d": "Fair",
       "ans": "a"
     },
+
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "22.Grandma is _______ the visit of her grand children.",
+      "a": "looking forward",
+      "b": "looking into",
+      "c": "looking for",
+      "d": "looking forward to",
+      "ans": "d"
     },
+
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "23.Shyam has done this work and _______.",
+      "a": "so did i",
+      "b": "so am i",
+      "c": "so have i",
+      "d": "is has i",
+      "ans": "c"
     },
+
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "24.He _____ in plane crash.",
+      "a": "died",
+      "b": "has died",
+      "c": "have died",
+      "d": "in dying",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "25.She has resigned herself ______ fate.",
+      "a": "in",
+      "b": "to",
+      "c": "for",
+      "d": "at",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "26.",
+      "a": "",
+      "b": "",
+      "c": "",
+      "d": "",
+      "ans": ""
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "27.",
+      "a": "",
+      "b": "",
+      "c": "",
+      "d": "",
+      "ans": ""
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "51.The alkene may be represented by a general formula:",
+      "a": "<img width=\"57\" height=\"19\" src=\"question_files/image002.gif\" v:shapes=\"_x0000_i1025\">",
+      "b": "<img width=\"42\" height=\"19\" src=\"question_files/image004.gif\" v:shapes=\"_x0000_i1025\">",
+      "c": "<img width=\"57\" height=\"19\" src=\"question_files/image006.gif\" v:shapes=\"_x0000_i1025\">",
+      "d": "<img width=\"57\" height=\"19\" src=\"question_files/image008.gif\" v:shapes=\"_x0000_i1025\">",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "52.When Ethyl alcohol is heated with excess of concentrated sulphuric acid at about 160-170 it produces",
+      "a": "Ethanes",
+      "b": "ethyl ether",
+      "c": "ethyne",
+      "d": "ethene",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "53.Aldehyde and ketone can be distinguished by",
+      "a": "Fehling's solution",
+      "b": "NH<sub>3</sub>",
+      "c": "NaHSO<sub>3</sub>",
+      "d": "Cl<sub>3</sub>",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "54.Heavy water is",
+      "a": "D<sub>2</sub>O",
+      "b": "H<sub>2</sub>O",
+      "c": "T<sub>2</sub>O",
+      "d": "H<sub>2</sub>+CO",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "55.In the chemical reaction  P+KOH+H<sub>2</sub>O --> 2NaH<sub>2</sub>PO<sub>2</sub>+PH<sub>3</sub>:",
+      "a": "P is oxidised",
+      "b": "P is oxidised and reduced",
+      "c": "P is reduced",
+      "d": "H<sub>2</sub> is oxidised",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "56.Copper Sulphate(CuSO<sub>4</sub>.5H<sub>2</sub>O) is also known as",
+      "a": "Blue vitrol",
+      "b": "Malachite",
+      "c": "Calomel",
+      "d": "Corrosive sublimate",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "57.Al<sub>2</sub>O<sub>3</sub> is a",
+      "a": "Basic oxide",
+      "b": "Acidic oxide",
+      "c": "Neutral oxide",
+      "d": "Amphoteric oxide",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "58.For which of the following molecule would the VSEPR theory predict a tetrahedral structure?",
+      "a": "B<sub>2</sub>F<sub>2</sub>",
+      "b": "CH<sub>4</sub>",
+      "c": "BF<sub>3</sub>",
+      "d": "NH<sub>3</sub>",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "59.Malachite is the ore of",
+      "a": "Copper",
+      "b": "Iron",
+      "c": "Sodium",
+      "d": "Magnesium",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "60.Permanent hardness of water can be removed by",
+      "a": "Washing soda process",
+      "b": "permutit process",
+      "c": "Calgon process",
+      "d": "All of above",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "61.The chemical formula of oil of Vitriol is",
+      "a": "H<sub>2</sub>SO<sub>4</sub>",
+      "b": "HCl",
+      "c": "HNO<sub>3</sub>",
+      "d": "HCOOH",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "62.Electronic configuration of alkaline earth metal is",
+      "a": "ns<sup>-1</sup>",
+      "b": "ns<sup>2</sup>",
+      "c": "(n-1)d<sup>10</sup>ns<sup>1</sup>",
+      "d": "ns<sup>2</sup>nps",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "63.Herber’s process is used for manufacture of",
+      "a": "H<sub>2</sub>",
+      "b": "Al",
+      "c": "NH<sub>3</sub>",
+      "d": "NaOH",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "64.The compound that give cannizzaro reaction is",
+      "a": "CH<sub>3</sub>COOH",
+      "b": "C<sub>2</sub>H<sub>5</sub>CHO",
+      "c": "HCHO",
+      "d": "CH<sub>3</sub>OCH<sub>3</sub>",
+      "ans": "c"
     },
+
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "65.If phenolphthalein is added to alkali, color change to",
+      "a": "purple",
+      "b": "orange",
+      "c": "pink",
+      "d": "red",
       "ans": "a"
     },
+
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "66. Which order of bond angle is correct?",
+      "a": "H<sub>2</sub>O<NH<sub>3</sub><CO<sub>2</sub><CH<sub>4</sub>",
+      "b": "NH<sub>3</sub>>H<sub>2</sub>O>CO<sub>2</sub>>CH<sub>4</sub>",
+      "c": "H<sub>2</sub>O<NH<sub>3</sub><CH<sub>4</sub><CO<sub>2</sub>",
+      "d": "CH<sub>4</sub><NH<sub>3</sub><H<sub>2</sub>O<CO<sub>2</sub>",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "67.The amount of H<sub>2</sub>SO<sub>4</sub> present in 500ml of 2N H<sub>2</sub>SO<sub>4</sub> solution is",
+      "a": "89 gm",
+      "b": "49 gm",
+      "c": "33.25 gm",
+      "d": "24.5 gm",
+      "ans": "b"
     },
+
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "68.The equivalent weight of KMnO<sub>4</sub> in acidic medium is",
+      "a": "M/2",
+      "b": "M/3",
+      "c": "M/4",
+      "d": "M/5",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "69.The pH of 0.001M NaOH is",
+      "a": "11",
+      "b": "8",
+      "c": "14",
+      "d": "3",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "70.The unit of rate constant for the 2<sup>nd</sup> order reaction is",
+      "a": "molL<sup>-1</sup>S<sup>-1</sup>",
+      "b": "S<sup>-1</sup>",
+      "c": "mol<sup>-1</sup>LS<sup>-1</sup>",
+      "d": "mol<sup>-2</sup>L<sup>2</sup>S<sup>-1</sup>",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "71.Isobars have same number of",
+      "a": "electrons",
+      "b": "protons",
+      "c": "neutrons",
+      "d": "nucleons",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "72.In covalency,",
+      "a": "The transference of electron takes place",
+      "b": "Sharing of electrons takes place",
+      "c": "The electrons are shared by only one atom",
+      "d": "None of these takes place",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "73.A lewis acid is",
+      "a": "proton accepter",
+      "b": "electron pair donor",
+      "c": "proton donor",
+      "d": "electron pair accepter",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "74.A spontaneous reaction is impossible when",
+      "a": "Both <img width=\"144\" height=\"19\" src=\"question_files/image066.gif\" v:shapes=\"_x0000_i1025\">",
+      "b": "<img width=\"170\" height=\"19\" src=\"question_files/image068.gif\" v:shapes=\"_x0000_i1025\">",
+      "c": "<img width=\"202\" height=\"19\" src=\"question_files/image070.gif\" v:shapes=\"_x0000_i1025\">",
+      "d": "<img width=\"202\" height=\"19\" src=\"question_files/image072.gif\" v:shapes=\"_x0000_i1025\">",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "75.In adiabatic process",
+      "a": "Pressure is constant",
+      "b": "The gas is expanded isothermally",
+      "c": "There is perfect heat insulation",
+      "d": "System exchange heat with surrounding",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "76.The dimension of universal constant is",
+      "a": "L<sup>2</sup>T<sup>-2</sup>K<sup>-1</sup>",
+      "b": "M<sup>-2</sup>L<sup>3</sup>T<sup>-2</sup>",
+      "c": "M<sup>-1</sup>L<sup>3</sup>T<sup>-2</sup>",
+      "d": "MT<sup>-3</sup>K<sup>-4</sup>",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "77.1/n<sup>th</sup> part of a uniform chain of length L is hanging on a table,what is the work done in pulling up the chain?",
+      "a": "mg<img width=\"20\" height=\"27\" src=\"question_files/image084.gif\" v:shapes=\"_x0000_i1025\"> in vertical direction",
+      "b": "2L/n in vertical direction",
+      "c": " ",
+      "d": "",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "78.A force of 20N is acting on a block of mass 5 kg at time 5 sec.Determine the velocity.",
+      "a": "0.028 m/s<sup>2</sup>",
+      "b": "0.28 m/s<sup>2</sup>",
+      "c": "0.0028 m/s<sup>2</sup>",
+      "d": "2.08 m/s<sup>2</sup>",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "79.If radius of earth is reduced",
+      "a": "tide duration reduced",
+      "b": "earth rotates slower",
+      "c": "time period of earth decreased",
+      "d": "duration of day increases",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "80.Zener diode acts as",
+      "a": "Voltage regulator in reverse biasing",
+      "b": "Voltage regulator in forward biasing",
+      "c": "Current regulator in forward biasing",
+      "d": "Current regulator in reverse biasing",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "81.If total energy of satellite is E,What is new escape velocity?",
+      "a": "2E",
+      "b": "-2E",
+      "c": "E",
+      "d": "-E",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "82.What is e/m ratio of electron?",
+      "a": "2.76<img width=\"46\" height=\"19\" src=\"question_files/image094.gif\" v:shapes=\"_x0000_i1025\">",
+      "b": "2.7<img width=\"46\" height=\"19\" src=\"question_files/image096.gif\" v:shapes=\"_x0000_i1025\">",
+      "c": "1.76<img width=\"46\" height=\"19\" src=\"question_files/image096.gif\" v:shapes=\"_x0000_i1025\">",
+      "d": "1.76<img width=\"46\" height=\"19\" src=\"question_files/image098.gif\" v:shapes=\"_x0000_i1025\">",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "83.At what temperature iron becomes paramagnetic?",
+      "a": "200°C",
+      "b": "400°C",
+      "c": "600°C",
+      "d": "800°C",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "84.Sparking of diamond is because of",
+      "a": "total internal reflection",
+      "b": "refraction",
+      "c": "diffraction",
+      "d": "scattering",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "85.Pressure variation in mechanical wave depends upon as",
+      "a": "α intensity",
+      "b": "independent of intent of intensity",
+      "c": "α I",
+      "d": "none of these",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "86.When reflection of lights occurs then its",
+      "a": "velocity remains constant",
+      "b": "wavelength remains constant",
+      "c": "frequency remains constant",
+      "d": "all of above",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "87.When a convergent beam of light is incident on a plane mirror,the image formed is",
+      "a": "up right and real",
+      "b": "up right and virtual",
+      "c": "inverted and real",
+      "d": "inverted and virtual",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "88.Which of the following cannot produce virtual image?",
+      "a": "plane mirror",
+      "b": "convex mirror",
+      "c": "concave mirror",
+      "d": "all of these",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "89.In case of concave mirror, the minimum distance between a real object and its real image is:",
+      "a": "f",
+      "b": "2f",
+      "c": "uf",
+      "d": "zero",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "90.Which mirror is used for shaving?",
+      "a": "concave mirror",
+      "b": "convex mirror",
+      "c": "concave cylindrical mirror",
+      "d": "none of these",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "91.The angle of prism is 60°.What is the angle of incident for minimum deviation if the refraction index of the material of the prism is sqrt(2)",
+      "a": "45°",
+      "b": "60°",
+      "c": "90°",
+      "d": "30°",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "92.An air bubble in water behaves as a",
+      "a": "concave lens",
+      "b": "convex lens",
+      "c": "concave mirror",
+      "d": "convex mirror",
       "ans": "a"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "93.Near and far point of the healthy human eye are:",
+      "a": "0 and 25cm",
+      "b": "0 and ∞",
+      "c": "25cm and 100cm",
+      "d": "15cm and ∞",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "94.A person using a lens as a simple microscope sees on:",
+      "a": "inverted, virtual image",
+      "b": "inverted,real and magnified",
+      "c": "upright, virtual image",
+      "d": "upright, real magnified image",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "95.A body is projected horizontally with velocity 190 m/s from height 400m.What is time to reach the ground?",
+      "a": "5 sec",
+      "b": "10 sec",
+      "c": "15 sec",
+      "d": "20 sec",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "96.Self inductance of solenoid is proportional to",
+      "a": "2",
+      "b": "3",
+      "c": "4",
+      "d": "5",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "97.A wire of certain material is stretched slowly by 10%.It’s new resistance and specific resistance becomes respectively",
+      "a": "1.2 times,1.1 times",
+      "b": "1.21 times, same",
+      "c": "both remain the same",
+      "d": "1.1 times,1.3 times",
+      "ans": "d"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "98.The wavelength of light emitted in the vehicle region by H<sub>e</sub><sup>+</sup> ions after collissions with H atoms is",
+      "a": "2",
+      "b": "3",
+      "c": "4",
+      "d": "5",
+      "ans": "b"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
-      "ans": "a"
+      "question": "99.The ratio of kinetic energy of the n=2 electron from the H atom to that of H<sub>e</sub><sup>+</sup> ions is",
+      "a": "1/4",
+      "b": "1/2",
+      "c": "1",
+      "d": "2",
+      "ans": "c"
     },
     {
-      "question": "Sample Question",
-      "a": "option 1",
-      "b": "Option 2",
-      "c": "Option 3",
-      "d": "Option 4",
+      "question": "100.When a ceiling fan is switched on,it makes 10 rotations in the first 4 seconds. How many rotations does it make in the next 4 sec? (Assuming uniform angular acceleration)",
+      "a": "10",
+      "b": "20",
+      "c": "30",
+      "d": "40",
       "ans": "a"
     }
   ]
 }
+
+
+
+
+
+
