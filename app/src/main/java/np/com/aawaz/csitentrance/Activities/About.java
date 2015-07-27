@@ -17,7 +17,6 @@ import np.com.aawaz.csitentrance.R;
 public class About extends AppCompatActivity {
 
     RecyclerView recyAbout;
-    String[] name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +25,8 @@ public class About extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbarAbout));
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        name = new String[]{"Aawaz Gyawali\nDeveloper", "Rameshwor Dhakal\nFeed writer",
-                "Buddhiraj Nagarkoti\nGraphics Designer", "Prasanna Mishra\nUI Designer",
-                "Gopal Nepal","Bishal Rana Magar","Ksitiz Khanal","ANFSU","Amrit Science Campus"};
         recyAbout = (RecyclerView) findViewById(R.id.aboutRecy);
-        AboutAdapter adapter = new AboutAdapter(this, name);
+        AboutAdapter adapter = new AboutAdapter(this);
         recyAbout.setAdapter(adapter);
         recyAbout.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
