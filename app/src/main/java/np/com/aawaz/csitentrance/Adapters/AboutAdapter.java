@@ -31,8 +31,8 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
                 "https://www.facebook.com/Fcukyna","https://www.facebook.com/prasanna.mishra.79",
                 "https://www.facebook.com/gopal.nepal.376","https://www.facebook.com/bishalr",
                 "https://www.facebook.com/kshitij.khanal.5"};
-        fbId=new String[]{"1011525682198565","669107896567041","823871820995107","949421761742563","803413353107871",
-                "812230398798953","685992274877992"};
+        fbId=new String[]{"100000234287319","100004035110394","100001168909448","100000242453492","100003176412331",
+                "100000360023008","100004016767543"};
     }
 
     @Override
@@ -77,8 +77,14 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
             holder.twitter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse("https://www.twitter.com/"+twitterHandle[position]));
+                    Intent i;
+                    try {
+                        context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+                        i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("twitter://user?screen_name=" + twitterHandle[position]));
+                    } catch (Exception e) {
+                        i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/"+twitterHandle[position]));
+                    }
                     context.startActivity(i);
                 }
             });
