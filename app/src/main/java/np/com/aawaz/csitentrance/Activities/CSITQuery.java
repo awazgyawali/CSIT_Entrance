@@ -121,6 +121,13 @@ public class CSITQuery extends AppCompatActivity {
         final MaterialDialog initial = new MaterialDialog.Builder(this)
                 .content("Please wait...")
                 .progress(true, 0)
+                .cancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        queue.cancelAll("query");
+                        finish();
+                    }
+                })
                 .build();
         initial.show();
         String url = getString(R.string.queryFetchUrl);
@@ -172,7 +179,7 @@ public class CSITQuery extends AppCompatActivity {
                 }
             }
         });
-        queue.add(jsonObjectRequest);
+        queue.add(jsonObjectRequest.setTag("query"));
     }
 
     private void onStartHandler() {
