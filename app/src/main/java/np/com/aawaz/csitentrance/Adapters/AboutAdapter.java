@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
@@ -61,12 +62,15 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
                     Intent i;
                     try {
                         context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
-                        i = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://profile/"+fbId[position]));
+                        i = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://profile/" + fbId[position]));
                     } catch (Exception e) {
-                        i=new Intent(Intent.ACTION_VIEW, Uri.parse(fbLink[position]));
+                        i = new Intent(Intent.ACTION_VIEW, Uri.parse(fbLink[position]));
                     }
-
-                    context.startActivity(i);
+                    try {
+                        context.startActivity(i);
+                    } catch (Exception e) {
+                        Toast.makeText(context,"Something went wrong",Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
@@ -85,8 +89,11 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
                         i.setData(Uri.parse("twitter://user?user_id=" + twiterUserId[position]));
                     } catch (Exception e) {
                         i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/"+twitterHandle[position]));
+                    }try {
+                        context.startActivity(i);
+                    }catch (Exception e){
+                        Toast.makeText(context,"Something went wrong",Toast.LENGTH_SHORT).show();
                     }
-                    context.startActivity(i);
                 }
             });
         }

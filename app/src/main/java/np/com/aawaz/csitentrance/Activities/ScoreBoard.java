@@ -33,9 +33,9 @@ import np.com.aawaz.csitentrance.R;
 
 public class ScoreBoard extends AppCompatActivity {
 
-    ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> names = new ArrayList<>();
+        ArrayList<Integer> scores = new ArrayList<>();
     MaterialDialog dialogInitial;
-    ArrayList<Integer> scores = new ArrayList<>();
     RequestQueue requestQueue;
 
 

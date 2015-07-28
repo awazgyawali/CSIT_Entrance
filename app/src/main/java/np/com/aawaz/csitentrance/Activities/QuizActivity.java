@@ -1,7 +1,6 @@
 package np.com.aawaz.csitentrance.Activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
@@ -32,8 +31,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
 
 import np.com.aawaz.csitentrance.Adapters.SlideUpPanelAdapter;
 import np.com.aawaz.csitentrance.R;
@@ -384,7 +381,6 @@ public class QuizActivity extends AppCompatActivity {
         fab.setColorNormal(getResources().getColor(R.color.dark1));
         fab.setImageResource(R.drawable.ic_done_black_18dp);
         new fillTexts().execute();
-        haldleProgresss();
     }
 
     private void haldleProgresss() {
@@ -469,6 +465,7 @@ public class QuizActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             fillTexts(qNo);
+            haldleProgresss();
         }
     }
 }
