@@ -15,21 +15,18 @@
 
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/btn_preview"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_margin="5dp"
         android:onClick="startMainActivity"
-        android:padding="10dp"
-        fancy:fb_borderColor="#4d009866"
-        fancy:fb_borderWidth="5dp"
-        fancy:fb_defaultColor="#3F51B5"
-        fancy:fb_focusColor="#3949AB"
+        fancy:fb_borderColor="#3F51B5"
+        fancy:fb_borderWidth="2dp"
+        fancy:fb_defaultColor="#E8EAF6"
+        fancy:fb_focusColor="#4d3949AB"
         fancy:fb_radius="100dp"
         fancy:fb_text="Let's get started."
-        fancy:fb_textColor="#fff"
-        fancy:fb_textGravity="left"
-        fancy:fb_textPosition="right"
-        fancy:fb_textSize="11dp" />
+        fancy:fb_textColor="#000"
+        fancy:fb_textSize="10sp" />
 </RelativeLayout>

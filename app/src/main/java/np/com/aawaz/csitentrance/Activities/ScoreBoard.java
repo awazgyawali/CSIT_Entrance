@@ -1,11 +1,11 @@
 package np.com.aawaz.csitentrance.Activities;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -56,7 +56,13 @@ public class ScoreBoard extends AppCompatActivity {
         dialogInitial = new MaterialDialog.Builder(this)
                 .content("Please wait...")
                 .progress(true, 0)
-                .cancelable(false)
+                .cancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        requestQueue.cancelAll("score");
+                        finish();
+                    }
+                })
                 .build();
         dialogInitial.show();
         fetchFromInternet();
@@ -112,13 +118,12 @@ public class ScoreBoard extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialogInitial.dismiss();
-                Log.d("Debug", error + "");
                 Toast.makeText(getApplicationContext(), "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
                 finish();
 
             }
         });
-        requestQueue.add(jsonObjectRequest);
+        requestQueue.add(jsonObjectRequest.setTag("score"));
     }
 
     private void sortScoreAndName() {

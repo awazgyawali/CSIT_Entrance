@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance.Activities;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
@@ -23,6 +24,8 @@ import np.com.aawaz.csitentrance.R;
 public class WebViewActivity extends AppCompatActivity {
 
     WebView webView;
+    RequestQueue requestQueue;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,11 +36,17 @@ public class WebViewActivity extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.webView);
 
-        RequestQueue requestQueue = Singleton.getInstance().getRequestQueue();
+        requestQueue = Singleton.getInstance().getRequestQueue();
         String url = getResources().getString(R.string.url);
         final MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .content("Please wait...")
-                .cancelable(false)
+                .cancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        requestQueue.cancelAll("fullQue");
+                        finish();
+                    }
+                })
                 .progress(true, 0)
                 .show();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
@@ -56,7 +65,7 @@ public class WebViewActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Unable to connect. Please check your internet connection.", Toast.LENGTH_LONG).show();
             }
         });
-        requestQueue.add(jsonObjectRequest);
+        requestQueue.add(jsonObjectRequest.setTag("fullQue"));
     }
 
     public void loadAd() {

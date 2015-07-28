@@ -3,6 +3,7 @@ package np.com.aawaz.csitentrance.Activities;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -44,6 +45,8 @@ public class EntranceNews extends AppCompatActivity {
     RecyclerView recy;
     SwipeRefreshLayout refreshLayout;
     Context context;
+    RequestQueue requestQueue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,11 +112,18 @@ public class EntranceNews extends AppCompatActivity {
         final MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .content("Please wait")
                 .progress(true, 0)
+                .cancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        requestQueue.cancelAll("news");
+                        finish();
+                    }
+                })
                 .show();
         if (!finish) {
             dialog.dismiss();
         }
-        RequestQueue requestQueue = Singleton.getInstance().getRequestQueue();
+        requestQueue = Singleton.getInstance().getRequestQueue();
         String url = getString(R.string.url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
 
@@ -169,7 +179,7 @@ public class EntranceNews extends AppCompatActivity {
                 }
             }
         });
-        requestQueue.add(jsonObjectRequest);
+        requestQueue.add(jsonObjectRequest.setTag("news"));
 
     }
 
