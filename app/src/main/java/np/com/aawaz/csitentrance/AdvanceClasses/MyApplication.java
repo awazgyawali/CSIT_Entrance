@@ -51,7 +51,7 @@ class ReportSender implements org.acra.sender.ReportSender{
         sendMail.putExtra(Intent.EXTRA_SUBJECT, "Crash report of CSIT Entrance application.");
         sendMail.putExtra(Intent.EXTRA_TEXT,crashReportData);
         sendMail.setType("message/rfc822");
-        Intent chooser = Intent.createChooser(sendMail, "Send Report via E-mail");
+        Intent chooser = Intent.createChooser(sendMail, "Crash Report via E-mail");
         startActivity(chooser);
     }
 }
