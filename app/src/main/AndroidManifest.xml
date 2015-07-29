@@ -114,6 +114,13 @@
         <activity
             android:name=".Activities.Introduction"
             android:label="@string/title_activity_introduction" />
+
+        <activity android:name="org.acra.CrashReportDialog"
+            android:excludeFromRecents="true"
+            android:finishOnTaskLaunch="true"
+            android:launchMode="singleInstance"
+            android:process=":error_report"
+            android:theme="@style/Theme.Dialog" />
     </application>
 
 </manifest>

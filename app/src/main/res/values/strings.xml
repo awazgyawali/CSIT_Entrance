@@ -36,5 +36,9 @@
     <string name="postScoreurl">http://www.avaaj.com.np/jsonFeed/uploadScore.php</string>
     <string name="fetchScoreurl">http://www.avaaj.com.np/jsonFeed/downloadScore.php</string>
     <string name="url">http://www.avaaj.com.np/jsonFeed/news_feed.html</string>
+    <string name="crash_dialog_title">CSIT Entrance has crashed.</string>
+    <string name="crash_dialog_text">Please report us fill detail about this crash. We would be gratefull to have report from you to imporve this application.</string>
+    <string name="crash_dialog_ok_toast">Thank you!</string>
+    <string name="crash_dialog_comment_prompt">What where you trying to do when appllication crashed.</string>
 
 </resources>
