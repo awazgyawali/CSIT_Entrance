@@ -2,20 +2,22 @@ package np.com.aawaz.csitentrance.AdvanceClasses;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 
 import org.acra.ACRA;
+import org.acra.ReportField;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
+import org.acra.collector.CrashReportData;
+import org.acra.sender.ReportSenderException;
 
 import np.com.aawaz.csitentrance.R;
 
-@ReportsCrashes(mailTo = "info@aawaz.com.np",
-        mode = ReportingInteractionMode.DIALOG,// optional, displayed as soon as the crash occurs, before collecting data which can take a few seconds
-        resDialogText = R.string.crash_dialog_text,
-        resDialogIcon = android.R.drawable.ic_dialog_info,
-        resDialogTitle = R.string.crash_dialog_title,
-        resDialogCommentPrompt = R.string.crash_dialog_comment_prompt, // optional. When defined, adds a user email text entry with this text resource as label. The email address will be populated from SharedPreferences and will be provided as an ACRA field if configured.
-        resDialogOkToast = R.string.crash_dialog_ok_toast // optional. displays a Toast message when the user accepts to send a report.
+@ReportsCrashes(mailTo = "contact@aawaz.com.np",
+        customReportContent = { ReportField.APP_VERSION_CODE, ReportField.APP_VERSION_NAME, ReportField.ANDROID_VERSION, ReportField.PHONE_MODEL, ReportField.CUSTOM_DATA, ReportField.STACK_TRACE, ReportField.LOGCAT },
+        mode = ReportingInteractionMode.TOAST,
+        resToastText = R.string.crash_toast_text // optional. displays a Toast message when the user accepts to send a report.
 )
 public class MyApplication extends Application {
     private static MyApplication sInstance;
@@ -31,10 +33,26 @@ public class MyApplication extends Application {
 
     @Override
     public void onCreate() {
-        super.onCreate();
         sInstance = this;
         ACRA.init(this);
+        ReportSender yourSender = new ReportSender();
+        ACRA.getErrorReporter().setReportSender(yourSender);
+        super.onCreate();
     }
 
+class ReportSender implements org.acra.sender.ReportSender{
 
+    @Override
+    public void send(Context context, CrashReportData crashReportData) throws ReportSenderException {
+        Intent sendMail = new Intent(Intent.ACTION_SEND);
+        sendMail.setData(Uri.parse("mailto:"));
+        String[] to = {"contact@aawaz.com.np", "dhakalramu2070@gmail.com"};
+        sendMail.putExtra(Intent.EXTRA_EMAIL, to);
+        sendMail.putExtra(Intent.EXTRA_SUBJECT, "Crash report of CSIT Entrance application.");
+        sendMail.putExtra(Intent.EXTRA_TEXT,crashReportData);
+        sendMail.setType("message/rfc822");
+        Intent chooser = Intent.createChooser(sendMail, "Send Report via E-mail");
+        startActivity(chooser);
+    }
+}
 }

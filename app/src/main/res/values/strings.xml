@@ -40,5 +40,6 @@
     <string name="crash_dialog_text">Please report us fill detail about this crash. We would be gratefull to have report from you to imporve this application.</string>
     <string name="crash_dialog_ok_toast">Thank you!</string>
     <string name="crash_dialog_comment_prompt">What where you trying to do when appllication crashed.</string>
+    <string name="crash_toast_text">Application has crashed. Please send us email.</string>
 
 </resources>
