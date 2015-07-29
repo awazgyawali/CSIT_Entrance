@@ -37,5 +37,9 @@
     <string name="fetchScoreurl">http://www.avaaj.com.np/jsonFeed/downloadScore.php</string>
     <string name="url">http://www.avaaj.com.np/jsonFeed/news_feed.html</string>
     <string name="crash_toast_text">Application has crashed. Please send us email.</string>
+    <string name="crash_dialog_text">Ooooops ! I crashed, but please report to my developer to help fix the issue !</string>
+    <string name="crash_dialog_title">CSIT Entrance Crashed</string>
+    <string name="crash_dialog_comment_prompt">What where you doing?</string>
+    <string name="crash_dialog_ok_toast">Thank you!</string>
 
 </resources>
