@@ -17,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:drawableLeft="@drawable/abc_ic_search_api_mtrl_alpha"
-            android:gravity="center"
             android:hint="Search"
             android:padding="10dp" />
     </android.support.v7.widget.Toolbar>

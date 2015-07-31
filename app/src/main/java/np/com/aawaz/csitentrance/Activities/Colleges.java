@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.widget.EditText;
 
@@ -28,9 +30,14 @@ public class Colleges extends AppCompatActivity {
     ArrayList<String> names = new ArrayList<>(),
             desc = new ArrayList<>(),
             website = new ArrayList<>(),
-            address = new ArrayList<>();
+            address = new ArrayList<>(),
+            phNo = new ArrayList<>();
+    ArrayList<String> namesNew = new ArrayList<>(),
+            descNew = new ArrayList<>(),
+            websiteNew = new ArrayList<>(),
+            addressNew = new ArrayList<>(),
+            phNoNew = new ArrayList<>();
     EditText search;
-    ArrayList<String> phNo = new ArrayList<>();
 
     public static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();
@@ -58,11 +65,63 @@ public class Colleges extends AppCompatActivity {
         //Fetch from JSONFILE
         setDataToArrayList();
 
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0)
+                    fillNormally();
+                else
+                    checkOccurrence();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        fillNormally();
+    }
+
+    private void fillNormally(){
         //Recycler view handler
         RecyclerView colzRecy = (RecyclerView) findViewById(R.id.colzRecy);
         colzAdapter adapter = new colzAdapter(this, names, address, desc, website, phNo);
         colzRecy.setAdapter(adapter);
         colzRecy.setLayoutManager(new GridLayoutManager(this, 1));
+
+    }
+    private void checkOccurrence() {
+        namesNew.clear();
+        descNew.clear();
+        websiteNew.clear();
+        addressNew.clear();
+        phNoNew.clear();
+        for(int i=0;i<names.size();i++){
+            if(names.get(i).contains(search.getText().toString()) ||
+                    address.get(i).contains(search.getText().toString()) ||
+                    desc.get(i).contains(search.getText().toString())){
+                namesNew.add(names.get(i));
+                descNew.add(desc.get(i));
+                websiteNew.add(website.get(i));
+                addressNew.add(address.get(i));
+                phNoNew.add(phNo.get(i));
+            }
+        }
+        fillNewRecy();
+    }
+
+    private void fillNewRecy() {
+        //Recycler view handler
+        RecyclerView colzRecy = (RecyclerView) findViewById(R.id.colzRecy);
+        colzAdapter adapter = new colzAdapter(this, namesNew, addressNew, descNew, websiteNew, phNoNew);
+        colzRecy.setAdapter(adapter);
+        colzRecy.setLayoutManager(new GridLayoutManager(this, 1));
+
     }
 
     public void setDataToArrayList() {
@@ -80,7 +139,6 @@ public class Colleges extends AppCompatActivity {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
