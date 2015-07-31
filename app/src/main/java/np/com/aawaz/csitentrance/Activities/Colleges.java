@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -28,6 +29,7 @@ public class Colleges extends AppCompatActivity {
             desc = new ArrayList<>(),
             website = new ArrayList<>(),
             address = new ArrayList<>();
+    EditText search;
     ArrayList<String> phNo = new ArrayList<>();
 
     public static String AssetJSONFile(String filename, Context c) throws IOException {
@@ -52,6 +54,7 @@ public class Colleges extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        search= (EditText) findViewById(R.id.search);
         //Fetch from JSONFILE
         setDataToArrayList();
 

@@ -156,9 +156,6 @@ public class CSITQuery extends AppCompatActivity {
                     recyclerView.setAdapter(adapter);
                     recyclerView.scrollToPosition(messages.size() - 1);
                     initial.dismiss();
-                    if (finish) {
-                        finish();
-                    }
                 } catch (JSONException e) {
                     Toast.makeText(context, "Application error. Please report us.", Toast.LENGTH_SHORT).show();
                     initial.dismiss();

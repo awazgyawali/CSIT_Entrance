@@ -11,7 +11,16 @@
         android:id="@+id/toolbarColz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary8" />
+        android:background="@color/primary8" >
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/abc_ic_search_api_mtrl_alpha"
+            android:gravity="center"
+            android:hint="Search"
+            android:padding="10dp" />
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/colzRecy"
