@@ -168,6 +168,7 @@ public class BackgroundTaskHandler extends JobService {
         requestQueue.add(jsonObjectRequest1);
     }
 
+
     private void notification(String newsTitle, String content, String ticker, int notifyNumber, Intent intent1) {
         Uri alertSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(this);
