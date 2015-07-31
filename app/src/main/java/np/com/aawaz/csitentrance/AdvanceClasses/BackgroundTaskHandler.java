@@ -64,7 +64,7 @@ public class BackgroundTaskHandler extends JobService {
 
     @Override
     public boolean onStopJob(JobParameters jobParameters) {
-        return false;
+        return true;
     }
 
     private void uploadScore() {
@@ -80,7 +80,6 @@ public class BackgroundTaskHandler extends JobService {
             @Override
             public void onResponse(JSONObject response) {
 
-                jobFinished(jobParameters, false);
             }
 
         }, new Response.ErrorListener() {

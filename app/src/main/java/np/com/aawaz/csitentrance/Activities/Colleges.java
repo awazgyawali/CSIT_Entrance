@@ -102,7 +102,7 @@ public class Colleges extends AppCompatActivity {
         addressNew.clear();
         phNoNew.clear();
         for(int i=0;i<names.size();i++){
-            if(names.get(i).contains(search.getText().toString()) ||
+            if(names.get(i).toLowerCase().contains(search.getText().toString().toLowerCase()) ||
                     address.get(i).contains(search.getText().toString()) ||
                     desc.get(i).contains(search.getText().toString())){
                 namesNew.add(names.get(i));
