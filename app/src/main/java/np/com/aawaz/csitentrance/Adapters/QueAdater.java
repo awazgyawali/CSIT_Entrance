@@ -51,12 +51,8 @@ public class QueAdater extends RecyclerView.Adapter<QueAdater.ViewHolder> {
                 .duration(500)
                 .playOn(holder.mainLayout);
         lastPosi = position;
-        if (position == 2 || position == 3)
-            holder.title.setTextColor(context.getResources().getColor(R.color.abc_primary_text_material_dark));
-        else
-            holder.title.setTextColor(context.getResources().getColor(R.color.darkQue));
         holder.title.setText(titles[position]);
-        holder.mainImg.setImageResource(R.drawable.full_que);
+        holder.mainImg.setImageResource(R.drawable.full_questions);
         holder.mainLayout.setCardBackgroundColor(context.getResources().getColor(darkColor[position]));
         holder.baseLayout.setCardBackgroundColor(context.getResources().getColor(primaryColor[position]));
         holder.playImg.setImageResource(icon[position]);

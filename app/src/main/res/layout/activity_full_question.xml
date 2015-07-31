@@ -10,7 +10,8 @@
         android:id="@+id/fullQueToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary7" />
+        android:background="@color/primary7"
+        android:theme="@style/Theme.AppCompat" />
 
     <RelativeLayout
         android:id="@+id/fragHolder"

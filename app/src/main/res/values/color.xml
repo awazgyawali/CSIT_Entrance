@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary1">#999999</color>
-    <color name="primary2">#1de9b6</color>
-    <color name="primary3">#ffeb3c</color>
-    <color name="primary4">#03a9f5</color>
-    <color name="primary5">#8bc34a</color>
-    <color name="primary6">#ff5353</color>
-    <color name="primary7">#1de9b6</color>
-    <color name="primary8">#7e57c2</color>
-    <color name="primary9">#03a9f5</color>
-    <color name="primary10">#8bc34a</color>
+    <color name="primary1">#2d3e4e</color>
+    <color name="primary2">#922b72</color>
+    <color name="primary3">#2881bb</color>
+    <color name="primary4">#2b9759</color>
+    <color name="primary5">#cf1151</color>
+    <color name="primary6">#4e9586</color>
+    <color name="primary7">#795547</color>
+    <color name="primary8">#3f51b5</color>
+    <color name="primary9">#dc5328</color>
+    <color name="primary10">#cc3929</color>
+    <color name="primary11">#7c7a7b</color>
 
-    <color name="dark1">#eeeeee</color>
-    <color name="dark2">#b9f6ca</color>
-    <color name="dark3">#ffff8d</color>
-    <color name="dark4">#83ffff</color>
-    <color name="dark5">#81c784</color>
-    <color name="dark6">#ff8a80</color>
-    <color name="dark7">#b9f6ca</color>
-    <color name="dark8">#b388fe</color>
-    <color name="dark9">#83ffff</color>
-    <color name="dark10">#81c784</color>
+    <color name="dark1">#3d3e4e</color>
+    <color name="dark2">#a22b72</color>
+    <color name="dark3">#3881bb</color>
+    <color name="dark4">#3b9759</color>
+    <color name="dark5">#df1151</color>
+    <color name="dark6">#5e9586</color>
+    <color name="dark7">#895547</color>
+    <color name="dark8">#4f51b5</color>
+    <color name="dark9">#ec5328</color>
+    <color name="dark10">#ec3929</color>
+    <color name="dark11">#9c7a7b</color>
 
     <color name="back">#eee</color>
     <color name="darkQue">#666</color>

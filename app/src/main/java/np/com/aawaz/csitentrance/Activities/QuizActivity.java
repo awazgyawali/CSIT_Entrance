@@ -49,7 +49,7 @@ public class QuizActivity extends AppCompatActivity {
     FloatingActionButton fab;
     ProgressBarDeterminate pb;
 
-    String[] colors = {" #1de9b6", " #ffeb3c", "#03a9f5", "#8bc34a"};
+    String[] colors = {" #922b72", " #2881bb", "#2b9759", "#cf1151"};
 
 
     WebView question;

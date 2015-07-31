@@ -22,7 +22,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     int darkColor[];
     int icon[];
     int images[] = {R.drawable.scoreboard, R.drawable.ico2069, R.drawable.ico2070, R.drawable.ico2071, R.drawable.model,
-            R.drawable.more, R.drawable.full_que, R.drawable.colleges, R.drawable.news, R.drawable.query, R.drawable.about};
+            R.drawable.more, R.drawable.full_questions, R.drawable.colleges, R.drawable.news, R.drawable.query, R.drawable.about_us};
 
     ClickListner clickListner;
     LayoutInflater inflater;
@@ -56,10 +56,6 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
                 .duration(500)
                 .playOn(holder.mainLayout);
         lastPosi = position;
-        if (position == 4 || position == 5 || position == 7)
-            holder.title.setTextColor(context.getResources().getColor(R.color.abc_primary_text_material_dark));
-        else
-            holder.title.setTextColor(context.getResources().getColor(R.color.darkQue));
         holder.title.setText(titles[position]);
         holder.mainLayout.setCardBackgroundColor(context.getResources().getColor(darkColor[position]));
         holder.mainLayout.setRadius(10);
