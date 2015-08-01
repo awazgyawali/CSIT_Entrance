@@ -27,6 +27,7 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text="02"
+                android:textColor="#ddd"
                 android:textSize="80sp" />
         </RelativeLayout>
 
@@ -47,6 +48,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="Aawaz Gyawali"
+                    android:textColor="#fff"
                     android:textSize="18sp" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>

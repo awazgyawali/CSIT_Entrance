@@ -164,14 +164,14 @@ public class QuizActivity extends AppCompatActivity {
 
         if (qNo == 0) {
             feedback.setText("GO!");
-            feedback.setBackgroundColor(getResources().getColor(R.color.primary4));
+            feedback.setBackgroundColor(getResources().getColor(R.color.blueFeedback));
         } else {
             if (qNo < 9)
                 feedback.setText("0" + (qNo + 1) + "");
             else
                 feedback.setText((qNo + 1) + "");
 
-            feedback.setBackgroundColor(getResources().getColor(R.color.primary4));
+            feedback.setBackgroundColor(getResources().getColor(R.color.blueFeedback));
         }
         YoYo.with(Techniques.SlideInDown)
                 .duration(700)
@@ -200,7 +200,7 @@ public class QuizActivity extends AppCompatActivity {
         setDataToArrayList();
 
 
-        fillTexts(qNo);
+        fillTexts(qNo,false);
         onClickOption();
     }
 
@@ -229,17 +229,13 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
-    private void fillTexts(int posi) {
+    private void fillTexts(int posi,boolean show) {
         String htm;
-        if (posi == 2) {
+        if (posi == 2 && show) {
             slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
         }
         if (posi < 100) {
-            if (code == 4) {
-                htm = "<body bgcolor=\"" + colors[code - 1] + "\">" + questions.get(posi);
-            } else {
-                htm = "<body bgcolor=\"" + colors[code - 1] + "\">" + questions.get(posi);
-            }
+            htm = "<body bgcolor=\"" + colors[code - 1] + "\"><p style=\"color:white\">" + questions.get(posi);
             question.loadDataWithBaseURL("", htm, "text/html", "UTF-8", "");
             option1.loadDataWithBaseURL("", "a) " + a.get(posi), "text/html", "UTF-8", "");
             option2.loadDataWithBaseURL("", "b) " + b.get(posi), "text/html", "UTF-8", "");
@@ -363,11 +359,11 @@ public class QuizActivity extends AppCompatActivity {
         if ((clickedAns == 1 && answer.get(qNo).equals("a")) || (clickedAns == 2 && answer.get(qNo).equals("b")) ||
                 (clickedAns == 3 && answer.get(qNo).equals("c")) || (clickedAns == 4 && answer.get(qNo).equals("d"))) {
             feedback.setText("+1");
-            feedback.setBackgroundColor(getResources().getColor(R.color.primary5));
+            feedback.setBackgroundColor(getResources().getColor(R.color.rightFeedback));
             score++;
         } else {
             feedback.setText("+0");
-            feedback.setBackgroundColor(getResources().getColor(R.color.primary6));
+            feedback.setBackgroundColor(getResources().getColor(R.color.wrongFeedback));
         }
     }
 
@@ -378,7 +374,7 @@ public class QuizActivity extends AppCompatActivity {
         op3.setBackgroundColor(getResources().getColor(R.color.back));
         op4.setBackgroundColor(getResources().getColor(R.color.back));
         clickedAns = 0;
-        fab.setColorNormal(getResources().getColor(R.color.dark1));
+        fab.setColorNormal(getResources().getColor(R.color.white));
         fab.setImageResource(R.drawable.ic_done_black_18dp);
         new fillTexts().execute();
     }
@@ -446,13 +442,15 @@ public class QuizActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    class fillTexts extends AsyncTask<Void,Void,Void>{
+    class fillTexts extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
             Thread background = new Thread() {
                 public void run() {
                     try {
                         sleep(1400);
+                        fillTexts(qNo,true);
+                        haldleProgresss();
                     } catch (Exception e) {
                     }
                 }
@@ -461,11 +459,5 @@ public class QuizActivity extends AppCompatActivity {
             return null;
         }
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            fillTexts(qNo);
-            haldleProgresss();
-        }
     }
 }

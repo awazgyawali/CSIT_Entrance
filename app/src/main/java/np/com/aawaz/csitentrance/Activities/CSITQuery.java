@@ -129,7 +129,8 @@ public class CSITQuery extends AppCompatActivity {
                     }
                 })
                 .build();
-        initial.show();
+        if(finish)
+            initial.show();
         String url = getString(R.string.queryFetchUrl);
         id = pref.getString("fbId", tempId);
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + id, new Response.Listener<JSONObject>() {

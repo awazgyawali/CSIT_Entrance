@@ -12,20 +12,25 @@
     <color name="primary10">#cc3929</color>
     <color name="primary11">#7c7a7b</color>
 
-    <color name="dark1">#3d3e4e</color>
-    <color name="dark2">#a22b72</color>
-    <color name="dark3">#3881bb</color>
-    <color name="dark4">#3b9759</color>
-    <color name="dark5">#df1151</color>
-    <color name="dark6">#5e9586</color>
-    <color name="dark7">#895547</color>
+    <color name="dark1">#394f64</color>
+    <color name="dark2">#b93791</color>
+    <color name="dark3">#409bd6</color>
+    <color name="dark4">#36bf70</color>
+    <color name="dark5">#ed2669</color>
+    <color name="dark6">#67afa0</color>
+    <color name="dark7">#996c5a</color>
     <color name="dark8">#4f51b5</color>
-    <color name="dark9">#ec5328</color>
-    <color name="dark10">#ec3929</color>
-    <color name="dark11">#9c7a7b</color>
+    <color name="dark9">#e37654</color>
+    <color name="dark10">#db5b4d</color>
+    <color name="dark11">#959494</color>
 
     <color name="back">#eee</color>
     <color name="darkQue">#666</color>
+
+    <color name="blueFeedback">#3F51B5</color>
+    <color name="wrongFeedback">#D50000</color>
+    <color name="rightFeedback">#1B5E20</color>
+    <color name="white">#ffffff</color>
 
     <color name="toolbar_color">#009688</color>
 </resources>
