@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -118,6 +119,7 @@ public class ScoreBoard extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialogInitial.dismiss();
+                Log.d("Debug",error.toString());
                 Toast.makeText(getApplicationContext(), "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
                 finish();
 

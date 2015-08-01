@@ -28,6 +28,7 @@ public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {
     Context context;
     LayoutInflater inflater;
     ArrayList<String> colleges;
+    int lastPosi=0;
 
     public colzAdapter(Context context, ArrayList<String> colleges, ArrayList<String> address, ArrayList<String> desc, ArrayList<String> website, ArrayList<String> phNo) {
         this.colleges = colleges;
@@ -47,9 +48,15 @@ public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        YoYo.with(Techniques.FadeInRight)
-                .duration(200)
+        if(lastPosi>position)
+            YoYo.with(Techniques.FadeInLeft)
+                    .duration(300)
+                    .playOn(holder.coreColz);
+        else
+            YoYo.with(Techniques.FadeInRight)
+                .duration(300)
                 .playOn(holder.coreColz);
+        lastPosi=position;
         holder.colzName.setText(colleges.get(position));
         holder.address.setText(address.get(position));
         if (website.get(position).equals("null")) {

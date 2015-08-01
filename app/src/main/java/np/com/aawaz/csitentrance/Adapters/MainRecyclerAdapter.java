@@ -52,7 +52,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.mainImg.setImageResource(images[position]);
-        YoYo.with(Techniques.Landing)
+        YoYo.with(Techniques.FlipInX)
                 .duration(500)
                 .playOn(holder.mainLayout);
         lastPosi = position;
