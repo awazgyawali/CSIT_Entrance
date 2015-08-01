@@ -24,8 +24,8 @@
         android:layout_marginTop="5dp">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:padding="5dp">
 
             <ImageView
@@ -35,14 +35,19 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:src="@mipmap/ic_launcher" />
-
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_centerVertical="true"
+    android:layout_toEndOf="@+id/logo"
+    android:layout_toRightOf="@+id/logo">
             <TextView
                 android:id="@+id/appName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/logo"
                 android:text="@string/app_name"
                 android:textColor="@color/primary4"
                 android:textSize="18sp" />
@@ -53,7 +58,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/appName"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/logo"
                 android:text="Your key to CSIT Entrance." />
 
             <TextView
@@ -65,6 +69,7 @@
                 android:text="@string/versionNum"
                 android:textColor="@color/primary10"
                 android:textSize="13sp" />
+</RelativeLayout>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
@@ -91,17 +96,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/primary3" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="If you have got any recommendation or bug report.Please give feedback"
-                android:textColor="@color/primary6" />
+                android:textColor="@color/primary10" />
 
             <Button
                 android:id="@+id/fed"

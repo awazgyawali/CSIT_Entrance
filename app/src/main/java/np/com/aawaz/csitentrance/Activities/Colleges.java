@@ -79,6 +79,7 @@ public class Colleges extends AppCompatActivity {
                     checkOccurrence();
             }
 
+
             @Override
             public void afterTextChanged(Editable editable) {
 
@@ -93,8 +94,8 @@ public class Colleges extends AppCompatActivity {
         colzAdapter adapter = new colzAdapter(this, names, address, desc, website, phNo);
         colzRecy.setAdapter(adapter);
         colzRecy.setLayoutManager(new GridLayoutManager(this, 1));
-
     }
+
     private void checkOccurrence() {
         namesNew.clear();
         descNew.clear();
@@ -103,7 +104,7 @@ public class Colleges extends AppCompatActivity {
         phNoNew.clear();
         for(int i=0;i<names.size();i++){
             if(names.get(i).toLowerCase().contains(search.getText().toString().toLowerCase()) ||
-                    address.get(i).contains(search.getText().toString()) ||
+                    address.get(i).toLowerCase().contains(search.getText().toString().toLowerCase()) ||
                     desc.get(i).contains(search.getText().toString())){
                 namesNew.add(names.get(i));
                 descNew.add(desc.get(i));
