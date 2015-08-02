@@ -146,7 +146,7 @@ public class EntranceNews extends AppCompatActivity {
                     }
                     fillData();
                     storeToDb();
-                    context.getSharedPreferences("values",Context.MODE_PRIVATE).edit().putInt("played8",topic.size()).apply();
+                    context.getSharedPreferences("values",Context.MODE_PRIVATE).edit().putInt("score8",topic.size()).apply();
                     dialog.dismiss();
                     refreshLayout.setRefreshing(false);
                     new SnackBar.Builder((Activity) context)

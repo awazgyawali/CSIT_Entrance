@@ -67,7 +67,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         holder.baseLayout.setCardBackgroundColor(context.getResources().getColor(primaryColor[position]));
         if(sharedPreferences.getInt("played"+position,0)!=0) {
             holder.itemNo.setVisibility(View.VISIBLE);
-            holder.itemNo.setText(sharedPreferences.getInt("played" + position, 0)+"");
+            holder.itemNo.setText(sharedPreferences.getInt("score" + position, 0)+"");
             holder.playImg.setVisibility(View.GONE);
         }
         else {

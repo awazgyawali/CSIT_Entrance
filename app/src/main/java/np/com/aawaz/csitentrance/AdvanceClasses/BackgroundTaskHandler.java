@@ -115,7 +115,7 @@ public class BackgroundTaskHandler extends JobService {
                         author.add(jo_inside.getString("author"));
                         no++;
                     }
-                    context.getSharedPreferences("values",Context.MODE_PRIVATE).edit().putInt("played8",no).apply();
+                    context.getSharedPreferences("values",Context.MODE_PRIVATE).edit().putInt("score8",no).apply();
                     if (no > noOfRows()) {
                         if (no - noOfRows() > 1)
                             notification(no - noOfRows() + " news updated.", "Check them out now!", "News updated", 12345, new Intent(context, EntranceNews.class));
