@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.Adapters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,7 +28,10 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     ClickListner clickListner;
     LayoutInflater inflater;
     Context context;
-    int lastPosi = 10;
+    SharedPreferences sharedPreferences;
+
+
+
 
     public MainRecyclerAdapter(Context context, int primaryColor[], int darkColor[], int icon[]) {
         inflater = LayoutInflater.from(context);
@@ -35,6 +39,8 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         this.primaryColor = primaryColor;
         this.icon = icon;
         this.context = context;
+        sharedPreferences = context.getSharedPreferences("values", Context.MODE_PRIVATE);
+
     }
 
 
@@ -55,12 +61,20 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         YoYo.with(Techniques.FlipInX)
                 .duration(500)
                 .playOn(holder.mainLayout);
-        lastPosi = position;
         holder.title.setText(titles[position]);
         holder.mainLayout.setCardBackgroundColor(context.getResources().getColor(darkColor[position]));
         holder.mainLayout.setRadius(10);
         holder.baseLayout.setCardBackgroundColor(context.getResources().getColor(primaryColor[position]));
-        holder.playImg.setImageResource(icon[position]);
+        if(sharedPreferences.getInt("played"+position,0)!=0) {
+            holder.itemNo.setVisibility(View.VISIBLE);
+            holder.itemNo.setText(sharedPreferences.getInt("played" + position, 0)+"");
+            holder.playImg.setVisibility(View.GONE);
+        }
+        else {
+            holder.playImg.setVisibility(View.VISIBLE);
+            holder.playImg.setImageResource(icon[position]);
+            holder.itemNo.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -76,7 +90,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView mainImg;
         ImageView playImg;
-        TextView title;
+        TextView title,itemNo;
         CardView mainLayout;
         CardView baseLayout;
 
@@ -87,6 +101,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
             mainLayout = (CardView) itemView.findViewById(R.id.mainLayout);
             baseLayout = (CardView) itemView.findViewById(R.id.baseLayout);
             title = (TextView) itemView.findViewById(R.id.title);
+            itemNo= (TextView) itemView.findViewById(R.id.itemNumber);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
