@@ -17,6 +17,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.gcm.GcmTaskService;
+import com.google.android.gms.gcm.TaskParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,13 +26,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import me.tatarka.support.job.JobParameters;
-import me.tatarka.support.job.JobService;
 import np.com.aawaz.csitentrance.Activities.CSITQuery;
 import np.com.aawaz.csitentrance.Activities.EntranceNews;
 import np.com.aawaz.csitentrance.R;
 
-public class BackgroundTaskHandler extends JobService {
+public class BackgroundTaskHandler extends GcmTaskService {
     ArrayList<String> topic = new ArrayList<>(),
             subTopic = new ArrayList<>(),
             imageURL = new ArrayList<>(),
@@ -39,33 +39,26 @@ public class BackgroundTaskHandler extends JobService {
             messages = new ArrayList<>();
     RequestQueue requestQueue;
     Context context;
-    JobParameters jobParameters;
 
 
     public BackgroundTaskHandler() {
         context = this;
-    }
-
-    @Override
-    public boolean onStartJob(JobParameters jobParameters) {
-
-        this.jobParameters = jobParameters;
 
         requestQueue = Singleton.getInstance().getRequestQueue();
+    }
 
-        updateNews();
+
+
+    @Override
+    public int onRunTask(TaskParams taskParams) {
+        uploadScore();
 
         updateQuery();
 
-        uploadScore();
-
-        return true;
+        updateNews();
+        return 1;
     }
 
-    @Override
-    public boolean onStopJob(JobParameters jobParameters) {
-        return true;
-    }
 
     private void uploadScore() {
         String url = getString(R.string.postScoreurl);

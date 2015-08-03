@@ -47,7 +47,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:padding="5dp"
+                android:padding="7dp"
                 fancy:fb_borderColor="#3b5999"
                 fancy:fb_borderWidth="2dp"
                 fancy:fb_defaultColor="#fff"

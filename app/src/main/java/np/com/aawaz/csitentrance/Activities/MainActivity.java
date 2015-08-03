@@ -1,7 +1,6 @@
 package np.com.aawaz.csitentrance.Activities;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,33 +15,28 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.gcm.GcmNetworkManager;
+import com.google.android.gms.gcm.PeriodicTask;
 
-import me.tatarka.support.job.JobInfo;
-import me.tatarka.support.job.JobScheduler;
 import np.com.aawaz.csitentrance.Adapters.MainRecyclerAdapter;
 import np.com.aawaz.csitentrance.AdvanceClasses.BackgroundTaskHandler;
+import np.com.aawaz.csitentrance.AdvanceClasses.MyApplication;
 import np.com.aawaz.csitentrance.R;
 
 
 public class MainActivity extends Activity implements MainRecyclerAdapter.ClickListner {
-    private static final int JOB_ID = 100;
     RecyclerView recycler;
     SharedPreferences pref;
     TextView points;
-    JobScheduler mJobScheduler;
     MainRecyclerAdapter adapter;
     Tracker tracker;
     GoogleAnalytics analytics;
-    JobInfo builder;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mJobScheduler = JobScheduler.getInstance(this);
-
-        constructJob();
 
         analytics = GoogleAnalytics.getInstance(this);
         analytics.setLocalDispatchPeriod(1800);
@@ -52,6 +46,8 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
 
 
         loadAd();
+
+        constructJob();
 
 
         int avatar[] = {R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five,
@@ -69,6 +65,29 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
         shadow.bringToFront();
 
 
+    }
+
+    private void constructJob() {
+        GcmNetworkManager mScheduler=GcmNetworkManager.getInstance(MyApplication.getAppContext());
+
+        long periodSecs = 30L; // the task should be executed every 30 seconds
+
+        long flexSecs = 15L;
+
+        int taskID=100;
+
+        String tag = "periodic  | " + taskID++ + ": " + periodSecs + "s, f:" + flexSecs;  // a unique task identifier
+
+        PeriodicTask periodic = new PeriodicTask.Builder()
+                .setService(BackgroundTaskHandler.class)
+                .setPeriod(periodSecs)
+                .setFlex(flexSecs)
+                .setTag(tag)
+                .setPersisted(true)
+                .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_ANY)
+                .setRequiresCharging(false)
+                .build();
+        mScheduler.schedule(periodic);
     }
 
     private int getTotal() {
@@ -138,16 +157,5 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-    }
-
-    protected void constructJob() {
-        if (builder == null) {
-            builder = new JobInfo.Builder(JOB_ID, new ComponentName(this, BackgroundTaskHandler.class))
-                    .setPeriodic(1000 * 60)
-                    .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
-                    .setPersisted(true)
-                    .build();
-        }
-        mJobScheduler.schedule(builder);
     }
 }
