@@ -154,7 +154,6 @@ public class EntranceNews extends AppCompatActivity {
                             .show();
                 } catch (Exception e) {
                     refreshLayout.setRefreshing(false);
-
                     if (finish) {
                         finish();
                         dialog.dismiss();
@@ -181,7 +180,6 @@ public class EntranceNews extends AppCompatActivity {
             }
         });
         requestQueue.add(jsonObjectRequest.setTag("news"));
-
     }
 
     private void storeToDb() {
@@ -202,12 +200,8 @@ public class EntranceNews extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == android.R.id.home) {
             finish();
             return true;
@@ -221,5 +215,4 @@ public class EntranceNews extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
     }
-
 }

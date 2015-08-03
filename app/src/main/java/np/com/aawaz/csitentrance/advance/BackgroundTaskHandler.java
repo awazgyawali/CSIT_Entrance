@@ -49,8 +49,6 @@ public class BackgroundTaskHandler extends GcmTaskService {
         requestQueue = Singleton.getInstance().getRequestQueue();
     }
 
-
-
     @Override
     public int onRunTask(TaskParams taskParams) {
 

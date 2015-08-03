@@ -31,6 +31,7 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
     MainRecyclerAdapter adapter;
     Tracker tracker;
     GoogleAnalytics analytics;
+    int clickedItem;
 
 
     @Override
@@ -117,15 +118,14 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.notifyItemChanged(1);
-        adapter.notifyItemChanged(2);
-        adapter.notifyItemChanged(3);
-        adapter.notifyItemChanged(4);
-        adapter.notifyItemChanged(8);
+        points.setText(getTotal() + " pts");
+        if(adapter!=null && clickedItem!=0)
+            adapter.notifyItemChanged(clickedItem);
     }
 
     @Override
     public void itemClicked(View view, int position) {
+        clickedItem=position;
         if (position == 0) {
             Intent intent = new Intent(this, ScoreBoard.class);
             startActivity(intent);
