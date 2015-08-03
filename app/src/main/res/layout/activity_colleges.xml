@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:theme="@style/Theme.AppCompat"
-    tools:context="np.com.aawaz.csitentrance.Activities.Colleges">
+    tools:context="np.com.aawaz.csitentrance.activities.Colleges">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbarColz"

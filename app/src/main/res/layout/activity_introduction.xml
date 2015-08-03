@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="np.com.aawaz.csitentrance.Activities.Introduction">
+    tools:context="np.com.aawaz.csitentrance.activities.Introduction">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/introViewPager"
@@ -39,7 +39,7 @@
             layout="@layout/pager_item_seven" />
     </android.support.v4.view.ViewPager>
 
-    <np.com.aawaz.csitentrance.AdvanceClasses.CirclePageIndicator
+    <np.com.aawaz.csitentrance.advance.CirclePageIndicator
         android:id="@+id/pagerIndicator"
         android:layout_width="match_parent"
         android:layout_height="20dp"
