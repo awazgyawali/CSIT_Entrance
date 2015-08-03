@@ -8,10 +8,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.RingtoneManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -51,8 +51,6 @@ public class BackgroundTaskHandler extends GcmTaskService {
 
     @Override
     public int onRunTask(TaskParams taskParams) {
-
-        Log.d("Debug","Task opened");
 
         uploadScore();
 
@@ -168,12 +166,11 @@ public class BackgroundTaskHandler extends GcmTaskService {
 
 
     private void notification(String newsTitle, String content, String ticker, int notifyNumber, Intent intent1) {
-        Uri alertSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        MediaPlayer.create(this, R.raw.notif_sound).start();
         NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(this);
         notificationCompat.setAutoCancel(true)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setTicker(ticker)
-                .setSound(alertSound)
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(newsTitle)
                 .setContentText(content);
@@ -181,7 +178,14 @@ public class BackgroundTaskHandler extends GcmTaskService {
         notificationCompat.setContentIntent(pendingIntent);
         NotificationManager notificationManagerCompat = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManagerCompat.notify(notifyNumber, notificationCompat.build());
-
+        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, getClass().getName());
+        wl.acquire();
+        try {
+            Thread.sleep(7000);//or however long this is one second
+        } catch (InterruptedException e) {
+        }
+        wl.release();
     }
 
     private void storeToDb() {
