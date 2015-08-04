@@ -65,20 +65,20 @@ public class BackgroundTaskHandler extends GcmTaskService {
 
     private void uploadReport() {
         final SQLiteDatabase database=Singleton.getInstance().getDatabase();
-        final Cursor cursor=database.query("report",new String[]{"year","qno","bug"},null,null,null,null,null);
+        final Cursor cursor=database.query("report",new String[]{"ID","year","qno","bug"},null,null,null,null,null);
         if(cursor.moveToNext()){
             String url = getString(R.string.uploadReport);
             Uri.Builder uri = new Uri.Builder();
             String values = uri.authority("")
-                    .appendQueryParameter("year", cursor.getString(1))
-                    .appendQueryParameter("qno", cursor.getString(2))
-                    .appendQueryParameter("bug", cursor.getString(3))
+                    .appendQueryParameter("year", cursor.getString(cursor.getColumnIndex("year")))
+                    .appendQueryParameter("qno", cursor.getString(cursor.getColumnIndex("qno")))
+                    .appendQueryParameter("bug", cursor.getString(cursor.getColumnIndex("bug")))
                     .build().toString();
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
 
                 @Override
                 public void onResponse(JSONObject response) {
-                    database.delete("report","ID =?",new String[]{cursor.getInt(0) + ""});
+                    database.delete("report", "ID =?", new String[]{cursor.getInt(cursor.getColumnIndex("ID")) + ""});
                     cursor.close();
                     database.close();
                 }

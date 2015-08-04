@@ -481,9 +481,9 @@ public class QuizActivity extends AppCompatActivity {
                 ContentValues values = new ContentValues();
                 SQLiteDatabase database= Singleton.getInstance().getDatabase();
                 if (preCheck.isCheck())
-                    values.put("question", qNo);
+                    values.put("qno", qNo);
                 else
-                    values.put("question", qNo + 1);
+                    values.put("qno", qNo + 1);
                 values.put("bug", cases[i]);
                 values.put("year", code+2068+"");
                 database.insert("report", null, values);
