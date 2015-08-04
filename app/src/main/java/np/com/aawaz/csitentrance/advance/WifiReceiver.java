@@ -19,22 +19,19 @@ public class WifiReceiver extends BroadcastReceiver {
 
         NetworkInfo netInfo = conMan.getActiveNetworkInfo();
 
-        if (netInfo != null && netInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+        if (netInfo != null && netInfo.getType() == ConnectivityManager.TYPE_WIFI ) {
 
             long startSecs = 0L;
 
             long endSecs = startSecs + 3600L;
 
-            int taskID=120;
-
-            String tag = "oneoff  | " + taskID++ + ": [" + startSecs + "," + endSecs + "]";
+            String tag = "Single  Task";
 
             OneoffTask oneoff = new OneoffTask.Builder()
                     .setService(BackgroundTaskHandler.class)
                     .setTag(tag)
                     .setExecutionWindow(startSecs, endSecs)
                     .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_CONNECTED)
-                    .setRequiresCharging(false)
                     .build();
 
             GcmNetworkManager mScheduler=Singleton.getInstance().getGcmScheduler();

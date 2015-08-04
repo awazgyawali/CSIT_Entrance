@@ -94,15 +94,14 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
 
         int taskID=100;
 
-        String tag = "periodic  | " + taskID++ + ": " + periodSecs + "s";  // a unique task identifier
+        String tag = "periodic  | " + taskID + ": " + periodSecs + "s";  // a unique task identifier
 
         PeriodicTask periodic = new PeriodicTask.Builder()
                 .setService(BackgroundTaskHandler.class)
                 .setPeriod(periodSecs)
                 .setTag(tag)
                 .setPersisted(true)
-                .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_ANY)
-                .setRequiresCharging(false)
+                .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_CONNECTED)
                 .build();
         mScheduler.schedule(periodic);
     }
