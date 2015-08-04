@@ -1,23 +1,33 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.gc.materialdesign.views.CheckBox;
 import com.gc.materialdesign.views.LayoutRipple;
 import com.gc.materialdesign.views.ProgressBarDeterminate;
 import com.google.android.gms.ads.AdRequest;
@@ -34,6 +44,7 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.SlideUpPanelAdapter;
+import np.com.aawaz.csitentrance.advance.Singleton;
 
 
 public class QuizActivity extends AppCompatActivity {
@@ -438,8 +449,55 @@ public class QuizActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == android.R.id.home) {
             finish();
+        } else if(id==R.id.action_report){
+            openBugReportDialog();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openBugReportDialog() {
+        final String[] cases={"The question is wrong.","Options are wrong.","Answer is wrong.","Can't say exactly what was wrong."};
+
+        final MaterialDialog dialogMis=new MaterialDialog.Builder(this)
+                .title("I found a mistake here.")
+                .customView(R.layout.mistake_report, false)
+                .build();
+        dialogMis.show();
+
+        final CheckBox preCheck = (CheckBox) dialogMis.findViewById(R.id.preCheck);
+
+        ListView listView= (ListView) dialogMis.findViewById(R.id.options);
+
+        LinearLayout previo= (LinearLayout) dialogMis.findViewById(R.id.previousQuestion);
+
+        if(qNo==0)
+            previo.setVisibility(View.GONE);
+
+        listView.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,cases));
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ContentValues values = new ContentValues();
+                SQLiteDatabase database= Singleton.getInstance().getDatabase();
+                if (preCheck.isCheck())
+                    values.put("question", qNo);
+                else
+                    values.put("question", qNo + 1);
+                values.put("bug", cases[i]);
+                values.put("year", code+2068+"");
+                database.insert("report", null, values);
+                database.close();
+                Toast.makeText(getApplicationContext(),"Thanks for the report.",Toast.LENGTH_SHORT).show();
+                dialogMis.dismiss();
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_quiz, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     class fillTexts extends AsyncTask<Void, Void, Void> {

@@ -58,7 +58,42 @@ public class BackgroundTaskHandler extends GcmTaskService {
 
         updateNews();
 
+        uploadReport();
+
         return GcmNetworkManager.RESULT_SUCCESS;
+    }
+
+    private void uploadReport() {
+        final SQLiteDatabase database=Singleton.getInstance().getDatabase();
+        final Cursor cursor=database.query("report",new String[]{"year","qno","bug"},null,null,null,null,null);
+        if(cursor.moveToNext()){
+            String url = getString(R.string.uploadReport);
+            Uri.Builder uri = new Uri.Builder();
+            String values = uri.authority("")
+                    .appendQueryParameter("year", cursor.getString(1))
+                    .appendQueryParameter("qno", cursor.getString(2))
+                    .appendQueryParameter("bug", cursor.getString(3))
+                    .build().toString();
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
+
+                @Override
+                public void onResponse(JSONObject response) {
+                    database.delete("report","ID =?",new String[]{cursor.getInt(0) + ""});
+                    cursor.close();
+                    database.close();
+                }
+
+            }, new Response.ErrorListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    cursor.close();
+                    database.close();
+                }
+            });
+            requestQueue.add(jsonObjectRequest);
+
+        }
     }
 
 
