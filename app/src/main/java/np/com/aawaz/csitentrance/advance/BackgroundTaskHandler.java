@@ -80,7 +80,6 @@ public class BackgroundTaskHandler extends GcmTaskService {
                 public void onResponse(JSONObject response) {
                     database.delete("report", "ID =?", new String[]{cursor.getInt(cursor.getColumnIndex("ID")) + ""});
                     cursor.close();
-                    database.close();
                 }
 
             }, new Response.ErrorListener() {
@@ -88,7 +87,6 @@ public class BackgroundTaskHandler extends GcmTaskService {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     cursor.close();
-                    database.close();
                 }
             });
             requestQueue.add(jsonObjectRequest);
