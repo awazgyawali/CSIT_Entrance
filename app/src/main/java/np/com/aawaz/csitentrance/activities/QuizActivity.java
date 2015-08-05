@@ -179,9 +179,10 @@ public class QuizActivity extends AppCompatActivity {
         } else {
             if (qNo < 9)
                 feedback.setText("0" + (qNo + 1) + "");
+            else if(qNo==100)
+                feedback.setVisibility(View.INVISIBLE);
             else
                 feedback.setText((qNo + 1) + "");
-
             feedback.setBackgroundColor(getResources().getColor(R.color.blueFeedback));
         }
         YoYo.with(Techniques.SlideInDown)
@@ -254,7 +255,7 @@ public class QuizActivity extends AppCompatActivity {
             option4.loadDataWithBaseURL("", "d) " + d.get(posi), "text/html", "UTF-8", "");
 
         } else {
-            question.loadDataWithBaseURL("", "You have successfully completed your game with " + score + " score. Good Luck!!", "text/html", "UTF-8", "");
+            question.loadDataWithBaseURL("","<body bgcolor=\"" + colors[code - 1] + "\"><p style=\"color:white\"> You have successfully completed the quiz with " + score + " score. Good Luck!!", "text/html", "UTF-8", "");
             gameCompletedHandler();
         }
     }
@@ -391,7 +392,10 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void haldleProgresss() {
-        qNoTxt.setText((qNo + 1) + " / 100");
+        if(qNo==100)
+            qNoTxt.setText("Completed");
+        else
+            qNoTxt.setText((qNo + 1) + " / 100");
         scoreTxt.setText(score + "");
         pb.setProgress(21 + qNo);
 

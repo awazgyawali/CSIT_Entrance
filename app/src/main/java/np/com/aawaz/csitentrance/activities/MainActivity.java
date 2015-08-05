@@ -87,14 +87,13 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
     }
 
     private void constructJob() {
-
         GcmNetworkManager mScheduler= Singleton.getInstance().getGcmScheduler();
 
-        long periodSecs = 30L; // the task should be executed every 30 seconds
+        long periodSecs = 30L;
 
         int taskID=100;
 
-        String tag = "periodic  | " + taskID + ": " + periodSecs + "s";  // a unique task identifier
+        String tag = "periodic  | " + taskID + ": " + periodSecs + "s";
 
         PeriodicTask periodic = new PeriodicTask.Builder()
                 .setService(BackgroundTaskHandler.class)
