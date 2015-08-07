@@ -54,7 +54,8 @@ public class BackgroundTaskHandler extends GcmTaskService {
 
         uploadScore();
 
-        updateQuery();
+        if(!CSITQuery.runningStatus())
+            updateQuery();
 
         updateNews();
 

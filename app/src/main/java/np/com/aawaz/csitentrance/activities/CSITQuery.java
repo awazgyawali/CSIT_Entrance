@@ -37,6 +37,10 @@ import com.facebook.login.widget.LoginButton;
 import com.github.mrengineer13.snackbar.SnackBar;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.gcm.GcmNetworkManager;
+import com.google.android.gms.gcm.GcmTaskService;
+import com.google.android.gms.gcm.PeriodicTask;
+import com.google.android.gms.gcm.TaskParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,6 +52,7 @@ import java.util.Arrays;
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.QueryAdapter;
+import np.com.aawaz.csitentrance.advance.BackgroundTaskHandler;
 import np.com.aawaz.csitentrance.advance.Singleton;
 
 
@@ -58,6 +63,7 @@ public class CSITQuery extends AppCompatActivity {
     RecyclerView recyclerView;
     QueryAdapter adapter;
     RequestQueue queue;
+    GcmNetworkManager mScheduler;
     MaterialDialog dialog;
     ArrayList<Integer> flag = new ArrayList<>();
     ArrayList<String> messages = new ArrayList<>();
@@ -67,8 +73,8 @@ public class CSITQuery extends AppCompatActivity {
     String id;
     Context context;
     String tempId;
-    Menu optionsMenu;
     private ProfileTracker mProfileTracker;
+    static boolean active=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +163,7 @@ public class CSITQuery extends AppCompatActivity {
                     recyclerView.setAdapter(adapter);
                     recyclerView.scrollToPosition(messages.size() - 1);
                     initial.dismiss();
+                    constructJob();
                 } catch (JSONException e) {
                     Toast.makeText(context, "Application error. Please report us.", Toast.LENGTH_SHORT).show();
                     initial.dismiss();
@@ -164,12 +171,10 @@ public class CSITQuery extends AppCompatActivity {
                         finish();
                     }
                 }
-                setRefreshActionButtonState(false);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                setRefreshActionButtonState(false);
                 initial.dismiss();
                 Toast.makeText(context, "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
                 if (finish) {
@@ -243,45 +248,6 @@ public class CSITQuery extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home) {
-            finish();
-            return true;
-        } else if (id == R.id.action_refresh) {
-            fetchFromInternet(false);
-            setRefreshActionButtonState(true);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_query, menu);
-        this.optionsMenu = menu;
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    public void setRefreshActionButtonState(final boolean refreshing) {
-
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
-            if (optionsMenu != null) {
-                final MenuItem refreshItem = optionsMenu
-                        .findItem(R.id.action_refresh);
-                if (refreshItem != null) {
-                    if (refreshing) {
-                        refreshItem.setActionView(R.layout.actionbar_indeterminate_progress);
-                    } else {
-                        refreshItem.setActionView(null);
-                    }
-                }
-            }
-        }
-    }
-
     public void sendSms(View v) {
         String url = getString(R.string.quertyPostUrl);
         final MaterialDialog dialog = new MaterialDialog.Builder(this)
@@ -331,4 +297,69 @@ public class CSITQuery extends AppCompatActivity {
         mAdView.loadAd(adRequest);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        active = true;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        active = false;
+        mScheduler.cancelTask("update",Repeater.class);
+    }
+
+    public static boolean runningStatus(){
+        return active;
+    }
+
+    private void constructJob() {
+        mScheduler = Singleton.getInstance().getGcmScheduler();
+
+        long periodSecs = 5L;
+
+        String tag = "update";
+
+        PeriodicTask periodic = new PeriodicTask.Builder()
+                .setService(Repeater.class)
+                .setPeriod(periodSecs)
+                .setTag(tag)
+                .setPersisted(true)
+                .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_CONNECTED)
+                .build();
+
+        mScheduler.schedule(periodic);
+    }
+
+    class Repeater extends GcmTaskService{
+        @Override
+        public int onRunTask(TaskParams taskParams) {
+            String url = getString(R.string.queryFetchUrl);
+            final JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.GET, url + getSharedPreferences("details", Context.MODE_PRIVATE).getString("fbId", "0"), new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        JSONArray query = response.getJSONArray("query");
+                        messages.clear();
+                        for (int i = 0; i < query.length(); i++) {
+                            JSONObject jo_inside = query.getJSONObject(i);
+                            if (!jo_inside.getString("Question").equals("")) {
+                                messages.add(jo_inside.getString("Question"));
+                            }
+                            if (!jo_inside.getString("Answer").equals("")) {
+                                messages.add(jo_inside.getString("Answer"));
+                            }
+                        }
+                        if (messages.size() > getSharedPreferences("data", Context.MODE_PRIVATE).getInt("query", 1)) {
+                            adapter.notifyItemRangeInserted(getSharedPreferences("data", Context.MODE_PRIVATE).getInt("query", 0)-1,messages.size()-1);
+                        }
+                    } catch (JSONException e) {
+                    }
+                }
+            }, null);
+            queue.add(jsonObjectRequest1);
+            return GcmNetworkManager.RESULT_SUCCESS;
+        }
+    }
 }

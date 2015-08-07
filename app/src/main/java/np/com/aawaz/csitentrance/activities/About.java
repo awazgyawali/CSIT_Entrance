@@ -29,7 +29,6 @@ public class About extends AppCompatActivity {
         AboutAdapter adapter = new AboutAdapter(this);
         recyAbout.setAdapter(adapter);
         recyAbout.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-
     }
 
     public void feedBack(View view) {
