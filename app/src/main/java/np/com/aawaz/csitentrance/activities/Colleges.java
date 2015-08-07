@@ -157,6 +157,7 @@ public class Colleges extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+
     }
 
     public void loadAd() {

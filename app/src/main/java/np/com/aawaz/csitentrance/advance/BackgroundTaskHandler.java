@@ -240,14 +240,14 @@ public class BackgroundTaskHandler extends GcmTaskService {
     }
 
     public int noOfRows() {
-        SQLiteDatabase database = Singleton.getInstance().getDatabase();
-        Cursor cursor = database.query("news", new String[]{"title"}, null, null, null, null, null);
+        SQLiteDatabase databaseForNews = Singleton.getInstance().getDatabase();
+        Cursor cursor = databaseForNews.query("news", new String[]{"title"}, null, null, null, null, null);
         int i = 0;
         while (cursor.moveToNext()) {
             i++;
         }
         cursor.close();
-        database.close();
+        databaseForNews.close();
         return i;
     }
 
