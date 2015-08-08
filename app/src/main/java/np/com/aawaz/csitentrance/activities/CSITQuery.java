@@ -61,6 +61,7 @@ public class CSITQuery extends AppCompatActivity {
     RecyclerView recyclerView;
     QueryAdapter adapter;
     RequestQueue queue;
+    ScheduledExecutorService scheduler;
     MaterialDialog dialog;
     ArrayList<Integer> flag = new ArrayList<>();
     ArrayList<String> messages = new ArrayList<>();
@@ -72,6 +73,7 @@ public class CSITQuery extends AppCompatActivity {
     String tempId;
     private ProfileTracker mProfileTracker;
     static boolean active = false;
+    private boolean handling=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -290,13 +292,27 @@ public class CSITQuery extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         active = true;
+        if(handling) {
+            scheduler = Executors.newSingleThreadScheduledExecutor();
+            handling = true;
+            scheduler.scheduleAtFixedRate
+                    (new Runnable() {
+                        public void run() {
+                            queue.add(getJsonRequest().setTag("query"));
+                        }
+                    }, 0, 5, TimeUnit.SECONDS);
+        }
+
     }
 
     @Override
     public void onStop() {
         super.onStop();
         active = false;
+        if(scheduler!=null)
+            scheduler.shutdown();
     }
+
 
     public static boolean runningStatus() {
         return active;
@@ -304,7 +320,8 @@ public class CSITQuery extends AppCompatActivity {
 
 
     private void backgroundHandler() {
-        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+        scheduler = Executors.newSingleThreadScheduledExecutor();
+        handling=true;
         scheduler.scheduleAtFixedRate
                 (new Runnable() {
                     public void run() {
