@@ -292,17 +292,8 @@ public class CSITQuery extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         active = true;
-        if(handling) {
-            scheduler = Executors.newSingleThreadScheduledExecutor();
-            handling = true;
-            scheduler.scheduleAtFixedRate
-                    (new Runnable() {
-                        public void run() {
-                            queue.add(getJsonRequest().setTag("query"));
-                        }
-                    }, 0, 5, TimeUnit.SECONDS);
-        }
-
+        if(handling)
+            backgroundHandler();
     }
 
     @Override
@@ -327,7 +318,7 @@ public class CSITQuery extends AppCompatActivity {
                     public void run() {
                         queue.add(getJsonRequest().setTag("query"));
                     }
-                }, 0, 5, TimeUnit.SECONDS);
+                }, 0, 8, TimeUnit.SECONDS);
     }
 
     private JsonObjectRequest getJsonRequest(){
@@ -337,7 +328,9 @@ public class CSITQuery extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
+                    Log.d("Debug","Running");
                     JSONArray query = response.getJSONArray("query");
+                    int preSize=messages.size();
                     messages.clear();
                     flag.clear();
                     for (int i = 0; i < query.length(); i++) {
@@ -350,17 +343,16 @@ public class CSITQuery extends AppCompatActivity {
                             messages.add(jo_inside.getString("Answer"));
                             flag.add(1);
                         }
-                        if (messages.size() > getSharedPreferences("data", MODE_PRIVATE).getInt("query", 0)) {
-                            for (int j = getSharedPreferences("data", MODE_PRIVATE).getInt("query", 0); j < messages.size(); j++)
-                                adapter.insertNew(messages.get(j), flag.get(j));
+                        if (messages.size() > preSize) {
+                            int newSize=messages.size();
+                            for (; preSize < newSize; preSize++) {
+                                adapter.insertNew(messages.get(preSize), flag.get(preSize));
+                                Log.d("Debug", "Loop xa re "+preSize);
+                            }
                             MediaPlayer.create(getApplicationContext(), R.raw.new_arrived).start();
                             getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", messages.size()).apply();
                         }
                     }
-                    adapter = new QueryAdapter(context, messages, flag);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                    recyclerView.setAdapter(adapter);
-                    recyclerView.scrollToPosition(messages.size() - 1);
                 } catch (JSONException e) {
                 }
             }

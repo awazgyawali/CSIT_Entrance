@@ -71,7 +71,7 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
     public void insertNew(String messgae,int Newflag){
         messages.add(messgae);
         flag.add(Newflag);
-        notifyItemInserted(messages.size());
+        notifyItemRangeInserted(messages.size()-2,1);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
