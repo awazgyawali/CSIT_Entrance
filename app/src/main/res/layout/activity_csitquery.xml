@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="np.com.aawaz.csitentrance.activities.CSITQuery">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/queryToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary10"
+        android:theme="@style/Theme.AppCompat" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/queryToolbar"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyQuery"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight=".66" />
+
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/QueryAd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/query_ad_id" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#009866" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Query"
+                android:maxLength="254"
+                android:paddingLeft="3dp"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelText="Query"
+                app:met_maxCharacters="254" />
+
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/sendBtn"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:onClick="sendSms"
+                android:padding="10dp"
+                android:visibility="gone"
+                fancy:fb_borderColor="#4d009866"
+                fancy:fb_borderWidth="5dp"
+                fancy:fb_defaultColor="#009866"
+                fancy:fb_focusColor="#009811"
+                fancy:fb_iconResource="@drawable/ic_send_black_24dp"
+                fancy:fb_radius="50dp"
+                fancy:fb_textPosition="right"
+                fancy:fb_textSize="11dp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

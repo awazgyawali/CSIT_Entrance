@@ -1,0 +1,804 @@
+{
+  "questions": [
+    {
+      "question": "1.If (X-3) = 4 then X is",
+      "a": "7 and -1",
+      "b": "7 and 1",
+      "c": "7",
+      "d": "1",
+      "ans": "c"
+    },
+    {
+      "question": "2.If { X-X<sup>2</sup>=9 and 2X=6}",
+      "a": "Null set",
+      "b": "{3}",
+      "c": "{3,-3}",
+      "d": "{4,3}",
+      "ans": "a"
+    },
+    {
+      "question": "3.If: R →R defined by f(X)=X<sup>2</sup> + 3 then f<sup>-1</sup>(4) is",
+      "a": "NULL set",
+      "b": "{-1,1}",
+      "c": "{1,0}",
+      "d": "{4,3}",
+      "ans": "b"
+    },
+    {
+      "question": "4.The value of log2<img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">  is",
+      "a": "0",
+      "b": "13/12",
+      "c": "-13/12",
+      "d": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAASCAIAAABaaCA7AAACwUlEQVR4nGP5//8/A40BC60tINeOX1cb9WxPddzZEiDESCM7/jzdu/GZVr65AMyC30+3tea1bH3JxvXvw7O3YqnrNpdps1Nkx7/XR9bcUQqxFWUCc/9/OFDkEH+z6MjhTHUOht93JoZN+fiXQn/8/3B65RUJ36nSEK2/784rmPk78WQi0AIgYFXJX9fPgBqCKHZ8P1NqnXSM+e35RxIWekKMH67sO/Na0dLR0LVlUaM5N1TR10urz3C71ChDAuPvs51LLnJa9KlywE1hRI8jZDv+fnojU7dl7Z/82Ff927MUvm7zlQz80btld6AQsjuurz/0z3quFheE++PByQcMrFI7m+L7ztx+8vgVg3pQ9cSmUGUOHHYwi3vkB3w7mv3eIEGcheHXs/O3f0oFKnEzIINf97fv/GjUZsgLc9e3998YWEVNUya2dfExfb8xzdMwzJf78vl6HXasdoCD9/HRa+L2qpwMDJ8enHzErGQiw4Ys/efZvg3PtHIQSYqJnZudgUNCVY6PGcjjVI/ItcoPWbXtUZWOKisOO/6/P3+Y2T6MhwHqDT9lbuTQ/ffmyOo7CsF2YswwETZJHQmGbfff/oFwGdkFRbkY7rz6DExZuOz4dG7Ta4MiYEgxfHp4+hGTgokMUjpn+P/x9MrLYj6TZOHaGdjkXV0la3cdfvjLSRvk4z9f3n9nEFMVZUXShmLH3+dbJ5+Wz1cDhtT/H29ffWcT5WH99/s3IysrJCt8vbj6NKdzpSqyvVxGhVU2C9r79+fMchdmeHt0xTl2xw5PSWbsdvx5tCQlc7/inAWg+GQUMI1wZM0LtQgsmTK31lkUpOf79Q0H/1jN1uZC8Tqrcub6rV+yKjydJwr/f/WaL3vd8ng5FKcjcVjk4rd+jIcHgmru3g+5KKZxmk54+IYBEzCL2FesOl6BRQZLWNEIDBc7AOF9Cnx5SYD9AAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
+      "ans": "b"
+    },
+    {
+      "question": "5.If cos<sup>2</sup>θ =1/2, then θ is",
+      "a": "nπ ± π/4",
+      "b": "nπ + π/4",
+      "c": "nπ ± π/3",
+      "d": "2nπ",
+      "ans": "c"
+    },
+    {
+      "question": "6.Cos (sin<sup>-1</sup>3/5) =",
+      "a": "3/5",
+      "b": "4/5",
+      "c": "9/25",
+      "d": "4/25",
+      "ans": "b"
+    },
+    {
+      "question": "7.If a<sup>2</sup>, b<sup>2</sup>,c<sup>2</sup> are in H.P. then",
+      "a": "2a<sup>2</sup>c<sup>2</sup> = b<sup>2</sup> (a<sup>2</sup> + c<sup>2</sup>)",
+      "b": "a<sup>2</sup>c<sup>2</sup> = b<sup>2</sup>(a<sup>2</sup> + c<sup>2</sup>)",
+      "c": "2b<sup>2</sup>c<sup>2</sup> = a<sup>2</sup> (b<sup>2</sup> + c<sup>2</sup>)",
+      "d": " c<sup>2</sup>a<sup>2</sup> = 2b<sup>2</sup>(a<sup>2</sup>+c<sup>2</sup>)",
+      "ans": "a"
+    },
+    {
+      "question": "8.If A = <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAqCAIAAACV7yQTAAADrElEQVR4nGP5//8/AwL8+fLmzeff/xmYuYRF+dkYGWgK/n57+/rjr/8MjOxC4kLsCMtYUFT9vNZupt92n4GBJ3TPs1XOvDR10p/Hc50V8y4CWXZr3h0MFsThJgYGJhHHps4iI0FZAy6aOggImMX9p21TfP1sU+1qVAl0NzFwyFh5+NA4hCCAkVPOylPuz4P7/esIuGkQgFE3EQeIcNPvV0emF+dM55h8ZrYtN+k2/LjUERw1+x6bhCjXjzfveWzyJ/SkGPIxke2mf+9Pzqzr3n7/0YGLr4JIdw4Y/H5940/itovF6mxA4/ZlaTu7fJW7s8RDEHfhRyCcOJTDe1anPOk32tpKppMYONTiylQV2UBMJkGzcAe+mXvW3/juYYm7rMHvJiZOESGgT8l1Dhiwyjo5I3j//v5nYONixVtD0DeN/35x/upnEVd/dU58qujqpi9np0577tZZb4O/SKafm/6+2laadjhg5Y4EeQKW0slNf1/tLA/tFejb0eIigq8YAAN6uOn347X5CSvU+zfkGfES0/yhuZt+P1oS69TKktus9Ozg1mdgIWYBLTtrJW6czsPvpt+PN0+YsvPa9QO3GN69q0/LNFCzTC6J0yalNP9+beWGuzd+FoQuRYhptN24WKnORp6bWGV9Szt9gYz5JLgCFfB5bP7xn7Ay4t00MGDUTcSBUTcRB0bdRBzA6ybSm61YwM9rfcHBk26yS0ry/H79msU4vXdivrUwM7luIr3ZigX8eXv7V8TGy/X6HAz/Px0t1rXxSFW+v9ZfhMy2L+nNViwAWBdkRqhzgJiMfAYBDoL9u3be+e4vQmbbl/RmKxbApuAVCOf8//PzLwOPGC++qCM+jRPXbMUPfj3cPG0fs1trvBo7NdxEZLMVB/j3enOKd9m+2/e+aGTOXhKjwIpXNVFuIr7ZigMwifrOO+XL8P/73dXZTjrGx3cf77bhJ7P9BHEQCc1W/ICRUzmwMrtRra7jSO0Wb34y3URqsxWbCbu2fbHx14RnM0ZGhr+//uBrUuFzExnNVkzw5+XeKUt5XPqtQI3T/58vLFl4nc+73hxfssTnJjKarZiAVUxX4lC8iamUjCDrrw+vPgs5zT3cGiJBbjlORrMViwVyMYvPxpCmhVI7aQAw3PTn87MH9+7z80rKinLQeCz6z8fHD15+efTy+z8pvG7692JDnN4G+oxFP1nkqwodi8bjJlbFuDkbTT/9Y+SQ06f9WLSYd/86iTd/GFglrXiQJQBS9n/G5OjcawAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">  and A<sup>2</sup>– nA–I=0,then the value of n is",
+      "a": "0",
+      "b": "4",
+      "c": "1",
+      "d": "-4",
+      "ans": "b"
+    },
+    {
+      "question": "9.If A =<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAA/CAIAAAAjanJXAAADeUlEQVR4nGP5//8/AwL8/vD06buf/xhZeCVlRTkYGQY/+Pvt7euPv/4zMLILiQuxo7iYBUXhz+vdtvpt9xkYeEL3PFvlzEtXV5IF/jye66yYdxHIslvz7mCwILIcCw49wwGg+41JJnbPxUVDIcYggEUh98L/3D8PJrtkY8oNgHvoBUb9NjQBcX77/erI9OKc6RyTz8y25SbZjv9fLs8pyJ17h4375+tf2jkzJiZpc5NVvZDoDIJ++/f+5My67u33Hx24+CqIHAf9/3igyKvqbd/lvaES/x/OcdPzLFa5Mt2ejzTfkeMMwvHGoRzeszrlSb/R1laSXAMF/9/sal/80W6DuwQzkCcXXGCbH962q8UuRIQ0z5HhDIJ+Y+IUEQKmBpLcgQy+3dx+7odUoRwHmMfIrWwq/WPK9hvfQmxIStzkOIPmZcnPF3ffMvCI8jJDuMx8ErwMb+68+MnAQHrGJRHQ2m//fn0FeoOZjRmaAhlZ2IBW/vz66x8wLmhsN639xsTGzc7A8PXnH2iL/P/vn3+AzVVuNlp7jIEOaZJDUk2U4eDLz3+BsQfk/vn07CODiIEEO63tZaCD3zjVPYw4V5x7+J1Biw1U1d0+9ZTdwF2di9b2MtDBb4zCrpVxgsHTdzx3C5f892DNhKNCsRvdSawAyAME/fb78eYJU3Zeu37gFsO7d/VpmQZqlsklcdrEF3KMfHY9W9pyc/xdFgj+fvlNvX9nvyM/yV4jxxkE/cYq61va6QtkzCfVOXDAyKOXNv9QGtn6yXXGaFt5aIJRvw1NMOq3oQlG/TY0AWG/UWe0g7IRF/IMIeQ3Kox2UDziQq4hBPxGldEOCkdcyDaEgN+oMdpB6YgL2YYQ8NsAjnZQDvD7bSBHOygH+P02kKMdlAMCaXIARzsoBwT8NoCjHZQDAn4bwNEOygGhupsKox0Uj7iQawjhNhfFox1UGHEZHS9BB6N+G5pg1G9DE4z6bWiCIbMGgwxDhsgaDLIMGRprMMgzZGiswSDPkKGxBoM8Q4bEGgwyDRkSazDINGRorMEgz5ChsQaDPEOGxhoM8gwZImswyDJkqKzBIMeQEdVW/vPhwY1r1/gFFFSkuIbC6PHPl5fP33n/+O6nv1LoUuh++/dic4rZ5iG0Z+X5qlhLyJ4VW3S5kZMm2fVa7/2nYAKQ/gCyZwW7HACyw7TTOOiBQAAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">, then A is",
+      "a": "Symmetric",
+      "b": "Skew-symmetric",
+      "c": "Singular",
+      "d": "Non singular",
+      "ans": "d"
+    },
+    {
+      "question": "10.The system of equations 2x + y = 5; 4x + 2y = 8 is",
+      "a": "Consistent and dependent",
+      "b": "Inconsistent and independent",
+      "c": "Inconsistent and dependent",
+      "d": "Consistent and independent",
+      "ans": "c"
+    },
+    {
+      "question": "11.The value of i<sup>7</sup> + 1/i<sup>4</sup> is",
+      "a": "1",
+      "b": "-1",
+      "c": "-i",
+      "d": "-i+1",
+      "ans": "d"
+    },
+    {
+      "question": "12.The value of <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> ,where w is the cube root of unity,is",
+      "a": "w",
+      "b": "x+y+z",
+      "c": "w<sup>2</sup>",
+      "d": "1",
+      "ans": "a"
+    },
+    {
+      "question": "13.If the roots of x<sup>2</sup>+4x+k=0,are equal then k is",
+      "a": "0",
+      "b": "4",
+      "c": "16",
+      "d": "-4",
+      "ans": "b"
+    },
+    {
+      "question": "14.The two lines a<sub>1</sub>x + b<sub>1</sub>y + c<sub>1</sub> = 0 and a<sub>2</sub>x + b<sub>2</sub>y + c<sub>2</sub> = 0 are identical if",
+      "a": "",
+      "b": "	",
+      "c": "	",
+      "d": "	",
+      "ans": "a"
+    },
+    {
+      "question": "15.The two lines 2x<sup>2</sup> - 2xy + ky<sup>2</sup> = 0 are perpendicular to each other if k is",
+      "a": "2",
+      "b": "-2",
+      "c": "0",
+      "d": "1",
+      "ans": "b"
+    },
+    {
+      "question": "16.The equation of the circle touching the positive x- axis and y- axis with radius 2 units is",
+      "a": "x<sup>2</sup> + y<sup>2</sup> – 4x – 4y +4 = 0",
+      "b": "x<sup>2</sup>+y<sup>2</sup> + 4x + 4y +4 = 0",
+      "c": "x<sup>2</sup> + y<sup>2</sup> – 4x + 4y +4 = 0",
+      "d": "x<sup>2</sup> + y<sup>2</sup> – 4x + 4y -4",
+      "ans": "a"
+    },
+    {
+      "question": "17.If the line 4x + 3y = k is tangent to the circle x<sup>2</sup> + y<sup>2</sup> = 2 S at (2,1) then k is",
+      "a": "25",
+      "b": "-25",
+      "c": "±25",
+      "d": "±11",
+      "ans": "d"
+    },
+    {
+      "question": "18.The value of  <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> is",
+      "a": "80",
+      "b": "40",
+      "c": "10",
+      "d": "0",
+      "ans": "a"
+    },
+    {
+      "question": "19.The value of  <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> is",
+      "a": "7",
+      "b": "3",
+      "c": "11",
+      "d": "4",
+      "ans": "c"
+    },
+    {
+      "question": "20.The derivative of y= b<sup>x</sup> is",
+      "a": "xb<sup>x-1</sup>",
+      "b": "b",
+      "c": "x<sup>b</sup>ln|b|",
+      "d": " b<sup>x</sup>ln|b|",
+      "ans": "d"
+    },
+    {
+      "question": "21.The derivative of y= <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> is",
+      "a": "<img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">",
+      "b": "<img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">",
+      "c": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAAAVCAIAAABjdJ9DAAAFPElEQVR4nGP5//8/AzXBn0+vfnCL8TBT1VCiwb9vbz6xCAuwMaKIslDZknfnDzxX9xWjrqlw8P/3j78sHCyMOBUwMbw5evqvh7U4SiBT15P/3l25IWlgitsRlIEf15Ys+ZuUqo9f1fI9z/6KSyL7krqe/HLripCiNVWNRAJ/Xt38pO5MUJnkndufnCQFkUKaqp78+ezWf3F9WmXH/x9vP1TW4iVUiPy4tnjls592ghwIIap68seLpzwybNQ0ERl8e3BTVM2WiZAyNgHe51e/MWiT4slPB9P1fc8mHztao8NOQOnfD0++C2njNpEEo7CAX0+vMWgGEQ5CJh7BP0/e/mYQYoULEfQkm4iGkelfZT4iEuGfT28ZedhxlzokGIUJ/r698VrdhosIlcwcrB8+/2FgIMGTHNqFa/cS6Y4f35hZ8SQnEozCBJ9v35VX9SKm3GZiZf764y+yCKon/7zYVh1Xc/CvOO/3R88kSrevCHi1oK64dPL18KMPZllx/bw1OzUoe/EL99JY9gOrt5x+yq6XsXjnFD8JSNz8//ObkYmRKkZhgO8Pb/BrmCFc++/dsQlZMcUblJY+2BUl8ffuNDeDJqXtd+facDMA3fDrN0rhhOLJbydrUhZKLLm1yInvz8MllXt+MQqYJJdGzpxaB5FnV0tszpy2pJbLomB+ex/jnRme+lnVS4o9S1QgSeP/f0ZGKhkFNOz744tP+PVU+UBp4/fz6981vJHKEiYhq8KpEw5vC56y+Wl4Evv1K3/8eustuMFyjIxoJTCKJ/98evHh/bsLD7856nLJx3Qng8RQ4h1iBpuQlCgXMyODspu/GlP3g7d/GKAuY2L6/486Rv24t6Gvc/LsayH792cqsDD8e3/riaoRN5pmYafCcCGnybMW3Dm7S3vG/Cg5qGf+/WdmQknXKJ7ktSzNVHMq1hOf55OSU1aebCvByoAPMLMwAWOPARZqTKzs/779o4pRzAKm2RNmcrpELbmdXKPJ9vXuLSl1Z4zszmOWnSQ7p6Uv6MzJLG0umL/+/f3Hhlo0oHiSUcC+9+yziPXzZkyekGm3cO/qaytCRPG6DdWhnNx/P/6jilGsQtL8DH/D04W8Zl8s7tN9dJ1NUx8jlP69ObryODMnw9vn3xmQYu7f7z/cnLg9+efdvTdciqbhlaahCU5uSmmLLnwNcSXeZSyCEkw3v/9j4Gei2CgwYJb0ydHonXr0bdPHDxpOaLXHv3cHamOnS/RvnZynVzThQLu1jxDUo3+//xEURwkRFE9+PVZX+qNvYYgYEwMLOxu7mLoYSc0XJl5pgQ8f/zBIsFFsFAQwCjnm2tR2rz1qpWgXgCzx/9OJhsDKf2078gx5X+c55cX2bX3uGSsFLpn/fnrLJmuE4i8UDqu43OM4J5tZ8nw/XrwVLltUofV8bWfH0tv/Xn+a0DKHpTRW4sDMtff+vf41Y+Z+hUTRXZPW3v/3+s+cpRc0Uwz4gOHIISn/9cUvYK1PuVFQwG2S4XvXY47N7iDkquX37RkpLVeNdmgDVTKKuub7cHhWZLfyT6r0k2Vl+PX+s4wUJ0pgoXiSy7TtwPU2FPngqplABOcGtu0LhCuI6zsQ14dimKiawKV3vxl4WCk2CgbYNRMyLd9py6G0A1nVyq78K4NyGAU8Vn5A1Bj/Pr36r2qO2mykbleLS1H31+VP/+SECTajiQYsSllrppCg/suT97qqPGhmUM01YMCjbvD98ru/wiIDNPzx/+ODd9paRmitPyp7koFD2d7g7wD5EAgYeTSdtFjRW7gAuy57x6A0ReMAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
+      "d": "<img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">",
+      "ans": "a"
+    },
+    {
+      "question": "22.The value of x for which the derivative of x<sup>2</sup> +2x + 2 is zero is",
+      "a": "1",
+      "b": "2",
+      "c": "0",
+      "d": "-1",
+      "ans": "d"
+    },
+    {
+      "question": "23.The point of inflection of the curve x<sup>2</sup>+3x<sup>2</sup>–9x+2 is",
+      "a": "-1",
+      "b": "1",
+      "c": "6",
+      "d": "0",
+      "ans": "a"
+    },
+    {
+      "question": "24. <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> =",
+      "a": "tan x/2",
+      "b": " – cot x/2",
+      "c": "cos x/2",
+      "d": "– tan x/2",
+      "ans": "b"
+    },
+    {
+      "question": "25. <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> =",
+      "a": "∞",
+      "b": "ln|2|",
+      "c": "0",
+      "d": "1",
+      "ans": "b"
+    },
+    {
+      "question": "26.The word “education” has the stress on the …………………. Syllable.",
+      "a": "first",
+      "b": "second",
+      "c": "third",
+      "d": "fourth",
+      "ans": "a"
+    },
+    {
+      "question": "27.Select the right synonym to the word “ardous”",
+      "a": "Simple",
+      "b": "Difficult",
+      "c": "easy",
+      "d": "strange",
+      "ans": "a"
+    },
+    {
+      "question": "28.Give the opposite meaning of “obscure”",
+      "a": "Pedantic",
+      "b": "implicit",
+      "c": "explicit",
+      "d": "obnoxious",
+      "ans": "a"
+    },
+    {
+      "question": "29.The initial consonant sound of “chef” is the same as that of ………",
+      "a": "Chute",
+      "b": "chess",
+      "c": "child",
+      "d": "cheap",
+      "ans": "a"
+    },
+    {
+      "question": "30.Which of the following pair has the same vowel sound?",
+      "a": "Hut/hot",
+      "b": "sit/seat",
+      "c": "salt/mark",
+      "d": "pair/tear",
+      "ans": "a"
+    },
+    {
+      "question": "31.I completely differ ………… you ………… this point.",
+      "a": "From: at",
+      "b": "from: in",
+      "c": " from: on",
+      "d": "to: at",
+      "ans": "a"
+    },
+    {
+      "question": "32.We feel sympathy ……… the poor.",
+      "a": "To",
+      "b": "with",
+      "c": "about",
+      "d": "for",
+      "ans": "a"
+    },
+    {
+      "question": "33.He insisted …………leaving immediately.",
+      "a": "at",
+      "b": "in",
+      "c": "on",
+      "d": "over",
+      "ans": "a"
+    },
+    {
+      "question": "34.Tick the correct w0rd to the underlined expression. No one knows his <u>hole and corner</u> method of dealing with people.",
+      "a": "strict",
+      "b": "secret",
+      "c": "servile",
+      "d": "suspicious",
+      "ans": "a"
+    },
+    {
+      "question": "35.Food that agree to one’s taste is ……………",
+      "a": "Pungent",
+      "b": "edible",
+      "c": "palatable",
+      "d": "sensuous",
+      "ans": "a"
+    },
+    {
+      "question": "36.The word “pleased” takes the prefix …………",
+      "a": "un-",
+      "b": "mis-",
+      "c": "dis-",
+      "d": "none-",
+      "ans": "a"
+    },
+    {
+      "question": "37.One who is present everywhere is…………",
+      "a": "omnipresent",
+      "b": "omniscient",
+      "c": " theist",
+      "d": "omnipotent",
+      "ans": "a"
+    },
+    {
+      "question": "38.Fear of food is called as ……………",
+      "a": "Sitophobia",
+      "b": "ergophobia",
+      "c": "Panthophobia",
+      "d": "hyctophobia",
+      "ans": "a"
+    },
+    {
+      "question": "39.A funeral bell is called",
+      "a": "Call",
+      "b": "knell",
+      "c": "replica",
+      "d": "invitation",
+      "ans": "a"
+    },
+    {
+      "question": "40.People ………………… a large number of computers now, because prices are getting low",
+      "a": "Must buy",
+      "b": "must have bought",
+      "c": "must be buying",
+      "d": "must buying",
+      "ans": "a"
+    },
+    {
+      "question": "41.Although they are similar, chipmunks are ………… most other ground squirrels.",
+      "a": "Alike",
+      "b": "like as",
+      "c": "like to",
+      "d": "like",
+      "ans": "a"
+    },
+    {
+      "question": "42.She …………the whole day long.",
+      "a": "Has been working",
+      "b": " works",
+      "c": "had worked",
+      "d": "worked",
+      "ans": "a"
+    },
+    {
+      "question": "43.Now a days Shyam is ……………… busy to take care of his health.",
+      "a": "very",
+      "b": "to",
+      "c": "so",
+      "d": "extremely",
+      "ans": "a"
+    },
+    {
+      "question": "44.She demanded …………… her status.",
+      "a": "know",
+      "b": "knowing",
+      "c": "to know",
+      "d": "to be known",
+      "ans": "a"
+    },
+    {
+      "question": "45.The mail comes at ten O’clock everyday ……… saturday",
+      "a": "But also",
+      "b": "and",
+      "c": "also",
+      "d": "but",
+      "ans": "a"
+    },
+    {
+      "question": "46.In my office, salary is paid by ……… month.",
+      "a": "the",
+      "b": "a",
+      "c": "an",
+      "d": "some",
+      "ans": "a"
+    },
+    {
+      "question": "47.Every boy and every girl ………… very responsible.",
+      "a": "are",
+      "b": "is",
+      "c": "has",
+      "d": "have",
+      "ans": "a"
+    },
+    {
+      "question": "48.Which of the following is accepted?",
+      "a": "Some of rice is still left",
+      "b": "Time and tide wait for none",
+      "c": "She absents herself from the college today",
+      "d": "None of the squares was properly drawn",
+      "ans": "a"
+    },
+    {
+      "question": "49.Which of the following is a complex sentence?",
+      "a": "However, hard she worked, she failed in the exams.",
+      "b": "It rained heavily, however he came to school",
+      "c": "In spite of heavy rain, he come to school",
+      "d": "Neither she nor he will come.",
+      "ans": "a"
+    },
+    {
+      "question": "50.Which of the following is an adjective?",
+      "a": "Sympathize",
+      "b": "lighten",
+      "c": "perception",
+      "d": "moral",
+      "ans": "a"
+    },
+    {
+      "question": "51.The dimensions of (h/e) are same as that of",
+      "a": "Magnetic field",
+      "b": "electric field",
+      "c": "magnetic flux",
+      "d": "electric flux",
+      "ans": "a"
+    },
+    {
+      "question": "52.The number of significant figures in 0.0030 × 10<sup>11</sup> m are",
+      "a": "5",
+      "b": "4",
+      "c": "11",
+      "d": "2",
+      "ans": "a"
+    },
+    {
+      "question": "53.µs and µk are coefficient of static and kinetic frictions between two bodies. Then",
+      "a": "µs ≥ µk",
+      "b": "µs < µk",
+      "c": "µs = 0 and µk > 0",
+      "d": " µs < 0 and µk < 0",
+      "ans": "a"
+    },
+    {
+      "question": "54.When a torque () acts on a body, the change in angular momentum () of the body is",
+      "a": "Perpendicular to <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAASCAIAAAAym6IDAAABK0lEQVR4nGP5//8/Awx8P11m5TPn4W8I7//39x9+MDCo5Ww/MsFDlBmuioGFAQlwmnadf9kF5fy6PSO17UNkfb67AicjsipUPSiATTVj4XysMph6/n+9NLe+acKktVfZjENi3dxTK5KN+Bjx62Hk1ktpyDkwd+1jj6750514iLEHCP68uXzlA4OChSIHkW4Dgh8PTjxg4PfSE8XuW2yif15fvvqRQcFSAbs1WPVArPHWxWENNj0QaxRxWoNND9gaAV9dEbjcn8+vvrCLCbDh1AO3hhMq8P/D3orKH01z/IUZcekBWyPory0CTWH/Xu+efV2jDSlaUfT8fXN4Wvv0JZs/MXzZU+Bmy8P0/9/vb28fXP/ouVOaFYd/mEVsc3uBaBkOz+P0D2FALz0AO2J0jdyGvPEAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
+      "b": "parallel to <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAASCAIAAAAym6IDAAABK0lEQVR4nGP5//8/Awx8P11m5TPn4W8I7//39x9+MDCo5Ww/MsFDlBmuioGFAQlwmnadf9kF5fy6PSO17UNkfb67AicjsipUPSiATTVj4XysMph6/n+9NLe+acKktVfZjENi3dxTK5KN+Bjx62Hk1ktpyDkwd+1jj6750514iLEHCP68uXzlA4OChSIHkW4Dgh8PTjxg4PfSE8XuW2yif15fvvqRQcFSAbs1WPVArPHWxWENNj0QaxRxWoNND9gaAV9dEbjcn8+vvrCLCbDh1AO3hhMq8P/D3orKH01z/IUZcekBWyPory0CTWH/Xu+efV2jDSlaUfT8fXN4Wvv0JZs/MXzZU+Bmy8P0/9/vb28fXP/ouVOaFYd/mEVsc3uBaBkOz+P0D2FALz0AO2J0jdyGvPEAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\"> ",
+      "c": "always zero",
+      "d": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAASCAIAAABn+kFdAAAE/0lEQVR4nGP5//8/w2AC30+XWfnMefgbwvv//f2HHwwMajnbj0zwEGVGKGMZGNfhBpymXedfdkE5v27PSG37EFmf767AyYiibNC5GwWwqWYsnI9VBpu7f786Mr04ZzrH5DOzbbkhQv8+np6amz/zKpu00N+Xz/7qZ06alGXCzwSMyC+X5xTkzr3Dxv3z9S/tnBkTk7S5ESHz/8uFaWnJfUff/Oc3TJ0+r9xaiAkm9edc5Szb5bJbL/k68KFa///rpbn1TRMmrb3KZhwS6+aeWpFsxIca2hju/vf+5My67u33Hx24+CoIIfztVLV/3oGIE9f7zLn/fz5WoGXtU250d4YV18cDRV5Vb/su7w2V+P9wjpueZ7HKlen2MFt+XGpPXakz8/wSE/Z7c8NCKw4dmuXACzWSSdRIyeO1mBQ7RrAxcuulNOQcmLv2sUfX/OlOPESFN4dyeM/qlCf9RltbkULg851zzxlkjRW5QMbyatgqMUw6f/PTP8tvu9oXf7Tb4C4ByjFywQW2+eFtu1rsQkQYIdqun2Hzn6rPBwxklYBo8bmnXvx24GWFuls2yKHPnlUe091A8OfN5SsfGBQsFDmwOhrT3UycIkLAhIIeAkKWUbY8LTtOvo7wFfv//MDa61xWVTbCTN9ObT/3Q6pQjgMaTsqm0j+mbL/xLcQGnLwY+XRt/02YdzS+yY796uK5r0wbpFgRhv599WTPY7lkMWYGTPDjwYkHDPxeeqI4sx9x+ZJVOWP5nEOGfnJKeiq/r179G7ryXI4qG8O7F3ffMvCI8kKtZuaT4GV4c+fFTwYGSLZg1y5emFOW5aT16J+ETc68iRbcCCN/X1zzXClGBat1f15fvvqRQcFSAWdwE+nun9f6Q9Ivxx941mEv9P/FthyL8KB+3UPFgl+BTmRmY4YmZ0YWNqBxP7/++geMOIgQp1rM5D0xGOb9f7tzT8VD3fWC2K2DBLe3Lu7gJs7dX091d5yQrVpsJQQKWQnXwnQZja6e01nd3MDU+fXnH2jN9f/3zz8MDDzcbEx4TWP4+/RqUtw9y71u3NjlIcGtiC+4iXL3vy8PbrxjEJARgCpmEVYUZnhz7f4XdiU1UYaDLz//BYY6yL5Pzz4yiBhIYM1qSM6+Nn3fJhbVamWQnp+3L7ev5UgrUZVCuAQc3AK+uiJwoT+fX31hFxNgI83dTBzCIuwMzz58/wdx398vb74ycMiKcHCpexhxrjj38DuDFhuosL596im7gbs6FwF3v7j+hYGLkxscK3/fPZld81gyWiVdFlZEw4ObEyrw/8PeisofTXP8hRGlOFHphNckwZ0vduXup8lJciwMv+5vWnKN37POhJdR2LUyTjB4+o7nbuGS/x6smXBUKHajuwh6HYEGWA2TtST8Li88Y9lpzc6hIGduzWkhiqQHHNyC/toi0Oz+7/Xu2dc12lCrHjR3/368ecKUndeuH7jF8O5dfVqmgZplckmctljAvC2NOWX+9iulBf6+fvJNtWP7JH9RYIDx2fVsacvN8XdZIPj75Tf1/p39jvwEnM3AKOLld+Hg+d4Fu8v2CUkJC1Svt9eHpuS/bw5Pa5++ZPMnhi97CtxseZj+//v97e2D6x89d0qzohiC5m5WWd/STl8gA61VwCxsW7r8eCkWR/Dopc0/lEbAqeiASdzauMsaU5xZxDa3F4iWETRhcLercINRd9MXAADmH+WboS5VKwAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
+      "ans": "a"
+    },
+    {
+      "question": "55.The Poisson’s ratio of material can’t be",
+      "a": "0.10",
+      "b": "0.20",
+      "c": "0.40",
+      "d": "0.65",
+      "ans": "a"
+    },
+    {
+      "question": "56.The depth of water at which air-bubble of radius 0.4 mm may remain in equilibrium (surface tension of water = 72 × 10<sup>-3</sup> N/m, g= 9.8 m/s<sup>2</sup>) is given by",
+      "a": "7.348 cm",
+      "b": "0.918 cm",
+      "c": "3.674 cm",
+      "d": "1.837 cm",
+      "ans": "a"
+    },
+    {
+      "question": "57.When a cylinder is heated, its length increases by 2%, the area of its base will increase by:",
+      "a": "0.5%",
+      "b": "1%",
+      "c": "2%",
+      "d": "4%",
+      "ans": "a"
+    },
+    {
+      "question": "58.In a pressure cooker food is cooked usually at a pressure",
+      "a": "One atmosphere",
+      "b": " half atmosphere",
+      "c": "Two atmosphere",
+      "d": "50 atmosphere",
+      "ans": "a"
+    },
+    {
+      "question": "59.The mean free path of a gas varies with absolute temperature (T) as",
+      "a": "T<sup>4</sup>",
+      "b": "1/T<sup>4</sup>",
+      "c": "1/T",
+      "d": "T",
+      "ans": "a"
+    },
+    {
+      "question": "60.The efficiency of Carnot engine working between steam point and ice point is:",
+      "a": "16.8%",
+      "b": "26.81%",
+      "c": "36.8%",
+      "d": "46.8%",
+      "ans": "a"
+    },
+    {
+      "question": "61.The bending of sound waves through the corners of the obstacle is called",
+      "a": "Refraction",
+      "b": "interference",
+      "c": " beats",
+      "d": "diffraction",
+      "ans": "a"
+    },
+    {
+      "question": "62.When a tuning fork is vibrated its prongs have a phase difference of:",
+      "a": "0",
+      "b": "π/4",
+      "c": "π",
+      "d": "2π",
+      "ans": "a"
+    },
+    {
+      "question": "63.The image of an object placed at the focus of convex mirror is at a distance",
+      "a": "∞",
+      "b": "f",
+      "c": "2f",
+      "d": "f/2",
+      "ans": "a"
+    },
+    {
+      "question": "64.If sky is seen from moon’s surface, it will appear",
+      "a": "Black",
+      "b": "Blue",
+      "c": "White",
+      "d": "Red",
+      "ans": "a"
+    },
+    {
+      "question": "65.A double convex air bubble in a glass sheet would behave as a",
+      "a": "Convergent lens	",
+      "b": "concave mirror",
+      "c": "Divergent lens",
+      "d": "plane mirror",
+      "ans": "a"
+    },
+    {
+      "question": "66.When two prisms are combined it gives",
+      "a": "Reflection only",
+      "b": "lateral shift",
+      "c": "Dispersion and deviation both",
+      "d": "Dispersion or deviation",
+      "ans": "a"
+    },
+    {
+      "question": "67.Which property of electrons is used in an electron microscope?",
+      "a": "negative charge",
+      "b": "wave nature",
+      "c": "spin	",
+      "d": "small size",
+      "ans": "a"
+    },
+    {
+      "question": "68.A system of three charges may be in equilibrium. If they are placed",
+      "a": "On a straight line",
+      "b": "On corners of equilateral triangle",
+      "c": "On three corners of a rectangle",
+      "d": "On the corners of a cube",
+      "ans": "a"
+    },
+    {
+      "question": "69.The radius of Earth is 6400 km. The capacitance is:",
+      "a": "6400 MF ",
+      "b": "6400 F",
+      "c": "1 F",
+      "d": "711 µF",
+      "ans": "a"
+    },
+    {
+      "question": "70.Two wires of same material have lengths L and 2L and cross reaction areas 4A and A respectively. The ratio of their specific resistances would be",
+      "a": "1:1",
+      "b": "1:8",
+      "c": "8:1",
+      "d": "1:2",
+      "ans": "a"
+    },
+    {
+      "question": "71.The magnetic field inside a long solenoid is",
+      "a": "zero",
+      "b": "2µ<sub>0</sub>ni",
+      "c": "µ<sub>0</sub>ni",
+      "d": "µni",
+      "ans": "a"
+    },
+    {
+      "question": "72.Electrons in the atoms are held due to",
+      "a": "Nuclear forces",
+      "b": "Coulomb forces",
+      "c": "Van der Waals force",
+      "d": "Gravitational forces",
+      "ans": "a"
+    },
+    {
+      "question": "73.Which series of H atom lies in visible region?",
+      "a": "Lyman",
+      "b": "Bracket and Paschen",
+      "c": "Balmer",
+      "d": "Paschen",
+      "ans": "a"
+    },
+    {
+      "question": "74.The half-life of a substance is 1600 years. The mean life is",
+      "a": "1600 yrs",
+      "b": "3200 yrs",
+      "c": "800 yrs",
+      "d": "2309 yrs",
+      "ans": "a"
+    },
+    {
+      "question": "75.Rydberg constant is",
+      "a": "Same for all elements",
+      "b": "Different for different elements",
+      "c": "A universal constant",
+      "d": "Is different for lighter elements but same for heavier elements",
+      "ans": "a"
+    },
+    {
+      "question": "76.How many orbitals are possible for principle quantum number 3?",
+      "a": "3",
+      "b": "4",
+      "c": "6",
+      "d": "9",
+      "ans": "a"
+    },
+    {
+      "question": "77.The number of moles of water present in 18g of water is",
+      "a": "18",
+      "b": "1",
+      "c": "1.8",
+      "d": "180",
+      "ans": "a"
+    },
+    {
+      "question": "78.The half-life of an radioisotope is 30 minutes. After how much time the amount of radioisotope left is 1/4<sup>th</sup> of the original amount?",
+      "a": "4 minutes",
+      "b": "30 minutes",
+      "c": "60 minutes",
+      "d": "120 minutes",
+      "ans": "a"
+    },
+    {
+      "question": "79.What is oxidation of chlorine is HOCl?",
+      "a": "+1",
+      "b": "0",
+      "c": "-1",
+      "d": "+3",
+      "ans": "a"
+    },
+    {
+      "question": "80.Hemoglobin contains 0.33% of iron by weight. Molecular weight of hemoglobin is 67200. The number of iron atoms (At wt of Fe = 55.85) ion one molecule of hemoglobin is",
+      "a": "2",
+      "b": "4",
+      "c": "6",
+      "d": "8",
+      "ans": "a"
+    },
+    {
+      "question": "81.The gas law which deals with the effect of pressure in a given volume of gas constant temperature is known as",
+      "a": "Boyle’s Law",
+      "b": "Charle’s Law",
+      "c": "Graham’s Law",
+      "d": "Dalton’s law",
+      "ans": "a"
+    },
+    {
+      "question": "82.Electronic configuration of four elements A, B, C, D are as follow, which will be most metallic?",
+      "a": "A=2,8,4",
+      "b": "B=2,8,8",
+      "c": "C=2,8,1",
+      "d": "D=2,8,7",
+      "ans": "a"
+    },
+    {
+      "question": "83.In which of the following compound the molecular geometry cannot be predicted by the use of VSEPR theory?",
+      "a": "NaCl",
+      "b": "H<sub>2</sub>O",
+      "c": "CH<sub>4</sub>",
+      "d": "NH<sub>3</sub>",
+      "ans": "a"
+    },
+    {
+      "question": "84.Consider the reaction 2A +B →C + D. If the concentration of the reactants are increase by three times, the rate of reaction will increase by.",
+      "a": "3 times",
+      "b": "6 times",
+      "c": "9 times",
+      "d": "27 times",
+      "ans": "a"
+    },
+    {
+      "question": "85.An aqueous solution of NaCl would be",
+      "a": "Acidic",
+      "b": "Basic",
+      "c": "Neutral",
+      "d": "could be acidic or basic depending upon temperature",
+      "ans": "a"
+    },
+    {
+      "question": "86.The pH of pure water at 50ᵒC would be",
+      "a": "7.0",
+      "b": ">7.0",
+      "c": "<7.0",
+      "d": "cannot be predicted",
+      "ans": "a"
+    },
+    {
+      "question": "87.Which of the following metals generate H<sub>2</sub>O on treatment with dil.HNO<sub>3</sub>?",
+      "a": "Zn",
+      "b": "Mn",
+      "c": "Cu",
+      "d": "Pb",
+      "ans": "a"
+    },
+    {
+      "question": "88.1 M H<sub>2</sub>SO<sub>4</sub> is equal to",
+      "a": "1 NH<sub>2</sub>SO<sub>4</sub>",
+      "b": "2 NH<sub>2</sub>SO<sub>4</sub>",
+      "c": "0.5NH<sub>2</sub>SO<sub>4</sub>",
+      "d": "4NH<sub>2</sub>SO<sub>4</sub>",
+      "ans": "a"
+    },
+    {
+      "question": "89.Hydrogen molecule which has parallel spin of two nuclei is called",
+      "a": "Ortho hydrogen",
+      "b": "para hydrogen",
+      "c": "heavy hydrogen",
+      "d": "nascent hydrogen",
+      "ans": "a"
+    },
+    {
+      "question": "90.Ammonia is manufactured by the use of",
+      "a": "Solvay's process",
+      "b": "Haber's process",
+      "c": "Ostwald's process",
+      "d": "Down's process",
+      "ans": "a"
+    },
+    {
+      "question": "91.Haematite is an ore of",
+      "a": "Fe",
+      "b": "Cu",
+      "c": "Zn",
+      "d": "Hg",
+      "ans": "a"
+    },
+    {
+      "question": "92.Which of the following is not a nucleophile?",
+      "a": "BF<sub>3</sub>",
+      "b": "NH<sub>3</sub>",
+      "c": "H<sub>2</sub>O",
+      "d": "OH<sup>-</sup>",
+      "ans": "a"
+    },
+    {
+      "question": "93.Anti-Markovnikoff addition of HBr is not observed in",
+      "a": "Propene",
+      "b": "1-Butane",
+      "c": "2-Butane",
+      "d": "Pent-2-one",
+      "ans": "a"
+    },
+    {
+      "question": "94.When oxalic acid crystals and glycerol are mixed and heated to about 110ᵒC, the compound obtained is",
+      "a": "Chloroform",
+      "b": "diethylether",
+      "c": "actone",
+      "d": "formic acid",
+      "ans": "a"
+    },
+    {
+      "question": "95.Which of the following is a meta directing group?",
+      "a": "–NH<sub>2</sub>",
+      "b": "-OH",
+      "c": "-COOH",
+      "d": "-R",
+      "ans": "a"
+    },
+    {
+      "question": "96.How many position isomers are possible for dichlorobenzene?",
+      "a": "2",
+      "b": "3",
+      "c": "4",
+      "d": "6",
+      "ans": "a"
+    },
+    {
+      "question": "97.Which one of the following is a condensation polymer?",
+      "a": "Polyethene",
+      "b": "Terylene",
+      "c": "PVC",
+      "d": "Teflon",
+      "ans": "a"
+    },
+    {
+      "question": "98.Penicillin is an example of",
+      "a": "Antiseptic drug",
+      "b": "Antipyretic drug",
+      "c": "Antibiotic drug",
+      "d": "Analgesic drug",
+      "ans": "a"
+    },
+    {
+      "question": "99.Enzymes are",
+      "a": "Carbohydrates",
+      "b": "Proteins",
+      "c": "Lipids",
+      "d": "Nucleic acids",
+      "ans": "a"
+    },
+    {
+      "question": "100.Which base is found only in the nucleotides of RNA?",
+      "a": "Adenine",
+      "b": "Guanine",
+      "c": "Uracil",
+      "d": "Cytosine",
+      "ans": "a"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+<resources>
+
+    <string name="app_name">CSIT Entrance</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Login Activity</string>
+    <string name="title_activity_quiz">Quiz Activity</string>
+    <string name="title_activity_score_board">Score Board</string>
+    <string name="title_activity_about">About Us</string>
+    <string name="title_activity_more">More</string>
+    <string name="title_activity_colleges">Colleges for Admission</string>
+    <string name="title_activity_entrance_news">Entrance News</string>
+    <string name="title_activity_full_question">View Full Question</string>
+    <string name="title_activity_csitquery">CSIT Query</string>
+    <string name="title_activity_introduction">Introduction</string>
+
+    <string name="versionNum">Version 1.1.1</string>x
+
+    <string name="info">As we know that some mathematical questions has got some complex formulas and matrices which are pretty heavy to render or display in this application. So due to this issue this application may respond little bit slowly while rendering the mathematics equations and formulas. So please take patience. Thank you for using the application. Have a good day.</string>
+    <string name="developerPara">Creating an android application is not an easy task and doing it alone is a big challenge for a developer.I would like to thank my class mates for guiding me through each step of the development.This application contains question which contains mathematical equations and matrices which was the biggest challenge to to overcome.</string>
+    <string name="book_detail">For further references you may buy the entrance preparation book which is our combined effort. This book has got 10 model question\'s with their solutions and old question\'s too. For more details call Gopal Nepal(98********)</string>
+
+    <string name="facebook_app_id">768172639946667</string>
+
+    <string name="query_ad_id">ca-app-pub-3751722582271673/6684745947</string>
+    <string name="main_ad_id">ca-app-pub-3751722582271673/4077970348</string>
+    <string name="colleges_ad_id">ca-app-pub-3751722582271673/9984903141</string>
+    <string name="news_ad_id">ca-app-pub-3751722582271673/2461636340</string>
+    <string name="question_ad_id">ca-app-pub-3751722582271673/8508169947</string>
+    <string name="quiz_ad_id">ca-app-pub-3751722582271673/5554703545</string>
+    <string name="score_board_ad">ca-app-pub-3751722582271673/7368220346</string>
+    <string name="fullque_ad_id">ca-app-pub-3751722582271673/7031436744</string>
+
+    <string name="quertyPostUrl">http://www.avaaj.com.np/jsonFeed/addQuery.php</string>
+    <string name="queryFetchUrl">http://www.avaaj.com.np/jsonFeed/fetchAll.php?fbId=</string>
+    <string name="postScoreurl">http://www.avaaj.com.np/jsonFeed/uploadScore.php</string>
+    <string name="fetchScoreurl">http://www.avaaj.com.np/jsonFeed/downloadScore.php</string>
+    <string name="url">http://www.avaaj.com.np/jsonFeed/news_feed.html</string>
+    <string name="uploadReport">http://www.avaaj.com.np/jsonFeed/uploadReport.php</string>
+
+    <string name="crash_toast_text">Application has crashed. Please send us email.</string>
+    <string name="crash_dialog_text">Ooooops ! I crashed, but please report to my developer to help fix the issue !</string>
+    <string name="crash_dialog_title">CSIT Entrance Crashed</string>
+    <string name="crash_dialog_comment_prompt">What where you doing?</string>
+    <string name="crash_dialog_ok_toast">Thank you!</string>
+
+</resources>

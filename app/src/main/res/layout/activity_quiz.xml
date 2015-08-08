@@ -1,0 +1,254 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coreLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="np.com.aawaz.csitentrance.activities.QuizActivity">
+
+    <TextView
+        android:id="@+id/feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:background="@color/primary5"
+        android:padding="10dp"
+        android:text="+1"
+        android:textColor="#fff"
+        android:textSize="150dp"
+        android:visibility="visible" />
+
+
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        android:id="@+id/progressReport"
+        umanoPanelShadowHeight="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:elevation="10dp"
+        android:gravity="bottom"
+        sothree:umanoPanelHeight="70dp">
+
+        <RelativeLayout
+            android:id="@+id/quizMainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/progressReport"
+            android:background="@color/back">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/quizToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="#ccbbaa"
+                android:theme="@style/Theme.AppCompat" />
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@+id/quizToolbar"
+                android:background="#ccbbaa">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <WebView
+                        android:id="@+id/question"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="5dp"
+                        android:text="Demo"
+                        android:textAlignment="inherit"
+                        android:textColor="#eee"
+                        android:textSize="15dp" />
+                </ScrollView>
+
+            </RelativeLayout>
+
+            <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/AnswerFab"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/relativeLayout"
+                android:layout_gravity="right"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="-28dp"
+                android:src="@drawable/ic_done_black_18dp"
+                android:visibility="invisible"
+                app:fab_colorNormal="#fff"
+                app:fab_colorPressed="#eee">
+
+            </com.melnykov.fab.FloatingActionButton>
+
+
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/relativeLayout">
+
+                <LinearLayout
+                    android:id="@+id/optionsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.gc.materialdesign.views.LayoutRipple
+                        android:id="@+id/rpl1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp">
+
+                        <WebView
+                            android:id="@+id/option1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Test Option 1" />
+                    </com.gc.materialdesign.views.LayoutRipple>
+
+                    <com.gc.materialdesign.views.LayoutRipple
+                        android:id="@+id/rpl2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp">
+
+                        <WebView
+                            android:id="@+id/option2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Test Option 1" />
+                    </com.gc.materialdesign.views.LayoutRipple>
+
+                    <com.gc.materialdesign.views.LayoutRipple
+                        android:id="@+id/rpl3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp">
+
+                        <WebView
+                            android:id="@+id/option3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Test Option 1" />
+                    </com.gc.materialdesign.views.LayoutRipple>
+
+                    <com.gc.materialdesign.views.LayoutRipple
+                        android:id="@+id/rpl4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp">
+
+                        <WebView
+                            android:id="@+id/option4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Test Option 1" />
+                    </com.gc.materialdesign.views.LayoutRipple>
+                </LinearLayout>
+
+            </ScrollView>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/back">
+
+            <RelativeLayout
+                android:id="@+id/bottomBar"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+                <com.gc.materialdesign.views.ProgressBarDeterminate
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary3">
+
+                </com.gc.materialdesign.views.ProgressBarDeterminate>
+
+                <ImageView
+                    android:id="@+id/profQue"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentLeft="true"
+
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp" />
+
+                <TextView
+                    android:id="@+id/topic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/profQue"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toEndOf="@+id/profQue"
+                    android:layout_toRightOf="@+id/profQue"
+                    android:text="To-Do Topic Name"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#000"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/noOfQuestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/topic"
+                    android:layout_alignStart="@+id/topic"
+                    android:layout_below="@+id/topic"
+                    android:text="1 / 100"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/topic"
+                    android:layout_marginRight="16dp"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bottomBar"
+                android:background="#fff">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/ansRecycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/QuizAd" />
+
+                <com.google.android.gms.ads.AdView
+                    android:id="@+id/QuizAd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="@string/quiz_ad_id" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+</RelativeLayout>
