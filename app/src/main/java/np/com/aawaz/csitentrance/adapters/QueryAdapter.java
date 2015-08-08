@@ -68,12 +68,6 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
         notifyItemInserted(messages.size());
     }
 
-    public void insertNew(String messgae,int Newflag){
-        messages.add(messgae);
-        flag.add(Newflag);
-        notifyItemRangeInserted(messages.size()-2,1);
-    }
-
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView leftImg;
         ImageView rightImg;

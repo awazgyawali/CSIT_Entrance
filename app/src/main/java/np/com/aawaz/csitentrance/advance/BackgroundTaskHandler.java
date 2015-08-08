@@ -205,13 +205,13 @@ public class BackgroundTaskHandler extends GcmTaskService {
 
 
     private void notification(String newsTitle, String content, String ticker, int notifyNumber, Intent intent1) {
-        MediaPlayer.create(this, R.raw.notif_sound).start();
         NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(this);
         notificationCompat.setAutoCancel(true)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setTicker(ticker)
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(newsTitle)
+                .setSound(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.new_arrived))
                 .setContentText(content);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
         notificationCompat.setContentIntent(pendingIntent);

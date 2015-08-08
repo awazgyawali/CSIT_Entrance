@@ -318,7 +318,7 @@ public class CSITQuery extends AppCompatActivity {
                     public void run() {
                         queue.add(getJsonRequest().setTag("query"));
                     }
-                }, 0, 8, TimeUnit.SECONDS);
+                }, 0, 5, TimeUnit.SECONDS);
     }
 
     private JsonObjectRequest getJsonRequest(){
@@ -346,10 +346,10 @@ public class CSITQuery extends AppCompatActivity {
                         if (messages.size() > preSize) {
                             int newSize=messages.size();
                             for (; preSize < newSize; preSize++) {
-                                adapter.insertNew(messages.get(preSize), flag.get(preSize));
-                                Log.d("Debug", "Loop xa re "+preSize);
+                                adapter.notifyItemInserted(messages.size());
+                                recyclerView.scrollToPosition(messages.size()-1);
                             }
-                            MediaPlayer.create(getApplicationContext(), R.raw.new_arrived).start();
+                            MediaPlayer.create(CSITQuery.this, R.raw.new_arrived).start();
                             getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", messages.size()).apply();
                         }
                     }
