@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,8 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -37,10 +37,6 @@ import com.facebook.login.widget.LoginButton;
 import com.github.mrengineer13.snackbar.SnackBar;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.gcm.GcmNetworkManager;
-import com.google.android.gms.gcm.GcmTaskService;
-import com.google.android.gms.gcm.PeriodicTask;
-import com.google.android.gms.gcm.TaskParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,11 +44,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.QueryAdapter;
-import np.com.aawaz.csitentrance.advance.BackgroundTaskHandler;
 import np.com.aawaz.csitentrance.advance.Singleton;
 
 
@@ -63,7 +61,6 @@ public class CSITQuery extends AppCompatActivity {
     RecyclerView recyclerView;
     QueryAdapter adapter;
     RequestQueue queue;
-    GcmNetworkManager mScheduler;
     MaterialDialog dialog;
     ArrayList<Integer> flag = new ArrayList<>();
     ArrayList<String> messages = new ArrayList<>();
@@ -74,7 +71,7 @@ public class CSITQuery extends AppCompatActivity {
     Context context;
     String tempId;
     private ProfileTracker mProfileTracker;
-    static boolean active=false;
+    static boolean active = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +94,7 @@ public class CSITQuery extends AppCompatActivity {
         if (id.equals("0")) {
             onStartHandler();
         } else {
-
-            fetchFromInternet(true);
+            fetchFromInternet();
         }
         text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -123,7 +119,7 @@ public class CSITQuery extends AppCompatActivity {
         });
     }
 
-    private void fetchFromInternet(final boolean finish) {
+    private void fetchFromInternet() {
         final MaterialDialog initial = new MaterialDialog.Builder(this)
                 .content("Please wait...")
                 .progress(true, 0)
@@ -135,8 +131,7 @@ public class CSITQuery extends AppCompatActivity {
                     }
                 })
                 .build();
-        if(finish)
-            initial.show();
+        initial.show();
         String url = getString(R.string.queryFetchUrl);
         id = pref.getString("fbId", tempId);
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + id, new Response.Listener<JSONObject>() {
@@ -162,14 +157,12 @@ public class CSITQuery extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(context));
                     recyclerView.setAdapter(adapter);
                     recyclerView.scrollToPosition(messages.size() - 1);
+                    backgroundHandler();
                     initial.dismiss();
-                    constructJob();
                 } catch (JSONException e) {
                     Toast.makeText(context, "Application error. Please report us.", Toast.LENGTH_SHORT).show();
                     initial.dismiss();
-                    if (finish) {
-                        finish();
-                    }
+                    finish();
                 }
             }
         }, new Response.ErrorListener() {
@@ -177,9 +170,7 @@ public class CSITQuery extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 initial.dismiss();
                 Toast.makeText(context, "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
-                if (finish) {
-                    finish();
-                }
+                finish();
             }
         });
         queue.add(jsonObjectRequest.setTag("query"));
@@ -220,7 +211,7 @@ public class CSITQuery extends AppCompatActivity {
                                 editor.putString("First", profile2.getName() + "");
                                 editor.apply();
                                 mProfileTracker.stopTracking();
-                                fetchFromInternet(true);
+                                fetchFromInternet();
                                 dialog.dismiss();
                             }
                         };
@@ -237,8 +228,6 @@ public class CSITQuery extends AppCompatActivity {
                         dialog.dismiss();
                         finish();
                     }
-
-
                 });
     }
 
@@ -271,7 +260,7 @@ public class CSITQuery extends AppCompatActivity {
                     adapter.added(text.getText().toString());
                     recyclerView.scrollToPosition(adapter.getItemCount() - 1);
                     text.setText("");
-                    getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", getSharedPreferences("data", MODE_PRIVATE).getInt("query", 0) + 1).apply();
+                    getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query",messages.size()).apply();
                 } catch (JSONException e) {
                     new SnackBar.Builder((Activity) context)
                             .withMessage("Application Error. Please report us.")
@@ -307,59 +296,57 @@ public class CSITQuery extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         active = false;
-        mScheduler.cancelTask("update",Repeater.class);
     }
 
-    public static boolean runningStatus(){
+    public static boolean runningStatus() {
         return active;
     }
 
-    private void constructJob() {
-        mScheduler = Singleton.getInstance().getGcmScheduler();
 
-        long periodSecs = 5L;
-
-        String tag = "update";
-
-        PeriodicTask periodic = new PeriodicTask.Builder()
-                .setService(Repeater.class)
-                .setPeriod(periodSecs)
-                .setTag(tag)
-                .setPersisted(true)
-                .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_CONNECTED)
-                .build();
-
-        mScheduler.schedule(periodic);
+    private void backgroundHandler() {
+        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate
+                (new Runnable() {
+                    public void run() {
+                        queue.add(getJsonRequest().setTag("query"));
+                    }
+                }, 0, 5, TimeUnit.SECONDS);
     }
 
-    class Repeater extends GcmTaskService{
-        @Override
-        public int onRunTask(TaskParams taskParams) {
-            String url = getString(R.string.queryFetchUrl);
-            final JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.GET, url + getSharedPreferences("details", Context.MODE_PRIVATE).getString("fbId", "0"), new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    try {
-                        JSONArray query = response.getJSONArray("query");
-                        messages.clear();
-                        for (int i = 0; i < query.length(); i++) {
-                            JSONObject jo_inside = query.getJSONObject(i);
-                            if (!jo_inside.getString("Question").equals("")) {
-                                messages.add(jo_inside.getString("Question"));
-                            }
-                            if (!jo_inside.getString("Answer").equals("")) {
-                                messages.add(jo_inside.getString("Answer"));
-                            }
+    private JsonObjectRequest getJsonRequest(){
+        String url = getString(R.string.queryFetchUrl);
+        id = pref.getString("fbId", tempId);
+        return  new JsonObjectRequest(Request.Method.GET, url + id, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray query = response.getJSONArray("query");
+                    messages.clear();
+                    flag.clear();
+                    for (int i = 0; i < query.length(); i++) {
+                        JSONObject jo_inside = query.getJSONObject(i);
+                        if (!jo_inside.getString("Question").equals("")) {
+                            messages.add(jo_inside.getString("Question"));
+                            flag.add(0);
                         }
-                        if (messages.size() > getSharedPreferences("data", Context.MODE_PRIVATE).getInt("query", 1)) {
-                            adapter.notifyItemRangeInserted(getSharedPreferences("data", Context.MODE_PRIVATE).getInt("query", 0)-1,messages.size()-1);
+                        if (!jo_inside.getString("Answer").equals("")) {
+                            messages.add(jo_inside.getString("Answer"));
+                            flag.add(1);
                         }
-                    } catch (JSONException e) {
+                        if (messages.size() > getSharedPreferences("data", MODE_PRIVATE).getInt("query", 0)) {
+                            for (int j = getSharedPreferences("data", MODE_PRIVATE).getInt("query", 0); j < messages.size(); j++)
+                                adapter.insertNew(messages.get(j), flag.get(j));
+                            MediaPlayer.create(getApplicationContext(), R.raw.new_arrived).start();
+                            getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", messages.size()).apply();
+                        }
                     }
+                    adapter = new QueryAdapter(context, messages, flag);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.scrollToPosition(messages.size() - 1);
+                } catch (JSONException e) {
                 }
-            }, null);
-            queue.add(jsonObjectRequest1);
-            return GcmNetworkManager.RESULT_SUCCESS;
-        }
+            }
+        }, null);
     }
 }

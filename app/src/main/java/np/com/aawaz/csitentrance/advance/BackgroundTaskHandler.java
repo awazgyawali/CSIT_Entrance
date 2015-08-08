@@ -27,6 +27,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.CSITQuery;
@@ -218,7 +221,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
         PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, getClass().getName());
         wl.acquire();
         try {
-            Thread.sleep(7000);//or however long this is one second
+            Thread.sleep(7000);
         } catch (InterruptedException e) {
         }
         wl.release();
