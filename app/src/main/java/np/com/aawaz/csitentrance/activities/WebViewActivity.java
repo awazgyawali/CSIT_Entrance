@@ -3,6 +3,7 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -69,9 +71,17 @@ public class WebViewActivity extends AppCompatActivity {
     }
 
     public void loadAd() {
-        AdView mAdView = (AdView) findViewById(R.id.webViewAd);
+        final AdView mAdView = (AdView) findViewById(R.id.webViewAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        mAdView.setVisibility(View.GONE);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                mAdView.setVisibility(View.VISIBLE);
+            }
+        });
 
     }
 

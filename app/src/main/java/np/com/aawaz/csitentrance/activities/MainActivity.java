@@ -1,9 +1,9 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.GoogleAnalytics;
@@ -24,7 +25,7 @@ import np.com.aawaz.csitentrance.advance.BackgroundTaskHandler;
 import np.com.aawaz.csitentrance.advance.Singleton;
 
 
-public class MainActivity extends Activity implements MainRecyclerAdapter.ClickListner {
+public class MainActivity extends AppCompatActivity implements MainRecyclerAdapter.ClickListner {
     RecyclerView recycler;
     SharedPreferences pref;
     TextView points;
@@ -157,9 +158,16 @@ public class MainActivity extends Activity implements MainRecyclerAdapter.ClickL
     }
 
     public void loadAd() {
-        AdView mAdView = (AdView) findViewById(R.id.MainAd);
+        final AdView mAdView = (AdView) findViewById(R.id.MainAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
+        mAdView.setVisibility(View.GONE);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                mAdView.setVisibility(View.VISIBLE);
+            }
+        });
     }
 }

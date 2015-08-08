@@ -35,6 +35,7 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.github.mrengineer13.snackbar.SnackBar;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -283,9 +284,17 @@ public class CSITQuery extends AppCompatActivity {
     }
 
     public void loadAd() {
-        AdView mAdView = (AdView) findViewById(R.id.QueryAd);
+        final AdView mAdView = (AdView) findViewById(R.id.QueryAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        mAdView.setVisibility(View.GONE);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                mAdView.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override

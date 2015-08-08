@@ -30,6 +30,7 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.gc.materialdesign.views.CheckBox;
 import com.gc.materialdesign.views.LayoutRipple;
 import com.gc.materialdesign.views.ProgressBarDeterminate;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.melnykov.fab.FloatingActionButton;
@@ -442,9 +443,17 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public void loadAd() {
-        AdView mAdView = (AdView) findViewById(R.id.QuizAd);
+        final AdView mAdView = (AdView) findViewById(R.id.QuizAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        mAdView.setVisibility(View.GONE);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                mAdView.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
 

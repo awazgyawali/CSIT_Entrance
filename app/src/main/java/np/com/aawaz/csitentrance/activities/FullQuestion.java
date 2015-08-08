@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -70,9 +71,16 @@ public class FullQuestion extends AppCompatActivity implements QueAdater.ClickLi
     }
 
     public void loadAd() {
-        AdView mAdView = (AdView) findViewById(R.id.fullQueAd);
+        final AdView mAdView = (AdView) findViewById(R.id.fullQueAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
+        mAdView.setVisibility(View.GONE);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                mAdView.setVisibility(View.VISIBLE);
+            }
+        });
     }
 }
