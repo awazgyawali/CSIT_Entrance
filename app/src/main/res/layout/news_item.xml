@@ -114,11 +114,12 @@
                         android:textAlignment="inherit" />
 
                     <Button
+                        android:id="@+id/linkButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/linkButton"
-                        android:textColor="#fff"
-                        android:layout_gravity="center_horizontal" />
+                        android:layout_gravity="center_horizontal"
+                        android:text="Hello"
+                        android:textColor="@color/primary9" />
 
                     <TextView
                         android:id="@+id/newsAuthor"
