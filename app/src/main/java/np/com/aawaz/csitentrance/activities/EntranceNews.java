@@ -43,7 +43,9 @@ public class EntranceNews extends AppCompatActivity {
             subTopic = new ArrayList<>(),
             imageURL = new ArrayList<>(),
             content = new ArrayList<>(),
-            author = new ArrayList<>();
+            author = new ArrayList<>(),
+            link = new ArrayList<>(),
+            linkTitle = new ArrayList<>();
     RecyclerView recy;
     SwipeRefreshLayout refreshLayout;
     Context context;
@@ -79,16 +81,15 @@ public class EntranceNews extends AppCompatActivity {
 
     public void fillData() {
         recy = (RecyclerView) findViewById(R.id.newsFeedRecy);
-        NewsAdapter newsAdapter = new NewsAdapter(this, topic, subTopic, imageURL, content, author);
+        NewsAdapter newsAdapter = new NewsAdapter(this, topic, subTopic, imageURL, content, author,link,linkTitle);
         recy.setAdapter(newsAdapter);
         recy.setLayoutManager(new LinearLayoutManager(this));
-
         refreshLayout.setRefreshing(false);
     }
 
     public void setDataToArrayListFromDb() {
         SQLiteDatabase database = Singleton.getInstance().getDatabase();
-        Cursor cursor = database.query("news", new String[]{"title,subTopic,content,imageURL,author"}, null, null, null, null, null);
+        Cursor cursor = database.query("news", new String[]{"title","subTopic","content","imageURL","author","link","linkTitle"}, null, null, null, null, null);
         int i = 0;
         while (cursor.moveToNext()) {
             i++;
@@ -97,6 +98,8 @@ public class EntranceNews extends AppCompatActivity {
             content.add(cursor.getString(cursor.getColumnIndex("content")));
             imageURL.add(cursor.getString(cursor.getColumnIndex("imageURL")));
             author.add(cursor.getString(cursor.getColumnIndex("author")));
+            link.add(cursor.getString(cursor.getColumnIndex("link")));
+            linkTitle.add(cursor.getString(cursor.getColumnIndex("linkTitle")));
         }
         if (i == 0) {
             setDataToArrayList(true);
@@ -136,6 +139,8 @@ public class EntranceNews extends AppCompatActivity {
                 imageURL.clear();
                 content.clear();
                 author.clear();
+                linkTitle.clear();
+                link.clear();
                 try {
                     JSONArray jsonArray = response.getJSONArray("news");
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -145,6 +150,8 @@ public class EntranceNews extends AppCompatActivity {
                         imageURL.add(jo_inside.getString("imageURL"));
                         content.add(jo_inside.getString("content"));
                         author.add(jo_inside.getString("author"));
+                        link.add(jo_inside.getString("link"));
+                        linkTitle.add(jo_inside.getString("linkTitle"));
                     }
                     fillData();
                     storeToDb();
@@ -195,6 +202,8 @@ public class EntranceNews extends AppCompatActivity {
             values.put("content", content.get(i));
             values.put("imageURL", imageURL.get(i));
             values.put("author", author.get(i));
+            values.put("link", link.get(i));
+            values.put("linkTitle", linkTitle.get(i));
             database.insert("news", null, values);
         }
         database.close();

@@ -1,11 +1,14 @@
 package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -25,12 +28,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     ArrayList<String> imageURL = new ArrayList<>();
     ArrayList<String> content = new ArrayList<>();
     ArrayList<String> author = new ArrayList<>();
+    ArrayList<String> link = new ArrayList<>();
+    ArrayList<String> linkTitle = new ArrayList<>();
     LayoutInflater inflater;
 
     private int expandedPosition = -1;
 
 
-    public NewsAdapter(Context context, ArrayList<String> topic, ArrayList<String> subTopic, ArrayList<String> imageURL, ArrayList<String> content, ArrayList<String> author) {
+    public NewsAdapter(Context context, ArrayList<String> topic, ArrayList<String> subTopic,
+                       ArrayList<String> imageURL, ArrayList<String> content, ArrayList<String> author,
+                       ArrayList<String> link, ArrayList<String> linkTitle) {
         this.context = context;
         this.topic = topic;
         inflater = LayoutInflater.from(context);
@@ -38,6 +45,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         this.imageURL = imageURL;
         this.content = content;
         this.author = author;
+        this.link=link;
+        this.linkTitle=linkTitle;
     }
 
     @Override
@@ -56,6 +65,18 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.contentEach.setText(content.get(position));
         holder.authorEach.setText(author.get(position));
         holder.subTopicEach.setText(subTopic.get(position));
+        if(!link.get(position).equals("null")) {
+            holder.linkButton.setText(linkTitle.get(position));
+            holder.linkButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link.get(position))));
+                }
+            });
+            holder.linkButton.setVisibility(View.VISIBLE);
+        } else {
+            holder.linkButton.setVisibility(View.GONE);
+        }
         Picasso.with(context)
                 .load(imageURL.get(position))
                 .into(holder.newsImage);
@@ -101,6 +122,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         TextView subTopicEach;
         TextView themeNews;
         TextView time;
+        Button linkButton;
         ImageView newsImage;
         CardView mainLayout;
         RelativeLayout headings;
@@ -117,6 +139,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             title = (TextView) itemView.findViewById(R.id.newsTitle);
             themeNews = (TextView) itemView.findViewById(R.id.themeNews);
             time = (TextView) itemView.findViewById(R.id.time);
+            linkButton= (Button) itemView.findViewById(R.id.linkButton);
             headings = (RelativeLayout) itemView.findViewById(R.id.headings);
             llExpandArea = (LinearLayout) itemView.findViewById(R.id.llExpandArea);
         }

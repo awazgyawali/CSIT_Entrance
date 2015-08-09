@@ -41,7 +41,9 @@ public class BackgroundTaskHandler extends GcmTaskService {
             imageURL = new ArrayList<>(),
             content = new ArrayList<>(),
             author = new ArrayList<>(),
-            messages = new ArrayList<>();
+            messages = new ArrayList<>(),
+            link = new ArrayList<>(),
+            linkTitle = new ArrayList<>();
     RequestQueue requestQueue;
     Context context;
 
@@ -96,7 +98,6 @@ public class BackgroundTaskHandler extends GcmTaskService {
                 }
             });
             requestQueue.add(jsonObjectRequest);
-
         }
     }
 
@@ -138,6 +139,8 @@ public class BackgroundTaskHandler extends GcmTaskService {
                     imageURL.clear();
                     content.clear();
                     author.clear();
+                    link.clear();
+                    linkTitle.clear();
                     JSONArray jsonArray = response.getJSONArray("news");
                     int no = 0;
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -147,6 +150,8 @@ public class BackgroundTaskHandler extends GcmTaskService {
                         imageURL.add(jo_inside.getString("imageURL"));
                         content.add(jo_inside.getString("content"));
                         author.add(jo_inside.getString("author"));
+                        link.add(jo_inside.getString("link"));
+                        linkTitle.add(jo_inside.getString("linkTitle"));
                         no++;
                     }
                     context.getSharedPreferences("values",Context.MODE_PRIVATE).edit().putInt("score8",no).apply();
@@ -238,6 +243,8 @@ public class BackgroundTaskHandler extends GcmTaskService {
             values.put("content", content.get(i));
             values.put("imageURL", imageURL.get(i));
             values.put("author", author.get(i));
+            values.put("link", link.get(i));
+            values.put("linkTitle", linkTitle.get(i));
             database.insert("news", null, values);
         }
         database.close();
