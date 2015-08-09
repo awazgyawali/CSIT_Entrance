@@ -44,4 +44,11 @@
     <string name="crash_dialog_comment_prompt">What where you doing?</string>
     <string name="crash_dialog_ok_toast">Thank you!</string>
 
+    <string-array name="whatsnew">
+        <item>1. Auto update the chat item in CSIT Query.</item>
+        <item>2. Users can now send mistake report to the question while plying the quiz.</item>
+        <item>3. Answer corrected.</item>
+        <item>4. Minor bug fixed.</item>
+        <item>And many more.....</item>
+    </string-array>
 </resources>
