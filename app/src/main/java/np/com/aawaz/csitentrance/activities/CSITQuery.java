@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -337,7 +338,6 @@ public class CSITQuery extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    Log.d("Debug","Running");
                     JSONArray query = response.getJSONArray("query");
                     int preSize=messages.size();
                     messages.clear();
@@ -366,5 +366,16 @@ public class CSITQuery extends AppCompatActivity {
                 }
             }
         }, null);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id=item.getItemId();
+        if(id==android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

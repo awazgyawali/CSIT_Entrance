@@ -428,7 +428,6 @@ public class QuizActivity extends AppCompatActivity {
         editor.putInt("played" + code, qNo);
         editor.putInt("score" + code, score);
         editor.apply();
-        finish();
     }
 
 
