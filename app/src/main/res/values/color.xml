@@ -26,6 +26,7 @@
 
     <color name="back">#eee</color>
     <color name="darkQue">#666</color>
+    <color name="grey">#eee</color>
 
     <color name="blueFeedback">#3F51B5</color>
     <color name="wrongFeedback">#D50000</color>

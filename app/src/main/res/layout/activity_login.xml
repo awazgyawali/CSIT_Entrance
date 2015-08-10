@@ -197,19 +197,20 @@
                         </LinearLayout>
                     </LinearLayout>
                 </HorizontalScrollView>
-
-                <com.melnykov.fab.FloatingActionButton
-                    android:id="@+id/fabBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_margin="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:visibility="invisible"
-                    app:fab_colorNormal="#eee"
-                    app:fab_colorPressed="#ddd" />
             </LinearLayout>
         </ScrollView>
+
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/fabBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:layout_margin="10dp"
+            android:visibility="invisible"
+            app:fab_colorNormal="#eee"
+            app:fab_colorPressed="#ddd" />
     </RelativeLayout>
 
     <RelativeLayout

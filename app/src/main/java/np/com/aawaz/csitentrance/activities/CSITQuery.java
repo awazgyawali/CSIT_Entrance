@@ -14,7 +14,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -58,6 +57,7 @@ import np.com.aawaz.csitentrance.advance.Singleton;
 
 public class CSITQuery extends AppCompatActivity {
 
+    static boolean active = false;
     FancyButton send;
     EditText text;
     RecyclerView recyclerView;
@@ -74,8 +74,11 @@ public class CSITQuery extends AppCompatActivity {
     Context context;
     String tempId;
     private ProfileTracker mProfileTracker;
-    static boolean active = false;
     private boolean handling=false;
+
+    public static boolean runningStatus() {
+        return active;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -313,12 +316,6 @@ public class CSITQuery extends AppCompatActivity {
         if(scheduler!=null)
             scheduler.shutdown();
     }
-
-
-    public static boolean runningStatus() {
-        return active;
-    }
-
 
     private void backgroundHandler() {
         scheduler = Executors.newSingleThreadScheduledExecutor();

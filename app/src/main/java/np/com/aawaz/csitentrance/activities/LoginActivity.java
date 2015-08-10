@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.melnykov.fab.FloatingActionButton;
 
 import java.util.UUID;
@@ -54,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         splash = (RelativeLayout) findViewById(R.id.reqularLayout);
         first.setVisibility(View.GONE);
         splash.setVisibility(View.GONE);
+        fab = (FloatingActionButton) findViewById(R.id.fabBtn);
         context = this;
         pref = getSharedPreferences("info", MODE_PRIVATE);
         if (!pref.getString("Name", "").equals("")) {
@@ -83,7 +86,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         name = (EditText) findViewById(R.id.NameText);
         sur = (EditText) findViewById(R.id.LastText);
         email = (EditText) findViewById(R.id.email);
-        fab = (FloatingActionButton) findViewById(R.id.fabBtn);
         name.addTextChangedListener(this);
         sur.addTextChangedListener(this);
         email.addTextChangedListener(this);
@@ -197,6 +199,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         if (!name.getText().toString().equals("") && !sur.getText().toString().equals("") && !email.getText().toString().equals("") && avatar != 0) {
             fab.setVisibility(View.VISIBLE);
+            YoYo.with(Techniques.Landing)
+                    .duration(700)
+                    .playOn(fab);
         } else {
             fab.setVisibility(View.INVISIBLE);
         }
@@ -208,18 +213,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void resetAllBack() {
-        a1.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
-        a2.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
-        a3.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
-        a4.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
-        a5.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
-        a6.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
-        a7.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
-        a8.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
-        a9.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
-        a10.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
-        a11.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
-        a12.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_dark));
+        a1.setBackgroundColor(getResources().getColor(R.color.grey));
+        a2.setBackgroundColor(getResources().getColor(R.color.grey));
+        a3.setBackgroundColor(getResources().getColor(R.color.grey));
+        a4.setBackgroundColor(getResources().getColor(R.color.grey));
+        a5.setBackgroundColor(getResources().getColor(R.color.grey));
+        a6.setBackgroundColor(getResources().getColor(R.color.grey));
+        a7.setBackgroundColor(getResources().getColor(R.color.grey));
+        a8.setBackgroundColor(getResources().getColor(R.color.grey));
+        a9.setBackgroundColor(getResources().getColor(R.color.grey));
+        a10.setBackgroundColor(getResources().getColor(R.color.grey));
+        a11.setBackgroundColor(getResources().getColor(R.color.grey));
+        a12.setBackgroundColor(getResources().getColor(R.color.grey));
     }
 
 }
