@@ -2,11 +2,12 @@ package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.appcompat.BuildConfig;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         adapter = new MainRecyclerAdapter(this, primaryColors, darkColors, icon);
         adapter.setClickListner(this);
         recycler.setAdapter(adapter);
-        recycler.setLayoutManager(new LinearLayoutManager(this));
+        recycler.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
         points.setText(getTotal() + " pts");
 
 
@@ -188,5 +189,12 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
                 mAdView.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    public boolean isLargeScreen() {
+        if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            return true;
+        }
+        return false;
     }
 }

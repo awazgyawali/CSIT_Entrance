@@ -1,10 +1,11 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,7 +43,7 @@ public class FullQuestion extends AppCompatActivity implements QueAdater.ClickLi
         QueAdater adater = new QueAdater(this, primaryColors, darkColors, icon);
         listRecy = (RecyclerView) findViewById(R.id.onlineRecyc);
         listRecy.setAdapter(adater);
-        listRecy.setLayoutManager(new LinearLayoutManager(this));
+        listRecy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
         adater.setClickListner(this);
     }
 
@@ -82,5 +83,12 @@ public class FullQuestion extends AppCompatActivity implements QueAdater.ClickLi
                 mAdView.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    public boolean isLargeScreen() {
+        if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            return true;
+        }
+        return false;
     }
 }

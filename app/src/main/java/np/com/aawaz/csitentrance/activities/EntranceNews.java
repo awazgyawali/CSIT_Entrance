@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,6 +51,7 @@ public class EntranceNews extends AppCompatActivity {
     SwipeRefreshLayout refreshLayout;
     Context context;
     RequestQueue requestQueue;
+    NewsAdapter newsAdapter;
 
 
     @Override
@@ -81,9 +83,9 @@ public class EntranceNews extends AppCompatActivity {
 
     public void fillData() {
         recy = (RecyclerView) findViewById(R.id.newsFeedRecy);
-        NewsAdapter newsAdapter = new NewsAdapter(this, topic, subTopic, imageURL, content, author,link,linkTitle);
+        newsAdapter = new NewsAdapter(this, topic, subTopic, imageURL, content, author, link, linkTitle);
         recy.setAdapter(newsAdapter);
-        recy.setLayoutManager(new LinearLayoutManager(this));
+        recy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
         refreshLayout.setRefreshing(false);
     }
 
@@ -233,5 +235,24 @@ public class EntranceNews extends AppCompatActivity {
                 mAdView.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (newsAdapter != null && newsAdapter.expandedPosition != -1) {
+            int prevPosi = newsAdapter.expandedPosition;
+            newsAdapter.expandedPosition = -1;
+            newsAdapter.notifyItemChanged(prevPosi);
+        } else {
+            super.onBackPressed();
+            finish();
+        }
+    }
+
+    public boolean isLargeScreen() {
+        if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            return true;
+        }
+        return false;
     }
 }

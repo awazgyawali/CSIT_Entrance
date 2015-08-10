@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +29,7 @@ public class About extends AppCompatActivity {
         recyAbout = (RecyclerView) findViewById(R.id.aboutRecy);
         AboutAdapter adapter = new AboutAdapter(this);
         recyAbout.setAdapter(adapter);
-        recyAbout.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        recyAbout.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 3 : 2, StaggeredGridLayoutManager.VERTICAL));
     }
 
     public void feedBack(View view) {
@@ -58,4 +59,10 @@ public class About extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public boolean isLargeScreen() {
+        if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            return true;
+        }
+        return false;
+    }
 }

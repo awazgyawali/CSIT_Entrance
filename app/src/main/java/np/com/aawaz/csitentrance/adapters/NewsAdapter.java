@@ -22,6 +22,7 @@ import np.com.aawaz.csitentrance.R;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
+    public static int expandedPosition = -1;
     Context context;
     ArrayList<String> topic = new ArrayList<>();
     ArrayList<String> subTopic = new ArrayList<>();
@@ -31,8 +32,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     ArrayList<String> link = new ArrayList<>();
     ArrayList<String> linkTitle = new ArrayList<>();
     LayoutInflater inflater;
-
-    private int expandedPosition = -1;
 
 
     public NewsAdapter(Context context, ArrayList<String> topic, ArrayList<String> subTopic,

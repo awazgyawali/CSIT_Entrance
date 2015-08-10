@@ -2,10 +2,11 @@ package np.com.aawaz.csitentrance.activities;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -95,7 +96,7 @@ public class Colleges extends AppCompatActivity {
         RecyclerView colzRecy = (RecyclerView) findViewById(R.id.colzRecy);
         colzAdapter adapter = new colzAdapter(this, names, address, desc, website, phNo);
         colzRecy.setAdapter(adapter);
-        colzRecy.setLayoutManager(new GridLayoutManager(this, 1));
+        colzRecy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
     }
 
     private void checkOccurrence() {
@@ -123,8 +124,8 @@ public class Colleges extends AppCompatActivity {
         RecyclerView colzRecy = (RecyclerView) findViewById(R.id.colzRecy);
         colzAdapter adapter = new colzAdapter(this, namesNew, addressNew, descNew, websiteNew, phNoNew);
         colzRecy.setAdapter(adapter);
-        colzRecy.setLayoutManager(new GridLayoutManager(this, 1));
-
+        ;
+        colzRecy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
     }
 
     public void setDataToArrayList() {
@@ -174,6 +175,13 @@ public class Colleges extends AppCompatActivity {
                 mAdView.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    public boolean isLargeScreen() {
+        if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            return true;
+        }
+        return false;
     }
 }
 

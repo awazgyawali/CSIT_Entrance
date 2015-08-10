@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -74,7 +75,7 @@ public class ScoreBoard extends AppCompatActivity {
     private void callFillRecyclerView() {
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.scoreBoardRecyclerView);
         mRecyclerView.setAdapter(new ScoreBoardAdapter(this, names, scores));
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 3 : 2, StaggeredGridLayoutManager.VERTICAL));
         dialogInitial.dismiss();
     }
 
@@ -165,6 +166,13 @@ public class ScoreBoard extends AppCompatActivity {
             }
         });
 
+    }
+
+    public boolean isLargeScreen() {
+        if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            return true;
+        }
+        return false;
     }
 
 }
