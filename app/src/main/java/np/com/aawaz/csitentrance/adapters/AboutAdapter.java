@@ -76,7 +76,6 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
         }
         else
             holder.facebook.setVisibility(View.GONE);
-
         if(!twitterHandle[position].equals("")) {
             holder.twitter.setVisibility(View.VISIBLE);
             holder.twitter.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +98,6 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
         }
         else
             holder.twitter.setVisibility(View.GONE);
-
     }
 
     @Override
