@@ -13,14 +13,12 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:theme="@style/Theme.AppCompat"
-        tools:context="np.com.aawaz.csitentrance.activities.Colleges">
+        android:theme="@style/Theme.AppCompat">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/scoreBoardRecyclerView"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <android.support.design.widget.AppBarLayout

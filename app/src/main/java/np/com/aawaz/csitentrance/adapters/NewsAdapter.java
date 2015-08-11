@@ -32,11 +32,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     ArrayList<String> link = new ArrayList<>();
     ArrayList<String> linkTitle = new ArrayList<>();
     LayoutInflater inflater;
+    RecyclerView recy;
 
 
     public NewsAdapter(Context context, ArrayList<String> topic, ArrayList<String> subTopic,
                        ArrayList<String> imageURL, ArrayList<String> content, ArrayList<String> author,
-                       ArrayList<String> link, ArrayList<String> linkTitle) {
+                       ArrayList<String> link, ArrayList<String> linkTitle, RecyclerView recy) {
         this.context = context;
         this.topic = topic;
         inflater = LayoutInflater.from(context);
@@ -46,6 +47,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         this.author = author;
         this.link=link;
         this.linkTitle=linkTitle;
+        this.recy = recy;
     }
 
     @Override
@@ -103,6 +105,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                     expandedPosition = position;
                     notifyItemChanged(expandedPosition);
                 }
+                recy.scrollToPosition(position);
             }
         });
     }

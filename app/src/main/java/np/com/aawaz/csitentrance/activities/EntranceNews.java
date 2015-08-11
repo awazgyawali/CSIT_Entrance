@@ -82,7 +82,7 @@ public class EntranceNews extends AppCompatActivity {
 
     public void fillData() {
         recy = (RecyclerView) findViewById(R.id.newsFeedRecy);
-        newsAdapter = new NewsAdapter(this, topic, subTopic, imageURL, content, author, link, linkTitle);
+        newsAdapter = new NewsAdapter(this, topic, subTopic, imageURL, content, author, link, linkTitle, recy);
         recy.setAdapter(newsAdapter);
         recy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
         refreshLayout.setRefreshing(false);
