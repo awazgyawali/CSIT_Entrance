@@ -41,123 +41,130 @@
             android:layout_above="@+id/progressReport"
             android:background="@color/back">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/quizToolbar"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:background="#ccbbaa"
-                android:theme="@style/Theme.AppCompat" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <RelativeLayout
-                android:id="@+id/relativeLayout"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_below="@+id/quizToolbar"
-                android:background="#ccbbaa">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <WebView
-                        android:id="@+id/question"
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/quizToolbar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:paddingTop="5dp"
-                        android:text="Demo"
-                        android:textAlignment="inherit"
-                        android:textColor="#eee"
-                        android:textSize="15dp" />
+                        android:layout_gravity="right"
+                        android:background="#ccbbaa"
+                        android:theme="@style/Theme.AppCompat" />
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/quizToolbar"
+                        android:background="#ccbbaa">
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <WebView
+                                android:id="@+id/question"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="16dp"
+                                android:paddingRight="16dp"
+                                android:paddingTop="5dp"
+                                android:text="Demo"
+                                android:textAlignment="inherit"
+                                android:textColor="#eee"
+                                android:textSize="15dp" />
+                        </ScrollView>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <ScrollView
+                    android:id="@+id/scrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/relativeLayout"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:id="@+id/optionsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/rpl1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp">
+
+                            <WebView
+                                android:id="@+id/option1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Test Option 1" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rpl2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp">
+
+                            <WebView
+                                android:id="@+id/option2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Test Option 1" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rpl3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp">
+
+                            <WebView
+                                android:id="@+id/option3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Test Option 1" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rpl4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp">
+
+                            <WebView
+                                android:id="@+id/option4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Test Option 1" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
                 </ScrollView>
 
-            </RelativeLayout>
+            </LinearLayout>
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/AnswerFab"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/relativeLayout"
-                android:layout_gravity="right"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="-28dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
                 android:src="@drawable/ic_done_black_18dp"
                 android:visibility="invisible"
-                app:backgroundTint="#fff">
-
-            </android.support.design.widget.FloatingActionButton>
-
-
-            <ScrollView
-                android:id="@+id/scrollView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/relativeLayout">
-
-                <LinearLayout
-                    android:id="@+id/optionsLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:id="@+id/rpl1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="10dp">
-
-                        <WebView
-                            android:id="@+id/option1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Test Option 1" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/rpl2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="10dp">
-
-                        <WebView
-                            android:id="@+id/option2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Test Option 1" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/rpl3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="10dp">
-
-                        <WebView
-                            android:id="@+id/option3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Test Option 1" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/rpl4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="10dp">
-
-                        <WebView
-                            android:id="@+id/option4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Test Option 1" />
-                    </RelativeLayout>
-                </LinearLayout>
-
-            </ScrollView>
-
+                app:backgroundTint="#fff" />
 
         </RelativeLayout>
 
@@ -183,7 +190,6 @@
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_alignParentLeft="true"
-
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"

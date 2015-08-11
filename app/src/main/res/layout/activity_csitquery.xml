@@ -1,7 +1,5 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,17 +31,19 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.rengwuxian.materialedittext.MaterialEditText
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Query"
             android:maxLength="254"
-            android:paddingLeft="3dp"
-            app:met_floatingLabel="normal"
-            app:met_floatingLabelText="Query"
-            app:met_maxCharacters="254" />
+                android:paddingLeft="3dp" />
+        </android.support.design.widget.TextInputLayout>
 
         <mehdi.sakout.fancybuttons.FancyButton
             android:id="@+id/sendBtn"

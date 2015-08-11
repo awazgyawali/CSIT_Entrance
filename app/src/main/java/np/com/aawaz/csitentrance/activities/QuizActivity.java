@@ -4,12 +4,15 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,15 +28,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
-import com.gc.materialdesign.views.CheckBox;
-import com.gc.materialdesign.views.LayoutRipple;
-import com.gc.materialdesign.views.ProgressBarDeterminate;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.melnykov.fab.FloatingActionButton;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import org.json.JSONArray;
@@ -59,7 +59,7 @@ public class QuizActivity extends AppCompatActivity {
     ArrayList<String> answer = new ArrayList<>();
 
     FloatingActionButton fab;
-    ProgressBarDeterminate pb;
+    RoundCornerProgressBar pb;
 
     String[] colors = {" #922b72", " #2881bb", "#2b9759", "#cf1151"};
 
@@ -73,10 +73,10 @@ public class QuizActivity extends AppCompatActivity {
     TextView scoreTxt;
     TextView qNoTxt;
 
-    LayoutRipple op1;
-    LayoutRipple op2;
-    LayoutRipple op3;
-    LayoutRipple op4;
+    RelativeLayout op1;
+    RelativeLayout op2;
+    RelativeLayout op3;
+    RelativeLayout op4;
 
     SlideUpPanelAdapter slideUpPanelAdapter;
     RecyclerView ansRecy;
@@ -135,7 +135,7 @@ public class QuizActivity extends AppCompatActivity {
 
         ImageView img = (ImageView) findViewById(R.id.profQue);
         img.setImageDrawable(getResources().getDrawable(avatar[(getSharedPreferences("info", MODE_PRIVATE).getInt("Avatar", 1)) - 1]));
-        pb = (ProgressBarDeterminate) findViewById(R.id.progressBar);
+        pb = (RoundCornerProgressBar) findViewById(R.id.progressBar);
         TextView topic = (TextView) findViewById(R.id.topic);
         ansRecy = (RecyclerView) findViewById(R.id.ansRecycle);
         slideLayout = (SlidingUpPanelLayout) findViewById(R.id.progressReport);
@@ -147,10 +147,10 @@ public class QuizActivity extends AppCompatActivity {
         feedback = (TextView) findViewById(R.id.feedback);
         scoreTxt = (TextView) findViewById(R.id.score);
         qNoTxt = (TextView) findViewById(R.id.noOfQuestion);
-        op1 = (LayoutRipple) findViewById(R.id.rpl1);
-        op2 = (LayoutRipple) findViewById(R.id.rpl2);
-        op3 = (LayoutRipple) findViewById(R.id.rpl3);
-        op4 = (LayoutRipple) findViewById(R.id.rpl4);
+        op1 = (RelativeLayout) findViewById(R.id.rpl1);
+        op2 = (RelativeLayout) findViewById(R.id.rpl2);
+        op3 = (RelativeLayout) findViewById(R.id.rpl3);
+        op4 = (RelativeLayout) findViewById(R.id.rpl4);
         op1.bringToFront();
         op2.bringToFront();
         op3.bringToFront();
@@ -197,9 +197,8 @@ public class QuizActivity extends AppCompatActivity {
         //Setting color
         toolbar.setBackgroundColor(getResources().getColor(primaryColors[code]));
         questionLayout.setBackgroundColor(getResources().getColor(primaryColors[code]));
-        pb.setBackgroundColor(getResources().getColor(primaryColors[code]));
         pb.setMax(120);
-        pb.setMin(0);
+        pb.setProgressColor(getResources().getColor(primaryColors[code]));
         haldleProgresss();
 
 
@@ -218,22 +217,26 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public void rplHandler() {
-
         op1.setBackgroundColor(getResources().getColor(R.color.back));
         op2.setBackgroundColor(getResources().getColor(R.color.back));
         op3.setBackgroundColor(getResources().getColor(R.color.back));
         op4.setBackgroundColor(getResources().getColor(R.color.back));
-        op1.setRippleColor(getResources().getColor(R.color.toolbar_color));
-        op2.setRippleColor(getResources().getColor(R.color.toolbar_color));
-        op3.setRippleColor(getResources().getColor(R.color.toolbar_color));
-        op4.setRippleColor(getResources().getColor(R.color.toolbar_color));
     }
 
     private void fillAnsRecyclerView() {
         slideUpPanelAdapter = new SlideUpPanelAdapter(this, qNo, code);
         ansRecy.setAdapter(slideUpPanelAdapter);
-        ansRecy.setLayoutManager(new LinearLayoutManager(this));
+        ansRecy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
         ansRecy.scrollToPosition(slideUpPanelAdapter.getItemCount() - 1);
+    }
+
+    public boolean isLargeScreen() {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            return false;
+        else
+            return (getResources().getConfiguration().screenLayout
+                    & Configuration.SCREENLAYOUT_SIZE_MASK)
+                    >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
     }
 
     private void fetchFromSp() {
@@ -387,7 +390,6 @@ public class QuizActivity extends AppCompatActivity {
         op3.setBackgroundColor(getResources().getColor(R.color.back));
         op4.setBackgroundColor(getResources().getColor(R.color.back));
         clickedAns = 0;
-        fab.setColorNormal(getResources().getColor(R.color.white));
         fab.setImageResource(R.drawable.ic_done_black_18dp);
         new fillTexts().execute();
     }
@@ -476,7 +478,7 @@ public class QuizActivity extends AppCompatActivity {
                 .build();
         dialogMis.show();
 
-        final CheckBox preCheck = (CheckBox) dialogMis.findViewById(R.id.preCheck);
+        final AppCompatCheckBox preCheck = (AppCompatCheckBox) dialogMis.findViewById(R.id.preCheck);
 
         ListView listView= (ListView) dialogMis.findViewById(R.id.options);
 
@@ -492,7 +494,7 @@ public class QuizActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ContentValues values = new ContentValues();
                 SQLiteDatabase database= Singleton.getInstance().getDatabase();
-                if (preCheck.isCheck())
+                if (preCheck.isChecked())
                     values.put("qno", qNo);
                 else
                     values.put("qno", qNo + 1);

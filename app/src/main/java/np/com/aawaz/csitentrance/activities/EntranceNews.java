@@ -1,6 +1,5 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,6 +7,7 @@ import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +23,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.github.mrengineer13.snackbar.SnackBar;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -160,9 +159,7 @@ public class EntranceNews extends AppCompatActivity {
                     context.getSharedPreferences("values",Context.MODE_PRIVATE).edit().putInt("score8",topic.size()).apply();
                     dialog.dismiss();
                     refreshLayout.setRefreshing(false);
-                    new SnackBar.Builder((Activity) context)
-                            .withMessage("News updated.")
-                            .show();
+                    Snackbar.make(findViewById(R.id.parentNews), "News updated.", Snackbar.LENGTH_LONG).show();
                 } catch (Exception e) {
                     refreshLayout.setRefreshing(false);
                     if (finish) {
@@ -170,9 +167,8 @@ public class EntranceNews extends AppCompatActivity {
                         dialog.dismiss();
                         Toast.makeText(getApplicationContext(), "Something went wrong. Please try again later.", Toast.LENGTH_LONG).show();
                     } else {
-                        new SnackBar.Builder((Activity) context)
-                                .withMessage("Something went wrong. Report us.")
-                                .show();
+                        Snackbar.make(findViewById(R.id.parentNews), "Something went wrong. Report us.", Snackbar.LENGTH_LONG).show();
+
                     }
                 }
             }
@@ -184,9 +180,8 @@ public class EntranceNews extends AppCompatActivity {
                     finish();
                     Toast.makeText(getApplicationContext(), "Unable to fetch news. Please check your internet connection.", Toast.LENGTH_LONG).show();
                 } else {
-                    new SnackBar.Builder((Activity) context)
-                            .withMessage("Unable to fetch news. Swipe down to retry.")
-                            .show();
+                    Snackbar.make(findViewById(R.id.parentNews), "Unable to fetch news. Swipe down to retry.", Snackbar.LENGTH_LONG).show();
+
                 }
             }
         });

@@ -33,7 +33,11 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="#41837E" />
 
-                <com.rengwuxian.materialedittext.MaterialEditText
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
                     android:id="@+id/NameText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -45,28 +49,34 @@
                     android:layout_marginRight="16dp"
                     android:ems="10"
                     android:hint="First Name"
-                    android:inputType="textPersonName|textCapWords"
-                    app:met_floatingLabel="normal"
-                    app:met_floatingLabelTextColor="#009866" />
+                        android:inputType="textPersonName|textCapWords" />
+                </android.support.design.widget.TextInputLayout>
 
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/LastText"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/NameText"
-                    android:layout_alignLeft="@+id/NameText"
-                    android:layout_alignRight="@+id/NameText"
-                    android:layout_alignStart="@+id/NameText"
-                    android:layout_below="@+id/NameText"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:hint="Last Initial"
-                    android:inputType="textPersonName|textCapWords"
-                    android:maxLength="1"
-                    app:met_floatingLabel="normal"
-                    app:met_floatingLabelTextColor="#009866" />
+                    android:layout_height="wrap_content">
 
-                <com.rengwuxian.materialedittext.MaterialEditText
+                    <EditText
+                        android:id="@+id/LastText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/NameText"
+                        android:layout_alignLeft="@+id/NameText"
+                        android:layout_alignRight="@+id/NameText"
+                        android:layout_alignStart="@+id/NameText"
+                        android:layout_below="@+id/NameText"
+                        android:layout_marginTop="15dp"
+                        android:ems="10"
+                        android:hint="Last Initial"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLength="1" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,9 +88,8 @@
                     android:layout_marginTop="15dp"
                     android:ems="10"
                     android:hint="E-mail"
-                    android:inputType="textEmailAddress"
-                    app:met_floatingLabel="normal" />
-
+                        android:inputType="textEmailAddress" />
+                </android.support.design.widget.TextInputLayout>
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
@@ -200,7 +209,7 @@
             </LinearLayout>
         </ScrollView>
 
-        <com.melnykov.fab.FloatingActionButton
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -209,8 +218,7 @@
             android:layout_gravity="right"
             android:layout_margin="10dp"
             android:visibility="invisible"
-            app:fab_colorNormal="#eee"
-            app:fab_colorPressed="#ddd" />
+            app:backgroundTint="#fff" />
     </RelativeLayout>
 
     <RelativeLayout

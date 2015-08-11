@@ -124,7 +124,6 @@ public class Colleges extends AppCompatActivity {
         RecyclerView colzRecy = (RecyclerView) findViewById(R.id.colzRecy);
         colzAdapter adapter = new colzAdapter(this, namesNew, addressNew, descNew, websiteNew, phNoNew);
         colzRecy.setAdapter(adapter);
-        ;
         colzRecy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
     }
 

@@ -1,6 +1,5 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,6 +7,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,7 +34,6 @@ import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.github.mrengineer13.snackbar.SnackBar;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -269,9 +268,7 @@ public class CSITQuery extends AppCompatActivity {
                     text.setText("");
                     getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query",messages.size()).apply();
                 } catch (JSONException e) {
-                    new SnackBar.Builder((Activity) context)
-                            .withMessage("Application Error. Please report us.")
-                            .show();
+                    Snackbar.make(findViewById(R.id.parentNews), "Something went wrong. Report us.", Snackbar.LENGTH_LONG).show();
                 }
                 dialog.dismiss();
             }
@@ -279,9 +276,8 @@ public class CSITQuery extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialog.dismiss();
-                new SnackBar.Builder((Activity) context)
-                        .withMessage("Seems server is currently down. Please try again later.")
-                        .show();
+                Snackbar.make(findViewById(R.id.parentNews), "Check your internet connection.", Snackbar.LENGTH_LONG).show();
+
             }
         });
         queue.add(jsonObjectRequest);
