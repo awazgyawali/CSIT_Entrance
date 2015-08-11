@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coreLayoutScore"
     android:layout_width="match_parent"
@@ -7,17 +8,36 @@
     android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.activities.ScoreBoard">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/ScoreToolbar"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.AppCompat"></android.support.v7.widget.Toolbar>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:theme="@style/Theme.AppCompat"
+        tools:context="np.com.aawaz.csitentrance.activities.Colleges">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/scoreBoardRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/ScoreToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.AppCompat"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
+        </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.CoordinatorLayout>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/scoreBoardAd"
@@ -29,3 +49,5 @@
         ads:adUnitId="@string/score_board_ad" />
 
 </LinearLayout>
+
+

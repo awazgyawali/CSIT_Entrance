@@ -1,24 +1,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_below="@+id/queryToolbar"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/queryToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary10"
-        android:theme="@style/Theme.AppCompat" />
+    <android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:theme="@style/Theme.AppCompat"
+        tools:context="np.com.aawaz.csitentrance.activities.Colleges">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyQuery"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight=".66" />
+        android:layout_weight=".66"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+        <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/queryToolbar"
+            android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary10"
+                android:theme="@style/Theme.AppCompat"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
+        </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.CoordinatorLayout>
 
     <View
         android:layout_width="match_parent"
@@ -62,13 +80,12 @@
             fancy:fb_textSize="11dp" />
     </LinearLayout>
 
-
     <com.google.android.gms.ads.AdView
         android:id="@+id/QueryAd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
         ads:adUnitId="@string/query_ad_id" />
+
 </LinearLayout>
+

@@ -1,42 +1,56 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:theme="@style/Theme.AppCompat"
-    tools:context="np.com.aawaz.csitentrance.activities.Colleges">
+    android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbarColz"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary8" >
-        <EditText
-            android:id="@+id/search"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:theme="@style/Theme.AppCompat"
+        tools:context="np.com.aawaz.csitentrance.activities.Colleges">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/colzRecy"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:drawableLeft="@drawable/abc_ic_search_api_mtrl_alpha"
-            android:hint="Search"
-            android:padding="10dp" />
-    </android.support.v7.widget.Toolbar>
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/colzAd"
+            android:layout_below="@+id/appbarColz"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/colzRecy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/colzAd"
-        android:layout_below="@+id/toolbarColz" />
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbarColz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary8"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <EditText
+                    android:id="@+id/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/abc_ic_search_api_mtrl_alpha"
+                    android:hint="Search"
+                    android:padding="10dp" />
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.CoordinatorLayout>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/colzAd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         ads:adSize="BANNER"
         ads:adUnitId="@string/colleges_ad_id" />
-
-
-</RelativeLayout>
+</LinearLayout>
