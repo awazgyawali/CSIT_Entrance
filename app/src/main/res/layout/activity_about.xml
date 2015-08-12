@@ -26,7 +26,7 @@
             app:contentScrim="#3F51B5"
             app:expandedTitleMarginBottom="16dp"
             app:expandedTitleMarginStart="16dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlwaysCollapsed">
 
             <include
                 layout="@layout/about_header"
@@ -40,6 +40,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:theme="@style/Theme.AppCompat"
                 app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlwaysCollapsed"
                 app:title="About Us" />
 
 
