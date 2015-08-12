@@ -16,6 +16,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.AdapterView;
@@ -69,6 +70,7 @@ public class QuizActivity extends AppCompatActivity {
     WebView option2;
     WebView option3;
     WebView option4;
+
     TextView feedback;
     TextView scoreTxt;
     TextView qNoTxt;
@@ -125,6 +127,7 @@ public class QuizActivity extends AppCompatActivity {
         //Initlilixing view's
         Toolbar toolbar = (Toolbar) findViewById(R.id.quizToolbar);
         RelativeLayout questionLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
+
         fab = (FloatingActionButton) findViewById(R.id.AnswerFab);
         fab.bringToFront();
 
@@ -173,7 +176,6 @@ public class QuizActivity extends AppCompatActivity {
         fillAnsRecyclerView();
 
         //Initial Notification
-
         if (qNo == 0) {
             feedback.setText("GO!");
             feedback.setBackgroundColor(getResources().getColor(R.color.blueFeedback));
@@ -186,6 +188,7 @@ public class QuizActivity extends AppCompatActivity {
                 feedback.setText((qNo + 1) + "");
             feedback.setBackgroundColor(getResources().getColor(R.color.blueFeedback));
         }
+
         YoYo.with(Techniques.SlideInDown)
                 .duration(700)
                 .playOn(feedback);
@@ -197,10 +200,12 @@ public class QuizActivity extends AppCompatActivity {
         //Setting color
         toolbar.setBackgroundColor(getResources().getColor(primaryColors[code]));
         questionLayout.setBackgroundColor(getResources().getColor(primaryColors[code]));
-        pb.setMax(120);
-        pb.setProgressColor(getResources().getColor(primaryColors[code]));
-        haldleProgresss();
 
+        pb.setMax(120);
+        pb.setRadius(0);
+        pb.setProgressColor(getResources().getColor(primaryColors[code]));
+
+        haldleProgresss();
 
         //Toolbar as support action bar
         toolbar.setTitle("");
@@ -211,9 +216,10 @@ public class QuizActivity extends AppCompatActivity {
         //Load Question and Options to the ArrayList
         setDataToArrayList();
 
-
         fillTexts(qNo,false);
+
         onClickOption();
+
     }
 
     public void rplHandler() {
@@ -221,6 +227,10 @@ public class QuizActivity extends AppCompatActivity {
         op2.setBackgroundColor(getResources().getColor(R.color.back));
         op3.setBackgroundColor(getResources().getColor(R.color.back));
         op4.setBackgroundColor(getResources().getColor(R.color.back));
+        option1.setBackgroundColor(getResources().getColor(R.color.back));
+        option2.setBackgroundColor(getResources().getColor(R.color.back));
+        option3.setBackgroundColor(getResources().getColor(R.color.back));
+        option4.setBackgroundColor(getResources().getColor(R.color.back));
     }
 
     private void fillAnsRecyclerView() {
@@ -257,7 +267,6 @@ public class QuizActivity extends AppCompatActivity {
             option2.loadDataWithBaseURL("", "b) " + b.get(posi), "text/html", "UTF-8", "");
             option3.loadDataWithBaseURL("", "c) " + c.get(posi), "text/html", "UTF-8", "");
             option4.loadDataWithBaseURL("", "d) " + d.get(posi), "text/html", "UTF-8", "");
-
         } else {
             question.loadDataWithBaseURL("","<body bgcolor=\"" + colors[code - 1] + "\"><p style=\"color:white\"> You have successfully completed the quiz with " + score + " score. Good Luck!!", "text/html", "UTF-8", "");
             gameCompletedHandler();
@@ -270,78 +279,126 @@ public class QuizActivity extends AppCompatActivity {
         op3.setVisibility(View.INVISIBLE);
         op4.setVisibility(View.INVISIBLE);
         fab.setVisibility(View.INVISIBLE);
+    }
 
+    private void op1Click() {
+        if (clickedAns == 0) {
+            fab.setVisibility(View.VISIBLE);
+            YoYo.with(Techniques.BounceIn)
+                    .duration(700)
+                    .playOn(fab);
+        }
+        resetBackground();
+        op1.setBackgroundColor(getResources().getColor(R.color.selectorColor));
+        option1.setBackgroundColor(getResources().getColor(R.color.selectorColor));
+        clickedAns = 1;
+    }
+
+    private void op2Click() {
+        if (clickedAns == 0) {
+            fab.setVisibility(View.VISIBLE);
+            YoYo.with(Techniques.BounceIn)
+                    .duration(700)
+                    .playOn(fab);
+        }
+        resetBackground();
+        op2.setBackgroundColor(getResources().getColor(R.color.selectorColor));
+        option2.setBackgroundColor(getResources().getColor(R.color.selectorColor));
+        clickedAns = 2;
+    }
+
+    private void op3Click() {
+        if (clickedAns == 0) {
+            fab.setVisibility(View.VISIBLE);
+            YoYo.with(Techniques.BounceIn)
+                    .duration(700)
+                    .playOn(fab);
+        }
+        resetBackground();
+        op3.setBackgroundColor(getResources().getColor(R.color.selectorColor));
+        option3.setBackgroundColor(getResources().getColor(R.color.selectorColor));
+        clickedAns = 3;
+    }
+
+    private void op4Click() {
+        if (clickedAns == 0) {
+            fab.setVisibility(View.VISIBLE);
+            YoYo.with(Techniques.BounceIn)
+                    .duration(700)
+                    .playOn(fab);
+        }
+        resetBackground();
+        op4.setBackgroundColor(getResources().getColor(R.color.selectorColor));
+        option4.setBackgroundColor(getResources().getColor(R.color.selectorColor));
+        clickedAns = 4;
+    }
+
+    private void resetBackground() {
+        op1.setBackgroundColor(getResources().getColor(R.color.back));
+        op2.setBackgroundColor(getResources().getColor(R.color.back));
+        op3.setBackgroundColor(getResources().getColor(R.color.back));
+        op4.setBackgroundColor(getResources().getColor(R.color.back));
+        option1.setBackgroundColor(getResources().getColor(R.color.back));
+        option2.setBackgroundColor(getResources().getColor(R.color.back));
+        option3.setBackgroundColor(getResources().getColor(R.color.back));
+        option4.setBackgroundColor(getResources().getColor(R.color.back));
     }
 
     private void onClickOption() {
         op1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clickedAns == 0) {
-                    fab.setVisibility(View.VISIBLE);
-                    YoYo.with(Techniques.BounceIn)
-                            .duration(700)
-                            .playOn(fab);
-                }
-                op1.setBackgroundColor(getResources().getColor(R.color.back));
-                op2.setBackgroundColor(getResources().getColor(R.color.back));
-                op3.setBackgroundColor(getResources().getColor(R.color.back));
-                op4.setBackgroundColor(getResources().getColor(R.color.back));
-                op1.setBackgroundColor(getResources().getColor(R.color.toolbar_color));
-                clickedAns = 1;
+                op1Click();
             }
         });
         op2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clickedAns == 0) {
-                    fab.setVisibility(View.VISIBLE);
-                    YoYo.with(Techniques.BounceIn)
-                            .duration(700)
-                            .playOn(fab);
-                }
-                op1.setBackgroundColor(getResources().getColor(R.color.back));
-                op2.setBackgroundColor(getResources().getColor(R.color.back));
-                op3.setBackgroundColor(getResources().getColor(R.color.back));
-                op4.setBackgroundColor(getResources().getColor(R.color.back));
-                op2.setBackgroundColor(getResources().getColor(R.color.toolbar_color));
-                clickedAns = 2;
+                op2Click();
             }
         });
         op3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clickedAns == 0) {
-                    fab.setVisibility(View.VISIBLE);
-                    YoYo.with(Techniques.BounceIn)
-                            .duration(700)
-                            .playOn(fab);
-                }
-                op1.setBackgroundColor(getResources().getColor(R.color.back));
-                op2.setBackgroundColor(getResources().getColor(R.color.back));
-                op3.setBackgroundColor(getResources().getColor(R.color.back));
-                op4.setBackgroundColor(getResources().getColor(R.color.back));
-                op3.setBackgroundColor(getResources().getColor(R.color.toolbar_color));
-                clickedAns = 3;
+                op3Click();
             }
         });
         op4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clickedAns == 0) {
-                    fab.setVisibility(View.VISIBLE);
-                    YoYo.with(Techniques.BounceIn)
-                            .duration(700)
-                            .playOn(fab);
-                }
-                op1.setBackgroundColor(getResources().getColor(R.color.back));
-                op2.setBackgroundColor(getResources().getColor(R.color.back));
-                op3.setBackgroundColor(getResources().getColor(R.color.back));
-                op4.setBackgroundColor(getResources().getColor(R.color.back));
-                op4.setBackgroundColor(getResources().getColor(R.color.toolbar_color));
-                clickedAns = 4;
+                op4Click();
             }
         });
+
+        option1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                op1Click();
+                return true;
+            }
+        });
+        option2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                op2Click();
+                return true;
+            }
+        });
+        option3.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                op3Click();
+                return true;
+            }
+        });
+        option4.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                op4Click();
+                return true;
+            }
+        });
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -389,6 +446,10 @@ public class QuizActivity extends AppCompatActivity {
         op2.setBackgroundColor(getResources().getColor(R.color.back));
         op3.setBackgroundColor(getResources().getColor(R.color.back));
         op4.setBackgroundColor(getResources().getColor(R.color.back));
+        option1.setBackgroundColor(getResources().getColor(R.color.back));
+        option2.setBackgroundColor(getResources().getColor(R.color.back));
+        option3.setBackgroundColor(getResources().getColor(R.color.back));
+        option4.setBackgroundColor(getResources().getColor(R.color.back));
         clickedAns = 0;
         fab.setImageResource(R.drawable.ic_done_black_18dp);
         new fillTexts().execute();

@@ -14,7 +14,10 @@ import android.widget.Toast;
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 
+
 public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> {
+    private static int type_normal = 1;
+    private static int type_footer = 2;
     LayoutInflater inflater;
     Context context;
     String[] names,fbLink,twitterHandle,fbId,twiterUserId;
@@ -39,14 +42,25 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.about_each_item, parent, false);
-        return new ViewHolder(view);
+        if (viewType == type_footer)
+            return new ViewHolder(inflater.inflate(R.layout.about_footer, parent, false));
+
+        return new ViewHolder(inflater.inflate(R.layout.about_each_item, parent, false));
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position == getItemCount() - 1)
+            return type_footer;
+
+        return type_normal;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
+        if (position == getItemCount() - 1)
+            return;
         holder.name.setText(names[position]);
-
         if(!twitterHandle[position].equals("")) {
             holder.handle.setVisibility(View.VISIBLE);
             holder.handle.setText("@"+twitterHandle[position]);
@@ -102,7 +116,7 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return names.length;
+        return names.length + 1;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

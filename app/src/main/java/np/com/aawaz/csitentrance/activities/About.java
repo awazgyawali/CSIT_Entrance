@@ -5,8 +5,8 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,9 +27,21 @@ public class About extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyAbout = (RecyclerView) findViewById(R.id.aboutRecy);
-        AboutAdapter adapter = new AboutAdapter(this);
+        final AboutAdapter adapter = new AboutAdapter(this);
+        GridLayoutManager manager = new GridLayoutManager(this, 6);
+        manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (position == 0)
+                    return 6;
+                else if (position == adapter.getItemCount() - 1)
+                    return 6;
+                else
+                    return isLargeScreen() ? 2 : 3;
+            }
+        });
+        recyAbout.setLayoutManager(manager);
         recyAbout.setAdapter(adapter);
-        recyAbout.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 3 : 2, StaggeredGridLayoutManager.VERTICAL));
     }
 
     public void feedBack(View view) {
