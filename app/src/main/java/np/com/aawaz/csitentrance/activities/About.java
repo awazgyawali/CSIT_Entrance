@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +19,7 @@ import np.com.aawaz.csitentrance.adapters.AboutAdapter;
 public class About extends AppCompatActivity {
 
     RecyclerView recyAbout;
+    CollapsingToolbarLayout collapsingToolbarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,8 @@ public class About extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyAbout = (RecyclerView) findViewById(R.id.aboutRecy);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbarAbout);
+        collapsingToolbarLayout.setTitle("About Us");
         final AboutAdapter adapter = new AboutAdapter(this);
         GridLayoutManager manager = new GridLayoutManager(this, 6);
         manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {

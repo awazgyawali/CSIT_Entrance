@@ -63,7 +63,6 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
                 .playOn(holder.mainLayout);
         holder.title.setText(titles[position]);
         holder.mainLayout.setCardBackgroundColor(context.getResources().getColor(darkColor[position]));
-        holder.mainLayout.setRadius(10);
         holder.baseLayout.setCardBackgroundColor(context.getResources().getColor(primaryColor[position]));
         if(sharedPreferences.getInt("score"+position,0)!=0) {
             holder.itemNo.setVisibility(View.VISIBLE);
