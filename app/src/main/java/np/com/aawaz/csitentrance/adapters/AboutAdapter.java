@@ -30,8 +30,8 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
                 "Buddhiraj Nagarkoti\nGraphics Designer", "Prasanna Mishra\nUI Designer",
                 "Gopal Nepal","Bishal Rana Magar","Ksitiz Khanal"};
         twitterHandle=new String[]{"AawazGyawali","RameshworDhakal","","Prascq56",
-                "Meet2Gopal", "meet2_bishal", ""};
-        twiterUserId = new String[]{"2960523083", "3080519719", "", "2475260587", "953087550", "2921352510", ""};
+                "Meet2Gopal", "meet2_bishal", "kshitij_khanal"};
+        twiterUserId = new String[]{"2960523083", "3080519719", "", "2475260587", "953087550", "2921352510", "2940948572"};
         fbLink = new String[]{"muskangyawali", "ranjit.sharma.39904",
                 "Fcukyna", "prasanna.mishra.79",
                 "gopal.nepal.376", "bishalr",
