@@ -276,7 +276,7 @@ public class CSITQuery extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialog.dismiss();
-                Snackbar.make(findViewById(R.id.parentNews), "Check your internet connection.", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(findViewById(R.id.parentQuery), "Check your internet connection.", Snackbar.LENGTH_LONG).show();
 
             }
         });

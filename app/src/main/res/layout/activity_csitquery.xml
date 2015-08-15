@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentQuery"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -46,18 +47,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="horizontal">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <EditText
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:hint="Query"
             android:maxLength="254"
                 android:paddingLeft="3dp" />
@@ -77,7 +75,7 @@
             fancy:fb_iconResource="@drawable/ic_send_black_24dp"
             fancy:fb_radius="50dp"
             fancy:fb_textPosition="right"
-            fancy:fb_textSize="11dp" />
+            fancy:fb_textSize="11sp" />
     </LinearLayout>
 
     <com.google.android.gms.ads.AdView

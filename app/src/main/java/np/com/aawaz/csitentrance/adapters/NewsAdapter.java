@@ -78,9 +78,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         } else {
             holder.linkButton.setVisibility(View.GONE);
         }
-        Picasso.with(context)
-                .load(imageURL.get(position))
-                .into(holder.newsImage);
+        if (imageURL.get(position).equals("null")) {
+            holder.newsImage.setVisibility(View.GONE);
+        } else {
+            holder.newsImage.setVisibility(View.VISIBLE);
+            Picasso.with(context)
+                    .load(imageURL.get(position))
+                    .into(holder.newsImage);
+        }
         if (position == expandedPosition) {
             holder.llExpandArea.setVisibility(View.VISIBLE);
             holder.mainLayout.setCardElevation(10);
