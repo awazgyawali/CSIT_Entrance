@@ -14,7 +14,7 @@
     <string name="title_activity_csitquery">CSIT Query</string>
     <string name="title_activity_introduction">Introduction</string>
 
-    <string name="versionNum">Version 1.1.3</string>x
+    <string name="versionNum">Beta Version</string>x
 
     <string name="info">As we know that some mathematical questions has got some complex formulas and matrices which are pretty heavy to render or display in this application. So due to this issue this application may respond little bit slowly while rendering the mathematics equations and formulas. So please take patience. Thank you for using the application. Have a good day.</string>
     <string name="developerPara">Creating an android application is not an easy task and doing it alone is a big challenge for a developer.I would like to thank my class mates for guiding me through each step of the development.This application contains question which contains mathematical equations and matrices which was the biggest challenge to to overcome.</string>

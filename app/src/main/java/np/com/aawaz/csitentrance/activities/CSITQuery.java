@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -276,6 +277,7 @@ public class CSITQuery extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialog.dismiss();
+                Log.d("Debug", error + "");
                 Snackbar.make(findViewById(R.id.parentQuery), "Check your internet connection.", Snackbar.LENGTH_LONG).show();
 
             }

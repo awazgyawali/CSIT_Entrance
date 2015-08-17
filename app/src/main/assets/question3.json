@@ -9,7 +9,7 @@
       "ans": "c"
     },
     {
-      "question": "2.If { X-X<sup>2</sup>=9 and 2X=6}",
+      "question": "2.If {x-x<sup>2</sup>=9 and 2x=6},then",
       "a": "Null set",
       "b": "{3}",
       "c": "{3,-3}",
@@ -41,7 +41,7 @@
       "ans": "c"
     },
     {
-      "question": "6.Cos (sin<sup>-1</sup>3/5) =",
+      "question": "6.Cos(sin<sup>-1</sup>3/5) =",
       "a": "3/5",
       "b": "4/5",
       "c": "9/25",
@@ -73,7 +73,7 @@
       "ans": "d"
     },
     {
-      "question": "10.The system of equations 2x + y = 5; 4x + 2y = 8 is",
+      "question": "10.The system of equations 2x+y=5 ; 4x+2y=8 is",
       "a": "Consistent and dependent",
       "b": "Inconsistent and independent",
       "c": "Inconsistent and dependent",
@@ -81,7 +81,7 @@
       "ans": "c"
     },
     {
-      "question": "11.The value of i<sup>7</sup> + 1/i<sup>4</sup> is",
+      "question": "11.The value of i<sup>7</sup>+1/i<sup>4</sup> is",
       "a": "1",
       "b": "-1",
       "c": "-i",
@@ -122,14 +122,14 @@
     },
     {
       "question": "16.The equation of the circle touching the positive x- axis and y- axis with radius 2 units is",
-      "a": "x<sup>2</sup> + y<sup>2</sup> – 4x – 4y +4 = 0",
-      "b": "x<sup>2</sup>+y<sup>2</sup> + 4x + 4y +4 = 0",
-      "c": "x<sup>2</sup> + y<sup>2</sup> – 4x + 4y +4 = 0",
-      "d": "x<sup>2</sup> + y<sup>2</sup> – 4x + 4y -4",
+      "a": "x<sup>2</sup>+y<sup>2</sup>–4x–4y+4=0",
+      "b": "x<sup>2</sup>+y<sup>2</sup>+4x+4y+4=0",
+      "c": "x<sup>2</sup>+y<sup>2</sup>–4x+4y+4=0",
+      "d": "x<sup>2</sup>+y<sup>2</sup>–4x+4y-4=0",
       "ans": "a"
     },
     {
-      "question": "17.If the line 4x + 3y = k is tangent to the circle x<sup>2</sup> + y<sup>2</sup> = 2 S at (2,1) then k is",
+      "question": "17.If the line 4x+3y=k is tangent to the circle x<sup>2</sup>+y<sup>2</sup>=2S at (2,1) then k is",
       "a": "25",
       "b": "-25",
       "c": "±25",
@@ -406,7 +406,7 @@
       "b": "electric field",
       "c": "magnetic flux",
       "d": "electric flux",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "52.The number of significant figures in 0.0030 × 10<sup>11</sup> m are",
@@ -414,7 +414,7 @@
       "b": "4",
       "c": "11",
       "d": "2",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "53.µs and µk are coefficient of static and kinetic frictions between two bodies. Then",
@@ -438,7 +438,7 @@
       "b": "0.20",
       "c": "0.40",
       "d": "0.65",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "56.The depth of water at which air-bubble of radius 0.4 mm may remain in equilibrium (surface tension of water = 72 × 10<sup>-3</sup> N/m, g= 9.8 m/s<sup>2</sup>) is given by",
@@ -462,7 +462,7 @@
       "b": " half atmosphere",
       "c": "Two atmosphere",
       "d": "50 atmosphere",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "59.The mean free path of a gas varies with absolute temperature (T) as",
@@ -478,7 +478,7 @@
       "b": "26.81%",
       "c": "36.8%",
       "d": "46.8%",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "61.The bending of sound waves through the corners of the obstacle is called",
@@ -486,7 +486,7 @@
       "b": "interference",
       "c": " beats",
       "d": "diffraction",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "62.When a tuning fork is vibrated its prongs have a phase difference of:",
@@ -494,7 +494,7 @@
       "b": "π/4",
       "c": "π",
       "d": "2π",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "63.The image of an object placed at the focus of convex mirror is at a distance",
@@ -550,7 +550,7 @@
       "b": "6400 F",
       "c": "1 F",
       "d": "711 µF",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "70.Two wires of same material have lengths L and 2L and cross reaction areas 4A and A respectively. The ratio of their specific resistances would be",
@@ -566,7 +566,7 @@
       "b": "2µ<sub>0</sub>ni",
       "c": "µ<sub>0</sub>ni",
       "d": "µni",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "72.Electrons in the atoms are held due to",
@@ -582,7 +582,7 @@
       "b": "Bracket and Paschen",
       "c": "Balmer",
       "d": "Paschen",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "74.The half-life of a substance is 1600 years. The mean life is",
@@ -590,7 +590,7 @@
       "b": "3200 yrs",
       "c": "800 yrs",
       "d": "2309 yrs",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "75.Rydberg constant is",
@@ -614,7 +614,7 @@
       "b": "1",
       "c": "1.8",
       "d": "180",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "78.The half-life of an radioisotope is 30 minutes. After how much time the amount of radioisotope left is 1/4<sup>th</sup> of the original amount?",
@@ -622,7 +622,7 @@
       "b": "30 minutes",
       "c": "60 minutes",
       "d": "120 minutes",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "79.What is oxidation of chlorine is HOCl?",
@@ -686,7 +686,7 @@
       "b": ">7.0",
       "c": "<7.0",
       "d": "cannot be predicted",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "87.Which of the following metals generate H<sub>2</sub>O on treatment with dil.HNO<sub>3</sub>?",
@@ -718,7 +718,7 @@
       "b": "Haber's process",
       "c": "Ostwald's process",
       "d": "Down's process",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "91.Haematite is an ore of",
@@ -766,7 +766,7 @@
       "b": "3",
       "c": "4",
       "d": "6",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "97.Which one of the following is a condensation polymer?",
@@ -782,7 +782,7 @@
       "b": "Antipyretic drug",
       "c": "Antibiotic drug",
       "d": "Analgesic drug",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "99.Enzymes are",
@@ -790,7 +790,7 @@
       "b": "Proteins",
       "c": "Lipids",
       "d": "Nucleic acids",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "100.Which base is found only in the nucleotides of RNA?",
@@ -798,7 +798,7 @@
       "b": "Guanine",
       "c": "Uracil",
       "d": "Cytosine",
-      "ans": "a"
+      "ans": "c"
     }
   ]
 }
