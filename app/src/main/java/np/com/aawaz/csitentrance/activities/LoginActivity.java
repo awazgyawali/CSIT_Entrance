@@ -16,8 +16,6 @@ import android.widget.RelativeLayout;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
-import java.util.UUID;
-
 import np.com.aawaz.csitentrance.R;
 
 
@@ -97,7 +95,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 editor.putString("Name", name.getText().toString());
                 editor.putString("Surname", sur.getText().toString());
                 editor.putString("E-mail", email.getText().toString());
-                editor.putString("uniqueID", UUID.randomUUID().toString());
+                editor.putString("uniqueID", email.getText().toString());
                 editor.putInt("Avatar", avatar);
                 editor.apply();
                 startActivity(new Intent(getApplicationContext(), Introduction.class));

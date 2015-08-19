@@ -52,10 +52,10 @@ public class QueAdater extends RecyclerView.Adapter<QueAdater.ViewHolder> {
                 .playOn(holder.mainLayout);
         lastPosi = position;
         holder.title.setText(titles[position]);
-        holder.mainImg.setImageResource(R.drawable.full_questions);
+        holder.mainImg.setImageResource(icon[position]);
         holder.mainLayout.setCardBackgroundColor(context.getResources().getColor(darkColor[position]));
         holder.baseLayout.setCardBackgroundColor(context.getResources().getColor(primaryColor[position]));
-        holder.playImg.setImageResource(icon[position]);
+        holder.playImg.setImageResource(R.drawable.ic_arrow_forward_white_24dp);
     }
 
     @Override

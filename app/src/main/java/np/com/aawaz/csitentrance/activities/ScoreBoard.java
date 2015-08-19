@@ -109,7 +109,7 @@ public class ScoreBoard extends AppCompatActivity {
                         names.add(jo_inside.getString("Name"));
                         scores.add(jo_inside.getInt("Score"));
                     }
-                    sortScoreAndName();
+                    callFillRecyclerView();
                 } catch (JSONException e) {
                     dialogInitial.dismiss();
                     Toast.makeText(getApplicationContext(), "Internal error. Please report us.", Toast.LENGTH_SHORT).show();
@@ -127,30 +127,6 @@ public class ScoreBoard extends AppCompatActivity {
             }
         });
         requestQueue.add(jsonObjectRequest.setTag("score"));
-    }
-
-    private void sortScoreAndName() {
-        for (int i = 0; i < scores.size(); i++) {
-            for (int j = 0; j < i; j++) {
-                if (scores.get(i) > scores.get(j))
-                    swap(i, j);
-            }
-        }
-        callFillRecyclerView();
-    }
-
-    private void swap(int i, int j) {
-        int tempSco = scores.get(i);
-        String tempName = names.get(i);
-        scores.remove(i);
-        names.remove(i);
-        scores.add(i, scores.get(j));
-        names.add(i, names.get(j));
-        scores.remove(j);
-        names.remove(j);
-        scores.add(j, tempSco);
-        names.add(j, tempName);
-
     }
 
     public void loadAd() {

@@ -21,12 +21,12 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
         android:onClick="startMainActivity"
-        fancy:fb_borderColor="#3F51B5"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        fancy:fb_borderColor="@color/dark1"
         fancy:fb_borderWidth="2dp"
-        fancy:fb_defaultColor="#E8EAF6"
+        fancy:fb_defaultColor="@color/primary1"
         fancy:fb_focusColor="#4d3949AB"
         fancy:fb_radius="100dp"
         fancy:fb_text="Let's get started."
-        fancy:fb_textColor="#000"
-        fancy:fb_textSize="13sp" />
+        fancy:fb_textColor="#fff" />
 </RelativeLayout>

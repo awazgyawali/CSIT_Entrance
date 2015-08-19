@@ -36,9 +36,7 @@ public class FullQuestion extends AppCompatActivity implements QueAdater.ClickLi
                 R.color.primary6, R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10};
         int darkColors[] = {R.color.dark2, R.color.dark4, R.color.dark5,
                 R.color.dark6, R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10};
-        int icon[] = {R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp,
-                R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp};
-
+        int icon[] = {R.drawable.full2069, R.drawable.full2070, R.drawable.full2071, R.drawable.fullmodel};
         //Recyc
         QueAdater adater = new QueAdater(this, primaryColors, darkColors, icon);
         listRecy = (RecyclerView) findViewById(R.id.onlineRecyc);

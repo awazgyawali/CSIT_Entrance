@@ -32,8 +32,8 @@ public class Introduction extends AppCompatActivity {
 
         final FragmentPagerAdapter viewPager = new CustomPagerAdapter(getSupportFragmentManager());
         introViewPager.setAdapter(viewPager);
-        final int colors[] = {Color.parseColor("#ff8a80"), Color.parseColor("#83ffff"), Color.parseColor("#81c784"), Color.parseColor("#ffff8d"),
-                Color.parseColor("#b388fe"), Color.parseColor("#81c784"), Color.parseColor("#ffff8d"), 0};
+        final int colors[] = {Color.parseColor("#b93791"), Color.parseColor("#409bd6"), Color.parseColor("#ed2669"), Color.parseColor("#996c5a"),
+                Color.parseColor("#4f51b5"), Color.parseColor("#e37654"), Color.parseColor("#394f64"), 0};
         indicator.setViewPager(introViewPager);
         introViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

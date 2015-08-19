@@ -14,6 +14,7 @@
         android:src="@drawable/splash_icon" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -38,4 +39,12 @@
             android:textSize="15sp" />
 
     </LinearLayout>
+
+    <com.facebook.share.widget.LikeView
+        android:id="@+id/likeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/logo"
+        android:layout_alignLeft="@+id/linearLayout"
+        android:layout_alignStart="@+id/linearLayout" />
 </RelativeLayout>

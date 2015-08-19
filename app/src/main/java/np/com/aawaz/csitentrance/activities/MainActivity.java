@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.appcompat.BuildConfig;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
@@ -54,9 +53,6 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
 
         constructJob();
 
-        checkWhatsNew();
-
-
         int avatar[] = {R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five,
                 R.drawable.six, R.drawable.seven, R.drawable.eight, R.drawable.nine, R.drawable.ten,
                 R.drawable.eleven, R.drawable.twelve};
@@ -89,22 +85,6 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         points.setText(getTotal() + " pts");
 
 
-    }
-
-    private void checkWhatsNew() {
-        int current=BuildConfig.VERSION_CODE;
-        int stored=getSharedPreferences("version",MODE_PRIVATE).getInt("version",1);
-        if(stored< current){
-            new MaterialDialog.Builder(this)
-                    .title("What's new")
-                    .items(R.array.whatsnew)
-                    .itemsCallbackSingleChoice(1,null)
-                    .positiveText("Got It!")
-                    .build()
-                    .show();
-
-            getSharedPreferences("version",MODE_PRIVATE).edit().putInt("version",current).apply();
-        }
     }
 
     private void constructJob() {

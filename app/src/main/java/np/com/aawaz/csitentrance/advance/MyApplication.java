@@ -10,7 +10,7 @@ import org.acra.annotation.ReportsCrashes;
 
 import np.com.aawaz.csitentrance.R;
 
-@ReportsCrashes(mailTo = "contact@aawaz.com.np",
+@ReportsCrashes(mailTo = "csitentrance@gmail.com",
         customReportContent = { ReportField.APP_VERSION_CODE, ReportField.ANDROID_VERSION,
         ReportField.PHONE_MODEL,ReportField.STACK_TRACE,ReportField.USER_COMMENT },
         mode = ReportingInteractionMode.DIALOG,

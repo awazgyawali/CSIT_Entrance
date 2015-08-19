@@ -17,8 +17,8 @@ import np.com.aawaz.csitentrance.R;
 
 
 public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder> {
-    String[] titles = {"Score Board", "2069 question", "2070 question", "2071 question", "Model Question", "More...", "View Full Question",
-            "Colleges for Admission", "Entrance News", "CSIT Query", "About Us"};
+    String[] titles = {"Score Board", "2069 question", "2070 question", "2071 question", "Model Question", "More...", "Full Question",
+            "CSIT Colleges", "Entrance News", "CSIT Query", "About Us"};
     int primaryColor[];
     int darkColor[];
     int icon[];

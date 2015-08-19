@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -162,6 +163,7 @@ public class EntranceNews extends AppCompatActivity {
                     Snackbar.make(findViewById(R.id.parentNews), "News updated.", Snackbar.LENGTH_LONG).show();
                 } catch (Exception e) {
                     refreshLayout.setRefreshing(false);
+                    Log.d("Debug", "so" + e);
                     if (finish) {
                         finish();
                         dialog.dismiss();

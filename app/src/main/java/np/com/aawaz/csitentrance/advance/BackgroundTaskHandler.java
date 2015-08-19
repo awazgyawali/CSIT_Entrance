@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
@@ -27,9 +26,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.CSITQuery;
@@ -156,7 +152,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
                     }
                     context.getSharedPreferences("values",Context.MODE_PRIVATE).edit().putInt("score8",no).apply();
                     if (no > noOfRows()) {
-                        if (no - noOfRows() > 1)
+                        if ((no - noOfRows()) >= 1)
                             notification(no - noOfRows() + " news updated.", "Check them out now!", "News updated", 12345, new Intent(context, EntranceNews.class));
                         else
                             notification(topic.get(0), content.get(0), "News updated", 12345, new Intent(context, EntranceNews.class));

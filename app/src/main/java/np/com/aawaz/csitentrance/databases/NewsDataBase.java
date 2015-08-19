@@ -17,18 +17,21 @@ public class NewsDataBase extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("CREATE TABLE news(title VARCHAR(255),subTopic VARCHAR(255),content TEXT,imageURL VARCHAR(255),author VARCHAR(255),link VARCHAR(255),linkTitle VARCHAR(255));");
 
-        sqLiteDatabase.execSQL("CREATE TABLE report(ID INTEGER PRIMARY KEY AUTOINCREMENT,year VARCHAR(255),qno VARCHAR(255),bug VARCHAR(255));");}
+        sqLiteDatabase.execSQL("CREATE TABLE report(ID INTEGER PRIMARY KEY AUTOINCREMENT,year VARCHAR(255),qno VARCHAR(255),bug VARCHAR(255));");
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        try {
+            sqLiteDatabase.execSQL("DROP TABLE news;");
 
-        sqLiteDatabase.execSQL("DROP TABLE news;");
+            sqLiteDatabase.execSQL("DROP TABLE report;");
 
-        sqLiteDatabase.execSQL("DROP TABLE report;");
+        } finally {
 
-        sqLiteDatabase.execSQL("CREATE TABLE news(title VARCHAR(255),subTopic VARCHAR(255),content TEXT,imageURL VARCHAR(255),author VARCHAR(255),link VARCHAR(255),linkTitle VARCHAR(255));");
+            sqLiteDatabase.execSQL("CREATE TABLE news(title VARCHAR(255),subTopic VARCHAR(255),content TEXT,imageURL VARCHAR(255),author VARCHAR(255),link VARCHAR(255),linkTitle VARCHAR(255));");
 
-        sqLiteDatabase.execSQL("CREATE TABLE report(ID INTEGER PRIMARY KEY AUTOINCREMENT,year VARCHAR(255),qno VARCHAR(255),bug VARCHAR(255));");
-
+            sqLiteDatabase.execSQL("CREATE TABLE report(ID INTEGER PRIMARY KEY AUTOINCREMENT,year VARCHAR(255),qno VARCHAR(255),bug VARCHAR(255));");
+        }
     }
 }

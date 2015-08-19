@@ -8,9 +8,9 @@
     <string name="title_activity_score_board">Score Board</string>
     <string name="title_activity_about">About Us</string>
     <string name="title_activity_more">More</string>
-    <string name="title_activity_colleges">Colleges for Admission</string>
+    <string name="title_activity_colleges">CSIT Colleges</string>
     <string name="title_activity_entrance_news">Entrance News</string>
-    <string name="title_activity_full_question">View Full Question</string>
+    <string name="title_activity_full_question">Full Question</string>
     <string name="title_activity_csitquery">CSIT Query</string>
     <string name="title_activity_introduction">Introduction</string>
 
@@ -40,15 +40,7 @@
 
     <string name="crash_toast_text">Application has crashed. Please send us email.</string>
     <string name="crash_dialog_text">Ooooops ! I crashed, but please report to my developer to help fix the issue !</string>
-    <string name="crash_dialog_title">CSIT Entrance Crashed</string>
+    <string name="crash_dialog_title">CSIT Entrance Crash Report</string>
     <string name="crash_dialog_comment_prompt">What where you doing?</string>
     <string name="crash_dialog_ok_toast">Thank you!</string>
-
-    <string-array name="whatsnew">
-        <item>1. Auto update the chat item in CSIT Query.</item>
-        <item>2. Users can now send mistake report to the question while plying the quiz.</item>
-        <item>3. Answer corrected.</item>
-        <item>4. Minor bug fixed.</item>
-        <item>And many more.....</item>
-    </string-array>
 </resources>

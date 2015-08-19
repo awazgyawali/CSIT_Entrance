@@ -23,12 +23,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.ads.AdListener;
@@ -60,7 +60,7 @@ public class QuizActivity extends AppCompatActivity {
     ArrayList<String> answer = new ArrayList<>();
 
     FloatingActionButton fab;
-    RoundCornerProgressBar pb;
+    ProgressBar pb;
 
     String[] colors = {" #922b72", " #2881bb", "#2b9759", "#cf1151"};
 
@@ -138,7 +138,7 @@ public class QuizActivity extends AppCompatActivity {
 
         ImageView img = (ImageView) findViewById(R.id.profQue);
         img.setImageDrawable(getResources().getDrawable(avatar[(getSharedPreferences("info", MODE_PRIVATE).getInt("Avatar", 1)) - 1]));
-        pb = (RoundCornerProgressBar) findViewById(R.id.progressBar);
+        pb = (ProgressBar) findViewById(R.id.progressBar);
         TextView topic = (TextView) findViewById(R.id.topic);
         ansRecy = (RecyclerView) findViewById(R.id.ansRecycle);
         slideLayout = (SlidingUpPanelLayout) findViewById(R.id.progressReport);
@@ -202,8 +202,6 @@ public class QuizActivity extends AppCompatActivity {
         questionLayout.setBackgroundColor(getResources().getColor(primaryColors[code]));
 
         pb.setMax(120);
-        pb.setRadius(0);
-        pb.setProgressColor(getResources().getColor(primaryColors[code]));
 
         haldleProgresss();
 
