@@ -107,7 +107,12 @@ public class BackgroundTaskHandler extends GcmTaskService {
                 .appendQueryParameter("name", getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "trash"))
                 .appendQueryParameter("score", getTotal() + "")
                 .build().toString();
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, null, null);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+            }
+        }, null);
         requestQueue.add(jsonObjectRequest);
     }
 

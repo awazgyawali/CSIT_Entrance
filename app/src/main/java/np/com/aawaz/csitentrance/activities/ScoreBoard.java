@@ -112,7 +112,6 @@ public class ScoreBoard extends AppCompatActivity {
                     callFillRecyclerView();
                 } catch (JSONException e) {
                     dialogInitial.dismiss();
-                    Toast.makeText(getApplicationContext(), "Internal error. Please report us.", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
