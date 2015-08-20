@@ -454,7 +454,7 @@
       "b": "1%",
       "c": "2%",
       "d": "4%",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "58.In a pressure cooker food is cooked usually at a pressure",
@@ -478,7 +478,7 @@
       "b": "26.81%",
       "c": "36.8%",
       "d": "46.8%",
-      "ans": "b"
+      "ans": "c"
     },
     {
       "question": "61.The bending of sound waves through the corners of the obstacle is called",
@@ -502,7 +502,7 @@
       "b": "f",
       "c": "2f",
       "d": "f/2",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "64.If sky is seen from moon’s surface, it will appear",
@@ -518,7 +518,7 @@
       "b": "concave mirror",
       "c": "Divergent lens",
       "d": "plane mirror",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "66.When two prisms are combined it gives",
@@ -526,7 +526,7 @@
       "b": "lateral shift",
       "c": "Dispersion and deviation both",
       "d": "Dispersion or deviation",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "67.Which property of electrons is used in an electron microscope?",
@@ -542,7 +542,7 @@
       "b": "On corners of equilateral triangle",
       "c": "On three corners of a rectangle",
       "d": "On the corners of a cube",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "69.The radius of Earth is 6400 km. The capacitance is:",
@@ -561,7 +561,7 @@
       "ans": "a"
     },
     {
-      "question": "71.The magnetic field inside a long solenoid is",
+      "question": "71.The magnetic field induction inside a long solenoid is",
       "a": "zero",
       "b": "2µ<sub>0</sub>ni",
       "c": "µ<sub>0</sub>ni",
@@ -598,7 +598,7 @@
       "b": "Different for different elements",
       "c": "A universal constant",
       "d": "Is different for lighter elements but same for heavier elements",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "76.How many orbitals are possible for principle quantum number 3?",
@@ -606,7 +606,7 @@
       "b": "4",
       "c": "6",
       "d": "9",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "77.The number of moles of water present in 18g of water is",
@@ -638,7 +638,7 @@
       "b": "4",
       "c": "6",
       "d": "8",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "81.The gas law which deals with the effect of pressure in a given volume of gas constant temperature is known as",
@@ -654,7 +654,7 @@
       "b": "B=2,8,8",
       "c": "C=2,8,1",
       "d": "D=2,8,7",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "83.In which of the following compound the molecular geometry cannot be predicted by the use of VSEPR theory?",
@@ -670,7 +670,7 @@
       "b": "6 times",
       "c": "9 times",
       "d": "27 times",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "85.An aqueous solution of NaCl would be",
@@ -678,7 +678,7 @@
       "b": "Basic",
       "c": "Neutral",
       "d": "could be acidic or basic depending upon temperature",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "86.The pH of pure water at 50ᵒC would be",
@@ -702,7 +702,7 @@
       "b": "2 NH<sub>2</sub>SO<sub>4</sub>",
       "c": "0.5NH<sub>2</sub>SO<sub>4</sub>",
       "d": "4NH<sub>2</sub>SO<sub>4</sub>",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "89.Hydrogen molecule which has parallel spin of two nuclei is called",
@@ -750,7 +750,7 @@
       "b": "diethylether",
       "c": "actone",
       "d": "formic acid",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "95.Which of the following is a meta directing group?",
@@ -758,7 +758,7 @@
       "b": "-OH",
       "c": "-COOH",
       "d": "-R",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "96.How many position isomers are possible for dichlorobenzene?",

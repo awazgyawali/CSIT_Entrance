@@ -38,7 +38,7 @@
       "b": "X axis",
       "c": "both axes",
       "d": "origin",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "6.The value of x for <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> is",
@@ -54,7 +54,7 @@
       "b": "skew symmetric",
       "c": "diagonal",
       "d": "unit",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "8.The value of <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEcAAAA/CAIAAAA9o0LkAAAEmklEQVR4nGP5//8/Ayr4+/bsnjuyzuZiLAyDHeByKhaX/7q7pGlOoM1Q8BUupw5+l5MDRn01dMCor4YOIOCr/18uzynInXuHjfvn61/aOTMmJmlzM5Jjz+9XR6YX50znmHxmti03iXp/XOoIjpp9j01ClOvHm/c8NvkTelIM+Zjw6MDrq/8fDxR5Vb3tu7w3VOL/wzluep7FKlem2/OR5q9/70/OrOvefv/RgYuvgkjSCQW/X9/4k7jtYrE6G9CsfVnazi5f5e4s8RDE7Qx8vvr/Zlf74o92G9wlmIE8ueAC2/zwtl0tdiEipHmLQzm8Z3XKk36jra0k6YPrV4srU1VkAzGZBM3CHfhm7ll/47uHJRdOHfh89e3m9nM/pArlOMA8Rm5lU+kfU7bf+BZiQ1IaYuIUEQIGOClaUAGrrJMzgvfv738GNi5WvAGLz1c/X9x9y8AjyssM4TLzSfAyvLnz4icDA6k5g3rg94vzVz+LuPqrc+JThcdX/359BXqAmY0ZGiyMLGxA1T+//voHDH9qupQE8OXs1GnP3TrrbXjxKsPjKyY2bnYGhq8//0Cbv/9///zDwMDDzTZQXvr7altp2uGAlTsS5AkU3fikOSTVRBkOvvz8FxhjQO6fT88+MogYSLBT06VEg7+vdpaH9gr07WhxESEYrPh8xanuYcS54tzD7wxabKCq6/app+wG7uq4ix6agd+P1+YnrFDv35BnxEtM+YvPV4zCrpVxgsHTdzx3C5f892DNhKNCsRvdSSzWKQe/Hy2JdWplyW1WenZw6zOwELOAlp21Eu72AN4Eyshn17OlLTfH32WB4O+X39T7d/Y78pPsqd+PN0+YsvPa9QO3GN69q0/LNFCzTC6J0ya6HP1+beWGuzd+FoQuRYhptN24WKnOhksLgWzHyKOXNv9QGrEOwApYZX1LO32BjPnk6efz2PwDvb9OAIzI1u0QBaO+Gjpg1FdDB4z6auiA0XGL0XELZDA6boENjI5bQMDouMXouAXVwei4xei4xei4BTIYHbegEhj11dABo74aOmDUV0MHEOErSjrnDOT0z9HBz2t9wcGTbrJLSvL8fv2axTi9d2K+tTAzHh34fUVx55yBnP45Ovjz9vaviI2X6/U5GP5/Olqsa+ORqnx/rT+ephuBuKK0c85ATv8cHQAbJ5kR6uAeOSOfQYCDYP+unXe++4uQ18OnQuecgZz+OTpgU/AKhHP+//n5l4FHjBdfAqRzaUFc/xwP+PVw87R9zG6t8Wp4e3l09RWR/XNs4N/rzSneZftu3/uikTl7SYwCK17V9PMV8f1zbIBJ1HfeKV+G/9/vrs520jE+vvt4tw3uThGdfEVS/xwPYORUDqzMblSr6zhSu8WbH5cyeviK1P45hvZd277Y+GvCizxGRoa/v/7g63LR3Fdk9M/RwJ+Xe6cs5XHptwI1Af5/vrBk4XU+73pzfHkTv68o7ZwzkNU/RwOsYroSh+JNTKVkBFl/fXj1Wchp7uHWEAny2xaUds4ZyOqfowEWuZjFZ2NI00KRhYMVjPpq6IAR4ytOs/6jZvR3CTkAl1MBmzvAP6NJlksAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\"> is",
@@ -97,7 +97,7 @@
       "ans": "b"
     },
     {
-      "question": "13.The solution of <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAAmCAIAAAATJr/lAAAExElEQVR4nGP5//8/w9AELAPtAPLBqNOpDn6/OjK9OGc6x+Qzs225sSsZhE7/9/7kzLru7fcfHbj4KgiPukHodAYO5fCe1SlP+o22tuJTNgidzsQpIgRMMQTVDUKnEwtGnT4QYNTpAwFGnU5N8Pvx5glTdl67fuAWw7t39WmZBmqWySVx2hh16iB0Oqusb2mnL5AxH786TKf/e3diemXThudcfL+fXH0qlbtmRbYa69frK+rLJp/8I8r7+fFX7fxZE+LUORn/vT3Unly04ZOoyL+Xdz6aztjXzjk/K6Z4g9LSB7uiJP7eneZm0KS0/e5cGxyNEAoBmtP/vtqWZZNwJ3vvphm63IyfdsZH3mVj+nljkrdFM//EU3sSlNh/XmszNgroMLrQqHqtK771TcPdQ/GSTB92l07h5xAyKZw64fC24Cmbn4YnsV+/8sevt94C7O4v+yKknFd+xuoEZtfNb3f58FPm9P+fDlclzuOpvJ4FdDeQz6kdl60i9mqVb/lR3cl3Y5XYgWLsis72gjWrtjyoyf3w5P3351fvf/4vyS/g2l0DNkLYqTBcyGnyrAV3zu7SnjE/Sg5iAY/Tik//V5DsOuKd/vnE1JWv9LqCFVkhfFYZZ6//r5YnH/hpMsdbhhnqv3///v//8fH7X26z0gob60prjfOVM2bV+SlyMIIdaZadJDunpS/ozMksbS5G0lzDyEhAA3KfDtnpv5+fu/pF0FRbmBlJ8NfLq4//iTqpCTBB+P8+3Lz4kklOV5KNkdugYv8Du5mlaQUBOmdmXd2aqsDK8O/N0ZXHmTkZ3j7/zkCiu0kFyE7///f3X5DHUBQwcQhwgoIDyv3zaOPM0+yO8xyFPt+9/U9BVdQqe94+8VcKYXMPvk2WYztUGztdon/r5Dy9ogkH2q19hKD6vuyPknVa/gGrE9g8trza7g1O6yR1lJGdziZnbyNSt2Xevpc2vuL/319ct/SGUWq4nEeoRtXizde+Wppwfb82I63yqk3X6TCpb/uTm793LgwUYfz/59sPBmF1uf+nGgIr/7XtyDPkfZ3nlBfbt/W5Z6wUJAZ5HJe9/7+MeGeR6nQGHuvOVXVPEsOk+YVUdcz8C9pqlNkZGHXKNs59nhhjYSXO9+Mzn+PUk81R6uz/3rGLPi9zsZ0hyf7xyTvRkqWtEos9Wq4a7dDmY2RgFHXN9+HwrMhu5Z9U6SfLSl0nY3U6A7OIY+POB41oajjVYmccjUUVYxRy7Nh9qQNZyO3KvzKYrIDHyg9kDpL8uNQRHDX7HpuEKNePN+95bPIn9KQY8jERcvpgAL9f3/iTuO1isTobsJe6L0vb2eWr3J0lHoIYmX7wOZ1DLa5MVZENxGQSNAt34Ju5Z/2N7x6WXOgKB5/TWWWdnBG8f3//M7BxsWIrZwef05HB7xfnr34WcfVX58QiOaid/uXs1GnP3TrrbXixyQ5epwNbgqVphwNW7kiQx+7IQer0v692lof2CvTtaHERwVIugsFgdPrvx2vzE1ao92/IM+LF0w4adE7//WhJrFMrS26z0rODW5+BhZgFtOyslbjRfTHonP792soNd2/8LAhdihDTaLtxsVKdDU3loHM6n8fmH8Q1IQad04kHo04fCAAA+5fGe+MO5e4AAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">  is",
+      "question": "13.The solution of cosx=1/2 is",
       "a": "2nπ",
       "b": "π/3",
       "c": "2nπ±π/3",
@@ -233,7 +233,7 @@
       "ans": "a"
     },
     {
-      "question": "30.Reading, observing, teaching and………. are good ways to gain knowledge",
+      "question": "30.Reading, observing, teaching and …………… are good ways to gain knowledge",
       "a": "Discussion",
       "b": "discussing",
       "c": "to discuss",
@@ -241,12 +241,12 @@
       "ans": "a"
     },
     {
-      "question": "31.The river Narayani flow through Narayanghat.",
+      "question": "31.The river Narayani flow through …….……. Narayanghat.",
       "a": "an",
       "b": "a",
       "c": "the",
       "d": "no article",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "32.In recent years people have been more concerned………….quality of drinking water.",
@@ -254,7 +254,7 @@
       "b": "for",
       "c": "about",
       "d": "of",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "33.She was killed ………… a robber …….. a gun.",
@@ -262,7 +262,7 @@
       "b": "by; with",
       "c": "in; for",
       "d": "with; for",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "34.The fear of rape and robbing………….caused many people run away from the cities.",
@@ -278,7 +278,7 @@
       "b": "to cut",
       "c": "to be cut",
       "d": "both a and b",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "36.…………… this evidence, I know, he is in the right.",
@@ -286,7 +286,7 @@
       "b": "by",
       "c": "from",
       "d": "in",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "37.I object…………..your propos",
@@ -294,7 +294,7 @@
       "b": "about",
       "c": "in",
       "d": "to",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "38. I have worked………….the answer.",
@@ -302,7 +302,7 @@
       "b": "over",
       "c": "among",
       "d": "out",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "39. Which word doesn’t take…………is suffix?",
@@ -350,7 +350,7 @@
       "b": "tweezers",
       "c": "forceps",
       "d": "pincers",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "45. Lack of blood is…………………..",
@@ -358,7 +358,7 @@
       "b": "insomnia",
       "c": "anemia",
       "d": "epicurean",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "46. A well experienced person is……………………",
@@ -374,7 +374,7 @@
       "b": "if",
       "c": "when",
       "d": "why",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "48. They walk very fast. The underlined work is…….",
@@ -390,7 +390,7 @@
       "b": "I was heard sing a song.",
       "c": "I was heard singing a song.",
       "d": "I was heard to sing a song by them.",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "50. The indirect of: He said, ‘Congratulation’.",
@@ -398,7 +398,7 @@
       "b": "He congratulated me.",
       "c": "He congratulated that I passed.",
       "d": "He said that I deserved congratulations. ",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "51. The duration in which the displacement becomes half the amplitude in the case of a simple harmonic motion if its period is 12 second, is",
@@ -406,7 +406,7 @@
       "b": "3 sec",
       "c": "2 sec",
       "d": "1 sec",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "52. A train of length 600 m is traveling with a velocity of 64 Km/hr.  The time taken by the train to cross clearly a bridge of 1 km will be",
@@ -414,7 +414,7 @@
       "b": "1.5 min",
       "c": "15 sec",
       "d": "15 min",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "53. Which one of the following pairs of physical quantities has the same dimension?",
@@ -422,7 +422,7 @@
       "b": "energy and power",
       "c": "work and energy",
       "d": "angular momentum and linear momentum",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "54. A body of mass 1 Kg is rotated in a horizontal circle of radius 50 cm. If F and v represent the centripetal force and the constant speed respectively, which one of the following expressions may be correct?",
@@ -430,7 +430,7 @@
       "b": "V=<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAATCAIAAACcKoPZAAADDElEQVR4nGP5//8/AwHw//ePvywcLIyE1BEPWAgr+XFtyZK/San6lFsG9yFhW/+8uvlJ3ZlyK5EBQVv/f7z9UFmLl4iIoKat3x7cFFWzZaKilUTY+uvpNQbNIDYw+8eljuCo2ffYJES5frx5z2OTP6EnxZAP7qD/Xy/NqW3on7z++h9RJTUhVkjq+//rzUOWzNOXm3XZibb179sbr9VtuCCc369v/EncdrFYnY3h3/t9WdrOLl/l7izxEIQmbkZuvdSmvIPz1z/1WHFxuRMP1Ii3a4Kz2WTYUYwlYOvn23flVb2gxnKoxZWpKoL9zSRoFu7AN3PP+hvfPSy54Mr/vLly9QODko0yJ1zoP5tKWKIIL6qx+G39/vAGv4YZTA2rrBNSWv739z8DGxcrSi7+8eDEAwbhQH0RZgj/9+f3f7gNwt3RzUW39f/3xxef8OupgqPr9/Pr3zW8ObC55/eL81c/i7j6q3MiCf55c/nKBwZlGyWI4L8X6/PbxCdNsudB141i6497G/o6J8++FrJ/f6YCCzDybj1RNeLGZumXs1OnPXfrrLdBCTqwVxn+d/iYTQM5+u/7h6z5p7A5GsVWZgHT7AkzOV2iltxOrtFk+3r3lpS6M2am+ftqW2na4YCVOxLkUbT/eX356kcG8/kHjyVIAnX9f7MmukZYFFscooixCknzM/wNTxfymn2xuE/30XU2TX1WDCt3lof2CvTtaHERQXPQjwfHHzCIhavxQ8QZBRybqjmwBhWmS5glfXI0eqcefdv08YOGExeK3O/Ha/MTVqj3b8gz4sWoDCBelTeTh4Upi7CKLDY7saZhRiHHXJva7rVHrRTtApCtfLQk1qmVJbdZ6dnBrc8gLhTQsrNW4maEehUYqyKhGgKECzKsOYfbJMP3rsccm91BzEii36+t3HD3xs+C0KUIMY22Gxcr1dmAxdK8pq7Zmz8x/Djckl3slV6TbSmIx3Ls+ZVdMyHT8p22HEqJwuex+QeOKgBYLCV3LgEi3BYRYSsDi1LWmilEGkEGIKJWpwEAADxBHdmbYNZpAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
       "c": "V=<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAmCAIAAAA9Y553AAADqElEQVR4nGP5//8/w8ABlgG0e9Ba//vVkenFOdM5Jp+ZbctNV+v/vT85s657+/1HBy6+CqKhzTisZ+BQDu9ZnfKk32hrK61tx2I9E6eIEDD0aW4zDuvJBv9///jLwsHCODDW/7i2ZMnfiBQ9zgGx/s+rm0mpwUmphFUiF3TUsv7/x9sPydBGLeu/PbgpevPnfzW2AbH+19NrDJpBULv/f700p7ahf/L6639EldSEWCGJ8f+vNw9ZMk9fbtZlx2f978ebJ0zZee36gVsM797Vp2UaqFkml8Rp4y37/r698VrdhgvKY+TWS23KOzh//VOPFReXO/FAhd+uCc5mk2FH0YhpPausb2mnL5Axnyh/g8Hn23flVb2QstyfN1eufmBQslFG5IP/bCphiSK8qBqpEvjfH97g1zBDNurHgxMPGIQD9UWYIfzfn9//4TYId0fXSab1/78/vviEX0+Vjwlk9vPr3zW8OZCk/7y5fOUDg7KNEsTz/16sz28TnzTJngfdHHKs/3FvQ1/n5NnXQvbvz1RgAdZRt56oGqGkDbDnGf53+JhNA7nv7/uHrPmnOLAYhW49IyOBQhNYaDALmGZPmMnpErXkdnKNJtvXu7ek1J2ZkNT8eX356kcG8/kHjyVIAsX/v1kTXSMsis2n5PieVUian+FveLqQ1+yLxX26j66zaeqzIiv48eD4AwaxcDV+iJsYBRybqjmwZh1064lu+jFL+uRo9E49+rbp4wcNJy5kKYjn5c3kYcHNIqwii90U8lM+o5Bjrk1t99qjVop2ASgy4JgXCdUQYMKhlRrWMzBwm2T43vWYY7M7iBkmBCzw5jV1zd78ieHH4ZbsYq/0mmxLQTyuwLD+x6WO4KjZ99gkRLl+vHnPY5M/oSfFkA+7CeyaCZmW77TlECUZsMBL7lwCRET6AMP6369v/EncdrFYnQ2Yo/ZlaTu7fJW7s8RDEGuGYFHKWjOFSJuIs55DLa5MVRFceTAJmoU78M3cs/7Gdw9LLky9VAAY1rPKOjkjeP/+/mdg42IlqQFFkfXI4PeL81c/i7j6q5PUgKKW9V/OTp323K2z3oYXjyIaWf/31bbStMMBK3ckyNOwI4bd6L+vdpaH9gr07WhxESFcdlDX+t+P1+YnrFDv35BnxEuzNIfD+t+PlsQ6tbLkNis9O7j1GViIWUDLzlqJmyYuQbf++7WVG+7e+FkQuhQhptF242KlOoltWPKs5/PY/IOOwx2Dc3hhhFgPAJNcSdw0IvfgAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
       "d": "V=<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAApCAIAAADbF7xrAAAEEklEQVR4nGP5//8/A37w7+X+Fc/Nogy4CajDDlgIK/n19uFXRidGRpLMhbubCAt+f/zIL0mS6ciAsAX/vr39KaxBOCTJtuD3h/e8AmzkmU6UBX8+feQXZKWdBf+/v/smqIBswf+vl+bUNvRPXn/9j6iSmhArJPb//3rzkCXz9OVmXXbSLPjz8R2nECdyEmLk1kttyjs4f/1TjxUXlzvxQIXfrgnOZpNhR9dP0AJQGuJHD6E/b65c/cCgZKPMifAXm0pYoggvhn6CFvz68FlACt2CHw9OPGAQDtQXYYa64vP7P9wG4e5Y9BOy4M+HNywi3EzoHrh85QODso0SxAP/XqzPbxOfNMmeB4sBhCz4DUxDfFg9wPC/w8dsGsjqv+8fsuaf4sBuAEELPn7iV0Cz4M/ry1c/MpjPP3gsQRJowf83a6JrhEVxmETAgr+fXv8X1WNG98DxBwxi4Wr8kJBjFHBsqubAVRQSsACYhvj40bIxxAPyZvKwQGERVpHFaQJhC/gl0UIIHAMioRoCTNj1kGLBv6/Agk4ToQaYiec1dc3e/Inhx+GW7GKv9JpsS0H89uC34PfH97yCSCEEzMTJnUuAiLDLibXgI78Q+QUdQQv+/3j3TUiRyhb8/fT4FYuMJBeoePv94S1aQUexBf8/HalN3BKzudsUVAr8wVbQUWTBj6uTi+Ye5Tb99N8U5PCfKAUdI9H1PnL9imzBvxebe65F1pjNO/nwR4w4J9ADb1hFeIhK7bgBsgWMfKb5Xa5/uueX3/r0z4yTCa0qIK/eR7GAS8GQ6/9rC6kXRx78BHrhF9ACCtMQllTEyKuqxzzz5sd/5myfXjGI6jNj00WJBQzs8uZSrw4+/BEngKWgg4AflzqCo2bfY5MQ5frx5j2PTf6EnhRDPuyRhWkBI4+qPvP0Gx//aX3CLOgg4PfrG38St10sVmdj+Pd+X5a2s8tXuTtLPASxpTIsOZldzlz61d6H39xe/xbRxJrTOdTiylQVwZ5jEjQLd+CbuWf9je8ellzEWcDIo2LAOuXGm3cMPILYW3Sssk7OCN6/v/8Z2LhYcWQSbC5klzWTfr379isNfhnCaej3i/NXP4u4+qtzYpfHGgTcKoasE87fk9bVIWjBl7NTpz1366y3wWwR4bGAXcZU9vnks0z24fgLh7+vtpWmHQ5YuSNBHmepjF2CS9mQ6fRORl58Hvj7amd5aK9A344WFxE8xQl2C4BeUGbbJY67Uf378dr8hBXq/RvyjHjx+xKH17iUrLSVpHEUdL8fLYl1amXJbVZ6dnDrM7AQs4CWnbUSNxa7cFjAJm1hZSCMwwPfr63ccPfGz4LQpQgxjbYbFyvVsaRqXJHD79xWikOKgc9j8w+iC1YiOoGUAZpbAAABInY2i5nW+QAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "55.  The root mean square (rms) speed of hydrogen molecular at STP is 2 km per second. The rms speed of oxygen molecule at 810° C is",
@@ -438,7 +438,7 @@
       "b": "1 km s-1",
       "c": "0.5 km s-1",
       "d": "4 km s-1",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "56. Bolometer measures the ",
@@ -446,7 +446,7 @@
       "b": "thermo emf",
       "c": "specific heat",
       "d": "heat radiation",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "57. A temperature of 14°F is equivalent to",
@@ -454,7 +454,7 @@
       "b": "263 K",
       "c": "250 K",
       "d": "1.5° C",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "58. A myopic eye cannot see object beyond 1.5 m. What power of lens will be required to correct this defect of vision?",
@@ -462,7 +462,7 @@
       "b": "0.66 D",
       "c": "-1.5 D",
       "d": "-0.66 D",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "59. The critical angel of glass-water interface is",
@@ -478,7 +478,7 @@
       "b": "3",
       "c": "4",
       "d": "0",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "61. Light travels through a glass plate of thickness t and refractive index n. If C is the velocity of light in vacuum, the time taken by light to travel this thickness is",
@@ -486,7 +486,7 @@
       "b": "cnt",
       "c": "nt/c",
       "d": "tc/n",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "62.  Two charges of 2 µC and 4 µC are 1m apart. The electric field intensity is zero at a point between the charges. This point is approximately at a distance.",
@@ -494,7 +494,7 @@
       "b": "59 cm from 2 µC charge",
       "c": "41 cm from 2 µC charge",
       "d": "66 cm from 2 µC charge",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "63. An open organ pipe can produce",
@@ -502,7 +502,7 @@
       "b": "only even harmonics",
       "c": "both odd and even harmonics",
       "d": "depends upon the length of pipe",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "64. Watt per ampere is the unit of",
@@ -518,7 +518,7 @@
       "b": "equal to that of B",
       "c": "more than that of B",
       "d": "depends upon the amount of current flowing in wires",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "66. When a capacitor is added in series in an LCR circuit, the impedance of the circuit",
@@ -526,7 +526,7 @@
       "b": "decrease",
       "c": "remains unchanged",
       "d": "increases or decreases depending upon the frequency of a.c.",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "67. A cell of emf X if connected across a resist of R. The potential difference across the wire is measured as Y. The internal resistance of the cell should be",
@@ -534,7 +534,7 @@
       "b": "(X-Y)R",
       "c": "(X-Y)R/X",
       "d": "(X-Y)R/Y",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "68. The ratio of wavelength of the first line of Lyman series to the first line of Balmer series is",
@@ -550,7 +550,7 @@
       "b": "8 ×1014 Hz	",
       "c": "4 ×1016 Hz",
       "d": "6 ×1017 Hz",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "70. A radioactive material of half life 5 days has its initial mass of 1 Kg. the amount decayed after20 days will be",
@@ -558,7 +558,7 @@
       "b": "250 g",
       "c": "550 g",
       "d": "875 g",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "71. A charged particle is undergoing a circular motion in a uniform magnetic field. The time period is independent of",
@@ -574,7 +574,7 @@
       "b": "300 ms-1",
       "c": "360 ms-1",
       "d": "450 ms-1",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "73. Time of flight T of a projectile is related to the horizontal range R by an equation gT2=2R. the angle of projection (in degrees) is",
@@ -582,7 +582,7 @@
       "b": "60°",
       "c": "45°",
       "d": "30°",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "74. An electron in a field of 1 NC-1 will have an approximate acceleration",
@@ -598,7 +598,7 @@
       "b": "2 times",
       "c": "4 times",
       "d": "16 times",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "76. Paraffin’s are also called",
@@ -630,7 +630,7 @@
       "b": "benzalinide",
       "c": "schiff’s base",
       "d": "phenol",
-      "ans": "c"
+      "ans": "b"
     },
     {
       "question": "80. Which of the following compounds is used as the best anti-knocking agent?",
@@ -646,7 +646,7 @@
       "b": "chloropicrin",
       "c": "carbon tetrachloride",
       "d": "carbonyl chloride",
-      "ans": "b"
+      "ans": "a"
     },
     {
       "question": "82. Which of the following reagents is used to detect the aldehyde group?",
@@ -718,7 +718,7 @@
       "b": "nitric acid",
       "c": "ammonia",
       "d": "white phosphorus",
-      "ans": "b"
+      "ans": "a"
     },
     {
       "question": "91. Among the following elements, the one having highest electron affinity is",
@@ -750,7 +750,7 @@
       "b": "5.3 gm",
       "c": "0.053 gm",
       "d": "5.6 gm",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "95. Which of the following is the unit of surface tension?",
@@ -798,7 +798,7 @@
       "b": "Always negative",
       "c": "Can be positive or negative",
       "d": "Unpredictable",
-      "ans": "c"
+      "ans": "b"
     }
   ]
 }

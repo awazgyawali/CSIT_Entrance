@@ -35,7 +35,7 @@
     <string name="queryFetchUrl">http://www.avaaj.com.np/jsonFeed/fetchAll.php?fbId=</string>
     <string name="postScoreurl">http://www.avaaj.com.np/jsonFeed/uploadScore.php</string>
     <string name="fetchScoreurl">http://www.avaaj.com.np/jsonFeed/downloadScore.php</string>
-    <string name="url">http://www.avaaj.com.np/jsonFeed/news_feed.html</string>
+    <string name="url">http://www.avaaj.com.np/jsonFeed/news_feed.php</string>
     <string name="uploadReport">http://www.avaaj.com.np/jsonFeed/uploadReport.php</string>
 
     <string name="crash_toast_text">Application has crashed. Please send us email.</string>
