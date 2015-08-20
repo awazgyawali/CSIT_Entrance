@@ -100,54 +100,29 @@
                 <LinearLayout
                     android:id="@+id/optionsLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/rpl1"
+                    <WebView
+                        android:id="@+id/option1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="10dp">
+                        android:layout_height="60dp" />
 
-                        <WebView
-                            android:id="@+id/option1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:id="@+id/rpl2"
+                    <WebView
+                        android:id="@+id/option2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="10dp">
+                        android:layout_height="60dp" />
 
-                        <WebView
-                            android:id="@+id/option2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Test Option 1" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:id="@+id/rpl3"
+                    <WebView
+                        android:id="@+id/option3"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="10dp">
+                        android:layout_height="60dp" />
 
-                        <WebView
-                            android:id="@+id/option3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:id="@+id/rpl4"
+
+                    <WebView
+                        android:id="@+id/option4"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="10dp">
-
-                        <WebView
-                            android:id="@+id/option4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </RelativeLayout>
+                        android:layout_height="60dp" />
                 </LinearLayout>
 
             </ScrollView>

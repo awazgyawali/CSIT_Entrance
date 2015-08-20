@@ -75,11 +75,6 @@ public class QuizActivity extends AppCompatActivity {
     TextView scoreTxt;
     TextView qNoTxt;
 
-    RelativeLayout op1;
-    RelativeLayout op2;
-    RelativeLayout op3;
-    RelativeLayout op4;
-
     SlideUpPanelAdapter slideUpPanelAdapter;
     RecyclerView ansRecy;
 
@@ -150,17 +145,7 @@ public class QuizActivity extends AppCompatActivity {
         feedback = (TextView) findViewById(R.id.feedback);
         scoreTxt = (TextView) findViewById(R.id.score);
         qNoTxt = (TextView) findViewById(R.id.noOfQuestion);
-        op1 = (RelativeLayout) findViewById(R.id.rpl1);
-        op2 = (RelativeLayout) findViewById(R.id.rpl2);
-        op3 = (RelativeLayout) findViewById(R.id.rpl3);
-        op4 = (RelativeLayout) findViewById(R.id.rpl4);
-        op1.bringToFront();
-        op2.bringToFront();
-        op3.bringToFront();
-        op4.bringToFront();
         feedback.bringToFront();
-
-        rplHandler();
 
         //Receiving intent
         code = getIntent().getExtras().getInt("position");
@@ -169,9 +154,11 @@ public class QuizActivity extends AppCompatActivity {
         RelativeLayout coreLayout = (RelativeLayout) findViewById(R.id.coreLayout);
         coreLayout.setBackgroundColor(getResources().getColor(darkColors[code]));
 
-
         //Last Stage of the game
         fetchFromSp();
+
+        //Load Question and Options to the ArrayList
+        setDataToArrayList();
 
         fillAnsRecyclerView();
 
@@ -211,24 +198,11 @@ public class QuizActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //Load Question and Options to the ArrayList
-        setDataToArrayList();
+        fillTexts(qNo, false);
 
-        fillTexts(qNo,false);
+        resetBackground();
 
         onClickOption();
-
-    }
-
-    public void rplHandler() {
-        op1.setBackgroundColor(getResources().getColor(R.color.back));
-        op2.setBackgroundColor(getResources().getColor(R.color.back));
-        op3.setBackgroundColor(getResources().getColor(R.color.back));
-        op4.setBackgroundColor(getResources().getColor(R.color.back));
-        option1.setBackgroundColor(getResources().getColor(R.color.back));
-        option2.setBackgroundColor(getResources().getColor(R.color.back));
-        option3.setBackgroundColor(getResources().getColor(R.color.back));
-        option4.setBackgroundColor(getResources().getColor(R.color.back));
     }
 
     private void fillAnsRecyclerView() {
@@ -239,12 +213,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public boolean isLargeScreen() {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-            return false;
-        else
-            return (getResources().getConfiguration().screenLayout
-                    & Configuration.SCREENLAYOUT_SIZE_MASK)
-                    >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
+        return getResources().getConfiguration().orientation != Configuration.ORIENTATION_PORTRAIT && (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
     }
 
     private void fetchFromSp() {
@@ -261,10 +230,10 @@ public class QuizActivity extends AppCompatActivity {
         if (posi < 100) {
             htm = "<body bgcolor=\"" + colors[code - 1] + "\"><p style=\"color:white\">" + questions.get(posi);
             question.loadDataWithBaseURL("", htm, "text/html", "UTF-8", "");
-            option1.loadDataWithBaseURL("", "a) " + a.get(posi), "text/html", "UTF-8", "");
-            option2.loadDataWithBaseURL("", "b) " + b.get(posi), "text/html", "UTF-8", "");
-            option3.loadDataWithBaseURL("", "c) " + c.get(posi), "text/html", "UTF-8", "");
-            option4.loadDataWithBaseURL("", "d) " + d.get(posi), "text/html", "UTF-8", "");
+            option1.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "a) " + a.get(posi), "text/html", "UTF-8", "");
+            option2.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "b) " + b.get(posi), "text/html", "UTF-8", "");
+            option3.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "c) " + c.get(posi), "text/html", "UTF-8", "");
+            option4.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "d) " + d.get(posi), "text/html", "UTF-8", "");
         } else {
             question.loadDataWithBaseURL("","<body bgcolor=\"" + colors[code - 1] + "\"><p style=\"color:white\"> You have successfully completed the quiz with " + score + " score. Good Luck!!", "text/html", "UTF-8", "");
             gameCompletedHandler();
@@ -272,10 +241,10 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void gameCompletedHandler() {
-        op1.setVisibility(View.INVISIBLE);
-        op2.setVisibility(View.INVISIBLE);
-        op3.setVisibility(View.INVISIBLE);
-        op4.setVisibility(View.INVISIBLE);
+        option1.setVisibility(View.INVISIBLE);
+        option2.setVisibility(View.INVISIBLE);
+        option3.setVisibility(View.INVISIBLE);
+        option4.setVisibility(View.INVISIBLE);
         fab.setVisibility(View.INVISIBLE);
     }
 
@@ -287,8 +256,7 @@ public class QuizActivity extends AppCompatActivity {
                     .playOn(fab);
         }
         resetBackground();
-        op1.setBackgroundColor(getResources().getColor(R.color.selectorColor));
-        option1.setBackgroundColor(getResources().getColor(R.color.selectorColor));
+        option1.loadDataWithBaseURL("", "<body bgcolor=\"#ed2669\">" + "a) " + a.get(qNo), "text/html", "UTF-8", "");
         clickedAns = 1;
     }
 
@@ -300,8 +268,7 @@ public class QuizActivity extends AppCompatActivity {
                     .playOn(fab);
         }
         resetBackground();
-        op2.setBackgroundColor(getResources().getColor(R.color.selectorColor));
-        option2.setBackgroundColor(getResources().getColor(R.color.selectorColor));
+        option2.loadDataWithBaseURL("", "<body bgcolor=\"#ed2669\">" + "b) " + b.get(qNo), "text/html", "UTF-8", "");
         clickedAns = 2;
     }
 
@@ -313,8 +280,7 @@ public class QuizActivity extends AppCompatActivity {
                     .playOn(fab);
         }
         resetBackground();
-        op3.setBackgroundColor(getResources().getColor(R.color.selectorColor));
-        option3.setBackgroundColor(getResources().getColor(R.color.selectorColor));
+        option3.loadDataWithBaseURL("", "<body bgcolor=\"#ed2669\">" + "c) " + c.get(qNo), "text/html", "UTF-8", "");
         clickedAns = 3;
     }
 
@@ -326,77 +292,54 @@ public class QuizActivity extends AppCompatActivity {
                     .playOn(fab);
         }
         resetBackground();
-        op4.setBackgroundColor(getResources().getColor(R.color.selectorColor));
-        option4.setBackgroundColor(getResources().getColor(R.color.selectorColor));
+        option4.loadDataWithBaseURL("", "<body bgcolor=\"#ed2669\">" + "d) " + d.get(qNo), "text/html", "UTF-8", "");
         clickedAns = 4;
     }
 
     private void resetBackground() {
-        op1.setBackgroundColor(getResources().getColor(R.color.back));
-        op2.setBackgroundColor(getResources().getColor(R.color.back));
-        op3.setBackgroundColor(getResources().getColor(R.color.back));
-        op4.setBackgroundColor(getResources().getColor(R.color.back));
-        option1.setBackgroundColor(getResources().getColor(R.color.back));
-        option2.setBackgroundColor(getResources().getColor(R.color.back));
-        option3.setBackgroundColor(getResources().getColor(R.color.back));
-        option4.setBackgroundColor(getResources().getColor(R.color.back));
+        option1.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "a) " + a.get(qNo), "text/html", "UTF-8", "");
+        option2.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "b) " + b.get(qNo), "text/html", "UTF-8", "");
+        option3.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "c) " + c.get(qNo), "text/html", "UTF-8", "");
+        option4.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "d) " + d.get(qNo), "text/html", "UTF-8", "");
     }
 
     private void onClickOption() {
-        op1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                op1Click();
-            }
-        });
-        op2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                op2Click();
-            }
-        });
-        op3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                op3Click();
-            }
-        });
-        op4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                op4Click();
-            }
-        });
-
-        option1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                op1Click();
-                return true;
-            }
-        });
-        option2.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                op2Click();
-                return true;
-            }
-        });
-        option3.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                op3Click();
-                return true;
-            }
-        });
-        option4.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                op4Click();
-                return true;
-            }
-        });
-
+        option1.setOnTouchListener(
+                new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        op1Click();
+                        return true;
+                    }
+                }
+        );
+        option2.setOnTouchListener(
+                new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        op2Click();
+                        return true;
+                    }
+                }
+        );
+        option3.setOnTouchListener(
+                new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        op3Click();
+                        return true;
+                    }
+                }
+        );
+        option4.setOnTouchListener(
+                new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        op4Click();
+                        return true;
+                    }
+                }
+        );
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -440,14 +383,7 @@ public class QuizActivity extends AppCompatActivity {
 
     public void nextQueAndReset() {
         qNo++;
-        op1.setBackgroundColor(getResources().getColor(R.color.back));
-        op2.setBackgroundColor(getResources().getColor(R.color.back));
-        op3.setBackgroundColor(getResources().getColor(R.color.back));
-        op4.setBackgroundColor(getResources().getColor(R.color.back));
-        option1.setBackgroundColor(getResources().getColor(R.color.back));
-        option2.setBackgroundColor(getResources().getColor(R.color.back));
-        option3.setBackgroundColor(getResources().getColor(R.color.back));
-        option4.setBackgroundColor(getResources().getColor(R.color.back));
+        resetBackground();
         clickedAns = 0;
         fab.setImageResource(R.drawable.ic_done_black_18dp);
         new fillTexts().execute();
@@ -477,7 +413,7 @@ public class QuizActivity extends AppCompatActivity {
                 answer.add(jo_inside.getString("ans"));
             }
 
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
@@ -579,7 +515,7 @@ public class QuizActivity extends AppCompatActivity {
                 public void run() {
                     try {
                         sleep(1400);
-                    } catch (Exception e) {
+                    } catch (Exception ignored) {
                     }
                 }
             };
