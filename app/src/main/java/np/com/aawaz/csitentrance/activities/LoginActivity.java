@@ -76,7 +76,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             first.setVisibility(View.VISIBLE);
             firstTime();
         }
-
     }
 
     private void firstTime() {

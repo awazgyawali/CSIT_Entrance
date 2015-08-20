@@ -464,11 +464,10 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public void setDataToArrayList() {
-        //Reading from json file and insillizing inside arrayList
         try {
             JSONObject obj = new JSONObject(AssetJSONFile("question" + code + ".json", this));
             JSONArray m_jArry = obj.getJSONArray("questions");
-            for (int i = 0; i < m_jArry.length(); i++) {
+            for (int i = qNo == 0 ? 0 : qNo - 1; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
                 questions.add(jo_inside.getString("question"));
                 a.add(jo_inside.getString("a"));
@@ -591,7 +590,6 @@ public class QuizActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-
             fillTexts(qNo,true);
             haldleProgresss();
         }

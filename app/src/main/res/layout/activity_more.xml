@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,14 +9,5 @@
         android:id="@+id/moreToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary6"
-        app:theme="@style/Theme.AppCompat" />
-
-    <android.support.v7.widget.AppCompatRatingBar
-        android:id="@+id/progressBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="120"
-        android:progress="50" />
-
+        android:background="@color/toolbar_color"></android.support.v7.widget.Toolbar>
 </LinearLayout>

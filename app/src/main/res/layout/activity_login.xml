@@ -227,6 +227,7 @@
         android:background="@color/dark3">
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -246,8 +247,8 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="Your key to CSIT Entrance."
-                android:textColor="#fff"
-                android:textSize="20dp" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#fff" />
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>
