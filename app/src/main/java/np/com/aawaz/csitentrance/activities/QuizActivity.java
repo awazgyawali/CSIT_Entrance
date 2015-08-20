@@ -430,11 +430,11 @@ public class QuizActivity extends AppCompatActivity {
         if ((clickedAns == 1 && answer.get(qNo).equals("a")) || (clickedAns == 2 && answer.get(qNo).equals("b")) ||
                 (clickedAns == 3 && answer.get(qNo).equals("c")) || (clickedAns == 4 && answer.get(qNo).equals("d"))) {
             feedback.setText("+1");
-            feedback.setBackgroundColor(getResources().getColor(R.color.rightFeedback));
+            feedback.setBackgroundColor(getResources().getColor(R.color.green));
             score++;
         } else {
             feedback.setText("+0");
-            feedback.setBackgroundColor(getResources().getColor(R.color.wrongFeedback));
+            feedback.setBackgroundColor(getResources().getColor(R.color.red));
         }
     }
 

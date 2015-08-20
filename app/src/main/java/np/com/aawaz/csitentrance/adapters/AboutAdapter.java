@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
@@ -73,17 +72,14 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
             holder.facebook.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i;
+                    Intent i = null;
                     try {
                         context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
                         i = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://profile/" + fbId[position]));
                     } catch (Exception e) {
                         i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + fbLink[position]));
-                    }
-                    try {
+                    } finally {
                         context.startActivity(i);
-                    } catch (Exception e) {
-                        Toast.makeText(context,"Something went wrong",Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -95,16 +91,14 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
             holder.twitter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i;
+                    Intent i = null;
                     try {
-                        context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+                        context.getPackageManager().getPackageInfo("com.twitter.android", 0);
                         i = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=" + twiterUserId[position]));
                     } catch (Exception e) {
-                        i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/"+twitterHandle[position]));
-                    }try {
+                        i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + twitterHandle[position]));
+                    } finally {
                         context.startActivity(i);
-                    }catch (Exception e){
-                        Toast.makeText(context,"Something went wrong",Toast.LENGTH_SHORT).show();
                     }
                 }
             });

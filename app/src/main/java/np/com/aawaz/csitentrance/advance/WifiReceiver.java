@@ -32,6 +32,7 @@ public class WifiReceiver extends BroadcastReceiver {
                     .setPeriod(periodSecs)
                     .setTag(tag)
                     .setPersisted(true)
+                    .setUpdateCurrent(true)
                     .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_CONNECTED)
                     .build();
             mScheduler.schedule(periodic);

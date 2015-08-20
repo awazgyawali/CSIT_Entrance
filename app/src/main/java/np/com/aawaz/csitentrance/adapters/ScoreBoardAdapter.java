@@ -31,13 +31,9 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
         this.names = names;
         this.scores = scores;
         this.primaryColors = new int[]{R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5, R.color.primary6,
-                R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10, R.color.primary11,
-                R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5, R.color.primary6,
                 R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10, R.color.primary11};
 
         this.darkColors = new int[]{R.color.dark2, R.color.dark3, R.color.dark4, R.color.dark5, R.color.dark6,
-                R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10, R.color.dark11,
-                R.color.dark2, R.color.dark3, R.color.dark4, R.color.dark5, R.color.dark6,
                 R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10, R.color.dark11};
 
     }
@@ -62,7 +58,7 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return names.size() > 20 ? 20 : names.size();
+        return names.size() > 10 ? 10 : names.size();
     }
 
 

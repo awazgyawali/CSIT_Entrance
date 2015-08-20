@@ -17,7 +17,6 @@ import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Request;
@@ -110,10 +109,10 @@ public class CSITQuery extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.toString().equals("")) {
+                if (charSequence.length() == 0) {
                     send.setVisibility(View.GONE);
                 } else {
-                    send.setVisibility(View.VISIBLE);
+                    send.setVisibility(View.INVISIBLE);
                 }
 
             }
@@ -166,7 +165,6 @@ public class CSITQuery extends AppCompatActivity {
                     backgroundHandler();
                     initial.dismiss();
                 } catch (JSONException e) {
-                    Toast.makeText(context, "Application error. Please report us.", Toast.LENGTH_SHORT).show();
                     initial.dismiss();
                     finish();
                 }
@@ -175,7 +173,7 @@ public class CSITQuery extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 initial.dismiss();
-                Toast.makeText(context, "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
+                Snackbar.make(findViewById(R.id.mainParent), "Unable to connect. Please check your internet connection.", Snackbar.LENGTH_SHORT).show();
                 finish();
             }
         });

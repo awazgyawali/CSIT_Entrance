@@ -1,8 +1,10 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -54,30 +56,31 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         TextView name = (TextView) findViewById(R.id.nameView);
         points = (TextView) findViewById(R.id.pointView);
         name.setText(pref.getString("Name", "") + " " + pref.getString("Surname", ""));
-        points.setText(getTotal() + " pts");
+        points.setText(getTotalScore() + " pts");
         ImageView img = (ImageView) findViewById(R.id.profPic);
         img.setImageDrawable(getResources().getDrawable(avatar[(pref.getInt("Avatar", 1)) - 1]));
         points.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new MaterialDialog.Builder(MainActivity.this)
-                        .title("Remove progress")
-                        .content("Are you sure you want to erase the game progress?")
-                        .positiveText("Yes")
-                        .negativeText("No")
-                        .positiveColor(getResources().getColor(R.color.green))
-                        .negativeColor(getResources().getColor(R.color.red))
-                        .callback(new MaterialDialog.ButtonCallback() {
-                            @Override
-                            public void onPositive(MaterialDialog dialog) {
-                                super.onPositive(dialog);
-                                removeAllTheProgress();
-                                points.setText(getTotal() + " pts");
-                                Snackbar.make(findViewById(R.id.mainParent), "Progress clear successful", Snackbar.LENGTH_SHORT).show();
-                            }
-                        })
-                        .build()
-                        .show();
+                if (getTotalPlayed() != 0)
+                    new MaterialDialog.Builder(MainActivity.this)
+                            .title("Reset progress")
+                            .content("Are you sure you want to erase the game progress?")
+                            .positiveText("Yes")
+                            .negativeText("No")
+                            .positiveColor(getResources().getColor(R.color.green))
+                            .negativeColor(getResources().getColor(R.color.red))
+                            .callback(new MaterialDialog.ButtonCallback() {
+                                @Override
+                                public void onPositive(MaterialDialog dialog) {
+                                    super.onPositive(dialog);
+                                    removeAllTheProgress();
+                                    points.setText(getTotalScore() + " pts");
+                                    Snackbar.make(findViewById(R.id.mainParent), "Progress reset successful", Snackbar.LENGTH_SHORT).show();
+                                }
+                            })
+                            .build()
+                            .show();
             }
         });
 
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         adapter.setClickListner(this);
         recycler.setAdapter(adapter);
         recycler.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
-        points.setText(getTotal() + " pts");
+        points.setText(getTotalScore() + " pts");
     }
 
     private void removeAllTheProgress() {
@@ -109,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         adapter.notifyDataSetChanged();
     }
 
-    private int getTotal() {
+    private int getTotalScore() {
         SharedPreferences pref = getSharedPreferences("values", MODE_PRIVATE);
         int grand = 0;
         for (int i = 1; i < 8; i++)
@@ -117,10 +120,18 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         return grand;
     }
 
+    private int getTotalPlayed() {
+        SharedPreferences pref = getSharedPreferences("values", MODE_PRIVATE);
+        int grand = 0;
+        for (int i = 1; i < 8; i++)
+            grand = grand + pref.getInt("played" + i, 0);
+        return grand;
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-        points.setText(getTotal() + " pts");
+        points.setText(getTotalScore() + " pts");
         if(adapter!=null && clickedItem!=0)
             adapter.notifyItemChanged(clickedItem);
     }
@@ -153,8 +164,12 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
             Intent intent = new Intent(this, Colleges.class);
             startActivity(intent);
         } else if (position == 8) {
-            Intent intent = new Intent(this, EntranceNews.class);
-            startActivity(intent);
+            if (getSharedPreferences("values", Context.MODE_PRIVATE).getInt("score" + position, 0) == 0 && !isConnected()) {
+                Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(this, EntranceNews.class);
+                startActivity(intent);
+            }
         } else if (position == 9) {
             if (!isConnected()) {
                 Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
@@ -183,15 +198,11 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
     }
 
     public boolean isLargeScreen() {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-            return false;
-        else
-            return (getResources().getConfiguration().screenLayout
-                    & Configuration.SCREENLAYOUT_SIZE_MASK)
-                    >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
+        return getResources().getConfiguration().orientation != Configuration.ORIENTATION_PORTRAIT && (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
     }
 
     public boolean isConnected() {
-        return true;
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
     }
 }
