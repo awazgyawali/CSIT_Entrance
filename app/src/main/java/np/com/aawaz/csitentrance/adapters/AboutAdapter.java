@@ -98,8 +98,7 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
                     Intent i;
                     try {
                         context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
-                        i = new Intent(Intent.ACTION_VIEW);
-                        i.setData(Uri.parse("twitter://user?user_id=" + twiterUserId[position]));
+                        i = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=" + twiterUserId[position]));
                     } catch (Exception e) {
                         i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/"+twitterHandle[position]));
                     }try {

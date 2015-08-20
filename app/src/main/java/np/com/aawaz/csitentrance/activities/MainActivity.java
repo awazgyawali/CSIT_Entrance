@@ -17,13 +17,9 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
-import com.google.android.gms.gcm.GcmNetworkManager;
-import com.google.android.gms.gcm.PeriodicTask;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.MainRecyclerAdapter;
-import np.com.aawaz.csitentrance.advance.BackgroundTaskHandler;
-import np.com.aawaz.csitentrance.advance.Singleton;
 
 
 public class MainActivity extends AppCompatActivity implements MainRecyclerAdapter.ClickListner {
@@ -41,17 +37,13 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         analytics = GoogleAnalytics.getInstance(this);
         analytics.setLocalDispatchPeriod(1800);
         tracker = analytics.newTracker("UA-63920529-5");
         tracker.enableExceptionReporting(true);
         tracker.enableAutoActivityTracking(true);
 
-
         loadAd();
-
-        constructJob();
 
         int avatar[] = {R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five,
                 R.drawable.six, R.drawable.seven, R.drawable.eight, R.drawable.nine, R.drawable.ten,
@@ -85,25 +77,6 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         points.setText(getTotal() + " pts");
 
 
-    }
-
-    private void constructJob() {
-        GcmNetworkManager mScheduler= Singleton.getInstance().getGcmScheduler();
-
-        long periodSecs = 30L;
-
-        int taskID=100;
-
-        String tag = "periodic  | " + taskID + ": " + periodSecs + "s";
-
-        PeriodicTask periodic = new PeriodicTask.Builder()
-                .setService(BackgroundTaskHandler.class)
-                .setPeriod(periodSecs)
-                .setTag(tag)
-                .setPersisted(true)
-                .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_CONNECTED)
-                .build();
-        mScheduler.schedule(periodic);
     }
 
     private int getTotal() {

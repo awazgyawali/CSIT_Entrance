@@ -22,7 +22,6 @@ public class About extends AppCompatActivity {
 
     RecyclerView recyAbout;
     CollapsingToolbarLayout collapsingToolbarLayout;
-    LikeView likeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

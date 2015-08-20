@@ -52,36 +52,37 @@ public class BackgroundTaskHandler extends GcmTaskService {
 
     @Override
     public int onRunTask(TaskParams taskParams) {
+        try {
+            uploadScore();
 
-        uploadScore();
+            if (!CSITQuery.runningStatus())
+                updateQuery();
 
-        if(!CSITQuery.runningStatus())
-            updateQuery();
+            updateNews();
 
-        updateNews();
-
-        uploadReport();
-
+            uploadReport();
+        } catch (Exception ignored) {
+        }
         return GcmNetworkManager.RESULT_SUCCESS;
     }
 
-    private void uploadReport() {
+    private void uploadReport() throws Exception {
         final SQLiteDatabase database=Singleton.getInstance().getDatabase();
-        final Cursor cursor=database.query("report",new String[]{"ID","year","qno","bug"},null,null,null,null,null);
-        if(cursor.moveToNext()){
+        final Cursor cursorReport = database.query("report", new String[]{"ID", "year", "qno", "bug"}, null, null, null, null, null);
+        if (cursorReport.moveToNext()) {
             String url = getString(R.string.uploadReport);
             Uri.Builder uri = new Uri.Builder();
             String values = uri.authority("")
-                    .appendQueryParameter("year", cursor.getString(cursor.getColumnIndex("year")))
-                    .appendQueryParameter("qno", cursor.getString(cursor.getColumnIndex("qno")))
-                    .appendQueryParameter("bug", cursor.getString(cursor.getColumnIndex("bug")))
+                    .appendQueryParameter("year", cursorReport.getString(cursorReport.getColumnIndex("year")))
+                    .appendQueryParameter("qno", cursorReport.getString(cursorReport.getColumnIndex("qno")))
+                    .appendQueryParameter("bug", cursorReport.getString(cursorReport.getColumnIndex("bug")))
                     .build().toString();
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
 
                 @Override
                 public void onResponse(JSONObject response) {
-                    database.delete("report", "ID =?", new String[]{cursor.getInt(cursor.getColumnIndex("ID")) + ""});
-                    cursor.close();
+                    database.delete("report", "ID =?", new String[]{cursorReport.getInt(cursorReport.getColumnIndex("ID")) + ""});
+                    cursorReport.close();
                     database.close();
                 }
 
@@ -89,7 +90,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
 
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    cursor.close();
+                    cursorReport.close();
                     database.close();
                 }
             });
@@ -98,7 +99,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
     }
 
 
-    private void uploadScore() {
+    private void uploadScore() throws Exception {
         String url = getString(R.string.postScoreurl);
         Uri.Builder uri = new Uri.Builder();
         String values = uri.authority("")
@@ -106,24 +107,11 @@ public class BackgroundTaskHandler extends GcmTaskService {
                 .appendQueryParameter("name", getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "trash"))
                 .appendQueryParameter("score", getTotal() + "")
                 .build().toString();
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
-
-            @Override
-            public void onResponse(JSONObject response) {
-
-            }
-
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, null, null);
         requestQueue.add(jsonObjectRequest);
     }
 
-    private void updateNews() {
+    private void updateNews() throws Exception {
         String url = getString(R.string.url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
 
@@ -162,19 +150,16 @@ public class BackgroundTaskHandler extends GcmTaskService {
 
                 }
             }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
+        }, null);
         requestQueue.add(jsonObjectRequest);
     }
 
-    private void updateQuery() {
+    private void updateQuery() throws Exception {
         String url = getString(R.string.queryFetchUrl);
-        final JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.GET, url + getSharedPreferences("details", Context.MODE_PRIVATE).getString("fbId", "0"), new Response.Listener<JSONObject>() {
+        String fbId = getSharedPreferences("details", Context.MODE_PRIVATE).getString("fbId", "0");
+        if (fbId == "0")
+            return;
+        final JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.GET, url + fbId, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -196,14 +181,9 @@ public class BackgroundTaskHandler extends GcmTaskService {
                 } catch (JSONException e) {
                 }
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
+        }, null);
         requestQueue.add(jsonObjectRequest1);
     }
-
 
     private void notification(String newsTitle, String content, String ticker, int notifyNumber, Intent intent1) {
         NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(this);
@@ -228,7 +208,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
         wl.release();
     }
 
-    private void storeToDb() {
+    private void storeToDb() throws Exception {
         SQLiteDatabase database = Singleton.getInstance().getDatabase();
         database.delete("news", null, null);
         ContentValues values = new ContentValues();
@@ -246,7 +226,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
         database.close();
     }
 
-    public int noOfRows() {
+    public int noOfRows() throws Exception {
         SQLiteDatabase databaseForNews = Singleton.getInstance().getDatabase();
         Cursor cursor = databaseForNews.query("news", new String[]{"title"}, null, null, null, null, null);
         int i = 0;

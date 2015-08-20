@@ -8,7 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.google.android.gms.gcm.GcmNetworkManager;
-import com.google.android.gms.gcm.OneoffTask;
+import com.google.android.gms.gcm.PeriodicTask;
 
 
 public class WifiReceiver extends BroadcastReceiver {
@@ -19,24 +19,24 @@ public class WifiReceiver extends BroadcastReceiver {
 
         NetworkInfo netInfo = conMan.getActiveNetworkInfo();
 
-        if (netInfo != null && netInfo.getType() == ConnectivityManager.TYPE_WIFI ) {
+        String tag = "periodic";
 
-            long startSecs = 0L;
+        GcmNetworkManager mScheduler = Singleton.getInstance().getGcmScheduler();
 
-            long endSecs = startSecs + 3600L;
+        if (netInfo != null && (netInfo.getType() == ConnectivityManager.TYPE_MOBILE || netInfo.getType() == ConnectivityManager.TYPE_WIFI)) {
 
-            String tag = "Single  Task";
+            long periodSecs = 60L;
 
-            OneoffTask oneoff = new OneoffTask.Builder()
+            PeriodicTask periodic = new PeriodicTask.Builder()
                     .setService(BackgroundTaskHandler.class)
+                    .setPeriod(periodSecs)
                     .setTag(tag)
-                    .setExecutionWindow(startSecs, endSecs)
+                    .setPersisted(true)
                     .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_CONNECTED)
                     .build();
-
-            GcmNetworkManager mScheduler=Singleton.getInstance().getGcmScheduler();
-
-            mScheduler.schedule(oneoff);
+            mScheduler.schedule(periodic);
+        } else {
+            mScheduler.cancelTask(tag, BackgroundTaskHandler.class);
         }
     }
 }
