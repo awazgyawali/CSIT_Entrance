@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         analytics = GoogleAnalytics.getInstance(this);
         analytics.setLocalDispatchPeriod(1800);
         tracker = analytics.newTracker("UA-63920529-5");
@@ -115,11 +114,13 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
     }
 
     private int getTotalScore() {
+
         SharedPreferences pref = getSharedPreferences("values", MODE_PRIVATE);
         int grand = 0;
         for (int i = 1; i < 8; i++)
             grand = grand + pref.getInt("score" + i, 0);
         return grand;
+
     }
 
     private int getTotalPlayed() {
@@ -203,7 +204,8 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
     }
 
     public boolean isLargeScreen() {
-        return getResources().getConfiguration().orientation != Configuration.ORIENTATION_PORTRAIT && (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
+        return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >
+                Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
     public boolean isConnected() {

@@ -2,24 +2,19 @@ package np.com.aawaz.csitentrance.advance;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 
 import org.acra.ACRA;
 import org.acra.ReportField;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
+import org.acra.collector.CrashReportData;
+import org.acra.sender.ReportSender;
+import org.acra.sender.ReportSenderException;
 
-import np.com.aawaz.csitentrance.R;
-
-@ReportsCrashes(mailTo = "csitentrance@gmail.com",
-        customReportContent = { ReportField.APP_VERSION_CODE, ReportField.ANDROID_VERSION,
+@ReportsCrashes(customReportContent = {ReportField.APP_VERSION_CODE, ReportField.ANDROID_VERSION,
                 ReportField.PHONE_MODEL, ReportField.STACK_TRACE, ReportField.USER_COMMENT},
-        mode = ReportingInteractionMode.DIALOG,
-        resToastText = R.string.crash_toast_text,
-        resDialogText = R.string.crash_dialog_text,
-        resDialogIcon = android.R.drawable.ic_dialog_info,
-        resDialogTitle = R.string.crash_dialog_title,
-        resDialogCommentPrompt = R.string.crash_dialog_comment_prompt,
-        resDialogOkToast = R.string.crash_dialog_ok_toast
+        mode = ReportingInteractionMode.SILENT
 )
 public class MyApplication extends Application {
     private static MyApplication sInstance;
@@ -37,6 +32,20 @@ public class MyApplication extends Application {
     public void onCreate() {
         sInstance = this;
         ACRA.init(this);
+        YourOwnSender yourSender = new YourOwnSender();
+        ACRA.getErrorReporter().setReportSender(yourSender);
         super.onCreate();
+    }
+
+    public class YourOwnSender implements ReportSender {
+
+        public YourOwnSender() {
+        }
+
+        @Override
+        public void send(Context context, CrashReportData crashReportData) throws ReportSenderException {
+            startActivity(new Intent(context, CrashReportSender.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    .putExtra("CrashDetail", crashReportData.toString()));
+        }
     }
 }
