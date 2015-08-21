@@ -80,11 +80,6 @@ public class About extends AppCompatActivity {
     }
 
     public boolean isLargeScreen() {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-            return false;
-        else
-            return (getResources().getConfiguration().screenLayout
-                    & Configuration.SCREENLAYOUT_SIZE_MASK)
-                    >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
+        return getResources().getConfiguration().orientation != Configuration.ORIENTATION_PORTRAIT && (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
     }
 }

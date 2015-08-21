@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -139,6 +141,9 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
     @Override
     public void itemClicked(View view, int position) {
         clickedItem=position;
+        YoYo.with(Techniques.Flash)
+                .duration(500)
+                .playOn(view);
         if (position == 0) {
             if (!isConnected()) {
                 Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();

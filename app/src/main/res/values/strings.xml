@@ -43,4 +43,7 @@
     <string name="crash_dialog_title">CSIT Entrance Crash Report</string>
     <string name="crash_dialog_comment_prompt">What where you doing?</string>
     <string name="crash_dialog_ok_toast">Thank you!</string>
+    <string name="title_activity_crash_report_sender">CrashReportSender</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

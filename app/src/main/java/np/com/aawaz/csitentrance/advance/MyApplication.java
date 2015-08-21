@@ -12,7 +12,7 @@ import np.com.aawaz.csitentrance.R;
 
 @ReportsCrashes(mailTo = "csitentrance@gmail.com",
         customReportContent = { ReportField.APP_VERSION_CODE, ReportField.ANDROID_VERSION,
-        ReportField.PHONE_MODEL,ReportField.STACK_TRACE,ReportField.USER_COMMENT },
+                ReportField.PHONE_MODEL, ReportField.STACK_TRACE, ReportField.USER_COMMENT},
         mode = ReportingInteractionMode.DIALOG,
         resToastText = R.string.crash_toast_text,
         resDialogText = R.string.crash_dialog_text,
@@ -20,7 +20,6 @@ import np.com.aawaz.csitentrance.R;
         resDialogTitle = R.string.crash_dialog_title,
         resDialogCommentPrompt = R.string.crash_dialog_comment_prompt,
         resDialogOkToast = R.string.crash_dialog_ok_toast
-
 )
 public class MyApplication extends Application {
     private static MyApplication sInstance;
