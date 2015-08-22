@@ -47,7 +47,7 @@ public class WifiReceiver extends BroadcastReceiver {
 
         if (netInfo != null && (netInfo.getType() == ConnectivityManager.TYPE_MOBILE || netInfo.getType() == ConnectivityManager.TYPE_WIFI)) {
 
-            long periodSecs = 600L;
+            long periodSecs = 180L;
 
             PeriodicTask periodic = new PeriodicTask.Builder()
                     .setService(BackgroundTaskHandler.class)
