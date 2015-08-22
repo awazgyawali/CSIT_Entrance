@@ -46,4 +46,6 @@
     <string name="title_activity_crash_report_sender">CrashReportSender</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="senderid">csitentrancereporter@gmail.com</string>
+    <string name="passwordid">gotocook11</string>
 </resources>

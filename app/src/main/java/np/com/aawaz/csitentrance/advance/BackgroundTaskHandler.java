@@ -2,12 +2,9 @@ package np.com.aawaz.csitentrance.advance;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
@@ -15,7 +12,6 @@ import android.support.v4.app.NotificationCompat;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.GcmTaskService;
@@ -29,7 +25,6 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.CSITQuery;
-import np.com.aawaz.csitentrance.activities.EntranceNews;
 
 public class BackgroundTaskHandler extends GcmTaskService {
     ArrayList<String> topic = new ArrayList<>(),
@@ -50,54 +45,43 @@ public class BackgroundTaskHandler extends GcmTaskService {
         requestQueue = Singleton.getInstance().getRequestQueue();
     }
 
+    public static void notification(String newsTitle, String content, String ticker, int notifyNumber, Intent intent1, Context context) {
+        NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(context);
+        notificationCompat.setAutoCancel(true)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setTicker(ticker)
+                .setWhen(System.currentTimeMillis())
+                .setContentTitle(newsTitle)
+                .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.new_arrived))
+                .setContentText(content);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+        notificationCompat.setContentIntent(pendingIntent);
+        NotificationManager notificationManagerCompat = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManagerCompat.notify(notifyNumber, notificationCompat.build());
+        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, context.getClass().getName());
+        wl.acquire();
+        try {
+            Thread.sleep(7000);
+        } catch (InterruptedException e) {
+        }
+        wl.release();
+    }
+
     @Override
     public int onRunTask(TaskParams taskParams) {
+
         try {
-            uploadScore();
+            if (getTotal() != getSharedPreferences("pre", MODE_PRIVATE).getInt("preScore", 0))
+                uploadScore();
 
             if (!CSITQuery.runningStatus())
                 updateQuery();
 
-            updateNews();
-
-            uploadReport();
         } catch (Exception ignored) {
         }
         return GcmNetworkManager.RESULT_SUCCESS;
     }
-
-    private void uploadReport() throws Exception {
-        final SQLiteDatabase database=Singleton.getInstance().getDatabase();
-        final Cursor cursorReport = database.query("report", new String[]{"ID", "year", "qno", "bug"}, null, null, null, null, null);
-        if (cursorReport.moveToNext()) {
-            String url = getString(R.string.uploadReport);
-            Uri.Builder uri = new Uri.Builder();
-            String values = uri.authority("")
-                    .appendQueryParameter("year", cursorReport.getString(cursorReport.getColumnIndex("year")))
-                    .appendQueryParameter("qno", cursorReport.getString(cursorReport.getColumnIndex("qno")))
-                    .appendQueryParameter("bug", cursorReport.getString(cursorReport.getColumnIndex("bug")))
-                    .build().toString();
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
-
-                @Override
-                public void onResponse(JSONObject response) {
-                    database.delete("report", "ID =?", new String[]{cursorReport.getInt(cursorReport.getColumnIndex("ID")) + ""});
-                    cursorReport.close();
-                    database.close();
-                }
-
-            }, new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    cursorReport.close();
-                    database.close();
-                }
-            });
-            requestQueue.add(jsonObjectRequest);
-        }
-    }
-
 
     private void uploadScore() throws Exception {
         String url = getString(R.string.postScoreurl);
@@ -110,50 +94,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
-            }
-        }, null);
-        requestQueue.add(jsonObjectRequest);
-    }
-
-    private void updateNews() throws Exception {
-        String url = getString(R.string.url);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
-
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    topic.clear();
-                    subTopic.clear();
-                    imageURL.clear();
-                    content.clear();
-                    author.clear();
-                    link.clear();
-                    linkTitle.clear();
-                    JSONArray jsonArray = response.getJSONArray("news");
-                    int no = 0;
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jo_inside = jsonArray.getJSONObject(i);
-                        topic.add(jo_inside.getString("topic"));
-                        subTopic.add(jo_inside.getString("subTopic"));
-                        imageURL.add(jo_inside.getString("imageURL"));
-                        content.add(jo_inside.getString("content"));
-                        author.add(jo_inside.getString("author"));
-                        link.add(jo_inside.getString("link"));
-                        linkTitle.add(jo_inside.getString("linkTitle"));
-                        no++;
-                    }
-                    context.getSharedPreferences("values",Context.MODE_PRIVATE).edit().putInt("score8",no).apply();
-                    if (no > noOfRows()) {
-                        if ((no - noOfRows()) >= 1)
-                            notification(no - noOfRows() + " news updated.", "Check them out now!", "News updated", 12345, new Intent(context, EntranceNews.class));
-                        else
-                            notification(topic.get(0), content.get(0), "News updated", 12345, new Intent(context, EntranceNews.class));
-                    }
-                    storeToDb();
-                } catch (Exception e) {
-
-                }
+                getSharedPreferences("pre", MODE_PRIVATE).edit().putInt("preScore", getTotal());
             }
         }, null);
         requestQueue.add(jsonObjectRequest);
@@ -180,7 +121,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
                         }
                     }
                     if (messages.size() > getSharedPreferences("data", Context.MODE_PRIVATE).getInt("query", 0)) {
-                        notification("Reply for your pre-posted query.", messages.get(messages.size() - 1), "New query received.", 54321, new Intent(context, CSITQuery.class));
+                        notification("Reply for your pre-posted query.", messages.get(messages.size() - 1), "New query received.", 54321, new Intent(context, CSITQuery.class), BackgroundTaskHandler.this);
                         getSharedPreferences("data", Context.MODE_PRIVATE).edit().putInt("query", messages.size()).apply();
                     }
                 } catch (JSONException e) {
@@ -188,59 +129,6 @@ public class BackgroundTaskHandler extends GcmTaskService {
             }
         }, null);
         requestQueue.add(jsonObjectRequest1);
-    }
-
-    private void notification(String newsTitle, String content, String ticker, int notifyNumber, Intent intent1) {
-        NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(this);
-        notificationCompat.setAutoCancel(true)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setTicker(ticker)
-                .setWhen(System.currentTimeMillis())
-                .setContentTitle(newsTitle)
-                .setSound(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.new_arrived))
-                .setContentText(content);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
-        notificationCompat.setContentIntent(pendingIntent);
-        NotificationManager notificationManagerCompat = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManagerCompat.notify(notifyNumber, notificationCompat.build());
-        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, getClass().getName());
-        wl.acquire();
-        try {
-            Thread.sleep(7000);
-        } catch (InterruptedException e) {
-        }
-        wl.release();
-    }
-
-    private void storeToDb() throws Exception {
-        SQLiteDatabase database = Singleton.getInstance().getDatabase();
-        database.delete("news", null, null);
-        ContentValues values = new ContentValues();
-        for (int i = 0; i < topic.size(); i++) {
-            values.clear();
-            values.put("title", topic.get(i));
-            values.put("subTopic", subTopic.get(i));
-            values.put("content", content.get(i));
-            values.put("imageURL", imageURL.get(i));
-            values.put("author", author.get(i));
-            values.put("link", link.get(i));
-            values.put("linkTitle", linkTitle.get(i));
-            database.insert("news", null, values);
-        }
-        database.close();
-    }
-
-    public int noOfRows() throws Exception {
-        SQLiteDatabase databaseForNews = Singleton.getInstance().getDatabase();
-        Cursor cursor = databaseForNews.query("news", new String[]{"title"}, null, null, null, null, null);
-        int i = 0;
-        while (cursor.moveToNext()) {
-            i++;
-        }
-        cursor.close();
-        databaseForNews.close();
-        return i;
     }
 
     private int getTotal() {

@@ -49,7 +49,7 @@
             android:layout_height="56dp"
             android:layout_gravity="bottom|right"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_add"
+            android:src="@drawable/ic_mode_edit_white_24dp"
             app:backgroundTint="@color/primary9"
             app:layout_anchor="@id/newsFeedRecy"
             app:layout_anchorGravity="bottom|right|end" />

@@ -3,11 +3,9 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -99,15 +97,12 @@ public class EntranceNews extends AppCompatActivity {
                         .input("What do you want to know?", "", false, new MaterialDialog.InputCallback() {
                             @Override
                             public void onInput(MaterialDialog materialDialog, CharSequence charSequence) {
-                                Intent sendMail = new Intent(Intent.ACTION_SEND);
-                                sendMail.setData(Uri.parse("mailto:"));
-                                String[] to = {"csitentrance@gmail.com"};
-                                sendMail.putExtra(Intent.EXTRA_EMAIL, to);
-                                sendMail.putExtra(Intent.EXTRA_SUBJECT, "CSIT Entrance: Request for a post.");
-                                sendMail.putExtra(Intent.EXTRA_TEXT, "Detail of the request: " + charSequence);
-                                sendMail.setType("message/rfc822");
-                                Intent chooser = Intent.createChooser(sendMail, "Send e-mail");
-                                startActivity(chooser);
+                                ContentValues values = new ContentValues();
+                                SQLiteDatabase database = Singleton.getInstance().getDatabase();
+                                values.put("text", "Post Request: " + charSequence);
+                                database.insert("report", null, values);
+                                database.close();
+                                Snackbar.make(findViewById(R.id.parentNews), "Thanks for the request.", Snackbar.LENGTH_SHORT).show();
                             }
                         })
                         .build()
