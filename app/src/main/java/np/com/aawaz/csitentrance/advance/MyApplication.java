@@ -27,6 +27,20 @@ public class MyApplication extends Application {
         return sInstance.getApplicationContext();
     }
 
+    public static Thread performOnBackgroundThread(final Runnable runnable) {
+        final Thread t = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    runnable.run();
+                } finally {
+
+                }
+            }
+        };
+        t.start();
+        return t;
+    }
 
     @Override
     public void onCreate() {

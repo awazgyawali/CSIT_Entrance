@@ -3,16 +3,20 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -78,6 +82,38 @@ public class EntranceNews extends AppCompatActivity {
 
         //Setting the data
         setDataToArrayListFromDb();
+
+        handleRequestNews();
+    }
+
+    private void handleRequestNews() {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.requestNews);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new MaterialDialog.Builder(EntranceNews.this)
+                        .title("Request a post")
+                        .content("Send us a request for a post, news, article.")
+                        .inputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES)
+                        .positiveText("Send")
+                        .input("What do you want to know?", "", false, new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(MaterialDialog materialDialog, CharSequence charSequence) {
+                                Intent sendMail = new Intent(Intent.ACTION_SEND);
+                                sendMail.setData(Uri.parse("mailto:"));
+                                String[] to = {"csitentrance@gmail.com"};
+                                sendMail.putExtra(Intent.EXTRA_EMAIL, to);
+                                sendMail.putExtra(Intent.EXTRA_SUBJECT, "CSIT Entrance: Request for a post.");
+                                sendMail.putExtra(Intent.EXTRA_TEXT, "Detail of the request: " + charSequence);
+                                sendMail.setType("message/rfc822");
+                                Intent chooser = Intent.createChooser(sendMail, "Send e-mail");
+                                startActivity(chooser);
+                            }
+                        })
+                        .build()
+                        .show();
+            }
+        });
     }
 
     public void fillData() {

@@ -63,7 +63,7 @@ public class About extends AppCompatActivity {
         sendMail.putExtra(Intent.EXTRA_EMAIL, to);
         sendMail.putExtra(Intent.EXTRA_SUBJECT, "Regarding CSIT Entrance Android Application.");
         sendMail.setType("message/rfc822");
-        Intent chooser = Intent.createChooser(sendMail, "Send E-mail");
+        Intent chooser = Intent.createChooser(sendMail, "Send e-mail");
         startActivity(chooser);
     }
 

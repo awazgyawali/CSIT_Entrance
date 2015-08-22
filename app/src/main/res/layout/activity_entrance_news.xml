@@ -2,13 +2,13 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/parentNews"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.activities.EntranceNews">
 
     <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/parentNews"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -42,6 +42,18 @@
                 app:layout_scrollFlags="scroll|enterAlways" />
 
         </android.support.design.widget.AppBarLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/requestNews"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="@color/primary9"
+            app:layout_anchor="@id/newsFeedRecy"
+            app:layout_anchorGravity="bottom|right|end" />
+
     </android.support.design.widget.CoordinatorLayout>
 
     <com.google.android.gms.ads.AdView
