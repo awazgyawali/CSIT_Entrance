@@ -489,9 +489,9 @@ public class QuizActivity extends AppCompatActivity {
                 ContentValues values = new ContentValues();
                 SQLiteDatabase database= Singleton.getInstance().getDatabase();
                 if (preCheck.isChecked())
-                    values.put("text", "Year: " + code + 2068 + " Question No: " + qNo + " Problem: " + cases[i]);
+                    values.put("text", "Year: " + (code + 2068) + " Question No: " + qNo + " Problem: " + cases[i]);
                 else
-                    values.put("text", "Year: " + code + 2068 + " Question No: " + qNo + 1 + " Problem: " + cases[i]);
+                    values.put("text", "Year: " + (code + 2068) + " Question No: " + (qNo + 1) + " Problem: " + cases[i]);
                 database.insert("report", null, values);
                 database.close();
                 Toast.makeText(getApplicationContext(),"Thanks for the report.",Toast.LENGTH_SHORT).show();

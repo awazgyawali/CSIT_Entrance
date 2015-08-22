@@ -7,7 +7,6 @@ import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -80,15 +80,9 @@ public class EntranceNews extends AppCompatActivity {
 
         //Setting the data
         setDataToArrayListFromDb();
-
-        handleRequestNews();
     }
 
     private void handleRequestNews() {
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.requestNews);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 new MaterialDialog.Builder(EntranceNews.this)
                         .title("Request a post")
                         .content("Send us a request for a post, news, article.")
@@ -108,8 +102,6 @@ public class EntranceNews extends AppCompatActivity {
                         .build()
                         .show();
             }
-        });
-    }
 
     public void fillData() {
         recy = (RecyclerView) findViewById(R.id.newsFeedRecy);
@@ -237,18 +229,6 @@ public class EntranceNews extends AppCompatActivity {
         database.close();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home) {
-            finish();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     public void loadAd() {
         final AdView mAdView = (AdView) findViewById(R.id.eachNewsAd);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -282,5 +262,22 @@ public class EntranceNews extends AppCompatActivity {
             return (getResources().getConfiguration().screenLayout
                     & Configuration.SCREENLAYOUT_SIZE_MASK)
                     >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+        } else if (id == R.id.action_ask) {
+            handleRequestNews();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_news, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

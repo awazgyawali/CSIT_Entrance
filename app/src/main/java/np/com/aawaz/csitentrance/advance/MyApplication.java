@@ -1,8 +1,9 @@
 package np.com.aawaz.csitentrance.advance;
 
 import android.app.Application;
+import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 
 import org.acra.ACRA;
 import org.acra.ReportField;
@@ -11,11 +12,11 @@ import org.acra.annotation.ReportsCrashes;
 import org.acra.collector.CrashReportData;
 import org.acra.sender.ReportSender;
 import org.acra.sender.ReportSenderException;
+import org.acra.util.JSONReportBuilder;
 
 @ReportsCrashes(customReportContent = {ReportField.APP_VERSION_CODE, ReportField.ANDROID_VERSION,
-                ReportField.PHONE_MODEL, ReportField.STACK_TRACE, ReportField.USER_COMMENT},
-        mode = ReportingInteractionMode.SILENT
-)
+        ReportField.PHONE_MODEL, ReportField.STACK_TRACE, ReportField.USER_COMMENT},
+        mode = ReportingInteractionMode.SILENT)
 public class MyApplication extends Application {
     private static MyApplication sInstance;
 
@@ -58,8 +59,15 @@ public class MyApplication extends Application {
 
         @Override
         public void send(Context context, CrashReportData crashReportData) throws ReportSenderException {
-            startActivity(new Intent(context, CrashReportSender.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    .putExtra("CrashDetail", crashReportData.toString()));
+            ContentValues values = new ContentValues();
+            SQLiteDatabase database = Singleton.getInstance().getDatabase();
+            try {
+                values.put("text", crashReportData.toJSON().toString());
+            } catch (JSONReportBuilder.JSONReportException ignored) {
+
+            }
+            database.insert("report", null, values);
+            database.close();
         }
     }
 }

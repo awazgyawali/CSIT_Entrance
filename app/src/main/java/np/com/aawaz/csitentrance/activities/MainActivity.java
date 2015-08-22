@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         analytics = GoogleAnalytics.getInstance(this);
         analytics.setLocalDispatchPeriod(1800);
         tracker = analytics.newTracker("UA-63920529-5");

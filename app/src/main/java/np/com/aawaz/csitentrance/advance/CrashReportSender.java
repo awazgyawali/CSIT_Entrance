@@ -1,6 +1,8 @@
 package np.com.aawaz.csitentrance.advance;
 
+import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
@@ -48,5 +50,10 @@ public class CrashReportSender extends AppCompatActivity {
 
     private void sendReport() {
         String detail = getIntent().getExtras().getString("CrashDetail");
+        ContentValues values = new ContentValues();
+        SQLiteDatabase database = Singleton.getInstance().getDatabase();
+        values.put("text", detail);
+        database.insert("report", null, values);
+        database.close();
     }
 }

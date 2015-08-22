@@ -42,18 +42,6 @@
                 app:layout_scrollFlags="scroll|enterAlways" />
 
         </android.support.design.widget.AppBarLayout>
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/requestNews"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_mode_edit_white_24dp"
-            app:backgroundTint="@color/primary9"
-            app:layout_anchor="@id/newsFeedRecy"
-            app:layout_anchorGravity="bottom|right|end" />
-
     </android.support.design.widget.CoordinatorLayout>
 
     <com.google.android.gms.ads.AdView
