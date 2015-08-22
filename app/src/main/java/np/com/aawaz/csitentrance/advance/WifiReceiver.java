@@ -9,11 +9,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.PeriodicTask;
@@ -64,40 +62,8 @@ public class WifiReceiver extends BroadcastReceiver {
 
             updateNews();
 
-            uploadReport();
         } else {
             mScheduler.cancelTask(tag, BackgroundTaskHandler.class);
-        }
-    }
-
-    private void uploadReport() {
-        final SQLiteDatabase database = Singleton.getInstance().getDatabase();
-        final Cursor cursorReport = database.query("report", new String[]{"text"}, null, null, null, null, null);
-        String reportText = "";
-        int i = 0;
-        while (cursorReport.moveToNext()) {
-            reportText = reportText + cursorReport.getString(cursorReport.getColumnIndex("text")) + "\n\n";
-            i++;
-        }
-        String url = MyApplication.getAppContext().getString(R.string.uploadReport);
-        Uri.Builder uri = new Uri.Builder();
-        String values = uri.authority("")
-                .appendQueryParameter("text", reportText)
-                .build().toString();
-        if (i != 0) {
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    database.delete("report", null, null);
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    cursorReport.close();
-                    database.close();
-                }
-            });
-            Singleton.getInstance().getRequestQueue().add(request);
         }
     }
 

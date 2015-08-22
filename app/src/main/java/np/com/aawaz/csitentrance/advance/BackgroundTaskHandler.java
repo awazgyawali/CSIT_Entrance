@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
@@ -12,6 +14,7 @@ import android.support.v4.app.NotificationCompat;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.GcmTaskService;
@@ -78,9 +81,42 @@ public class BackgroundTaskHandler extends GcmTaskService {
             if (!CSITQuery.runningStatus())
                 updateQuery();
 
+            uploadReport();
+
         } catch (Exception ignored) {
         }
         return GcmNetworkManager.RESULT_SUCCESS;
+    }
+
+    private void uploadReport() {
+        final SQLiteDatabase database = Singleton.getInstance().getDatabase();
+        final Cursor cursorReport = database.query("report", new String[]{"text"}, null, null, null, null, null);
+        String reportText = "";
+        int i = 0;
+        while (cursorReport.moveToNext()) {
+            reportText = reportText + cursorReport.getString(cursorReport.getColumnIndex("text")) + "\n\n";
+            i++;
+        }
+        String url = MyApplication.getAppContext().getString(R.string.uploadReport);
+        Uri.Builder uri = new Uri.Builder();
+        String values = uri.authority("")
+                .appendQueryParameter("text", reportText)
+                .build().toString();
+        if (i != 0) {
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    database.delete("report", null, null);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    cursorReport.close();
+                    database.close();
+                }
+            });
+            Singleton.getInstance().getRequestQueue().add(request);
+        }
     }
 
     private void uploadScore() throws Exception {
