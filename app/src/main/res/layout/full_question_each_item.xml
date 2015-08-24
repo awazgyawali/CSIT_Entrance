@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/view"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fullQueItemCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="1dp">
+    android:layout_margin="1dp"
+    app:cardBackgroundColor="@color/primary7">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="80dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="16dp"
-            android:src="@drawable/ic_picture_as_pdf_black_24dp" />
+            android:src="@drawable/ic_picture_as_pdf_white_36dp" />
 
         <TextView
             android:id="@+id/title"
@@ -23,7 +25,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="72dp"
             android:text="2069 Question"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#fff" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -31,6 +34,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_arrow_forward_black_24dp" />
+            android:src="@drawable/ic_arrow_forward_white_24dp" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>

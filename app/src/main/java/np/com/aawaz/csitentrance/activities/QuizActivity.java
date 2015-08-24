@@ -63,7 +63,7 @@ public class QuizActivity extends AppCompatActivity {
     FloatingActionButton fab;
     ProgressBar pb;
 
-    String[] colors = {" #922b72", " #2881bb", "#2b9759", "#cf1151"};
+    String[] colors = {"#922b72", " #2881bb", "#2b9759", "#922b72", "#2881bb", "#2b9759", "#cf1151", "#4e9586"};
 
 
     WebView question;
@@ -81,7 +81,8 @@ public class QuizActivity extends AppCompatActivity {
 
     SlidingUpPanelLayout slideLayout;
 
-    String[] titles = {"Score Board", "2069 Entrance Question", "2070 Entrance Question", "2071 Entrance Question", "Model Question"};
+    String[] titles = {"", "2069 Entrance Question", "2070 Entrance Question", "2071 Entrance Question", "Model Question 1",
+            "Model Question 2", "Model Question 3", "Model Question 4", "Model Question 5"};
 
     int qNo = 0;
     int code;
@@ -115,10 +116,11 @@ public class QuizActivity extends AppCompatActivity {
                 .playOn(findViewById(R.id.quizMainLayout));
 
         //Initializing colors array
-        int primaryColors[] = {R.color.primary1, R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5,
-                R.color.primary6, R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10};
-        int darkColors[] = {R.color.dark1, R.color.dark2, R.color.dark3, R.color.dark4, R.color.dark5,
-                R.color.dark6, R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10};
+        int primaryColors[] = {R.color.primary1, R.color.primary2, R.color.primary3, R.color.primary4,
+                R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5,
+                R.color.primary6,};
+        int darkColors[] = {R.color.dark1, R.color.dark2, R.color.dark3, R.color.dark4, R.color.dark2,
+                R.color.dark3, R.color.dark4, R.color.dark5, R.color.dark6};
 
         //Initlilixing view's
         Toolbar toolbar = (Toolbar) findViewById(R.id.quizToolbar);
@@ -150,14 +152,16 @@ public class QuizActivity extends AppCompatActivity {
 
         //Receiving intent
         code = getIntent().getExtras().getInt("position");
-        if (code == 1) {
+        if (code == 1 || code == 4) {
             MyApplication.changeStatusBarColor(R.color.quiz1, this);
-        } else if (code == 2) {
+        } else if (code == 2 || code == 5) {
             MyApplication.changeStatusBarColor(R.color.quiz2, this);
-        } else if (code == 3) {
+        } else if (code == 3 || code == 6) {
             MyApplication.changeStatusBarColor(R.color.quiz3, this);
-        } else if (code == 4) {
+        } else if (code == 7) {
             MyApplication.changeStatusBarColor(R.color.quiz4, this);
+        } else if (code == 8) {
+            MyApplication.changeStatusBarColor(R.color.quiz5, this);
         }
 
         topic.setText(titles[code]);

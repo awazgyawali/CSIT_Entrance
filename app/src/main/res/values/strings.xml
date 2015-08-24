@@ -48,4 +48,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="senderid">csitentrancereporter@gmail.com</string>
     <string name="passwordid">gotocook11</string>
+    <string name="title_activity_model_questions">Model Questions</string>
+    <string name="model_question_ad_id" />
 </resources>

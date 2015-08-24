@@ -93,7 +93,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
     public static int getTotal() {
         SharedPreferences pref = MyApplication.getAppContext().getSharedPreferences("values", Context.MODE_PRIVATE);
         int grand = 0;
-        for (int i = 1; i < 5; i++)
+        for (int i = 1; i <= 8; i++)
             grand = grand + pref.getInt("score" + i, 0);
         return grand;
     }

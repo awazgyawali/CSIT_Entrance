@@ -94,7 +94,8 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
             }
         });
 
-
+        String[] titles = {"Score Board", "2069 question", "2070 question", "2071 question", "Model Questions", "More...", "Full Question",
+                "CSIT Colleges", "Entrance News", "CSIT Query", "About Us"};
         int primaryColors[] = {R.color.primary1, R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5,
                 R.color.primary6, R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10,
                 R.color.primary11};
@@ -104,8 +105,10 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         int icon[] = {R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_play_arrow_white_24dp,
                 R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_play_arrow_white_24dp,
                 R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp};
+        int images[] = {R.drawable.scoreboard, R.drawable.ico2069, R.drawable.ico2070, R.drawable.ico2071, R.drawable.model,
+                R.drawable.more, R.drawable.full_questions, R.drawable.colleges, R.drawable.news, R.drawable.query, R.drawable.about_us};
         recycler = (RecyclerView) findViewById(R.id.gridView);
-        adapter = new MainRecyclerAdapter(this, primaryColors, darkColors, icon);
+        adapter = new MainRecyclerAdapter(this, primaryColors, darkColors, icon, titles, images);
         adapter.setClickListner(this);
         recycler.setAdapter(adapter);
         recycler.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
@@ -126,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
 
         SharedPreferences pref = getSharedPreferences("values", MODE_PRIVATE);
         int grand = 0;
-        for (int i = 1; i < 8; i++)
+        for (int i = 1; i <= 8; i++)
             grand = grand + pref.getInt("score" + i, 0);
         return grand;
 
@@ -135,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
     private int getTotalPlayed() {
         SharedPreferences pref = getSharedPreferences("values", MODE_PRIVATE);
         int grand = 0;
-        for (int i = 1; i < 8; i++)
+        for (int i = 1; i <= 8; i++)
             grand = grand + pref.getInt("played" + i, 0);
         return grand;
     }
@@ -161,9 +164,12 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
             }
             Intent intent = new Intent(this, ScoreBoard.class);
             startActivity(intent);
-        } else if (position > 0 && position < 5) {
+        } else if (position > 0 && position < 4) {
             Intent intent = new Intent(this, QuizActivity.class);
             intent.putExtra("position", position);
+            startActivity(intent);
+        } else if (position == 4) {
+            Intent intent = new Intent(this, ModelQuestions.class);
             startActivity(intent);
         } else if (position == 5) {
             new MaterialDialog.Builder(this)
