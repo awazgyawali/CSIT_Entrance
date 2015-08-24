@@ -22,9 +22,14 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.gcm.GcmNetworkManager;
+import com.google.android.gms.gcm.PeriodicTask;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.MainRecyclerAdapter;
+import np.com.aawaz.csitentrance.advance.BackgroundTaskHandler;
+import np.com.aawaz.csitentrance.advance.MyApplication;
+import np.com.aawaz.csitentrance.advance.Singleton;
 
 
 public class MainActivity extends AppCompatActivity implements MainRecyclerAdapter.ClickListner {
@@ -40,13 +45,18 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         analytics = GoogleAnalytics.getInstance(this);
         analytics.setLocalDispatchPeriod(1800);
         tracker = analytics.newTracker("UA-63920529-5");
         tracker.enableExceptionReporting(true);
         tracker.enableAutoActivityTracking(true);
 
+        MyApplication.changeStatusBarColor(R.color.toolbar_color, this);
+
         loadAd();
+
+        constructJob();
 
         int avatar[] = {R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five,
                 R.drawable.six, R.drawable.seven, R.drawable.eight, R.drawable.nine, R.drawable.ten,
@@ -210,5 +220,24 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
     public boolean isConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null;
+    }
+
+    private void constructJob() {
+
+        String tag = "periodic";
+
+        GcmNetworkManager mScheduler = Singleton.getInstance().getGcmScheduler();
+
+        long periodSecs = 600L;
+
+        PeriodicTask periodic = new PeriodicTask.Builder()
+                .setService(BackgroundTaskHandler.class)
+                .setPeriod(periodSecs)
+                .setTag(tag)
+                .setPersisted(true)
+                .setUpdateCurrent(true)
+                .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_CONNECTED)
+                .build();
+        mScheduler.schedule(periodic);
     }
 }

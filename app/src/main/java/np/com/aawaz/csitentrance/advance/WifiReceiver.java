@@ -15,8 +15,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.gms.gcm.GcmNetworkManager;
-import com.google.android.gms.gcm.PeriodicTask;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -43,35 +41,22 @@ public class WifiReceiver extends BroadcastReceiver {
 
         NetworkInfo netInfo = conMan.getActiveNetworkInfo();
 
-        String tag = "periodic";
+        if (netInfo != null && netInfo.getType() == ConnectivityManager.TYPE_WIFI) {
 
-        GcmNetworkManager mScheduler = Singleton.getInstance().getGcmScheduler();
+            try {
+                updateNews();
 
-        if (netInfo != null && (netInfo.getType() == ConnectivityManager.TYPE_MOBILE || netInfo.getType() == ConnectivityManager.TYPE_WIFI)) {
+                uploadReport();
 
-            long periodSecs = 180L;
+                BackgroundTaskHandler.uploadScore();
 
-            PeriodicTask periodic = new PeriodicTask.Builder()
-                    .setService(BackgroundTaskHandler.class)
-                    .setPeriod(periodSecs)
-                    .setTag(tag)
-                    .setFlex(periodSecs)
-                    .setPersisted(true)
-                    .setUpdateCurrent(true)
-                    .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_CONNECTED)
-                    .build();
-            mScheduler.schedule(periodic);
+            } catch (Exception e) {
+            }
 
-            updateNews();
-
-            uploadReport();
-
-        } else {
-            mScheduler.cancelTask(tag, BackgroundTaskHandler.class);
         }
     }
 
-    private void uploadReport() {
+    private void uploadReport() throws Exception {
         final SQLiteDatabase database = Singleton.getInstance().getDatabase();
         final Cursor cursorReport = database.query("report", new String[]{"text"}, null, null, null, null, null);
         String reportText = "";
@@ -103,7 +88,7 @@ public class WifiReceiver extends BroadcastReceiver {
     }
 
 
-    private void updateNews() {
+    private void updateNews() throws Exception {
         String url = MyApplication.getAppContext().getString(R.string.url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
 
@@ -165,17 +150,7 @@ public class WifiReceiver extends BroadcastReceiver {
     }
 
     public int noOfRows() throws Exception {
-        SQLiteDatabase databaseForNews = Singleton.getInstance().getDatabase();
-        Cursor cursor = databaseForNews.query("news", new String[]{"title"}, null, null, null, null, null);
-        int i = 0;
-        while (cursor.moveToNext()) {
-            i++;
-        }
-        cursor.close();
-        databaseForNews.close();
-        return i;
+        return MyApplication.getAppContext().getSharedPreferences("values", MyApplication.getAppContext().MODE_PRIVATE).getInt("score8", 0);
     }
-
-
 }
 

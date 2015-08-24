@@ -46,6 +46,7 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.SlideUpPanelAdapter;
+import np.com.aawaz.csitentrance.advance.MyApplication;
 import np.com.aawaz.csitentrance.advance.Singleton;
 
 
@@ -149,6 +150,16 @@ public class QuizActivity extends AppCompatActivity {
 
         //Receiving intent
         code = getIntent().getExtras().getInt("position");
+        if (code == 1) {
+            MyApplication.changeStatusBarColor(R.color.quiz1, this);
+        } else if (code == 2) {
+            MyApplication.changeStatusBarColor(R.color.quiz2, this);
+        } else if (code == 3) {
+            MyApplication.changeStatusBarColor(R.color.quiz3, this);
+        } else if (code == 4) {
+            MyApplication.changeStatusBarColor(R.color.quiz4, this);
+        }
+
         topic.setText(titles[code]);
 
         RelativeLayout coreLayout = (RelativeLayout) findViewById(R.id.coreLayout);
@@ -400,6 +411,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public void setDataToArrayList() {
+        String ans = "";
         try {
             JSONObject obj = new JSONObject(AssetJSONFile("question" + code + ".json", this));
             JSONArray m_jArry = obj.getJSONArray("questions");
@@ -412,7 +424,6 @@ public class QuizActivity extends AppCompatActivity {
                 d.add(jo_inside.getString("d"));
                 answer.add(jo_inside.getString("ans"));
             }
-
         } catch (Exception ignored) {
         }
     }

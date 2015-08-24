@@ -6,10 +6,10 @@
     android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.activities.WebViewActivity">
 
-    <WebView
-        android:id="@+id/webView"
+    <com.joanzapata.pdfview.PDFView
+        android:id="@+id/pdfview"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0dp"
         android:layout_weight="1" />
 
     <com.google.android.gms.ads.AdView

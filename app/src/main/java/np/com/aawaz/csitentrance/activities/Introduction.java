@@ -94,7 +94,6 @@ public class Introduction extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-
             PageFragment frag = new PageFragment();
             Bundle bundle = new Bundle();
             bundle.putInt("position", position);

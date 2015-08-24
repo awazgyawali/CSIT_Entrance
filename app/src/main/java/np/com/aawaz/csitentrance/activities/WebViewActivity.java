@@ -4,20 +4,17 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-
-import org.json.JSONObject;
+import com.joanzapata.pdfview.PDFView;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.advance.Singleton;
@@ -25,8 +22,8 @@ import np.com.aawaz.csitentrance.advance.Singleton;
 
 public class WebViewActivity extends AppCompatActivity {
 
-    WebView webView;
     RequestQueue requestQueue;
+    PDFView pdfview;
 
 
     @Override
@@ -36,10 +33,10 @@ public class WebViewActivity extends AppCompatActivity {
 
         loadAd();
 
-        webView = (WebView) findViewById(R.id.webView);
+        pdfview = (PDFView) findViewById(R.id.pdfview);
 
         requestQueue = Singleton.getInstance().getRequestQueue();
-        String url = getResources().getString(R.string.url);
+        String url = "http://www.google.com";
         final MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .content("Please wait...")
                 .cancelListener(new DialogInterface.OnCancelListener() {
@@ -51,13 +48,15 @@ public class WebViewActivity extends AppCompatActivity {
                 })
                 .progress(true, 0)
                 .show();
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
-
+        StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(String response) {
+                pdfview.fromAsset("question" + getIntent().getExtras().getInt("code") + ".pdf")
+                        .defaultPage(1)
+                        .showMinimap(false)
+                        .enableSwipe(true)
+                        .load();
                 dialog.dismiss();
-                webView.loadUrl("file:///android_asset/question" + getIntent().getExtras().getInt("code") + ".html");
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -67,7 +66,7 @@ public class WebViewActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Unable to connect. Please check your internet connection.", Toast.LENGTH_LONG).show();
             }
         });
-        requestQueue.add(jsonObjectRequest.setTag("fullQue"));
+        requestQueue.add(request.setTag("fullQue"));
     }
 
     public void loadAd() {
@@ -83,11 +82,5 @@ public class WebViewActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
     }
 }

@@ -30,6 +30,7 @@
                 android:id="@+id/ScoreToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/primary1"
                 android:theme="@style/Theme.AppCompat"
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|enterAlways" />

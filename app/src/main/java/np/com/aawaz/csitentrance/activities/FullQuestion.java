@@ -16,6 +16,7 @@ import com.google.android.gms.ads.AdView;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.QueAdater;
+import np.com.aawaz.csitentrance.advance.MyApplication;
 
 
 public class FullQuestion extends AppCompatActivity implements QueAdater.ClickListner {
@@ -30,15 +31,11 @@ public class FullQuestion extends AppCompatActivity implements QueAdater.ClickLi
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        MyApplication.changeStatusBarColor(R.color.primary7, this);
+
         loadAd();
 
-        int primaryColors[] = {R.color.primary2, R.color.primary4, R.color.primary5,
-                R.color.primary6, R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10};
-        int darkColors[] = {R.color.dark2, R.color.dark4, R.color.dark5,
-                R.color.dark6, R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10};
-        int icon[] = {R.drawable.full2069, R.drawable.full2070, R.drawable.full2071, R.drawable.fullmodel};
-        //Recyc
-        QueAdater adater = new QueAdater(this, primaryColors, darkColors, icon);
+        QueAdater adater = new QueAdater(this);
         listRecy = (RecyclerView) findViewById(R.id.onlineRecyc);
         listRecy.setAdapter(adater);
         listRecy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
@@ -48,9 +45,6 @@ public class FullQuestion extends AppCompatActivity implements QueAdater.ClickLi
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement

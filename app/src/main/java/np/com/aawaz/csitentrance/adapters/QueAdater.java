@@ -1,41 +1,30 @@
 package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 
 import np.com.aawaz.csitentrance.R;
 
 public class QueAdater extends RecyclerView.Adapter<QueAdater.ViewHolder> {
-    String[] titles = {"2069 Question", "2070 Question", "2071 Question", "Model Question"};
-    int primaryColor[];
-    int darkColor[];
-    int icon[];
+    String[] titles = {"2069 Question", "2070 Question", "2071 Question", "Model Question 1", "Model Question 2", "Model Question 3"
+            , "Model Question 4", "Model Question 5"};
     ClickListner clickListner;
     LayoutInflater inflater;
     Context context;
-    int lastPosi = 10;
 
-    public QueAdater(Context context, int primaryColor[], int darkColor[], int icon[]) {
+    public QueAdater(Context context) {
         inflater = LayoutInflater.from(context);
-        this.darkColor = darkColor;
-        this.primaryColor = primaryColor;
-        this.icon = icon;
         this.context = context;
     }
 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.grid_item_resource, parent, false);
+        View view = inflater.inflate(R.layout.full_question_each_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -46,16 +35,7 @@ public class QueAdater extends RecyclerView.Adapter<QueAdater.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-
-        YoYo.with(Techniques.Landing)
-                .duration(500)
-                .playOn(holder.mainLayout);
-        lastPosi = position;
         holder.title.setText(titles[position]);
-        holder.mainImg.setImageResource(icon[position]);
-        holder.mainLayout.setCardBackgroundColor(context.getResources().getColor(darkColor[position]));
-        holder.baseLayout.setCardBackgroundColor(context.getResources().getColor(primaryColor[position]));
-        holder.playImg.setImageResource(R.drawable.ic_arrow_forward_white_24dp);
     }
 
     @Override
@@ -69,18 +49,10 @@ public class QueAdater extends RecyclerView.Adapter<QueAdater.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView mainImg;
-        ImageView playImg;
         TextView title;
-        CardView mainLayout;
-        CardView baseLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mainImg = (ImageView) itemView.findViewById(R.id.mainImg);
-            playImg = (ImageView) itemView.findViewById(R.id.play);
-            mainLayout = (CardView) itemView.findViewById(R.id.mainLayout);
-            baseLayout = (CardView) itemView.findViewById(R.id.baseLayout);
             title = (TextView) itemView.findViewById(R.id.title);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -31,6 +31,7 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.ScoreBoardAdapter;
+import np.com.aawaz.csitentrance.advance.MyApplication;
 import np.com.aawaz.csitentrance.advance.Singleton;
 
 
@@ -48,11 +49,10 @@ public class ScoreBoard extends AppCompatActivity {
         setContentView(R.layout.activity_score_board);
 
         loadAd();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.ScoreToolbar);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.primary1));
-        setSupportActionBar(toolbar);
+        setSupportActionBar((Toolbar) findViewById(R.id.ScoreToolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        MyApplication.changeStatusBarColor(R.color.primary1, this);
         YoYo.with(Techniques.SlideInDown)
                 .duration(1500)
                 .playOn(findViewById(R.id.coreLayoutScore));

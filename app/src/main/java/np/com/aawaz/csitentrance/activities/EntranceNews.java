@@ -36,6 +36,7 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.NewsAdapter;
+import np.com.aawaz.csitentrance.advance.MyApplication;
 import np.com.aawaz.csitentrance.advance.Singleton;
 
 
@@ -68,6 +69,7 @@ public class EntranceNews extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.newsToolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        MyApplication.changeStatusBarColor(R.color.primary9, this);
 
 
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refreshNews);

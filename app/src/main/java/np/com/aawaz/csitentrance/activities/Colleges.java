@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.colzAdapter;
+import np.com.aawaz.csitentrance.advance.MyApplication;
 
 
 public class Colleges extends AppCompatActivity {
@@ -57,6 +58,7 @@ public class Colleges extends AppCompatActivity {
         setContentView(R.layout.activity_colleges);
 
         loadAd();
+        MyApplication.changeStatusBarColor(R.color.primary8, this);
 
         //Toolbar Stuff's
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarColz);

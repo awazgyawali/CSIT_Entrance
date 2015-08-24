@@ -1,22 +1,29 @@
 package np.com.aawaz.csitentrance.advance;
 
 import android.app.Application;
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 
 import org.acra.ACRA;
 import org.acra.ReportField;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
-import org.acra.collector.CrashReportData;
-import org.acra.sender.ReportSender;
-import org.acra.sender.ReportSenderException;
-import org.acra.util.JSONReportBuilder;
 
-@ReportsCrashes(customReportContent = {ReportField.APP_VERSION_CODE, ReportField.ANDROID_VERSION,
+import np.com.aawaz.csitentrance.R;
+
+@ReportsCrashes(mailTo = "csitentrance@gmail.com",
+        customReportContent = {ReportField.APP_VERSION_CODE, ReportField.ANDROID_VERSION,
         ReportField.PHONE_MODEL, ReportField.STACK_TRACE, ReportField.USER_COMMENT},
-        mode = ReportingInteractionMode.SILENT)
+        mode = ReportingInteractionMode.DIALOG,
+        resToastText = R.string.crash_toast_text,
+        resDialogText = R.string.crash_dialog_text,
+        resDialogIcon = android.R.drawable.ic_dialog_info,
+        resDialogTitle = R.string.crash_dialog_title,
+        resDialogCommentPrompt = R.string.crash_dialog_comment_prompt,
+        resDialogOkToast = R.string.crash_dialog_ok_toast)
 public class MyApplication extends Application {
     private static MyApplication sInstance;
 
@@ -43,31 +50,19 @@ public class MyApplication extends Application {
         return t;
     }
 
+    public static void changeStatusBarColor(int colorResource, AppCompatActivity context) {
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = context.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(context.getResources().getColor(colorResource));
+        }
+    }
+
     @Override
     public void onCreate() {
         sInstance = this;
         ACRA.init(this);
-        YourOwnSender yourSender = new YourOwnSender();
-        ACRA.getErrorReporter().setReportSender(yourSender);
         super.onCreate();
-    }
-
-    public class YourOwnSender implements ReportSender {
-
-        public YourOwnSender() {
-        }
-
-        @Override
-        public void send(Context context, CrashReportData crashReportData) throws ReportSenderException {
-            ContentValues values = new ContentValues();
-            SQLiteDatabase database = Singleton.getInstance().getDatabase();
-            try {
-                values.put("text", crashReportData.toJSON().toString());
-            } catch (JSONReportBuilder.JSONReportException ignored) {
-
-            }
-            database.insert("report", null, values);
-            database.close();
-        }
     }
 }
