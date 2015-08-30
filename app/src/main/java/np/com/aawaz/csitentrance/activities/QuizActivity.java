@@ -13,6 +13,7 @@ import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -312,10 +313,12 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void resetBackground() {
-        option1.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "a) " + a.get(qNo), "text/html", "UTF-8", "");
-        option2.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "b) " + b.get(qNo), "text/html", "UTF-8", "");
-        option3.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "c) " + c.get(qNo), "text/html", "UTF-8", "");
-        option4.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "d) " + d.get(qNo), "text/html", "UTF-8", "");
+        if (qNo != 100) {
+            option1.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "a) " + a.get(qNo), "text/html", "UTF-8", "");
+            option2.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "b) " + b.get(qNo), "text/html", "UTF-8", "");
+            option3.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "c) " + c.get(qNo), "text/html", "UTF-8", "");
+            option4.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "d) " + d.get(qNo), "text/html", "UTF-8", "");
+        }
     }
 
     private void onClickOption() {
@@ -427,7 +430,9 @@ public class QuizActivity extends AppCompatActivity {
                 c.add(jo_inside.getString("c"));
                 d.add(jo_inside.getString("d"));
                 answer.add(jo_inside.getString("ans"));
+                ans = ans + (i + 1) + ". " + jo_inside.getString("ans") + "\t";
             }
+            Log.d("debug", ans);
         } catch (Exception ignored) {
         }
     }

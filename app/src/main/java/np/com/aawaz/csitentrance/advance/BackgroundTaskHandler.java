@@ -74,12 +74,21 @@ public class BackgroundTaskHandler extends GcmTaskService {
     public static void uploadScore() throws Exception {
         if (getTotal() != MyApplication.getAppContext().getSharedPreferences("pre", MODE_PRIVATE).getInt("preScore", 0))
             return;
+        SharedPreferences preferences = MyApplication.getAppContext().getSharedPreferences("values", Context.MODE_PRIVATE);
         String url = MyApplication.getAppContext().getString(R.string.postScoreurl);
         Uri.Builder uri = new Uri.Builder();
         String values = uri.authority("")
                 .appendQueryParameter("key", MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("uniqueID", "trash"))
                 .appendQueryParameter("name", MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "trash"))
-                .appendQueryParameter("score", getTotal() + "")
+                .appendQueryParameter("socre1", preferences.getInt("score1", 0) + "")
+                .appendQueryParameter("score2", preferences.getInt("score1", 0) + "")
+                .appendQueryParameter("score4", preferences.getInt("score1", 0) + "")
+                .appendQueryParameter("score4", preferences.getInt("score1", 0) + "")
+                .appendQueryParameter("score5", preferences.getInt("score1", 0) + "")
+                .appendQueryParameter("score6", preferences.getInt("score1", 0) + "")
+                .appendQueryParameter("score7", preferences.getInt("score1", 0) + "")
+                .appendQueryParameter("score8", preferences.getInt("score1", 0) + "")
+                .appendQueryParameter("totalScore", getTotal() + "")
                 .build().toString();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
             @Override
@@ -105,9 +114,6 @@ public class BackgroundTaskHandler extends GcmTaskService {
             uploadScore();
 
             updateNews();
-
-            if (!CSITQuery.runningStatus())
-                updateQuery();
 
         } catch (Exception ignored) {
         }

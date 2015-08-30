@@ -52,7 +52,7 @@ public class ScoreBoard extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.ScoreToolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        MyApplication.changeStatusBarColor(R.color.primary1, this);
+        MyApplication.changeStatusBarColor(R.color.status_bar_score, this);
         YoYo.with(Techniques.SlideInDown)
                 .duration(1500)
                 .playOn(findViewById(R.id.coreLayoutScore));

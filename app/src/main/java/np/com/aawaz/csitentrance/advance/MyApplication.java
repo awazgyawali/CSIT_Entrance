@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.facebook.FacebookSdk;
+
 import org.acra.ACRA;
 import org.acra.ReportField;
 import org.acra.ReportingInteractionMode;
@@ -20,7 +22,6 @@ import np.com.aawaz.csitentrance.R;
         mode = ReportingInteractionMode.DIALOG,
         resToastText = R.string.crash_toast_text,
         resDialogText = R.string.crash_dialog_text,
-        resDialogIcon = android.R.drawable.ic_dialog_info,
         resDialogTitle = R.string.crash_dialog_title,
         resDialogCommentPrompt = R.string.crash_dialog_comment_prompt,
         resDialogOkToast = R.string.crash_dialog_ok_toast)
@@ -64,5 +65,6 @@ public class MyApplication extends Application {
         sInstance = this;
         ACRA.init(this);
         super.onCreate();
+        FacebookSdk.sdkInitialize(this);
     }
 }

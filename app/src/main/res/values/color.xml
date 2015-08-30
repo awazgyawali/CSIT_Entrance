@@ -39,10 +39,18 @@
     <color name="toolbar_color">#009688</color>
     <color name="selectorColor">#ed2669</color>
 
-    <color name="quiz1">#922b72</color>
-    <color name="quiz2">#2881bb</color>
-    <color name="quiz3">#2b9759</color>
-    <color name="quiz4">#cf1151</color>
-    <color name="quiz5">#4e9586</color>
+    <color name="quiz1">#78235e</color>
+    <color name="quiz2">#226e9f</color>
+    <color name="quiz3">#237d49</color>
+    <color name="quiz4">#b00e45</color>
+    <color name="quiz5">#427f72</color>
 
+    <color name="status_bar_main">#007469</color>
+    <color name="status_bar_score">#1a242e</color>
+    <color name="status_bar_more">#1a242e</color>
+    <color name="status_bar_full">#64463a</color>
+    <color name="status_bar_college">#36469c</color>
+    <color name="status_bar_news">#c24720</color>
+    <color name="status_bar_query">#b03123</color>
+    <color name="status_bar_model">#b00e45</color>
 </resources>

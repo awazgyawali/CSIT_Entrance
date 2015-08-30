@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         tracker.enableExceptionReporting(true);
         tracker.enableAutoActivityTracking(true);
 
-        MyApplication.changeStatusBarColor(R.color.toolbar_color, this);
+        MyApplication.changeStatusBarColor(R.color.status_bar_main, this);
 
         loadAd();
 
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         });
 
         String[] titles = {"Score Board", "2069 question", "2070 question", "2071 question", "Model Questions", "More...", "Full Question",
-                "CSIT Colleges", "Entrance News", "CSIT Query", "About Us"};
+                "CSIT Colleges", "Entrance News", "CSIT Entrance Forum", "About Us"};
         int primaryColors[] = {R.color.primary1, R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5,
                 R.color.primary6, R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10,
                 R.color.primary11};
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
                 R.color.dark6, R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10,
                 R.color.dark11};
         int icon[] = {R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_play_arrow_white_24dp,
-                R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_play_arrow_white_24dp,
+                R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_arrow_forward_white_24dp,
                 R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp};
         int images[] = {R.drawable.scoreboard, R.drawable.ico2069, R.drawable.ico2070, R.drawable.ico2071, R.drawable.model,
                 R.drawable.more, R.drawable.full_questions, R.drawable.colleges, R.drawable.news, R.drawable.query, R.drawable.about_us};
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
 
     private void removeAllTheProgress() {
         SharedPreferences.Editor pref = getSharedPreferences("values", MODE_PRIVATE).edit();
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i <= 8; i++) {
             pref.putInt("score" + i, 0);
             pref.putInt("played" + i, 0);
         }
@@ -126,13 +126,11 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
     }
 
     private int getTotalScore() {
-
         SharedPreferences pref = getSharedPreferences("values", MODE_PRIVATE);
         int grand = 0;
         for (int i = 1; i <= 8; i++)
             grand = grand + pref.getInt("score" + i, 0);
         return grand;
-
     }
 
     private int getTotalPlayed() {
@@ -192,10 +190,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
                 startActivity(intent);
             }
         } else if (position == 9) {
-            if (!isConnected()) {
-                Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
-                return;
-            }
+            //Snackbar.make(findViewById(R.id.mainParent), "Currently unavailable. Having some major changes.", Snackbar.LENGTH_SHORT).show();
             Intent intent = new Intent(this, CSITQuery.class);
             startActivity(intent);
         } else if (position == 10) {

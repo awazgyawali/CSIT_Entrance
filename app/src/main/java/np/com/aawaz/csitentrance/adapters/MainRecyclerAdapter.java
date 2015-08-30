@@ -49,7 +49,6 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 
     public void setClickListner(ClickListner clickListner) {
         this.clickListner = clickListner;
-
     }
 
     @Override

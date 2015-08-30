@@ -31,7 +31,7 @@ public class FullQuestion extends AppCompatActivity implements MainRecyclerAdapt
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        MyApplication.changeStatusBarColor(R.color.primary7, this);
+        MyApplication.changeStatusBarColor(R.color.status_bar_full, this);
 
         loadAd();
 

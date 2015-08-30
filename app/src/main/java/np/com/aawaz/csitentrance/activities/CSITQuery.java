@@ -1,37 +1,29 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.Profile;
-import com.facebook.ProfileTracker;
-import com.facebook.login.LoginManager;
+import com.facebook.FacebookRequestError;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.ads.AdListener;
@@ -44,41 +36,27 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
-import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.adapters.QueryAdapter;
+import np.com.aawaz.csitentrance.adapters.GraphFeedAdapter;
 import np.com.aawaz.csitentrance.advance.MyApplication;
-import np.com.aawaz.csitentrance.advance.Singleton;
+import np.com.aawaz.csitentrance.fragments.SinglePostViewer;
 
 
 public class CSITQuery extends AppCompatActivity {
 
-    static boolean active = false;
-    FancyButton send;
-    EditText text;
-    RecyclerView recyclerView;
-    QueryAdapter adapter;
-    RequestQueue queue;
-    ScheduledExecutorService scheduler;
-    MaterialDialog dialog;
-    ArrayList<Integer> flag = new ArrayList<>();
-    ArrayList<String> messages = new ArrayList<>();
     CallbackManager callbackManager;
     LoginButton button;
-    SharedPreferences pref;
     String id;
-    Context context;
-    String tempId;
-    private ProfileTracker mProfileTracker;
-    private boolean handling=false;
+    RecyclerView recyclerView;
+    FloatingActionButton fab;
+    ProgressBar progressBar;
+    ArrayList<String> poster = new ArrayList<>(),
+            messages = new ArrayList<>(),
+            likes = new ArrayList<>(),
+            postId = new ArrayList<>(),
+            comments = new ArrayList<>();
 
-    public static boolean runningStatus() {
-        return active;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,200 +65,142 @@ public class CSITQuery extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.queryToolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        MyApplication.changeStatusBarColor(R.color.primary10, this);
+        MyApplication.changeStatusBarColor(R.color.status_bar_query, this);
+        fab = (FloatingActionButton) findViewById(R.id.postNewQuery);
+        button = (LoginButton) findViewById(R.id.fbLoginButton);
+        progressBar = (ProgressBar) findViewById(R.id.progressCircleFullFeed);
+        button.setReadPermissions(Arrays.asList("user_status", " publish_actions"));
 
         loadAd();
 
-        pref = getSharedPreferences("details", MODE_PRIVATE);
-        queue = Singleton.getInstance().getRequestQueue();
+        firstLoginPage();
 
-        context = this;
-        id = pref.getString("fbId", "0");
-        send = (FancyButton) findViewById(R.id.sendBtn);
-        text = (EditText) findViewById(R.id.text);
-        recyclerView = (RecyclerView) findViewById(R.id.recyQuery);
-        if (id.equals("0")) {
-            onStartHandler();
-        } else {
-            fetchFromInternet();
+        try {
+            if (!AccessToken.getCurrentAccessToken().isExpired()) {
+                RelativeLayout loginLayout = (RelativeLayout) findViewById(R.id.firstLogin);
+                loginLayout.setVisibility(View.GONE);
+                debugDataAdder();
+            } else {
+                LinearLayout loginLayout = (LinearLayout) findViewById(R.id.reqularFeed);
+                loginLayout.setVisibility(View.GONE);
+            }
+        } catch (Exception e) {
+            progressBar.setVisibility(View.GONE);
+            fab.setVisibility(View.GONE);
         }
-        text.addTextChangedListener(new TextWatcher() {
+    }
+
+    private void fillRecy() {
+        progressBar.setVisibility(View.GONE);
+        fab.setVisibility(View.VISIBLE);
+        GraphFeedAdapter adapter = new GraphFeedAdapter(this, poster, messages, likes, comments, postId);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter.setClickListener(new GraphFeedAdapter.ClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0) {
-                    send.setVisibility(View.GONE);
-                } else {
-                    send.setVisibility(View.VISIBLE);
-                }
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
+            public void itemClicked(View view, int position) {
+                SinglePostViewer frag = new SinglePostViewer();
+                Bundle bundle = new Bundle();
+                bundle.putString("postID", postId.get(position));
+                frag.setArguments(bundle);
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.queryFragHoler, frag, "fullfeed");
+                transaction.commit();
+                fab.setVisibility(View.GONE);
             }
         });
     }
 
-    private void fetchFromInternet() {
-        final MaterialDialog initial = new MaterialDialog.Builder(this)
-                .content("Please wait...")
-                .progress(true, 0)
-                .cancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialogInterface) {
-                        queue.cancelAll("query");
-                        finish();
-                    }
-                })
-                .build();
-        initial.show();
-        String url = getString(R.string.queryFetchUrl);
-        id = pref.getString("fbId", tempId);
-        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + id, new Response.Listener<JSONObject>() {
+    private void debugDataAdder() {
+        recyclerView = (RecyclerView) findViewById(R.id.fullFeedRecycler);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray query = response.getJSONArray("query");
-                    messages.clear();
-                    flag.clear();
-                    for (int i = 0; i < query.length(); i++) {
-                        JSONObject jo_inside = query.getJSONObject(i);
-                        if (!jo_inside.getString("Question").equals("")) {
-                            messages.add(jo_inside.getString("Question"));
-                            flag.add(0);
-                        }
-                        if (!jo_inside.getString("Answer").equals("")) {
-                            messages.add(jo_inside.getString("Answer"));
-                            flag.add(1);
-                        }
-                        getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", messages.size()).apply();
-                    }
-                    adapter = new QueryAdapter(context, messages, flag);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                    recyclerView.setAdapter(adapter);
-                    recyclerView.scrollToPosition(messages.size() - 1);
-                    backgroundHandler();
-                    initial.dismiss();
-                } catch (JSONException e) {
-                    initial.dismiss();
-                    finish();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                initial.dismiss();
-                Toast.makeText(context, "Unable to connect to the server.", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        });
-        queue.add(jsonObjectRequest.setTag("query"));
-    }
-
-    private void onStartHandler() {
-        FacebookSdk.sdkInitialize(context);
-
-        button = new LoginButton(this);
-
-        //set fb permissions
-        button.setReadPermissions(Arrays.asList("public_profile,email"));
-
-        dialog = new MaterialDialog.Builder(this)
-                .customView(button, false)
-                .cancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialogInterface) {
-                        finish();
-                    }
-                })
-                .title("You must login with facebook to continue")
-                .show();
-
-        //call the login callback manager
-        callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        mProfileTracker = new ProfileTracker() {
+            public void onClick(View view) {
+                new MaterialDialog.Builder(CSITQuery.this)
+                        .title("Post a query")
+                        .customView(R.layout.add_feed, false)
+                        .positiveText("Post")
+                        .negativeText("Cancel")
+                        .autoDismiss(false)
+                        .callback(new MaterialDialog.ButtonCallback() {
                             @Override
-                            protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
-                                SharedPreferences.Editor editor = pref.edit();
-                                tempId = profile2.getId();
-                                editor.putString("fbId", profile2.getId() + " gn" +
-                                        "");
-                                editor.putString("First", profile2.getName() + "");
-                                editor.apply();
-                                mProfileTracker.stopTracking();
-                                fetchFromInternet();
+                            public void onNegative(MaterialDialog dialog) {
+                                super.onNegative(dialog);
                                 dialog.dismiss();
                             }
-                        };
-                        mProfileTracker.startTracking();
-                    }
 
-                    @Override
-                    public void onCancel() {
-                        finish();
+                            @Override
+                            public void onPositive(MaterialDialog dialog) {
+                                super.onPositive(dialog);
+                                sendPostRequestThroughGraph();
+                                dialog.findViewById(R.id.postingProgress).setVisibility(View.VISIBLE);
+                            }
+                        })
+                        .build()
+                        .show();
+                ;
+            }
+        });
+        final String requestId = "CSITentrance/feed";
+        Bundle params = new Bundle();
+        params.putString("fields", "message,likes.limit(0).summary(true),comments.limit(0).summary(true),from");
+        final GraphRequest graphRequest = new GraphRequest(AccessToken.getCurrentAccessToken(), requestId, params, HttpMethod.GET, new GraphRequest.Callback() {
+            @Override
+            public void onCompleted(GraphResponse graphResponse) {
+                FacebookRequestError error = graphResponse.getError();
+                if (error != null) {
+                    Log.e("Debug", "Error" + error.getErrorMessage());
+                } else {
+                    try {
+                        JSONArray array = graphResponse.getJSONObject().getJSONArray("data");
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject arrayItem = array.getJSONObject(i);
+                            messages.add(arrayItem.getString("message"));
+                            postId.add(arrayItem.getString("id"));
+                            likes.add(arrayItem.getJSONObject("likes").getJSONObject("summary").getInt("total_count") + "");
+                            comments.add(arrayItem.getJSONObject("comments").getJSONObject("summary").getInt("total_count") + "");
+                            poster.add(arrayItem.getJSONObject("from").getString("name"));
+                            fillRecy();
+                        }
+                    } catch (JSONException e) {
                     }
+                }
+            }
+        });
+        graphRequest.executeAsync();
 
-                    @Override
-                    public void onError(FacebookException e) {
-                        dialog.dismiss();
-                        finish();
-                    }
-                });
+    }
+
+    private void sendPostRequestThroughGraph() {
+
+    }
+
+    private void firstLoginPage() {
+
+        callbackManager = CallbackManager.Factory.create();
+
+        button.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                debugDataAdder();
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
-    }
-
-    public void sendSms(View v) {
-        String url = getString(R.string.quertyPostUrl);
-        final MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .content("Please wait...")
-                .progress(true, 0)
-                .cancelable(false)
-                .build();
-        dialog.show();
-        Uri.Builder uri = new Uri.Builder();
-        String values = uri.authority("")
-                .appendQueryParameter("Question", text.getText().toString().replace("\"", "").replace("}", "").replace("{", "").replace(",", ""))
-                .appendQueryParameter("fbId", pref.getString("fbId", ""))
-                .appendQueryParameter("Name", pref.getString("First", ""))
-                .appendQueryParameter("Answer", "")
-                .build().toString();
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    response.getString("feedBack");
-                    adapter.added(text.getText().toString());
-                    recyclerView.scrollToPosition(adapter.getItemCount() - 1);
-                    text.setText("");
-                    getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query",messages.size()).apply();
-                } catch (JSONException e) {
-                    Snackbar.make(findViewById(R.id.parentNews), "Something went wrong. Report us.", Snackbar.LENGTH_LONG).show();
-                }
-                dialog.dismiss();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                dialog.dismiss();
-                Snackbar.make(findViewById(R.id.parentQuery), "Check your internet connection.", Snackbar.LENGTH_LONG).show();
-            }
-        });
-        queue.add(jsonObjectRequest);
     }
 
     public void loadAd() {
@@ -298,70 +218,6 @@ public class CSITQuery extends AppCompatActivity {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        active = true;
-        if(handling)
-            backgroundHandler();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        active = false;
-        if(scheduler!=null)
-            scheduler.shutdown();
-    }
-
-    private void backgroundHandler() {
-        scheduler = Executors.newSingleThreadScheduledExecutor();
-        handling=true;
-        scheduler.scheduleAtFixedRate
-                (new Runnable() {
-                    public void run() {
-                        queue.add(getJsonRequest().setTag("query"));
-                    }
-                }, 0, 5, TimeUnit.SECONDS);
-    }
-
-    private JsonObjectRequest getJsonRequest(){
-        String url = getString(R.string.queryFetchUrl);
-        id = pref.getString("fbId", tempId);
-        return  new JsonObjectRequest(Request.Method.GET, url + id, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray query = response.getJSONArray("query");
-                    int preSize=messages.size();
-                    messages.clear();
-                    flag.clear();
-                    for (int i = 0; i < query.length(); i++) {
-                        JSONObject jo_inside = query.getJSONObject(i);
-                        if (!jo_inside.getString("Question").equals("")) {
-                            messages.add(jo_inside.getString("Question"));
-                            flag.add(0);
-                        }
-                        if (!jo_inside.getString("Answer").equals("")) {
-                            messages.add(jo_inside.getString("Answer"));
-                            flag.add(1);
-                        }
-                        if (messages.size() > preSize) {
-                            int newSize=messages.size();
-                            for (; preSize < newSize; preSize++) {
-                                adapter.notifyItemInserted(messages.size());
-                                recyclerView.scrollToPosition(messages.size()-1);
-                            }
-                            MediaPlayer.create(CSITQuery.this, R.raw.new_arrived).start();
-                            getSharedPreferences("data", MODE_PRIVATE).edit().putInt("query", messages.size()).apply();
-                        }
-                    }
-                } catch (JSONException e) {
-                }
-            }
-        }, null);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id=item.getItemId();
@@ -370,5 +226,16 @@ public class CSITQuery extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        try {
+            getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentByTag("fullfeed")).commit();
+            fab.setVisibility(View.VISIBLE);
+        } catch (Exception e) {
+            super.onBackPressed();
+            finish();
+        }
     }
 }

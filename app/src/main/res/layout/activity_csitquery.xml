@@ -1,89 +1,85 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentQuery"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:theme="@style/Theme.AppCompat"
     tools:context="np.com.aawaz.csitentrance.activities.CSITQuery">
 
-    <android.support.design.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:theme="@style/Theme.AppCompat">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyQuery"
+    <RelativeLayout
+        android:id="@+id/firstLogin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight=".66"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/fbLoginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/queryToolbar"
-            android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/primary10"
-                android:theme="@style/Theme.AppCompat"
-                app:layout_collapseMode="pin"
-                app:layout_scrollFlags="scroll|enterAlways" />
+        <ProgressBar
+            android:id="@+id/progressCircleFullFeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
 
-        </android.support.design.widget.AppBarLayout>
-    </android.support.design.widget.CoordinatorLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#009866" />
+    </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/reqularFeed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <RelativeLayout
+            android:id="@+id/queryFragHoler"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1">
-            <EditText
-                android:id="@+id/text"
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/fullFeedRecycler"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ask a question"
-                android:maxLength="254"
-                android:paddingLeft="3dp" />
-        </android.support.design.widget.TextInputLayout>
+                android:layout_height="match_parent" />
+        </RelativeLayout>
 
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/QueryAd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/query_ad_id" />
 
-        <mehdi.sakout.fancybuttons.FancyButton
-            android:id="@+id/sendBtn"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:onClick="sendSms"
-            android:visibility="gone"
-            fancy:fb_borderColor="@color/primary7"
-            fancy:fb_borderWidth="2dp"
-            fancy:fb_defaultColor="@color/primary9"
-            fancy:fb_focusColor="@color/dark9"
-            fancy:fb_iconResource="@drawable/ic_arrow_forward_white_24dp"
-            fancy:fb_radius="50dp" />
     </LinearLayout>
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/QueryAd"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/queryToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary10"
+            android:theme="@style/Theme.AppCompat"
+            app:layout_collapseMode="pin"
+            app:layout_scrollFlags="scroll|enterAlways" />
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/postNewQuery"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/query_ad_id" />
-
-</LinearLayout>
-
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_mode_edit_white_24dp"
+        app:backgroundTint="@color/primary10" />
+</android.support.design.widget.CoordinatorLayout>

@@ -13,8 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -69,7 +67,7 @@ public class EntranceNews extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.newsToolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        MyApplication.changeStatusBarColor(R.color.primary9, this);
+        MyApplication.changeStatusBarColor(R.color.status_bar_news, this);
 
 
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refreshNews);
@@ -83,27 +81,6 @@ public class EntranceNews extends AppCompatActivity {
         //Setting the data
         setDataToArrayListFromDb();
     }
-
-    private void handleRequestNews() {
-                new MaterialDialog.Builder(EntranceNews.this)
-                        .title("Request a post")
-                        .content("Send us a request for a post, news, article.")
-                        .inputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES)
-                        .positiveText("Send")
-                        .input("What do you want to know?", "", false, new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(MaterialDialog materialDialog, CharSequence charSequence) {
-                                ContentValues values = new ContentValues();
-                                SQLiteDatabase database = Singleton.getInstance().getDatabase();
-                                values.put("text", "Post Request: " + charSequence);
-                                database.insert("report", null, values);
-                                database.close();
-                                Snackbar.make(findViewById(R.id.parentNews), "Thanks for the request.", Snackbar.LENGTH_SHORT).show();
-                            }
-                        })
-                        .build()
-                        .show();
-            }
 
     public void fillData() {
         recy = (RecyclerView) findViewById(R.id.newsFeedRecy);
@@ -271,15 +248,7 @@ public class EntranceNews extends AppCompatActivity {
         int id = item.getItemId();
         if (id == android.R.id.home) {
             finish();
-        } else if (id == R.id.action_ask) {
-            handleRequestNews();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_news, menu);
-        return super.onCreateOptionsMenu(menu);
     }
 }

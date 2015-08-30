@@ -38,6 +38,10 @@
         </android.support.design.widget.AppBarLayout>
     </android.support.design.widget.CoordinatorLayout>
 
+    <android.support.v7.widget.AppCompatSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary1" />
     <com.google.android.gms.ads.AdView
         android:id="@+id/scoreBoardAd"
         android:layout_width="match_parent"

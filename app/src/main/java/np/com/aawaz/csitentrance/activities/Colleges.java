@@ -58,7 +58,7 @@ public class Colleges extends AppCompatActivity {
         setContentView(R.layout.activity_colleges);
 
         loadAd();
-        MyApplication.changeStatusBarColor(R.color.primary8, this);
+        MyApplication.changeStatusBarColor(R.color.status_bar_college, this);
 
         //Toolbar Stuff's
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarColz);

@@ -29,7 +29,7 @@ public class ModelQuestions extends AppCompatActivity implements MainRecyclerAda
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        MyApplication.changeStatusBarColor(R.color.primary5, this);
+        MyApplication.changeStatusBarColor(R.color.status_bar_model, this);
 
         //loadAd();
 

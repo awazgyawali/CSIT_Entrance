@@ -24,9 +24,9 @@ public class NewsDataBase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         try {
             sqLiteDatabase.execSQL("DROP TABLE report;");
+        } catch (Exception e) {
 
         } finally {
-
             sqLiteDatabase.execSQL("CREATE TABLE report(text BLOB);");
         }
     }
