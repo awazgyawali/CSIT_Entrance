@@ -12,8 +12,9 @@
 
     <RelativeLayout
         android:id="@+id/firstLogin"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/fbLoginButton"
@@ -73,13 +74,4 @@
             app:layout_scrollFlags="scroll|enterAlways" />
     </android.support.design.widget.AppBarLayout>
 
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/postNewQuery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_mode_edit_white_24dp"
-        app:backgroundTint="@color/primary10" />
 </android.support.design.widget.CoordinatorLayout>

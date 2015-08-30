@@ -13,7 +13,6 @@ import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -432,7 +431,6 @@ public class QuizActivity extends AppCompatActivity {
                 answer.add(jo_inside.getString("ans"));
                 ans = ans + (i + 1) + ". " + jo_inside.getString("ans") + "\t";
             }
-            Log.d("debug", ans);
         } catch (Exception ignored) {
         }
     }

@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         });
 
         String[] titles = {"Score Board", "2069 question", "2070 question", "2071 question", "Model Questions", "More...", "Full Question",
-                "CSIT Colleges", "Entrance News", "CSIT Entrance Forum", "About Us"};
+                "CSIT Colleges", "Entrance News", "Entrance Forum(Alpha)", "About Us"};
         int primaryColors[] = {R.color.primary1, R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5,
                 R.color.primary6, R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10,
                 R.color.primary11};

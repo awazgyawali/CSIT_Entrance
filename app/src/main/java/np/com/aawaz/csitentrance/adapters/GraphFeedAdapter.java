@@ -14,22 +14,27 @@ import np.com.aawaz.csitentrance.R;
 
 public class GraphFeedAdapter extends RecyclerView.Adapter<GraphFeedAdapter.ViewHolder> {
 
+    private final View header;
     Context context;
     LayoutInflater inflater;
     ArrayList<String> messages, poster,
             likes, comments, postID;
 
     ClickListener clickListener;
+    int type_header = 0;
+    int type_normal = 1;
+
 
 
     public GraphFeedAdapter(Context context, ArrayList<String> poster, ArrayList<String> messages,
-                            ArrayList<String> likes, ArrayList<String> comments, ArrayList<String> postID) {
+                            ArrayList<String> likes, ArrayList<String> comments, ArrayList<String> postID, View header) {
         this.context = context;
         this.messages = messages;
         this.poster = poster;
         this.likes = likes;
         this.comments = comments;
         this.postID = postID;
+        this.header = header;
         inflater = LayoutInflater.from(context);
 
     }
@@ -40,12 +45,16 @@ public class GraphFeedAdapter extends RecyclerView.Adapter<GraphFeedAdapter.View
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.each_feed_item, parent, false);
-        return new ViewHolder(view);
+        if (viewType == type_header)
+            return new ViewHolder(header);
+        return new ViewHolder(inflater.inflate(R.layout.each_feed_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        if (position == 0)
+            return;
+        position--;
         holder.likeCount.setText(likes.get(position));
         holder.commentCount.setText(comments.get(position));
         holder.postedBy.setText(poster.get(position));
@@ -54,7 +63,14 @@ public class GraphFeedAdapter extends RecyclerView.Adapter<GraphFeedAdapter.View
 
     @Override
     public int getItemCount() {
-        return messages.size();
+        return messages.size() + 1;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position == 0)
+            return type_header;
+        return type_normal;
     }
 
     public interface ClickListener {

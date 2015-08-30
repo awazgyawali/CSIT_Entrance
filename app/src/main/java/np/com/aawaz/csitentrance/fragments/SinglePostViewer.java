@@ -5,7 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +67,42 @@ public class SinglePostViewer extends Fragment {
         posterImage = (ProfilePictureView) header.findViewById(R.id.posterPic);
         commentView = (EditText) footer.findViewById(R.id.commentText);
         commentButton = (Button) footer.findViewById(R.id.commentButton);
+        readyCommentButton();
+    }
 
+    private void readyCommentButton() {
+        commentView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0)
+                    commentButton.setEnabled(false);
+                else
+                    commentButton.setEnabled(true);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle params = new Bundle();
+                params.putString("message", commentView.getText().toString());
+                new GraphRequest(AccessToken.getCurrentAccessToken(), getArguments().getString("postID"), params, HttpMethod.POST, new GraphRequest.Callback() {
+                    @Override
+                    public void onCompleted(GraphResponse graphResponse) {
+
+                    }
+                }).executeAsync();
+            }
+        });
     }
 
     private void initializeView() {
@@ -96,9 +132,7 @@ public class SinglePostViewer extends Fragment {
             public void onCompleted(GraphResponse graphResponse) {
                 FacebookRequestError error = graphResponse.getError();
                 if (error != null) {
-                    Log.e("Debug", "Error" + error.getErrorMessage());
                 } else {
-                    Log.d("Debug", "Object" + graphResponse.toString());
                     try {
                         JSONObject object = graphResponse.getJSONObject().getJSONObject("comments");
                         JSONArray commentArray = object.getJSONArray("data");
@@ -126,10 +160,6 @@ public class SinglePostViewer extends Fragment {
             }
         });
         graphRequest.executeAsync();
-    }
-
-    private void setDatas() {
-
     }
 
     @Override
