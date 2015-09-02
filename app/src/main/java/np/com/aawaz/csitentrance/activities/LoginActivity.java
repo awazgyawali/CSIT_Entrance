@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     ImageView a11;
     ImageView a12;
 
-    RelativeLayout splash;
+    LinearLayout splash;
     RelativeLayout first;
 
 
@@ -51,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         first = (RelativeLayout) findViewById(R.id.firstLayout);
-        splash = (RelativeLayout) findViewById(R.id.reqularLayout);
+        splash = (LinearLayout) findViewById(R.id.reqularLayout);
         first.setVisibility(View.GONE);
         splash.setVisibility(View.GONE);
         fab = (FloatingActionButton) findViewById(R.id.fabBtn);
@@ -86,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         name.addTextChangedListener(this);
         sur.addTextChangedListener(this);
         email.addTextChangedListener(this);
-        fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_done_black_18dp));
+        fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_done_black_18dp, null));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,51 +136,51 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         resetAllBack();
         if (view == a1) {
             avatar = 1;
-            a1.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
+            a1.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
 
         } else if (view == a2) {
             avatar = 2;
-            a2.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
+            a2.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
 
         } else if (view == a3) {
             avatar = 3;
-            a3.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
+            a3.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
 
         } else if (view == a4) {
             avatar = 4;
-            a4.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
+            a4.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
 
         } else if (view == a5) {
             avatar = 5;
-            a5.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
+            a5.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
 
         } else if (view == a6) {
             avatar = 6;
-            a6.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
+            a6.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
 
         } else if (view == a7) {
             avatar = 7;
-            a7.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
+            a7.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
 
         } else if (view == a8) {
             avatar = 8;
-            a8.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
+            a8.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
 
         } else if (view == a9) {
             avatar = 9;
-            a9.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
+            a9.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
 
         } else if (view == a10) {
             avatar = 10;
-            a10.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
+            a10.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
 
         } else if (view == a11) {
             avatar = 11;
-            a11.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
+            a11.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
 
         } else if (view == a12) {
             avatar = 12;
-            a12.setBackgroundColor(getResources().getColor(R.color.abc_primary_text_material_light));
+            a12.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
 
         }
 
@@ -210,18 +211,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void resetAllBack() {
-        a1.setBackgroundColor(getResources().getColor(R.color.grey));
-        a2.setBackgroundColor(getResources().getColor(R.color.grey));
-        a3.setBackgroundColor(getResources().getColor(R.color.grey));
-        a4.setBackgroundColor(getResources().getColor(R.color.grey));
-        a5.setBackgroundColor(getResources().getColor(R.color.grey));
-        a6.setBackgroundColor(getResources().getColor(R.color.grey));
-        a7.setBackgroundColor(getResources().getColor(R.color.grey));
-        a8.setBackgroundColor(getResources().getColor(R.color.grey));
-        a9.setBackgroundColor(getResources().getColor(R.color.grey));
-        a10.setBackgroundColor(getResources().getColor(R.color.grey));
-        a11.setBackgroundColor(getResources().getColor(R.color.grey));
-        a12.setBackgroundColor(getResources().getColor(R.color.grey));
+        a1.setBackgroundColor(getColor(R.color.grey));
+        a2.setBackgroundColor(getColor(R.color.grey));
+        a3.setBackgroundColor(getColor(R.color.grey));
+        a4.setBackgroundColor(getColor(R.color.grey));
+        a5.setBackgroundColor(getColor(R.color.grey));
+        a6.setBackgroundColor(getColor(R.color.grey));
+        a7.setBackgroundColor(getColor(R.color.grey));
+        a8.setBackgroundColor(getColor(R.color.grey));
+        a9.setBackgroundColor(getColor(R.color.grey));
+        a10.setBackgroundColor(getColor(R.color.grey));
+        a11.setBackgroundColor(getColor(R.color.grey));
+        a12.setBackgroundColor(getColor(R.color.grey));
     }
 
 }

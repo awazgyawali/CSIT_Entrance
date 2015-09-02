@@ -16,15 +16,26 @@
         android:orientation="vertical"
         android:theme="@style/Theme.AppCompat">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/gridView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/MainAd"
-            android:layout_below="@+id/quizToolbar"
             android:layout_centerHorizontal="true"
-            android:layout_weight="1"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/gridView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/MainAd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/main_ad_id" />
+        </LinearLayout>
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -80,11 +91,4 @@
         </android.support.design.widget.AppBarLayout>
     </android.support.design.widget.CoordinatorLayout>
 
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/MainAd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/main_ad_id" />
 </LinearLayout>

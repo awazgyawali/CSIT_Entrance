@@ -23,13 +23,36 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true" />
 
-        <ProgressBar
-            android:id="@+id/progressCircleFullFeed"
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressCircleFullFeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/errorPart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
+            android:layout_gravity="center"
+            android:src="@drawable/ic_warning_black_48dp" />
 
-    </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Unable to connect\nTap to retry"
+            android:textColor="#000" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/reqularFeed"
@@ -38,7 +61,7 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <RelativeLayout
+        <android.support.v7.widget.CardView
             android:id="@+id/queryFragHoler"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -48,7 +71,7 @@
                 android:id="@+id/fullFeedRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-        </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/QueryAd"

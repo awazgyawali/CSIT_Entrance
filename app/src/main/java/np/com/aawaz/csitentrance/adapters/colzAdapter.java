@@ -3,11 +3,11 @@ package np.com.aawaz.csitentrance.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,13 +48,13 @@ public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        if(lastPosi>position)
+        if (position % 2 == 0)
             YoYo.with(Techniques.FadeInLeft)
-                    .duration(300)
+                    .duration(500)
                     .playOn(holder.coreColz);
         else
             YoYo.with(Techniques.FadeInRight)
-                .duration(300)
+                    .duration(500)
                 .playOn(holder.coreColz);
         lastPosi=position;
         holder.colzName.setText(colleges.get(position));
@@ -127,7 +127,7 @@ public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {
         TextView website;
         TextView address;
         TextView desc;
-        CardView coreColz;
+        FrameLayout coreColz;
         ImageView call;
 
         public ViewHolder(View itemView) {
@@ -137,7 +137,7 @@ public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {
             address = (TextView) itemView.findViewById(R.id.webSite);
             desc = (TextView) itemView.findViewById(R.id.desc);
             call = (ImageView) itemView.findViewById(R.id.call);
-            coreColz = (CardView) itemView.findViewById(R.id.coreColz);
+            coreColz = (FrameLayout) itemView.findViewById(R.id.coreColz);
         }
     }
 

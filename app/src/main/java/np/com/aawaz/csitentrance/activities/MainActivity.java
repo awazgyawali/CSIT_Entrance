@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
     MainRecyclerAdapter adapter;
     Tracker tracker;
     GoogleAnalytics analytics;
-    int clickedItem;
 
 
     @Override
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         });
 
         String[] titles = {"Score Board", "2069 question", "2070 question", "2071 question", "Model Questions", "More...", "Full Question",
-                "CSIT Colleges", "Entrance News", "Entrance Forum(Alpha)", "About Us"};
+                "CSIT Colleges", "Entrance News", "Entrance Forum", "About Us"};
         int primaryColors[] = {R.color.primary1, R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5,
                 R.color.primary6, R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10,
                 R.color.primary11};
@@ -145,23 +144,20 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
     protected void onResume() {
         super.onResume();
         points.setText(getTotalScore() + " pts");
-        if(adapter!=null && clickedItem!=0)
-            adapter.notifyItemChanged(clickedItem);
     }
 
     @Override
     public void itemClicked(View view, int position) {
-        clickedItem=position;
         YoYo.with(Techniques.Flash)
                 .duration(500)
                 .playOn(view);
         if (position == 0) {
             if (!isConnected()) {
                 Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
-                return;
+            } else {
+                Intent intent = new Intent(this, ScoreBoard.class);
+                startActivity(intent);
             }
-            Intent intent = new Intent(this, ScoreBoard.class);
-            startActivity(intent);
         } else if (position > 0 && position < 4) {
             Intent intent = new Intent(this, QuizActivity.class);
             intent.putExtra("position", position);
@@ -183,16 +179,19 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
             Intent intent = new Intent(this, Colleges.class);
             startActivity(intent);
         } else if (position == 8) {
-            if (getSharedPreferences("values", Context.MODE_PRIVATE).getInt("score" + position, 0) == 0 && !isConnected()) {
+            if (getSharedPreferences("values", Context.MODE_PRIVATE).getInt("newsNo", 0) == 0 && !isConnected()) {
                 Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
             } else {
                 Intent intent = new Intent(this, EntranceNews.class);
                 startActivity(intent);
             }
         } else if (position == 9) {
-            //Snackbar.make(findViewById(R.id.mainParent), "Currently unavailable. Having some major changes.", Snackbar.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, CSITQuery.class);
-            startActivity(intent);
+            if (!isConnected()) {
+                Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(this, CSITQuery.class);
+                startActivity(intent);
+            }
         } else if (position == 10) {
             Intent intent = new Intent(this, About.class);
             startActivity(intent);
@@ -235,6 +234,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
                 .setService(BackgroundTaskHandler.class)
                 .setPeriod(periodSecs)
                 .setTag(tag)
+                .setFlex(periodSecs)
                 .setPersisted(true)
                 .setUpdateCurrent(true)
                 .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_CONNECTED)

@@ -46,7 +46,7 @@ public class About extends AppCompatActivity {
         manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                if (position == 0)
+                if (position == 0 || position == 1)
                     return 6;
                 else if (position == adapter.getItemCount() - 1)
                     return 6;

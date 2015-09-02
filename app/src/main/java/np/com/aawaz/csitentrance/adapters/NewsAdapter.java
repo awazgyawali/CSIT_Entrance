@@ -1,20 +1,15 @@
 package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 import java.util.ArrayList;
 
@@ -22,32 +17,20 @@ import np.com.aawaz.csitentrance.R;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
-    public static int expandedPosition = -1;
     Context context;
     ArrayList<String> topic = new ArrayList<>();
     ArrayList<String> subTopic = new ArrayList<>();
-    ArrayList<String> imageURL = new ArrayList<>();
     ArrayList<String> content = new ArrayList<>();
-    ArrayList<String> author = new ArrayList<>();
-    ArrayList<String> link = new ArrayList<>();
-    ArrayList<String> linkTitle = new ArrayList<>();
     LayoutInflater inflater;
-    RecyclerView recy;
+    ClickListener clickListener;
 
 
-    public NewsAdapter(Context context, ArrayList<String> topic, ArrayList<String> subTopic,
-                       ArrayList<String> imageURL, ArrayList<String> content, ArrayList<String> author,
-                       ArrayList<String> link, ArrayList<String> linkTitle, RecyclerView recy) {
+    public NewsAdapter(Context context, ArrayList<String> topic, ArrayList<String> subTopic, ArrayList<String> content) {
         this.context = context;
         this.topic = topic;
         inflater = LayoutInflater.from(context);
         this.subTopic = subTopic;
-        this.imageURL = imageURL;
         this.content = content;
-        this.author = author;
-        this.link=link;
-        this.linkTitle=linkTitle;
-        this.recy = recy;
     }
 
     @Override
@@ -55,64 +38,23 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         return new ViewHolder(inflater.inflate(R.layout.news_item, parent, false));
     }
 
+    public void setClickListener(ClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
+
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
+        if (position % 2 == 0)
+            YoYo.with(Techniques.FadeInLeft)
+                    .duration(500)
+                    .playOn(holder.headings);
+        else
+            YoYo.with(Techniques.FadeInRight)
+                    .duration(500)
+                    .playOn(holder.headings);
         holder.title.setText(topic.get(position));
         holder.themeNews.setText(content.get(position));
         holder.time.setText(subTopic.get(position));
-        holder.mainLayout.setMaxCardElevation(10);
-        holder.mainLayout.setCardElevation(3);
-        holder.titleEach.setText(topic.get(position));
-        holder.contentEach.setText(content.get(position));
-        holder.authorEach.setText(author.get(position));
-        holder.subTopicEach.setText(subTopic.get(position));
-        if(!link.get(position).equals("null")) {
-            holder.linkButton.setText(linkTitle.get(position));
-            holder.linkButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link.get(position))));
-                }
-            });
-            holder.linkButton.setVisibility(View.VISIBLE);
-        } else {
-            holder.linkButton.setVisibility(View.GONE);
-        }
-        if (imageURL.get(position).equals("null")) {
-            holder.newsImage.setVisibility(View.GONE);
-        } else {
-            holder.newsImage.setVisibility(View.VISIBLE);
-            Picasso.with(context)
-                    .load(imageURL.get(position))
-                    .into(holder.newsImage);
-        }
-        if (position == expandedPosition) {
-            holder.llExpandArea.setVisibility(View.VISIBLE);
-            holder.mainLayout.setCardElevation(10);
-            holder.headings.setVisibility(View.GONE);
-        } else {
-            holder.headings.setVisibility(View.VISIBLE);
-            holder.llExpandArea.setVisibility(View.GONE);
-        }
-        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (expandedPosition == position) {
-                    int pre = expandedPosition;
-                    expandedPosition = -1;
-                    notifyItemChanged(pre);
-                } else if (expandedPosition > -1) {
-                    int pre = expandedPosition;
-                    expandedPosition = position;
-                    notifyItemChanged(pre);
-                    notifyItemChanged(expandedPosition);
-                } else {
-                    expandedPosition = position;
-                    notifyItemChanged(expandedPosition);
-                }
-                recy.scrollToPosition(position);
-            }
-        });
     }
 
     @Override
@@ -120,35 +62,27 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         return topic.size();
     }
 
+    public interface ClickListener {
+        void itemClicked(View view, int position);
+    }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView title;
-        TextView titleEach;
-        TextView contentEach;
-        TextView authorEach;
-        TextView subTopicEach;
         TextView themeNews;
         TextView time;
-        Button linkButton;
-        ImageView newsImage;
-        CardView mainLayout;
         RelativeLayout headings;
-        LinearLayout llExpandArea;
-
         public ViewHolder(View itemView) {
             super(itemView);
-            mainLayout = (CardView) itemView.findViewById(R.id.mainLayout);
-            titleEach = (TextView) itemView.findViewById(R.id.eachNewsTitle);
-            contentEach = (TextView) itemView.findViewById(R.id.newsContent);
-            authorEach = (TextView) itemView.findViewById(R.id.newsAuthor);
-            subTopicEach = (TextView) itemView.findViewById(R.id.newsSubTitle);
-            newsImage = (ImageView) itemView.findViewById(R.id.newsImage);
             title = (TextView) itemView.findViewById(R.id.newsTitle);
             themeNews = (TextView) itemView.findViewById(R.id.themeNews);
-            time = (TextView) itemView.findViewById(R.id.time);
-            linkButton= (Button) itemView.findViewById(R.id.linkButton);
+            time = (TextView) itemView.findViewById(R.id.newsTime);
             headings = (RelativeLayout) itemView.findViewById(R.id.headings);
-            llExpandArea = (LinearLayout) itemView.findViewById(R.id.llExpandArea);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.itemClicked(view, getAdapterPosition());
+                }
+            });
         }
     }
 }

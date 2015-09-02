@@ -7,7 +7,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="5dp">
 
 
         <com.facebook.login.widget.ProfilePictureView
@@ -28,13 +29,13 @@
             android:layout_toStartOf="@+id/user_post_button"
             android:gravity="center"
             android:hint="Ask a question."
-            android:lines="4" />
+            android:lines="2" />
 
 
         <mehdi.sakout.fancybuttons.FancyButton
             android:id="@+id/user_post_button"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             fancy:fb_borderColor="#000"

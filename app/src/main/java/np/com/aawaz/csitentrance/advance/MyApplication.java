@@ -4,8 +4,10 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
 
@@ -42,7 +44,7 @@ public class MyApplication extends Application {
             public void run() {
                 try {
                     runnable.run();
-                } finally {
+                } catch (Exception e) {
 
                 }
             }
@@ -56,8 +58,16 @@ public class MyApplication extends Application {
             Window window = context.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(context.getResources().getColor(colorResource));
+            window.setStatusBarColor(context.getColor(colorResource));
         }
+    }
+
+    public static void log(String message) {
+        Log.d("debug", message);
+    }
+
+    public static void toast(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

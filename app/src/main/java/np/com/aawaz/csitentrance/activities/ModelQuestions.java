@@ -3,7 +3,6 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -31,7 +30,7 @@ public class ModelQuestions extends AppCompatActivity implements MainRecyclerAda
 
         MyApplication.changeStatusBarColor(R.color.status_bar_model, this);
 
-        //loadAd();
+        loadAd();
 
         String[] titles = {"Model Question 1", "Model Question 2", "Model Question 3"
                 , "Model Question 4", "Model Question 5"};
@@ -68,17 +67,13 @@ public class ModelQuestions extends AppCompatActivity implements MainRecyclerAda
 
     @Override
     public void itemClicked(View view, int position) {
-        if (position == 3 || position == 5) {
-            Snackbar.make(findViewById(R.id.modelQueCoordinate), "Upadting soon. Please take patience.", Snackbar.LENGTH_SHORT).show();
-            return;
-        }
         Intent intent = new Intent(this, QuizActivity.class);
         intent.putExtra("position", position + 4);
         startActivity(intent);
     }
 
     public void loadAd() {
-        final AdView mAdView = (AdView) findViewById(R.id.fullQueAd);
+        final AdView mAdView = (AdView) findViewById(R.id.modelQuestionAd);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
         mAdView.setVisibility(View.GONE);

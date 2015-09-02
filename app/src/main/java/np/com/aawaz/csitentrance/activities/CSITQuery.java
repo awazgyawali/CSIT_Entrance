@@ -1,7 +1,10 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
@@ -10,12 +13,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -37,7 +43,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
@@ -53,7 +58,9 @@ public class CSITQuery extends AppCompatActivity {
     String id;
     RecyclerView recyclerView;
     ProgressBar progressBar;
+    LinearLayout errorPart;
     View header;
+    AppCompatEditText postText;
     ArrayList<String> poster = new ArrayList<>(),
             messages = new ArrayList<>(),
             likes = new ArrayList<>(),
@@ -70,9 +77,18 @@ public class CSITQuery extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         MyApplication.changeStatusBarColor(R.color.status_bar_query, this);
         button = (LoginButton) findViewById(R.id.fbLoginButton);
+        button.bringToFront();
         progressBar = (ProgressBar) findViewById(R.id.progressCircleFullFeed);
-        button.setReadPermissions(Arrays.asList("user_status", "publish_actions"));
-
+        progressBar.bringToFront();
+        errorPart = (LinearLayout) findViewById(R.id.errorPart);
+        errorPart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                debugDataAdder();
+                errorPart.setVisibility(View.GONE);
+            }
+        });
+        button.setPublishPermissions("publish_actions");
         loadAd();
 
         firstLoginPage();
@@ -84,16 +100,16 @@ public class CSITQuery extends AppCompatActivity {
                 loginLayout.setVisibility(View.GONE);
                 debugDataAdder();
             } else {
-                LinearLayout loginLayout = (LinearLayout) findViewById(R.id.reqularFeed);
-                loginLayout.setVisibility(View.GONE);
             }
         } catch (Exception e) {
             progressBar.setVisibility(View.GONE);
         }
     }
 
+
     private void fillRecy() {
         progressBar.setVisibility(View.GONE);
+        Toast.makeText(this, "Currently you are unable to post or comment due to facebook's post permission policy", Toast.LENGTH_LONG).show();
         GraphFeedAdapter adapter = new GraphFeedAdapter(this, poster, messages, likes, comments, postId, header);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -116,6 +132,7 @@ public class CSITQuery extends AppCompatActivity {
 
     private void debugDataAdder() {
         recyclerView = (RecyclerView) findViewById(R.id.fullFeedRecycler);
+        progressBar.setVisibility(View.VISIBLE);
         header = View.inflate(this, R.layout.post_feed_header, null);
         handelHeader();
         final String requestId = "CSITentrance/feed";
@@ -126,7 +143,15 @@ public class CSITQuery extends AppCompatActivity {
             public void onCompleted(GraphResponse graphResponse) {
                 FacebookRequestError error = graphResponse.getError();
                 if (error != null) {
+                    errorPart.setVisibility(View.VISIBLE);
+                    errorPart.bringToFront();
+                    progressBar.setVisibility(View.GONE);
                 } else {
+                    messages.clear();
+                    poster.clear();
+                    postId.clear();
+                    likes.clear();
+                    comments.clear();
                     try {
                         JSONArray array = graphResponse.getJSONObject().getJSONArray("data");
                         for (int i = 0; i < array.length(); i++) {
@@ -149,7 +174,7 @@ public class CSITQuery extends AppCompatActivity {
 
     private void handelHeader() {
         ProfilePictureView profPic = (ProfilePictureView) header.findViewById(R.id.user_profpic);
-        final AppCompatEditText postText = (AppCompatEditText) header.findViewById(R.id.userPostText);
+        postText = (AppCompatEditText) header.findViewById(R.id.userPostText);
         final FancyButton postButton = (FancyButton) header.findViewById(R.id.user_post_button);
         try {
             profPic.setProfileId(Profile.getCurrentProfile().getId());
@@ -183,12 +208,25 @@ public class CSITQuery extends AppCompatActivity {
     }
 
     private void sendPostRequestThroughGraph(String message) {
+        final MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .progress(true, 0)
+                .content("Posting....")
+                .build();
+        dialog.show();
         Bundle params = new Bundle();
         params.putString("message", message);
         final String requestId = "CSITentrance/feed";
         new GraphRequest(AccessToken.getCurrentAccessToken(), requestId, params, HttpMethod.POST, new GraphRequest.Callback() {
             @Override
             public void onCompleted(GraphResponse graphResponse) {
+                dialog.dismiss();
+                if (graphResponse.getError() != null)
+                    Snackbar.make(findViewById(R.id.parentQuery), "Unable to post.", Snackbar.LENGTH_SHORT).show();
+                else {
+                    Snackbar.make(findViewById(R.id.parentQuery), "Post successful.", Snackbar.LENGTH_SHORT).show();
+                    debugDataAdder();
+                    postText.setText("");
+                }
             }
         }).executeAsync();
     }
@@ -210,7 +248,6 @@ public class CSITQuery extends AppCompatActivity {
 
             @Override
             public void onError(FacebookException e) {
-                e.printStackTrace();
             }
         });
     }
@@ -242,17 +279,36 @@ public class CSITQuery extends AppCompatActivity {
         if(id==android.R.id.home) {
             onBackPressed();
             return true;
+        } else if (id == R.id.action_facebook) {
+            Intent i = null;
+            try {
+                getPackageManager().getPackageInfo("com.facebook.katana", 0);
+                i = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/933435523387727"));
+            } catch (Exception e) {
+                i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/CSITentrance"));
+            } finally {
+                startActivity(i);
+            }
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
-        try {
-            getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentByTag("fullfeed")).commit();
-        } catch (Exception e) {
+        FragmentManager manager = getSupportFragmentManager();
+        if (manager.findFragmentByTag("fullfeed") != null)
+            manager.beginTransaction().remove(getSupportFragmentManager().findFragmentByTag("fullfeed")).commit();
+        else {
             super.onBackPressed();
             finish();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_forum, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

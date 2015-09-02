@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="2dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="3dp"
-    android:layout_marginTop="5dp"
-    android:animateLayoutChanges="true"
-    android:background="#fff"
-    app:cardCornerRadius="5dp">
+    android:animateLayoutChanges="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,7 +12,8 @@
         <RelativeLayout
             android:id="@+id/headings"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/newsTitle"
@@ -27,12 +21,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="5dp"
-                android:layout_toLeftOf="@+id/time"
+                android:layout_toLeftOf="@+id/newsTime"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="Demo Title"
-                android:textColor="#3a88cd"
-                android:textSize="17sp" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#3a88cd" />
 
             <TextView
                 android:id="@+id/themeNews"
@@ -42,12 +36,13 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="25dp"
                 android:ellipsize="end"
-                android:maxLines="2"
+                android:maxLines="3"
                 android:paddingBottom="5dp"
-                android:text="Demo content" />
+                android:text="Demo content"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
-                android:id="@+id/time"
+                android:id="@+id/newsTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -56,89 +51,11 @@
                 android:text="Time and day" />
         </RelativeLayout>
 
-        <LinearLayout
-            android:id="@+id/llExpandArea"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/eachNewsTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Demo Title"
-                    android:textColor="@color/primary4"
-                    android:textSize="17dp" />
-
-                <View
-                    android:id="@+id/divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/eachNewsTitle"
-                    android:background="@color/toolbar_color" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/divider"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/newsImage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="300dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp" />
-
-                    <TextView
-                        android:id="@+id/newsSubTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:gravity="right"
-                        android:text="hello" />
-
-
-                    <TextView
-                        android:id="@+id/newsContent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:textAlignment="inherit" />
-
-                    <Button
-                        android:id="@+id/linkButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="Hello"
-                        android:textColor="@color/primary9" />
-
-                    <TextView
-                        android:id="@+id/newsAuthor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginRight="5dp"
-                        android:text="Aawaz Gyawali"
-                        android:textColor="#000" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
     </RelativeLayout>
 
-</android.support.v7.widget.CardView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="bottom"
+        android:background="#ddd" />
+</FrameLayout>

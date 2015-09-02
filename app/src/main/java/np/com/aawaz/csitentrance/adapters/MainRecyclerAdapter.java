@@ -2,6 +2,7 @@ package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -54,12 +55,17 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.mainImg.setImageResource(images[position]);
-        YoYo.with(Techniques.FlipInX)
-                .duration(500)
-                .playOn(holder.mainLayout);
+        if (position % 2 == 0)
+            YoYo.with(Techniques.FadeInLeft)
+                    .duration(500)
+                    .playOn(holder.mainLayout);
+        else
+            YoYo.with(Techniques.FadeInRight)
+                    .duration(500)
+                    .playOn(holder.mainLayout);
         holder.title.setText(titles[position]);
-        holder.mainLayout.setCardBackgroundColor(context.getResources().getColor(darkColor[position]));
-        holder.baseLayout.setCardBackgroundColor(context.getResources().getColor(primaryColor[position]));
+        holder.mainLayout.setCardBackgroundColor(ContextCompat.getColor(context, darkColor[position]));
+        holder.baseLayout.setCardBackgroundColor(ContextCompat.getColor(context, primaryColor[position]));
         holder.playImg.setImageResource(icon[position]);
     }
 

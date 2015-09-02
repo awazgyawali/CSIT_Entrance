@@ -3,12 +3,12 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -38,7 +38,7 @@ import np.com.aawaz.csitentrance.advance.MyApplication;
 import np.com.aawaz.csitentrance.advance.Singleton;
 
 
-public class EntranceNews extends AppCompatActivity {
+public class EntranceNews extends AppCompatActivity implements NewsAdapter.ClickListener {
 
     ArrayList<String> topic = new ArrayList<>(),
             subTopic = new ArrayList<>(),
@@ -48,7 +48,6 @@ public class EntranceNews extends AppCompatActivity {
             link = new ArrayList<>(),
             linkTitle = new ArrayList<>();
     RecyclerView recy;
-    SwipeRefreshLayout refreshLayout;
     Context context;
     RequestQueue requestQueue;
     NewsAdapter newsAdapter;
@@ -69,25 +68,16 @@ public class EntranceNews extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         MyApplication.changeStatusBarColor(R.color.status_bar_news, this);
 
-
-        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refreshNews);
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                setDataToArrayList(false);
-            }
-        });
-
         //Setting the data
         setDataToArrayListFromDb();
     }
 
     public void fillData() {
         recy = (RecyclerView) findViewById(R.id.newsFeedRecy);
-        newsAdapter = new NewsAdapter(this, topic, subTopic, imageURL, content, author, link, linkTitle, recy);
+        newsAdapter = new NewsAdapter(this, topic, subTopic, content);
         recy.setAdapter(newsAdapter);
+        newsAdapter.setClickListener(this);
         recy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
-        refreshLayout.setRefreshing(false);
     }
 
     public void setDataToArrayListFromDb() {
@@ -158,12 +148,10 @@ public class EntranceNews extends AppCompatActivity {
                     }
                     fillData();
                     storeToDb();
-                    context.getSharedPreferences("values",Context.MODE_PRIVATE).edit().putInt("score8",topic.size()).apply();
+                    context.getSharedPreferences("values", Context.MODE_PRIVATE).edit().putInt("newsNo", topic.size()).apply();
                     dialog.dismiss();
-                    refreshLayout.setRefreshing(false);
                     Snackbar.make(findViewById(R.id.parentNews), "News updated.", Snackbar.LENGTH_LONG).show();
                 } catch (Exception e) {
-                    refreshLayout.setRefreshing(false);
                     if (finish) {
                         finish();
                         dialog.dismiss();
@@ -177,7 +165,6 @@ public class EntranceNews extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                refreshLayout.setRefreshing(false);
                 if (finish) {
                     finish();
                     Toast.makeText(getApplicationContext(), "Unable to fetch news. Please check your internet connection.", Toast.LENGTH_LONG).show();
@@ -222,25 +209,9 @@ public class EntranceNews extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        if (newsAdapter != null && newsAdapter.expandedPosition != -1) {
-            int prevPosi = newsAdapter.expandedPosition;
-            newsAdapter.expandedPosition = -1;
-            newsAdapter.notifyItemChanged(prevPosi);
-        } else {
-            super.onBackPressed();
-            finish();
-        }
-    }
 
     public boolean isLargeScreen() {
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-            return false;
-        else
-            return (getResources().getConfiguration().screenLayout
-                    & Configuration.SCREENLAYOUT_SIZE_MASK)
-                    >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
+        return getResources().getConfiguration().orientation != Configuration.ORIENTATION_PORTRAIT && (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
     }
 
     @Override
@@ -250,5 +221,18 @@ public class EntranceNews extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void itemClicked(View view, int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("title", topic.get(position));
+        bundle.putString("subTopic", subTopic.get(position));
+        bundle.putString("imageURL", imageURL.get(position));
+        bundle.putString("content", content.get(position));
+        bundle.putString("linkTitle", linkTitle.get(position));
+        bundle.putString("link", link.get(position));
+        bundle.putString("author", author.get(position));
+        startActivity(new Intent(EntranceNews.this, ReadNews.class).putExtra("bundle", bundle));
     }
 }

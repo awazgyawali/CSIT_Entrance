@@ -2,35 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:background="#3eee"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="5dp">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/commenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aawaz Gyawali"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/comment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fff"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
+        android:textSize="12sp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/commenter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Aawaz Gyawali"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#000" />
-
-            <TextView
-                android:id="@+id/comment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/info"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-        </LinearLayout>
-    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/primary10" />
 </LinearLayout>

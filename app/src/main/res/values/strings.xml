@@ -16,10 +16,6 @@
 
     <string name="versionNum">Beta Version</string>x
 
-    <string name="info">As we know that some mathematical questions has got some complex formulas and matrices which are pretty heavy to render or display in this application. So due to this issue this application may respond little bit slowly while rendering the mathematics equations and formulas. So please take patience. Thank you for using the application. Have a good day.</string>
-    <string name="developerPara">Creating an android application is not an easy task and doing it alone is a big challenge for a developer.I would like to thank my class mates for guiding me through each step of the development.This application contains question which contains mathematical equations and matrices which was the biggest challenge to to overcome.</string>
-    <string name="book_detail">For further references you may buy the entrance preparation book which is our combined effort. This book has got 10 model question\'s with their solutions and old question\'s too. For more details call Gopal Nepal(98********)</string>
-
     <string name="facebook_app_id">768172639946667</string>
 
     <string name="query_ad_id">ca-app-pub-3751722582271673/6684745947</string>
@@ -30,9 +26,9 @@
     <string name="quiz_ad_id">ca-app-pub-3751722582271673/5554703545</string>
     <string name="score_board_ad">ca-app-pub-3751722582271673/7368220346</string>
     <string name="fullque_ad_id">ca-app-pub-3751722582271673/7031436744</string>
+    <string name="model_question_ad_id">ca-app-pub-3751722582271673/8289879147</string>
 
     <string name="quertyPostUrl">http://www.avaaj.com.np/jsonFeed/addQuery.php</string>
-    <string name="queryFetchUrl">http://www.avaaj.com.np/jsonFeed/fetchAll.php?fbId=</string>
     <string name="postScoreurl">http://www.avaaj.com.np/jsonFeed/uploadScore.php</string>
     <string name="fetchScoreurl">http://www.avaaj.com.np/jsonFeed/downloadScore.php</string>
     <string name="url">http://www.avaaj.com.np/jsonFeed/news_feed.php</string>
@@ -49,5 +45,9 @@
     <string name="senderid">csitentrancereporter@gmail.com</string>
     <string name="passwordid">gotocook11</string>
     <string name="title_activity_model_questions">Model Questions</string>
-    <string name="model_question_ad_id" />
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_read_news">ReadNews</string>
+    <string name="full_news_banner">ca-app-pub-3751722582271673/4939459942</string>
 </resources>

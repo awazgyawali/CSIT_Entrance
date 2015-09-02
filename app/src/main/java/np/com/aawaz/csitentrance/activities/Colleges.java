@@ -143,7 +143,7 @@ public class Colleges extends AppCompatActivity {
                 phNo.add(jo_inside.getString("phone"));
             }
 
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 

@@ -118,12 +118,6 @@
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".advance.WifiReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
 
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
         <service
@@ -137,8 +131,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".activities.ModelQuestions"
-            android:label="@string/title_activity_model_questions"></activity>
-
+            android:label="@string/title_activity_model_questions" />
         <activity
             android:name="org.acra.CrashReportDialog"
             android:excludeFromRecents="true"
@@ -146,6 +139,9 @@
             android:launchMode="singleInstance"
             android:process=":error_report"
             android:theme="@style/Theme.Dialog" />
+        <activity
+            android:name=".activities.ReadNews"
+            android:label="@string/title_activity_read_news"></activity>
     </application>
 
 </manifest>

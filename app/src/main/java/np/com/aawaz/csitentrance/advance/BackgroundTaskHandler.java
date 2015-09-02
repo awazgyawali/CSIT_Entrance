@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.PowerManager;
@@ -14,19 +15,18 @@ import android.support.v4.app.NotificationCompat;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.GcmTaskService;
 import com.google.android.gms.gcm.TaskParams;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.activities.CSITQuery;
 import np.com.aawaz.csitentrance.activities.EntranceNews;
 
 public class BackgroundTaskHandler extends GcmTaskService {
@@ -115,8 +115,11 @@ public class BackgroundTaskHandler extends GcmTaskService {
 
             updateNews();
 
+            uploadReport();
+
         } catch (Exception ignored) {
         }
+
         return GcmNetworkManager.RESULT_SUCCESS;
     }
 
@@ -146,20 +149,54 @@ public class BackgroundTaskHandler extends GcmTaskService {
                         linkTitle.add(jo_inside.getString("linkTitle"));
                     }
                     int no = jsonArray.length();
-                    MyApplication.getAppContext().getSharedPreferences("values", Context.MODE_PRIVATE).edit().putInt("score8", no).apply();
+
+                    MyApplication.log("Parsing the news" + no);
+
                     if (no > noOfRows()) {
                         if ((no - noOfRows()) > 1)
-                            BackgroundTaskHandler.notification(jsonArray.length() - noOfRows() + " news updated.", "Check them out now!", "News updated", 12345, new Intent(MyApplication.getAppContext(), EntranceNews.class), MyApplication.getAppContext());
+                            notification(jsonArray.length() - noOfRows() + " news updated.", "Check them out now!", "News updated", 12345, new Intent(MyApplication.getAppContext(), EntranceNews.class), MyApplication.getAppContext());
                         else
-                            BackgroundTaskHandler.notification(topic.get(0), content.get(0), "News updated", 12345, new Intent(MyApplication.getAppContext(), EntranceNews.class), MyApplication.getAppContext());
+                            notification(topic.get(0), content.get(0), "News updated", 12345, new Intent(MyApplication.getAppContext(), EntranceNews.class), MyApplication.getAppContext());
                     }
+                    MyApplication.getAppContext().getSharedPreferences("values", Context.MODE_PRIVATE).edit().putInt("newsNo", no).apply();
                     storeToDb();
                 } catch (Exception e) {
-
+                    MyApplication.log("Volley" + e);
                 }
             }
         }, null);
         Singleton.getInstance().getRequestQueue().add(jsonObjectRequest);
+    }
+
+    private void uploadReport() throws Exception {
+        final SQLiteDatabase database = Singleton.getInstance().getDatabase();
+        final Cursor cursorReport = database.query("report", new String[]{"text"}, null, null, null, null, null);
+        String reportText = "";
+        int i = 0;
+        while (cursorReport.moveToNext()) {
+            reportText = reportText + cursorReport.getString(cursorReport.getColumnIndex("text")) + "\n\n";
+            i++;
+        }
+        String url = MyApplication.getAppContext().getString(R.string.uploadReport);
+        Uri.Builder uri = new Uri.Builder();
+        String values = uri.authority("")
+                .appendQueryParameter("text", reportText)
+                .build().toString();
+        if (i != 0 && reportText.length() != 0) {
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    database.delete("report", null, null);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    cursorReport.close();
+                    database.close();
+                }
+            });
+            Singleton.getInstance().getRequestQueue().add(request);
+        }
     }
 
     private void storeToDb() throws Exception {
@@ -181,37 +218,6 @@ public class BackgroundTaskHandler extends GcmTaskService {
     }
 
     public int noOfRows() throws Exception {
-        return getSharedPreferences("values", MODE_PRIVATE).getInt("score8", 0);
-    }
-
-    private void updateQuery() throws Exception {
-        String url = getString(R.string.queryFetchUrl);
-        String fbId = getSharedPreferences("details", Context.MODE_PRIVATE).getString("fbId", "0");
-        if (fbId == "0")
-            return;
-        final JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.GET, url + fbId, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray query = response.getJSONArray("query");
-                    messages.clear();
-                    for (int i = 0; i < query.length(); i++) {
-                        JSONObject jo_inside = query.getJSONObject(i);
-                        if (!jo_inside.getString("Question").equals("")) {
-                            messages.add(jo_inside.getString("Question"));
-                        }
-                        if (!jo_inside.getString("Answer").equals("")) {
-                            messages.add(jo_inside.getString("Answer"));
-                        }
-                    }
-                    if (messages.size() > getSharedPreferences("data", Context.MODE_PRIVATE).getInt("query", 0)) {
-                        notification("Reply for your pre-posted query.", messages.get(messages.size() - 1), "New query received.", 54321, new Intent(context, CSITQuery.class), BackgroundTaskHandler.this);
-                        getSharedPreferences("data", Context.MODE_PRIVATE).edit().putInt("query", messages.size()).apply();
-                    }
-                } catch (JSONException e) {
-                }
-            }
-        }, null);
-        requestQueue.add(jsonObjectRequest1);
+        return getSharedPreferences("values", MODE_PRIVATE).getInt("newsNo", 0);
     }
 }
