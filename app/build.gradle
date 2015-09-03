@@ -39,5 +39,4 @@ dependencies {
     compile 'com.sothree.slidinguppanel:library:3.1.1'
     compile 'com.github.medyo:fancybuttons:1.4@aar'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'
 }

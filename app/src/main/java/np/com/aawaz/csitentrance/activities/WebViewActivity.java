@@ -1,17 +1,22 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.WebView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.joanzapata.pdfview.PDFView;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.advance.Singleton;
@@ -20,7 +25,7 @@ import np.com.aawaz.csitentrance.advance.Singleton;
 public class WebViewActivity extends AppCompatActivity {
 
     RequestQueue requestQueue;
-    PDFView pdfview;
+    WebView webView;
 
 
     @Override
@@ -30,18 +35,13 @@ public class WebViewActivity extends AppCompatActivity {
 
         loadAd();
 
-        pdfview = (PDFView) findViewById(R.id.pdfview);
+        webView = (WebView) findViewById(R.id.pdfview);
 
         requestQueue = Singleton.getInstance().getRequestQueue();
         String url = "http://www.google.com";
-        pdfview.fromAsset("question" + getIntent().getExtras().getInt("code") + ".pdf")
-                .defaultPage(1)
-                .showMinimap(false)
-                .enableSwipe(true)
-                .load();
-        /*
+
         final MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .content("Connecting. Please wait...")
+                .content("Connecting.\nPlease wait...")
                 .cancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
@@ -54,11 +54,7 @@ public class WebViewActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                pdfview.fromAsset("question" + getIntent().getExtras().getInt("code") + ".pdf")
-                        .defaultPage(1)
-                        .showMinimap(false)
-                        .enableSwipe(true)
-                        .load();
+                webView.loadUrl("file:///android_asset/question" + getIntent().getExtras().getInt("code") + ".htm");
                 dialog.dismiss();
             }
         }, new Response.ErrorListener() {
@@ -70,7 +66,6 @@ public class WebViewActivity extends AppCompatActivity {
             }
         });
         requestQueue.add(request.setTag("fullQue"));
-        */
     }
 
     public void reportFull(View v) {
