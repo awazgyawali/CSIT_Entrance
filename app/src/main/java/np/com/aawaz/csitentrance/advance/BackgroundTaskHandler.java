@@ -30,7 +30,6 @@ import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.EntranceNews;
 
 public class BackgroundTaskHandler extends GcmTaskService {
-    ArrayList<String> messages = new ArrayList<>();
     RequestQueue requestQueue;
     Context context;
     ArrayList<String> topic = new ArrayList<>(),
@@ -66,7 +65,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
         wl.acquire();
         try {
             Thread.sleep(7000);
-        } catch (InterruptedException e) {
+        } catch (InterruptedException ignored) {
         }
         wl.release();
     }
@@ -80,14 +79,14 @@ public class BackgroundTaskHandler extends GcmTaskService {
         String values = uri.authority("")
                 .appendQueryParameter("key", MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("uniqueID", "trash"))
                 .appendQueryParameter("name", MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "trash"))
-                .appendQueryParameter("socre1", preferences.getInt("score1", 0) + "")
-                .appendQueryParameter("score2", preferences.getInt("score1", 0) + "")
-                .appendQueryParameter("score4", preferences.getInt("score1", 0) + "")
-                .appendQueryParameter("score4", preferences.getInt("score1", 0) + "")
-                .appendQueryParameter("score5", preferences.getInt("score1", 0) + "")
-                .appendQueryParameter("score6", preferences.getInt("score1", 0) + "")
-                .appendQueryParameter("score7", preferences.getInt("score1", 0) + "")
-                .appendQueryParameter("score8", preferences.getInt("score1", 0) + "")
+                .appendQueryParameter("score1", preferences.getInt("score1", 0) + "")
+                .appendQueryParameter("score2", preferences.getInt("score2", 0) + "")
+                .appendQueryParameter("score4", preferences.getInt("score3", 0) + "")
+                .appendQueryParameter("score4", preferences.getInt("score4", 0) + "")
+                .appendQueryParameter("score5", preferences.getInt("score5", 0) + "")
+                .appendQueryParameter("score6", preferences.getInt("score6", 0) + "")
+                .appendQueryParameter("score7", preferences.getInt("score7", 0) + "")
+                .appendQueryParameter("score8", preferences.getInt("score8", 0) + "")
                 .appendQueryParameter("totalScore", getTotal() + "")
                 .build().toString();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
@@ -150,8 +149,6 @@ public class BackgroundTaskHandler extends GcmTaskService {
                     }
                     int no = jsonArray.length();
 
-                    MyApplication.log("Parsing the news" + no);
-
                     if (no > noOfRows()) {
                         if ((no - noOfRows()) > 1)
                             notification(jsonArray.length() - noOfRows() + " news updated.", "Check them out now!", "News updated", 12345, new Intent(MyApplication.getAppContext(), EntranceNews.class), MyApplication.getAppContext());
@@ -160,8 +157,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
                     }
                     MyApplication.getAppContext().getSharedPreferences("values", Context.MODE_PRIVATE).edit().putInt("newsNo", no).apply();
                     storeToDb();
-                } catch (Exception e) {
-                    MyApplication.log("Volley" + e);
+                } catch (Exception ignored) {
                 }
             }
         }, null);

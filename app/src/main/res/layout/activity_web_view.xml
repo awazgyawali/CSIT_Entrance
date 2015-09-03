@@ -1,5 +1,6 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,15 +10,30 @@
     <com.joanzapata.pdfview.PDFView
         android:id="@+id/pdfview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent" />
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:onClick="reportFull"
+        android:paddingBottom="7dp"
+        android:paddingLeft="17sp"
+        android:paddingRight="17sp"
+        android:paddingTop="7dp"
+        fancy:fb_borderColor="#3b5999"
+        fancy:fb_borderWidth="2dp"
+        fancy:fb_defaultColor="#fff"
+        fancy:fb_focusColor="#4d3b5999"
+        fancy:fb_radius="5dp"
+        fancy:fb_text="REPORT"
+        fancy:fb_textColor="#000" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/webViewAd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom"
         ads:adSize="BANNER"
         ads:adUnitId="@string/question_ad_id" />
-</LinearLayout>
+</FrameLayout>

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import np.com.aawaz.csitentrance.R;
 
 
-public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {
+public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHolder> {
     ArrayList<String> desc;
     ArrayList<String> website;
     ArrayList<String> phNo;
@@ -30,7 +30,7 @@ public class colzAdapter extends RecyclerView.Adapter<colzAdapter.ViewHolder> {
     ArrayList<String> colleges;
     int lastPosi=0;
 
-    public colzAdapter(Context context, ArrayList<String> colleges, ArrayList<String> address, ArrayList<String> desc, ArrayList<String> website, ArrayList<String> phNo) {
+    public CollegesAdapter(Context context, ArrayList<String> colleges, ArrayList<String> address, ArrayList<String> desc, ArrayList<String> website, ArrayList<String> phNo) {
         this.colleges = colleges;
         this.address = address;
         this.desc = desc;

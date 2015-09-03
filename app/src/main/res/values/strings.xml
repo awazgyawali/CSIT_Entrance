@@ -13,6 +13,9 @@
     <string name="title_activity_full_question">Full Question</string>
     <string name="title_activity_csitquery">Entrance Forum</string>
     <string name="title_activity_introduction">Introduction</string>
+    <string name="title_activity_read_news">Read News</string>
+    <string name="title_activity_model_questions">Model Questions</string>
+
 
     <string name="versionNum">Beta Version</string>x
 
@@ -27,6 +30,7 @@
     <string name="score_board_ad">ca-app-pub-3751722582271673/7368220346</string>
     <string name="fullque_ad_id">ca-app-pub-3751722582271673/7031436744</string>
     <string name="model_question_ad_id">ca-app-pub-3751722582271673/8289879147</string>
+    <string name="full_news_banner">ca-app-pub-3751722582271673/4939459942</string>
 
     <string name="quertyPostUrl">http://www.avaaj.com.np/jsonFeed/addQuery.php</string>
     <string name="postScoreurl">http://www.avaaj.com.np/jsonFeed/uploadScore.php</string>
@@ -41,13 +45,107 @@
     <string name="crash_dialog_ok_toast">Thank you!</string>
     <string name="title_activity_crash_report_sender">CrashReportSender</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="senderid">csitentrancereporter@gmail.com</string>
-    <string name="passwordid">gotocook11</string>
-    <string name="title_activity_model_questions">Model Questions</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_read_news">ReadNews</string>
-    <string name="full_news_banner">ca-app-pub-3751722582271673/4939459942</string>
+    <string-array name="list">
+        <item>Question No 1</item>
+        <item>Question No 2</item>
+        <item>Question No 3</item>
+        <item>Question No 4</item>
+        <item>Question No 5</item>
+        <item>Question No 6</item>
+        <item>Question No 7</item>
+        <item>Question No 8</item>
+        <item>Question No 9</item>
+        <item>Question No 10</item>
+        <item>Question No 11</item>
+        <item>Question No 12</item>
+        <item>Question No 13</item>
+        <item>Question No 14</item>
+        <item>Question No 15</item>
+        <item>Question No 16</item>
+        <item>Question No 17</item>
+        <item>Question No 18</item>
+        <item>Question No 19</item>
+        <item>Question No 20</item>
+        <item>Question No 21</item>
+        <item>Question No 22</item>
+        <item>Question No 23</item>
+        <item>Question No 24</item>
+        <item>Question No 25</item>
+        <item>Question No 26</item>
+        <item>Question No 27</item>
+        <item>Question No 28</item>
+        <item>Question No 29</item>
+        <item>Question No 30</item>
+        <item>Question No 31</item>
+        <item>Question No 32</item>
+        <item>Question No 33</item>
+        <item>Question No 34</item>
+        <item>Question No 35</item>
+        <item>Question No 36</item>
+        <item>Question No 37</item>
+        <item>Question No 38</item>
+        <item>Question No 39</item>
+        <item>Question No 40</item>
+        <item>Question No 41</item>
+        <item>Question No 42</item>
+        <item>Question No 43</item>
+        <item>Question No 44</item>
+        <item>Question No 45</item>
+        <item>Question No 46</item>
+        <item>Question No 47</item>
+        <item>Question No 48</item>
+        <item>Question No 49</item>
+        <item>Question No 50</item>
+        <item>Question No 51</item>
+        <item>Question No 52</item>
+        <item>Question No 53</item>
+        <item>Question No 54</item>
+        <item>Question No 55</item>
+        <item>Question No 56</item>
+        <item>Question No 57</item>
+        <item>Question No 58</item>
+        <item>Question No 59</item>
+        <item>Question No 60</item>
+        <item>Question No 61</item>
+        <item>Question No 62</item>
+        <item>Question No 63</item>
+        <item>Question No 64</item>
+        <item>Question No 65</item>
+        <item>Question No 66</item>
+        <item>Question No 67</item>
+        <item>Question No 68</item>
+        <item>Question No 69</item>
+        <item>Question No 70</item>
+        <item>Question No 71</item>
+        <item>Question No 72</item>
+        <item>Question No 73</item>
+        <item>Question No 74</item>
+        <item>Question No 75</item>
+        <item>Question No 76</item>
+        <item>Question No 77</item>
+        <item>Question No 78</item>
+        <item>Question No 79</item>
+        <item>Question No 80</item>
+        <item>Question No 81</item>
+        <item>Question No 82</item>
+        <item>Question No 83</item>
+        <item>Question No 84</item>
+        <item>Question No 85</item>
+        <item>Question No 86</item>
+        <item>Question No 87</item>
+        <item>Question No 88</item>
+        <item>Question No 89</item>
+        <item>Question No 90</item>
+        <item>Question No 91</item>
+        <item>Question No 92</item>
+        <item>Question No 93</item>
+        <item>Question No 94</item>
+        <item>Question No 95</item>
+        <item>Question No 96</item>
+        <item>Question No 97</item>
+        <item>Question No 98</item>
+        <item>Question No 99</item>
+        <item>Question No 100</item>
+    </string-array>
 </resources>

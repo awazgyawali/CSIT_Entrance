@@ -65,7 +65,6 @@ public class SlideUpPanelAdapter extends RecyclerView.Adapter<SlideUpPanelAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         String htm = questions.get(position) + "<br>" + ansFinder(position);
         holder.que.loadDataWithBaseURL("", htm, "text/html", "UTF-8", "");
-        ;
     }
 
     @Override
@@ -88,7 +87,7 @@ public class SlideUpPanelAdapter extends RecyclerView.Adapter<SlideUpPanelAdapte
                 answer.add(jo_inside.getString("ans"));
             }
 
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 

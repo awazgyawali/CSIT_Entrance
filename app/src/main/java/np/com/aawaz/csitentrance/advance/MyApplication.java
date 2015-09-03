@@ -3,11 +3,10 @@ package np.com.aawaz.csitentrance.advance;
 import android.app.Application;
 import android.content.Context;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
 
@@ -38,36 +37,13 @@ public class MyApplication extends Application {
         return sInstance.getApplicationContext();
     }
 
-    public static Thread performOnBackgroundThread(final Runnable runnable) {
-        final Thread t = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    runnable.run();
-                } catch (Exception e) {
-
-                }
-            }
-        };
-        t.start();
-        return t;
-    }
-
     public static void changeStatusBarColor(int colorResource, AppCompatActivity context) {
         if (Build.VERSION.SDK_INT >= 21) {
             Window window = context.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(context.getColor(colorResource));
+            window.setStatusBarColor(ContextCompat.getColor(context, colorResource));
         }
-    }
-
-    public static void log(String message) {
-        Log.d("debug", message);
-    }
-
-    public static void toast(Context context, String message) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -26,7 +26,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.adapters.colzAdapter;
+import np.com.aawaz.csitentrance.adapters.CollegesAdapter;
 import np.com.aawaz.csitentrance.advance.MyApplication;
 
 
@@ -96,7 +96,7 @@ public class Colleges extends AppCompatActivity {
     private void fillNormally(){
         //Recycler view handler
         RecyclerView colzRecy = (RecyclerView) findViewById(R.id.colzRecy);
-        colzAdapter adapter = new colzAdapter(this, names, address, desc, website, phNo);
+        CollegesAdapter adapter = new CollegesAdapter(this, names, address, desc, website, phNo);
         colzRecy.setAdapter(adapter);
         colzRecy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
     }
@@ -124,7 +124,7 @@ public class Colleges extends AppCompatActivity {
     private void fillNewRecy() {
         //Recycler view handler
         RecyclerView colzRecy = (RecyclerView) findViewById(R.id.colzRecy);
-        colzAdapter adapter = new colzAdapter(this, namesNew, addressNew, descNew, websiteNew, phNoNew);
+        CollegesAdapter adapter = new CollegesAdapter(this, namesNew, addressNew, descNew, websiteNew, phNoNew);
         colzRecy.setAdapter(adapter);
         colzRecy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
     }

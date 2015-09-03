@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -87,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         name.addTextChangedListener(this);
         sur.addTextChangedListener(this);
         email.addTextChangedListener(this);
-        fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_done_black_18dp, null));
+        fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_done_black_18dp));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,51 +137,51 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         resetAllBack();
         if (view == a1) {
             avatar = 1;
-            a1.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
+            a1.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
 
         } else if (view == a2) {
             avatar = 2;
-            a2.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
+            a2.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
 
         } else if (view == a3) {
             avatar = 3;
-            a3.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
+            a3.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
 
         } else if (view == a4) {
             avatar = 4;
-            a4.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
+            a4.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
 
         } else if (view == a5) {
             avatar = 5;
-            a5.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
+            a5.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
 
         } else if (view == a6) {
             avatar = 6;
-            a6.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
+            a6.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
 
         } else if (view == a7) {
             avatar = 7;
-            a7.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
+            a7.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
 
         } else if (view == a8) {
             avatar = 8;
-            a8.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
+            a8.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
 
         } else if (view == a9) {
             avatar = 9;
-            a9.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
+            a9.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
 
         } else if (view == a10) {
             avatar = 10;
-            a10.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
+            a10.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
 
         } else if (view == a11) {
             avatar = 11;
-            a11.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
+            a11.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
 
         } else if (view == a12) {
             avatar = 12;
-            a12.setBackgroundColor(getColor(R.color.abc_primary_text_material_light));
+            a12.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
 
         }
 
@@ -211,18 +212,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void resetAllBack() {
-        a1.setBackgroundColor(getColor(R.color.grey));
-        a2.setBackgroundColor(getColor(R.color.grey));
-        a3.setBackgroundColor(getColor(R.color.grey));
-        a4.setBackgroundColor(getColor(R.color.grey));
-        a5.setBackgroundColor(getColor(R.color.grey));
-        a6.setBackgroundColor(getColor(R.color.grey));
-        a7.setBackgroundColor(getColor(R.color.grey));
-        a8.setBackgroundColor(getColor(R.color.grey));
-        a9.setBackgroundColor(getColor(R.color.grey));
-        a10.setBackgroundColor(getColor(R.color.grey));
-        a11.setBackgroundColor(getColor(R.color.grey));
-        a12.setBackgroundColor(getColor(R.color.grey));
+        a1.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        a2.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        a3.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        a4.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        a5.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        a6.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        a7.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        a8.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        a9.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        a10.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        a11.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        a12.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
     }
 
 }

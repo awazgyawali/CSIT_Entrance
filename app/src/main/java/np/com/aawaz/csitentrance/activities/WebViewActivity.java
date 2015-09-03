@@ -1,16 +1,13 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.content.DialogInterface;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -37,8 +34,14 @@ public class WebViewActivity extends AppCompatActivity {
 
         requestQueue = Singleton.getInstance().getRequestQueue();
         String url = "http://www.google.com";
+        pdfview.fromAsset("question" + getIntent().getExtras().getInt("code") + ".pdf")
+                .defaultPage(1)
+                .showMinimap(false)
+                .enableSwipe(true)
+                .load();
+        /*
         final MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .content("Please wait...")
+                .content("Connecting. Please wait...")
                 .cancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
@@ -67,6 +70,26 @@ public class WebViewActivity extends AppCompatActivity {
             }
         });
         requestQueue.add(request.setTag("fullQue"));
+        */
+    }
+
+    public void reportFull(View v) {
+        final MaterialDialog dialogMis = new MaterialDialog.Builder(this)
+                .title("Found mistake on")
+                .items(R.array.list)
+                .positiveText("Cancel")
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog materialDialog, View view, int i, CharSequence charSequence) {
+                        ContentValues values = new ContentValues();
+                        SQLiteDatabase database = Singleton.getInstance().getDatabase();
+                        values.put("text", "PDF Year: " + (getIntent().getExtras().getInt("code") + 2068) + charSequence);
+                        database.insert("report", null, values);
+                        database.close();
+                    }
+                })
+                .build();
+        dialogMis.show();
     }
 
     public void loadAd() {

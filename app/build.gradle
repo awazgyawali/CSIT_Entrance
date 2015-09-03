@@ -9,7 +9,7 @@ android {
         applicationId "np.com.aawaz.csitentrance"
         minSdkVersion 10
         targetSdkVersion 23
-        versionCode 16
+        versionCode 18
         versionName "Beta E"
     }
     buildTypes {

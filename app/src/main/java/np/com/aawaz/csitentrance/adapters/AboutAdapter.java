@@ -70,7 +70,7 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
                     .playOn(holder.aboutExtreme);
             return;
         }
-        if (position % 2 == 1)
+        if (position % 2 == 0)
             YoYo.with(Techniques.FadeInLeft)
                     .duration(500)
                     .playOn(holder.aboutCore);

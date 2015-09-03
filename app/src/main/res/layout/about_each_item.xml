@@ -4,8 +4,7 @@
     android:id="@+id/about_each_core"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    fancy:cardCornerRadius="0dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -11,9 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
-
 import np.com.aawaz.csitentrance.R;
 
 
@@ -55,14 +52,6 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.mainImg.setImageResource(images[position]);
-        if (position % 2 == 0)
-            YoYo.with(Techniques.FadeInLeft)
-                    .duration(500)
-                    .playOn(holder.mainLayout);
-        else
-            YoYo.with(Techniques.FadeInRight)
-                    .duration(500)
-                    .playOn(holder.mainLayout);
         holder.title.setText(titles[position]);
         holder.mainLayout.setCardBackgroundColor(ContextCompat.getColor(context, darkColor[position]));
         holder.baseLayout.setCardBackgroundColor(ContextCompat.getColor(context, primaryColor[position]));

@@ -29,12 +29,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/MainAd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                ads:adSize="BANNER"
-                ads:adUnitId="@string/main_ad_id" />
         </LinearLayout>
 
         <android.support.design.widget.AppBarLayout
@@ -88,7 +82,14 @@
                             android:textColor="#fff" />
                     </RelativeLayout>
             </android.support.v7.widget.Toolbar>
+
         </android.support.design.widget.AppBarLayout>
     </android.support.design.widget.CoordinatorLayout>
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/MainAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/main_ad_id" />
 </LinearLayout>

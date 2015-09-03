@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -95,11 +94,8 @@ public class CSITQuery extends AppCompatActivity {
 
         try {
             if (!AccessToken.getCurrentAccessToken().isExpired()) {
-                RelativeLayout loginLayout;
-                loginLayout = (RelativeLayout) findViewById(R.id.firstLogin);
-                loginLayout.setVisibility(View.GONE);
+                button.setVisibility(View.GONE);
                 debugDataAdder();
-            } else {
             }
         } catch (Exception e) {
             progressBar.setVisibility(View.GONE);

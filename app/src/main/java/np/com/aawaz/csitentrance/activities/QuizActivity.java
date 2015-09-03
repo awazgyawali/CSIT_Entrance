@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.RecyclerView;
@@ -135,7 +136,7 @@ public class QuizActivity extends AppCompatActivity {
                 R.drawable.eleven, R.drawable.twelve};
 
         ImageView img = (ImageView) findViewById(R.id.profQue);
-        img.setImageDrawable(getResources().getDrawable(avatar[(getSharedPreferences("info", MODE_PRIVATE).getInt("Avatar", 1)) - 1]));
+        img.setImageDrawable(ContextCompat.getDrawable(this, avatar[(getSharedPreferences("info", MODE_PRIVATE).getInt("Avatar", 1)) - 1]));
         pb = (ProgressBar) findViewById(R.id.progressBar);
         TextView topic = (TextView) findViewById(R.id.topic);
         ansRecy = (RecyclerView) findViewById(R.id.ansRecycle);
@@ -167,7 +168,7 @@ public class QuizActivity extends AppCompatActivity {
         topic.setText(titles[code]);
 
         RelativeLayout coreLayout = (RelativeLayout) findViewById(R.id.coreLayout);
-        coreLayout.setBackgroundColor(getResources().getColor(darkColors[code]));
+        coreLayout.setBackgroundColor(ContextCompat.getColor(this, darkColors[code]));
 
         //Last Stage of the game
         fetchFromSp();
@@ -180,7 +181,7 @@ public class QuizActivity extends AppCompatActivity {
         //Initial Notification
         if (qNo == 0) {
             feedback.setText("GO!");
-            feedback.setBackgroundColor(getResources().getColor(R.color.blueFeedback));
+            feedback.setBackgroundColor(ContextCompat.getColor(this, R.color.blueFeedback));
         } else {
             if (qNo < 9)
                 feedback.setText("0" + (qNo + 1) + "");
@@ -188,7 +189,7 @@ public class QuizActivity extends AppCompatActivity {
                 feedback.setVisibility(View.INVISIBLE);
             else
                 feedback.setText((qNo + 1) + "");
-            feedback.setBackgroundColor(getResources().getColor(R.color.blueFeedback));
+            feedback.setBackgroundColor(ContextCompat.getColor(this, R.color.blueFeedback));
         }
 
         YoYo.with(Techniques.SlideInDown)
@@ -200,8 +201,8 @@ public class QuizActivity extends AppCompatActivity {
                 .playOn(feedback);
 
         //Setting color
-        toolbar.setBackgroundColor(getResources().getColor(primaryColors[code]));
-        questionLayout.setBackgroundColor(getResources().getColor(primaryColors[code]));
+        toolbar.setBackgroundColor(ContextCompat.getColor(this, primaryColors[code]));
+        questionLayout.setBackgroundColor(ContextCompat.getColor(this, primaryColors[code]));
 
         pb.setMax(120);
 
@@ -390,11 +391,11 @@ public class QuizActivity extends AppCompatActivity {
         if ((clickedAns == 1 && answer.get(qNo).equals("a")) || (clickedAns == 2 && answer.get(qNo).equals("b")) ||
                 (clickedAns == 3 && answer.get(qNo).equals("c")) || (clickedAns == 4 && answer.get(qNo).equals("d"))) {
             feedback.setText("+1");
-            feedback.setBackgroundColor(getResources().getColor(R.color.green));
+            feedback.setBackgroundColor(ContextCompat.getColor(this, R.color.green));
             score++;
         } else {
             feedback.setText("+0");
-            feedback.setBackgroundColor(getResources().getColor(R.color.red));
+            feedback.setBackgroundColor(ContextCompat.getColor(this, R.color.red));
         }
     }
 

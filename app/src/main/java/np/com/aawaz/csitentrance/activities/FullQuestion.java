@@ -55,7 +55,6 @@ public class FullQuestion extends AppCompatActivity implements MainRecyclerAdapt
         adater.setClickListner(this);
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

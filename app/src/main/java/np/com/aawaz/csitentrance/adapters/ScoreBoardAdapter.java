@@ -2,6 +2,7 @@ package np.com.aawaz.csitentrance.adapters;
 
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -56,8 +57,8 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
                     .playOn(holder.upper);
         holder.name.setText(names.get(position));
         holder.score.setText(scores.get(position) + "");
-        holder.upper.setCardBackgroundColor(context.getResources().getColor(darkColors[position]));
-        holder.lower.setCardBackgroundColor(context.getResources().getColor(primaryColors[position]));
+        holder.upper.setCardBackgroundColor(ContextCompat.getColor(context, darkColors[position]));
+        holder.lower.setCardBackgroundColor(ContextCompat.getColor(context, primaryColors[position]));
     }
 
     @Override

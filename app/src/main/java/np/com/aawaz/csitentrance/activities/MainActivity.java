@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         name.setText(pref.getString("Name", "") + " " + pref.getString("Surname", ""));
         points.setText(getTotalScore() + " pts");
         ImageView img = (ImageView) findViewById(R.id.profPic);
-        img.setImageDrawable(getResources().getDrawable(avatar[(pref.getInt("Avatar", 1)) - 1]));
+        img.setImageDrawable(ContextCompat.getDrawable(this, avatar[(pref.getInt("Avatar", 1)) - 1]));
         points.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,8 +78,8 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
                             .content("Are you sure you want to erase the game progress?")
                             .positiveText("Yes")
                             .negativeText("No")
-                            .positiveColor(getResources().getColor(R.color.green))
-                            .negativeColor(getResources().getColor(R.color.red))
+                            .positiveColor(ContextCompat.getColor(MainActivity.this, R.color.green))
+                            .negativeColor(ContextCompat.getColor(MainActivity.this, R.color.red))
                             .callback(new MaterialDialog.ButtonCallback() {
                                 @Override
                                 public void onPositive(MaterialDialog dialog) {
