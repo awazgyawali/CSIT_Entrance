@@ -7,23 +7,24 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <EditText
-        android:id="@+id/commentText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/commentButton"
-        android:layout_toStartOf="@+id/commentButton"
-        android:hint="Add a comment" />
 
-    <Button
-        android:id="@+id/commentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/commentText"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_weight=".00000001"
-        android:enabled="false"
-        android:text="Comment" />
-</RelativeLayout>
+        <EditText
+            android:id="@+id/commentText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/commentButton"
+            android:layout_toStartOf="@+id/commentButton"
+            android:hint="Add a comment" />
+
+        <Button
+            android:id="@+id/commentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/commentText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_weight=".00000001"
+            android:enabled="false"
+            android:text="Comment" />
+    </RelativeLayout>
 </android.support.v7.widget.CardView>

@@ -12,9 +12,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
-
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 
@@ -64,20 +61,8 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        if (position == getItemCount() - 1 || position == 0) {
-            YoYo.with(Techniques.FadeInLeft)
-                    .duration(500)
-                    .playOn(holder.aboutExtreme);
+        if (position == 0 || position == (getItemCount() - 1))
             return;
-        }
-        if (position % 2 == 0)
-            YoYo.with(Techniques.FadeInLeft)
-                    .duration(500)
-                    .playOn(holder.aboutCore);
-        else
-            YoYo.with(Techniques.FadeInRight)
-                    .duration(500)
-                    .playOn(holder.aboutCore);
         final int newPosition = position - 1;
         holder.name.setText(names[newPosition]);
         if (!twitterHandle[newPosition].equals("")) {

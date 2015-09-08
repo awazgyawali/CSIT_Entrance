@@ -53,7 +53,6 @@ import np.com.aawaz.csitentrance.advance.Singleton;
 
 public class QuizActivity extends AppCompatActivity {
 
-    //Array list decleration
     ArrayList<String> questions = new ArrayList<>();
     ArrayList<String> a = new ArrayList<>();
     ArrayList<String> b = new ArrayList<>();
@@ -193,11 +192,11 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         YoYo.with(Techniques.SlideInDown)
-                .duration(700)
+                .duration(500)
                 .playOn(feedback);
         YoYo.with(Techniques.SlideOutDown)
-                .duration(700)
-                .delay(800)
+                .duration(500)
+                .delay(600)
                 .playOn(feedback);
 
         //Setting color
@@ -364,18 +363,18 @@ public class QuizActivity extends AppCompatActivity {
                 checkAnswer();
                 fab.setVisibility(View.INVISIBLE);
                 YoYo.with(Techniques.SlideInDown)
-                        .duration(700)
+                        .duration(300)
                         .playOn(feedback);
                 YoYo.with(Techniques.SlideOutLeft)
-                        .duration(700)
+                        .duration(300)
                         .playOn(findViewById(R.id.quizMainLayout));
                 YoYo.with(Techniques.SlideOutDown)
-                        .duration(700)
-                        .delay(600)
+                        .duration(300)
+                        .delay(350)
                         .playOn(feedback);
                 YoYo.with(Techniques.SlideInRight)
-                        .duration(700)
-                        .delay(1000)
+                        .duration(300)
+                        .delay(300)
                         .playOn(findViewById(R.id.quizMainLayout));
                 nextQueAndReset();
                 slideUpPanelAdapter.increaseSize();

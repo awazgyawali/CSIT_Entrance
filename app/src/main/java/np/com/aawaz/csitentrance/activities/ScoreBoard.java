@@ -1,12 +1,16 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -19,6 +23,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -31,6 +44,7 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.ScoreBoardAdapter;
+import np.com.aawaz.csitentrance.advance.BackgroundTaskHandler;
 import np.com.aawaz.csitentrance.advance.MyApplication;
 import np.com.aawaz.csitentrance.advance.Singleton;
 
@@ -41,6 +55,9 @@ public class ScoreBoard extends AppCompatActivity {
         ArrayList<Integer> scores = new ArrayList<>();
     MaterialDialog dialogInitial;
     RequestQueue requestQueue;
+
+    CallbackManager callbackManager;
+    ShareDialog shareDialog;
 
 
     @Override
@@ -53,6 +70,26 @@ public class ScoreBoard extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         MyApplication.changeStatusBarColor(R.color.status_bar_score, this);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+        shareDialog = new ShareDialog(this);
+        shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
+
+            @Override
+            public void onSuccess(Sharer.Result result) {
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+
+            }
+        });
         YoYo.with(Techniques.SlideInDown)
                 .duration(1500)
                 .playOn(findViewById(R.id.coreLayoutScore));
@@ -79,6 +116,8 @@ public class ScoreBoard extends AppCompatActivity {
         dialogInitial.dismiss();
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -90,9 +129,41 @@ public class ScoreBoard extends AppCompatActivity {
         if (id == android.R.id.home) {
             finish();
             return true;
+        } else if(id==R.id.action_share) {
+            Toast.makeText(this,"Generating sharing content. Please wait...",Toast.LENGTH_SHORT).show();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    SharePhoto photo = new SharePhoto.Builder()
+                            .setBitmap(MyApplication.writeTextOnDrawable(ScoreBoard.this, ScoreBoard.this.getSharedPreferences("info", MODE_PRIVATE).getString("Name", "")+" has scored "+BackgroundTaskHandler.getTotal()
+                                    +" out of 800.").getBitmap())
+                            .build();
+
+                    final SharePhotoContent content = new SharePhotoContent.Builder()
+                            .addPhoto(photo)
+                            .build();
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //uddate UI
+                        shareDialog.show(content);
+                    }
+                });
+
+                }
+            }).start();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     private void fetchFromInternet() {
@@ -147,5 +218,9 @@ public class ScoreBoard extends AppCompatActivity {
         return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >
                 Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_score, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 }

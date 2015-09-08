@@ -47,14 +47,6 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if (position % 2 == 0)
-            YoYo.with(Techniques.FadeInLeft)
-                    .duration(500)
-                    .playOn(holder.upper);
-        else
-            YoYo.with(Techniques.FadeInRight)
-                    .duration(500)
-                    .playOn(holder.upper);
         holder.name.setText(names.get(position));
         holder.score.setText(scores.get(position) + "");
         holder.upper.setCardBackgroundColor(ContextCompat.getColor(context, darkColors[position]));

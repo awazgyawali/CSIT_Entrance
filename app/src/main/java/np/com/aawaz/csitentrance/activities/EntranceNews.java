@@ -62,6 +62,9 @@ public class EntranceNews extends AppCompatActivity implements NewsAdapter.Click
 
         context = this;
 
+        if (getSharedPreferences("info", MODE_PRIVATE).getString("PhoneNo", null) == null)
+            MyApplication.inputPhoneNo(this);
+
         //Toolbar
         setSupportActionBar((Toolbar) findViewById(R.id.newsToolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -29,6 +29,14 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/MainAd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/main_ad_id" />
+
         </LinearLayout>
 
         <android.support.design.widget.AppBarLayout
@@ -44,52 +52,54 @@
                 app:layout_scrollFlags="scroll|enterAlways">
 
                 <RelativeLayout
-                        android:id="@+id/quizToolbar"
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:background="@color/toolbar_color">
+                    android:id="@+id/quizToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:background="@color/toolbar_color">
 
-                        <ImageView
-                            android:id="@+id/profPic"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true" />
+                    <ImageView
+                        android:id="@+id/profPic"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true" />
 
-                        <TextView
-                            android:id="@+id/nameView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@+id/pointView"
-                            android:layout_marginLeft="10dp"
-                            android:layout_toEndOf="@+id/profPic"
-                            android:layout_toRightOf="@+id/profPic"
-                            android:text="Name"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:textColor="#fff" />
+                    <TextView
+                        android:id="@+id/nameView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/pointView"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toEndOf="@+id/profPic"
+                        android:layout_toRightOf="@+id/profPic"
+                        android:text="Name"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#fff" />
 
-                        <TextView
-                            android:id="@+id/pointView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="10dp"
-                            android:text="Points"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:textColor="#fff" />
-                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/pointView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:text="Points"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#fff" />
+                </RelativeLayout>
             </android.support.v7.widget.Toolbar>
 
+            <View
+                android:id="@+id/appbar_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:visibility="invisible" />
+
         </android.support.design.widget.AppBarLayout>
+
     </android.support.design.widget.CoordinatorLayout>
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/MainAd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/main_ad_id" />
 </LinearLayout>

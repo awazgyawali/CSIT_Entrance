@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.AccessToken;
@@ -30,6 +30,7 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.Profile;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.facebook.login.widget.ProfilePictureView;
@@ -38,7 +39,6 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -56,9 +56,11 @@ public class CSITQuery extends AppCompatActivity {
     LoginButton button;
     String id;
     RecyclerView recyclerView;
+    RelativeLayout intro;
     ProgressBar progressBar;
     LinearLayout errorPart;
     View header;
+    MaterialDialog dialog;
     AppCompatEditText postText;
     ArrayList<String> poster = new ArrayList<>(),
             messages = new ArrayList<>(),
@@ -77,6 +79,8 @@ public class CSITQuery extends AppCompatActivity {
         MyApplication.changeStatusBarColor(R.color.status_bar_query, this);
         button = (LoginButton) findViewById(R.id.fbLoginButton);
         button.bringToFront();
+        ReadyDialog();
+        intro = (RelativeLayout) findViewById(R.id.introForum);
         progressBar = (ProgressBar) findViewById(R.id.progressCircleFullFeed);
         progressBar.bringToFront();
         errorPart = (LinearLayout) findViewById(R.id.errorPart);
@@ -91,10 +95,16 @@ public class CSITQuery extends AppCompatActivity {
         loadAd();
 
         firstLoginPage();
+        if(first()) {
+            LoginManager.getInstance().logOut();
+            getSharedPreferences("values",MODE_PRIVATE).edit().putBoolean("postPermission",false).apply();
+        }
+
 
         try {
             if (!AccessToken.getCurrentAccessToken().isExpired()) {
                 button.setVisibility(View.GONE);
+                intro.setVisibility(View.GONE);
                 debugDataAdder();
             }
         } catch (Exception e) {
@@ -102,10 +112,13 @@ public class CSITQuery extends AppCompatActivity {
         }
     }
 
+    private boolean first() {
+        return getSharedPreferences("values",MODE_PRIVATE).getBoolean("postPermission",true);
+    }
 
-    private void fillRecy() {
+
+    private void fillRecy() throws Exception {
         progressBar.setVisibility(View.GONE);
-        Toast.makeText(this, "Currently you are unable to post or comment due to facebook's post permission policy", Toast.LENGTH_LONG).show();
         GraphFeedAdapter adapter = new GraphFeedAdapter(this, poster, messages, likes, comments, postId, header);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -133,11 +146,13 @@ public class CSITQuery extends AppCompatActivity {
         handelHeader();
         final String requestId = "CSITentrance/feed";
         Bundle params = new Bundle();
-        params.putString("fields", "message,likes.limit(0).summary(true),comments.limit(0).summary(true),from");
+        params.putString("fields", "message,story,likes.limit(0).summary(true),comments.limit(0).summary(true),from,created_time");
         final GraphRequest graphRequest = new GraphRequest(AccessToken.getCurrentAccessToken(), requestId, params, HttpMethod.GET, new GraphRequest.Callback() {
             @Override
             public void onCompleted(GraphResponse graphResponse) {
+                try {
                 FacebookRequestError error = graphResponse.getError();
+                    dialog.dismiss();
                 if (error != null) {
                     errorPart.setVisibility(View.VISIBLE);
                     errorPart.bringToFront();
@@ -148,24 +163,28 @@ public class CSITQuery extends AppCompatActivity {
                     postId.clear();
                     likes.clear();
                     comments.clear();
-                    try {
+
                         JSONArray array = graphResponse.getJSONObject().getJSONArray("data");
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject arrayItem = array.getJSONObject(i);
-                            messages.add(arrayItem.getString("message"));
-                            postId.add(arrayItem.getString("id"));
-                            likes.add(arrayItem.getJSONObject("likes").getJSONObject("summary").getInt("total_count") + "");
-                            comments.add(arrayItem.getJSONObject("comments").getJSONObject("summary").getInt("total_count") + "");
-                            poster.add(arrayItem.getJSONObject("from").getString("name"));
-                            fillRecy();
+                            if(!arrayItem.getJSONObject("from").getString("name").equals("CSIT Entrance"))
+                                try {
+                                    messages.add(arrayItem.getString("message"));
+                                    postId.add(arrayItem.getString("id"));
+                                    likes.add(arrayItem.getJSONObject("likes").getJSONObject("summary").getInt("total_count") + "");
+                                    comments.add(arrayItem.getJSONObject("comments").getJSONObject("summary").getInt("total_count") + "");
+                                    poster.add(arrayItem.getJSONObject("from").getString("name"));
+                                } catch (Exception ignored) {
+                                }
                         }
-                    } catch (JSONException ignored) {
-                    }
+                        fillRecy();
+
+                }
+                } catch (Exception ignored) {
                 }
             }
         });
         graphRequest.executeAsync();
-
     }
 
     private void handelHeader() {
@@ -203,11 +222,15 @@ public class CSITQuery extends AppCompatActivity {
         });
     }
 
-    private void sendPostRequestThroughGraph(String message) {
-        final MaterialDialog dialog = new MaterialDialog.Builder(this)
+    public void ReadyDialog() {
+        dialog = new MaterialDialog.Builder(this)
                 .progress(true, 0)
                 .content("Posting....")
+                .cancelable(false)
                 .build();
+    }
+
+    private void sendPostRequestThroughGraph(String message) {
         dialog.show();
         Bundle params = new Bundle();
         params.putString("message", message);
@@ -215,10 +238,10 @@ public class CSITQuery extends AppCompatActivity {
         new GraphRequest(AccessToken.getCurrentAccessToken(), requestId, params, HttpMethod.POST, new GraphRequest.Callback() {
             @Override
             public void onCompleted(GraphResponse graphResponse) {
-                dialog.dismiss();
-                if (graphResponse.getError() != null)
+                if (graphResponse.getError() != null) {
+                    dialog.dismiss();
                     Snackbar.make(findViewById(R.id.parentQuery), "Unable to post.", Snackbar.LENGTH_SHORT).show();
-                else {
+                } else {
                     Snackbar.make(findViewById(R.id.parentQuery), "Post successful.", Snackbar.LENGTH_SHORT).show();
                     debugDataAdder();
                     postText.setText("");
@@ -235,6 +258,8 @@ public class CSITQuery extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 debugDataAdder();
+                button.setVisibility(View.GONE);
+                intro.setVisibility(View.GONE);
             }
 
             @Override

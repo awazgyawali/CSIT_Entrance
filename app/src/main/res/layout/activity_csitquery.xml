@@ -6,57 +6,85 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.CoordinatorLayout
-    android:id="@+id/parentQuery"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:theme="@style/Theme.AppCompat"
-    tools:context="np.com.aawaz.csitentrance.activities.CSITQuery">
+        android:id="@+id/parentQuery"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:theme="@style/Theme.AppCompat"
+        tools:context="np.com.aawaz.csitentrance.activities.CSITQuery">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/queryFragHoler"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/fullFeedRecycler"
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/queryFragHoler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </android.support.v7.widget.CardView>
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-    <android.support.design.widget.AppBarLayout
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/fullFeedRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </android.support.v7.widget.CardView>
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/QueryAd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/query_ad_id" />
+        </LinearLayout>
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/queryToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary10"
+                android:theme="@style/Theme.AppCompat"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
+            <View
+                android:id="@+id/appbar_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="invisible" />
+
+        </android.support.design.widget.AppBarLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <RelativeLayout
+        android:id="@+id/introForum"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/queryToolbar"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/primary10"
-            android:theme="@style/Theme.AppCompat"
-            app:layout_collapseMode="pin"
-            app:layout_scrollFlags="scroll|enterAlways" />
-    </android.support.design.widget.AppBarLayout>
+            android:layout_alignParentBottom="true"
+            android:background="@color/primary1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="To ask your queries and get answeres. You need to connect CSIT Entrance to your facebook.\n You also need to provide post permission while logging in.\n Note: We won't post anything from your account without notifying you."
+            android:textColor="#fff" />
 
-</android.support.design.widget.CoordinatorLayout>
-
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/QueryAd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/query_ad_id" />
-
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/fbLoginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
-
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/fbLoginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
     <ProgressBar
         android:id="@+id/progressCircleFullFeed"
         android:layout_width="wrap_content"

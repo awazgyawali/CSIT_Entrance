@@ -15,14 +15,29 @@
         android:orientation="vertical"
         android:theme="@style/Theme.AppCompat">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/scoreBoardRecyclerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/scoreBoardRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/scoreBoardAd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/score_board_ad" />
+        </LinearLayout>
 
         <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
@@ -35,18 +50,17 @@
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|enterAlways" />
 
+            <View
+                android:id="@+id/appbar_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:visibility="invisible" />
+
         </android.support.design.widget.AppBarLayout>
+
+
     </android.support.design.widget.CoordinatorLayout>
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/scoreBoardAd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/score_board_ad" />
-
 </LinearLayout>
 
 

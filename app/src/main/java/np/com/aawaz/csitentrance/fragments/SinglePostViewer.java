@@ -25,7 +25,6 @@ import com.facebook.HttpMethod;
 import com.facebook.login.widget.ProfilePictureView;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -37,6 +36,7 @@ public class SinglePostViewer extends Fragment {
 
     RecyclerView CommentsRecyclerView;
     View view;
+    MaterialDialog dialog;
     ProgressBar progressBar;
     ArrayList<String> comments = new ArrayList<>(),
             commenter = new ArrayList<>(),
@@ -55,6 +55,13 @@ public class SinglePostViewer extends Fragment {
         // Required empty public constructor
     }
 
+    public void ReadyDialog() {
+        dialog = new MaterialDialog.Builder(getActivity())
+                .progress(true, 0)
+                .content("Posting....")
+                .cancelable(false)
+                .build();
+    }
     private void inflateHeaderAndFooter() {
         inflater = LayoutInflater.from(getActivity());
         header = inflater.inflate(R.layout.single_feed_header, null, false);
@@ -93,23 +100,18 @@ public class SinglePostViewer extends Fragment {
         commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View views) {
-                final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
-                        .progress(true, 0)
-                        .content("Posting....")
-                        .build();
                 dialog.show();
                 Bundle params = new Bundle();
                 params.putString("message", commentView.getText().toString());
                 new GraphRequest(AccessToken.getCurrentAccessToken(), getArguments().getString("postID") + "/comments", params, HttpMethod.POST, new GraphRequest.Callback() {
                     @Override
                     public void onCompleted(GraphResponse graphResponse) {
-                        dialog.dismiss();
-                        if (graphResponse.getError() != null)
+                        if (graphResponse.getError() != null) {
                             Snackbar.make(view.findViewById(R.id.singlePostCore), "Unable to comment.", Snackbar.LENGTH_SHORT).show();
-                        else {
+                            dialog.dismiss();
+                        } else {
                             commentView.setText("");
                             commentCountView.setText((comment + 1) + " comments");
-                            Snackbar.make(view.findViewById(R.id.singlePostCore), "Commented successfully.", Snackbar.LENGTH_SHORT).show();
                             onResume();
                         }
                     }
@@ -125,7 +127,7 @@ public class SinglePostViewer extends Fragment {
         inflateHeaderAndFooter();
     }
 
-    private void fillViews() {
+    private void fillViews() throws Exception {
         postView.setText(post);
         posterImage.setProfileId(posterID);
         PosterView.setText(poster);
@@ -141,12 +143,13 @@ public class SinglePostViewer extends Fragment {
             public void onClick(View view) {
                 if (hasLiked) {
                     liked.setText("Like");
-                    likeView.setText((likes - 1) + " likes");
+                    likes--;
+                    likeView.setText(likes + " likes");
                 } else {
+                    likes++;
                     liked.setText("Liked");
-                    likeView.setText((likes + 1) + " likes");
+                    likeView.setText(likes + " likes");
                 }
-                hasLiked = !hasLiked;
                 new GraphRequest(AccessToken.getCurrentAccessToken(), getArguments().getString("postID") + "/likes", new Bundle(),
                         hasLiked ? HttpMethod.DELETE : HttpMethod.POST, new GraphRequest.Callback() {
                     @Override
@@ -154,6 +157,7 @@ public class SinglePostViewer extends Fragment {
 
                     }
                 }).executeAsync();
+                hasLiked = !hasLiked;
             }
         });
     }
@@ -162,17 +166,22 @@ public class SinglePostViewer extends Fragment {
     public void onResume() {
         super.onResume();
         initializeView();
+        ReadyDialog();
         String requestId = getArguments().getString("postID");
         Bundle params = new Bundle();
-        params.putString("fields", "comments.summary(true){message,from},message,likes.limit(0).summary(true),from");
+        commenter.clear();
+        commenterID.clear();
+        comments.clear();
+        params.putString("fields", "comments.summary(true){message,from},message,story,likes.limit(0).summary(true),from");
         final GraphRequest graphRequest = new GraphRequest(AccessToken.getCurrentAccessToken(), requestId, params, HttpMethod.GET, new GraphRequest.Callback() {
             @Override
             public void onCompleted(GraphResponse graphResponse) {
-                FacebookRequestError error = graphResponse.getError();
+                try {
+                    FacebookRequestError error = graphResponse.getError();
+                    dialog.dismiss();
                 if (error != null) {
                     Toast.makeText(getActivity(), "Something went wrong.", Toast.LENGTH_SHORT).show();
                 } else {
-                    try {
                         JSONObject object = graphResponse.getJSONObject().getJSONObject("comments");
                         JSONArray commentArray = object.getJSONArray("data");
                         for (int i = 0; i < commentArray.length(); i++) {
@@ -182,16 +191,19 @@ public class SinglePostViewer extends Fragment {
                             commenterID.add(commentObject.getJSONObject("from").getString("id"));
                         }
                         comment = object.getJSONObject("summary").getInt("total_count");
-                        post = graphResponse.getJSONObject().getString("message");
+                        try {
+                            post = graphResponse.getJSONObject().getString("message");
+                        } catch (Exception e){
+                            post = graphResponse.getJSONObject().getString("story");
+                        }
                         poster = graphResponse.getJSONObject().getJSONObject("from").getString("name");
                         posterID = graphResponse.getJSONObject().getJSONObject("from").getString("id");
                         likes = graphResponse.getJSONObject().getJSONObject("likes").getJSONObject("summary").getInt("total_count");
                         hasLiked = graphResponse.getJSONObject().getJSONObject("likes").getJSONObject("summary").getBoolean("has_liked");
                         progressBar.setVisibility(View.GONE);
                         fillViews();
-                    } catch (JSONException e) {
-                        Toast.makeText(getActivity(), "Something went wrong. Try again.", Toast.LENGTH_SHORT).show();
-                    }
+                }
+                } catch (Exception ignored) {
                 }
 
             }

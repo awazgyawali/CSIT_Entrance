@@ -14,12 +14,26 @@
         android:orientation="vertical"
         android:theme="@style/Theme.AppCompat">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/onlineRecyc"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/onlineRecyc"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/fullQueAd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/fullque_ad_id" />
+        </LinearLayout>
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -33,12 +47,14 @@
                 android:theme="@style/Theme.AppCompat"
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|enterAlways" />
+
+            <View
+                android:id="@+id/appbar_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:visibility="invisible" />
         </android.support.design.widget.AppBarLayout>
+
     </android.support.design.widget.CoordinatorLayout>
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/fullQueAd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/fullque_ad_id" />
 </LinearLayout>

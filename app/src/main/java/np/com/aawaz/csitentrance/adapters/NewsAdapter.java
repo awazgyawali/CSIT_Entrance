@@ -44,14 +44,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        if (position % 2 == 0)
-            YoYo.with(Techniques.FadeInLeft)
-                    .duration(500)
-                    .playOn(holder.headings);
-        else
-            YoYo.with(Techniques.FadeInRight)
-                    .duration(500)
-                    .playOn(holder.headings);
         holder.title.setText(topic.get(position));
         holder.themeNews.setText(content.get(position));
         holder.time.setText(subTopic.get(position));

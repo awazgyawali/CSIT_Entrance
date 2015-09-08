@@ -71,28 +71,21 @@ public class BackgroundTaskHandler extends GcmTaskService {
     }
 
     public static void uploadScore() throws Exception {
-        if (getTotal() != MyApplication.getAppContext().getSharedPreferences("pre", MODE_PRIVATE).getInt("preScore", 0))
+        final SharedPreferences pref = MyApplication.getAppContext().getSharedPreferences("pre", MODE_PRIVATE);
+        if (getTotal() == pref.getInt("preScore", 900) && pref.getBoolean("updated", false))
             return;
-        SharedPreferences preferences = MyApplication.getAppContext().getSharedPreferences("values", Context.MODE_PRIVATE);
         String url = MyApplication.getAppContext().getString(R.string.postScoreurl);
         Uri.Builder uri = new Uri.Builder();
         String values = uri.authority("")
-                .appendQueryParameter("key", MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("uniqueID", "trash"))
+                .appendQueryParameter("key", MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("E-mail", "trash"))
                 .appendQueryParameter("name", MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "trash"))
-                .appendQueryParameter("score1", preferences.getInt("score1", 0) + "")
-                .appendQueryParameter("score2", preferences.getInt("score2", 0) + "")
-                .appendQueryParameter("score4", preferences.getInt("score3", 0) + "")
-                .appendQueryParameter("score4", preferences.getInt("score4", 0) + "")
-                .appendQueryParameter("score5", preferences.getInt("score5", 0) + "")
-                .appendQueryParameter("score6", preferences.getInt("score6", 0) + "")
-                .appendQueryParameter("score7", preferences.getInt("score7", 0) + "")
-                .appendQueryParameter("score8", preferences.getInt("score8", 0) + "")
+                .appendQueryParameter("phone", MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("PhoneNo", "trash"))
                 .appendQueryParameter("totalScore", getTotal() + "")
                 .build().toString();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                MyApplication.getAppContext().getSharedPreferences("pre", MODE_PRIVATE).edit().putInt("preScore", getTotal()).apply();
+                pref.edit().putInt("preScore", getTotal()).putBoolean("updated", true).apply();
             }
         }, null);
         Singleton.getInstance().getRequestQueue().add(jsonObjectRequest);
@@ -165,8 +158,8 @@ public class BackgroundTaskHandler extends GcmTaskService {
     }
 
     private void uploadReport() throws Exception {
-        final SQLiteDatabase database = Singleton.getInstance().getDatabase();
-        final Cursor cursorReport = database.query("report", new String[]{"text"}, null, null, null, null, null);
+        final SQLiteDatabase sqLiteDatabase = Singleton.getInstance().getDatabase();
+        final Cursor cursorReport = sqLiteDatabase.query("report", new String[]{"text"}, null, null, null, null, null);
         String reportText = "";
         int i = 0;
         while (cursorReport.moveToNext()) {
@@ -182,13 +175,13 @@ public class BackgroundTaskHandler extends GcmTaskService {
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url + values, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    database.delete("report", null, null);
+                    sqLiteDatabase.delete("report", null, null);
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     cursorReport.close();
-                    database.close();
+                    sqLiteDatabase.close();
                 }
             });
             Singleton.getInstance().getRequestQueue().add(request);

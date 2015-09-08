@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText name;
     EditText sur;
     EditText email;
+    EditText phone;
     FloatingActionButton fab;
     SharedPreferences pref;
 
@@ -84,23 +86,42 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         callAllAvatarImage();
         name = (EditText) findViewById(R.id.NameText);
         sur = (EditText) findViewById(R.id.LastText);
+        phone = (EditText) findViewById(R.id.phoneNo);
         email = (EditText) findViewById(R.id.email);
         name.addTextChangedListener(this);
         sur.addTextChangedListener(this);
+        phone.addTextChangedListener(this);
         email.addTextChangedListener(this);
         fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_done_black_18dp));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor = pref.edit();
-                editor.putString("Name", name.getText().toString());
-                editor.putString("Surname", sur.getText().toString());
-                editor.putString("E-mail", email.getText().toString());
-                editor.putString("uniqueID", email.getText().toString());
-                editor.putInt("Avatar", avatar);
-                editor.apply();
-                startActivity(new Intent(getApplicationContext(), Introduction.class));
-                finish();
+                if (phone.getText().toString().length() != 10 || !email.getText().toString().contains(".com") || !email.getText().toString().contains("@")) {
+                    if (phone.getText().toString().length() != 10) {
+                        YoYo.with(Techniques.Shake)
+                                .duration(1000)
+                                .playOn(phone);
+                        Toast.makeText(LoginActivity.this, "Invalid mobile number.", Toast.LENGTH_SHORT).show();
+                        phone.setText("");
+                    } else {
+                        YoYo.with(Techniques.Shake)
+                                .duration(1000)
+                                .playOn(email);
+                        Toast.makeText(LoginActivity.this, "Invalid email.", Toast.LENGTH_SHORT).show();
+                        email.setText("");
+                    }
+                } else {
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("Name", name.getText().toString());
+                    editor.putString("Surname", sur.getText().toString());
+                    editor.putString("E-mail", email.getText().toString());
+                    editor.putString("PhoneNo", phone.getText().toString() + "");
+                    editor.putString("uniqueID", email.getText().toString());
+                    editor.putInt("Avatar", avatar);
+                    editor.apply();
+                    startActivity(new Intent(getApplicationContext(), Introduction.class));
+                    finish();
+                }
             }
         });
     }
@@ -196,7 +217,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        if (!name.getText().toString().equals("") && !sur.getText().toString().equals("") && !email.getText().toString().equals("") && avatar != 0) {
+        if (!name.getText().toString().equals("") && !phone.getText().toString().equals("") && !sur.getText().toString().equals("") && !email.getText().toString().equals("") && avatar != 0) {
             fab.setVisibility(View.VISIBLE);
             YoYo.with(Techniques.Landing)
                     .duration(700)

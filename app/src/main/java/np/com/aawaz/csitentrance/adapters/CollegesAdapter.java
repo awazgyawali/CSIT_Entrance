@@ -48,14 +48,6 @@ public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        if (position % 2 == 0)
-            YoYo.with(Techniques.FadeInLeft)
-                    .duration(500)
-                    .playOn(holder.coreColz);
-        else
-            YoYo.with(Techniques.FadeInRight)
-                    .duration(500)
-                .playOn(holder.coreColz);
         lastPosi=position;
         holder.colzName.setText(colleges.get(position));
         holder.address.setText(address.get(position));

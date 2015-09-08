@@ -141,7 +141,11 @@
             android:theme="@style/Theme.Dialog" />
         <activity
             android:name=".activities.ReadNews"
-            android:label="@string/title_activity_read_news"></activity>
+            android:label="@string/title_activity_read_news"/>
+
+        <provider android:authorities="com.facebook.app.FacebookContentProvider768172639946667"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
     </application>
 
 </manifest>

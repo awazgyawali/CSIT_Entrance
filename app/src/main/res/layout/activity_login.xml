@@ -37,17 +37,17 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                    android:id="@+id/NameText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/textView2"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignStart="@+id/textView2"
-                    android:layout_below="@+id/textView2"
-                    android:layout_marginRight="16dp"
-                    android:ems="10"
-                    android:hint="First Name"
+                        android:id="@+id/NameText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/textView2"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignStart="@+id/textView2"
+                        android:layout_below="@+id/textView2"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:hint="First Name"
                         android:inputType="textPersonName|textCapWords" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -76,19 +76,39 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                    android:id="@+id/email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/LastText"
-                    android:layout_alignLeft="@+id/LastText"
-                    android:layout_alignRight="@+id/LastText"
-                    android:layout_alignStart="@+id/LastText"
-                    android:layout_below="@+id/LastText"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:hint="E-mail"
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/LastText"
+                        android:layout_alignLeft="@+id/LastText"
+                        android:layout_alignRight="@+id/LastText"
+                        android:layout_alignStart="@+id/LastText"
+                        android:layout_below="@+id/LastText"
+                        android:layout_marginTop="15dp"
+                        android:ems="10"
+                        android:hint="E-mail"
                         android:inputType="textEmailAddress" />
                 </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/phoneNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/LastText"
+                        android:layout_alignLeft="@+id/LastText"
+                        android:layout_alignRight="@+id/LastText"
+                        android:layout_alignStart="@+id/LastText"
+                        android:layout_below="@+id/LastText"
+                        android:layout_marginTop="15dp"
+                        android:ems="10"
+                        android:hint="Mobile Number"
+                        android:inputType="phone" />
+                </android.support.design.widget.TextInputLayout>
+
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
@@ -225,7 +245,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/dark1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -239,6 +260,7 @@
                 android:layout_centerInParent="true"
                 android:layout_margin="10dp"
                 android:src="@drawable/splash_icon" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -274,7 +296,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:padding="10dp"
+                android:padding="20dp"
                 android:src="@drawable/csitan" />
         </RelativeLayout>
     </LinearLayout>

@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         loadAd();
 
         constructJob();
+        if (getSharedPreferences("info", MODE_PRIVATE).getString("PhoneNo", null) == null)
+            MyApplication.inputPhoneNo(this);
 
         int avatar[] = {R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five,
                 R.drawable.six, R.drawable.seven, R.drawable.eight, R.drawable.nine, R.drawable.ten,
@@ -115,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         points.setText(getTotalScore() + " pts");
     }
 
+
     private void removeAllTheProgress() {
         SharedPreferences.Editor pref = getSharedPreferences("values", MODE_PRIVATE).edit();
         for (int i = 1; i <= 8; i++) {
@@ -167,12 +170,8 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
             Intent intent = new Intent(this, ModelQuestions.class);
             startActivity(intent);
         } else if (position == 5) {
-            new MaterialDialog.Builder(this)
-                    .title("More...")
-                    .content("We are working on adding more questions. Please have patience...")
-                    .positiveText("Ok")
-                    .build()
-                    .show();
+            Intent intent = new Intent(this, More.class);
+            startActivity(intent);
         } else if (position == 6) {
             Intent intent = new Intent(this, FullQuestion.class);
             startActivity(intent);
