@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="np.com.aawaz.csitentrance">
+    package="np.com.aawaz.csitentrance" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -10,21 +10,21 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <meta-data
-        android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version" />
-
     <application
         android:name=".advance.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".activities.LoginActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 
@@ -34,7 +34,7 @@
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
 
@@ -98,7 +98,7 @@
         <service
             android:name=".advance.BackgroundTaskHandler"
             android:exported="true"
-            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
+            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE" >
             <intent-filter>
                 <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
             </intent-filter>
@@ -106,14 +106,14 @@
 
         <receiver
             android:name="com.google.android.gms.analytics.AnalyticsReceiver"
-            android:enabled="true">
+            android:enabled="true" >
             <intent-filter>
                 <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
             </intent-filter>
         </receiver>
         <receiver
             android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
@@ -141,11 +141,33 @@
             android:theme="@style/Theme.Dialog" />
         <activity
             android:name=".activities.ReadNews"
-            android:label="@string/title_activity_read_news"/>
+            android:label="@string/title_activity_read_news" />
 
-        <provider android:authorities="com.facebook.app.FacebookContentProvider768172639946667"
+        <provider
             android:name="com.facebook.FacebookContentProvider"
-            android:exported="true"/>
+            android:authorities="com.facebook.app.FacebookContentProvider768172639946667"
+            android:exported="true" />
+
+        <activity
+            android:name=".activities.Result"
+            android:label="@string/title_activity_result" >
+            <intent-filter android:label="@string/title_activity_result">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
+                <data android:scheme="http"
+                    android:host="www.csitentrance.com.np"
+                    android:pathPrefix="/result" />
+                <data android:scheme="csitentrance"
+                      android:host="result" />
+
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.ViewResult"
+            android:label="@string/title_activity_result" >
+        </activity>
     </application>
 
 </manifest>

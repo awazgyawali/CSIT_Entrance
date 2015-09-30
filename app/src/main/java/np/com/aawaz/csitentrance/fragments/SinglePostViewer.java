@@ -112,7 +112,7 @@ public class SinglePostViewer extends Fragment {
                         } else {
                             commentView.setText("");
                             commentCountView.setText((comment + 1) + " comments");
-                            onResume();
+                            fetchFromInternet();
                         }
                     }
                 }).executeAsync();
@@ -167,6 +167,10 @@ public class SinglePostViewer extends Fragment {
         super.onResume();
         initializeView();
         ReadyDialog();
+        fetchFromInternet();
+    }
+
+    private void fetchFromInternet(){
         String requestId = getArguments().getString("postID");
         Bundle params = new Bundle();
         commenter.clear();
@@ -179,12 +183,15 @@ public class SinglePostViewer extends Fragment {
                 try {
                     FacebookRequestError error = graphResponse.getError();
                     dialog.dismiss();
-                if (error != null) {
-                    Toast.makeText(getActivity(), "Something went wrong.", Toast.LENGTH_SHORT).show();
-                } else {
+                    if (error != null) {
+                        Toast.makeText(getActivity(), "Something went wrong.", Toast.LENGTH_SHORT).show();
+                    } else {
                         JSONObject object = graphResponse.getJSONObject().getJSONObject("comments");
                         JSONArray commentArray = object.getJSONArray("data");
                         for (int i = 0; i < commentArray.length(); i++) {
+                            commenter.clear();
+                            commenterID.clear();
+                            comments.clear();
                             JSONObject commentObject = commentArray.getJSONObject(i);
                             comments.add(commentObject.getString("message"));
                             commenter.add(commentObject.getJSONObject("from").getString("name"));
@@ -202,7 +209,7 @@ public class SinglePostViewer extends Fragment {
                         hasLiked = graphResponse.getJSONObject().getJSONObject("likes").getJSONObject("summary").getBoolean("has_liked");
                         progressBar.setVisibility(View.GONE);
                         fillViews();
-                }
+                    }
                 } catch (Exception ignored) {
                 }
 

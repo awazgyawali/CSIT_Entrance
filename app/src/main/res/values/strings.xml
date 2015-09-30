@@ -15,6 +15,7 @@
     <string name="title_activity_introduction">Introduction</string>
     <string name="title_activity_read_news">Read News</string>
     <string name="title_activity_model_questions">Model Questions</string>
+    <string name="title_activity_result">Entrance Result</string>
 
 
     <string name="versionNum">Version 1.0.1</string>x
@@ -148,4 +149,7 @@
         <item>Question No 99</item>
         <item>Question No 100</item>
     </string-array>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_view_result">ViewResult</string>
 </resources>

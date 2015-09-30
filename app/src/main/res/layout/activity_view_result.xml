@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="np.com.aawaz.csitentrance.activities.ViewResult">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarResulted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#67d19c"
+        android:theme="@style/Theme.AppCompat" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/trouphy"
+        android:id="@+id/imageView3"
+        android:layout_marginLeft="10dp"
+        android:layout_alignTop="@+id/imageView4" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/trouphy"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/resultHolder"
+        android:id="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/resultHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Congratulations Aabha Shakya.
+You have passed the exam.
+
+Score: 50.00
+
+Rank: 3807"
+        android:textColor="@color/primary1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/toolbarResulted"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Have any problem? Ask us."/>
+</RelativeLayout>
