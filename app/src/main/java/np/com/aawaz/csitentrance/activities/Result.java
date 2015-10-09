@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.squareup.picasso.Picasso;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
@@ -37,8 +39,9 @@ public class Result extends AppCompatActivity {
     MaterialDialog dialog;
     SharedPreferences result;
     FancyButton resultButton;
-    RelativeLayout viewResult;
+    LinearLayout viewResult;
     EditText rollNo;
+    ImageView adView;
 
 
 
@@ -105,7 +108,11 @@ public class Result extends AppCompatActivity {
 
         requestQueue= Singleton.getInstance().getRequestQueue();
         unPublished= (TextView) findViewById(R.id.unPublished);
-        viewResult= (RelativeLayout) findViewById(R.id.viewResult);
+        viewResult= (LinearLayout) findViewById(R.id.viewResult);
+        adView= (ImageView) findViewById(R.id.adImage);
+        Picasso.with(this)
+                .load("www.avaaj.com.np/ads/featured.jpg")
+                .into(adView);
         readyDialog();
 
         result=getSharedPreferences("resultInfo",MODE_PRIVATE);

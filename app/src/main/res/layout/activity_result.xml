@@ -1,90 +1,109 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coreResult"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/coreResult"
     tools:context="np.com.aawaz.csitentrance.activities.Result">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbarResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#67d19c"
+        android:background="@color/primary11"
         android:theme="@style/Theme.AppCompat" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/viewResult">
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="Result is live now."
-            android:textColor="@color/green"
-            android:textSize="25dp" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/relativeLayout2"
-            android:layout_below="@+id/textView7"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="Please enter your Roll no to view your result."
-            android:textColor="#888888"
-            android:textSize="20dp" />
+        android:layout_below="@+id/toolbarResult"
+        android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/viewResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Result is live now."
+                    android:textColor="@color/green"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/relativeLayout2"
+                    android:layout_below="@+id/textView7"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Please enter your Roll no to view your result."
+                    android:textColor="#888888"
+                    android:textSize="18dp" />
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+
+                    <EditText
+                        android:id="@+id/resultRollNo"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:hint="Roll No"
+                        android:inputType="phone"
+                        android:textColor="#888888"
+                        android:textSize="15sp" />
+
+
+                    <mehdi.sakout.fancybuttons.FancyButton
+                        android:id="@+id/resultReqButton"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/resultRollNo"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:padding="13dp"
+                        fancy:fb_defaultColor="#f0f0f0"
+                        fancy:fb_focusColor="#ddd"
+                        fancy:fb_radius="5dp"
+                        fancy:fb_text="Submit"
+                        fancy:fb_textColor="#888888" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/unPublished"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="Result has not been published.\n\n Please stay tuned.\nWe will notify you as soon as the result has been published.."
+                android:textColor="@color/primary9"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true">
-
-
-                <EditText
-                    android:id="@+id/resultRollNo"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:hint="Roll No"
-                    android:inputType="phone"
-                    android:textColor="#888888"
-                    android:textSize="15sp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-
-
-                <mehdi.sakout.fancybuttons.FancyButton
-                    android:id="@+id/resultReqButton"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    fancy:fb_defaultColor="#f0f0f0"
-                    android:padding="13dp"
-                    fancy:fb_focusColor="#ddd"
-                    android:layout_marginTop="10dp"
-                    fancy:fb_radius="5dp"
-                    fancy:fb_text="Submit"
-                    fancy:fb_textColor="#888888"
-                    android:layout_below="@+id/resultRollNo"
-                    android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/unPublished"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:visibility="gone"
-        android:text="Result has not been published.\n\n Please stay tuned.\nWe will notify you as soon as the result has been published.."
-        android:textColor="@color/primary9"
-        android:textSize="20sp"/>
-
-</LinearLayout>
+            android:layout_weight="1"
+            android:id="@+id/adImage"/>
+    </LinearLayout>
+</RelativeLayout>

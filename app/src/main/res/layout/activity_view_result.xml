@@ -9,7 +9,7 @@
         android:id="@+id/toolbarResulted"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#67d19c"
+        android:background="@color/primary11"
         android:theme="@style/Theme.AppCompat" />
 
     <ImageView
@@ -46,11 +46,19 @@ Rank: 3807"
         android:textStyle="bold"
         android:layout_below="@+id/toolbarResulted"
         android:layout_centerHorizontal="true" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/resultHolder"
+        android:layout_above="@+id/problem"
+        android:id="@+id/adViewResult"
+        android:layout_height="match_parent" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center"
+        android:id="@+id/problem"
+        android:onClick="openQuery"
         android:padding="5dp"
         android:text="Have any problem? Ask us."/>
 </RelativeLayout>

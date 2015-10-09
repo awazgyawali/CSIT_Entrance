@@ -16,15 +16,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     private static int typeHeader = 1;
     private static int typeNormal = 2;
     private static int typeFooter = 3;
-    ArrayList<String> commenter, comment, commenterId;
+    ArrayList<String> commenter, comment;
     LayoutInflater inflater;
     View header, footer;
 
     public CommentAdapter(Context context, ArrayList<String> commenter,
-                          ArrayList<String> comment, ArrayList<String> commenterId, View header, View footer) {
+                          ArrayList<String> comment, View header, View footer) {
         this.comment = comment;
         this.commenter = commenter;
-        this.commenterId = commenterId;
         this.footer = footer;
         this.header = header;
         inflater = LayoutInflater.from(context);

@@ -10,7 +10,8 @@
     <color name="primary8">#3f51b5</color>
     <color name="primary9">#dc5328</color>
     <color name="primary10">#cc3929</color>
-    <color name="primary11">#7c7a7b</color>
+    <color name="primary11">#31493c</color>
+    <color name="primary12">#7c7a7b</color>
 
     <color name="dark1">#394f64</color>
     <color name="dark2">#b93791</color>
@@ -22,7 +23,8 @@
     <color name="dark8">#4f51b5</color>
     <color name="dark9">#e37654</color>
     <color name="dark10">#db5b4d</color>
-    <color name="dark11">#959494</color>
+    <color name="dark11">#3f5d4d</color>
+    <color name="dark12">#959494</color>
 
     <color name="back">#eee</color>
     <color name="darkQue">#666</color>

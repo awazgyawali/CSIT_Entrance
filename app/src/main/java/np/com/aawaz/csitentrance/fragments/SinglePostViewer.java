@@ -22,6 +22,7 @@ import com.facebook.FacebookRequestError;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
+import com.facebook.Profile;
 import com.facebook.login.widget.ProfilePictureView;
 
 import org.json.JSONArray;
@@ -39,8 +40,7 @@ public class SinglePostViewer extends Fragment {
     MaterialDialog dialog;
     ProgressBar progressBar;
     ArrayList<String> comments = new ArrayList<>(),
-            commenter = new ArrayList<>(),
-            commenterID = new ArrayList<>();
+            commenter = new ArrayList<>();
     String post, poster, posterID;
     boolean hasLiked;
     int likes, comment;
@@ -110,9 +110,11 @@ public class SinglePostViewer extends Fragment {
                             Snackbar.make(view.findViewById(R.id.singlePostCore), "Unable to comment.", Snackbar.LENGTH_SHORT).show();
                             dialog.dismiss();
                         } else {
+                            dialog.dismiss();
+                            comments.add(commentView.getText().toString());
                             commentView.setText("");
                             commentCountView.setText((comment + 1) + " comments");
-                            fetchFromInternet();
+                            commenter.add(Profile.getCurrentProfile().getName());
                         }
                     }
                 }).executeAsync();
@@ -136,7 +138,7 @@ public class SinglePostViewer extends Fragment {
         likeView.setText(likes + " likes");
         commentCountView.setText(comment + " comments");
         CommentsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        CommentAdapter adapter = new CommentAdapter(getActivity(), commenter, comments, commenterID, header, footer);
+        CommentAdapter adapter = new CommentAdapter(getActivity(), commenter, comments, header, footer);
         CommentsRecyclerView.setAdapter(adapter);
         liked.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,7 +176,6 @@ public class SinglePostViewer extends Fragment {
         String requestId = getArguments().getString("postID");
         Bundle params = new Bundle();
         commenter.clear();
-        commenterID.clear();
         comments.clear();
         params.putString("fields", "comments.summary(true){message,from},message,story,likes.limit(0).summary(true),from");
         final GraphRequest graphRequest = new GraphRequest(AccessToken.getCurrentAccessToken(), requestId, params, HttpMethod.GET, new GraphRequest.Callback() {
@@ -186,16 +187,14 @@ public class SinglePostViewer extends Fragment {
                     if (error != null) {
                         Toast.makeText(getActivity(), "Something went wrong.", Toast.LENGTH_SHORT).show();
                     } else {
+                        commenter.clear();
+                        comments.clear();
                         JSONObject object = graphResponse.getJSONObject().getJSONObject("comments");
                         JSONArray commentArray = object.getJSONArray("data");
                         for (int i = 0; i < commentArray.length(); i++) {
-                            commenter.clear();
-                            commenterID.clear();
-                            comments.clear();
                             JSONObject commentObject = commentArray.getJSONObject(i);
                             comments.add(commentObject.getString("message"));
                             commenter.add(commentObject.getJSONObject("from").getString("name"));
-                            commenterID.add(commentObject.getJSONObject("from").getString("id"));
                         }
                         comment = object.getJSONObject("summary").getInt("total_count");
                         try {

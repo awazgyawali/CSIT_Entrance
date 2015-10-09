@@ -1,18 +1,24 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import np.com.aawaz.csitentrance.R;
 
 public class ViewResult extends AppCompatActivity {
 
     TextView resultHolder;
+    ImageView adview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +28,16 @@ public class ViewResult extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         resultHolder= (TextView) findViewById(R.id.resultHolder);
+        adview= (ImageView) findViewById(R.id.adViewResult);
+        Picasso.with(this)
+                .load("www.avaaj.com.np/ads/featured.jpg")
+                .into(adview);
         resultHolder.setText(Html.fromHtml(getIntent().getExtras().getString("result")));
+    }
+
+    public void openQuery(View view){
+        finish();
+        startActivity(new Intent(this,CSITQuery.class));
     }
 
     @Override
