@@ -3,130 +3,83 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.PeriodicTask;
+import com.kogitune.activity_transition.ActivityTransitionLauncher;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.adapters.MainRecyclerAdapter;
 import np.com.aawaz.csitentrance.advance.BackgroundTaskHandler;
-import np.com.aawaz.csitentrance.advance.MyApplication;
 import np.com.aawaz.csitentrance.advance.Singleton;
 
-
-public class MainActivity extends AppCompatActivity implements MainRecyclerAdapter.ClickListner {
-    RecyclerView recycler;
-    SharedPreferences pref;
-    TextView points;
-    MainRecyclerAdapter adapter;
-    Tracker tracker;
-    GoogleAnalytics analytics;
-
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        analytics = GoogleAnalytics.getInstance(this);
+
+        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
         analytics.setLocalDispatchPeriod(1800);
-        tracker = analytics.newTracker("UA-63920529-5");
+        Tracker tracker = analytics.newTracker("UA-63920529-5");
         tracker.enableExceptionReporting(true);
         tracker.enableAutoActivityTracking(true);
 
-        MyApplication.changeStatusBarColor(R.color.status_bar_main, this);
-
-        loadAd();
+        CardView layout = (CardView) findViewById(R.id.welcomeView);
 
         constructJob();
-        if (getSharedPreferences("info", MODE_PRIVATE).getString("PhoneNo", null) == null)
-            MyApplication.inputPhoneNo(this);
 
-        int avatar[] = {R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five,
-                R.drawable.six, R.drawable.seven, R.drawable.eight, R.drawable.nine, R.drawable.ten,
-                R.drawable.eleven, R.drawable.twelve};
+        YoYo.with(Techniques.SlideInDown)
+                .duration(300)
+                .playOn(layout);
 
-        pref = getSharedPreferences("info", MODE_PRIVATE);
-        TextView name = (TextView) findViewById(R.id.nameView);
-        points = (TextView) findViewById(R.id.pointView);
-        name.setText(pref.getString("Name", "") + " " + pref.getString("Surname", ""));
-        points.setText(getTotalScore() + " pts");
-        ImageView img = (ImageView) findViewById(R.id.profPic);
-        img.setImageDrawable(ContextCompat.getDrawable(this, avatar[(pref.getInt("Avatar", 1)) - 1]));
-        points.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (getTotalPlayed() != 0)
-                    new MaterialDialog.Builder(MainActivity.this)
-                            .title("Reset progress")
-                            .content("Are you sure you want to erase the game progress?")
-                            .positiveText("Yes")
-                            .negativeText("No")
-                            .positiveColor(ContextCompat.getColor(MainActivity.this, R.color.green))
-                            .negativeColor(ContextCompat.getColor(MainActivity.this, R.color.red))
-                            .callback(new MaterialDialog.ButtonCallback() {
-                                @Override
-                                public void onPositive(MaterialDialog dialog) {
-                                    super.onPositive(dialog);
-                                    removeAllTheProgress();
-                                    points.setText(getTotalScore() + " pts");
-                                    Snackbar.make(findViewById(R.id.mainParent), "Progress reset successful", Snackbar.LENGTH_SHORT).show();
-                                }
-                            })
-                            .build()
-                            .show();
-            }
-        });
-
-        String[] titles = {"Score Board", "2069 question", "2070 question", "2071 question", "Model Questions", "More...", "Full Question",
-                "CSIT Colleges", "Entrance News", "Entrance Forum","Entrance Result", "About Us"};
-        int primaryColors[] = {R.color.primary1, R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5,
-                R.color.primary6, R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10,
-                R.color.primary11,R.color.primary12};
-        int darkColors[] = {R.color.dark1, R.color.dark2, R.color.dark3, R.color.dark4, R.color.dark5,
-                R.color.dark6, R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10,
-                R.color.dark11, R.color.dark12};
-        int icon[] = {R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_play_arrow_white_24dp,
-                R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_arrow_forward_white_24dp,
-                R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp,
-                R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp};
-        int images[] = {R.drawable.scoreboard, R.drawable.ico2069, R.drawable.ico2070, R.drawable.ico2071, R.drawable.model,
-                R.drawable.more, R.drawable.full_questions, R.drawable.colleges, R.drawable.news, R.drawable.query,R.drawable.result, R.drawable.about_us};
-        recycler = (RecyclerView) findViewById(R.id.gridView);
-        adapter = new MainRecyclerAdapter(this, primaryColors, darkColors, icon, titles, images);
-        adapter.setClickListner(this);
-        recycler.setAdapter(adapter);
-        recycler.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
-        points.setText(getTotalScore() + " pts");
+        YoYo.with(Techniques.SlideOutUp)
+                .duration(300)
+                .delay(4300)
+                .playOn(layout);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fillSubtitles();
+    }
 
-    private void removeAllTheProgress() {
-        SharedPreferences.Editor pref = getSharedPreferences("values", MODE_PRIVATE).edit();
-        for (int i = 1; i <= 8; i++) {
-            pref.putInt("score" + i, 0);
-            pref.putInt("played" + i, 0);
-        }
-        pref.apply();
-        adapter.notifyDataSetChanged();
+    private void fillSubtitles() {
+        SharedPreferences pref = getSharedPreferences("info", MODE_PRIVATE);
+
+        TextView name = (TextView) findViewById(R.id.nameHolder);
+        TextView points = (TextView) findViewById(R.id.scoreHolder);
+        TextView lastPlay = (TextView) findViewById(R.id.lastPlayed);
+        TextView lastView = (TextView) findViewById(R.id.lastViewed);
+        TextView unreadNews = (TextView) findViewById(R.id.unreadNews);
+        TextView resultPublished = (TextView) findViewById(R.id.resultStatus);
+
+        name.setText("Welcome "+pref.getString("Name", ""));
+        points.setText("Your score: "+getTotalScore());
+        lastPlay.setText(pref.getString("LastPlayed",""));
+        lastView.setText(pref.getString("LastViewed",""));
+        unreadNews.setText(getUnreadNews());
+        resultPublished.setText(pref.getBoolean("published",false)?"Published":"Not published");
+    }
+
+    private String getUnreadNews() {
+        int unread = getSharedPreferences("values", Context.MODE_PRIVATE).getInt("newsNo", 0) - getSharedPreferences("values", Context.MODE_PRIVATE).getInt("readNewsNo", 0);
+        if (unread==0)
+            return "";
+        else
+            return unread+" unread news";
     }
 
     private int getTotalScore() {
@@ -137,90 +90,62 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerAdapt
         return grand;
     }
 
-    private int getTotalPlayed() {
-        SharedPreferences pref = getSharedPreferences("values", MODE_PRIVATE);
-        int grand = 0;
-        for (int i = 1; i <= 8; i++)
-            grand = grand + pref.getInt("played" + i, 0);
-        return grand;
-    }
+    public void menuClickHandler(View view) {
+        int id=view.getId();
+        switch (id){
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        points.setText(getTotalScore() + " pts");
-    }
+            case R.id.scoreBoard:
+                if (!isConnected())
+                    Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
+                else
+                    ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, ScoreBoard.class));
+                break;
 
-    @Override
-    public void itemClicked(View view, int position) {
-        YoYo.with(Techniques.Flash)
-                .duration(500)
-                .playOn(view);
-        if (position == 0) {
-            if (!isConnected()) {
-                Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
-            } else {
-                Intent intent = new Intent(this, ScoreBoard.class);
-                startActivity(intent);
-            }
-        } else if (position > 0 && position < 4) {
-            Intent intent = new Intent(this, QuizActivity.class);
-            intent.putExtra("position", position);
-            startActivity(intent);
-        } else if (position == 4) {
-            Intent intent = new Intent(this, ModelQuestions.class);
-            startActivity(intent);
-        } else if (position == 5) {
-            Intent intent = new Intent(this, More.class);
-            startActivity(intent);
-        } else if (position == 6) {
-            Intent intent = new Intent(this, FullQuestion.class);
-            startActivity(intent);
-        } else if (position == 7) {
-            Intent intent = new Intent(this, Colleges.class);
-            startActivity(intent);
-        } else if (position == 8) {
-            if (getSharedPreferences("values", Context.MODE_PRIVATE).getInt("newsNo", 0) == 0 && !isConnected()) {
-                Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
-            } else {
-                Intent intent = new Intent(this, EntranceNews.class);
-                startActivity(intent);
-            }
-        } else if (position == 9) {
-            if (!isConnected()) {
-                Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
-            } else {
-                Intent intent = new Intent(this, CSITQuery.class);
-                startActivity(intent);
-            }
+            case  R.id.playQuiz:
+                ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, PlayQuiz.class));
+                break;
+
+            case  R.id.fullQuestion:
+                ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, FullQuestion.class));
+                break;
+
+            case  R.id.more:
+                ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, More.class));
+                break;
+
+            case  R.id.entranceNews:
+                if (getSharedPreferences("values", Context.MODE_PRIVATE).getInt("newsNo", 0) == 0 && !isConnected())
+                    Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
+                else
+                    ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, EntranceNews.class));
+                break;
+
+            case  R.id.entranceForum:
+                if (!isConnected())
+                    Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
+                else
+                    ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, EntranceForum.class));
+                break;
+
+            case  R.id.csitColleges:
+                ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, Colleges.class));
+                break;
+
+            case  R.id.entranceResult:
+                if (!isConnected())
+                    Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
+                else
+                    ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, Result.class));
+                break;
+
+            case  R.id.settings:
+                ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, Settings.class));
+                break;
+
+            case  R.id.aboutUs:
+                ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, About.class));
+                break;
         }
-        else if(position == 10) {
-            Intent intent = new Intent(this, Result.class);
-            startActivity(intent);
-        }
-        else if (position == 11) {
-            Intent intent = new Intent(this, About.class);
-            startActivity(intent);
-        }
-    }
-
-    public void loadAd() {
-        final AdView mAdView = (AdView) findViewById(R.id.MainAd);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        mAdView.setVisibility(View.GONE);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                mAdView.setVisibility(View.VISIBLE);
-            }
-        });
-    }
-
-    public boolean isLargeScreen() {
-        return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >
-                Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
     public boolean isConnected() {

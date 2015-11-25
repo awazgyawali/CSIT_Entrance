@@ -1,5 +1,7 @@
 package np.com.aawaz.csitentrance.advance;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.android.volley.RequestQueue;
@@ -15,6 +17,10 @@ public class Singleton {
     private NewsDataBase mDatabase;
     private GcmNetworkManager mScheduler;
 
+    public static boolean isLargeScreen(Context context) {
+        return (context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >
+                Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
 
     private Singleton() {
         mDatabase = new NewsDataBase(MyApplication.getAppContext());

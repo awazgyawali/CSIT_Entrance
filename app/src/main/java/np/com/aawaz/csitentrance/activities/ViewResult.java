@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -37,7 +36,7 @@ public class ViewResult extends AppCompatActivity {
 
     public void openQuery(View view){
         finish();
-        startActivity(new Intent(this,CSITQuery.class));
+        startActivity(new Intent(this,EntranceForum.class));
     }
 
     @Override
