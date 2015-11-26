@@ -10,19 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
-
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 
 public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.ViewHolder> {
-    ArrayList<Integer> scores;
-    ArrayList<String> names;
-    LayoutInflater inflater;
-    int primaryColors[];
-    int darkColors[];
+    private ArrayList<Integer> scores;
+    private ArrayList<String> names;
+    private LayoutInflater inflater;
     private Context context;
 
 
@@ -31,12 +26,6 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
         this.context = context;
         this.names = names;
         this.scores = scores;
-        this.primaryColors = new int[]{R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5, R.color.primary6,
-                R.color.primary7, R.color.primary8, R.color.primary9, R.color.primary10, R.color.primary11};
-
-        this.darkColors = new int[]{R.color.dark2, R.color.dark3, R.color.dark4, R.color.dark5, R.color.dark6,
-                R.color.dark7, R.color.dark8, R.color.dark9, R.color.dark10, R.color.dark11};
-
     }
 
     @Override
@@ -49,8 +38,6 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.name.setText(names.get(position));
         holder.score.setText(scores.get(position) + "");
-        holder.upper.setCardBackgroundColor(ContextCompat.getColor(context, darkColors[position]));
-        holder.lower.setCardBackgroundColor(ContextCompat.getColor(context, primaryColors[position]));
     }
 
     @Override
@@ -62,15 +49,11 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         TextView score;
-        CardView upper;
-        CardView lower;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.scoreboardName);
             score = (TextView) itemView.findViewById(R.id.scoreboardScore);
-            upper = (CardView) itemView.findViewById(R.id.upperLayout);
-            lower = (CardView) itemView.findViewById(R.id.lowerLayout);
         }
     }
 }

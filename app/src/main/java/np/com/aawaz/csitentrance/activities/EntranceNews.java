@@ -1,20 +1,13 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
-import android.view.View;
+import android.text.format.DateUtils;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -23,32 +16,28 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.NewsAdapter;
-import np.com.aawaz.csitentrance.advance.MyApplication;
 import np.com.aawaz.csitentrance.advance.Singleton;
 
 
-public class EntranceNews extends AppCompatActivity implements NewsAdapter.ClickListener {
+public class EntranceNews extends AppCompatActivity  {
 
-    ArrayList<String> topic = new ArrayList<>(),
-            subTopic = new ArrayList<>(),
-            imageURL = new ArrayList<>(),
-            content = new ArrayList<>(),
-            author = new ArrayList<>(),
-            link = new ArrayList<>(),
-            linkTitle = new ArrayList<>();
+    ArrayList<String> time = new ArrayList<>(),
+            imageUrl = new ArrayList<>(),
+            messages = new ArrayList<>();
+
     RecyclerView recy;
-    Context context;
     RequestQueue requestQueue;
     NewsAdapter newsAdapter;
 
@@ -58,57 +47,36 @@ public class EntranceNews extends AppCompatActivity implements NewsAdapter.Click
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrance_news);
 
-        loadAd();
-
-        context = this;
-
-        if (getSharedPreferences("info", MODE_PRIVATE).getString("PhoneNo", null) == null)
-            MyApplication.inputPhoneNo(this);
-
-        //Toolbar
-        setSupportActionBar((Toolbar) findViewById(R.id.newsToolbar));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        MyApplication.changeStatusBarColor(R.color.status_bar_news, this);
-
         //Setting the data
         setDataToArrayListFromDb();
     }
 
     public void fillData() {
         recy = (RecyclerView) findViewById(R.id.newsFeedRecy);
-        newsAdapter = new NewsAdapter(this, topic, subTopic, content);
+        newsAdapter = new NewsAdapter(this, messages, time, imageUrl);
         recy.setAdapter(newsAdapter);
-        newsAdapter.setClickListener(this);
-        recy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
     }
 
     public void setDataToArrayListFromDb() {
         SQLiteDatabase database = Singleton.getInstance().getDatabase();
-        Cursor cursor = database.query("news", new String[]{"title","subTopic","content","imageURL","author","link","linkTitle"}, null, null, null, null, null);
+        Cursor cursor = database.query("news", new String[]{"message","time","imageURL"}, null, null, null, null, null);
         int i = 0;
         while (cursor.moveToNext()) {
             i++;
-            topic.add(cursor.getString(cursor.getColumnIndex("title")));
-            subTopic.add(cursor.getString(cursor.getColumnIndex("subTopic")));
-            content.add(cursor.getString(cursor.getColumnIndex("content")));
-            imageURL.add(cursor.getString(cursor.getColumnIndex("imageURL")));
-            author.add(cursor.getString(cursor.getColumnIndex("author")));
-            link.add(cursor.getString(cursor.getColumnIndex("link")));
-            linkTitle.add(cursor.getString(cursor.getColumnIndex("linkTitle")));
+            time.add(cursor.getString(cursor.getColumnIndex("time")));
+            messages.add(cursor.getString(cursor.getColumnIndex("message")));
+            imageUrl.add(cursor.getString(cursor.getColumnIndex("imageURL")));
         }
         if (i == 0) {
-            setDataToArrayList(true);
+            fetchNewsForFirstTime();
         } else {
             fillData();
         }
         cursor.close();
         database.close();
-
     }
 
-    public void setDataToArrayList(final boolean finish) {
-
+    public void fetchNewsForFirstTime() {
         //Reading from json file and insillizing inside arrayList
         final MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .content("Please wait")
@@ -121,121 +89,102 @@ public class EntranceNews extends AppCompatActivity implements NewsAdapter.Click
                     }
                 })
                 .show();
-        if (!finish) {
-            dialog.dismiss();
+
+            requestQueue = Singleton.getInstance().getRequestQueue();
+            getAccessToken(dialog);
         }
-        requestQueue = Singleton.getInstance().getRequestQueue();
-        String url = getString(R.string.url);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
-
-            @Override
-            public void onResponse(JSONObject response) {
-                topic.clear();
-                subTopic.clear();
-                imageURL.clear();
-                content.clear();
-                author.clear();
-                linkTitle.clear();
-                link.clear();
-                try {
-                    JSONArray jsonArray = response.getJSONArray("news");
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jo_inside = jsonArray.getJSONObject(i);
-                        topic.add(jo_inside.getString("topic"));
-                        subTopic.add(jo_inside.getString("subTopic"));
-                        imageURL.add(jo_inside.getString("imageURL"));
-                        content.add(jo_inside.getString("content"));
-                        author.add(jo_inside.getString("author"));
-                        link.add(jo_inside.getString("link"));
-                        linkTitle.add(jo_inside.getString("linkTitle"));
-                    }
-                    fillData();
-                    storeToDb();
-                    context.getSharedPreferences("values", Context.MODE_PRIVATE).edit().putInt("newsNo", topic.size()).apply();
-                    dialog.dismiss();
-                    Snackbar.make(findViewById(R.id.parentNews), "News updated.", Snackbar.LENGTH_LONG).show();
-                } catch (Exception e) {
-                    if (finish) {
-                        finish();
-                        dialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "Something went wrong. Please try again later.", Toast.LENGTH_LONG).show();
-                    } else {
-                        Snackbar.make(findViewById(R.id.parentNews), "Something went wrong. Report us.", Snackbar.LENGTH_LONG).show();
-
-                    }
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (finish) {
-                    finish();
-                    Toast.makeText(getApplicationContext(), "Unable to fetch news. Please check your internet connection.", Toast.LENGTH_LONG).show();
-                } else {
-                    Snackbar.make(findViewById(R.id.parentNews), "Unable to fetch news. Swipe down to retry.", Snackbar.LENGTH_LONG).show();
-
-                }
-            }
-        });
-        requestQueue.add(jsonObjectRequest.setTag("news"));
-    }
 
     private void storeToDb() {
         SQLiteDatabase database = Singleton.getInstance().getDatabase();
         database.delete("news", null, null);
         ContentValues values = new ContentValues();
-        for (int i = 0; i < topic.size(); i++) {
+        for (int i = 0; i < messages.size(); i++) {
             values.clear();
-            values.put("title", topic.get(i));
-            values.put("subTopic", subTopic.get(i));
-            values.put("content", content.get(i));
-            values.put("imageURL", imageURL.get(i));
-            values.put("author", author.get(i));
-            values.put("link", link.get(i));
-            values.put("linkTitle", linkTitle.get(i));
+            values.put("time", time.get(i));
+            values.put("message", messages.get(i));
+            values.put("imageURL", imageUrl.get(i));
             database.insert("news", null, values);
         }
         database.close();
     }
 
-    public void loadAd() {
-        final AdView mAdView = (AdView) findViewById(R.id.eachNewsAd);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        mAdView.setVisibility(View.GONE);
-        mAdView.setAdListener(new AdListener() {
+
+    String accessToken;
+    StringRequest request;
+
+    private void getAccessToken(final MaterialDialog dialog){
+        String accessLink = "https://graph.facebook.com/oauth/access_token?client_id="
+                + getString(R.string.facebook_app_id) + "&client_secret=" + getString(R.string.facebook_app_secret) + "&grant_type=client_credentials";
+
+        request = new StringRequest(accessLink, new Response.Listener<String>() {
             @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                mAdView.setVisibility(View.VISIBLE);
+            public void onResponse(String response) {
+                accessToken = response;
+                fetchFromInternet(dialog);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dialog.dismiss();
+                error.printStackTrace();
+                Toast.makeText(EntranceNews.this,"Unable to connect.",Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
+        requestQueue.add(request);
     }
 
+    private void fetchFromInternet(final MaterialDialog dialog) {
+        String link = "https://graph.facebook.com/CSITentrance/feed?fields=id,full_picture,story,message,created_time,from&limit=100&";
 
-    public boolean isLargeScreen() {
-        return getResources().getConfiguration().orientation != Configuration.ORIENTATION_PORTRAIT && (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, link + accessToken,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        dialog.dismiss();
+                        parseTheResponse(response);
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        dialog.dismiss();
+                        error.printStackTrace();
+                        Toast.makeText(EntranceNews.this,"Unable to connect.",Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+        });
+        requestQueue.add(jsonRequest);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
+    private void parseTheResponse(JSONObject response) {
+        try {
+            JSONArray array = response.getJSONArray("data");
+            for (int i=0 ; i<array.length() ;i++){
+                JSONObject object = array.getJSONObject(i);
+                if(object.getJSONObject("from").getString("id").equals("933435523387727")){
+                    try {
+                        messages.add(object.getString("message"));
+                        try{
+                            imageUrl.add(object.getString("full_picture"));
+                        } catch (Exception e){
+                            imageUrl.add("null");
+                        }
+                        time.add(convertToSimpleDate(object.getString("created_time")).toString());
+                    }catch (Exception ignored){}
+                }
+            }
+            fillData();
+            storeToDb();
+        } catch (Exception ignored){}
     }
 
-    @Override
-    public void itemClicked(View view, int position) {
-        Bundle bundle = new Bundle();
-        bundle.putString("title", topic.get(position));
-        bundle.putString("subTopic", subTopic.get(position));
-        bundle.putString("imageURL", imageURL.get(position));
-        bundle.putString("content", content.get(position));
-        bundle.putString("linkTitle", linkTitle.get(position));
-        bundle.putString("link", link.get(position));
-        bundle.putString("author", author.get(position));
-        startActivity(new Intent(EntranceNews.this, ReadNews.class).putExtra("bundle", bundle));
+    private CharSequence convertToSimpleDate(String created_time) {
+
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ssZZZZZ");
+        try {
+            Date date = simpleDateFormat.parse(created_time);
+            return DateUtils.getRelativeDateTimeString(this,date.getTime(),DateUtils.SECOND_IN_MILLIS,DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_NO_MONTH_DAY);
+        } catch (ParseException ignored) {}
+        return "Unknown Time";
     }
 }

@@ -10,10 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.MainRecyclerAdapter;
 import np.com.aawaz.csitentrance.advance.MyApplication;
@@ -28,9 +24,6 @@ public class PlayQuiz extends AppCompatActivity implements MainRecyclerAdapter.C
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        MyApplication.changeStatusBarColor(R.color.status_bar_model, this);
-
-        loadAd();
 
         String[] titles = {"Model Question 1", "Model Question 2", "Model Question 3"
                 , "Model Question 4", "Model Question 5"};
@@ -38,8 +31,8 @@ public class PlayQuiz extends AppCompatActivity implements MainRecyclerAdapter.C
                 R.color.primary5, R.color.primary6};
         int darkColors[] = {R.color.dark2, R.color.dark3, R.color.dark4,
                 R.color.dark5, R.color.dark6};
-        int icon[] = {R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_play_arrow_white_24dp, R.drawable.ic_play_arrow_white_24dp,
-                R.drawable.ic_play_arrow_white_24dp};
+        int icon[] = {R.drawable.play_small, R.drawable.play_small, R.drawable.play_small, R.drawable.play_small,
+                R.drawable.play_small};
         int images[] = {R.drawable.book, R.drawable.book, R.drawable.book, R.drawable.book,
                 R.drawable.book};
 
@@ -70,20 +63,6 @@ public class PlayQuiz extends AppCompatActivity implements MainRecyclerAdapter.C
         Intent intent = new Intent(this, QuizActivity.class);
         intent.putExtra("position", position + 4);
         startActivity(intent);
-    }
-
-    public void loadAd() {
-        final AdView mAdView = (AdView) findViewById(R.id.modelQuestionAd);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        mAdView.setVisibility(View.GONE);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                mAdView.setVisibility(View.VISIBLE);
-            }
-        });
     }
 
     public boolean isLargeScreen() {

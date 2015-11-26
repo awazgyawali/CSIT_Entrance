@@ -7,16 +7,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
-
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import android.widget.ViewSwitcher;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,17 +29,22 @@ import np.com.aawaz.csitentrance.advance.MyApplication;
 
 
 public class Colleges extends AppCompatActivity {
-    ArrayList<String> names = new ArrayList<>(),
+    private ArrayList<String> names = new ArrayList<>(),
             desc = new ArrayList<>(),
             website = new ArrayList<>(),
             address = new ArrayList<>(),
             phNo = new ArrayList<>();
-    ArrayList<String> namesNew = new ArrayList<>(),
+    private ArrayList<String> namesNew = new ArrayList<>(),
             descNew = new ArrayList<>(),
             websiteNew = new ArrayList<>(),
             addressNew = new ArrayList<>(),
             phNoNew = new ArrayList<>();
-    EditText search;
+    private EditText search;
+    private ViewSwitcher switcher;
+
+    Animation slide_in_left, slide_out_right;
+    private int current = 0;
+
 
     public static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();
@@ -57,16 +60,20 @@ public class Colleges extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colleges);
 
-        loadAd();
-        MyApplication.changeStatusBarColor(R.color.status_bar_college, this);
 
-        //Toolbar Stuff's
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarColz);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
 
         search= (EditText) findViewById(R.id.search);
+        switcher= (ViewSwitcher) findViewById(R.id.searchViewSwitcher);
+
+        slide_in_left = AnimationUtils.loadAnimation(this,
+                android.R.anim.slide_in_left);
+        slide_out_right = AnimationUtils.loadAnimation(this,
+                android.R.anim.slide_out_right);
+
+        switcher.setInAnimation(slide_in_left);
+        switcher.setOutAnimation(slide_out_right);
+
         //Fetch from JSONFILE
         setDataToArrayList();
 
@@ -161,23 +168,25 @@ public class Colleges extends AppCompatActivity {
 
     }
 
-    public void loadAd() {
-        final AdView mAdView = (AdView) findViewById(R.id.colzAd);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        mAdView.setVisibility(View.GONE);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                mAdView.setVisibility(View.VISIBLE);
-            }
-        });
-    }
-
     public boolean isLargeScreen() {
         return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >
                 Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
+
+    public void switchView(View view) {
+        if(current==0){
+            switcher.showNext();
+            current=1;
+        } else {
+            search.setText("");
+            switcher.showPrevious();
+            current = 0;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }
 

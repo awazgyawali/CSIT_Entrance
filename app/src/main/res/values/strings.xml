@@ -152,4 +152,5 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_view_result">ViewResult</string>
+    <string name="facebook_app_secret">54a039ec9f9a55ff2eafb691dad5d8e9</string>
 </resources>

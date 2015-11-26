@@ -10,10 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.MainRecyclerAdapter;
 import np.com.aawaz.csitentrance.advance.MyApplication;
@@ -31,9 +27,6 @@ public class FullQuestion extends AppCompatActivity implements MainRecyclerAdapt
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        MyApplication.changeStatusBarColor(R.color.status_bar_full, this);
-
-        loadAd();
 
         String[] titles = {"2069 Question", "2070 Question", "2071 Question", "Model Question 1", "Model Question 2", "Model Question 3"
                 , "Model Question 4", "Model Question 5"};
@@ -43,8 +36,8 @@ public class FullQuestion extends AppCompatActivity implements MainRecyclerAdapt
                 R.color.dark5, R.color.dark6, R.color.dark7, R.color.dark8};
         int icon[] = {R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp,
                 R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp};
-        int images[] = {R.drawable.pdf, R.drawable.pdf, R.drawable.pdf, R.drawable.pdf,
-                R.drawable.pdf, R.drawable.pdf, R.drawable.pdf, R.drawable.pdf};
+        int images[] = {R.drawable.full_question, R.drawable.full_question, R.drawable.full_question, R.drawable.full_question,
+                R.drawable.full_question, R.drawable.full_question, R.drawable.full_question, R.drawable.full_question};
 
 
         MainRecyclerAdapter adater = new MainRecyclerAdapter(this, primaryColors, darkColors, icon, titles, images);
@@ -73,20 +66,6 @@ public class FullQuestion extends AppCompatActivity implements MainRecyclerAdapt
         Intent intent = new Intent(this, WebViewActivity.class);
         intent.putExtra("code", position + 1);
         startActivity(intent);
-    }
-
-    public void loadAd() {
-        final AdView mAdView = (AdView) findViewById(R.id.fullQueAd);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        mAdView.setVisibility(View.GONE);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                mAdView.setVisibility(View.VISIBLE);
-            }
-        });
     }
 
     public boolean isLargeScreen() {

@@ -34,9 +34,6 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.facebook.login.widget.ProfilePictureView;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -76,7 +73,6 @@ public class EntranceForum extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.queryToolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        MyApplication.changeStatusBarColor(R.color.status_bar_query, this);
         button = (LoginButton) findViewById(R.id.fbLoginButton);
         button.bringToFront();
         ReadyDialog();
@@ -92,7 +88,6 @@ public class EntranceForum extends AppCompatActivity {
             }
         });
         button.setPublishPermissions("publish_actions");
-        loadAd();
 
         firstLoginPage();
         if(first()) {
@@ -279,19 +274,6 @@ public class EntranceForum extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void loadAd() {
-        final AdView mAdView = (AdView) findViewById(R.id.QueryAd);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        mAdView.setVisibility(View.GONE);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                mAdView.setVisibility(View.VISIBLE);
-            }
-        });
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

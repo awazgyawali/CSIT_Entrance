@@ -5,11 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -17,20 +16,19 @@ import np.com.aawaz.csitentrance.R;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
-    Context context;
-    ArrayList<String> topic = new ArrayList<>();
-    ArrayList<String> subTopic = new ArrayList<>();
-    ArrayList<String> content = new ArrayList<>();
-    LayoutInflater inflater;
-    ClickListener clickListener;
+    private Context context;
+    private ArrayList<String> message = new ArrayList<>();
+    private ArrayList<String> time = new ArrayList<>();
+    private ArrayList<String> imageURL = new ArrayList<>();
+    private LayoutInflater inflater;
 
 
-    public NewsAdapter(Context context, ArrayList<String> topic, ArrayList<String> subTopic, ArrayList<String> content) {
+    public NewsAdapter(Context context, ArrayList<String> message, ArrayList<String> time, ArrayList<String> imageURL) {
         this.context = context;
-        this.topic = topic;
+        this.message = message;
         inflater = LayoutInflater.from(context);
-        this.subTopic = subTopic;
-        this.content = content;
+        this.time = time;
+        this.imageURL = imageURL;
     }
 
     @Override
@@ -38,43 +36,53 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         return new ViewHolder(inflater.inflate(R.layout.news_item, parent, false));
     }
 
-    public void setClickListener(ClickListener clickListener) {
-        this.clickListener = clickListener;
-    }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.title.setText(topic.get(position));
-        holder.themeNews.setText(content.get(position));
-        holder.time.setText(subTopic.get(position));
+
+        holder.title.setText(generateTitle(message.get(position)));
+        holder.newsDetail.setText(generateNews(message.get(position)));
+        holder.time.setText(time.get(position));
+
+        if(imageURL.get(position).equals("null"))
+            holder.imageView.setVisibility(View.GONE);
+        else {
+            holder.imageView.setVisibility(View.VISIBLE);
+            Picasso.with(context)
+                    .load(imageURL.get(position))
+                    .into(holder.imageView);
+        }
+    }
+
+    private String generateNews(String ss) {
+        String[] lines = ss.split(System.getProperty("line.separator"));
+        String news="";
+        for(int i=2;i<lines.length;i++)
+            news=news+"\n"+lines[i];
+        return news;
+    }
+
+    private String generateTitle(String ss) {
+        String[] lines = ss.split(System.getProperty("line.separator"));
+        return lines[0];
     }
 
     @Override
     public int getItemCount() {
-        return topic.size();
-    }
-
-    public interface ClickListener {
-        void itemClicked(View view, int position);
+        return message.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView title;
-        TextView themeNews;
+        TextView newsDetail;
         TextView time;
-        RelativeLayout headings;
+        ImageView imageView;
         public ViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.newsTitle);
-            themeNews = (TextView) itemView.findViewById(R.id.themeNews);
+            newsDetail = (TextView) itemView.findViewById(R.id.newsDetail);
             time = (TextView) itemView.findViewById(R.id.newsTime);
-            headings = (RelativeLayout) itemView.findViewById(R.id.headings);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    clickListener.itemClicked(view, getAdapterPosition());
-                }
-            });
+            imageView = (ImageView) itemView.findViewById(R.id.newsImage);
         }
     }
 }

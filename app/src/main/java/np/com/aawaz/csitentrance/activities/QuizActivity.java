@@ -32,9 +32,6 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.melnykov.fab.FloatingActionButton;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
@@ -105,8 +102,6 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        loadAd();
-
         YoYo.with(Techniques.FadeOut)
                 .duration(0)
                 .playOn(findViewById(R.id.quizMainLayout));
@@ -130,9 +125,7 @@ public class QuizActivity extends AppCompatActivity {
         fab.bringToFront();
 
 
-        int avatar[] = {R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.five,
-                R.drawable.six, R.drawable.seven, R.drawable.eight, R.drawable.nine, R.drawable.ten,
-                R.drawable.eleven, R.drawable.twelve};
+        int avatar[] = {};
 
         ImageView img = (ImageView) findViewById(R.id.profQue);
         img.setImageDrawable(ContextCompat.getDrawable(this, avatar[(getSharedPreferences("info", MODE_PRIVATE).getInt("Avatar", 1)) - 1]));
@@ -149,20 +142,6 @@ public class QuizActivity extends AppCompatActivity {
         scoreTxt = (TextView) findViewById(R.id.score);
         qNoTxt = (TextView) findViewById(R.id.noOfQuestion);
         feedback.bringToFront();
-
-        //Receiving intent
-        code = getIntent().getExtras().getInt("position");
-        if (code == 1 || code == 4) {
-            MyApplication.changeStatusBarColor(R.color.quiz1, this);
-        } else if (code == 2 || code == 5) {
-            MyApplication.changeStatusBarColor(R.color.quiz2, this);
-        } else if (code == 3 || code == 6) {
-            MyApplication.changeStatusBarColor(R.color.quiz3, this);
-        } else if (code == 7) {
-            MyApplication.changeStatusBarColor(R.color.quiz4, this);
-        } else if (code == 8) {
-            MyApplication.changeStatusBarColor(R.color.quiz5, this);
-        }
 
         topic.setText(titles[code]);
 
@@ -454,21 +433,6 @@ public class QuizActivity extends AppCompatActivity {
             slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
         }
     }
-
-    public void loadAd() {
-        final AdView mAdView = (AdView) findViewById(R.id.QuizAd);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        mAdView.setVisibility(View.GONE);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                mAdView.setVisibility(View.VISIBLE);
-            }
-        });
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

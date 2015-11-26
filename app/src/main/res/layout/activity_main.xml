@@ -6,26 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/mainParent"
-    android:scrollbarStyle="insideOverlay"
     android:theme="@style/Theme.AppCompat"
     tools:context=".activities.MainActivity">
 
-    <include layout="@layout/welcome_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:id="@+id/welcomeView"
-        android:layout_centerHorizontal="true"/>
-
     <ScrollView
         android:layout_width="match_parent"
+        android:scrollbarStyle="insideOverlay"
+        android:background="#032530"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#032530"
             android:orientation="vertical">
 
             <LinearLayout
@@ -412,6 +405,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="7dp"
+                    android:layout_marginBottom="15dp"
                     android:layout_marginTop="15dp"
                     android:layout_weight="1">
 
@@ -454,6 +448,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
                     android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"
                     android:layout_marginTop="15dp"
                     android:layout_weight="1">
 
@@ -491,5 +486,13 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <include layout="@layout/welcome_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/welcomeView"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
 

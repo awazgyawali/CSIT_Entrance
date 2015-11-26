@@ -203,14 +203,6 @@
                     android:layout_height="match_parent"
                     android:layout_above="@+id/QuizAd" />
 
-                <com.google.android.gms.ads.AdView
-                    android:id="@+id/QuizAd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    ads:adSize="BANNER"
-                    ads:adUnitId="@string/quiz_ad_id" />
 
             </RelativeLayout>
         </RelativeLayout>

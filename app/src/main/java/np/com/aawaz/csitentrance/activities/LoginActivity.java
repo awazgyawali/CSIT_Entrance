@@ -22,7 +22,7 @@ import com.daimajia.androidanimations.library.YoYo;
 import np.com.aawaz.csitentrance.R;
 
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
+public class LoginActivity extends AppCompatActivity implements TextWatcher {
     EditText name;
     EditText sur;
     EditText email;
@@ -30,21 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     FloatingActionButton fab;
     SharedPreferences pref;
 
-    int avatar = 0;
     Context context;
-
-    ImageView a1;
-    ImageView a2;
-    ImageView a3;
-    ImageView a4;
-    ImageView a5;
-    ImageView a6;
-    ImageView a7;
-    ImageView a8;
-    ImageView a9;
-    ImageView a10;
-    ImageView a11;
-    ImageView a12;
 
     LinearLayout splash;
     RelativeLayout first;
@@ -83,7 +69,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void firstTime() {
-        callAllAvatarImage();
         name = (EditText) findViewById(R.id.NameText);
         sur = (EditText) findViewById(R.id.LastText);
         phone = (EditText) findViewById(R.id.phoneNo);
@@ -117,97 +102,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     editor.putString("E-mail", email.getText().toString());
                     editor.putString("PhoneNo", phone.getText().toString() + "");
                     editor.putString("uniqueID", email.getText().toString());
-                    editor.putInt("Avatar", avatar);
                     editor.apply();
-                    startActivity(new Intent(getApplicationContext(), Introduction.class));
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
                 }
             }
         });
-    }
-
-    public void callAllAvatarImage() {
-        a1 = (ImageView) findViewById(R.id.a1);
-        a2 = (ImageView) findViewById(R.id.a2);
-        a3 = (ImageView) findViewById(R.id.a3);
-        a4 = (ImageView) findViewById(R.id.a4);
-        a5 = (ImageView) findViewById(R.id.a5);
-        a6 = (ImageView) findViewById(R.id.a6);
-        a7 = (ImageView) findViewById(R.id.a7);
-        a8 = (ImageView) findViewById(R.id.a8);
-        a9 = (ImageView) findViewById(R.id.a9);
-        a10 = (ImageView) findViewById(R.id.a10);
-        a11 = (ImageView) findViewById(R.id.a11);
-        a12 = (ImageView) findViewById(R.id.a12);
-        a1.setOnClickListener(this);
-        a2.setOnClickListener(this);
-        a3.setOnClickListener(this);
-        a4.setOnClickListener(this);
-        a5.setOnClickListener(this);
-        a6.setOnClickListener(this);
-        a7.setOnClickListener(this);
-        a8.setOnClickListener(this);
-        a9.setOnClickListener(this);
-        a10.setOnClickListener(this);
-        a11.setOnClickListener(this);
-        a12.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View view) {
-        resetAllBack();
-        if (view == a1) {
-            avatar = 1;
-            a1.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
-
-        } else if (view == a2) {
-            avatar = 2;
-            a2.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
-
-        } else if (view == a3) {
-            avatar = 3;
-            a3.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
-
-        } else if (view == a4) {
-            avatar = 4;
-            a4.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
-
-        } else if (view == a5) {
-            avatar = 5;
-            a5.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
-
-        } else if (view == a6) {
-            avatar = 6;
-            a6.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
-
-        } else if (view == a7) {
-            avatar = 7;
-            a7.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
-
-        } else if (view == a8) {
-            avatar = 8;
-            a8.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
-
-        } else if (view == a9) {
-            avatar = 9;
-            a9.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
-
-        } else if (view == a10) {
-            avatar = 10;
-            a10.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
-
-        } else if (view == a11) {
-            avatar = 11;
-            a11.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
-
-        } else if (view == a12) {
-            avatar = 12;
-            a12.setBackgroundColor(ContextCompat.getColor(this, R.color.primary1));
-
-        }
-
-        name.setText(name.getText().toString());
-
     }
 
     @Override
@@ -217,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        if (!name.getText().toString().equals("") && !phone.getText().toString().equals("") && !sur.getText().toString().equals("") && !email.getText().toString().equals("") && avatar != 0) {
+        if (!name.getText().toString().equals("") && !phone.getText().toString().equals("") && !sur.getText().toString().equals("") && !email.getText().toString().equals("")) {
             fab.setVisibility(View.VISIBLE);
             YoYo.with(Techniques.Landing)
                     .duration(700)
@@ -231,20 +131,4 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void afterTextChanged(Editable editable) {
 
     }
-
-    public void resetAllBack() {
-        a1.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-        a2.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-        a3.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-        a4.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-        a5.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-        a6.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-        a7.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-        a8.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-        a9.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-        a10.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-        a11.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-        a12.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-    }
-
 }

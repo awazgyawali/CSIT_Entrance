@@ -1,70 +1,61 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#032530"
     android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.activities.Colleges">
 
-    <android.support.design.widget.CoordinatorLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:theme="@style/Theme.AppCompat">
+        android:layout_height="48dp"
+        android:background="#36469c">
 
-        <LinearLayout
+        <ViewSwitcher
+            android:id="@+id/searchViewSwitcher"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:layout_toLeftOf="@+id/searchButton"
+            android:layout_toStartOf="@+id/searchButton">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/colzRecy"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="#eee" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="CSIT Colleges"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/colzAd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                ads:adSize="BANNER"
-                ads:adUnitId="@string/colleges_ad_id" />
-        </LinearLayout>
-
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbarColz"
+            <EditText
+                android:id="@+id/search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/primary8"
-                app:layout_collapseMode="pin"
-                app:layout_scrollFlags="scroll|enterAlways">
+                android:hint="Search"
+                android:shadowColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/white"
+                android:textColorLink="@color/white"
+                android:padding="10dp" />
 
-                <EditText
-                    android:id="@+id/search"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawableLeft="@drawable/abc_ic_search_api_mtrl_alpha"
-                    android:hint="Search"
-                    android:padding="10dp" />
+        </ViewSwitcher>
 
-            </android.support.v7.widget.Toolbar>
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/searchButton"
+            android:layout_width="48dp"
+            android:onClick="switchView"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            fancy:fb_defaultColor="#30000000"
+            fancy:fb_focusColor="#36469c"
+            fancy:fb_iconResource="@drawable/search" />
+    </RelativeLayout>
 
-            <View
-                android:id="@+id/appbar_bottom"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:visibility="invisible" />
-
-        </android.support.design.widget.AppBarLayout>
-
-
-    </android.support.design.widget.CoordinatorLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/colzRecy"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 </LinearLayout>

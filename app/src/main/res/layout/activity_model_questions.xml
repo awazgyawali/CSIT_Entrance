@@ -42,13 +42,6 @@
                 android:visibility="invisible" />
         </android.support.design.widget.AppBarLayout>
 
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/modelQuestionAd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/model_question_ad_id" />
     </android.support.design.widget.CoordinatorLayout>
 
 </LinearLayout>

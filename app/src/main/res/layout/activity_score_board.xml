@@ -1,66 +1,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coreLayoutScore"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#032530"
     android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.activities.ScoreBoard">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:theme="@style/Theme.AppCompat">
 
-        <LinearLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#212d38">
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:gravity="center"
+            android:text="Scoreboard"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/scoreBoardRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/searchButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:onClick="share"
+            fancy:fb_defaultColor="#30000000"
+            fancy:fb_focusColor="#212d38"
+            fancy:fb_iconResource="@drawable/share" />
+    </RelativeLayout>
 
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/scoreBoardAd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                ads:adSize="BANNER"
-                ads:adUnitId="@string/score_board_ad" />
-        </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/scoreBoardRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/ScoreToolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/primary1"
-                android:theme="@style/Theme.AppCompat"
-                app:layout_collapseMode="pin"
-                app:layout_scrollFlags="scroll|enterAlways" />
-
-            <View
-                android:id="@+id/appbar_bottom"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="@android:color/transparent"
-                android:visibility="invisible" />
-
-        </android.support.design.widget.AppBarLayout>
-
-
-    </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>
 
 

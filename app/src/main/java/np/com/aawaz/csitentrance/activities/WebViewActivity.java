@@ -14,9 +14,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.advance.Singleton;
@@ -32,8 +29,6 @@ public class WebViewActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
-
-        loadAd();
 
         webView = (WebView) findViewById(R.id.pdfview);
 
@@ -85,20 +80,5 @@ public class WebViewActivity extends AppCompatActivity {
                 })
                 .build();
         dialogMis.show();
-    }
-
-    public void loadAd() {
-        final AdView mAdView = (AdView) findViewById(R.id.webViewAd);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        mAdView.setVisibility(View.GONE);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                mAdView.setVisibility(View.VISIBLE);
-            }
-        });
-
     }
 }

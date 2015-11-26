@@ -43,11 +43,8 @@ public class Singleton {
         return mDatabase.getWritableDatabase();
     }
 
-
-
     public GcmNetworkManager getGcmScheduler(){
         return mScheduler;
     }
-
 }
 

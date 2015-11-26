@@ -17,7 +17,6 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.PeriodicTask;
-import com.kogitune.activity_transition.ActivityTransitionLauncher;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.advance.BackgroundTaskHandler;
@@ -40,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
         constructJob();
 
-        YoYo.with(Techniques.SlideInDown)
+        YoYo.with(Techniques.SlideInUp)
                 .duration(300)
                 .playOn(layout);
 
-        YoYo.with(Techniques.SlideOutUp)
+        YoYo.with(Techniques.SlideOutDown)
                 .duration(300)
                 .delay(4300)
                 .playOn(layout);
@@ -93,59 +92,60 @@ public class MainActivity extends AppCompatActivity {
     public void menuClickHandler(View view) {
         int id=view.getId();
         switch (id){
-
             case R.id.scoreBoard:
                 if (!isConnected())
                     Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
                 else
-                    ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, ScoreBoard.class));
+                    startActivity( new Intent(this, ScoreBoard.class));
                 break;
 
             case  R.id.playQuiz:
-                ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, PlayQuiz.class));
+                startActivity( new Intent(this, PlayQuiz.class));
                 break;
 
             case  R.id.fullQuestion:
-                ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, FullQuestion.class));
+                startActivity( new Intent(this, FullQuestion.class));
                 break;
 
             case  R.id.more:
-                ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, More.class));
+                startActivity( new Intent(this, More.class));
                 break;
 
             case  R.id.entranceNews:
                 if (getSharedPreferences("values", Context.MODE_PRIVATE).getInt("newsNo", 0) == 0 && !isConnected())
                     Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
                 else
-                    ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, EntranceNews.class));
+                    startActivity( new Intent(this, EntranceNews.class));
                 break;
 
             case  R.id.entranceForum:
                 if (!isConnected())
                     Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
                 else
-                    ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, EntranceForum.class));
+                    startActivity( new Intent(this, EntranceForum.class));
                 break;
 
             case  R.id.csitColleges:
-                ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, Colleges.class));
+                startActivity(new Intent(this, Colleges.class));
                 break;
 
             case  R.id.entranceResult:
                 if (!isConnected())
                     Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
                 else
-                    ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, Result.class));
+                    startActivity( new Intent(this, Result.class));
                 break;
 
             case  R.id.settings:
-                ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, Settings.class));
+                startActivity( new Intent(this, Settings.class));
                 break;
 
             case  R.id.aboutUs:
-                ActivityTransitionLauncher.with(MainActivity.this).from(view).launch( new Intent(this, About.class));
+                startActivity( new Intent(this, About.class));
                 break;
         }
+
+        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
     }
 
     public boolean isConnected() {

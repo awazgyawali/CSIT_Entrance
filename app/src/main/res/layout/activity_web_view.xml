@@ -10,8 +10,7 @@
     <WebView
         android:id="@+id/pdfview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/webViewAd" />
+        android:layout_height="match_parent" />
 
     <mehdi.sakout.fancybuttons.FancyButton
         android:layout_width="wrap_content"
@@ -32,14 +31,4 @@
         fancy:fb_text="REPORT"
         fancy:fb_textColor="#000" />
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/webViewAd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_gravity="bottom"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/question_ad_id" />
 </RelativeLayout>

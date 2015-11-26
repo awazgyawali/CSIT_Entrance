@@ -32,7 +32,6 @@ public class About extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbarAbout));
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        MyApplication.changeStatusBarColor(R.color.status_bar_college, this);
         recyAbout = (RecyclerView) findViewById(R.id.aboutRecy);
         LikeView likeView = (LikeView) findViewById(R.id.likeButton);
         likeView.setLikeViewStyle(LikeView.Style.STANDARD);
