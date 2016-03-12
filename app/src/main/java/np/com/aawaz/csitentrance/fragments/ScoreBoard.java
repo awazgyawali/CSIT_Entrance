@@ -1,13 +1,17 @@
-package np.com.aawaz.csitentrance.activities;
+package np.com.aawaz.csitentrance.fragments;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -33,28 +37,26 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.ScoreBoardAdapter;
-import np.com.aawaz.csitentrance.advance.BackgroundTaskHandler;
-import np.com.aawaz.csitentrance.advance.MyApplication;
-import np.com.aawaz.csitentrance.advance.Singleton;
+import np.com.aawaz.csitentrance.misc.BackgroundTaskHandler;
+import np.com.aawaz.csitentrance.misc.MyApplication;
+import np.com.aawaz.csitentrance.misc.Singleton;
 
 
-public class ScoreBoard extends AppCompatActivity {
+public class ScoreBoard extends Fragment {
 
     ArrayList<String> names = new ArrayList<>();
     ArrayList<Integer> scores = new ArrayList<>();
     MaterialDialog dialogInitial;
     RequestQueue requestQueue;
+    RecyclerView mRecyclerView;
 
     CallbackManager callbackManager;
     ShareDialog shareDialog;
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_score_board);
-
-        FacebookSdk.sdkInitialize(getApplicationContext());
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        FacebookSdk.sdkInitialize(getActivity());
         callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog(this);
         shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
@@ -74,14 +76,13 @@ public class ScoreBoard extends AppCompatActivity {
 
             }
         });
-        dialogInitial = new MaterialDialog.Builder(this)
+        dialogInitial = new MaterialDialog.Builder(getActivity())
                 .content("Please wait...")
                 .progress(true, 0)
                 .cancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
                         requestQueue.cancelAll("score");
-                        finish();
                     }
                 })
                 .build();
@@ -90,15 +91,20 @@ public class ScoreBoard extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.scoreBoardRecyclerView);
+    }
+
     private void callFillRecyclerView() {
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.scoreBoardRecyclerView);
-        mRecyclerView.setAdapter(new ScoreBoardAdapter(this, names, scores));
+        mRecyclerView.setAdapter(new ScoreBoardAdapter(getActivity(), names, scores));
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 3 : 2, StaggeredGridLayoutManager.VERTICAL));
         dialogInitial.dismiss();
     }
 
     @Override
-    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
@@ -120,7 +126,6 @@ public class ScoreBoard extends AppCompatActivity {
                     callFillRecyclerView();
                 } catch (JSONException e) {
                     dialogInitial.dismiss();
-                    finish();
                 }
             }
 
@@ -128,9 +133,7 @@ public class ScoreBoard extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialogInitial.dismiss();
-                Toast.makeText(getApplicationContext(), "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
-                finish();
-
+                Toast.makeText(getContext(), "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
             }
         });
         requestQueue.add(jsonObjectRequest.setTag("score"));
@@ -142,13 +145,13 @@ public class ScoreBoard extends AppCompatActivity {
     }
 
     public void share(View view) {
-        Toast.makeText(this, "Generating sharing messages. Please wait...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Generating sharing messages. Please wait...", Toast.LENGTH_SHORT).show();
         new Thread(new Runnable() {
             @Override
             public void run() {
 
                 SharePhoto photo = new SharePhoto.Builder()
-                        .setBitmap(MyApplication.writeTextOnDrawable(ScoreBoard.this, ScoreBoard.this.getSharedPreferences("info", MODE_PRIVATE).getString("Name", "") + " has scored " + BackgroundTaskHandler.getTotal()
+                        .setBitmap(MyApplication.writeTextOnDrawable(getContext(), getContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "") + " has scored " + BackgroundTaskHandler.getTotal()
                                 + " out of 800.").getBitmap())
                         .build();
 
@@ -156,7 +159,7 @@ public class ScoreBoard extends AppCompatActivity {
                         .addPhoto(photo)
                         .build();
 
-                runOnUiThread(new Runnable() {
+                getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         //uddate UI
@@ -166,6 +169,12 @@ public class ScoreBoard extends AppCompatActivity {
 
             }
         }).start();
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_scoreboard, container, false);
     }
 }
 

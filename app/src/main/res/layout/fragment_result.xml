@@ -4,19 +4,11 @@
     android:id="@+id/coreResult"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="np.com.aawaz.csitentrance.activities.Result">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbarResult"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary11"
-        android:theme="@style/Theme.AppCompat" />
+    tools:context=".fragments.Result">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbarResult"
         android:orientation="vertical">
 
         <RelativeLayout

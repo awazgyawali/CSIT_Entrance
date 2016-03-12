@@ -1,13 +1,17 @@
-package np.com.aawaz.csitentrance.activities;
+package np.com.aawaz.csitentrance.fragments;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -28,10 +32,10 @@ import java.util.Date;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.NewsAdapter;
-import np.com.aawaz.csitentrance.advance.Singleton;
+import np.com.aawaz.csitentrance.misc.Singleton;
 
 
-public class EntranceNews extends AppCompatActivity  {
+public class EntranceNews extends Fragment {
 
     ArrayList<String> time = new ArrayList<>(),
             imageUrl = new ArrayList<>(),
@@ -40,26 +44,30 @@ public class EntranceNews extends AppCompatActivity  {
     RecyclerView recy;
     RequestQueue requestQueue;
     NewsAdapter newsAdapter;
-
+    String accessToken;
+    StringRequest request;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_entrance_news);
-
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         //Setting the data
         setDataToArrayListFromDb();
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        recy = (RecyclerView) view.findViewById(R.id.newsFeedRecy);
+    }
+
     public void fillData() {
-        recy = (RecyclerView) findViewById(R.id.newsFeedRecy);
-        newsAdapter = new NewsAdapter(this, messages, time, imageUrl);
+        newsAdapter = new NewsAdapter(getContext(), messages, time, imageUrl);
         recy.setAdapter(newsAdapter);
     }
 
     public void setDataToArrayListFromDb() {
         SQLiteDatabase database = Singleton.getInstance().getDatabase();
-        Cursor cursor = database.query("news", new String[]{"message","time","imageURL"}, null, null, null, null, null);
+        Cursor cursor = database.query("news", new String[]{"message", "time", "imageURL"}, null, null, null, null, null);
         int i = 0;
         while (cursor.moveToNext()) {
             i++;
@@ -78,21 +86,20 @@ public class EntranceNews extends AppCompatActivity  {
 
     public void fetchNewsForFirstTime() {
         //Reading from json file and insillizing inside arrayList
-        final MaterialDialog dialog = new MaterialDialog.Builder(this)
+        final MaterialDialog dialog = new MaterialDialog.Builder(getContext())
                 .content("Please wait")
                 .progress(true, 0)
                 .cancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
                         requestQueue.cancelAll("news");
-                        finish();
                     }
                 })
                 .show();
 
-            requestQueue = Singleton.getInstance().getRequestQueue();
-            getAccessToken(dialog);
-        }
+        requestQueue = Singleton.getInstance().getRequestQueue();
+        getAccessToken(dialog);
+    }
 
     private void storeToDb() {
         SQLiteDatabase database = Singleton.getInstance().getDatabase();
@@ -109,10 +116,7 @@ public class EntranceNews extends AppCompatActivity  {
     }
 
 
-    String accessToken;
-    StringRequest request;
-
-    private void getAccessToken(final MaterialDialog dialog){
+    private void getAccessToken(final MaterialDialog dialog) {
         String accessLink = "https://graph.facebook.com/oauth/access_token?client_id="
                 + getString(R.string.facebook_app_id) + "&client_secret=" + getString(R.string.facebook_app_secret) + "&grant_type=client_credentials";
 
@@ -127,8 +131,7 @@ public class EntranceNews extends AppCompatActivity  {
             public void onErrorResponse(VolleyError error) {
                 dialog.dismiss();
                 error.printStackTrace();
-                Toast.makeText(EntranceNews.this,"Unable to connect.",Toast.LENGTH_SHORT).show();
-                finish();
+                Toast.makeText(getContext(), "Unable to connect.", Toast.LENGTH_SHORT).show();
             }
         });
         requestQueue.add(request);
@@ -145,13 +148,12 @@ public class EntranceNews extends AppCompatActivity  {
                         parseTheResponse(response);
                     }
                 }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        dialog.dismiss();
-                        error.printStackTrace();
-                        Toast.makeText(EntranceNews.this,"Unable to connect.",Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dialog.dismiss();
+                error.printStackTrace();
+                Toast.makeText(getContext(), "Unable to connect.", Toast.LENGTH_SHORT).show();
+            }
         });
         requestQueue.add(jsonRequest);
     }
@@ -159,32 +161,41 @@ public class EntranceNews extends AppCompatActivity  {
     private void parseTheResponse(JSONObject response) {
         try {
             JSONArray array = response.getJSONArray("data");
-            for (int i=0 ; i<array.length() ;i++){
+            for (int i = 0; i < array.length(); i++) {
                 JSONObject object = array.getJSONObject(i);
-                if(object.getJSONObject("from").getString("id").equals("933435523387727")){
+                if (object.getJSONObject("from").getString("id").equals("933435523387727")) {
                     try {
                         messages.add(object.getString("message"));
-                        try{
+                        try {
                             imageUrl.add(object.getString("full_picture"));
-                        } catch (Exception e){
+                        } catch (Exception e) {
                             imageUrl.add("null");
                         }
                         time.add(convertToSimpleDate(object.getString("created_time")).toString());
-                    }catch (Exception ignored){}
+                    } catch (Exception ignored) {
+                    }
                 }
             }
             fillData();
             storeToDb();
-        } catch (Exception ignored){}
+        } catch (Exception ignored) {
+        }
     }
 
     private CharSequence convertToSimpleDate(String created_time) {
 
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ssZZZZZ");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ssZZZZZ");
         try {
             Date date = simpleDateFormat.parse(created_time);
-            return DateUtils.getRelativeDateTimeString(this,date.getTime(),DateUtils.SECOND_IN_MILLIS,DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_NO_MONTH_DAY);
-        } catch (ParseException ignored) {}
+            return DateUtils.getRelativeDateTimeString(getContext(), date.getTime(), DateUtils.SECOND_IN_MILLIS, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_NO_MONTH_DAY);
+        } catch (ParseException ignored) {
+        }
         return "Unknown Time";
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_news, container, false);
     }
 }

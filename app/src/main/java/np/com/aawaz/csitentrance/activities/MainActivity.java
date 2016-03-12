@@ -1,33 +1,131 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.PeriodicTask;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.advance.BackgroundTaskHandler;
-import np.com.aawaz.csitentrance.advance.Singleton;
+import np.com.aawaz.csitentrance.misc.BackgroundTaskHandler;
+import np.com.aawaz.csitentrance.misc.Singleton;
+import np.com.aawaz.csitentrance.fragments.Colleges;
+import np.com.aawaz.csitentrance.fragments.EntranceForum;
+import np.com.aawaz.csitentrance.fragments.EntranceNews;
+import np.com.aawaz.csitentrance.fragments.Home;
+import np.com.aawaz.csitentrance.fragments.Result;
+import np.com.aawaz.csitentrance.fragments.ScoreBoard;
 
 public class MainActivity extends AppCompatActivity {
+
+    FragmentManager manager;
+    NavigationView mNavigationView;
+    DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarMain);
+        setSupportActionBar(toolbar);
+        setTitle("Home");
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
+        mNavigationView = (NavigationView) findViewById(R.id.navigationView);
+        manager = getSupportFragmentManager();
+
+        manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
+
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                invalidateOptionsMenu();
+                int id = item.getItemId();
+                switch (id) {
+                    case R.id.main_home:
+                        manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
+                        setTitle("Home");
+                        item.setEnabled(true);
+                        break;
+
+                    case R.id.scoreBoard:
+                        manager.beginTransaction().replace(R.id.fragmentHolder, new ScoreBoard()).commit();
+                        setTitle("Scoreboard");
+                        item.setEnabled(true);
+                        break;
+
+                    case R.id.more:
+                        manager.beginTransaction().replace(R.id.fragmentHolder, new More()).commit();
+                        setTitle("More");
+                        item.setEnabled(true);
+                        break;
+
+                    case R.id.entranceNews:
+                        manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceNews()).commit();
+                        setTitle("Entrance News");
+                        item.setEnabled(true);
+                        break;
+
+                    case R.id.entranceForum:
+                        manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceForum()).commit();
+                        setTitle("Entrance Forum");
+                        item.setEnabled(true);
+                        break;
+
+                    case R.id.csitColleges:
+                        manager.beginTransaction().replace(R.id.fragmentHolder, new Colleges()).commit();
+                        setTitle("CSIT Colleges");
+                        item.setEnabled(true);
+                        break;
+
+                    case R.id.entranceResult:
+                        manager.beginTransaction().replace(R.id.fragmentHolder, new Result()).commit();
+                        setTitle("Entrance Result");
+                        item.setEnabled(true);
+                        break;
+
+                    case R.id.settings:
+                        startActivity(new Intent(MainActivity.this, Settings.class));
+                        break;
+
+                    case R.id.aboutUs:
+                        startActivity(new Intent(MainActivity.this, About.class));
+                        break;
+                }
+                mDrawerLayout.closeDrawer(mNavigationView);
+                return true;
+            }
+        });
+
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open, R.string.close) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        mDrawerLayout.addDrawerListener(drawerToggle);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        drawerToggle.syncState();
+
 
         GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
         analytics.setLocalDispatchPeriod(1800);
@@ -35,122 +133,32 @@ public class MainActivity extends AppCompatActivity {
         tracker.enableExceptionReporting(true);
         tracker.enableAutoActivityTracking(true);
 
-        CardView layout = (CardView) findViewById(R.id.welcomeView);
-
         constructJob();
-
-        YoYo.with(Techniques.SlideInUp)
-                .duration(300)
-                .playOn(layout);
-
-        YoYo.with(Techniques.SlideOutDown)
-                .duration(300)
-                .delay(4300)
-                .playOn(layout);
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        fillSubtitles();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 
-    private void fillSubtitles() {
-        SharedPreferences pref = getSharedPreferences("info", MODE_PRIVATE);
-
-        TextView name = (TextView) findViewById(R.id.nameHolder);
-        TextView points = (TextView) findViewById(R.id.scoreHolder);
-        TextView lastPlay = (TextView) findViewById(R.id.lastPlayed);
-        TextView lastView = (TextView) findViewById(R.id.lastViewed);
-        TextView unreadNews = (TextView) findViewById(R.id.unreadNews);
-        TextView resultPublished = (TextView) findViewById(R.id.resultStatus);
-
-        name.setText("Welcome "+pref.getString("Name", ""));
-        points.setText("Your score: "+getTotalScore());
-        lastPlay.setText(pref.getString("LastPlayed",""));
-        lastView.setText(pref.getString("LastViewed",""));
-        unreadNews.setText(getUnreadNews());
-        resultPublished.setText(pref.getBoolean("published",false)?"Published":"Not published");
-    }
-
-    private String getUnreadNews() {
-        int unread = getSharedPreferences("values", Context.MODE_PRIVATE).getInt("newsNo", 0) - getSharedPreferences("values", Context.MODE_PRIVATE).getInt("readNewsNo", 0);
-        if (unread==0)
-            return "";
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (getTitle().equals("CSIT Colleges"))
+            menu.findItem(R.id.search).setVisible(true);
         else
-            return unread+" unread news";
+            menu.findItem(R.id.search).setVisible(false);
+
+        return super.onPrepareOptionsMenu(menu);
     }
 
-    private int getTotalScore() {
-        SharedPreferences pref = getSharedPreferences("values", MODE_PRIVATE);
-        int grand = 0;
-        for (int i = 1; i <= 8; i++)
-            grand = grand + pref.getInt("score" + i, 0);
-        return grand;
-    }
-
-    public void menuClickHandler(View view) {
-        int id=view.getId();
-        switch (id){
-            case R.id.scoreBoard:
-                if (!isConnected())
-                    Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
-                else
-                    startActivity( new Intent(this, ScoreBoard.class));
-                break;
-
-            case  R.id.playQuiz:
-                startActivity( new Intent(this, PlayQuiz.class));
-                break;
-
-            case  R.id.fullQuestion:
-                startActivity( new Intent(this, FullQuestion.class));
-                break;
-
-            case  R.id.more:
-                startActivity( new Intent(this, More.class));
-                break;
-
-            case  R.id.entranceNews:
-                if (getSharedPreferences("values", Context.MODE_PRIVATE).getInt("newsNo", 0) == 0 && !isConnected())
-                    Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
-                else
-                    startActivity( new Intent(this, EntranceNews.class));
-                break;
-
-            case  R.id.entranceForum:
-                if (!isConnected())
-                    Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
-                else
-                    startActivity( new Intent(this, EntranceForum.class));
-                break;
-
-            case  R.id.csitColleges:
-                startActivity(new Intent(this, Colleges.class));
-                break;
-
-            case  R.id.entranceResult:
-                if (!isConnected())
-                    Snackbar.make(findViewById(R.id.mainParent), "No internet connection", Snackbar.LENGTH_SHORT).show();
-                else
-                    startActivity( new Intent(this, Result.class));
-                break;
-
-            case  R.id.settings:
-                startActivity( new Intent(this, Settings.class));
-                break;
-
-            case  R.id.aboutUs:
-                startActivity( new Intent(this, About.class));
-                break;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.search) {
+            startActivity(new Intent(this, SearchActivity.class));
+            return true;
         }
-
-        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
-    }
-
-    public boolean isConnected() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        return cm.getActiveNetworkInfo() != null;
+        return super.onOptionsItemSelected(item);
     }
 
     private void constructJob() {
@@ -171,5 +179,13 @@ public class MainActivity extends AppCompatActivity {
                 .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_CONNECTED)
                 .build();
         mScheduler.schedule(periodic);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(mNavigationView))
+            mDrawerLayout.closeDrawer(mNavigationView);
+        else
+            super.onBackPressed();
     }
 }

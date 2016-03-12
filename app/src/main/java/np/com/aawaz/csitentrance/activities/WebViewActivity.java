@@ -16,7 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.advance.Singleton;
+import np.com.aawaz.csitentrance.misc.Singleton;
 
 
 public class WebViewActivity extends AppCompatActivity {

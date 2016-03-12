@@ -1,7 +1,10 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimaryDark">#000000</item>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
         <item name="android:listViewStyle">@style/Widget.MyTheme.ListView</item>
         <item name="android:scrollViewStyle">@style/Widget.MyTheme.ScrollView</item>
     </style>
@@ -22,4 +25,5 @@
     <style name="Widget.MyTheme.ScrollView" parent="android:Widget.ScrollView">
         <item name="android:overScrollMode">never</item>
     </style>
+
 </resources>

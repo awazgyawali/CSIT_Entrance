@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package np.com.aawaz.csitentrance.advance;
+package np.com.aawaz.csitentrance.misc;
 
 import android.support.v4.view.ViewPager;
 

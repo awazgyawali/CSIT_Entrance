@@ -44,8 +44,7 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.SlideUpPanelAdapter;
-import np.com.aawaz.csitentrance.advance.MyApplication;
-import np.com.aawaz.csitentrance.advance.Singleton;
+import np.com.aawaz.csitentrance.misc.Singleton;
 
 
 public class QuizActivity extends AppCompatActivity {

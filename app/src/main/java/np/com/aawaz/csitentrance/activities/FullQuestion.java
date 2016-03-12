@@ -12,7 +12,6 @@ import android.view.View;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.MainRecyclerAdapter;
-import np.com.aawaz.csitentrance.advance.MyApplication;
 
 
 public class FullQuestion extends AppCompatActivity implements MainRecyclerAdapter.ClickListner {

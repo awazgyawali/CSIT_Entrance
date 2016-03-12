@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.fragments.EntranceForum;
 
 public class ViewResult extends AppCompatActivity {
 

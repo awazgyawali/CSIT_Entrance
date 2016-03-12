@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance.advance;
+package np.com.aawaz.csitentrance.misc;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -27,7 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.activities.EntranceNews;
+import np.com.aawaz.csitentrance.fragments.EntranceNews;
 
 public class BackgroundTaskHandler extends GcmTaskService {
     RequestQueue requestQueue;

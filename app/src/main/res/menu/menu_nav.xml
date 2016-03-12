@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/main">
+        <item
+            android:id="@+id/main_home"
+            android:checkable="true"
+            android:checked="true"
+            android:icon="@drawable/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/scoreBoard"
+            android:checkable="true"
+            android:icon="@drawable/scoreboard"
+            android:title="Scoreboard" />
+
+        <item
+            android:id="@+id/csitColleges"
+            android:checkable="true"
+            android:icon="@drawable/school"
+            android:title="CSIT Colleges" />
+        <item
+            android:id="@+id/more"
+            android:checkable="true"
+            android:icon="@drawable/more"
+            android:title="More" />
+    </group>
+
+    <group android:id="@+id/entrance">
+
+        <item
+            android:id="@+id/entranceNews"
+            android:checkable="true"
+            android:icon="@drawable/news"
+            android:title="Entrance News" />
+        <item
+            android:id="@+id/entranceForum"
+            android:checkable="true"
+            android:icon="@drawable/forum"
+            android:title="Entrance Forum" />
+        <item
+            android:id="@+id/entranceResult"
+            android:checkable="true"
+            android:icon="@drawable/result"
+            android:title="Entrance Result" />
+    </group>
+
+    <group android:id="@+id/sec">
+
+        <item
+            android:id="@+id/settings"
+            android:checkable="true"
+            android:icon="@drawable/settings"
+            android:title="Setting" />
+        <item
+            android:id="@+id/aboutUs"
+            android:checkable="true"
+            android:icon="@drawable/about"
+            android:title="About Us" />
+    </group>
+</menu>

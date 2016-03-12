@@ -1,78 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/coreColz"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="3dp"
-    app:cardCornerRadius="5dp"
-    app:cardBackgroundColor="#3F51B5"
-    android:orientation="vertical">
+    android:layout_marginBottom="3dp"
+    android:layout_marginTop="3dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="10dp">
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:padding="5dp"
-            android:gravity="center"
-            android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/colzName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ascol Campus"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/colzName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:layout_margin="5dp"
-                android:text="Ascol Campus"
-                android:textColor="@color/white"
-                android:layout_toLeftOf="@+id/linearLayout2"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/colzName"
-                android:text="aawaz.com.np"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_toLeftOf="@+id/linearLayout2"
-                android:id="@+id/address"/>
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:textSize="10sp"
+        android:layout_height="wrap_content"
+        android:text="aawaz.com.np" />
 
-            <LinearLayout
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/grey" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right|end"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/callButton"
             android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
-            android:id="@+id/linearLayout2">
+            android:gravity="center"
+            android:background="?android:selectableItemBackground"
+            android:orientation="horizontal">
 
-            <mehdi.sakout.fancybuttons.FancyButton
-                android:layout_width="0dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                fancy:fb_iconResource="@drawable/call"
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/callButton"
-                fancy:fb_defaultColor="#2196F3"
-                android:padding="8dp"
-                fancy:fb_radius="30dp"
-                fancy:fb_focusColor="#9bd823"
-                fancy:fb_textColor="#FFFFFF" />
+                android:padding="5dp"
+                android:src="@drawable/call" />
 
-            <mehdi.sakout.fancybuttons.FancyButton
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                fancy:fb_radius="30dp"
-                android:layout_margin="5dp"
-                fancy:fb_iconResource="@drawable/website"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/webSiteButton"
-                fancy:fb_defaultColor="#9C27B0"
-                fancy:fb_focusColor="#9bd823"
-                android:padding="8dp"
-                fancy:fb_textColor="#FFFFFF"/>
+                android:padding="5dp"
+                android:text="Call" />
         </LinearLayout>
-        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/webSiteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:background="?android:selectableItemBackground"
+            android:orientation="horizontal">
 
 
-</android.support.v7.widget.CardView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/website" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Website" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

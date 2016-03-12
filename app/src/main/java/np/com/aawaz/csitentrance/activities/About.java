@@ -17,7 +17,6 @@ import com.facebook.share.widget.LikeView;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.AboutAdapter;
-import np.com.aawaz.csitentrance.advance.MyApplication;
 
 public class About extends AppCompatActivity {
 

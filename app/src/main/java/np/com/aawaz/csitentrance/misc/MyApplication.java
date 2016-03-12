@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance.advance;
+package np.com.aawaz.csitentrance.misc;
 
 import android.app.Application;
 import android.content.Context;
@@ -10,11 +10,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
