@@ -1,7 +1,6 @@
 package np.com.aawaz.csitentrance.fragments;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -12,9 +11,10 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -46,12 +46,13 @@ public class ScoreBoard extends Fragment {
 
     ArrayList<String> names = new ArrayList<>();
     ArrayList<Integer> scores = new ArrayList<>();
-    MaterialDialog dialogInitial;
     RequestQueue requestQueue;
     RecyclerView mRecyclerView;
+    ProgressBar progress;
 
     CallbackManager callbackManager;
     ShareDialog shareDialog;
+    private LinearLayout errorLayout;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -76,31 +77,30 @@ public class ScoreBoard extends Fragment {
 
             }
         });
-        dialogInitial = new MaterialDialog.Builder(getActivity())
-                .content("Please wait...")
-                .progress(true, 0)
-                .cancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialogInterface) {
-                        requestQueue.cancelAll("score");
-                    }
-                })
-                .build();
-        dialogInitial.show();
         fetchFromInternet();
-
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.scoreBoardRecyclerView);
+        errorLayout = (LinearLayout) view.findViewById(R.id.errorScore);
+        progress = (ProgressBar) view.findViewById(R.id.progressbarScore);
+        errorLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fetchFromInternet();
+            }
+        });
     }
 
     private void callFillRecyclerView() {
+        progress.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+        errorLayout.setVisibility(View.GONE);
         mRecyclerView.setAdapter(new ScoreBoardAdapter(getActivity(), names, scores));
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 3 : 2, StaggeredGridLayoutManager.VERTICAL));
-        dialogInitial.dismiss();
+        errorLayout.setVisibility(View.GONE);
     }
 
     @Override
@@ -110,6 +110,10 @@ public class ScoreBoard extends Fragment {
     }
 
     private void fetchFromInternet() {
+        progress.setVisibility(View.VISIBLE);
+        errorLayout.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.GONE);
+
         requestQueue = Singleton.getInstance().getRequestQueue();
         String url = getString(R.string.fetchScoreurl);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
@@ -125,15 +129,16 @@ public class ScoreBoard extends Fragment {
                     }
                     callFillRecyclerView();
                 } catch (JSONException e) {
-                    dialogInitial.dismiss();
+                    errorLayout.setVisibility(View.VISIBLE);
+                    progress.setVisibility(View.GONE);
                 }
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                dialogInitial.dismiss();
-                Toast.makeText(getContext(), "Unable to connect. Please check your internet connection.", Toast.LENGTH_SHORT).show();
+                errorLayout.setVisibility(View.VISIBLE);
+                progress.setVisibility(View.GONE);
             }
         });
         requestQueue.add(jsonObjectRequest.setTag("score"));

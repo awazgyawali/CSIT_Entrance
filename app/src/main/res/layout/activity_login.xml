@@ -1,8 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context="np.com.aawaz.csitentrance.activities.LoginActivity">
 
     <RelativeLayout
@@ -20,32 +22,25 @@
                 android:layout_above="@+id/fabBtn"
                 android:orientation="vertical">
 
-                <TextView
+                <com.devspark.robototextview.widget.RobotoTextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
                     android:layout_margin="10dp"
-                    android:text="Sign In"
+                    android:text="Sign Up"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="#41837E" />
+                    android:textColor="@color/white"
+                    app:typeface="roboto_bold" />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/white">
 
                     <EditText
                         android:id="@+id/NameText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/textView2"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignStart="@+id/textView2"
-                        android:layout_below="@+id/textView2"
-                        android:layout_marginRight="16dp"
                         android:ems="10"
                         android:hint="First Name"
                         android:inputType="textPersonName|textCapWords" />
@@ -53,37 +48,29 @@
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/white">
 
                     <EditText
                         android:id="@+id/LastText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/NameText"
-                        android:layout_alignLeft="@+id/NameText"
-                        android:layout_alignRight="@+id/NameText"
-                        android:layout_alignStart="@+id/NameText"
-                        android:layout_below="@+id/NameText"
                         android:layout_marginTop="15dp"
                         android:ems="10"
-                        android:hint="Last Initial"
+                        android:hint="Last Name"
                         android:inputType="textPersonName|textCapWords"
                         android:maxLength="1" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/white">
 
                     <EditText
                         android:id="@+id/email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/LastText"
-                        android:layout_alignLeft="@+id/LastText"
-                        android:layout_alignRight="@+id/LastText"
-                        android:layout_alignStart="@+id/LastText"
-                        android:layout_below="@+id/LastText"
                         android:layout_marginTop="15dp"
                         android:ems="10"
                         android:hint="E-mail"
@@ -92,23 +79,61 @@
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/white">
 
                     <EditText
                         android:id="@+id/phoneNo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/LastText"
-                        android:layout_alignLeft="@+id/LastText"
-                        android:layout_alignRight="@+id/LastText"
-                        android:layout_alignStart="@+id/LastText"
-                        android:layout_below="@+id/LastText"
                         android:layout_marginTop="15dp"
                         android:ems="10"
                         android:hint="Mobile Number"
                         android:inputType="phone" />
                 </android.support.design.widget.TextInputLayout>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_centerInParent="true"
+                        android:background="@color/white" />
+
+                    <com.devspark.robototextview.widget.RobotoTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@color/background"
+                        android:padding="5dp"
+                        android:text="OR"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:typeface="roboto_bold" />
+                </RelativeLayout>
+
+                <mehdi.sakout.fancybuttons.FancyButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:padding="20dp"
+                    fancy:fb_defaultColor="#3b5999"
+                    fancy:fb_iconResource="@drawable/facebook"
+                    fancy:fb_text="Login with Facebook" />
+
+                <mehdi.sakout.fancybuttons.FancyButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:padding="20dp"
+                    fancy:fb_defaultColor="#DC4E41"
+                    fancy:fb_iconResource="@drawable/google"
+                    fancy:fb_text="Login with Google" />
             </LinearLayout>
         </ScrollView>
 

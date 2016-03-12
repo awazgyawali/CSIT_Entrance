@@ -31,7 +31,7 @@ import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.ViewResult;
 import np.com.aawaz.csitentrance.misc.Singleton;
 
-public class Result extends Fragment {
+public class EntranceResult extends Fragment {
     TextView unPublished;
     RequestQueue requestQueue;
     MaterialDialog dialog;

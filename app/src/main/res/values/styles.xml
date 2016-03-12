@@ -4,6 +4,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/background</item>
 
         <item name="android:listViewStyle">@style/Widget.MyTheme.ListView</item>
         <item name="android:scrollViewStyle">@style/Widget.MyTheme.ScrollView</item>

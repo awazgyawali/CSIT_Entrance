@@ -13,8 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.PeriodicTask;
 
@@ -23,7 +21,7 @@ import np.com.aawaz.csitentrance.fragments.Colleges;
 import np.com.aawaz.csitentrance.fragments.EntranceForum;
 import np.com.aawaz.csitentrance.fragments.EntranceNews;
 import np.com.aawaz.csitentrance.fragments.Home;
-import np.com.aawaz.csitentrance.fragments.Result;
+import np.com.aawaz.csitentrance.fragments.EntranceResult;
 import np.com.aawaz.csitentrance.fragments.ScoreBoard;
 import np.com.aawaz.csitentrance.misc.BackgroundTaskHandler;
 import np.com.aawaz.csitentrance.misc.Singleton;
@@ -75,14 +73,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         drawerToggle.syncState();
-
-
-        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-        analytics.setLocalDispatchPeriod(1800);
-        Tracker tracker = analytics.newTracker("UA-63920529-5");
-        tracker.enableExceptionReporting(true);
-        tracker.enableAutoActivityTracking(true);
-
         constructJob();
     }
 
@@ -127,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.entranceResult:
-                manager.beginTransaction().replace(R.id.fragmentHolder, new Result()).commit();
+                manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceResult()).commit();
                 setTitle("Entrance Result");
                 item.setChecked(true);
                 break;
