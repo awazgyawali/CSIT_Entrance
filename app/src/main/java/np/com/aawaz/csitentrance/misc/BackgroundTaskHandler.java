@@ -105,7 +105,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
         try {
             uploadScore();
 
-            updateNews();
+            //updateNews();
 
             uploadReport();
 
@@ -136,7 +136,6 @@ public class BackgroundTaskHandler extends GcmTaskService {
                         subTopic.add(jo_inside.getString("subTopic"));
                         imageURL.add(jo_inside.getString("imageURL"));
                         content.add(jo_inside.getString("content"));
-                        author.add(jo_inside.getString("author"));
                         link.add(jo_inside.getString("link"));
                         linkTitle.add(jo_inside.getString("linkTitle"));
                     }

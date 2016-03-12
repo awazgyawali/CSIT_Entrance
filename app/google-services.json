@@ -1,20 +1,34 @@
 {
   "project_info": {
-    "project_id": "bsc-csit",
-    "project_number": "1035707046187",
-    "name": "BSC CSIT"
+    "project_id": "csit-entrance",
+    "project_number": "528618144444",
+    "name": "CSIT Entrance"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1035707046187:android:0330d7abfed059d8",
-        "client_id": "android:com.brainants.bsccsit",
+        "mobilesdk_app_id": "1:528618144444:android:ef6678418eb36164",
+        "client_id": "android:np.com.aawaz.csitentrance",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.brainants.bsccsit"
+          "package_name": "np.com.aawaz.csitentrance",
+          "certificate_hash": []
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "528618144444-d4kingb2sg7mutkf49j5g86dnkf0oaea.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "np.com.aawaz.csitentrance",
+            "certificate_hash": "508FCE8C0153BE257D1319FE71DCBE99BEAEAC41"
+          }
+        },
+        {
+          "client_id": "528618144444-vmj7mif62chs6f2pkvmc2obotn9po4pe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [],
       "services": {
         "analytics_service": {
@@ -29,7 +43,7 @@
           "other_platform_oauth_client": []
         },
         "google_signin_service": {
-          "status": 1
+          "status": 2
         },
         "ads_service": {
           "status": 1

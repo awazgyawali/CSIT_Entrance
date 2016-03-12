@@ -65,29 +65,6 @@ public class Colleges extends Fragment {
         colzRecy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
     }
 
-    /*
-        private void checkOccurrence() {
-            namesNew.clear();
-            descNew.clear();
-            websiteNew.clear();
-            addressNew.clear();
-            phNoNew.clear();
-            for (int i = 0; i < names.size(); i++) {
-                if (names.get(i).toLowerCase().contains(search.getText().toString().toLowerCase()) ||
-                        address.get(i).toLowerCase().contains(search.getText().toString().toLowerCase()) ||
-                        desc.get(i).contains(search.getText().toString())) {
-                    namesNew.add(names.get(i));
-                    descNew.add(desc.get(i));
-                    websiteNew.add(website.get(i));
-                    addressNew.add(address.get(i));
-                    phNoNew.add(phNo.get(i));
-                }
-            }
-            fillNewRecy();
-        }
-
-    */
-
     public void setDataToArrayList() {
         //Reading from json file and insillizing inside arrayList
         try {

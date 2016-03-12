@@ -13,7 +13,7 @@
     android:paddingTop="10dp">
 
 
-    <TextView
+    <com.devspark.robototextview.widget.RobotoTextView
         android:id="@+id/colzName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,10 +21,10 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/black" />
 
-    <TextView
+    <com.devspark.robototextview.widget.RobotoTextView
         android:id="@+id/address"
         android:layout_width="wrap_content"
-        android:textSize="10sp"
+        android:textSize="13sp"
         android:layout_height="wrap_content"
         android:text="aawaz.com.np" />
 
@@ -56,7 +56,7 @@
                 android:padding="5dp"
                 android:src="@drawable/call" />
 
-            <TextView
+            <com.devspark.robototextview.widget.RobotoTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
@@ -79,7 +79,7 @@
                 android:padding="5dp"
                 android:src="@drawable/website" />
 
-            <TextView
+            <com.devspark.robototextview.widget.RobotoTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"

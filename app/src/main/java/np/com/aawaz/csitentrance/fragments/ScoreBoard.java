@@ -99,7 +99,7 @@ public class ScoreBoard extends Fragment {
         mRecyclerView.setVisibility(View.VISIBLE);
         errorLayout.setVisibility(View.GONE);
         mRecyclerView.setAdapter(new ScoreBoardAdapter(getActivity(), names, scores));
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 3 : 2, StaggeredGridLayoutManager.VERTICAL));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
         errorLayout.setVisibility(View.GONE);
     }
 

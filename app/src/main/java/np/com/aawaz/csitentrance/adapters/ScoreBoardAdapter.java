@@ -2,13 +2,13 @@ package np.com.aawaz.csitentrance.adapters;
 
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.CardView;
+import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.devspark.robototextview.widget.RobotoTextView;
 
 import java.util.ArrayList;
 
@@ -38,6 +38,7 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.name.setText(names.get(position));
         holder.score.setText(scores.get(position) + "");
+        holder.numbering.setText(position + 1+". ");
     }
 
     @Override
@@ -47,13 +48,13 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name;
-        TextView score;
+        RobotoTextView name, score, numbering;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.scoreboardName);
-            score = (TextView) itemView.findViewById(R.id.scoreboardScore);
+            numbering = (RobotoTextView) itemView.findViewById(R.id.numbering);
+            name = (RobotoTextView) itemView.findViewById(R.id.scoreboardName);
+            score = (RobotoTextView) itemView.findViewById(R.id.scoreboardScore);
         }
     }
 }

@@ -1,48 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="3dp"
+    android:layout_marginTop="5dp"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:padding="5dp">
-
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
 
         <com.facebook.login.widget.ProfilePictureView
             android:id="@+id/user_profpic"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
             android:layout_margin="5dp" />
 
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/userPostText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/user_post_button"
-            android:layout_toRightOf="@+id/user_profpic"
-            android:layout_toStartOf="@+id/user_post_button"
+            android:background="@android:color/transparent"
             android:gravity="center"
-            android:hint="Ask a question."
-            android:lines="2" />
+            android:hint="I have a question."
+            android:lines="3" />
+    </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/grey" />
 
-        <mehdi.sakout.fancybuttons.FancyButton
-            android:id="@+id/user_post_button"
-            android:layout_width="40dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            fancy:fb_borderColor="#000"
-            fancy:fb_borderWidth="2dp"
-            fancy:fb_defaultColor="#fff"
-            fancy:fb_focusColor="#4d3b5999"
-            fancy:fb_iconResource="@drawable/ic_send_black_24dp"
-            fancy:fb_radius="200dp" />
-    </RelativeLayout>
-</android.support.v7.widget.CardView>
+    <com.devspark.robototextview.widget.RobotoTextView
+        android:id="@+id/user_post_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="POST"
+        android:textColor="@color/colorAccent"
+        app:typeface="roboto_bold" />
+</LinearLayout>

@@ -1,76 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="3dp"
-    app:cardCornerRadius="5dp"
-    app:cardBackgroundColor="#dc5328">
+    android:layout_marginBottom="3dp"
+    android:layout_marginTop="3dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="10dp">
 
-    <LinearLayout
+
+    <com.devspark.robototextview.widget.RobotoTextView
+        android:id="@+id/newsTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:text="Demo Title"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#000"
+        app:typeface="roboto_bold" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
+    <com.devspark.robototextview.widget.RobotoTextView
+        android:id="@+id/newsTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time and day"
+        android:textSize="13sp"
+        app:typeface="roboto_italic" />
 
-            <ImageView
-                android:layout_width="48dp"
-                android:padding="3dp"
-                android:src="@mipmap/ic_launcher"
-                android:layout_height="48dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="10dp"
+        android:background="@color/black" />
 
-                <TextView
-                    android:id="@+id/newsTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Demo Title"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#fff" />
+    <com.devspark.robototextview.widget.RobotoTextView
+        android:id="@+id/newsDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="5"
+        android:text="Demo content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/grey" />
 
-                <TextView
-                    android:id="@+id/newsTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Time and day" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="#792c14" />
-
-        <TextView
-            android:id="@+id/newsDetail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:ellipsize="end"
-            android:padding="5dp"
-            android:text="Demo content"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
-            android:scaleType="centerCrop"
-            android:id="@+id/newsImage"/>
-    </LinearLayout>
-</android.support.v7.widget.CardView>
+    <ImageView
+        android:id="@+id/newsImage"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop" />
+</LinearLayout>

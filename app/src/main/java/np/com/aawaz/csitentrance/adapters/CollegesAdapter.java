@@ -50,9 +50,14 @@ public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.colzName.setText(colleges.get(position));
         holder.address.setText(address.get(position));
-        if (website.get(position).equals("null")) {
-            Snackbar.make(MainActivity.mainLayout, "No web address found.", Snackbar.LENGTH_SHORT);
-        } else {
+        if (website.get(position).equals("null"))
+            holder.website.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(MainActivity.mainLayout, "No web address found.", Snackbar.LENGTH_SHORT).show();
+                }
+            });
+        else
             holder.website.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -70,9 +75,14 @@ public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHo
                             .show();
                 }
             });
-        }
+
         if (phNo.get(position).equals("null"))
-            Snackbar.make(MainActivity.mainLayout, "No phone number found.", Snackbar.LENGTH_SHORT);
+            holder.call.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(MainActivity.mainLayout, "No phone number found.", Snackbar.LENGTH_SHORT).show();
+                }
+            });
         else
             holder.call.setOnClickListener(new View.OnClickListener() {
                 @Override
