@@ -43,8 +43,12 @@ public class Singleton {
         return mDatabase.getWritableDatabase();
     }
 
-    public GcmNetworkManager getGcmScheduler(){
+    public GcmNetworkManager getGcmScheduler() {
         return mScheduler;
+    }
+
+    public static CharSequence getName() {
+        return MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "");
     }
 }
 

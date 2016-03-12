@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
@@ -29,7 +30,7 @@ dependencies {
         transitive = true
     }
 
-
+    compile 'com.github.johnkil.android-robototextview:robototextview:2.5.0'
 
     compile 'com.android.support:design:23.2.0'
     compile 'com.android.support:appcompat-v7:23.2.0'

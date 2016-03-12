@@ -54,7 +54,7 @@ public class BackgroundTaskHandler extends GcmTaskService {
                 .setTicker(ticker)
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(newsTitle)
-                .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.new_arrived))
+                .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.notification))
                 .setContentText(content);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
         notificationCompat.setContentIntent(pendingIntent);

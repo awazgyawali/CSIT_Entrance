@@ -51,24 +51,10 @@
         <activity
             android:name=".activities.QuizActivity"
             android:label="@string/title_activity_quiz" />
-        <activity
-            android:name=".fragments.ScoreBoard"
-            android:label="@string/title_activity_score_board"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.About"
             android:label="@string/title_activity_about"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.More"
-            android:label="@string/title_activity_more" />
-        <activity
-            android:name=".fragments.Colleges"
-            android:label="@string/title_activity_colleges"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".fragments.EntranceNews"
-            android:label="@string/title_activity_entrance_news"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FullQuestion"
@@ -77,14 +63,6 @@
         <activity
             android:name=".activities.WebViewActivity"
             android:label="@string/title_activity_full_question"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.google.android.gms.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:theme="@android:style/Theme.Translucent" />
-        <activity
-            android:name=".fragments.EntranceForum"
-            android:label="@string/title_activity_csitquery"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -105,37 +83,9 @@
             </intent-filter>
         </service>
 
-        <receiver
-            android:name="com.google.android.gms.analytics.AnalyticsReceiver"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER" />
-            </intent-filter>
-        </receiver>
-
-        <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
-        <service
-            android:name="com.google.android.gms.analytics.AnalyticsService"
-            android:enabled="true"
-            android:exported="false" />
-
         <activity
             android:name=".activities.PlayQuiz"
             android:label="@string/title_activity_model_questions" />
-        <activity
-            android:name="org.acra.CrashReportDialog"
-            android:excludeFromRecents="true"
-            android:finishOnTaskLaunch="true"
-            android:launchMode="singleInstance"
-            android:process=":error_report"
-            android:theme="@style/Theme.Dialog" />
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
@@ -143,28 +93,40 @@
             android:exported="true" />
 
         <activity
-            android:name=".fragments.Result"
-            android:label="@string/title_activity_result">
-            <intent-filter android:label="@string/title_activity_result">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
-                <data
-                    android:host="www.csitentrance.com.np"
-                    android:pathPrefix="/result"
-                    android:scheme="http" />
-                <data
-                    android:host="result"
-                    android:scheme="csitentrance" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".activities.ViewResult"
             android:label="@string/title_activity_result" />
+
         <activity android:name=".activities.Settings" />
-        <activity android:name=".activities.SearchActivity"></activity>
+
+        <activity android:name=".activities.SearchActivity" />
+
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.brainants.bsccsit" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="np.com.aawaz.csitentrance.misc.MyIntentService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="np.com.aawaz.csitentrance.misc.MyIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

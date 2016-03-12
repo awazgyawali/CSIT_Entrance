@@ -2,6 +2,7 @@ package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -18,20 +19,21 @@ import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.PeriodicTask;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.misc.BackgroundTaskHandler;
-import np.com.aawaz.csitentrance.misc.Singleton;
 import np.com.aawaz.csitentrance.fragments.Colleges;
 import np.com.aawaz.csitentrance.fragments.EntranceForum;
 import np.com.aawaz.csitentrance.fragments.EntranceNews;
 import np.com.aawaz.csitentrance.fragments.Home;
 import np.com.aawaz.csitentrance.fragments.Result;
 import np.com.aawaz.csitentrance.fragments.ScoreBoard;
+import np.com.aawaz.csitentrance.misc.BackgroundTaskHandler;
+import np.com.aawaz.csitentrance.misc.Singleton;
 
 public class MainActivity extends AppCompatActivity {
 
     FragmentManager manager;
     NavigationView mNavigationView;
     DrawerLayout mDrawerLayout;
+    public static CoordinatorLayout mainLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,66 +46,14 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
         mNavigationView = (NavigationView) findViewById(R.id.navigationView);
         manager = getSupportFragmentManager();
+        mainLayout = (CoordinatorLayout) findViewById(R.id.mainParent);
 
         manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                invalidateOptionsMenu();
-                int id = item.getItemId();
-                switch (id) {
-                    case R.id.main_home:
-                        manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
-                        setTitle("Home");
-                        item.setEnabled(true);
-                        break;
-
-                    case R.id.scoreBoard:
-                        manager.beginTransaction().replace(R.id.fragmentHolder, new ScoreBoard()).commit();
-                        setTitle("Scoreboard");
-                        item.setEnabled(true);
-                        break;
-
-                    case R.id.more:
-                        manager.beginTransaction().replace(R.id.fragmentHolder, new More()).commit();
-                        setTitle("More");
-                        item.setEnabled(true);
-                        break;
-
-                    case R.id.entranceNews:
-                        manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceNews()).commit();
-                        setTitle("Entrance News");
-                        item.setEnabled(true);
-                        break;
-
-                    case R.id.entranceForum:
-                        manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceForum()).commit();
-                        setTitle("Entrance Forum");
-                        item.setEnabled(true);
-                        break;
-
-                    case R.id.csitColleges:
-                        manager.beginTransaction().replace(R.id.fragmentHolder, new Colleges()).commit();
-                        setTitle("CSIT Colleges");
-                        item.setEnabled(true);
-                        break;
-
-                    case R.id.entranceResult:
-                        manager.beginTransaction().replace(R.id.fragmentHolder, new Result()).commit();
-                        setTitle("Entrance Result");
-                        item.setEnabled(true);
-                        break;
-
-                    case R.id.settings:
-                        startActivity(new Intent(MainActivity.this, Settings.class));
-                        break;
-
-                    case R.id.aboutUs:
-                        startActivity(new Intent(MainActivity.this, About.class));
-                        break;
-                }
-                mDrawerLayout.closeDrawer(mNavigationView);
+                navigate(item);
                 return true;
             }
         });
@@ -134,6 +84,63 @@ public class MainActivity extends AppCompatActivity {
         tracker.enableAutoActivityTracking(true);
 
         constructJob();
+    }
+
+    private void navigate(MenuItem item) {
+        invalidateOptionsMenu();
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.main_home:
+                manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
+                setTitle("Home");
+                item.setChecked(true);
+                break;
+
+            case R.id.scoreBoard:
+                manager.beginTransaction().replace(R.id.fragmentHolder, new ScoreBoard()).commit();
+                setTitle("Scoreboard");
+                item.setChecked(true);
+                break;
+
+            case R.id.more:
+                manager.beginTransaction().replace(R.id.fragmentHolder, new More()).commit();
+                setTitle("More");
+                item.setChecked(true);
+                break;
+
+            case R.id.entranceNews:
+                manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceNews()).commit();
+                setTitle("Entrance News");
+                item.setChecked(true);
+                break;
+
+            case R.id.entranceForum:
+                manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceForum()).commit();
+                setTitle("Entrance Forum");
+                item.setChecked(true);
+                break;
+
+            case R.id.csitColleges:
+                manager.beginTransaction().replace(R.id.fragmentHolder, new Colleges()).commit();
+                setTitle("CSIT Colleges");
+                item.setChecked(true);
+                break;
+
+            case R.id.entranceResult:
+                manager.beginTransaction().replace(R.id.fragmentHolder, new Result()).commit();
+                setTitle("Entrance Result");
+                item.setChecked(true);
+                break;
+
+            case R.id.settings:
+                startActivity(new Intent(MainActivity.this, Settings.class));
+                break;
+
+            case R.id.aboutUs:
+                startActivity(new Intent(MainActivity.this, About.class));
+                break;
+        }
+        mDrawerLayout.closeDrawer(mNavigationView);
     }
 
     @Override
@@ -185,6 +192,8 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(mNavigationView))
             mDrawerLayout.closeDrawer(mNavigationView);
+        else if (!getTitle().equals("Home"))
+            navigate(mNavigationView.getMenu().findItem(R.id.main_home));
         else
             super.onBackPressed();
     }

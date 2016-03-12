@@ -129,7 +129,4 @@
     <string name="facebook_app_secret">54a039ec9f9a55ff2eafb691dad5d8e9</string>
     <string name="close">Close</string>
     <string name="open">Open</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

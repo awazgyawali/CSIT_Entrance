@@ -21,6 +21,7 @@
                 android:id="@+id/searchEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
                 android:hint="Search" />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
@@ -35,13 +36,19 @@
 
         <ImageView
             android:layout_width="196dp"
-            android:layout_height="196dp" />
+            android:layout_height="196dp"
+            android:src="@drawable/building" />
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start by typing the name or address." />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/searchRecycler"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </android.support.design.widget.CoordinatorLayout>
