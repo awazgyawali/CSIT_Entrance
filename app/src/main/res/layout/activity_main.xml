@@ -31,7 +31,6 @@
             android:id="@+id/fragmentHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#7f8c8d"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         </RelativeLayout>
@@ -43,6 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:theme="@style/NavigationDrawer"
         android:fitsSystemWindows="true"
         android:background="@color/white"
         app:headerLayout="@layout/header_nav"

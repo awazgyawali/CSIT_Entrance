@@ -53,14 +53,23 @@
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone">
+        <ImageView
+            android:layout_width="196dp"
+            android:layout_height="196dp"
+            android:src="@drawable/no_connection" />
 
-        <TextView
+        <com.devspark.robototextview.widget.RobotoTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_warning_black_48dp"
-            android:gravity="center"
-            android:text="Unable to connect\nTap to retry"
-            android:textColor="#000" />
+            android:text="No internet connection"
+            android:textColor="@color/white"
+            app:typeface="roboto_bold" />
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap to retry."
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </RelativeLayout>

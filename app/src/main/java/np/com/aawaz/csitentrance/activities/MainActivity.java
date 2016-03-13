@@ -1,6 +1,9 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -13,15 +16,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.devspark.robototextview.widget.RobotoTextView;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.PeriodicTask;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.fragments.Colleges;
 import np.com.aawaz.csitentrance.fragments.EntranceForum;
 import np.com.aawaz.csitentrance.fragments.EntranceNews;
-import np.com.aawaz.csitentrance.fragments.Home;
 import np.com.aawaz.csitentrance.fragments.EntranceResult;
+import np.com.aawaz.csitentrance.fragments.Home;
 import np.com.aawaz.csitentrance.fragments.ScoreBoard;
 import np.com.aawaz.csitentrance.misc.BackgroundTaskHandler;
 import np.com.aawaz.csitentrance.misc.Singleton;
@@ -56,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        manageHeader();
+
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open, R.string.close) {
             @Override
             public void onDrawerClosed(View drawerView) {
@@ -74,6 +81,16 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         drawerToggle.syncState();
         constructJob();
+    }
+
+    private void manageHeader() {
+        RobotoTextView name = (RobotoTextView) mNavigationView.getHeaderView(0).findViewById(R.id.userName);
+        RobotoTextView email = (RobotoTextView) mNavigationView.getHeaderView(0).findViewById(R.id.userEmail);
+        CircleImageView imageView = (CircleImageView) mNavigationView.getHeaderView(0).findViewById(R.id.user_profile);
+        SharedPreferences pref = getSharedPreferences("info", Context.MODE_PRIVATE);
+        name.setText(pref.getString("Name", "") + " " + pref.getString("Surname", ""));
+        email.setText(pref.getString("E-mail", ""));
+        imageView.setImageURI(Uri.parse(pref.getString("ImageLink", "")));
     }
 
     private void navigate(MenuItem item) {

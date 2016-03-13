@@ -4,51 +4,41 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
+import com.heinrichreimersoftware.materialintro.app.IntroActivity;
+import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
+import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.fragments.SignUp;
 
 
-public class LoginActivity extends AppCompatActivity implements TextWatcher {
-    EditText name;
-    EditText sur;
-    EditText email;
-    EditText phone;
-    FloatingActionButton fab;
+public class LoginActivity extends IntroActivity {
+
     SharedPreferences pref;
 
     Context context;
 
-    LinearLayout splash;
-    RelativeLayout first;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setFullscreen(true);
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        first = (RelativeLayout) findViewById(R.id.firstLayout);
-        splash = (LinearLayout) findViewById(R.id.reqularLayout);
-        first.setVisibility(View.GONE);
-        splash.setVisibility(View.GONE);
-        fab = (FloatingActionButton) findViewById(R.id.fabBtn);
+        setFinishEnabled(false);
         context = this;
         pref = getSharedPreferences("info", MODE_PRIVATE);
         if (!pref.getString("Name", "").equals("")) {
-            splash.setVisibility(View.VISIBLE);
+
+            setFinishEnabled(false);
+            setSkipEnabled(false);
+            addSlide(new SimpleSlide.Builder()
+                    .title(R.string.app_name)
+                    .description(R.string.tag_link)
+                    .image(R.drawable.splash_icon)
+                    .background(R.color.colorPrimary)
+                    .backgroundDark(R.color.colorPrimaryDark)
+                    .build());
+
             Thread background = new Thread() {
                 public void run() {
                     try {
@@ -63,72 +53,66 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher {
             };
             background.start();
         } else {
-            first.setVisibility(View.VISIBLE);
-            firstTime();
-        }
-    }
+            //todo Show INTRO
+            addSlide(new SimpleSlide.Builder()
+                    .title(R.string.intro_one)
+                    .description(R.string.description_1)
+                    .image(R.drawable.play)
+                    .background(R.color.background_1)
+                    .backgroundDark(R.color.background_dark_1)
+                    .build());
 
-    private void firstTime() {
-        name = (EditText) findViewById(R.id.NameText);
-        sur = (EditText) findViewById(R.id.LastText);
-        phone = (EditText) findViewById(R.id.phoneNo);
-        email = (EditText) findViewById(R.id.email);
-        name.addTextChangedListener(this);
-        sur.addTextChangedListener(this);
-        phone.addTextChangedListener(this);
-        email.addTextChangedListener(this);
-        fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_done_black_18dp));
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (phone.getText().toString().length() != 10 || !email.getText().toString().contains(".com") || !email.getText().toString().contains("@")) {
-                    if (phone.getText().toString().length() != 10) {
-                        YoYo.with(Techniques.Shake)
-                                .duration(1000)
-                                .playOn(phone);
-                        Toast.makeText(LoginActivity.this, "Invalid mobile number.", Toast.LENGTH_SHORT).show();
-                        phone.setText("");
-                    } else {
-                        YoYo.with(Techniques.Shake)
-                                .duration(1000)
-                                .playOn(email);
-                        Toast.makeText(LoginActivity.this, "Invalid email.", Toast.LENGTH_SHORT).show();
-                        email.setText("");
-                    }
-                } else {
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("Name", name.getText().toString());
-                    editor.putString("Surname", sur.getText().toString());
-                    editor.putString("E-mail", email.getText().toString());
-                    editor.putString("PhoneNo", phone.getText().toString() + "");
-                    editor.putString("uniqueID", email.getText().toString());
-                    editor.apply();
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    finish();
-                }
-            }
-        });
-    }
+            addSlide(new SimpleSlide.Builder()
+                    .title(R.string.intro_two)
+                    .description(R.string.description_2)
+                    .image(R.drawable.scoreboard_big)
+                    .background(R.color.background_2)
+                    .backgroundDark(R.color.background_dark_2)
+                    .build());
 
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            addSlide(new SimpleSlide.Builder()
+                    .title(R.string.intro_three)
+                    .description(R.string.description_3)
+                    .image(R.drawable.school_big)
+                    .background(R.color.background_3)
+                    .backgroundDark(R.color.background_dark_3)
+                    .build());
 
-    }
 
-    @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        if (!name.getText().toString().equals("") && !phone.getText().toString().equals("") && !sur.getText().toString().equals("") && !email.getText().toString().equals("")) {
-            fab.setVisibility(View.VISIBLE);
-            YoYo.with(Techniques.Landing)
-                    .duration(700)
-                    .playOn(fab);
-        } else {
-            fab.setVisibility(View.INVISIBLE);
+            addSlide(new SimpleSlide.Builder()
+                    .title(R.string.intro_four)
+                    .description(R.string.description_4)
+                    .image(R.drawable.news_big)
+                    .background(R.color.background_4)
+                    .backgroundDark(R.color.background_dark_4)
+                    .build());
+
+            addSlide(new SimpleSlide.Builder()
+                    .title(R.string.intro_five)
+                    .description(R.string.description_5)
+                    .image(R.drawable.forum_big)
+                    .background(R.color.background_5)
+                    .backgroundDark(R.color.background_dark_5)
+                    .build());
+
+            addSlide(new SimpleSlide.Builder()
+                    .title(R.string.intro_six)
+                    .description(R.string.description_6)
+                    .image(R.drawable.result_big)
+                    .background(R.color.background_6)
+                    .backgroundDark(R.color.background_dark_6)
+                    .build());
+
+            addSlide(new FragmentSlide.Builder()
+                    .background(R.color.colorPrimary)
+                    .backgroundDark(R.color.colorPrimaryDark)
+                    .fragment(new SignUp())
+                    .build());
         }
     }
 
     @Override
-    public void afterTextChanged(Editable editable) {
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

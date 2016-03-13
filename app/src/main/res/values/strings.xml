@@ -2,13 +2,8 @@
 
     <string name="app_name">CSIT Entrance</string>
     <string name="title_activity_quiz">Quiz Activity</string>
-    <string name="title_activity_score_board">Score Board</string>
     <string name="title_activity_about">About Us</string>
-    <string name="title_activity_more">More</string>
-    <string name="title_activity_colleges">CSIT Colleges</string>
-    <string name="title_activity_entrance_news">Entrance News</string>
     <string name="title_activity_full_question">Full Question</string>
-    <string name="title_activity_csitquery">Entrance Forum</string>
     <string name="title_activity_model_questions">Model Questions</string>
     <string name="title_activity_result">Entrance Result</string>
 
@@ -126,7 +121,20 @@
         <item>Question No 100</item>
     </string-array>
 
-    <string name="facebook_app_secret">54a039ec9f9a55ff2eafb691dad5d8e9</string>
     <string name="close">Close</string>
     <string name="open">Open</string>
+
+    <string name="intro_one">Play with fun</string>
+    <string name="description_1">Allows you to play quiz or view full question of the past year paper. Just designed for you to make learning easier.</string>
+    <string name="intro_two">Scoreboard</string>
+    <string name="description_2">Compare your knowledge with your friends and try to be ahead of them.</string>
+    <string name="intro_three">CSIT Colleges</string>
+    <string name="description_3">Find your suitable college name from the list and be there at first.</string>
+    <string name="intro_four">Entrance News</string>
+    <string name="description_4">Know everything about the entrance and the important notices in just one click.</string>
+    <string name="intro_five">Entrance Forum</string>
+    <string name="description_5">Don\'t worry about your queries and curiosity. Our team is here to reply your questioons.</string>
+    <string name="intro_six">Entrance Result</string>
+    <string name="description_6">Worried where to see result? No worries we are here for you.</string>
+    <string name="tag_link">Your key to CSIT Entrance.</string>
 </resources>

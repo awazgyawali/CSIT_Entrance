@@ -81,7 +81,7 @@
                 android:layout_below="@id/relativeLayout"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="-28dp"
-                android:src="@drawable/ic_done_black_18dp"
+                android:src="@drawable/done"
                 android:visibility="invisible"
                 fab:fab_colorNormal="#eee"
                 fab:fab_colorPressed="#ddd"

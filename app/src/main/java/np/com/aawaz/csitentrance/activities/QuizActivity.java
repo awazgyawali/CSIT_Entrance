@@ -380,7 +380,7 @@ public class QuizActivity extends AppCompatActivity {
         qNo++;
         resetBackground();
         clickedAns = 0;
-        fab.setImageResource(R.drawable.ic_done_black_18dp);
+        fab.setImageResource(R.drawable.done);
         new fillTexts().execute();
     }
 

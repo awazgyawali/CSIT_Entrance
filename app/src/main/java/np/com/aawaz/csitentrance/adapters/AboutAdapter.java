@@ -45,8 +45,6 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == type_footer)
             return new ViewHolder(inflater.inflate(R.layout.about_footer, parent, false));
-        else if (viewType == type_header)
-            return new ViewHolder(inflater.inflate(R.layout.csitan_intro, parent, false));
         return new ViewHolder(inflater.inflate(R.layout.about_each_item, parent, false));
     }
 

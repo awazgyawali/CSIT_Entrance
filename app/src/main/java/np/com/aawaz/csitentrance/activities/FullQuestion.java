@@ -33,8 +33,8 @@ public class FullQuestion extends AppCompatActivity implements MainRecyclerAdapt
                 R.color.primary5, R.color.primary6, R.color.primary7, R.color.primary8};
         int darkColors[] = {R.color.dark1, R.color.dark2, R.color.dark3, R.color.dark4,
                 R.color.dark5, R.color.dark6, R.color.dark7, R.color.dark8};
-        int icon[] = {R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp,
-                R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp, R.drawable.ic_arrow_forward_white_24dp};
+        int icon[] = {R.drawable.arrow_right, R.drawable.arrow_right, R.drawable.arrow_right, R.drawable.arrow_right,
+                R.drawable.arrow_right, R.drawable.arrow_right, R.drawable.arrow_right, R.drawable.arrow_right};
         int images[] = {R.drawable.full_question, R.drawable.full_question, R.drawable.full_question, R.drawable.full_question,
                 R.drawable.full_question, R.drawable.full_question, R.drawable.full_question, R.drawable.full_question};
 
