@@ -50,33 +50,11 @@ public class ScoreBoard extends Fragment {
     RecyclerView mRecyclerView;
     ProgressBar progress;
 
-    CallbackManager callbackManager;
-    ShareDialog shareDialog;
     private LinearLayout errorLayout;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        FacebookSdk.sdkInitialize(getActivity());
-        callbackManager = CallbackManager.Factory.create();
-        shareDialog = new ShareDialog(this);
-        shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
-
-            @Override
-            public void onSuccess(Sharer.Result result) {
-
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException e) {
-
-            }
-        });
         fetchFromInternet();
     }
 
@@ -101,12 +79,6 @@ public class ScoreBoard extends Fragment {
         mRecyclerView.setAdapter(new ScoreBoardAdapter(getActivity(), names, scores));
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
         errorLayout.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     private void fetchFromInternet() {
@@ -147,33 +119,6 @@ public class ScoreBoard extends Fragment {
     public boolean isLargeScreen() {
         return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >
                 Configuration.SCREENLAYOUT_SIZE_LARGE;
-    }
-
-    public void share(View view) {
-        Toast.makeText(getContext(), "Generating sharing messages. Please wait...", Toast.LENGTH_SHORT).show();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                SharePhoto photo = new SharePhoto.Builder()
-                        .setBitmap(MyApplication.writeTextOnDrawable(getContext(), getContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "") + " has scored " + BackgroundTaskHandler.getTotal()
-                                + " out of 800.").getBitmap())
-                        .build();
-
-                final SharePhotoContent content = new SharePhotoContent.Builder()
-                        .addPhoto(photo)
-                        .build();
-
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //uddate UI
-                        shareDialog.show(content);
-                    }
-                });
-
-            }
-        }).start();
     }
 
     @Nullable

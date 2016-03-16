@@ -14,7 +14,7 @@ import android.widget.TextView;
 import np.com.aawaz.csitentrance.R;
 
 
-public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder> {
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     String[] titles;
     int primaryColor[];
     int darkColor[];
@@ -26,14 +26,10 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     SharedPreferences sharedPreferences;
 
 
-    public MainRecyclerAdapter(Context context, int primaryColor[], int darkColor[], int icon[], String[] titles, int[] images) {
+    public HomeAdapter(Context context, String[] titles) {
         inflater = LayoutInflater.from(context);
-        this.darkColor = darkColor;
-        this.primaryColor = primaryColor;
-        this.icon = icon;
         this.context = context;
         this.titles = titles;
-        this.images = images;
         sharedPreferences = context.getSharedPreferences("values", Context.MODE_PRIVATE);
 
     }
@@ -41,7 +37,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.grid_item_resource, parent, false);
+        View view = inflater.inflate(R.layout.home_each_item, parent, false);
         return new ViewHolder(view);
     }
 

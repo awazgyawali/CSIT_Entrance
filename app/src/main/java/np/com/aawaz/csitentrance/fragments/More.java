@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance.activities;
+package np.com.aawaz.csitentrance.fragments;
 
 import android.content.Intent;
 import android.net.Uri;

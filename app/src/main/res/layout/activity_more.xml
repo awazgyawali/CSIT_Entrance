@@ -10,7 +10,7 @@
         android:layout_margin="10dp"
         android:theme="@style/Theme.AppCompat"
         app:cardElevation="10dp"
-    tools:context="np.com.aawaz.csitentrance.activities.More">
+    tools:context=".fragments.More">
 
         <RelativeLayout
             android:id="@+id/button"

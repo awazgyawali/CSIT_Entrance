@@ -8,15 +8,13 @@
     <string name="title_activity_result">Entrance Result</string>
 
 
-    <string name="versionNum">Version 1.0.1</string>x
+    <string name="versionNum">Version 2.0</string>x
 
     <string name="facebook_app_id">768172639946667</string>
 
     <string name="postScoreurl">http://www.avaaj.com.np/jsonFeed/uploadScore.php</string>
     <string name="fetchScoreurl">http://www.avaaj.com.np/jsonFeed/downloadScore.php</string>
     <string name="url">http://www.avaaj.com.np/jsonFeed/news_feed.php</string>
-    <string name="uploadReport">http://www.avaaj.com.np/jsonFeed/uploadReport.php</string>
-
 
     <string-array name="list">
         <item>Question No 1</item>
@@ -137,4 +135,7 @@
     <string name="intro_six">Entrance Result</string>
     <string name="description_6">Worried where to see result? No worries we are here for you.</string>
     <string name="tag_link">Your key to CSIT Entrance.</string>
+
+    <string name="getForum">http://brainants.com/apis/bsccsit/v1/getForum</string>
+    <string name="postForum">http://brainants.com/apis/bsccsit/v1/postForum</string>
 </resources>

@@ -25,18 +25,19 @@ public class LoginActivity extends IntroActivity {
 
         super.onCreate(savedInstanceState);
         setFinishEnabled(false);
+        setSkipEnabled(false);
         context = this;
         pref = getSharedPreferences("info", MODE_PRIVATE);
         if (!pref.getString("Name", "").equals("")) {
-
+            setContentView(R.layout.splash_screen);
             setFinishEnabled(false);
             setSkipEnabled(false);
             addSlide(new SimpleSlide.Builder()
                     .title(R.string.app_name)
                     .description(R.string.tag_link)
                     .image(R.drawable.splash_icon)
-                    .background(R.color.colorPrimary)
-                    .backgroundDark(R.color.colorPrimaryDark)
+                    .background(R.color.background)
+                    .backgroundDark(R.color.background)
                     .build());
 
             Thread background = new Thread() {
@@ -53,7 +54,6 @@ public class LoginActivity extends IntroActivity {
             };
             background.start();
         } else {
-            //todo Show INTRO
             addSlide(new SimpleSlide.Builder()
                     .title(R.string.intro_one)
                     .description(R.string.description_1)

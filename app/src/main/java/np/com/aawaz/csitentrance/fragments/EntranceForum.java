@@ -1,39 +1,23 @@
 package np.com.aawaz.csitentrance.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.devspark.robototextview.widget.RobotoTextView;
-import com.facebook.AccessToken;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookRequestError;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.HttpMethod;
-import com.facebook.Profile;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-import com.facebook.login.widget.ProfilePictureView;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,25 +25,21 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.adapters.GraphFeedAdapter;
+import np.com.aawaz.csitentrance.activities.AddPost;
+import np.com.aawaz.csitentrance.adapters.ForumAdapter;
+import np.com.aawaz.csitentrance.misc.Singleton;
 
 
 public class EntranceForum extends Fragment {
 
-    CallbackManager callbackManager;
-    LoginButton button;
     RecyclerView recyclerView;
-    RelativeLayout intro;
     ProgressBar progressBar;
     LinearLayout errorPart;
-    MaterialDialog dialog;
-    AppCompatEditText postText;
+    FloatingActionButton fab;
     ArrayList<String> poster = new ArrayList<>(),
             messages = new ArrayList<>(),
-            likes = new ArrayList<>(),
             postId = new ArrayList<>(),
             comments = new ArrayList<>();
-    private RelativeLayout mainLayout;
 
     @Nullable
     @Override
@@ -70,155 +50,98 @@ public class EntranceForum extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mainLayout = (RelativeLayout) view.findViewById(R.id.forum_main);
         errorPart = (LinearLayout) view.findViewById(R.id.errorPart);
-        button = (LoginButton) view.findViewById(R.id.fbLoginButton);
-        intro = (RelativeLayout) view.findViewById(R.id.introForum);
         progressBar = (ProgressBar) view.findViewById(R.id.progressCircleFullFeed);
         recyclerView = (RecyclerView) view.findViewById(R.id.fullFeedRecycler);
+        fab = (FloatingActionButton) view.findViewById(R.id.fabAddForum);
+        errorPart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fetchFromServer();
+                errorPart.setVisibility(View.GONE);
+            }
+        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(new Intent(getContext(), AddPost.class), 100);
+            }
+        });
+        fab.hide();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ReadyDialog();
-        errorPart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                debugDataAdder();
-                errorPart.setVisibility(View.GONE);
-            }
-        });
-        button.setPublishPermissions("publish_actions");
-        button.setFragment(this);
-        firstLoginPage();
-        if (first()) {
-            LoginManager.getInstance().logOut();
-            getContext().getSharedPreferences("values", Context.MODE_PRIVATE).edit().putBoolean("postPermission", false).apply();
-        }
-
-
-        try {
-            if (!AccessToken.getCurrentAccessToken().isExpired()) {
-                button.setVisibility(View.GONE);
-                intro.setVisibility(View.GONE);
-                debugDataAdder();
-            }
-        } catch (Exception e) {
-            progressBar.setVisibility(View.GONE);
-            e.printStackTrace();
-        }
+        fetchFromServer();
     }
 
-    private boolean first() {
-        return getContext().getSharedPreferences("values", Context.MODE_PRIVATE).getBoolean("postPermission", true);
-    }
-
-
-    private void fillRecy() throws Exception {
+    private void fillRecyclerView() {
+        fab.show();
         progressBar.setVisibility(View.GONE);
-        GraphFeedAdapter adapter = new GraphFeedAdapter(getContext(), poster, messages, likes, comments, postId);
+        ForumAdapter adapter = new ForumAdapter(getContext(), poster, messages, comments, postId);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter.setClickListener(new GraphFeedAdapter.ClickListener() {
+        adapter.setClickListener(new ForumAdapter.ClickListener() {
             @Override
             public void itemClicked(View view, int position) {
-                if (position == 0)
-                    return;
-                position--;
-                SinglePostViewer frag = new SinglePostViewer();
-                Bundle bundle = new Bundle();
-                bundle.putString("postID", postId.get(position));
-                frag.setArguments(bundle);
-                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-                transaction.add(R.id.queryFragHoler, frag, "fullfeed");
-                transaction.commit();
-            }
+                BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(new RecyclerView(getContext()));
+                bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+                    @Override
+                    public void onStateChanged(@NonNull View bottomSheet, int newState) {
 
-            @Override
-            public void newAdded() {
-                debugDataAdder();
-            }
-        });
-    }
-
-    private void debugDataAdder() {
-        progressBar.setVisibility(View.VISIBLE);
-        final String requestId = "CSITentrance/feed";
-        Bundle params = new Bundle();
-        params.putString("fields", "message,story,likes.limit(0).summary(true),comments.limit(0).summary(true),from,created_time");
-        final GraphRequest graphRequest = new GraphRequest(AccessToken.getCurrentAccessToken(), requestId, params, HttpMethod.GET, new GraphRequest.Callback() {
-            @Override
-            public void onCompleted(GraphResponse graphResponse) {
-                try {
-                    FacebookRequestError error = graphResponse.getError();
-                    dialog.dismiss();
-                    if (error != null) {
-                        errorPart.setVisibility(View.VISIBLE);
-                        progressBar.setVisibility(View.GONE);
-                    } else {
-                        messages.clear();
-                        poster.clear();
-                        postId.clear();
-                        likes.clear();
-                        comments.clear();
-
-                        JSONArray array = graphResponse.getJSONObject().getJSONArray("data");
-                        for (int i = 0; i < array.length(); i++) {
-                            JSONObject arrayItem = array.getJSONObject(i);
-                            if (!arrayItem.getJSONObject("from").getString("name").equals("CSIT Entrance"))
-                                try {
-                                    messages.add(arrayItem.getString("message"));
-                                    postId.add(arrayItem.getString("id"));
-                                    likes.add(arrayItem.getJSONObject("likes").getJSONObject("summary").getInt("total_count") + "");
-                                    comments.add(arrayItem.getJSONObject("comments").getJSONObject("summary").getInt("total_count") + "");
-                                    poster.add(arrayItem.getJSONObject("from").getString("name"));
-                                } catch (Exception ignored) {
-                                }
-                        }
-                        fillRecy();
                     }
-                } catch (Exception ignored) {
+
+                    @Override
+                    public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+                    }
+                });
+            }
+        });
+    }
+
+    private void fetchFromServer() {
+        progressBar.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
+        errorPart.setVisibility(View.GONE);
+        JsonArrayRequest request = new JsonArrayRequest(getString(R.string.getForum), new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                recyclerView.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
+
+                poster.clear();
+                messages.clear();
+                postId.clear();
+                comments.clear();
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject object = response.getJSONObject(i);
+
+                        poster.add(object.getString("poster"));
+                        messages.add(object.getString("message"));
+                        postId.add(object.getString("id"));
+                        comments.add(object.getString("comments"));
+                    } catch (Exception ignored) {
+                    }
                 }
+                fillRecyclerView();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                errorPart.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
             }
         });
-        graphRequest.executeAsync();
-    }
-
-    public void ReadyDialog() {
-        dialog = new MaterialDialog.Builder(getContext())
-                .progress(true, 0)
-                .content("Posting....")
-                .cancelable(false)
-                .build();
-    }
-
-    private void firstLoginPage() {
-
-        callbackManager = CallbackManager.Factory.create();
-        button.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                debugDataAdder();
-                button.setVisibility(View.GONE);
-                intro.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException e) {
-                e.printStackTrace();
-            }
-        });
+        Singleton.getInstance().getRequestQueue().add(request);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == 100)
+            fetchFromServer();
     }
 }

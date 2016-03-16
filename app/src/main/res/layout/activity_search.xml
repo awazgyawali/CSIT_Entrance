@@ -24,14 +24,19 @@
                 android:background="@android:color/transparent"
                 android:hint="Search" />
         </android.support.v7.widget.Toolbar>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/shadow" />
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:id="@+id/emptyLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:background="@color/white"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 

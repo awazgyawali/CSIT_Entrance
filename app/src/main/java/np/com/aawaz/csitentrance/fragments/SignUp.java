@@ -3,14 +3,16 @@ package np.com.aawaz.csitentrance.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +21,39 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterAuthClient;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
+import np.com.aawaz.csitentrance.misc.Singleton;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -36,7 +63,10 @@ public class SignUp extends Fragment implements TextWatcher {
     FloatingActionButton fab;
     RelativeLayout profilePicture;
     CircleImageView imageView;
+    FancyButton fbLogin, twitterLogin;
     private File file;
+    private CallbackManager callBackManager;
+    TwitterLoginButton twitterLoginButton;
 
     public SignUp() {
         // Required empty public constructor
@@ -47,6 +77,77 @@ public class SignUp extends Fragment implements TextWatcher {
         super.onActivityCreated(savedInstanceState);
         pref = getContext().getSharedPreferences("info", Context.MODE_PRIVATE);
         firstTime();
+
+        handleFacebook();
+        handleTwitter();
+    }
+
+    private void handleTwitter() {
+        twitterLoginButton = new TwitterLoginButton(getContext());
+        twitterLoginButton.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                TwitterAuthClient authClient = new TwitterAuthClient();
+                authClient.requestEmail(Twitter.getSessionManager().getActiveSession(), new Callback<String>() {
+                    @Override
+                    public void success(Result<String> result) {
+                        // Do something with the result, which provides the email address
+                    }
+
+                    @Override
+                    public void failure(TwitterException exception) {
+                        // Do something on failure
+                    }
+                });
+            }
+
+            @Override
+            public void failure(TwitterException e) {
+
+            }
+        });
+
+        twitterLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                twitterLoginButton.callOnClick();
+            }
+        });
+
+    }
+
+    private void handleFacebook() {
+        FacebookSdk.sdkInitialize(getContext());
+        callBackManager = CallbackManager.Factory.create();
+
+        final LoginButton facebookLoginButton = new LoginButton(getContext());
+        facebookLoginButton.setFragment(this);
+        facebookLoginButton.setPublishPermissions("publish_actions");
+        facebookLoginButton.registerCallback(callBackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Profile profile = Profile.getCurrentProfile();
+                name.setText(profile.getFirstName());
+                sur.setText(profile.getLastName());
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
+        fbLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                facebookLoginButton.callOnClick();
+            }
+        });
     }
 
     @Override
@@ -63,6 +164,8 @@ public class SignUp extends Fragment implements TextWatcher {
         sur = (EditText) view.findViewById(R.id.LastText);
         phone = (EditText) view.findViewById(R.id.phoneNo);
         email = (EditText) view.findViewById(R.id.email);
+        fbLogin = (FancyButton) view.findViewById(R.id.fbLogin);
+        twitterLogin = (FancyButton) view.findViewById(R.id.twitterLogin);
         fab = (FloatingActionButton) view.findViewById(R.id.fabBtn);
         profilePicture = (RelativeLayout) view.findViewById(R.id.profilePicChooser);
         imageView = (CircleImageView) view.findViewById(R.id.profile_image);
@@ -135,6 +238,8 @@ public class SignUp extends Fragment implements TextWatcher {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        twitterLoginButton.onActivityResult(requestCode, resultCode, data);
+        callBackManager.onActivityResult(requestCode, resultCode, data);
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
@@ -152,5 +257,47 @@ public class SignUp extends Fragment implements TextWatcher {
     private void onPhotoReturned(File imageFile) {
         this.file = imageFile;
         imageView.setImageURI(Uri.fromFile(imageFile));
+
+        Bitmap myImg = BitmapFactory.decodeFile(imageFile.getPath());
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+        myImg.compress(Bitmap.CompressFormat.PNG, 50, stream);
+        byte[] byte_arr = stream.toByteArray();
+
+        final String encodedString = Base64.encodeToString(byte_arr, 0);
+
+        Log.d("debug", encodedString);
+        StringRequest request = new StringRequest(Request.Method.POST, "http://avaaj.com.np/jsonFeed/upload_image.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("debug", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("base64", encodedString);
+                params.put("ImageName", Singleton.getEmail().replace(".", ""));
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        Singleton.getInstance().getRequestQueue().add(request);
     }
 }

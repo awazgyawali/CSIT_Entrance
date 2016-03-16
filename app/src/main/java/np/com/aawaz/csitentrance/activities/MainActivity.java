@@ -17,8 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.devspark.robototextview.widget.RobotoTextView;
-import com.google.android.gms.gcm.GcmNetworkManager;
-import com.google.android.gms.gcm.PeriodicTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
@@ -27,9 +25,8 @@ import np.com.aawaz.csitentrance.fragments.EntranceForum;
 import np.com.aawaz.csitentrance.fragments.EntranceNews;
 import np.com.aawaz.csitentrance.fragments.EntranceResult;
 import np.com.aawaz.csitentrance.fragments.Home;
+import np.com.aawaz.csitentrance.fragments.More;
 import np.com.aawaz.csitentrance.fragments.ScoreBoard;
-import np.com.aawaz.csitentrance.misc.BackgroundTaskHandler;
-import np.com.aawaz.csitentrance.misc.Singleton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -80,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         drawerToggle.syncState();
-        constructJob();
     }
 
     private void manageHeader() {
@@ -173,26 +169,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void constructJob() {
-
-        String tag = "periodic";
-
-        GcmNetworkManager mScheduler = Singleton.getInstance().getGcmScheduler();
-
-        long periodSecs = 600L;
-
-        PeriodicTask periodic = new PeriodicTask.Builder()
-                .setService(BackgroundTaskHandler.class)
-                .setPeriod(periodSecs)
-                .setTag(tag)
-                .setFlex(periodSecs)
-                .setPersisted(true)
-                .setUpdateCurrent(true)
-                .setRequiredNetwork(com.google.android.gms.gcm.Task.NETWORK_STATE_CONNECTED)
-                .build();
-        mScheduler.schedule(periodic);
     }
 
     @Override

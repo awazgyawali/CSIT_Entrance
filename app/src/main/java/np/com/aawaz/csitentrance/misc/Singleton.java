@@ -35,6 +35,10 @@ public class Singleton {
         return sInstance;
     }
 
+    public static String getImageLini() {
+        return MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("ImageLink", "");
+    }
+
     public RequestQueue getRequestQueue() {
         return mRequestQueue;
     }
@@ -47,8 +51,11 @@ public class Singleton {
         return mScheduler;
     }
 
-    public static CharSequence getName() {
+    public static String getName() {
         return MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "");
+    }
+    public static String getEmail() {
+        return MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("E-mail", "");
     }
 }
 
