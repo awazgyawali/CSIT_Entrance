@@ -1,39 +1,22 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
-import android.content.res.Configuration;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatCheckBox;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
-import com.melnykov.fab.FloatingActionButton;
-import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+import com.devspark.robototextview.widget.RobotoTextView;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -43,11 +26,13 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.adapters.SlideUpPanelAdapter;
-import np.com.aawaz.csitentrance.misc.Singleton;
+import np.com.aawaz.csitentrance.fragments.AnswersDrawer;
+import np.com.aawaz.csitentrance.fragments.QuestionFragment;
+import np.com.aawaz.csitentrance.interfaces.QuizInterface;
+import np.com.aawaz.csitentrance.misc.CustomViewPager;
 
 
-public class QuizActivity extends AppCompatActivity {
+public class QuizActivity extends AppCompatActivity implements QuizInterface {
 
     ArrayList<String> questions = new ArrayList<>();
     ArrayList<String> a = new ArrayList<>();
@@ -56,34 +41,19 @@ public class QuizActivity extends AppCompatActivity {
     ArrayList<String> d = new ArrayList<>();
     ArrayList<String> answer = new ArrayList<>();
 
-    FloatingActionButton fab;
     ProgressBar pb;
 
-    String[] colors = {"#922b72", " #2881bb", "#2b9759", "#922b72", "#2881bb", "#2b9759", "#cf1151", "#4e9586"};
-
-
-    WebView question;
-    WebView option1;
-    WebView option2;
-    WebView option3;
-    WebView option4;
-
-    TextView feedback;
-    TextView scoreTxt;
-    TextView qNoTxt;
-
-    SlideUpPanelAdapter slideUpPanelAdapter;
-    RecyclerView ansRecy;
-
-    SlidingUpPanelLayout slideLayout;
+    RobotoTextView scoreTxt, qNoTxt, topic;
+    DrawerLayout drawerLayout;
+    AnswersDrawer answersDrawer;
+    CustomViewPager customViewPager;
 
     String[] titles = {"", "2069 Entrance Question", "2070 Entrance Question", "2071 Entrance Question", "Model Question 1",
             "Model Question 2", "Model Question 3", "Model Question 4", "Model Question 5"};
 
     int qNo = 0;
-    int code;
     int score = 0;
-    int clickedAns = 0;
+    int code;
 
     public static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();
@@ -101,51 +71,25 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        YoYo.with(Techniques.FadeOut)
-                .duration(0)
-                .playOn(findViewById(R.id.quizMainLayout));
-        YoYo.with(Techniques.SlideInRight)
-                .duration(1000)
-                .delay(1500)
-                .playOn(findViewById(R.id.quizMainLayout));
+        //Toolbar as support action bar
+        setTitle("");
+        setSupportActionBar((Toolbar) findViewById(R.id.quizToolbar));
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //Initializing colors array
-        int primaryColors[] = {R.color.primary1, R.color.primary2, R.color.primary3, R.color.primary4,
-                R.color.primary2, R.color.primary3, R.color.primary4, R.color.primary5,
-                R.color.primary6,};
-        int darkColors[] = {R.color.dark1, R.color.dark2, R.color.dark3, R.color.dark4, R.color.dark2,
-                R.color.dark3, R.color.dark4, R.color.dark5, R.color.dark6};
+        addProfPic();
 
-        //Initlilixing view's
-        Toolbar toolbar = (Toolbar) findViewById(R.id.quizToolbar);
-        RelativeLayout questionLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
+        code=getIntent().getIntExtra("position",1);
 
-        fab = (FloatingActionButton) findViewById(R.id.AnswerFab);
-        fab.bringToFront();
-
-
-        int avatar[] = {};
-
-        ImageView img = (ImageView) findViewById(R.id.profQue);
-        img.setImageDrawable(ContextCompat.getDrawable(this, avatar[(getSharedPreferences("info", MODE_PRIVATE).getInt("Avatar", 1)) - 1]));
         pb = (ProgressBar) findViewById(R.id.progressBar);
-        TextView topic = (TextView) findViewById(R.id.topic);
-        ansRecy = (RecyclerView) findViewById(R.id.ansRecycle);
-        slideLayout = (SlidingUpPanelLayout) findViewById(R.id.progressReport);
-        question = (WebView) findViewById(R.id.question);
-        option1 = (WebView) findViewById(R.id.option1);
-        option2 = (WebView) findViewById(R.id.option2);
-        option3 = (WebView) findViewById(R.id.option3);
-        option4 = (WebView) findViewById(R.id.option4);
-        feedback = (TextView) findViewById(R.id.feedback);
-        scoreTxt = (TextView) findViewById(R.id.score);
-        qNoTxt = (TextView) findViewById(R.id.noOfQuestion);
-        feedback.bringToFront();
+        topic = (RobotoTextView) findViewById(R.id.topic);
+        scoreTxt = (RobotoTextView) findViewById(R.id.score);
+        qNoTxt = (RobotoTextView) findViewById(R.id.noOfQuestion);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayoutQuiz);
+        customViewPager = (CustomViewPager) findViewById(R.id.viewPagerQuestion);
+        answersDrawer = (AnswersDrawer) getSupportFragmentManager().findFragmentById(R.id.answerFragment);
 
         topic.setText(titles[code]);
-
-        RelativeLayout coreLayout = (RelativeLayout) findViewById(R.id.coreLayout);
-        coreLayout.setBackgroundColor(ContextCompat.getColor(this, darkColors[code]));
 
         //Last Stage of the game
         fetchFromSp();
@@ -153,249 +97,63 @@ public class QuizActivity extends AppCompatActivity {
         //Load Question and Options to the ArrayList
         setDataToArrayList();
 
-        fillAnsRecyclerView();
-
-        //Initial Notification
-        if (qNo == 0) {
-            feedback.setText("GO!");
-            feedback.setBackgroundColor(ContextCompat.getColor(this, R.color.blueFeedback));
-        } else {
-            if (qNo < 9)
-                feedback.setText("0" + (qNo + 1) + "");
-            else if(qNo==100)
-                feedback.setVisibility(View.INVISIBLE);
-            else
-                feedback.setText((qNo + 1) + "");
-            feedback.setBackgroundColor(ContextCompat.getColor(this, R.color.blueFeedback));
-        }
-
-        YoYo.with(Techniques.SlideInDown)
-                .duration(500)
-                .playOn(feedback);
-        YoYo.with(Techniques.SlideOutDown)
-                .duration(500)
-                .delay(600)
-                .playOn(feedback);
-
-        //Setting color
-        toolbar.setBackgroundColor(ContextCompat.getColor(this, primaryColors[code]));
-        questionLayout.setBackgroundColor(ContextCompat.getColor(this, primaryColors[code]));
+        initilizeViewPager();
 
         pb.setMax(120);
-
-        haldleProgresss();
-
-        //Toolbar as support action bar
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        fillTexts(qNo, false);
-
-        resetBackground();
-
-        onClickOption();
     }
 
-    private void fillAnsRecyclerView() {
-        slideUpPanelAdapter = new SlideUpPanelAdapter(this, qNo, code);
-        ansRecy.setAdapter(slideUpPanelAdapter);
-        ansRecy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
-        ansRecy.scrollToPosition(slideUpPanelAdapter.getItemCount() - 1);
+    private void initilizeViewPager() {
+        customViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return QuestionFragment.newInstance(position, questions.get(position), a.get(position),
+                        b.get(position), c.get(position), d.get(position), answer.get(position))
+                        .setListener(QuizActivity.this);
+            }
+
+            @Override
+            public int getCount() {
+                return 100;
+            }
+        });
+        customViewPager.setCurrentItem(qNo);
     }
 
-    public boolean isLargeScreen() {
-        return getResources().getConfiguration().orientation != Configuration.ORIENTATION_PORTRAIT && (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_NORMAL;
+    private void addProfPic() {
+        ImageView img = (ImageView) findViewById(R.id.profQue);
+        SharedPreferences pref = getSharedPreferences("info", Context.MODE_PRIVATE);
+        Picasso.with(this)
+                .load(pref.getString("ImageLink", ""))
+                .into(img);
     }
 
     private void fetchFromSp() {
         qNo = getSharedPreferences("values", MODE_PRIVATE).getInt("played" + code, 0);
         score = getSharedPreferences("values", MODE_PRIVATE).getInt("score" + code, 0);
 
+        answersDrawer.setInitialData(qNo, code);
     }
 
-    private void fillTexts(int posi,boolean show) {
-        String htm;
-        if (posi == 2 && show) {
-            slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
-        }
-        if (posi < 100) {
-            htm = "<body bgcolor=\"" + colors[code - 1] + "\"><p style=\"color:white\">" + questions.get(posi);
-            question.loadDataWithBaseURL("", htm, "text/html", "UTF-8", "");
-            option1.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "a) " + a.get(posi), "text/html", "UTF-8", "");
-            option2.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "b) " + b.get(posi), "text/html", "UTF-8", "");
-            option3.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "c) " + c.get(posi), "text/html", "UTF-8", "");
-            option4.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "d) " + d.get(posi), "text/html", "UTF-8", "");
-        } else {
-            question.loadDataWithBaseURL("","<body bgcolor=\"" + colors[code - 1] + "\"><p style=\"color:white\"> You have successfully completed the quiz with " + score + " score. Good Luck!!", "text/html", "UTF-8", "");
-            gameCompletedHandler();
-        }
-    }
+    @Override
+    public void selected(boolean correct) {
 
-    private void gameCompletedHandler() {
-        option1.setVisibility(View.INVISIBLE);
-        option2.setVisibility(View.INVISIBLE);
-        option3.setVisibility(View.INVISIBLE);
-        option4.setVisibility(View.INVISIBLE);
-        fab.setVisibility(View.INVISIBLE);
-    }
-
-    private void op1Click() {
-        if (clickedAns == 0) {
-            fab.setVisibility(View.VISIBLE);
-            YoYo.with(Techniques.BounceIn)
-                    .duration(700)
-                    .playOn(fab);
-        }
-        resetBackground();
-        option1.loadDataWithBaseURL("", "<body bgcolor=\"#ed2669\">" + "a) " + a.get(qNo), "text/html", "UTF-8", "");
-        clickedAns = 1;
-    }
-
-    private void op2Click() {
-        if (clickedAns == 0) {
-            fab.setVisibility(View.VISIBLE);
-            YoYo.with(Techniques.BounceIn)
-                    .duration(700)
-                    .playOn(fab);
-        }
-        resetBackground();
-        option2.loadDataWithBaseURL("", "<body bgcolor=\"#ed2669\">" + "b) " + b.get(qNo), "text/html", "UTF-8", "");
-        clickedAns = 2;
-    }
-
-    private void op3Click() {
-        if (clickedAns == 0) {
-            fab.setVisibility(View.VISIBLE);
-            YoYo.with(Techniques.BounceIn)
-                    .duration(700)
-                    .playOn(fab);
-        }
-        resetBackground();
-        option3.loadDataWithBaseURL("", "<body bgcolor=\"#ed2669\">" + "c) " + c.get(qNo), "text/html", "UTF-8", "");
-        clickedAns = 3;
-    }
-
-    private void op4Click() {
-        if (clickedAns == 0) {
-            fab.setVisibility(View.VISIBLE);
-            YoYo.with(Techniques.BounceIn)
-                    .duration(700)
-                    .playOn(fab);
-        }
-        resetBackground();
-        option4.loadDataWithBaseURL("", "<body bgcolor=\"#ed2669\">" + "d) " + d.get(qNo), "text/html", "UTF-8", "");
-        clickedAns = 4;
-    }
-
-    private void resetBackground() {
-        if (qNo != 100) {
-            option1.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "a) " + a.get(qNo), "text/html", "UTF-8", "");
-            option2.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "b) " + b.get(qNo), "text/html", "UTF-8", "");
-            option3.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "c) " + c.get(qNo), "text/html", "UTF-8", "");
-            option4.loadDataWithBaseURL("", "<body bgcolor=\"#eee\">" + "d) " + d.get(qNo), "text/html", "UTF-8", "");
-        }
-    }
-
-    private void onClickOption() {
-        option1.setOnTouchListener(
-                new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View view, MotionEvent motionEvent) {
-                        op1Click();
-                        return true;
-                    }
-                }
-        );
-        option2.setOnTouchListener(
-                new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View view, MotionEvent motionEvent) {
-                        op2Click();
-                        return true;
-                    }
-                }
-        );
-        option3.setOnTouchListener(
-                new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View view, MotionEvent motionEvent) {
-                        op3Click();
-                        return true;
-                    }
-                }
-        );
-        option4.setOnTouchListener(
-                new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View view, MotionEvent motionEvent) {
-                        op4Click();
-                        return true;
-                    }
-                }
-        );
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkAnswer();
-                fab.setVisibility(View.INVISIBLE);
-                YoYo.with(Techniques.SlideInDown)
-                        .duration(300)
-                        .playOn(feedback);
-                YoYo.with(Techniques.SlideOutLeft)
-                        .duration(300)
-                        .playOn(findViewById(R.id.quizMainLayout));
-                YoYo.with(Techniques.SlideOutDown)
-                        .duration(300)
-                        .delay(350)
-                        .playOn(feedback);
-                YoYo.with(Techniques.SlideInRight)
-                        .duration(300)
-                        .delay(300)
-                        .playOn(findViewById(R.id.quizMainLayout));
-                nextQueAndReset();
-                slideUpPanelAdapter.increaseSize();
-                ansRecy.scrollToPosition(slideUpPanelAdapter.getItemCount() - 1);
-
-            }
-
-
-        });
-    }
-
-    public void checkAnswer() {
-        if ((clickedAns == 1 && answer.get(qNo).equals("a")) || (clickedAns == 2 && answer.get(qNo).equals("b")) ||
-                (clickedAns == 3 && answer.get(qNo).equals("c")) || (clickedAns == 4 && answer.get(qNo).equals("d"))) {
-            feedback.setText("+1");
-            feedback.setBackgroundColor(ContextCompat.getColor(this, R.color.green));
-            score++;
-        } else {
-            feedback.setText("+0");
-            feedback.setBackgroundColor(ContextCompat.getColor(this, R.color.red));
-        }
-    }
-
-    public void nextQueAndReset() {
         qNo++;
-        resetBackground();
-        clickedAns = 0;
-        fab.setImageResource(R.drawable.done);
-        new fillTexts().execute();
-    }
 
-    private void haldleProgresss() {
-        if(qNo==100)
+        if (correct)
+            score++;
+
+        if (qNo == 99)
             qNoTxt.setText("Completed");
         else
             qNoTxt.setText((qNo + 1) + " / 100");
         scoreTxt.setText(score + "");
+
         pb.setProgress(21 + qNo);
 
+        answersDrawer.increaseSize();
     }
 
     public void setDataToArrayList() {
-        String ans = "";
         try {
             JSONObject obj = new JSONObject(AssetJSONFile("question" + code + ".json", this));
             JSONArray m_jArry = obj.getJSONArray("questions");
@@ -407,7 +165,6 @@ public class QuizActivity extends AppCompatActivity {
                 c.add(jo_inside.getString("c"));
                 d.add(jo_inside.getString("d"));
                 answer.add(jo_inside.getString("ans"));
-                ans = ans + (i + 1) + ". " + jo_inside.getString("ans") + "\t";
             }
         } catch (Exception ignored) {
         }
@@ -422,14 +179,12 @@ public class QuizActivity extends AppCompatActivity {
         editor.apply();
     }
 
-
     @Override
     public void onBackPressed() {
-        if (slideLayout.getPanelState() == SlidingUpPanelLayout.PanelState.COLLAPSED) {
-            super.onBackPressed();
-            finish();
+        if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+            drawerLayout.closeDrawer(GravityCompat.END);
         } else {
-            slideLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            finish();
         }
     }
 
@@ -438,47 +193,14 @@ public class QuizActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == android.R.id.home) {
             finish();
-        } else if(id==R.id.action_report){
-            openBugReportDialog();
+        } else if (id == R.id.action_answer) {
+            if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+                drawerLayout.closeDrawer(GravityCompat.END);
+            } else {
+                drawerLayout.openDrawer(GravityCompat.END);
+            }
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void openBugReportDialog() {
-        final String[] cases={"The question is wrong.","Options are wrong.","Answer is wrong.","Can't say exactly what was wrong."};
-
-        final MaterialDialog dialogMis=new MaterialDialog.Builder(this)
-                .title("I found a mistake here.")
-                .customView(R.layout.mistake_report, false)
-                .build();
-        dialogMis.show();
-
-        final AppCompatCheckBox preCheck = (AppCompatCheckBox) dialogMis.findViewById(R.id.preCheck);
-
-        ListView listView= (ListView) dialogMis.findViewById(R.id.options);
-
-        LinearLayout previo= (LinearLayout) dialogMis.findViewById(R.id.previousQuestion);
-
-        if(qNo==0)
-            previo.setVisibility(View.GONE);
-
-        listView.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,cases));
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                ContentValues values = new ContentValues();
-                SQLiteDatabase database= Singleton.getInstance().getDatabase();
-                if (preCheck.isChecked())
-                    values.put("text", "Year: " + (code + 2068) + " Question No: " + qNo + " Problem: " + cases[i]);
-                else
-                    values.put("text", "Year: " + (code + 2068) + " Question No: " + (qNo + 1) + " Problem: " + cases[i]);
-                database.insert("report", null, values);
-                database.close();
-                Toast.makeText(getApplicationContext(),"Thanks for the report.",Toast.LENGTH_SHORT).show();
-                dialogMis.dismiss();
-            }
-        });
     }
 
     @Override
@@ -487,26 +209,4 @@ public class QuizActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    class fillTexts extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            Thread background = new Thread() {
-                public void run() {
-                    try {
-                        sleep(1400);
-                    } catch (Exception ignored) {
-                    }
-                }
-            };
-            background.start();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            fillTexts(qNo,true);
-            haldleProgresss();
-        }
-    }
 }

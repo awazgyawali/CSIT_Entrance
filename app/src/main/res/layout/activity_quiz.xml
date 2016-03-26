@@ -1,135 +1,30 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
-    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coreLayout"
+    android:id="@+id/drawerLayoutQuiz"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.activities.QuizActivity">
 
-    <TextView
-        android:id="@+id/feedback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
-        android:background="@color/primary5"
-        android:padding="10dp"
-        android:text="+1"
-        android:textColor="#fff"
-        android:textSize="150dp"
-        android:visibility="visible" />
-
-
-    <com.sothree.slidinguppanel.SlidingUpPanelLayout
-        android:id="@+id/progressReport"
-        umanoPanelShadowHeight="4dp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:elevation="10dp"
-        android:gravity="bottom"
-        sothree:umanoPanelHeight="70dp">
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/quizMainLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/progressReport"
-            android:background="@color/back">
-
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/quizToolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:background="#ccbbaa"
-                android:theme="@style/Theme.AppCompat" />
-
-            <RelativeLayout
-                android:id="@+id/relativeLayout"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_below="@+id/quizToolbar"
-                android:background="#ccbbaa">
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <WebView
-                        android:id="@+id/question"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:paddingTop="5dp"
-                        android:textColor="#eee" />
-                </ScrollView>
-
-            </RelativeLayout>
-
-            <com.melnykov.fab.FloatingActionButton
-                android:id="@+id/AnswerFab"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/relativeLayout"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="-28dp"
-                android:src="@drawable/done"
-                android:visibility="invisible"
-                fab:fab_colorNormal="#eee"
-                fab:fab_colorPressed="#ddd"
-                fab:fab_colorRipple="#ddd"
-                fab:fab_type="normal" />
-
-            <ScrollView
-                android:id="@+id/scrollView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/relativeLayout">
-
-                <LinearLayout
-                    android:id="@+id/optionsLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <WebView
-                        android:id="@+id/option1"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp" />
-
-                    <WebView
-                        android:id="@+id/option2"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp" />
-
-                    <WebView
-                        android:id="@+id/option3"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp" />
-
-
-                    <WebView
-                        android:id="@+id/option4"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp" />
-                </LinearLayout>
-
-            </ScrollView>
-
-        </RelativeLayout>
-
-        <RelativeLayout
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/quizToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/back">
+            android:theme="@style/Theme.AppCompat" />
+
+        <np.com.aawaz.csitentrance.misc.CustomViewPager
+            android:id="@+id/viewPagerQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:id="@+id/bottomBar"
@@ -155,7 +50,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp" />
 
-                <TextView
+                <com.devspark.robototextview.widget.RobotoTextView
                     android:id="@+id/topic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -168,7 +63,7 @@
                     android:textColor="#000"
                     android:textStyle="bold" />
 
-                <TextView
+                <com.devspark.robototextview.widget.RobotoTextView
                     android:id="@+id/noOfQuestion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -179,7 +74,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#000" />
 
-                <TextView
+                <com.devspark.robototextview.widget.RobotoTextView
                     android:id="@+id/score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -190,23 +85,15 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold" />
             </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/bottomBar"
-                android:background="#fff">
+    </LinearLayout>
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/ansRecycle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_above="@+id/QuizAd" />
-
-
-            </RelativeLayout>
-        </RelativeLayout>
-    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
-
-
-</RelativeLayout>
+    <fragment
+        android:id="@+id/answerFragment"
+        android:name="np.com.aawaz.csitentrance.fragments.AnswersDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        tools:layout="@layout/fragment_answers_drawer" />
+</android.support.v4.widget.DrawerLayout>

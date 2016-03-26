@@ -44,7 +44,8 @@ import np.com.aawaz.csitentrance.misc.Singleton;
 
 public class ScoreBoard extends Fragment {
 
-    ArrayList<String> names = new ArrayList<>();
+    ArrayList<String> names=new ArrayList<>(),
+            images = new ArrayList<>();
     ArrayList<Integer> scores = new ArrayList<>();
     RequestQueue requestQueue;
     RecyclerView mRecyclerView;
@@ -76,7 +77,7 @@ public class ScoreBoard extends Fragment {
         progress.setVisibility(View.GONE);
         mRecyclerView.setVisibility(View.VISIBLE);
         errorLayout.setVisibility(View.GONE);
-        mRecyclerView.setAdapter(new ScoreBoardAdapter(getActivity(), names, scores));
+        mRecyclerView.setAdapter(new ScoreBoardAdapter(getActivity(), names, scores, images));
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
         errorLayout.setVisibility(View.GONE);
     }
@@ -98,6 +99,7 @@ public class ScoreBoard extends Fragment {
                         JSONObject jo_inside = jsonArray.getJSONObject(i);
                         names.add(jo_inside.getString("Name"));
                         scores.add(jo_inside.getInt("Score"));
+                        images.add(jo_inside.getString("ImageLink"));
                     }
                     callFillRecyclerView();
                 } catch (JSONException e) {

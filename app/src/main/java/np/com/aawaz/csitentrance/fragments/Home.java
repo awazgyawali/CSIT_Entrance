@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.QuizActivity;
@@ -37,6 +38,18 @@ public class Home extends Fragment {
         Intent intent = new Intent(getContext(), QuizActivity.class);
         intent.putExtra("position", position + 1);
         startActivity(intent);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Button button = (Button) view.findViewById(R.id.openQuiz);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openQuizQUestion(0);
+            }
+        });
     }
 
     @Override

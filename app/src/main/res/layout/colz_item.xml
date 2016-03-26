@@ -24,9 +24,9 @@
     <com.devspark.robototextview.widget.RobotoTextView
         android:id="@+id/address"
         android:layout_width="wrap_content"
-        android:textSize="13sp"
         android:layout_height="wrap_content"
-        android:text="aawaz.com.np" />
+        android:text="aawaz.com.np"
+        android:textSize="13sp" />
 
     <View
         android:layout_width="match_parent"
@@ -46,8 +46,8 @@
             android:id="@+id/callButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:background="?android:selectableItemBackground"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -63,13 +63,14 @@
                 android:text="Call" />
         </LinearLayout>
 
+
         <LinearLayout
             android:id="@+id/webSiteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:gravity="center"
             android:background="?android:selectableItemBackground"
+            android:gravity="center"
             android:orientation="horizontal">
 
 
@@ -85,6 +86,30 @@
                 android:padding="5dp"
                 android:text="Website" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mapsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/maps" />
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Map" />
+        </LinearLayout>
+
     </LinearLayout>
 
 

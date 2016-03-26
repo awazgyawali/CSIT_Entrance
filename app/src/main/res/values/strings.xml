@@ -138,4 +138,7 @@
 
     <string name="getForum">http://brainants.com/apis/bsccsit/v1/getForum</string>
     <string name="postForum">http://brainants.com/apis/bsccsit/v1/postForum</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

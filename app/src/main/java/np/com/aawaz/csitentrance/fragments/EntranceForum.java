@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.AddPost;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
+import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.Singleton;
 
 
@@ -82,7 +83,7 @@ public class EntranceForum extends Fragment {
         ForumAdapter adapter = new ForumAdapter(getContext(), poster, messages, comments, postId);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter.setClickListener(new ForumAdapter.ClickListener() {
+        adapter.setClickListener(new ClickListener() {
             @Override
             public void itemClicked(View view, int position) {
                 BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(new RecyclerView(getContext()));

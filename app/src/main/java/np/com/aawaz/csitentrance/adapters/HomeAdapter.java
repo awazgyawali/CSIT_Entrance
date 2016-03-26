@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.interfaces.ClickListener;
 
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
@@ -20,7 +21,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     int darkColor[];
     int icon[];
     int images[];
-    ClickListner clickListner;
+    ClickListener clickListner;
     LayoutInflater inflater;
     Context context;
     SharedPreferences sharedPreferences;
@@ -41,7 +42,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
-    public void setClickListner(ClickListner clickListner) {
+    public void setClickListener(ClickListener clickListner) {
         this.clickListner = clickListner;
     }
 
@@ -57,11 +58,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return titles.length;
-    }
-
-
-    public interface ClickListner {
-        void itemClicked(View view, int position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

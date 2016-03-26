@@ -1,7 +1,7 @@
 {
   "questions": [
     {
-      "question": "1. If <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">then <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAIAAACMMcMmAAADPklEQVR4nGP5//8/A40BC/FK/399eP2rlJYYK24lf97efMiqqszHRKYdf99cvPhfXx6vGhZuxmvHnss7SaMYi9WO30+3d1bPPvHwGYPnnDVlOhwgsf8frt+WMLAi4BAOadlnx9/8lZZgxm/Hj4stnsmX6s6vMzvYcUoAFjLfHt3lF7eEqrjUERw1+x6bhCjXjzfveWzyJ/SkGEICiFNC9P6jbwwSvHjt+Hy8Z+pd/blOYmxCYXVyMNF/Hx+9FVSCWvj79Y0/idsuFquzMfx7vy9L29nlq9ydJR6CjAwMTDwCPx+/+2PGi2Qwhh0/7u44/EExR5uXEUX417tXHDwwP3GoxZWpKrKBmEyCZuEOfDP3rL/x3cOSC2QgD/e7D78Z5HHZ8fvRpp7GtqkP/3KvSPM95909r1iXAyr15+tnDj5YILPKOjkjdP37+5+BjYsV6iZmTtZ3T38DAw2HHaxyfgWZ+6ct+JK/YmeJCkoa/ffjK4MAqteg7npx/upnEVd/daihTMxMP3/+Q1GCFlb/vz24+IJDVRcjE/z/+4+FBYsdX85OnfbcrbPeBhbJjKzs/3/8BuZrhGI0O349Offgn2yyHAcDMeDvq22laYcDVu5IQA5+YODh9ce3B2efsirpS7KhG8fIzPT7D0qp8/fVzvLQXoG+HS0uIkj5+v/vH//ZUH2Masev5xfv/5EOl+dkQAfMHDyM/xB2/H68Nj9hhXr/hjwjtAQI9AQnN2pIo9rx4+GZJ8yKhtLsmHbw8P38/hdqwaMlsU6tLLnNSs8Obn0GkRbQsrNW4gZa9/fbD15uVFNR0+6Ly3d/SnoqcGFYwcAmJPbz1m8I+/u1lRvu3vhZELoUIa/RduNiJTBPAhP5D1ExPP74+fjMY0Y5YxlMbzAw8cuJfPr4m4EfqJ3PY/MPXBXCvy8f2OS1cNvx5/XVm1/F7JR5seUDTlmVT/d+MMjhKdlB4PvLNyqKaOGAbMfPR2BvyGLxBjBhCairvnzyjUETS0AiwI9nT2W0tJlRBZHs+Pv+5rWPggaq/Kg1DAwwCenov/32h4ELT5Xz9xuDlpE4ugIkPrNM2pm/abgNYOSSUcPrCaARQqoKmKIAOXcsL5yWYEYAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\"> is</font>",
+      "question": "1. If $f\\left(x\right)=\\sqrt{4-x^2}$ then $f\\left(2\right)$ is",
       "a": "0",
       "b": "4",
       "c": "2",
@@ -33,7 +33,7 @@
       "ans": "c"
     },
     {
-      "question": "5.The curve y<sup>2</sup>=4x is symmetrical about",
+      "question": "5.The curve $y^2=4x$ is symmetrical about",
       "a": "Y axis",
       "b": "X axis",
       "c": "both axes",
@@ -41,7 +41,7 @@
       "ans": "b"
     },
     {
-      "question": "6.The value of x for <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAArCAIAAAAFe2qHAAAI9ElEQVR4nO1aCVQTSRruzgGJCYcREEEE5RICSzjGXY/Zp1FmRI2AjHIsiisIT0AUUQRFkR3U0VFAPDhkcETxGMCVB4IyciiCo4Di0w0KohwickUIV0KS7g0ZFNIkJPEtERe/l/fSqU5V/fX1V3/99VdjYBgGvkIWYD63AV8eJFPGLNzuk6FiRmqteD13f3wAhQDKwayJDMmUYbVpYYepZKWuLJplZOmmdFslOZg1kSGZMrzRUvLgN8SF8GoE9LhbNOEhrS/jNeWmYb3DbaaMqzVfBKSiDO6pTDz20iMhzFhhvO35AiCZMqizLDGq1Gxv2LdqX2flICRS1l8e7hJ6DT39tzgAwJmHZl720J3kgYnE4ePnnah9f0IepnwpmOSK+RR8pUxmIChjVe6xsDxcLbgGMViMiEgf5nK4gm2p2bGaR0EG2HE3caIBQRmOsj8z9r5lQBELUHe+VHlhrZYIGcJ9dTcPubqkvu3i8TcHwrd666t6tUw15Ewkt+NFPdZQXxklj85GMYKb65d2nW6zPL7+iqs9Wb9or9WoTSU4Rc/uwMWDT48wuYg7vPYnT2AL3fEzVwwwBJBe2qxL1ZaHnxHRB0rt++jcmCqr7XfK99l5m1SmOM0YHZBhdL53MmlH5I3gzqoaTcqCcTJ1LOC0dd7eb+dpa8ohdBT9WHAmW9Ou0W1WJDZccrY3LSvcYzlKagqGGwINEWV9DbUq0+dL1S/zjo8FrcKztCTMTFFmo6H2HE9zp4aEd/mrVYaK8Jrqrxv6AE3Zcgac1ntxQf5xuJPlZ78lCErY9Cgnp9gXijNmEDltbRhrn+Mnti2cJvQgxCkZpW53Ijf6uXXg3bIwOx+Tx+fXiJAaciRdDR1T50jnxhTU5lp9w9NX/gRV8JrS/Db9+o5NFbKXqMpuZHDnKUk7NaH3DxL2/5z7uqHoSeua4WJuR82AS+bTcAscADNLgswXLd+s/zrDXm2EYsboAWe6Nf0a3XrF2cZUZwdyWUGIpFTZAKMVR5TS8ePIgRn50v1VGJxXydtT9LxtgEjhcgyRwOjkANJvTXD6zsfSvN5EW904OKIUq0Pb4mKMG7wElSkOi6dG59162W+vNiIdMWYPaL7UbkY9t9pR/HDPCl+TR8kOY/oKbm83boRsIEZpjK970PU5qXV5bpq82jPfUf41J7f2l0WKzXnHtm0OTVNPaHjgrSOTzlj0k9tyqTGn1TyPIm3FYxlNHP4MlbIlFF6NxH8AyGIFvRWOH3/AXDYPIGooCZso6aHgTQPSM+g2q5IaUzyDNyxJWaoi/r8QqxdQHRYiirQg8HRMcY7Tqawm502KVc+4q4+H/23QZcxYtmG55t58ExOSTHzBveVHAsudk1IMFa+PuolCo9hsaPCqp8BFa+nVbpFNoG2zOvJWjTGGERiozzpTgP7uoIeRsLeVrGO0xoqfTjlmbOJF//j3sfuCeRBGOPgFp1EDnUnUk4m/vqzII8efc5v1Z3+s+of1gO5GXZxUtg+13nlnf0ijb2qYDgZgjL4NYhVhFoe/hINE6hUmfEWGlpGA2rK8VgYX1Lzqmbvl7EV3PYSvkUwZryU7eHfd5uuF63U/IUAlzvPbpJMUGbWm/IEvecoQn1BX9ZN2FTNTwUrUXxFu753ZyhNRGVShns6JWkAQDOPG7h+5IWm06eKFCfEg2Q0UAZQ6LfkhDYD7a9P8qGbW93+///MilWEpSKKsnx7rGti28/e4kZXEAESjhvZSHwG1l1y9j8YDHc39wHB9dsPDOlj3H7oCweOtI/IqIiS1/b7oaGJBceK02BFl9qog5VRdmZ/A5cMcFqwgaoP3yQDx+o6hfhFG+3+6ty975fAEG5MyqP1W0LrzlKTCf86WJh2LxhFBaARlEKNo3/o4zegbJwP+siOm6PDCVSTBkCBmdWWbkilZTYZYXdU2+XF51wcpdt32XBqCOV6UtJI8Y6gRvsTwBME06Cl006Fe7hTZjMLy7NbcleL9C6cxL6dnkb3JxwUSBAHegLAOxrCaXR3v7l/nn/vvxVOl27uhicrs/g+jgpl/HHAMhQ7dDLBUagugBqyPutFst15rcFqx68v4IlunJ4snQ6saUKw//mK8VuY7LwMKxfjj6Hl9LCWCYDTEJZfew5dkaHsEuC35p1KJy6IFzgDurrx4vkp5ZfhfhQJkcZRBjMLda+ON4oq8DcRF5zCzMvOpNm2h+gfvokDSYFcPLducmnivyP9Y3SQrgwCobrttFc4uxO+gSmzoah1M98vHzVDL7bjkeSFe80n/o600t5elLks2gNOYFXPqFr2qqBpgMMK9t1CM5nvu3GCsYa5518PmG62ZU7EDna3dJOovxQd/0JQi+h94dW6jD31zVtYy8SPivLoQlqqV4jBcglKZpcbs4gAqfMuxRsHPoOChG6Dq8qudw+LWcCuG3KQfnAiQfrgLC7t6qKdTQddUBsr4MeuuIzT+xTmhYoL7hQr3sWuKyu103du3LkY7ttDXWIzAYHbzH+eC3Xc8cygVOqTD6xgwX7GAWZ8hh9bf0m4wWz4nhqMo4zRc9KAdrejCr5uTKroKzOnpYQk0s9BKR4hUUNXYsOVNH2Ai99NO1tummaZk+ZyAIShj0485emQOrjb93aLj5xGYbq5PFF7VUSQzi44+LjBFzvlxXh9gajVdTp0iulEw9M9r8ZIuIgSxxKlIOYFTZhp9hgN1NMlQT26dISgDsUrT1Cf7eyoS8PWESWaMpoz99MDi4DkZ2Ru0xHhTbmtJ/K6dOUvSszZqT8ZXDkZTpmi2Jy8dpSSODLj/baOiuQGUjjwqmTRAUsZ9l+2/JJKcc2/rbNFzFsTPsrZg50/iVxmRvGCUp2GIxmbqGID9PCEwIr99OCmD1XaIPOo2e/Kd9SKApAxi1rzAWQ7m/jBzfc5c9vksRk1sICljNzxi6tE0+MXsF0m7Igs7hmM0jBYt4pALMkc5+YCgDO6ufcoYoNR3Q2QlY6/YC16jKsC9NbevXS15U0e4/JvBWsfFMiWj/y+ADGU1XPNrXMeqABIMbdeH8T/jadWExtdQVmb8F0VZJrQYi0yKAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\"> is",
+      "question": "6.The value of x for  $\\sum^2_{i=1}{\\left(xi-4\right)=13}$ is",
       "a": "8",
       "b": "7",
       "c": "13",
@@ -49,7 +49,7 @@
       "ans": "a"
     },
     {
-      "question": "7.The matrix <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> is ",
+      "question": "7.The matrix $A=\\left( \begin{array}{cc}\n1 & -3 \\ \n3 & 2 \\end{array}\n\right)$ is ",
       "a": "symmetrical",
       "b": "skew symmetric",
       "c": "diagonal",
@@ -57,7 +57,7 @@
       "ans": "b"
     },
     {
-      "question": "8.The value of <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEcAAAA/CAIAAAA9o0LkAAAEmklEQVR4nGP5//8/Ayr4+/bsnjuyzuZiLAyDHeByKhaX/7q7pGlOoM1Q8BUupw5+l5MDRn01dMCor4YOIOCr/18uzynInXuHjfvn61/aOTMmJmlzM5Jjz+9XR6YX50znmHxmti03iXp/XOoIjpp9j01ClOvHm/c8NvkTelIM+Zjw6MDrq/8fDxR5Vb3tu7w3VOL/wzluep7FKlem2/OR5q9/70/OrOvefv/RgYuvgkjSCQW/X9/4k7jtYrE6G9CsfVnazi5f5e4s8RDE7Qx8vvr/Zlf74o92G9wlmIE8ueAC2/zwtl0tdiEipHmLQzm8Z3XKk36jra0k6YPrV4srU1VkAzGZBM3CHfhm7ll/47uHJRdOHfh89e3m9nM/pArlOMA8Rm5lU+kfU7bf+BZiQ1IaYuIUEQIGOClaUAGrrJMzgvfv738GNi5WvAGLz1c/X9x9y8AjyssM4TLzSfAyvLnz4icDA6k5g3rg94vzVz+LuPqrc+JThcdX/359BXqAmY0ZGiyMLGxA1T+//voHDH9qupQE8OXs1GnP3TrrbXjxKsPjKyY2bnYGhq8//0Cbv/9///zDwMDDzTZQXvr7altp2uGAlTsS5AkU3fikOSTVRBkOvvz8FxhjQO6fT88+MogYSLBT06VEg7+vdpaH9gr07WhxESEYrPh8xanuYcS54tzD7wxabKCq6/app+wG7uq4ix6agd+P1+YnrFDv35BnxEtM+YvPV4zCrpVxgsHTdzx3C5f892DNhKNCsRvdSSzWKQe/Hy2JdWplyW1WenZw6zOwELOAlp21Eu72AN4Eyshn17OlLTfH32WB4O+X39T7d/Y78pPsqd+PN0+YsvPa9QO3GN69q0/LNFCzTC6J0ya6HP1+beWGuzd+FoQuRYhptN24WKnOhksLgWzHyKOXNv9QGrEOwApYZX1LO32BjPnk6efz2PwDvb9OAIzI1u0QBaO+Gjpg1FdDB4z6auiA0XGL0XELZDA6boENjI5bQMDouMXouAXVwei4xei4xei4BTIYHbegEhj11dABo74aOmDUV0MHEOErSjrnDOT0z9HBz2t9wcGTbrJLSvL8fv2axTi9d2K+tTAzHh34fUVx55yBnP45Ovjz9vaviI2X6/U5GP5/Olqsa+ORqnx/rT+ephuBuKK0c85ATv8cHQAbJ5kR6uAeOSOfQYCDYP+unXe++4uQ18OnQuecgZz+OTpgU/AKhHP+//n5l4FHjBdfAqRzaUFc/xwP+PVw87R9zG6t8Wp4e3l09RWR/XNs4N/rzSneZftu3/uikTl7SYwCK17V9PMV8f1zbIBJ1HfeKV+G/9/vrs520jE+vvt4tw3uThGdfEVS/xwPYORUDqzMblSr6zhSu8WbH5cyeviK1P45hvZd277Y+GvCizxGRoa/v/7g63LR3Fdk9M/RwJ+Xe6cs5XHptwI1Af5/vrBk4XU+73pzfHkTv68o7ZwzkNU/RwOsYroSh+JNTKVkBFl/fXj1Wchp7uHWEAny2xaUds4ZyOqfowEWuZjFZ2NI00KRhYMVjPpq6IAR4ytOs/6jZvR3CTkAl1MBmzvAP6NJlksAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\"> is",
+      "question": "8.The value of $\\left| \begin{array}{ccc}\n0 & 1 & 2 \\ \n0 & 1 & 2 \\ \n1 & 2 & 3 \\end{array}\n\right|$ is",
       "a": "0",
       "b": "1",
       "c": "-1",
@@ -65,7 +65,7 @@
       "ans": "a"
     },
     {
-      "question": "9.The value of (1-ω)(1-ω<sup>2</sup>),where ω is the cube root of a complex number is",
+      "question": "9.The value of $\\left(1-\\omega \right)\\left(1-{\\omega }^2\right)$, where $\\omega $ is the cube root of a complex number is",
       "a": "0",
       "b": "1",
       "c": "2",
@@ -74,8 +74,8 @@
     },
     {
       "question": "10.The magnitude of 2 - 3i is",
-      "a": "√13",
-      "b": "√5",
+      "a": "$\\sqrt{13}$",
+      "b": "$\\sqrt{5}$",
       "c": "1",
       "d": "13",
       "ans": "a"
@@ -89,27 +89,27 @@
       "ans": "a"
     },
     {
-      "question": "12.The value of tan(tan<sup>-1</sup>1) is",
+      "question": "12.The value of $tan\\left({tan}^{-1}1\right)$ is",
       "a": "0",
       "b": "1",
       "c": "-1",
-      "d": "√3",
+      "d": "$\\sqrt{3}$",
       "ans": "b"
     },
     {
-      "question": "13.The solution of cosx=1/2 is",
-      "a": "2nπ",
-      "b": "π/3",
-      "c": "2nπ±π/3",
-      "d": "2nπ+π/3",
+      "question": "13.The solution of $cosx=\frac{1}{2}$ is",
+      "a": "2n$\\pi $",
+      "b": "${\\pi }/{3}$",
+      "c": "2n$\\pi \\pm {\\pi }/{3}$",
+      "d": "2n$\\pi +{\\pi }/{3}$",
       "ans": "a"
     },
     {
-      "question": "14.The length of the perpendicular from (0,0) to the line <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAAASCAIAAAB6hH/GAAAER0lEQVR4nGP5//8/w8gALAPtAPqBUa8OFPj96sj04pzpHJPPzLblJk3r/y+X5xTkzr3Dxv3z9S/tnBkTk7S5GZEVDB6v/nt/cmZd9/b7jw5cfBVEsu7/Hw8UeVW97bu8N1Ti/8M5bnqexSpXptvzIXmWdK9+vzylah5TcnuWDgfJevFq51AO71md8qTfaGsryab+f7OrffFHuw3uEsxAnlxwgW1+eNuuFrsQEYRf0b36792xCVkxxRuUlj7YFSXx9+40N4Mmpe1359rAk9Ove2snTmRybMDm1V8PVlXGpfQ9yb14vVWPneHXjS4bnQrGmY+PJUszE9LOxCkiBEzBJPsSDL7d3H7uh1ShHMRMRm5lU+kfU7bf+BaCcDeGV5mErAqnTji8LXjK5qfhSezXr/zx6623IDbbsCmENdSunu1z4taX/3rsjGwKrg6KUz9pCjIT1oobfNkXIeW88jNWOWbXzW93+fAz/Hxx9y0Djygv1CJmPglehjd3XvxkYMDtVSBgFHYqDBdymjxrwZ2zu7RnzI+SAyn69+vzp69/gHXwpy+///9n+vLh/ft/QLUsXHy87ExIujlV7ZX/dh1/8DNEmOPn3c37RbOXmHARrx0L4HFa8en/CrxK/v36CvQVMxszNLkysrAB3fzz6y+gHXDTseZVHrPsJNk5LX1BZ05maXOBtf95ON1GqeASXEm0ghCY1uy4ebFcjRWhl0XM0EToxakbH/8bftnRusmoZa8aGwnayQNMbNzsDAxff/6BNof+//75B+gNbjbkUMTm1X9vjq48zszJ8Pb5dwZYrmaWDJm7T/vDX6CBRwsDGhgbNvRZA9MGM7+aLJoRHMr2aoxbj91/r7ez+0PGMjt+RpK0kwc4JNVEGQ6+/Ay0AJSG/3x69pFBxECCHVkNhkX/3h2ojZ0u0b91cp5e0YQD7dY+QiC3MnJImzhKgxR8/CrCyMhk6ODiwo/VViYBbSvJt/v2LXi+y7ZptxzEAuK1Y4Iv+6NknZZ/wCrH5rHl1XZvfgZOdQ8jzhXnHn5n0GIDVbG3Tz1lN3BX58Lt1f+fTjQEVv5r25FnyPs6zykvtm/rc89YKdJKFQ4FG02m7oYuhRWXjLgIKycIeByXvf+/DL8aRmHXyjjB4Ok7nruFS/57sGbCUaHYje4iuJsQv2/PSGm5arRDG1jzMoq65vtweFZkt/JPqvSTRWQnfv/9//7htZdb3U6R83l8i48YlgIHp/bfjzdPmLLz2vUDtxjevatPyzRQs0wuidMmsvBn5LPr2dKWm+PvskDw98tv6v07+x35UXyK6lVWtbIr/8pgmgU8Vn4gq9fz8/VL8aT+DHU2knSxyvqWdvoCGfPJsRPoXh69tPmH0nAroH7D8NftBT2v06bZoYXpwAOqefX3vSXddzzLzW60Fx4PnLqIxPxND0A1r/56vHuiV/ZUdceCuQti5QdPLwIBADpXujy8VFgYAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">  is",
-      "a": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAnCAIAAAB8ENSTAAACjElEQVR4nGP5//8/Aw0ACy0MHXBzf786Mr04ZzrH5DOzbbmpY+6/9ydn1nVvv//owMVXQUQZSZy5DBzK4T2rU570G21tJd5YwuYycYoIAQOCBCOJM5dMMGruMDX39+PNE6bsvHb9wC2Gd+/q0zIN1CyTS+K0CeU6guayyvqWdvoCGfOJdSpx5pIJhrq5jIyMZJuFXPXQy724q7v/v3/8ZeFgIdI7RLv3xzU2Th088mgOItbcP69uEusCUsz9//H2w83P/vpIMlHX3G8Pboqq2RJrKNHm/np6jUEziA0Yypc6gqNm32OTEOX68eY9j03+hJ4UQz4s9hFl7t+3N16r23ABWb9f3/iTuO1isTobsKLel6Xt7PJV7s4SD0GMVEKUuZ9v35VX9QLp5VCLK1NVZAMJMgmahTvwzdyz/sZ3D0sucsz9/vAGv4YZWCWrrJMzQuLf3/8MbFys2JI0dnP/f3988Qm/nio45H4/v/5dw5sDQ9HvF+evfhZx9VfnJM7cH/c29HVOnn0tZP/+TAUWYDjeeqJqhFmOfzk7ddpzt856G15sLsNiLrOAafaEmZwuUUtuJ9dosn29e0tK3Rktyv++2laadjhg5Y4Eeew+xiLKKiTNz/A3PF3Ia/bF4j7dR9fZNPVZUQ3dWR7aK9C3o8VFBFeSxhVvzJI+ORq9U4++bfr4QcMJKbp/P16bn7BCvX9DnhEvnjIIZ3pgFHLMtantXnvUStEuAG7ooyWxTq0suc1Kzw5ufQZxgICWnbUSN7oVeNIZt0mG712POTa7g5hhQt+vrdxw98bPgtClCGUabTcuVqqzEW8uA7tmQqblO205drgIn8fmH8R1R/DmCxalrDVTiDKGNHMpAADryd9x81/4DQAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
-      "b": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAATCAIAAADqEDFSAAACBUlEQVR4nGP5//8/AwHw//ePvywcLIyE1LEQUsDA8OPakiV/k1L18dkGdhBhs/68uvlJ3ZmwlUSY9f/j7YfKWrxEBAVhs749uCmqZstEDXf9enqNQTOIDcz+cakjOGr2PTYJUa4fb97z2ORP6Ekx5ENYQ8Csv29vvFa34YJwfr++8Sdx28VidTaGf+/3ZWk7u3yVu7PEQxAWwQTM+nz7rryqF1Qxh1pcmaoi2I1MgmbhDnwz96y/8d3Dkosos74/vMGvYQZTwyrrhBSf//7+Z2DjYkVKdehm/f/++OITfj1VcDD8fn79u4Y3BzZbfr84f/WziKu/OicOs37c29DXOXn2tZD9+zMVWICBcuuJqhE3NqO+nJ067blbZ70NL5IgilnMAqbZE2ZyukQtuZ1co8n29e4tKXVnzOTw99W20rTDASt3JMijaEfhsApJ8zP8DU8X8pp9sbhP99F1Nk19VgyDdpaH9gr07WhxEUGzBjPsmSV9cjR6px592/Txg4YTF4rc78dr8xNWqPdvyDPixczqWOKRUcgx16a2e+1RK0W7AGSDHi2JdWplyW1WenZw6zOIvQJadtZK3Iw4zWJg4DbJ8L3rMcdmdxAzkuj3ays33L3xsyB0KUJMo+3GxUp1NjxmMbBrJmRavtOWY0cW5PPY/ANvBseRVlmUstZMwaePBLPIAgCmD7fjdyiF2wAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
-      "c": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAnCAIAAACXJ2+QAAACrUlEQVR4nGP5//8/A20AC43MHbRG/351ZHpxznSOyWdm23JTzeh/70/OrOvefv/RgYuvgnApItPVHMrhPatTnvQbbW3FqYY8o5k4RYSAIYJf0eCMRlKN/n623j9t46u/WJQy8jtN3dZnhS0xEGU0p3HjrrONJLuQGKOpCAad0b8fb54wZee16wduMbx7V5+WaaBmmVwSp40aDeQZzSrrW9rpC2TMx6No0AXIYDOakZGRQhPh1RYdXY23qvz/+8dfFg4WIv1Fiqt/XGPj1MEjj+YsEoz+8+omCe4gxej/H28/3Pzsr48kE9WN/vbgpqiaLbHmkmL0r6fXGDSD2IAhfqkjOGr2PTYJUa4fb97z2ORP6Ekx5MNiJbFG/31747W6DReQ9fv1jT+J2y4Wq7MBK/Z9WdrOLl/l7izxEMRIN8Qa/fn2XXlVL5B2DrW4MlVFNpAgk6BZuAPfzD3rb3z3sOQi0+jvD2/wa5iBFbPKOjkjJP79/c/AxsWKLanjNPr/98cXn/DrqYJD8ffz6981vDkwFP1+cf7qZxFXf3VOoo3+cW9DX+fk2ddC9u/PVGABhumtJ6pGmPXtl7NTpz1366y34cVmCHajmQVMsyfM5HSJWnI7uUaT7evdW1LqzmiJ4O+rbaVphwNW7kiQx24IdlFWIWl+hr/h6UJesy8W9+k+us6mqc+Kau7O8tBegb4dLS4iuJI6nmhklvTJ0eidevRt08cPGk5ICeD347X5CSvU+zfkGfHiKarwpRBGIcdcm9rutUetFO0C4OY+WhLr1MqS26z07ODWZxA3CGjZWStxo9uCP/Fxm2T43vWYY7M7iBkm9P3ayg13b/wsCF2KUKbRduNipTobSUYzsGsmZFq+05Zjh4vweWz+QVzvh1CWYVHKWjOFKJNINpoCAAA/uuo2eoIaGgAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
-      "d": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAATCAIAAADqEDFSAAACBUlEQVR4nGP5//8/AwHw//ePvywcLIyE1LEQUsDA8OPakiV/k1L18dkGdhBhs/68uvlJ3ZmwlUSY9f/j7YfKWrxEBAVhs749uCmqZstEDXf9enqNQTOIDcz+cakjOGr2PTYJUa4fb97z2ORP6Ekx5ENYQ8Csv29vvFa34YJwfr++8Sdx28VidTaGf+/3ZWk7u3yVu7PEQxAWwQTM+nz7rryqF1Qxh1pcmaoi2I1MgmbhDnwz96y/8d3Dkosos74/vMGvYQZTwyrrhBSf//7+Z2DjYkVKdehm/f/++OITfj1VcDD8fn79u4Y3BzZbfr84f/WziKu/OicOs37c29DXOXn2tZD9+zMVWICBcuuJqhE3NqO+nJ067blbZ70NL5IgilnMAqbZE2ZyukQtuZ1co8n29e4tKXVnzOTw99W20rTDASt3JMijaEfhsApJ8zP8DU8X8pp9sbhP99F1Nk19VgyDdpaH9gr07WhxEUGzBjPsmSV9cjR6px592/Txg4YTF4rc78dr8xNWqPdvyDPixczqWOKRUcgx16a2e+1RK0W7AGSDHi2JdWplyW1WenZw6zOIvQJadtZK3Iw4zWJg4DbJ8L3rMcdmdxAzkuj3ays33L3xsyB0KUJMo+3GxUp1NjxmMbBrJmRavtOWY0cW5PPY/ANvBseRVlmUstZMwaePBLPIAgCmD7fjdyiF2wAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
+      "question": "14.The length of the perpendicular from (0,0) to the line x+y+1 = 0  is",
+      "a": "$\frac{1}{\\sqrt{2}}$",
+      "b": "$\\sqrt{2}$",
+      "c": "$\frac{-1}{\\sqrt{2}}$",
+      "d": "-$\\sqrt{2}$",
       "ans": "a"
     },
     {
@@ -137,7 +137,7 @@
       "ans": "a"
     },
     {
-      "question": "18.<img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> is",
+      "question": "18.${\\mathop{lim}_{x-0} \frac{x^3-2^3}{x-2}\\ }$ is",
       "a": "12",
       "b": "6",
       "c": "9",
@@ -145,7 +145,7 @@
       "ans": "b"
     },
     {
-      "question": "19.<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAmCAIAAAC0+wkeAAAHPklEQVR4nGP5//8/wyjADVgG2gGDHYwGEAEwrAPo3/P5llJJpxACfBH7ni535CHFDHoE0I/bm3b8dwtQ46CDXWiAkc+mfk21BTeUxyFjwEmiCbQPoO8Xu6KqPs5wDaC5TdgAq5iJi4cHP/kG0DaA/rzYOyE/of7MZ/0S/wDz6oXttgzn51bWrnzExvXz6Z3nP1m1Wg6ssDzfEBXRvEdj8cWq25V5/Vtvs9i27d9Zqfv92ISsmOINSksf7IqS+Ht3mptBk9L2u3NtuKnjtn/viDKftgHEImHrrcddfipm4Y52ffb/H4+U2wYfj9mxfaohz6+rDTp6SzQUuJhEHHMS1Nv2Pp3fuD+189Tj2iZdi5nLbhZ2GlgVTp1weFvwlM1Pw5PYr1/549dbb0Fq6Hw5UR/uO/3/lw/vfwsZBeXX5rhIs0FkmISIMp/WWez7/ZOPmJVNZdmBzLMtcRMZiy8XGvIwMjB8u3PiMauKiQxI4tGp+3+FnYtntHuJMP04z8LEzCvGwwzUzCjsVBgu5DR51oI7Z3dpz5gfJUeac5kkYnbdiWbnZGVk+P/t9vJUW1fLOwevTLXjY4TIE2M+jQPo17Nzt37KBCkDI+bLqSnzHmg2hCqxgiR+Pjp565dsrBIXA8P/L3fOv+S2jbEVYQJyvt4/95xTTVccrIqBxyw7SXZOS1/QmZNZ2lxQfwGDut4/beOrv1gsZOR3mrqtzwpWKrNwQAtlRi7V4IrUumUTp57usnOG12PYzUcGNA4gUAJiUTYBJqDfD0+ceidgoicGthEYKCefsKmCE9CPR6fv/5P3lgdXcj+fnL77VzZDAVLj/XtzdOVxZk6Gt8+/MyC5ntO4cdfZRlLdwiIgzc/w+dmbH/8ZeKCG4TAfRRcS+9f9tX2dE9pm3ok9cXeqORepDsACfj07f/unVCAoAf37/vEHA7xb8+P+0Vt/5FIgCeju2eec6gYS4DTz7e7pZ+xq+iDOv3cHamOnS/RvnZynVzThQLu1jxAOT+AA/9/salkjU5ahxQ7m/vnw9CODoLYEJyx0iDIfOYDYFINLKp6tmN0G4X46mK7vezb52NEaHXaSHIYAfz48+fCfW5iL6f/vP+JG6uwftvSvvKLm+G5jV+WcJ2y2xqAC88djYAKS85AH54Wfj8/cAwacAsf/TycaAiv/te3IM+R9neeUF9u39blnrBQzSdYzfji+6s7zFC0FoC//vT00fdFDlZTlJuDsR7T5eLIYm4iGkelfZT7SHIUCODXDQtXnlZnr7Yyumdk6YVKYb2GyvqF1TlexhciMY9cXLb7inCMJTEAcagaS4AT09d7px//enli+8QBHY8tVox3awPKUUdQ134fDsyK7lX9SpZ8sK9G2M3IqGPyvczFcqiDJ8fPtq5+KSZsOVJmCw+f37RkpxJmPJ4A4tAvX7iUjVJCdKOA4+frPyTBu2spbaSuh7Lj/vVBWyL5fITAVQoG7f0OzYei/SrgpHis/kDPmwGXWtv9GGzYZVrWyK//KiDEfVwD9+3BmTl1x6eTr4UcfzLLi+nl9WmpE0eJHDkXxXPtXbDn/ht8orqHU+N7Kecu3nXvOrBo5Y9fCOAXiI3foAFwBxCRgklwaOXNqHYTLrpnelj1vSTGrfur0+paZd+ZF2OTXr7PbOXF308I3q6NMEhtnV4S36pFbVg1iQFI1z8ghrqwgzsfNoB8UoV14kUdZQ06Im0HALUiDqeTx+z/AcKSVMwcOkNcOYmRiBjZO/0F5TMxMoAocPRczMpJWKw8qAB9oHdbjQdQANAyg4THaPZqCCAC0rkZvx8q7/179nNA+N0rtxZalt/+9/jShZQ5LaYzYnqmr7v57+3lq31rxVJn9vctu/3v3YVrfWqk0uQM9S2/9+/Bm9uwDmnkOYhQ0KwclQOtqVM4EIhjfN7YazmYIbd8T2g7jqPTuSYW18xiUe3Yl99DanQMGRrMYATAaQATAEAsgIgeSqQiGWAAROZBMRUBBAH27Mr1s9mtZnsf3ZQv6M7RJnXAiF1A6UE0iINvwfy83Va9U7NldLHe91r5yU9CGcDEmajoMDyA8kExFgBlA/79enxcfsS/54BzJvsCFnuv6LbEOvv64s/cmt78YKwO7nInAzS23f4SLUWOQlghAxEAyFQFmADFya0ZXe80q6+q2UOxossDl67/f3v9mZwUlGiZ2zj8fvmGbYqABoHigmlSANYuxyZjLXGvgmHragBdo++9Hm6cuPPfxH1yaWcQmJd2SW4jt5y+Q4N/v31iFuOnRgqbKQDWJADOA/n08PXPy07gSsZ4N9wrL1FkZWOV8C2p9MZQxOat9ufHyty/HozMf1F1U6bAygfiBZCoC9AD693pzTsXbiu3poqLzXNtXBUyLUsNeDDKJ+baEFfU1tgg8f5vY7iNKhxKa+IFkKgL0AGIS9V+81x/ECtt4MQyvVi7d7BkzaOWuQQOGWEOR/mA0gAgAANy7NZXr2YVeAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\"> is equal to",
+      "question": "19.${\\mathop{lim}_{x-0} \frac{tanx-5x}{x}\\ }$ is equal to",
       "a": "6",
       "b": "5",
       "c": "0",
@@ -156,7 +156,7 @@
       "question": "20.The function f(x)={x+2(x>=2) and 2x(x<2)} is continuous at",
       "a": "x = 0",
       "b": "x = 2",
-      "c": "x = -2	",
+      "c": "x = -2",
       "d": " x = 1",
       "ans": "a"
     },
@@ -185,7 +185,7 @@
       "ans": "a"
     },
     {
-      "question": "24.2<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAtCAIAAACxjaXwAAAEVklEQVR4nGP5//8/w6ABLAPtABSAxzV/Xh2dUVqyzXHN5gRp5gF2zf/vzx6z66r8W/OHPg7B7xpGTjlj/Z97GenoliGUbgYADBHX/P96e8+6lUefPOBevkolNNBBnmMgXcPIreoaWwNEdHAEYdcMCBharvnzbGtdau2qUzfeSsfO3jI1RIamzsdv+K+bEyJb2Pp2r99irdcwq2tnXVCyNNNAuebLye6JT6w3agtKfgiPCP8T6yVOS6cQcM3362t3PPkXy8zAJOLcuNyZtg4h5Jp/76+ceMrw69svShpAf18fmtbUUDfluO22F5s8+cl3za/Xt14yMPz89OMfBa5hFrVLS7OeOP2ZuSInYdV4XPP308vPDAw/Pv+kxDVA8P3BmadsaoaSbBS55v/vb78YGH5/pyimgEH84tL9P3IxxAQNXtf8+wMMlX9/cTec/707NiErpniD0tIHu6Ik/t6d5mbQpLT97lwb7n8fLyxqaFhxl4n92/0zh26yehhJsbw71oddMVGuIQyYhKwKp044vC14yuan4Uns16/88eutt+D+//FIhW3A4YgdO/tM+H5dbdDRX26myIlDMbFhQxRgFHYqDBdymjxrwZ2zu7RnzI+SY/l2qjGm/3f+xWITPmDL8dudE4/Z1Iyk2LArRjWN8oKexyw7SXZOS1/QmZNZ2lyMDJ9PTl7wUL0qUpUdJPvz0clbv2UTYakGXTEaIMY1eNvG/94cXXmcmZPh7fPvYIW/np04817Q1FSSFST7/8udk0/YVCFBg6mYBNcwMjIBdbCw4em9/Ht3oDZ2ukT/1sl5ekUTDrRb+wj9//nlJwM84f+4f+TWH7lUcNBgUYzuInyuYWEHyjJyseGonP5/OtEQWPmvbUeeIe/rPKe82L6tzz1jJaXNtDnbtvSvvKLu+HZ1U8msJ2yOxtJs2BVLofkUn2vYeIBRzyrJhz1wft+ekdJy1WiHNjCtMoq65vtweFZkt/JPqvTomxzumZWsp2+d211sJ77gzLWFi87LfMeu2E+WlTjXMLFzA2NbRFUUeyHKqlZ25V8ZzOUCHis/wMul5BV3kldA2XH/eyEMXIqRAd6Y4mBlEDbQFaFTtxera/6+PjipYxtPTE30369/BG0Cdbjo5hhM1/x/s7OyqO+4Aluorcxp7qgOB0E6dn4xXMMoYOhrxnb8wrLEOOO4hQuseennFmwxxa5deeJLzoefHAI8rPQdE8CRihlZeQVZsUnQGgyV/tS3K9PLZr+W5Xl8X7agP0ObmMYSzVzz7+Wm6pWKPbuL5a7X2lduCtoQLkbj3gs+1/y4s/cmt78YKwO7nInAzS23f4SL0aHcweWav9/e/2ZnBQUHEzvnnw/f/tLeKXhcw8wtxPbzF6i38Pf7N1YhbvrUDrhcw6HirPblxsvfvhyPznxQd1Glx1gSbtcwifm2hBX1NbYIPH+b2O4jSockjMc1DAxcutkzZtDFDQgwuEo/AIA5zbdEL+28AAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\"> is equal to",
+      "question": "24.2$\\int^1_0{xdx}$ is equal to",
       "a": "0",
       "b": "1",
       "c": "-1",
@@ -193,7 +193,7 @@
       "ans": "b"
     },
     {
-      "question": "25.∫cosxdx is equal to",
+      "question": "25.$\\int{cosxdx}$ is equal to",
       "a": "sin x",
       "b": "–cos x/2",
       "c": "sin 2x/2",
@@ -426,10 +426,10 @@
     },
     {
       "question": "54. A body of mass 1 Kg is rotated in a horizontal circle of radius 50 cm. If F and v represent the centripetal force and the constant speed respectively, which one of the following expressions may be correct?",
-      "a": "V=<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAATCAIAAADj+5EoAAACM0lEQVR4nGP5//8/AwHw//ePvywcLIyE1CEDFsJKflxbsuRvUqo+McbBXUnY3D+vbn5SdybGUGRA0Nz/H28/VNbiJSK4SDP324Obomq2TCQZSoS5v55eY9AMYoNw/n+9NKe2oX/y+ut/RJXUhFghMfn/15uHLJmnLzfrshNt7t+3N16r23BBeYzceqlNeQfnr3/qseLiciceqPDbNcHZbDLsKBoJmPv59l15VS+kFPbnzZWrHxiUbJQ54UL/2VTCEkV4UTXiN/f7wxv8GmbIan48OPGAQThQX4QZwv/9+f0fboNwd3Sd6Ob+//744hN+PVU+UEz9fn79u4Y3B5L0nzeXr3xgULZRgjj334v1+W3ikybZ86AZg2ruj3sb+jonz74Wsn9/pgILw7/3t56oGnGjqAA5l+F/h4/ZNJDFf98/ZM0/hWwxVnOZBUyzJ8zkdIlacju5RpPt691bUurOyEnsz+vLVz8ymM8/eCxBEij+/82a6BphUWxhiSLGKiTNz/A3PF3Ia/bF4j7dR9fZNPVZUZ17/AGDWLgaP8QyRgHHpmoOFA9hNRfiaEmfHI3eqUffNn38oOHEhSwFca68mTzM5yzCKrLYTMWaHhiFHHNtarvXHrVStAtAkQGHrkiohgDh7Ic1nXGbZPje9ZhjszuIGSYEzGrzmrpmb/7E8ONwS3axV3pNtqUgHuOxp192zYRMy3facog8BMxqyZ1LgIigS/GZy8CilLVmCpFGkGIuxQAAqgnI+bac6KsAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">`",
-      "b": "V=<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAATCAIAAACcKoPZAAADDElEQVR4nGP5//8/AwHw//ePvywcLIyE1BEPWAgr+XFtyZK/San6lFsG9yFhW/+8uvlJ3ZlyK5EBQVv/f7z9UFmLl4iIoKat3x7cFFWzZaKilUTY+uvpNQbNIDYw+8eljuCo2ffYJES5frx5z2OTP6EnxZAP7qD/Xy/NqW3on7z++h9RJTUhVkjq+//rzUOWzNOXm3XZibb179sbr9VtuCCc369v/EncdrFYnY3h3/t9WdrOLl/l7izxEIQmbkZuvdSmvIPz1z/1WHFxuRMP1Ii3a4Kz2WTYUYwlYOvn23flVb2gxnKoxZWpKoL9zSRoFu7AN3PP+hvfPSy54Mr/vLly9QODko0yJ1zoP5tKWKIIL6qx+G39/vAGv4YZTA2rrBNSWv739z8DGxcrSi7+8eDEAwbhQH0RZgj/9+f3f7gNwt3RzUW39f/3xxef8OupgqPr9/Pr3zW8ObC55/eL81c/i7j6q3MiCf55c/nKBwZlGyWI4L8X6/PbxCdNsudB141i6497G/o6J8++FrJ/f6YCCzDybj1RNeLGZumXs1OnPXfrrLdBCTqwVxn+d/iYTQM5+u/7h6z5p7A5GsVWZgHT7AkzOV2iltxOrtFk+3r3lpS6M2am+ftqW2na4YCVOxLkUbT/eX356kcG8/kHjyVIAnX9f7MmukZYFFscooixCknzM/wNTxfymn2xuE/30XU2TX1WDCt3lof2CvTtaHERQXPQjwfHHzCIhavxQ8QZBRybqjmwBhWmS5glfXI0eqcefdv08YOGExeK3O/Ha/MTVqj3b8gz4sWoDCBelTeTh4Upi7CKLDY7saZhRiHHXJva7rVHrRTtApCtfLQk1qmVJbdZ6dnBrc8gLhTQsrNW4maEehUYqyKhGgKECzKsOYfbJMP3rsccm91BzEii36+t3HD3xs+C0KUIMY22Gxcr1dmAxdK8pq7Zmz8x/Djckl3slV6TbSmIx3Ls+ZVdMyHT8p22HEqJwuex+QeOKgBYLCV3LgEi3BYRYSsDi1LWmilEGkEGIKJWpwEAADxBHdmbYNZpAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
-      "c": "V=<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAmCAIAAAA9Y553AAADqElEQVR4nGP5//8/w8ABlgG0e9Ba//vVkenFOdM5Jp+ZbctNV+v/vT85s657+/1HBy6+CqKhzTisZ+BQDu9ZnfKk32hrK61tx2I9E6eIEDD0aW4zDuvJBv9///jLwsHCODDW/7i2ZMnfiBQ9zgGx/s+rm0mpwUmphFUiF3TUsv7/x9sPydBGLeu/PbgpevPnfzW2AbH+19NrDJpBULv/f700p7ahf/L6639EldSEWCGJ8f+vNw9ZMk9fbtZlx2f978ebJ0zZee36gVsM797Vp2UaqFkml8Rp4y37/r698VrdhgvKY+TWS23KOzh//VOPFReXO/FAhd+uCc5mk2FH0YhpPausb2mnL5Axnyh/g8Hn23flVb2QstyfN1eufmBQslFG5IP/bCphiSK8qBqpEvjfH97g1zBDNurHgxMPGIQD9UWYIfzfn9//4TYId0fXSab1/78/vviEX0+Vjwlk9vPr3zW8OZCk/7y5fOUDg7KNEsTz/16sz28TnzTJngfdHHKs/3FvQ1/n5NnXQvbvz1RgAdZRt56oGqGkDbDnGf53+JhNA7nv7/uHrPmnOLAYhW49IyOBQhNYaDALmGZPmMnpErXkdnKNJtvXu7ek1J2ZkNT8eX356kcG8/kHjyVIAsX/v1kTXSMsis2n5PieVUian+FveLqQ1+yLxX26j66zaeqzIiv48eD4AwaxcDV+iJsYBRybqjmwZh1064lu+jFL+uRo9E49+rbp4wcNJy5kKYjn5c3kYcHNIqwii90U8lM+o5Bjrk1t99qjVop2ASgy4JgXCdUQYMKhlRrWMzBwm2T43vWYY7M7iBkmBCzw5jV1zd78ieHH4ZbsYq/0mmxLQTyuwLD+x6WO4KjZ99gkRLl+vHnPY5M/oSfFkA+7CeyaCZmW77TlECUZsMBL7lwCRET6AMP6369v/EncdrFYnQ2Yo/ZlaTu7fJW7s8RDEGuGYFHKWjOFSJuIs55DLa5MVRFceTAJmoU78M3cs/7Gdw9LLky9VAAY1rPKOjkjeP/+/mdg42IlqQFFkfXI4PeL81c/i7j6q5PUgKKW9V/OTp323K2z3oYXjyIaWf/31bbStMMBK3ckyNOwI4bd6L+vdpaH9gr07WhxESFcdlDX+t+P1+YnrFDv35BnxEuzNIfD+t+PlsQ6tbLkNis9O7j1GViIWUDLzlqJmyYuQbf++7WVG+7e+FkQuhQhptF242KlOoltWPKs5/PY/IOOwx2Dc3hhhFgPAJNcSdw0IvfgAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
-      "d": "V=<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAApCAIAAADbF7xrAAAEEklEQVR4nGP5//8/A37w7+X+Fc/Nogy4CajDDlgIK/n19uFXRidGRpLMhbubCAt+f/zIL0mS6ciAsAX/vr39KaxBOCTJtuD3h/e8AmzkmU6UBX8+feQXZKWdBf+/v/smqIBswf+vl+bUNvRPXn/9j6iSmhArJPb//3rzkCXz9OVmXXbSLPjz8R2nECdyEmLk1kttyjs4f/1TjxUXlzvxQIXfrgnOZpNhR9dP0AJQGuJHD6E/b65c/cCgZKPMifAXm0pYoggvhn6CFvz68FlACt2CHw9OPGAQDtQXYYa64vP7P9wG4e5Y9BOy4M+HNywi3EzoHrh85QODso0SxAP/XqzPbxOfNMmeB4sBhCz4DUxDfFg9wPC/w8dsGsjqv+8fsuaf4sBuAEELPn7iV0Cz4M/ry1c/MpjPP3gsQRJowf83a6JrhEVxmETAgr+fXv8X1WNG98DxBwxi4Wr8kJBjFHBsqubAVRQSsACYhvj40bIxxAPyZvKwQGERVpHFaQJhC/gl0UIIHAMioRoCTNj1kGLBv6/Agk4ToQaYiec1dc3e/Inhx+GW7GKv9JpsS0H89uC34PfH97yCSCEEzMTJnUuAiLDLibXgI78Q+QUdQQv+/3j3TUiRyhb8/fT4FYuMJBeoePv94S1aQUexBf8/HalN3BKzudsUVAr8wVbQUWTBj6uTi+Ye5Tb99N8U5PCfKAUdI9H1PnL9imzBvxebe65F1pjNO/nwR4w4J9ADb1hFeIhK7bgBsgWMfKb5Xa5/uueX3/r0z4yTCa0qIK/eR7GAS8GQ6/9rC6kXRx78BHrhF9ACCtMQllTEyKuqxzzz5sd/5myfXjGI6jNj00WJBQzs8uZSrw4+/BEngKWgg4AflzqCo2bfY5MQ5frx5j2PTf6EnhRDPuyRhWkBI4+qPvP0Gx//aX3CLOgg4PfrG38St10sVmdj+Pd+X5a2s8tXuTtLPASxpTIsOZldzlz61d6H39xe/xbRxJrTOdTiylQVwZ5jEjQLd+CbuWf9je8ellzEWcDIo2LAOuXGm3cMPILYW3Sssk7OCN6/v/8Z2LhYcWQSbC5klzWTfr379isNfhnCaej3i/NXP4u4+qtzYpfHGgTcKoasE87fk9bVIWjBl7NTpz1366y3wWwR4bGAXcZU9vnks0z24fgLh7+vtpWmHQ5YuSNBHmepjF2CS9mQ6fRORl58Hvj7amd5aK9A344WFxE8xQl2C4BeUGbbJY67Uf378dr8hBXq/RvyjHjx+xKH17iUrLSVpHEUdL8fLYl1amXJbVZ6dnDrM7AQs4CWnbUSNxa7cFjAJm1hZSCMwwPfr63ccPfGz4LQpQgxjbYbFyvVsaRqXJHD79xWikOKgc9j8w+iC1YiOoGUAZpbAAABInY2i5nW+QAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
+      "a": "v=$\\sqrt{F}$",
+      "b": "v=$\\sqrt{2F}$",
+      "c": "v=$\frac{1}{2}\\sqrt{F}$",
+      "d": "v=$\\sqrt{\frac{F}{2}}$",
       "ans": "d"
     },
     {
@@ -547,7 +547,7 @@
     {
       "question": "69. If work function of a metal is 3.3 eV, the threshold frequency in photoelectric effect will be",
       "a": "2 ×1015 Hz",
-      "b": "8 ×1014 Hz	",
+      "b": "8 ×1014 Hz",
       "c": "4 ×1016 Hz",
       "d": "6 ×1017 Hz",
       "ans": "b"
@@ -634,7 +634,7 @@
     },
     {
       "question": "80. Which of the following compounds is used as the best anti-knocking agent?",
-      "a": "Tetraethyl lead	",
+      "a": "Tetraethyl lead",
       "b": "methane",
       "c": "methoxy propane",
       "d": "methyl cyanide",

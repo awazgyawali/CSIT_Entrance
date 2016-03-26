@@ -21,7 +21,7 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
     private Context context;
 
 
-    public ScoreBoardAdapter(Context context, ArrayList<String> names, ArrayList<Integer> scores) {
+    public ScoreBoardAdapter(Context context, ArrayList<String> names, ArrayList<Integer> scores, ArrayList<String> imageLink) {
         inflater = LayoutInflater.from(context);
         this.context = context;
         this.names = names;

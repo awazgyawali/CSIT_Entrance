@@ -1,34 +1,29 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
-    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.activities.WebViewActivity">
 
-    <WebView
-        android:id="@+id/pdfview"
+    <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <mehdi.sakout.fancybuttons.FancyButton
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="top|center"
-        android:onClick="reportFull"
-        android:paddingBottom="7dp"
-        android:paddingLeft="17sp"
-        android:paddingRight="17sp"
-        android:paddingTop="7dp"
-        fancy:fb_borderColor="#3b5999"
-        fancy:fb_borderWidth="2dp"
-        fancy:fb_defaultColor="#fff"
-        fancy:fb_focusColor="#4d3b5999"
-        fancy:fb_radius="5dp"
-        fancy:fb_text="REPORT"
-        fancy:fb_textColor="#000" />
+        android:background="@color/colorPrimary" />
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <np.com.aawaz.csitentrance.misc.CustomWebView
+            android:id="@+id/pdfview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/progressWebView"/>
+    </RelativeLayout>
+
+</LinearLayout>

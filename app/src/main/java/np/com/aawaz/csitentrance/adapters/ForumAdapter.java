@@ -33,6 +33,7 @@ import java.util.Map;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
+import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.Singleton;
 
 
@@ -77,11 +78,6 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
     public int getItemCount() {
         return messages.size() + 1;
     }
-
-    public interface ClickListener {
-        void itemClicked(View view, int position);
-    }
-
 
     class ViewHolder extends RecyclerView.ViewHolder {
         RobotoTextView commentCount, realPost, postedBy;

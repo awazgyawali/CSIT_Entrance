@@ -1,84 +1,70 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.content.ContentValues;
-import android.content.DialogInterface;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.misc.CustomWebView;
 import np.com.aawaz.csitentrance.misc.Singleton;
 
 
 public class WebViewActivity extends AppCompatActivity {
 
     RequestQueue requestQueue;
-    WebView webView;
-
+    CustomWebView webView;
+    ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
 
-        webView = (WebView) findViewById(R.id.pdfview);
+        webView = (CustomWebView) findViewById(R.id.pdfview);
 
         requestQueue = Singleton.getInstance().getRequestQueue();
-        String url = "http://www.google.com";
+        progressBar = (ProgressBar) findViewById(R.id.progressWebView);
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .content("Connecting.\nPlease wait...")
-                .cancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialogInterface) {
-                        requestQueue.cancelAll("fullQue");
-                        finish();
-                    }
-                })
-                .progress(true, 0)
-                .show();
-        StringRequest request = new StringRequest(url, new Response.Listener<String>() {
+
+        webView.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+
+        try {
+            webView.setScript(AssetJSONFile("question" + getIntent().getExtras().getInt("code") + ".html", this));
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Something went wrong.", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        webView.setWebViewClient(new WebViewClient() {
             @Override
-            public void onResponse(String response) {
-                webView.loadUrl("file:///android_asset/question" + getIntent().getExtras().getInt("code") + ".htm");
-                dialog.dismiss();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                dialog.dismiss();
-                finish();
-                Toast.makeText(getApplicationContext(), "Unable to connect. Please check your internet connection.", Toast.LENGTH_LONG).show();
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                webView.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
             }
         });
-        requestQueue.add(request.setTag("fullQue"));
     }
 
-    public void reportFull(View v) {
-        final MaterialDialog dialogMis = new MaterialDialog.Builder(this)
-                .title("Found mistake on")
-                .items(R.array.list)
-                .positiveText("Cancel")
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog materialDialog, View view, int i, CharSequence charSequence) {
-                        ContentValues values = new ContentValues();
-                        SQLiteDatabase database = Singleton.getInstance().getDatabase();
-                        values.put("text", "PDF Year: " + (getIntent().getExtras().getInt("code") + 2068) + charSequence);
-                        database.insert("report", null, values);
-                        database.close();
-                    }
-                })
-                .build();
-        dialogMis.show();
+    public static String AssetJSONFile(String filename, Context c) throws IOException {
+        AssetManager manager = c.getAssets();
+
+        InputStream file = manager.open(filename);
+        byte[] formArray = new byte[file.available()];
+        file.read(formArray);
+        file.close();
+
+        return new String(formArray);
     }
 }

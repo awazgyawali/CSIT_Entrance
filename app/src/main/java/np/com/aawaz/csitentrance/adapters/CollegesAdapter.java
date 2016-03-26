@@ -1,41 +1,30 @@
 package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
+import com.devspark.robototextview.widget.RobotoTextView;
 
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.activities.MainActivity;
+import np.com.aawaz.csitentrance.interfaces.MenuClicks;
 
 
 public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHolder> {
-    ArrayList<String> desc;
-    ArrayList<String> website;
-    ArrayList<String> phNo;
     ArrayList<String> address;
     Context context;
     LayoutInflater inflater;
     ArrayList<String> colleges;
+    private MenuClicks menuClicks;
 
-    public CollegesAdapter(Context context, ArrayList<String> colleges, ArrayList<String> address, ArrayList<String> desc, ArrayList<String> website, ArrayList<String> phNo) {
+    public CollegesAdapter(Context context, ArrayList<String> colleges, ArrayList<String> address) {
         this.colleges = colleges;
         this.address = address;
-        this.desc = desc;
-        this.website = website;
-        this.phNo = phNo;
         this.context = context;
         inflater = LayoutInflater.from(context);
     }
@@ -50,57 +39,6 @@ public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.colzName.setText(colleges.get(position));
         holder.address.setText(address.get(position));
-        if (website.get(position).equals("null"))
-            holder.website.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(MainActivity.mainLayout, "No web address found.", Snackbar.LENGTH_SHORT).show();
-                }
-            });
-        else
-            holder.website.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new MaterialDialog.Builder(context)
-                            .title("Confirmation.")
-                            .content("Open " + website.get(position) + "?")
-                            .positiveText("Open")
-                            .negativeText("Cancel")
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(website.get(position))));
-                                }
-                            })
-                            .show();
-                }
-            });
-
-        if (phNo.get(position).equals("null"))
-            holder.call.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(MainActivity.mainLayout, "No phone number found.", Snackbar.LENGTH_SHORT).show();
-                }
-            });
-        else
-            holder.call.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    new MaterialDialog.Builder(context)
-                            .title("Call Confirmation")
-                            .content("Call " + phNo.get(position) + "?")
-                            .positiveText("Call")
-                            .negativeText("Cancel")
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phNo.get(position), null)));
-                                }
-                            })
-                            .show();
-                }
-            });
     }
 
     @Override
@@ -108,19 +46,43 @@ public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHo
         return colleges.size();
     }
 
+
+    public void setMenuClickListener(MenuClicks clickListener) {
+        this.menuClicks = clickListener;
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView colzName;
-        LinearLayout website, call;
-        TextView address;
-        LinearLayout coreColz;
+        RobotoTextView colzName, address;
+        LinearLayout website, call, maps;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            colzName = (TextView) itemView.findViewById(R.id.colzName);
+            colzName = (RobotoTextView) itemView.findViewById(R.id.colzName);
+            address = (RobotoTextView) itemView.findViewById(R.id.address);
             website = (LinearLayout) itemView.findViewById(R.id.webSiteButton);
-            address = (TextView) itemView.findViewById(R.id.address);
             call = (LinearLayout) itemView.findViewById(R.id.callButton);
-            coreColz = (LinearLayout) itemView.findViewById(R.id.coreColz);
+            maps = (LinearLayout) itemView.findViewById(R.id.mapsButton);
+
+            call.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    menuClicks.onCallClicked(getAdapterPosition());
+                }
+            });
+
+            website.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    menuClicks.onWebsiteClicked(getAdapterPosition());
+                }
+            });
+
+            maps.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    menuClicks.onMapClicked(getAdapterPosition());
+                }
+            });
         }
     }
 

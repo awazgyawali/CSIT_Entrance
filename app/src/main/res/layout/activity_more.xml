@@ -10,15 +10,15 @@
         android:layout_margin="10dp"
         android:theme="@style/Theme.AppCompat"
         app:cardElevation="10dp"
-    tools:context=".fragments.More">
+        tools:context=".fragments.More">
 
         <RelativeLayout
             android:id="@+id/button"
-        android:layout_width="match_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
-        android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
                 android:src="@drawable/book_cover" />

@@ -1,9 +1,13 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +19,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,6 +31,7 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.CollegesAdapter;
+import np.com.aawaz.csitentrance.interfaces.MenuClicks;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -122,8 +130,60 @@ public class SearchActivity extends AppCompatActivity {
 
 
     private void fillNormally() {
-        CollegesAdapter adapter = new CollegesAdapter(this, names, address, desc, website, phNo);
+        CollegesAdapter adapter = new CollegesAdapter(this, names, address);
         colzRecy.setAdapter(adapter);
+        adapter.setMenuClickListener(new MenuClicks() {
+            @Override
+            public void onCallClicked(final int position) {
+                if (phNo.get(position).equals("null"))
+                    Snackbar.make(MainActivity.mainLayout, "No phone number found.", Snackbar.LENGTH_SHORT).show();
+                else
+                    new MaterialDialog.Builder(SearchActivity.this)
+                            .title("Call Confirmation")
+                            .content("Call " + phNo.get(position) + "?")
+                            .positiveText("Call")
+                            .negativeText("Cancel")
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phNo.get(position), null)));
+                                }
+                            })
+                            .show();
+            }
+
+            @Override
+            public void onWebsiteClicked(final int position) {
+                if (website.get(position).equals("null"))
+                    Snackbar.make(MainActivity.mainLayout, "No web address found.", Snackbar.LENGTH_SHORT).show();
+                else
+                    new MaterialDialog.Builder(SearchActivity.this)
+                            .title("Confirmation.")
+                            .content("Open " + website.get(position) + "?")
+                            .positiveText("Open")
+                            .negativeText("Cancel")
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(website.get(position))));
+                                }
+                            })
+                            .show();
+            }
+
+            @Override
+            public void onMapClicked(int position) {
+
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + names.get(position));
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                } else {
+                    Snackbar.make(MainActivity.mainLayout, "Google maps doesn't exist..", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        });
         colzRecy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
     }
 

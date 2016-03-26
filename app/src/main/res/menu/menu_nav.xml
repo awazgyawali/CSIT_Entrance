@@ -45,16 +45,14 @@
             android:title="Entrance Result" />
     </group>
 
-    <group android:id="@+id/sec" android:checkableBehavior="single">
+    <group android:id="@+id/sec" android:checkableBehavior="none">
 
         <item
             android:id="@+id/settings"
-            android:checkable="true"
             android:icon="@drawable/settings"
             android:title="Setting" />
         <item
             android:id="@+id/aboutUs"
-            android:checkable="true"
             android:icon="@drawable/about"
             android:title="About Us" />
     </group>
