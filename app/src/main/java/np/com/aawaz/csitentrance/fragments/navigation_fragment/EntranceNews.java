@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.os.AsyncTaskCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,6 +30,8 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.NewsAdapter;
+import np.com.aawaz.csitentrance.fragments.other_fragments.EachNews;
+import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.Singleton;
 
 
@@ -74,6 +77,22 @@ public class EntranceNews extends Fragment {
         newsAdapter = new NewsAdapter(getContext(), title, messages, time, imageUrl);
         recy.setLayoutManager(new LinearLayoutManager(getContext()));
         recy.setAdapter(newsAdapter);
+        newsAdapter.setOnClickListener(new ClickListener() {
+            @Override
+            public void itemClicked(View view, int position) {
+
+                BottomSheetDialogFragment bottomSheetDialogFragment = new EachNews();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("title", title.get(position));
+                bundle.putString("detail", messages.get(position));
+                bundle.putString("time", time.get(position));
+                bundle.putString("image_link", imageUrl.get(position));
+
+                bottomSheetDialogFragment.setArguments(bundle);
+                bottomSheetDialogFragment.show(getChildFragmentManager(), bottomSheetDialogFragment.getTag());
+            }
+        });
     }
 
     public void setDataToArrayListFromDb() {
@@ -92,6 +111,7 @@ public class EntranceNews extends Fragment {
         if (cursor.getCount() == 0)
             fetchNewsForFirstTime();
         else
+            //todo new chha bhane upadting news bahnne
             fillData();
 
         cursor.close();

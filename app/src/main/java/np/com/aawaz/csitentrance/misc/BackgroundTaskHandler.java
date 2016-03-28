@@ -1,9 +1,7 @@
 package np.com.aawaz.csitentrance.misc;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
 import com.android.volley.Request;
@@ -16,21 +14,11 @@ import com.google.android.gms.gcm.TaskParams;
 
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
 import np.com.aawaz.csitentrance.R;
 
 public class BackgroundTaskHandler extends GcmTaskService {
     RequestQueue requestQueue;
     Context context;
-    ArrayList<String> topic = new ArrayList<>(),
-            subTopic = new ArrayList<>(),
-            imageURL = new ArrayList<>(),
-            content = new ArrayList<>(),
-            author = new ArrayList<>(),
-            link = new ArrayList<>(),
-            linkTitle = new ArrayList<>();
-
 
     public BackgroundTaskHandler() {
         context = this;
@@ -76,23 +64,5 @@ public class BackgroundTaskHandler extends GcmTaskService {
         }
 
         return GcmNetworkManager.RESULT_SUCCESS;
-    }
-
-    private void storeToDb() throws Exception {
-        SQLiteDatabase database = Singleton.getInstance().getDatabase();
-        database.delete("news", null, null);
-        ContentValues values = new ContentValues();
-        for (int i = 0; i < topic.size(); i++) {
-            values.clear();
-            values.put("title", topic.get(i));
-            values.put("subTopic", subTopic.get(i));
-            values.put("content", content.get(i));
-            values.put("imageURL", imageURL.get(i));
-            values.put("author", author.get(i));
-            values.put("link", link.get(i));
-            values.put("linkTitle", linkTitle.get(i));
-            database.insert("news", null, values);
-        }
-        database.close();
     }
 }

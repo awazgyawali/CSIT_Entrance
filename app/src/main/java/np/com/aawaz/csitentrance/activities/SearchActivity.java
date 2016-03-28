@@ -31,17 +31,15 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.CollegesAdapter;
-import np.com.aawaz.csitentrance.interfaces.MenuClicks;
+import np.com.aawaz.csitentrance.interfaces.CollegeMenuClicks;
 
 public class SearchActivity extends AppCompatActivity {
 
     private ArrayList<String> names = new ArrayList<>(),
-            desc = new ArrayList<>(),
             website = new ArrayList<>(),
             address = new ArrayList<>(),
             phNo = new ArrayList<>();
     RecyclerView colzRecy;
-    JSONObject coreObject;
     LinearLayout emptyLayout;
     AppCompatEditText search;
 
@@ -58,7 +56,6 @@ public class SearchActivity extends AppCompatActivity {
     public void setDataToArrayList() {
         //Reading from json file and insillizing inside arrayList
         names.clear();
-        desc.clear();
         website.clear();
         address.clear();
         phNo.clear();
@@ -67,10 +64,8 @@ public class SearchActivity extends AppCompatActivity {
             for (int i = 0; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
                 if (jo_inside.getString("name").toLowerCase().contains(search.getText().toString().toLowerCase()) ||
-                        jo_inside.getString("address").toLowerCase().contains(search.getText().toString().toLowerCase()) ||
-                        jo_inside.getString("desc").contains(search.getText().toString())) {
+                        jo_inside.getString("address").toLowerCase().contains(search.getText().toString().toLowerCase())) {
                     names.add(jo_inside.getString("name"));
-                    desc.add(jo_inside.getString("desc"));
                     website.add(jo_inside.getString("website"));
                     address.add(jo_inside.getString("address"));
                     phNo.add(jo_inside.getString("phone"));
@@ -127,7 +122,7 @@ public class SearchActivity extends AppCompatActivity {
     private void fillNormally() {
         CollegesAdapter adapter = new CollegesAdapter(this, names, address);
         colzRecy.setAdapter(adapter);
-        adapter.setMenuClickListener(new MenuClicks() {
+        adapter.setMenuClickListener(new CollegeMenuClicks() {
             @Override
             public void onCallClicked(final int position) {
                 if (phNo.get(position).equals("null"))

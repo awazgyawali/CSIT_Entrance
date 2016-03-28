@@ -6,6 +6,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/background</item>
 
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+
         <item name="android:listViewStyle">@style/Widget.MyTheme.ListView</item>
         <item name="android:scrollViewStyle">@style/Widget.MyTheme.ScrollView</item>
     </style>
@@ -28,11 +30,15 @@
     </style>
 
     <style name="NavigationDrawer" parent="AppTheme">
-        <item name="colorAccent">@color/colorSelected</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="WhiteProgressBar">
         <item name="colorAccent">@color/white</item>
     </style>
 
+    <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/white</item>
+    </style>
 </resources>

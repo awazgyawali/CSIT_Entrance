@@ -2,7 +2,7 @@
   "questions": [
     {
       "question": "1._____ was present at the party.",
-      "a":"All but she",
+      "a": "All but she",
       "b": "All but herself",
       "c": "All but her",
       "d": "All but myself",
@@ -136,7 +136,6 @@
       "d": "down",
       "ans": "b"
     },
-
     {
       "question": "18.I don’t think he ___ come to the meeting tomorrow.",
       "a": "would",
@@ -145,7 +144,6 @@
       "d": "might",
       "ans": "a"
     },
-
     {
       "question": "19.He is ____ one eyed man.",
       "a": "the",
@@ -154,7 +152,6 @@
       "d": "none",
       "ans": "c"
     },
-
     {
       "question": "20.Study of mountains is called:",
       "a": "geology",
@@ -163,7 +160,6 @@
       "d": "orology",
       "ans": "d"
     },
-
     {
       "question": "21.The opposite of the word Pernicious is:",
       "a": "Beneficial",
@@ -172,7 +168,6 @@
       "d": "Fair",
       "ans": "a"
     },
-
     {
       "question": "22.Grandma is _______ the visit of her grand children.",
       "a": "looking forward",
@@ -181,7 +176,6 @@
       "d": "looking forward to",
       "ans": "d"
     },
-
     {
       "question": "23.Shyam has done this work and _______.",
       "a": "so did i",
@@ -190,7 +184,6 @@
       "d": "is has i",
       "ans": "c"
     },
-
     {
       "question": "24.He _____ in plane crash.",
       "a": "died",
@@ -519,7 +512,6 @@
       "d": "CH<sub>3</sub>OCH<sub>3</sub>",
       "ans": "c"
     },
-
     {
       "question": "65.If phenolphthalein is added to alkali, color change to",
       "a": "purple",
@@ -528,7 +520,6 @@
       "d": "red",
       "ans": "a"
     },
-
     {
       "question": "66. Which order of bond angle is correct?",
       "a": "H<sub>2</sub>O<NH<sub>3</sub><CO<sub>2</sub><CH<sub>4</sub>",
@@ -545,7 +536,6 @@
       "d": "24.5 gm",
       "ans": "b"
     },
-
     {
       "question": "68.The equivalent weight of KMnO<sub>4</sub> in acidic medium is",
       "a": "M/2",

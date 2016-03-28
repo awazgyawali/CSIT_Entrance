@@ -5,11 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.devspark.robototextview.widget.RobotoTextView;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.QuizActivity;
@@ -37,16 +36,16 @@ public class YearsList extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        RobotoTextView que69, que70, que71, que72, que1, que2, que3, que4;
+        CardView que69, que70, que71, que72, que1, que2, que3, que4;
 
-        que1 = (RobotoTextView) view.findViewById(R.id.question1);
-        que2 = (RobotoTextView) view.findViewById(R.id.question2);
-        que3 = (RobotoTextView) view.findViewById(R.id.question3);
-        que4 = (RobotoTextView) view.findViewById(R.id.question4);
-        que69 = (RobotoTextView) view.findViewById(R.id.question2069);
-        que70 = (RobotoTextView) view.findViewById(R.id.question2070);
-        que71 = (RobotoTextView) view.findViewById(R.id.question2071);
-        que72 = (RobotoTextView) view.findViewById(R.id.question2072);
+        que1 = (CardView) view.findViewById(R.id.question1);
+        que2 = (CardView) view.findViewById(R.id.question2);
+        que3 = (CardView) view.findViewById(R.id.question3);
+        que4 = (CardView) view.findViewById(R.id.question4);
+        que69 = (CardView) view.findViewById(R.id.question2069);
+        que70 = (CardView) view.findViewById(R.id.question2070);
+        que71 = (CardView) view.findViewById(R.id.question2071);
+        que72 = (CardView) view.findViewById(R.id.question2072);
 
         que69.setOnClickListener(new View.OnClickListener() {
             @Override

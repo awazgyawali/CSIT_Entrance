@@ -4,11 +4,9 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -18,12 +16,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.devspark.robototextview.widget.RobotoTextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -44,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     public static CoordinatorLayout mainLayout;
     Toolbar toolbar;
+    static RobotoTextView titleMain;
     AppBarLayout appBarLayout;
 
     @Override
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
-        setTitle("Home");
+        getSupportActionBar().setTitle("");
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
         mNavigationView = (NavigationView) findViewById(R.id.navigationView);
@@ -60,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
         mainLayout = (CoordinatorLayout) findViewById(R.id.mainParent);
         tabLayout = (TabLayout) findViewById(R.id.tabLayoutMain);
         appBarLayout = (AppBarLayout) findViewById(R.id.appBarMain);
+        titleMain = (RobotoTextView) findViewById(R.id.titleMain);
 
+        setTitle("Play Quiz");
         manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -110,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.main_home:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
-                setTitle("Home");
+                setTitle("Play Quiz");
                 tabLayout.setVisibility(View.VISIBLE);
                 item.setChecked(true);
                 break;
@@ -178,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if (getTitle().equals("CSIT Colleges"))
+        if (getToolbarTitle().equals("CSIT Colleges"))
             menu.findItem(R.id.search).setVisible(true);
         else
             menu.findItem(R.id.search).setVisible(false);
@@ -199,30 +198,17 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(mNavigationView))
             mDrawerLayout.closeDrawer(mNavigationView);
-        else if (!getTitle().equals("Home"))
+        else if (!getToolbarTitle().equals("Play Quiz"))
             navigate(mNavigationView.getMenu().findItem(R.id.main_home));
         else
             super.onBackPressed();
     }
 
-    @Override
-    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            new MaterialDialog.Builder(this)
-                    .title("Color")
-                    .input("", "", new MaterialDialog.InputCallback() {
-                        @Override
-                        public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                            changeCOlor(input.toString());
-                        }
-                    })
-                    .show();
-            return true;
-        }
-        return super.onKeyLongPress(keyCode, event);
+    public static void setTitle(String name) {
+        titleMain.setText(name);
     }
 
-    private void changeCOlor(String s) {
-        appBarLayout.setBackgroundColor(Color.parseColor(s));
+    public String getToolbarTitle() {
+        return titleMain.getText().toString();
     }
 }

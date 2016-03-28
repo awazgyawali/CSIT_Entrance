@@ -23,7 +23,6 @@
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:paddingTop="16dp"
             fancy:elevation="0dp">
 
             <LinearLayout

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.interfaces.ClickListener;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
@@ -27,6 +28,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             imageURL;
     private LayoutInflater inflater;
     private Context context;
+    private ClickListener listener;
 
 
     public NewsAdapter(Context context, ArrayList<String> title, ArrayList<String> message, ArrayList<String> time, ArrayList<String> imageURL) {
@@ -45,7 +47,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-
         holder.title.setText(title.get(position));
         holder.newsDetail.setText(Html.fromHtml(message.get(position)));
         holder.time.setText(convertToSimpleDate(time.get(position)));
@@ -76,16 +77,26 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         return message.size();
     }
 
+    public void setOnClickListener(ClickListener listener) {
+        this.listener = listener;
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         RobotoTextView title, newsDetail, time;
         ImageView imageView;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
             title = (RobotoTextView) itemView.findViewById(R.id.newsTitle);
             newsDetail = (RobotoTextView) itemView.findViewById(R.id.newsDetail);
             time = (RobotoTextView) itemView.findViewById(R.id.newsTime);
             imageView = (ImageView) itemView.findViewById(R.id.newsImage);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.itemClicked(itemView, getAdapterPosition());
+                }
+            });
         }
     }
 }

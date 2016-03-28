@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.adapters.CollegesAdapter;
-import np.com.aawaz.csitentrance.interfaces.MenuClicks;
+import np.com.aawaz.csitentrance.interfaces.CollegeMenuClicks;
 
 
 public class AllColleges extends Fragment {
@@ -69,7 +69,7 @@ public class AllColleges extends Fragment {
     private void fillNormally() {
         //Recycler view handler
         CollegesAdapter adapter = new CollegesAdapter(getContext(), names, address);
-        adapter.setMenuClickListener(new MenuClicks() {
+        adapter.setMenuClickListener(new CollegeMenuClicks() {
             @Override
             public void onCallClicked(final int position) {
                 if (phNo.get(position).equals("null"))

@@ -1,11 +1,16 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.os.AsyncTaskCompat;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -140,12 +145,36 @@ public class EntranceForum extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        fetchFromServer();
+        fillDataFromDB();
+    }
+
+    private void fillDataFromDB() {
+        errorPart.setVisibility(View.GONE);
+        SQLiteDatabase database = Singleton.getInstance().getDatabase();
+        Cursor cursor = database.query("forum", new String[]{"id", "poster", "message", "time", "image_link", "comments"}, null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            postId.add(cursor.getInt(cursor.getColumnIndex("id")));
+            comments.add(cursor.getInt(cursor.getColumnIndex("comments")));
+
+            poster.add(cursor.getString(cursor.getColumnIndex("poster")));
+            messages.add(cursor.getString(cursor.getColumnIndex("message")));
+            time.add(cursor.getString(cursor.getColumnIndex("time")));
+            image_link.add(cursor.getString(cursor.getColumnIndex("image_link")));
+        }
+        if (cursor.getCount() == 0)
+            fetchFromServer();
+        else
+            //todo new chha bhane upadting news bahnne
+            fillRecyclerView();
+
+        cursor.close();
+        database.close();
     }
 
     private void fillRecyclerView() {
+        storeToDb();
         progressBar.setVisibility(View.GONE);
-        ForumAdapter adapter = new ForumAdapter(getContext(), poster, messages, comments,time,image_link);
+        ForumAdapter adapter = new ForumAdapter(getContext(), poster, messages, comments, time, image_link);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter.setClickListener(new ClickListener() {
@@ -163,10 +192,31 @@ public class EntranceForum extends Fragment {
         });
     }
 
+    private void storeToDb() {
+        AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                SQLiteDatabase database = Singleton.getInstance().getDatabase();
+                database.delete("forum", null, null);
+                ContentValues values = new ContentValues();
+                for (int i = 0; i < messages.size(); i++) {
+                    values.clear();
+                    values.put("id", postId.get(i));
+                    values.put("comments", comments.get(i));
+                    values.put("poster", poster.get(i));
+                    values.put("message", messages.get(i));
+                    values.put("time", time.get(i));
+                    values.put("image_link", image_link.get(i));
+                    database.insert("news", null, values);
+                }
+                return null;
+            }
+        });
+    }
+
     private void fetchFromServer() {
         progressBar.setVisibility(View.VISIBLE);
         mainLayout.setVisibility(View.GONE);
-        errorPart.setVisibility(View.GONE);
         JsonArrayRequest request = new JsonArrayRequest(getString(R.string.getForum), new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {

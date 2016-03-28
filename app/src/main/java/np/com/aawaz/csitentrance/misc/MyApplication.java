@@ -3,11 +3,12 @@ package np.com.aawaz.csitentrance.misc;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.FacebookSdk;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
+
 import io.fabric.sdk.android.Fabric;
 
-import com.facebook.FacebookSdk;
 
 public class MyApplication extends Application {
     private static MyApplication sInstance;

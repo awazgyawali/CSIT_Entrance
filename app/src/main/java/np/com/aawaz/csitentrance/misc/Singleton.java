@@ -8,13 +8,13 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.gcm.GcmNetworkManager;
 
-import np.com.aawaz.csitentrance.databases.NewsDataBase;
+import np.com.aawaz.csitentrance.databases.DataBaseHelper;
 
 public class Singleton {
 
     private static Singleton sInstance = null;
     private RequestQueue mRequestQueue;
-    private NewsDataBase mDatabase;
+    private DataBaseHelper mDatabase;
     private GcmNetworkManager mScheduler;
 
     public static boolean isLargeScreen(Context context) {
@@ -23,7 +23,7 @@ public class Singleton {
     }
 
     private Singleton() {
-        mDatabase = new NewsDataBase(MyApplication.getAppContext());
+        mDatabase = new DataBaseHelper(MyApplication.getAppContext());
         mRequestQueue = Volley.newRequestQueue(MyApplication.getAppContext());
         mScheduler = GcmNetworkManager.getInstance(MyApplication.getAppContext());
     }
@@ -47,13 +47,10 @@ public class Singleton {
         return mDatabase.getWritableDatabase();
     }
 
-    public GcmNetworkManager getGcmScheduler() {
-        return mScheduler;
-    }
-
     public static String getName() {
         return MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "");
     }
+
     public static String getEmail() {
         return MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("E-mail", "");
     }

@@ -14,6 +14,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.android.volley.Response;
@@ -44,7 +45,8 @@ public class CommentsFragment extends BottomSheetDialogFragment {
     AppCompatEditText commentEditText;
     ImageButton commentButton;
     CircleImageView profileImage;
-    RobotoTextView commentNumber;
+    RobotoTextView commentNumber, errorMessage;
+    LinearLayout commentAdder;
 
     public CommentsFragment() {
         // Required empty public constructor
@@ -84,11 +86,22 @@ public class CommentsFragment extends BottomSheetDialogFragment {
         commentEditText = (AppCompatEditText) view.findViewById(R.id.addCommentText);
         commentButton = (ImageButton) view.findViewById(R.id.commentButton);
         profileImage = (CircleImageView) view.findViewById(R.id.profileImage);
-        commentNumber= (RobotoTextView) view.findViewById(R.id.numberComments);
+        commentNumber = (RobotoTextView) view.findViewById(R.id.numberComments);
+        errorMessage = (RobotoTextView) view.findViewById(R.id.errorComment);
+        commentAdder = (LinearLayout) view.findViewById(R.id.commentAdder);
+        errorMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fetchFromInternet();
+            }
+        });
+        commentsRecyclerView.setVisibility(View.GONE);
+        errorMessage.setVisibility(View.GONE);
     }
 
     private void fillViews() throws Exception {
         progressBar.setVisibility(View.GONE);
+        commentAdder.setVisibility(View.VISIBLE);
         commentsRecyclerView.setVisibility(View.VISIBLE);
         commentsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         CommentAdapter adapter = new CommentAdapter(getActivity(), commenter, comments, image_link, time);
@@ -97,8 +110,11 @@ public class CommentsFragment extends BottomSheetDialogFragment {
     }
 
     private void fetchFromInternet() {
+        errorMessage.setVisibility(View.GONE);
+        commentsRecyclerView.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
         int requestId = getArguments().getInt("post_id");
-        commentNumber.setText(getArguments().getInt("comments")+ " Comments");
+        commentNumber.setText(getArguments().getInt("comments") + " Comments");
         JsonArrayRequest request = new JsonArrayRequest(getActivity().getString(R.string.getComment) + requestId, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -112,13 +128,15 @@ public class CommentsFragment extends BottomSheetDialogFragment {
                     }
                     fillViews();
                 } catch (Exception ignored) {
-
+                    errorMessage.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                errorMessage.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
             }
         });
         Singleton.getInstance().getRequestQueue().add(request);
@@ -153,8 +171,6 @@ public class CommentsFragment extends BottomSheetDialogFragment {
             ((BottomSheetBehavior) behavior).setBottomSheetCallback(mBottomSheetBehaviorCallback);
         }
 
-        commentsRecyclerView.setVisibility(View.GONE);
-        progressBar.setVisibility(View.VISIBLE);
 
         profileImage.setImageURI(Uri.parse(getContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("ImageLink", "")));
         fetchFromInternet();

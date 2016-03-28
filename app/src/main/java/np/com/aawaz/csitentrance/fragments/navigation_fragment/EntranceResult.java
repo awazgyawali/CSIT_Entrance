@@ -3,7 +3,6 @@ package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -14,6 +13,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -43,6 +43,7 @@ public class EntranceResult extends Fragment {
     ProgressBar progressBarResult;
     RobotoTextView resultHolder;
     ImageView cross;
+    private InputMethodManager imm;
 
 
     private void workForViewingResult() {
@@ -50,6 +51,7 @@ public class EntranceResult extends Fragment {
             @Override
             public void onClick(final View view) {
                 revealLayout.revealSecondaryView();
+                imm.hideSoftInputFromWindow(rollNo.getWindowToken(), 0);
                 progressBarResult.setVisibility(View.VISIBLE);
                 resultHolder.setVisibility(View.GONE);
                 StringRequest request = new StringRequest(Request.Method.GET, getString(R.string.viewResult) + rollNo.getText(), new Response.Listener<String>() {
@@ -59,7 +61,6 @@ public class EntranceResult extends Fragment {
                         progressBarResult.setVisibility(View.GONE);
                         if (response.contains("null")) {
                             resultHolder.setText("Sorry!! This roll number is not in the list.");
-                            waitFor(10000);
                         } else {
                             resultHolder.setText(Html.fromHtml(response));
                         }
@@ -71,7 +72,6 @@ public class EntranceResult extends Fragment {
                         resultHolder.setText("Unable to connect to the server.\n Please try again.");
                         resultHolder.setVisibility(View.VISIBLE);
                         progressBarResult.setVisibility(View.GONE);
-                        waitFor(3000);
                     }
                 });
                 requestQueue.add(request);
@@ -122,7 +122,7 @@ public class EntranceResult extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         requestQueue = Singleton.getInstance().getRequestQueue();
-
+        imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         result = getContext().getSharedPreferences("resultInfo", Context.MODE_PRIVATE);
 
         if (result.getBoolean("published", false)) {
@@ -160,16 +160,6 @@ public class EntranceResult extends Fragment {
             }
         });
         requestQueue.add(request);
-    }
-
-    public void waitFor(final long mils) {
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                revealLayout.revealMainView();
-            }
-        }, mils);
-
     }
 
     @Nullable

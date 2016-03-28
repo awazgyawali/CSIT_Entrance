@@ -12,7 +12,7 @@ import com.devspark.robototextview.widget.RobotoTextView;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.interfaces.MenuClicks;
+import np.com.aawaz.csitentrance.interfaces.CollegeMenuClicks;
 
 
 public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHolder> {
@@ -20,7 +20,7 @@ public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHo
     Context context;
     LayoutInflater inflater;
     ArrayList<String> colleges;
-    private MenuClicks menuClicks;
+    private CollegeMenuClicks menuClicks;
 
     public CollegesAdapter(Context context, ArrayList<String> colleges, ArrayList<String> address) {
         this.colleges = colleges;
@@ -47,7 +47,7 @@ public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHo
     }
 
 
-    public void setMenuClickListener(MenuClicks clickListener) {
+    public void setMenuClickListener(CollegeMenuClicks clickListener) {
         this.menuClicks = clickListener;
     }
 

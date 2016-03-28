@@ -4,10 +4,10 @@
     android:id="@+id/singlePostCore"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:layout_margin="15dp"
     android:orientation="vertical"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="20dp"
+    app:cardCornerRadius="5dp"
     tools:context=".fragments.other_fragments.CommentsFragment">
 
     <LinearLayout
@@ -17,11 +17,11 @@
         android:orientation="vertical">
 
         <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/numberComments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="10 Comments"
-            android:id="@+id/numberComments"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorPrimaryText"
             app:typeface="roboto_bold" />
@@ -41,18 +41,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true" />
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/errorComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="Unable to connect.\nTap to retry." />
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:id="@+id/commentAdder"
+            android:visibility="gone"
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileImage"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:id="@+id/profileImage"
                 android:layout_margin="5dp" />
 
             <android.support.design.widget.TextInputLayout
@@ -61,16 +71,16 @@
                 android:layout_weight="1">
 
                 <android.support.v7.widget.AppCompatEditText
-                    android:layout_width="match_parent"
                     android:id="@+id/addCommentText"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Your Comment" />
             </android.support.design.widget.TextInputLayout>
 
             <ImageButton
+                android:id="@+id/commentButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/commentButton"
                 android:background="?android:selectableItemBackground"
                 android:padding="10dp"
                 android:src="@drawable/post" />

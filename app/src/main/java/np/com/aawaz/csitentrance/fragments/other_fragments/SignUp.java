@@ -3,13 +3,16 @@ package np.com.aawaz.csitentrance.fragments.other_fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
@@ -54,8 +57,6 @@ import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.misc.Singleton;
-import pl.aprilapps.easyphotopicker.DefaultCallback;
-import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class SignUp extends Fragment implements TextWatcher {
     EditText name, sur, email, phone;
@@ -67,6 +68,7 @@ public class SignUp extends Fragment implements TextWatcher {
     private File file;
     private CallbackManager callBackManager;
     TwitterLoginButton twitterLoginButton;
+    private Bitmap bitmap;
 
     public SignUp() {
         // Required empty public constructor
@@ -179,7 +181,7 @@ public class SignUp extends Fragment implements TextWatcher {
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EasyImage.openGallery(SignUp.this, 1);
+                selectImageFromGallery();
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {
@@ -215,6 +217,13 @@ public class SignUp extends Fragment implements TextWatcher {
         });
     }
 
+    public void selectImageFromGallery() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+    }
+
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -240,30 +249,65 @@ public class SignUp extends Fragment implements TextWatcher {
         super.onActivityResult(requestCode, resultCode, data);
         twitterLoginButton.onActivityResult(requestCode, resultCode, data);
         callBackManager.onActivityResult(requestCode, resultCode, data);
-        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
-            @Override
-            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
-            }
 
-            @Override
-            public void onImagePicked(File imageFile, EasyImage.ImageSource source, int type) {
-                //Handle the image
-                onPhotoReturned(imageFile);
-            }
-        });
+        if (requestCode == 1 && resultCode == AppCompatActivity.RESULT_OK
+                && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+            Cursor cursor = getContext().getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+
+            file = new File(picturePath);
+            imageView.setImageURI(Uri.fromFile(file));
+
+            onTextChanged(null, 0, 0, 0);
+            decodeFile(picturePath);
+        }
     }
 
+    public void decodeFile(String filePath) {
+        // Decode image size
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(filePath, o);
+
+        // The new size we want to scale to
+        final int REQUIRED_SIZE = 256;
+
+        // Find the correct scale value. It should be the power of 2.
+        int width_tmp = o.outWidth, height_tmp = o.outHeight;
+        int scale = 1;
+        while (true) {
+            if (width_tmp < REQUIRED_SIZE && height_tmp < REQUIRED_SIZE)
+                break;
+            width_tmp /= 2;
+            height_tmp /= 2;
+            scale *= 2;
+        }
+
+        // Decode with inSampleSize
+        BitmapFactory.Options o2 = new BitmapFactory.Options();
+        o2.inSampleSize = scale;
+        bitmap = BitmapFactory.decodeFile(filePath, o2);
+
+        imageView.setImageBitmap(bitmap);
+    }
+
+
     private void onPhotoReturned(File imageFile) {
-        this.file = imageFile;
-        imageView.setImageURI(Uri.fromFile(imageFile));
 
-        Bitmap myImg = BitmapFactory.decodeFile(imageFile.getPath());
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
-        myImg.compress(Bitmap.CompressFormat.PNG, 50, stream);
-        byte[] byte_arr = stream.toByteArray();
-
-        final String encodedString = Base64.encodeToString(byte_arr, 0);
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+        byte[] data = bos.toByteArray();
+        final String file = Base64.encodeToString(data, Base64.DEFAULT);
 
         StringRequest request = new StringRequest(Request.Method.POST, getString(R.string.uploadImage), new Response.Listener<String>() {
             @Override
@@ -278,8 +322,8 @@ public class SignUp extends Fragment implements TextWatcher {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("base64", encodedString);
-                params.put("ImageName", Singleton.getEmail().replace(".", ""));
+                params.put("base64", file);
+                params.put("ImageName", Singleton.getEmail());
                 return params;
             }
 

@@ -32,6 +32,7 @@ public class Home extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        final String[] titles={"Play Quiz","Play Quiz","Full Question","Scoreboard"};
         tabLayout.removeAllTabs();
         viewPager.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
             @Override
@@ -52,6 +53,22 @@ public class Home extends Fragment {
             @Override
             public int getCount() {
                 return 4;
+            }
+        });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                MainActivity.setTitle(titles[position]);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
         tabLayout.setupWithViewPager(viewPager);
