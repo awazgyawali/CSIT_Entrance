@@ -73,10 +73,10 @@ public class Home extends Fragment {
         });
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(0).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.calender_selector));
-        tabLayout.getTabAt(1).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.book_selector));
-        tabLayout.getTabAt(2).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.file_selector));
-        tabLayout.getTabAt(3).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.scoreboard_selector));
+        tabLayout.getTabAt(0).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_calender));
+        tabLayout.getTabAt(1).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_book));
+        tabLayout.getTabAt(2).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_file));
+        tabLayout.getTabAt(3).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_scoreboard));
     }
 
 

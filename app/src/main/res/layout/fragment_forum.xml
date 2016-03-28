@@ -37,8 +37,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Just ask your question."
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white"
-                    android:textSize="20dp"
                     fancy:typeface="roboto_bold" />
 
                 <android.support.design.widget.TextInputLayout

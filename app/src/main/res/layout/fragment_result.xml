@@ -38,8 +38,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Result is not live yet."
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white"
-                    android:textSize="20dp"
                     fancy:typeface="roboto_bold" />
 
                 <com.devspark.robototextview.widget.RobotoTextView
@@ -48,7 +48,6 @@
                     android:gravity="center"
                     android:text="We will notify you once the result has been published."
                     android:textColor="@color/white_transparent"
-                    android:textSize="16dp"
                     fancy:typeface="roboto_italic" />
 
             </LinearLayout>
@@ -65,8 +64,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Result is live now."
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white"
-                    android:textSize="20dp"
                     fancy:typeface="roboto_bold" />
 
                 <com.devspark.robototextview.widget.RobotoTextView
@@ -76,7 +75,6 @@
                     android:gravity="center"
                     android:text="Please enter your Roll no to view your result."
                     android:textColor="@color/white_transparent"
-                    android:textSize="16dp"
                     fancy:typeface="roboto_italic" />
 
                 <android.support.design.widget.TextInputLayout

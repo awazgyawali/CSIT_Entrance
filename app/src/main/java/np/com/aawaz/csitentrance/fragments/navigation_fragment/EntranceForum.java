@@ -168,7 +168,6 @@ public class EntranceForum extends Fragment {
             fillRecyclerView();
 
         cursor.close();
-        database.close();
     }
 
     private void fillRecyclerView() {
@@ -207,7 +206,7 @@ public class EntranceForum extends Fragment {
                     values.put("message", messages.get(i));
                     values.put("time", time.get(i));
                     values.put("image_link", image_link.get(i));
-                    database.insert("news", null, values);
+                    database.insert("forum", null, values);
                 }
                 return null;
             }

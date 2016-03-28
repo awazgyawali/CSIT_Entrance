@@ -65,10 +65,14 @@ public class EachNews extends BottomSheetDialogFragment {
         title.setText(bundle.getString("title"));
         newsDetail.setText(Html.fromHtml(bundle.getString("detail")));
         time.setText(bundle.getString("time"));
-
-        Picasso.with(getContext())
-                .load(bundle.getString("image_link"))
-                .into(imageView);
+        if (bundle.getString("image_link").equals("null"))
+            imageView.setVisibility(View.GONE);
+        else {
+            Picasso.with(getContext())
+                    .load(bundle.getString("image_link"))
+                    .into(imageView);
+            imageView.setVisibility(View.VISIBLE);
+        }
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override

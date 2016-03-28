@@ -20,8 +20,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:maxLines="2"
             android:text="Demo Title"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:ellipsize="end"
             android:textColor="@color/colorPrimary"
             app:typeface="roboto_bold" />
 
@@ -49,7 +50,7 @@
             android:maxLines="3"
             android:text="Demo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahah"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/colorSecondaryText" />
+            android:textColor="@color/colorPrimaryText" />
 
         <ImageView
             android:id="@+id/newsImage"

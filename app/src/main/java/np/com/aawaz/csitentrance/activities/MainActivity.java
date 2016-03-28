@@ -1,6 +1,5 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -102,8 +101,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void navigate(MenuItem item) {
-        invalidateOptionsMenu();
         int id = item.getItemId();
+        mDrawerLayout.closeDrawer(mNavigationView);
+        invalidateOptionsMenu();
+        if (id == R.id.settings) {
+            startActivity(new Intent(MainActivity.this, Settings.class));
+            return;
+        } else if (id == R.id.aboutUs) {
+            startActivity(new Intent(MainActivity.this, About.class));
+            return;
+        }
         tabLayout.setVisibility(View.GONE);
         setAppBarElevation(getResources().getDimension(R.dimen.app_bar_elevation));
         switch (id) {
@@ -152,16 +159,7 @@ public class MainActivity extends AppCompatActivity {
                 setAppBarElevation(0);
                 item.setChecked(true);
                 break;
-
-            case R.id.settings:
-                startActivity(new Intent(MainActivity.this, Settings.class));
-                break;
-
-            case R.id.aboutUs:
-                startActivity(new Intent(MainActivity.this, About.class));
-                break;
         }
-        mDrawerLayout.closeDrawer(mNavigationView);
     }
 
     @Override
@@ -170,9 +168,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void setAppBarElevation(float elevation) {
-        appBarLayout.setElevation(elevation);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            appBarLayout.setElevation(elevation);
+        }
     }
 
     @Override

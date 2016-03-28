@@ -115,7 +115,6 @@ public class EntranceNews extends Fragment {
             fillData();
 
         cursor.close();
-        database.close();
     }
 
     public void fetchNewsForFirstTime() {

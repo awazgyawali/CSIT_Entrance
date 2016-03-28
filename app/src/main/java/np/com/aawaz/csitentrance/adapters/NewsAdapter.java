@@ -66,7 +66,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         try {
             Date date = simpleDateFormat.parse(created_time);
-            return DateUtils.getRelativeDateTimeString(context, date.getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_SHOW_TIME);
+            return DateUtils.getRelativeTimeSpanString(context, date.getTime());
         } catch (ParseException ignored) {
         }
         return "Unknown Time";

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.AppCompat.Light"
     tools:context=".fragments.other_fragments.YearsList">
 
     <LinearLayout
@@ -22,117 +21,85 @@
             app:typeface="roboto_bold" />
 
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/question2069"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="30sp"
+            app:cardBackgroundColor="@color/white">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/question2069"
-                android:layout_width="0dp"
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp">
+                android:padding="16dp"
+                android:text="TU Examination Year 2069"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimaryText"
+                app:typeface="roboto_bold" />
+        </android.support.v7.widget.CardView>
 
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Year\n\n2069"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/question2070"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp">
-
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Year\n\n2070"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
-            </android.support.v7.widget.CardView>
-        </LinearLayout>
-
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/question2070"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="30sp"
+            app:cardBackgroundColor="@color/white">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/question2071"
-                android:layout_width="0dp"
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp">
+                android:padding="16dp"
+                android:text="TU Examination Year 2070"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimaryText"
+                app:typeface="roboto_bold" />
+        </android.support.v7.widget.CardView>
 
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
+        <android.support.v7.widget.CardView
+            android:id="@+id/question2071"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="30sp"
+            app:cardBackgroundColor="@color/white">
 
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Year\n\n2071"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/question2072"
-                android:layout_width="0dp"
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp">
+                android:padding="16dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimaryText"
+                app:typeface="roboto_bold" />
 
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Year\n\n2072"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
-            </android.support.v7.widget.CardView>
-        </LinearLayout>
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:text="TU Examination Year 2071"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimaryText"
+                app:typeface="roboto_bold" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/question2072"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30sp"
+            app:cardBackgroundColor="@color/white">
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:text="TU Examination Year 2072"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimaryText"
+                app:typeface="roboto_bold" />
+        </android.support.v7.widget.CardView>
 
 
         <com.devspark.robototextview.widget.RobotoTextView
@@ -145,109 +112,78 @@
             app:typeface="roboto_bold" />
 
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/question1"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30sp"
+            app:cardBackgroundColor="@color/white">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/question1"
-                android:layout_width="0dp"
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp">
+                android:padding="16dp"
+                android:text="Model Question 1"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimaryText"
+                app:typeface="roboto_bold" />
 
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Model\n\n1"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
+        </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/question2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp">
-
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Model\n\n2"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
-            </android.support.v7.widget.CardView>
-        </LinearLayout>
-
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/question2"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30sp"
+            app:cardBackgroundColor="@color/white">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/question3"
-                android:layout_width="0dp"
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp">
+                android:padding="16dp"
+                android:text="Model Question 2"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimaryText"
+                app:typeface="roboto_bold" />
+        </android.support.v7.widget.CardView>
 
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Model\n\n3"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
-            </android.support.v7.widget.CardView>
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/question4"
-                android:layout_width="0dp"
+        <android.support.v7.widget.CardView
+            android:id="@+id/question3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30sp"
+            app:cardBackgroundColor="@color/white">
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp">
+                android:padding="16dp"
+                android:text="Model Question 3"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimaryText"
+                app:typeface="roboto_bold" />
+        </android.support.v7.widget.CardView>
 
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Model\n\n4"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
-            </android.support.v7.widget.CardView>
-        </LinearLayout>
+        <android.support.v7.widget.CardView
+            android:id="@+id/question4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30sp"
+            app:cardBackgroundColor="@color/white">
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:text="Model Question 4"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimaryText"
+                app:typeface="roboto_bold" />
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

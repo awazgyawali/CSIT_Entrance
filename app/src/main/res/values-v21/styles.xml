@@ -44,4 +44,9 @@
         <item name="spinBars">true</item>
         <item name="color">@color/white</item>
     </style>
+
+    <style name="menu_labels_style">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

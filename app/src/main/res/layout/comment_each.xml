@@ -7,9 +7,9 @@
     android:orientation="horizontal">
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileComment"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/profileComment"
         android:layout_margin="10dp" />
 
     <LinearLayout
@@ -31,14 +31,13 @@
                 android:layout_weight="1"
                 android:maxLines="1"
                 android:text="Aawaz Gyawali"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/colorPrimary"
                 app:typeface="roboto_bold" />
 
             <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/timeComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/timeComment"
                 android:text="3 hours ago" />
         </LinearLayout>
 
@@ -48,7 +47,7 @@
             android:layout_height="wrap_content"
             android:lines="3"
             android:text="This is a small comment"
-            android:textColor="@color/colorSecondaryText"
+            android:textColor="@color/colorPrimaryText"
             android:textSize="12sp" />
     </LinearLayout>
 

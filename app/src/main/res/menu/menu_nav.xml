@@ -55,7 +55,7 @@
         <item
             android:id="@+id/settings"
             android:icon="@drawable/settings"
-            android:title="Setting" />
+            android:title="Settings" />
         <item
             android:id="@+id/aboutUs"
             android:icon="@drawable/about"

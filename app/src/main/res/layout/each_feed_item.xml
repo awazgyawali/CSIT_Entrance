@@ -27,7 +27,7 @@
             android:gravity="center"
             android:padding="3dp"
             android:text="+2"
-            android:textColor="@color/colorPrimaryText" />
+            android:textColor="@color/colorSecondaryText" />
 
     </LinearLayout>
 
@@ -48,7 +48,6 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="Aawaz Gyawali"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorPrimary"
                 app:typeface="roboto_bold" />
 
@@ -56,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:textColor="@color/colorSecondaryText"
                 android:id="@+id/forumTime"
                 android:text="14 days ago" />
         </LinearLayout>
@@ -68,7 +68,6 @@
             android:ellipsize="end"
             android:lines="3"
             android:text="Demo post alihchhu la koi risunhchhu la koi risunnna ta risaunnan ni hagi"
-            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/colorPrimaryText" />
     </LinearLayout>
 </LinearLayout>

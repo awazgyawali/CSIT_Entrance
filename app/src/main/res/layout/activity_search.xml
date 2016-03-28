@@ -24,11 +24,6 @@
                 android:background="@android:color/transparent"
                 android:hint="Search" />
         </android.support.v7.widget.Toolbar>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@drawable/shadow" />
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
