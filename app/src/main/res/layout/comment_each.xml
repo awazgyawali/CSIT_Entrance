@@ -1,33 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#3eee"
-    android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="5dp">
+    android:gravity="center"
+    android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/commenter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aawaz Gyawali"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#000" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/profileComment"
+        android:layout_margin="10dp" />
 
-    <TextView
-        android:id="@+id/comment"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="2dp"
-        android:textSize="12sp" />
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/primary10" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/commenter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:text="Aawaz Gyawali"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/colorPrimary"
+                app:typeface="roboto_bold" />
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/timeComment"
+                android:text="3 hours ago" />
+        </LinearLayout>
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="3"
+            android:text="This is a small comment"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp" />
+    </LinearLayout>
+
 </LinearLayout>

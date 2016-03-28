@@ -137,24 +137,24 @@
             </RelativeLayout>
 
             <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/fbLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:padding="15dp"
-                android:id="@+id/fbLogin"
                 fancy:fb_defaultColor="#3b5999"
                 fancy:fb_iconResource="@drawable/facebook"
                 fancy:fb_radius="5dp"
                 fancy:fb_text="Login with Facebook" />
 
             <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/twitterLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:padding="15dp"
-                android:id="@+id/twitterLogin"
                 fancy:fb_defaultColor="#55acee"
                 fancy:fb_iconResource="@drawable/twitter"
                 fancy:fb_radius="5dp"

@@ -1,10 +1,12 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
@@ -26,13 +28,13 @@ import com.devspark.robototextview.widget.RobotoTextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.fragments.Colleges;
-import np.com.aawaz.csitentrance.fragments.EntranceForum;
-import np.com.aawaz.csitentrance.fragments.EntranceNews;
-import np.com.aawaz.csitentrance.fragments.EntranceResult;
-import np.com.aawaz.csitentrance.fragments.Home;
-import np.com.aawaz.csitentrance.fragments.LeaderBoard;
-import np.com.aawaz.csitentrance.fragments.More;
+import np.com.aawaz.csitentrance.fragments.navigation_fragment.CSITColleges;
+import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceForum;
+import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceNews;
+import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceResult;
+import np.com.aawaz.csitentrance.fragments.navigation_fragment.Home;
+import np.com.aawaz.csitentrance.fragments.navigation_fragment.LeaderBoard;
+import np.com.aawaz.csitentrance.fragments.navigation_fragment.More;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         invalidateOptionsMenu();
         int id = item.getItemId();
         tabLayout.setVisibility(View.GONE);
+        setAppBarElevation(getResources().getDimension(R.dimen.app_bar_elevation));
         switch (id) {
             case R.id.main_home:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
@@ -133,11 +136,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.entranceForum:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceForum()).commit();
                 setTitle("Entrance Forum");
+                setAppBarElevation(0);
                 item.setChecked(true);
                 break;
 
             case R.id.csitColleges:
-                manager.beginTransaction().replace(R.id.fragmentHolder, new Colleges()).commit();
+                manager.beginTransaction().replace(R.id.fragmentHolder, new CSITColleges()).commit();
                 setTitle("CSIT Colleges");
                 tabLayout.setVisibility(View.VISIBLE);
                 item.setChecked(true);
@@ -146,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.entranceResult:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceResult()).commit();
                 setTitle("Entrance Result");
+                setAppBarElevation(0);
                 item.setChecked(true);
                 break;
 
@@ -164,6 +169,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setAppBarElevation(float elevation) {
+        appBarLayout.setElevation(elevation);
     }
 
     @Override

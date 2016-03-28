@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance.fragments;
+package np.com.aawaz.csitentrance.fragments.other_fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -243,7 +243,6 @@ public class SignUp extends Fragment implements TextWatcher {
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
-                e.printStackTrace();
             }
 
             @Override
@@ -266,8 +265,7 @@ public class SignUp extends Fragment implements TextWatcher {
 
         final String encodedString = Base64.encodeToString(byte_arr, 0);
 
-        Log.d("debug", encodedString);
-        StringRequest request = new StringRequest(Request.Method.POST, "http://avaaj.com.np/jsonFeed/upload_image.php", new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, getString(R.string.uploadImage), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("debug", response);
@@ -275,7 +273,6 @@ public class SignUp extends Fragment implements TextWatcher {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
             }
         }) {
             @Override

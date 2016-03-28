@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance.fragments;
+package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,7 +14,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -53,7 +52,7 @@ public class EntranceResult extends Fragment {
                 revealLayout.revealSecondaryView();
                 progressBarResult.setVisibility(View.VISIBLE);
                 resultHolder.setVisibility(View.GONE);
-                StringRequest request = new StringRequest(Request.Method.GET, "http://avaaj.com.np/jsonFeed/result.php?rollNo=" + rollNo.getText(), new Response.Listener<String>() {
+                StringRequest request = new StringRequest(Request.Method.GET, getString(R.string.viewResult) + rollNo.getText(), new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         resultHolder.setVisibility(View.VISIBLE);
@@ -142,7 +141,7 @@ public class EntranceResult extends Fragment {
                 .cancelable(false)
                 .build();
         dialog.show();
-        StringRequest request = new StringRequest(Request.Method.GET, "http://avaaj.com.np/jsonFeed/isPublished.php", new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, getString(R.string.isPublished), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if (response.contains("published")) {

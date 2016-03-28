@@ -5,33 +5,36 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.devspark.robototextview.widget.RobotoTextView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
+import np.com.aawaz.csitentrance.misc.MyApplication;
 
 
 public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> {
 
     Context context;
     LayoutInflater inflater;
-    ArrayList<String> messages, poster,
-            comments, postID;
+    ArrayList<String> messages, poster, time, image_link;
+    ArrayList<Integer> comments;
 
     ClickListener clickListener;
 
 
     public ForumAdapter(Context context, ArrayList<String> poster, ArrayList<String> messages,
-                        ArrayList<String> comments, ArrayList<String> postID) {
+                        ArrayList<Integer> comments, ArrayList<String> time, ArrayList<String> image_link) {
         this.context = context;
         this.messages = messages;
         this.poster = poster;
         this.comments = comments;
-        this.postID = postID;
+        this.time = time;
+        this.image_link = image_link;
         inflater = LayoutInflater.from(context);
 
     }
@@ -50,6 +53,10 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         holder.commentCount.setText("+" + comments.get(position));
         holder.postedBy.setText(poster.get(position));
         holder.realPost.setText(messages.get(position));
+        holder.time.setText(time.get(position));
+        Picasso.with(MyApplication.getAppContext())
+                .load(image_link.get(position))
+                .into(holder.profile);
     }
 
     @Override
@@ -58,15 +65,16 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        RobotoTextView commentCount, realPost, postedBy;
-        LinearLayout core;
+        RobotoTextView commentCount, realPost, postedBy, time;
+        CircleImageView profile;
 
         public ViewHolder(View itemView) {
             super(itemView);
             commentCount = (RobotoTextView) itemView.findViewById(R.id.commentCount);
             realPost = (RobotoTextView) itemView.findViewById(R.id.realPost);
             postedBy = (RobotoTextView) itemView.findViewById(R.id.postedBy);
-            core = (LinearLayout) itemView;
+            time = (RobotoTextView) itemView.findViewById(R.id.forumTime);
+            profile = (CircleImageView) itemView.findViewById(R.id.forumPic);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -10,7 +10,7 @@
         android:layout_margin="10dp"
         android:theme="@style/Theme.AppCompat"
         app:cardElevation="10dp"
-        tools:context=".fragments.More">
+        tools:context=".fragments.navigation_fragment.More">
 
         <RelativeLayout
             android:id="@+id/button"

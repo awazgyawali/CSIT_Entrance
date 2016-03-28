@@ -16,6 +16,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:id="@+id/forumPic"
             android:src="@drawable/user_holder" />
 
         <com.devspark.robototextview.widget.RobotoTextView
@@ -55,6 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:id="@+id/forumTime"
                 android:text="14 days ago" />
         </LinearLayout>
 

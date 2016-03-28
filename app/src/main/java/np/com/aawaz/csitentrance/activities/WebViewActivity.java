@@ -43,7 +43,6 @@ public class WebViewActivity extends AppCompatActivity {
         try {
             webView.setScript(AssetJSONFile("question" + getIntent().getExtras().getInt("code") + ".htm", this));
         } catch (IOException e) {
-            e.printStackTrace();
             Toast.makeText(this, "Something went wrong.", Toast.LENGTH_SHORT).show();
             finish();
         }

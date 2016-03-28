@@ -1,10 +1,9 @@
-package np.com.aawaz.csitentrance.fragments;
+package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatEditText;
@@ -39,6 +38,7 @@ import java.util.Map;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
+import np.com.aawaz.csitentrance.fragments.other_fragments.CommentsFragment;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.Singleton;
 
@@ -62,7 +62,10 @@ public class EntranceForum extends Fragment {
 
     ArrayList<String> poster = new ArrayList<>(),
             messages = new ArrayList<>(),
-            postId = new ArrayList<>(),
+            time = new ArrayList<>(),
+            image_link = new ArrayList<>();
+
+    ArrayList<Integer> postId = new ArrayList<>(),
             comments = new ArrayList<>();
 
     @Nullable
@@ -136,30 +139,26 @@ public class EntranceForum extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         fetchFromServer();
     }
 
     private void fillRecyclerView() {
         progressBar.setVisibility(View.GONE);
-        ForumAdapter adapter = new ForumAdapter(getContext(), poster, messages, comments, postId);
+        ForumAdapter adapter = new ForumAdapter(getContext(), poster, messages, comments,time,image_link);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter.setClickListener(new ClickListener() {
             @Override
             public void itemClicked(View view, int position) {
-                BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(new RecyclerView(getContext()));
-                bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-                    @Override
-                    public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                BottomSheetDialogFragment bottomSheetDialogFragment = new CommentsFragment();
 
-                    }
+                Bundle bundle = new Bundle();
+                bundle.putInt("post_id", postId.get(position));
+                bundle.putInt("comments", comments.get(position));
 
-                    @Override
-                    public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-
-                    }
-                });
+                bottomSheetDialogFragment.setArguments(bundle);
+                bottomSheetDialogFragment.show(getChildFragmentManager(), bottomSheetDialogFragment.getTag());
             }
         });
     }
@@ -173,19 +172,16 @@ public class EntranceForum extends Fragment {
             public void onResponse(JSONArray response) {
                 mainLayout.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
-
-                poster.clear();
-                messages.clear();
-                postId.clear();
-                comments.clear();
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject object = response.getJSONObject(i);
 
                         poster.add(object.getString("poster"));
                         messages.add(object.getString("message"));
-                        postId.add(object.getString("id"));
-                        comments.add(object.getString("comments"));
+                        time.add(object.getString("time"));
+                        image_link.add(object.getString("image_link"));
+                        postId.add(object.getInt("id"));
+                        comments.add(object.getInt("comments"));
                     } catch (Exception ignored) {
                     }
                 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.EntranceResult">
+    tools:context=".fragments.navigation_fragment.EntranceResult">
 
     <View
         android:layout_width="match_parent"

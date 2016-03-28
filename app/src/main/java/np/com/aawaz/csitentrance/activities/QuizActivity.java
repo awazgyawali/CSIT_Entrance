@@ -13,11 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.devspark.robototextview.widget.RobotoTextView;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -28,8 +26,8 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.fragments.AnswersDrawer;
-import np.com.aawaz.csitentrance.fragments.QuestionFragment;
+import np.com.aawaz.csitentrance.fragments.other_fragments.AnswersDrawer;
+import np.com.aawaz.csitentrance.fragments.other_fragments.QuestionFragment;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
 import np.com.aawaz.csitentrance.misc.CustomViewPager;
 

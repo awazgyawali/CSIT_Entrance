@@ -94,7 +94,7 @@
 
     <fragment
         android:id="@+id/answerFragment"
-        android:name="np.com.aawaz.csitentrance.fragments.AnswersDrawer"
+        android:name="np.com.aawaz.csitentrance.fragments.other_fragments.AnswersDrawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="end"

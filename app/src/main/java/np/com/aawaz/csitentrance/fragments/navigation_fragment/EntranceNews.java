@@ -1,12 +1,13 @@
-package np.com.aawaz.csitentrance.fragments;
+package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.os.AsyncTaskCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,7 +28,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.adapters.NewsAdapter;
 import np.com.aawaz.csitentrance.misc.Singleton;
 
@@ -100,7 +100,7 @@ public class EntranceNews extends Fragment {
 
     public void fetchNewsForFirstTime() {
         requestQueue = Singleton.getInstance().getRequestQueue();
-        String link = "http://brainants.com/apis/bsccsit/v1/allnotices";
+        String link = getString(R.string.newsLink);
 
         JsonArrayRequest jsonRequest = new JsonArrayRequest(link,
                 new Response.Listener<JSONArray>() {
@@ -114,14 +114,7 @@ public class EntranceNews extends Fragment {
                     public void onErrorResponse(VolleyError error) {
                         errorLayout.setVisibility(View.VISIBLE);
                         progress.setVisibility(View.GONE);
-                        error.printStackTrace();
                         recy.setVisibility(View.GONE);
-                        Snackbar.make(MainActivity.mainLayout, "Unable to connect.", Snackbar.LENGTH_SHORT).setAction("Retry", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                setDataToArrayListFromDb();
-                            }
-                        }).show();
                     }
                 });
 
@@ -133,18 +126,23 @@ public class EntranceNews extends Fragment {
     }
 
     private void storeToDb() {
-        SQLiteDatabase database = Singleton.getInstance().getDatabase();
-        database.delete("news", null, null);
-        ContentValues values = new ContentValues();
-        for (int i = 0; i < messages.size(); i++) {
-            values.clear();
-            values.put("time", time.get(i));
-            values.put("message", messages.get(i));
-            values.put("imageURL", imageUrl.get(i));
-            values.put("title", title.get(i));
-            database.insert("news", null, values);
-        }
-        database.close();
+        AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                SQLiteDatabase database = Singleton.getInstance().getDatabase();
+                database.delete("news", null, null);
+                ContentValues values = new ContentValues();
+                for (int i = 0; i < messages.size(); i++) {
+                    values.clear();
+                    values.put("time", time.get(i));
+                    values.put("message", messages.get(i));
+                    values.put("imageURL", imageUrl.get(i));
+                    values.put("title", title.get(i));
+                    database.insert("news", null, values);
+                }
+                return null;
+            }
+        });
     }
 
     private void parseTheResponse(JSONArray array) {
@@ -169,7 +167,6 @@ public class EntranceNews extends Fragment {
             errorLayout.setVisibility(View.VISIBLE);
             progress.setVisibility(View.GONE);
             recy.setVisibility(View.GONE);
-            ignored.printStackTrace();
         }
     }
 

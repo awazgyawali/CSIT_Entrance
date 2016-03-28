@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance.fragments;
+package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

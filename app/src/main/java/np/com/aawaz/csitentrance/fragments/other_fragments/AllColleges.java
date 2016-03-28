@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance.fragments;
+package np.com.aawaz.csitentrance.fragments.other_fragments;
 
 import android.content.Context;
 import android.content.Intent;

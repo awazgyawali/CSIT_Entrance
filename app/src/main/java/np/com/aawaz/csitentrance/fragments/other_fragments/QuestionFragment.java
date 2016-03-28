@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance.fragments;
+package np.com.aawaz.csitentrance.fragments.other_fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
