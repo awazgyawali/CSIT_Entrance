@@ -16,14 +16,14 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.misc.CustomWebView;
+import np.com.aawaz.csitentrance.misc.QuizTextView;
 import np.com.aawaz.csitentrance.misc.Singleton;
 
 
 public class WebViewActivity extends AppCompatActivity {
 
     RequestQueue requestQueue;
-    CustomWebView webView;
+    QuizTextView webView;
     ProgressBar progressBar;
 
     @Override
@@ -31,7 +31,7 @@ public class WebViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
 
-        webView = (CustomWebView) findViewById(R.id.pdfview);
+        webView = (QuizTextView) findViewById(R.id.pdfview);
 
         requestQueue = Singleton.getInstance().getRequestQueue();
         progressBar = (ProgressBar) findViewById(R.id.progressWebView);
@@ -41,7 +41,7 @@ public class WebViewActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
 
         try {
-            webView.setScript(AssetJSONFile("question" + getIntent().getExtras().getInt("code") + ".html", this));
+            webView.setScript(AssetJSONFile("question" + getIntent().getExtras().getInt("code") + ".htm", this));
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, "Something went wrong.", Toast.LENGTH_SHORT).show();

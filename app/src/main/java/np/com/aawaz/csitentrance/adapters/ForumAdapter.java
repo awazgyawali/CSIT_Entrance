@@ -1,40 +1,18 @@
 package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.devspark.robototextview.widget.RobotoTextView;
-import com.facebook.AccessToken;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.HttpMethod;
-import com.facebook.Profile;
-import com.facebook.login.widget.ProfilePictureView;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
-import np.com.aawaz.csitentrance.misc.Singleton;
 
 
 public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> {
@@ -69,14 +47,14 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.commentCount.setText(comments.get(position) + " comments");
+        holder.commentCount.setText("+" + comments.get(position));
         holder.postedBy.setText(poster.get(position));
         holder.realPost.setText(messages.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return messages.size() + 1;
+        return messages.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

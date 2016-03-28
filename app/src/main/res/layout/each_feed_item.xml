@@ -3,72 +3,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="3dp"
-    android:layout_marginTop="3dp"
+    android:layout_margin="3dp"
     android:background="@color/white"
-    android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="5dp">
+    android:orientation="horizontal"
+    android:padding="10dp">
 
-    <com.devspark.robototextview.widget.RobotoTextView
-        android:id="@+id/postedBy"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:text="Aawaz Gyawali"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#000"
-        app:typeface="roboto_bold" />
+        android:orientation="vertical">
 
-    <com.devspark.robototextview.widget.RobotoTextView
-        android:id="@+id/realPost"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:maxLines="5"
-        android:text="Demo post alihchhu la koi risunnna taekhchhu nahchhu la koi risunnna ta risa lamo lekhchhu la koi risunnna ta risaunnan ni hagisunnna taekhchhu nahchhu la koi risunnna ta risa lamo lekhchhu la koi risunnna ta risaunnan ni hagi"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/user_holder" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/grey" />
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/commentCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="+2"
+            android:textColor="@color/colorPrimaryText" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"
-        android:orientation="horizontal">
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/postedBy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Aawaz Gyawali"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimary"
+                app:typeface="roboto_bold" />
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="14 days ago" />
+        </LinearLayout>
 
         <com.devspark.robototextview.widget.RobotoTextView
-            android:id="@+id/likeCount"
-            android:layout_width="wrap_content"
+            android:id="@+id/realPost"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/like"
-            android:drawablePadding="5dp"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="250 likes"
-            app:typeface="roboto_bold" />
-
-        <com.devspark.robototextview.widget.RobotoTextView
-            android:id="@+id/commentCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/comments"
-            android:drawablePadding="5dp"
-            android:layout_marginLeft="5dp"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="8 comments"
-            app:typeface="roboto_bold" />
-
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:lines="3"
+            android:text="Demo post alihchhu la koi risunhchhu la koi risunnna ta risaunnan ni hagi"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorPrimaryText" />
     </LinearLayout>
-
 </LinearLayout>

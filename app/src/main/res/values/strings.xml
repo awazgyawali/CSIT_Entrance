@@ -136,9 +136,8 @@
     <string name="description_6">Worried where to see result? No worries we are here for you.</string>
     <string name="tag_link">Your key to CSIT Entrance.</string>
 
-    <string name="getForum">http://brainants.com/apis/bsccsit/v1/getForum</string>
+    <string name="getForum">http://brainants.com/nepalGov/getForum.json</string>
     <string name="postForum">http://brainants.com/apis/bsccsit/v1/postForum</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

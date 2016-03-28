@@ -9,10 +9,10 @@
             android:icon="@drawable/home"
             android:title="Home" />
         <item
-            android:id="@+id/scoreBoard"
+            android:id="@+id/leaderBoard"
             android:checkable="true"
-            android:icon="@drawable/scoreboard"
-            android:title="Scoreboard" />
+            android:icon="@drawable/leaderboard"
+            android:title="Leaderboard" />
 
         <item
             android:id="@+id/csitColleges"

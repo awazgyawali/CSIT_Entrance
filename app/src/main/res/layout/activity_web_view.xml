@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <np.com.aawaz.csitentrance.misc.CustomWebView
+        <np.com.aawaz.csitentrance.misc.QuizTextView
             android:id="@+id/pdfview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

@@ -1,14 +1,128 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:id="@+id/forum_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/fullFeedRecycler"
+    <RelativeLayout
+        android:id="@+id/mainLayoutForum"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_below="@+id/appBarForum"
+            android:background="@color/colorPrimary" />
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBarForum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp"
+            fancy:elevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Just ask your question."
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    fancy:typeface="roboto_bold" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColorHint="@color/white">
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/questionEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Your Question"
+                        android:lines="1"
+                        android:maxLines="5"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <com.truizlop.fabreveallayout.FABRevealLayout
+            android:id="@+id/fab_reveal_layout_forum"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/appBarForum"
+            android:layout_marginTop="28dp">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabAddForum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/plus" />
+
+            <RelativeLayout
+                android:id="@+id/main_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/fullFeedRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/secondary_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/crossForum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:padding="15dp"
+                    android:src="@drawable/cross" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarForum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:theme="@style/WhiteProgressBar" />
+
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:id="@+id/resultHolderForum"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:text="Posted Successfully."
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+        </com.truizlop.fabreveallayout.FABRevealLayout>
+
+    </RelativeLayout>
 
     <ProgressBar
         android:id="@+id/progressCircleFullFeed"
@@ -34,23 +148,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No internet connection"
-            android:textColor="@color/white"
+            android:textColor="@color/colorSecondaryText"
             app:typeface="roboto_bold" />
 
         <com.devspark.robototextview.widget.RobotoTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tap to retry."
-            android:textColor="@color/white" />
+            android:textColor="@color/colorAccent" />
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabAddForum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="16dp"
-        android:src="@drawable/pen_black" />
 </RelativeLayout>

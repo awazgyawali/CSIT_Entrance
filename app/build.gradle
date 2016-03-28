@@ -31,9 +31,9 @@ dependencies {
         transitive = true;
     }
 
+
     compile 'com.github.johnkil.android-robototextview:robototextview:2.5.0'
     compile 'com.heinrichreimersoftware:material-intro:1.1'
-
     compile 'com.android.support:design:23.2.1'
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.android.support:recyclerview-v7:23.2.1'
@@ -49,4 +49,5 @@ dependencies {
     compile 'com.github.medyo:fancybuttons:1.5@aar'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.google.android.gms:play-services-appindexing:8.3.0'
+    compile 'com.truizlop.fabreveallayout:library:1.0.0'
 }

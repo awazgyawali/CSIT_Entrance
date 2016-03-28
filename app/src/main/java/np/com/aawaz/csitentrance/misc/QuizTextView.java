@@ -4,14 +4,14 @@ import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.webkit.WebView;
+import android.widget.TextView;
 
-public class CustomWebView extends WebView {
-    public CustomWebView(Context context) {
+public class QuizTextView extends WebView{
+    public QuizTextView(Context context) {
         super(context);
-        initializer();
     }
 
-    private void initializer() {
+    public void initializer() {
         getSettings().setJavaScriptEnabled(true);
         getSettings().setBuiltInZoomControls(true);
         loadDataWithBaseURL("http://bar/", "<script type='text/x-mathjax-config'>"
@@ -39,23 +39,26 @@ public class CustomWebView extends WebView {
                 + "<span id='math'></span><pre><span id='mmlout'></span></pre>", "text/html", "utf-8", "");
     }
 
-    public CustomWebView(Context context, AttributeSet attrs) {
+    public QuizTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initializer();
     }
 
-    public CustomWebView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public QuizTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initializer();
     }
 
     public void setScript(String data) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            evaluateJavascript("javascript:document.getElementById('math').innerHTML='\\\\[" + doubleEscapeTeX(data) + "\\\\]';", null);
-            evaluateJavascript("javascript:MathJax.Hub.Queue(['Typeset',MathJax.Hub]);", null);
+        if (data.contains("$")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                evaluateJavascript("javascript:document.getElementById('math').innerHTML='\\\\[" + doubleEscapeTeX(data) + "\\\\]';", null);
+                evaluateJavascript("javascript:MathJax.Hub.Queue(['Typeset',MathJax.Hub]);", null);
+            } else {
+                loadUrl("javascript:document.getElementById('math').innerHTML='\\\\[" + doubleEscapeTeX(data) + "\\\\]';");
+                loadUrl("javascript:MathJax.Hub.Queue(['Typeset',MathJax.Hub]);");
+            }
+
         } else {
-            loadUrl("javascript:document.getElementById('math').innerHTML='\\\\[" + doubleEscapeTeX(data) + "\\\\]';");
-            loadUrl("javascript:MathJax.Hub.Queue(['Typeset',MathJax.Hub]);");
+            loadDataWithBaseURL("", data, "text/html", "UTF-8", "");
         }
     }
 

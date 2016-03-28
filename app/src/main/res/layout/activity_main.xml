@@ -17,14 +17,23 @@
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
+            android:id="@+id/appBarMain"
             android:layout_height="wrap_content">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbarMain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
                 android:theme="@style/Theme.AppCompat" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLayoutMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorHeight="3dp"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/white_transparent" />
         </android.support.design.widget.AppBarLayout>
 
         <RelativeLayout
@@ -42,9 +51,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:theme="@style/NavigationDrawer"
-        android:fitsSystemWindows="true"
         android:background="@color/white"
+        android:fitsSystemWindows="true"
+        android:theme="@style/NavigationDrawer"
         app:headerLayout="@layout/header_nav"
         app:menu="@menu/menu_nav" />
 </android.support.v4.widget.DrawerLayout>

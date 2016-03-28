@@ -1,135 +1,97 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="np.com.aawaz.csitentrance.fragments.QuestionFragment">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarQuiz"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="180dp">
+        android:layout_height="200dp"
+        android:background="#8e44ad" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <np.com.aawaz.csitentrance.misc.QuizTextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="100dp"
+        android:padding="10dp"
+        android:textColor="#eee" />
 
-            <np.com.aawaz.csitentrance.misc.CustomWebView
-                android:id="@+id/question"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:padding="10dp"
-                android:textColor="#eee" />
-        </RelativeLayout>
-
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/scrollView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/relativeLayout"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_above="@+id/AnswerFab"
+        android:layout_below="@+id/question"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/optionsLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/optionHolder1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            <np.com.aawaz.csitentrance.misc.QuizTextView
+                android:id="@+id/option1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp" />
 
-                <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/check1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-
-                <np.com.aawaz.csitentrance.misc.CustomWebView
-                    android:id="@+id/option1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/optionHolder2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/check2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-
-                <np.com.aawaz.csitentrance.misc.CustomWebView
-                    android:id="@+id/option2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/optionHolder3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/check3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-
-                <np.com.aawaz.csitentrance.misc.CustomWebView
-                    android:id="@+id/option3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/optionHolder4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/check4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-
-                <np.com.aawaz.csitentrance.misc.CustomWebView
-                    android:id="@+id/option4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp" />
-            </LinearLayout>
+            <np.com.aawaz.csitentrance.misc.QuizTextView
+                android:id="@+id/option2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp" />
         </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-    <android.support.design.widget.FloatingActionButton
+            <np.com.aawaz.csitentrance.misc.QuizTextView
+                android:id="@+id/option3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp" />
+
+            <np.com.aawaz.csitentrance.misc.QuizTextView
+                android:id="@+id/option4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#7a3a95" />
+
+    <com.devspark.robototextview.widget.RobotoTextView
         android:id="@+id/AnswerFab"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/relativeLayout"
-        android:layout_margin="16dp"
-        android:src="@drawable/done"
-        android:visibility="gone"
-        app:backgroundTint="@color/white"
-        app:layout_anchor="@id/appBarQuiz"
-        app:layout_anchorGravity="bottom|right|end" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/submit_button"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="SUBMIT"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white"
+        app:typeface="roboto_bold" />
 
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

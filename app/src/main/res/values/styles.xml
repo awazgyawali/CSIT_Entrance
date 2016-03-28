@@ -31,4 +31,8 @@
         <item name="colorAccent">@color/colorSelected</item>
     </style>
 
+    <style name="WhiteProgressBar">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
 </resources>

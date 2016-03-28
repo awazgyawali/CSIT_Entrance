@@ -14,6 +14,7 @@
             android:id="@+id/quizToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
             android:theme="@style/Theme.AppCompat" />
 
         <np.com.aawaz.csitentrance.misc.CustomViewPager
@@ -35,16 +36,18 @@
                     android:id="@+id/progressBar"
                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="2dp"
                     android:max="120"
-                    android:progress="50" />
+                    android:progress="50"
+                    android:progressDrawable="@drawable/primary_progress" />
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profQue"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_alignParentLeft="true"
-
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"

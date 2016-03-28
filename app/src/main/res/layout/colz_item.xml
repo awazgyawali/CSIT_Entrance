@@ -3,8 +3,7 @@
     android:id="@+id/coreColz"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="3dp"
-    android:layout_marginTop="3dp"
+    android:layout_margin="3dp"
     android:background="@color/white"
     android:orientation="vertical"
     android:paddingBottom="10dp"
@@ -18,21 +17,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ascol Campus"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/black" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorPrimary" />
 
     <com.devspark.robototextview.widget.RobotoTextView
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="aawaz.com.np"
+        android:text="Thamel, Kathmandu"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/colorPrimaryText"
         android:textSize="13sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="3dp"
-        android:background="@color/grey" />
+        android:background="#ddd" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"

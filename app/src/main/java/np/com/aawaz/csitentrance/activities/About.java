@@ -52,24 +52,6 @@ public class About extends AppCompatActivity {
 
         likeButton();
 
-
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int offset) {
-                int maxScroll = appBarLayout.getTotalScrollRange();
-                float progressPercentage = (float) (Math.abs(offset) / maxScroll);
-                Log.d("Debug", progressPercentage + "");
-                if (progressPercentage >= 0.50) {
-                    YoYo.with(Techniques.FadeOut)
-                            .duration(500)
-                            .playOn(logo);
-                } else {
-                    YoYo.with(Techniques.FadeIn)
-                            .duration(500)
-                            .playOn(logo);
-                }
-            }
-        });
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbarAbout);
         collapsingToolbarLayout.setTitle("About Us");
         collapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent));

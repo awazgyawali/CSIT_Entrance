@@ -4,98 +4,167 @@
     android:id="@+id/coreResult"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.EntranceResult">
 
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="28dp"
+        android:layout_below="@+id/appBarResult"
+        android:background="@color/colorPrimary" />
 
-        <RelativeLayout
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        fancy:elevation="0dp">
+
+        <ViewSwitcher
+            android:id="@+id/viewSwitcherResult"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp">
 
             <LinearLayout
-                android:id="@+id/viewResult"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="match_parent"
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:text="Result is not live yet."
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    fancy:typeface="roboto_bold" />
+
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:text="We will notify you once the result has been published."
+                    android:textColor="@color/white_transparent"
+                    android:textSize="16dp"
+                    fancy:typeface="roboto_italic" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="Result is live now."
-                    android:textColor="@color/green"
-                    android:textSize="25dp" />
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    fancy:typeface="roboto_bold" />
 
-                <TextView
+                <com.devspark.robototextview.widget.RobotoTextView
                     android:id="@+id/textView6"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/relativeLayout2"
-                    android:layout_below="@+id/textView7"
                     android:gravity="center"
-                    android:padding="5dp"
                     android:text="Please enter your Roll no to view your result."
-                    android:textColor="#888888"
-                    android:textSize="18dp" />
+                    android:textColor="@color/white_transparent"
+                    android:textSize="16dp"
+                    fancy:typeface="roboto_italic" />
 
-                <RelativeLayout
-                    android:id="@+id/relativeLayout2"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true">
+                    android:layout_marginTop="25dp"
+                    android:textColorHint="@color/white">
 
-
-                    <EditText
+                    <android.support.v7.widget.AppCompatEditText
                         android:id="@+id/resultRollNo"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
                         android:hint="Roll No"
                         android:inputType="phone"
-                        android:textColor="#888888"
+                        android:textColor="@color/white"
                         android:textSize="15sp" />
 
-
-                    <mehdi.sakout.fancybuttons.FancyButton
-                        android:id="@+id/resultReqButton"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/resultRollNo"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="10dp"
-                        android:padding="13dp"
-                        fancy:fb_defaultColor="#f0f0f0"
-                        fancy:fb_focusColor="#ddd"
-                        fancy:fb_radius="5dp"
-                        fancy:fb_text="Submit"
-                        fancy:fb_textColor="#888888" />
-                </RelativeLayout>
+                </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/unPublished"
+        </ViewSwitcher>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <com.truizlop.fabreveallayout.FABRevealLayout
+        android:id="@+id/fab_reveal_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appBarResult"
+        android:layout_marginTop="28dp">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/resultReqButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/double_done" />
+
+        <RelativeLayout
+            android:id="@+id/main_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.devspark.robototextview.widget.RobotoTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:drawableTop="@drawable/no_connection"
                 android:gravity="center"
-                android:visibility="gone"
-                android:text="Result has not been published.\n\n Please stay tuned.\nWe will notify you as soon as the result has been published.."
-                android:textColor="@color/primary9"
-                android:textSize="20sp"/>
+                android:padding="16dp"
+                android:text="This area will contain some slider ads of the colleges, with their name and sort description image too." />
         </RelativeLayout>
 
-        <ImageView
+        <RelativeLayout
+            android:id="@+id/secondary_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/adImage"/>
-    </LinearLayout>
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/crossResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="15dp"
+                android:src="@drawable/cross" />
+
+            <ProgressBar
+                android:id="@+id/progressBarResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:theme="@style/WhiteProgressBar" />
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/resultHolder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="This area will contain some slider ads of the colleges, with their name and sort description image too."
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+    </com.truizlop.fabreveallayout.FABRevealLayout>
+
+
 </RelativeLayout>

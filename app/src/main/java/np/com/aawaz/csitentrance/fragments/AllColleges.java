@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance.activities;
+package np.com.aawaz.csitentrance.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,17 +7,14 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatEditText;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.view.ViewGroup;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -30,21 +27,17 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.adapters.CollegesAdapter;
 import np.com.aawaz.csitentrance.interfaces.MenuClicks;
 
-public class SearchActivity extends AppCompatActivity {
 
+public class AllColleges extends Fragment {
     private ArrayList<String> names = new ArrayList<>(),
-            desc = new ArrayList<>(),
             website = new ArrayList<>(),
             address = new ArrayList<>(),
             phNo = new ArrayList<>();
     RecyclerView colzRecy;
-    JSONObject coreObject;
-    LinearLayout emptyLayout;
-    AppCompatEditText search;
-
 
     public static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();
@@ -55,85 +48,34 @@ public class SearchActivity extends AppCompatActivity {
         return new String(formArray);
     }
 
-    public void setDataToArrayList() {
-        //Reading from json file and insillizing inside arrayList
-        names.clear();
-        desc.clear();
-        website.clear();
-        address.clear();
-        phNo.clear();
-        try {
-            JSONArray m_jArry = new JSONObject(AssetJSONFile("college_feed.json", this)).getJSONArray("lists");
-            for (int i = 0; i < m_jArry.length(); i++) {
-                JSONObject jo_inside = m_jArry.getJSONObject(i);
-                if (jo_inside.getString("name").toLowerCase().contains(search.getText().toString().toLowerCase()) ||
-                        jo_inside.getString("address").toLowerCase().contains(search.getText().toString().toLowerCase()) ||
-                        jo_inside.getString("desc").contains(search.getText().toString())) {
-                    names.add(jo_inside.getString("name"));
-                    desc.add(jo_inside.getString("desc"));
-                    website.add(jo_inside.getString("website"));
-                    address.add(jo_inside.getString("address"));
-                    phNo.add(jo_inside.getString("phone"));
-                }
-            }
-        } catch (Exception ignored) {
-        }
+    public static AllColleges newInstance() {
+        return new AllColleges();
     }
-
-    public boolean isLargeScreen() {
-        return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >
-                Configuration.SCREENLAYOUT_SIZE_LARGE;
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        colzRecy = (RecyclerView) view.findViewById(R.id.colzRecy);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
-        setTitle("");
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbarSearch));
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setDataToArrayList();
 
-        emptyLayout = (LinearLayout) findViewById(R.id.emptyLayout);
-        search = (AppCompatEditText) findViewById(R.id.searchEditText);
-        colzRecy = (RecyclerView) findViewById(R.id.searchRecycler);
-        search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0) {
-                    colzRecy.setVisibility(View.GONE);
-                    emptyLayout.setVisibility(View.VISIBLE);
-                } else {
-                    colzRecy.setVisibility(View.VISIBLE);
-                    emptyLayout.setVisibility(View.GONE);
-                    setDataToArrayList();
-                    fillNormally();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+        fillNormally();
     }
 
 
     private void fillNormally() {
-        CollegesAdapter adapter = new CollegesAdapter(this, names, address);
-        colzRecy.setAdapter(adapter);
+        //Recycler view handler
+        CollegesAdapter adapter = new CollegesAdapter(getContext(), names, address);
         adapter.setMenuClickListener(new MenuClicks() {
             @Override
             public void onCallClicked(final int position) {
                 if (phNo.get(position).equals("null"))
                     Snackbar.make(MainActivity.mainLayout, "No phone number found.", Snackbar.LENGTH_SHORT).show();
                 else
-                    new MaterialDialog.Builder(SearchActivity.this)
+                    new MaterialDialog.Builder(getContext())
                             .title("Call Confirmation")
                             .content("Call " + phNo.get(position) + "?")
                             .positiveText("Call")
@@ -152,7 +94,7 @@ public class SearchActivity extends AppCompatActivity {
                 if (website.get(position).equals("null"))
                     Snackbar.make(MainActivity.mainLayout, "No web address found.", Snackbar.LENGTH_SHORT).show();
                 else
-                    new MaterialDialog.Builder(SearchActivity.this)
+                    new MaterialDialog.Builder(getContext())
                             .title("Confirmation.")
                             .content("Open " + website.get(position) + "?")
                             .positiveText("Open")
@@ -172,20 +114,42 @@ public class SearchActivity extends AppCompatActivity {
                 Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + names.get(position));
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
-                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                if (mapIntent.resolveActivity(getContext().getPackageManager()) != null) {
                     startActivity(mapIntent);
                 } else {
                     Snackbar.make(MainActivity.mainLayout, "Google maps doesn't exist..", Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
+        colzRecy.setAdapter(adapter);
         colzRecy.setLayoutManager(new StaggeredGridLayoutManager(isLargeScreen() ? 2 : 1, StaggeredGridLayoutManager.VERTICAL));
     }
 
+    public void setDataToArrayList() {
+        //Reading from json file and insillizing inside arrayList
+        try {
+            JSONObject obj = new JSONObject(AssetJSONFile("college_feed.json", getContext()));
+            JSONArray m_jArry = obj.getJSONArray("lists");
+            for (int i = 0; i < m_jArry.length(); i++) {
+                JSONObject jo_inside = m_jArry.getJSONObject(i);
+                names.add(jo_inside.getString("name"));
+                website.add(jo_inside.getString("website"));
+                address.add(jo_inside.getString("address"));
+                phNo.add(jo_inside.getString("phone"));
+            }
+
+        } catch (Exception ignored) {
+        }
+    }
+
+    public boolean isLargeScreen() {
+        return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >
+                Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
+
+    @Nullable
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
-            finish();
-        return super.onOptionsItemSelected(item);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_all_colleges, container, false);
     }
 }

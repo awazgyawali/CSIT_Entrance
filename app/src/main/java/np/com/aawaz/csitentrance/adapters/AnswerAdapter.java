@@ -63,7 +63,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String htm = questions.get(position) + "<br>" + ansFinder(position);
+        String htm = questions.get(position) + "<br><b>Answer:</b> " + ansFinder(position);
         holder.que.loadDataWithBaseURL("", htm, "text/html", "UTF-8", "");
     }
 

@@ -3,6 +3,7 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.fragments.AnswersDrawer;
 import np.com.aawaz.csitentrance.fragments.QuestionFragment;
@@ -79,7 +81,7 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
 
         addProfPic();
 
-        code=getIntent().getIntExtra("position",1);
+        code = getIntent().getIntExtra("position", 1);
 
         pb = (ProgressBar) findViewById(R.id.progressBar);
         topic = (RobotoTextView) findViewById(R.id.topic);
@@ -120,11 +122,9 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
     }
 
     private void addProfPic() {
-        ImageView img = (ImageView) findViewById(R.id.profQue);
+        CircleImageView img = (CircleImageView) findViewById(R.id.profQue);
         SharedPreferences pref = getSharedPreferences("info", Context.MODE_PRIVATE);
-        Picasso.with(this)
-                .load(pref.getString("ImageLink", ""))
-                .into(img);
+        img.setImageURI(Uri.parse(pref.getString("ImageLink", "")));
     }
 
     private void fetchFromSp() {
@@ -151,6 +151,7 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
         pb.setProgress(21 + qNo);
 
         answersDrawer.increaseSize();
+        customViewPager.setCurrentItem(customViewPager.getCurrentItem() + 1);
     }
 
     public void setDataToArrayList() {

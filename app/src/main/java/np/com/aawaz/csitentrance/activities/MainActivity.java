@@ -3,19 +3,25 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.devspark.robototextview.widget.RobotoTextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -25,21 +31,24 @@ import np.com.aawaz.csitentrance.fragments.EntranceForum;
 import np.com.aawaz.csitentrance.fragments.EntranceNews;
 import np.com.aawaz.csitentrance.fragments.EntranceResult;
 import np.com.aawaz.csitentrance.fragments.Home;
+import np.com.aawaz.csitentrance.fragments.LeaderBoard;
 import np.com.aawaz.csitentrance.fragments.More;
-import np.com.aawaz.csitentrance.fragments.ScoreBoard;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static TabLayout tabLayout;
     FragmentManager manager;
     NavigationView mNavigationView;
     DrawerLayout mDrawerLayout;
     public static CoordinatorLayout mainLayout;
+    Toolbar toolbar;
+    AppBarLayout appBarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarMain);
+        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
         setTitle("Home");
 
@@ -47,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView = (NavigationView) findViewById(R.id.navigationView);
         manager = getSupportFragmentManager();
         mainLayout = (CoordinatorLayout) findViewById(R.id.mainParent);
+        tabLayout = (TabLayout) findViewById(R.id.tabLayoutMain);
+        appBarLayout = (AppBarLayout) findViewById(R.id.appBarMain);
 
         manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
 
@@ -92,16 +103,18 @@ public class MainActivity extends AppCompatActivity {
     private void navigate(MenuItem item) {
         invalidateOptionsMenu();
         int id = item.getItemId();
+        tabLayout.setVisibility(View.GONE);
         switch (id) {
             case R.id.main_home:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
                 setTitle("Home");
+                tabLayout.setVisibility(View.VISIBLE);
                 item.setChecked(true);
                 break;
 
-            case R.id.scoreBoard:
-                manager.beginTransaction().replace(R.id.fragmentHolder, new ScoreBoard()).commit();
-                setTitle("Scoreboard");
+            case R.id.leaderBoard:
+                manager.beginTransaction().replace(R.id.fragmentHolder, new LeaderBoard()).commit();
+                setTitle("Leaderboard");
                 item.setChecked(true);
                 break;
 
@@ -126,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.csitColleges:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new Colleges()).commit();
                 setTitle("CSIT Colleges");
+                tabLayout.setVisibility(View.VISIBLE);
                 item.setChecked(true);
                 break;
 
@@ -179,5 +193,26 @@ public class MainActivity extends AppCompatActivity {
             navigate(mNavigationView.getMenu().findItem(R.id.main_home));
         else
             super.onBackPressed();
+    }
+
+    @Override
+    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            new MaterialDialog.Builder(this)
+                    .title("Color")
+                    .input("", "", new MaterialDialog.InputCallback() {
+                        @Override
+                        public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                            changeCOlor(input.toString());
+                        }
+                    })
+                    .show();
+            return true;
+        }
+        return super.onKeyLongPress(keyCode, event);
+    }
+
+    private void changeCOlor(String s) {
+        appBarLayout.setBackgroundColor(Color.parseColor(s));
     }
 }
