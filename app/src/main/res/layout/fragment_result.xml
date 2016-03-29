@@ -115,19 +115,10 @@
             android:layout_height="wrap_content"
             android:src="@drawable/double_done" />
 
-        <RelativeLayout
-            android:id="@+id/main_view"
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/result_ad_slider"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.devspark.robototextview.widget.RobotoTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:drawableTop="@drawable/no_connection"
-                android:gravity="center"
-                android:padding="16dp"
-                android:text="This area will contain some slider ads of the colleges, with their name and sort description image too." />
-        </RelativeLayout>
+            android:layout_height="match_parent" />
 
         <RelativeLayout
             android:id="@+id/secondary_view"

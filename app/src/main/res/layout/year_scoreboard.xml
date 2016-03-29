@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="3dp"
-    tools:context="np.com.aawaz.csitentrance.fragments.other_fragments.EachScoreboard">
+    app:cardBackgroundColor="@color/white"
+    tools:context=".misc.EachScoreboard">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,6 +14,7 @@
         android:padding="10dp">
 
         <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/titleScoreboardCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tu Examination 2069"
@@ -40,6 +42,7 @@
                     android:textColor="@color/colorPrimaryText" />
 
                 <com.devspark.robototextview.widget.RobotoTextView
+                    android:id="@+id/playedScoreboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -64,6 +67,7 @@
                     android:textColor="@color/colorPrimaryText" />
 
                 <com.devspark.robototextview.widget.RobotoTextView
+                    android:id="@+id/scoreScoreboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -88,6 +92,7 @@
                     android:textColor="@color/colorPrimaryText" />
 
                 <com.devspark.robototextview.widget.RobotoTextView
+                    android:id="@+id/accuracyScoreboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"

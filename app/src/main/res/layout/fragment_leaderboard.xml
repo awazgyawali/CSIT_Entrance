@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"
             android:text="1"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            app:typeface="roboto_bold" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -43,7 +44,8 @@
                         android:layout_weight="1"
                         android:gravity="bottom|center"
                         android:text="2"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        app:typeface="roboto_bold" />
 
                     <View
                         android:layout_width="0dp"
@@ -58,11 +60,12 @@
                         android:layout_weight="1"
                         android:gravity="bottom|center"
                         android:text="3"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        app:typeface="roboto_bold" />
 
                 </LinearLayout>
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -70,82 +73,76 @@
                     android:background="@color/white">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/image2"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/user_holder" />
+
+                        <com.devspark.robototextview.widget.RobotoTextView
+                            android:id="@+id/name2"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
+                            android:layout_marginTop="5dp"
+                            android:text="Roshan Gautam"
+                            android:textColor="@color/colorPrimaryText" />
 
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/image2"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_marginTop="10dp"
-                                android:src="@drawable/user_holder" />
+                        <com.devspark.robototextview.widget.RobotoTextView
+                            android:id="@+id/score2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="440"
+                            android:textColor="@color/colorAccent"
+                            app:typeface="roboto_bold" />
 
-                            <com.devspark.robototextview.widget.RobotoTextView
-                                android:id="@+id/name2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:text="Roshan Gautam"
-                                android:textColor="@color/colorPrimaryText" />
-
-                            <com.devspark.robototextview.widget.RobotoTextView
-                                android:id="@+id/score2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                android:text="440"
-                                android:textColor="@color/colorAccent"
-                                app:typeface="roboto_bold" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/image3"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_marginTop="10dp"
-                                android:src="@drawable/user_holder" />
-
-                            <com.devspark.robototextview.widget.RobotoTextView
-                                android:id="@+id/name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:text="Prasanna Mishra"
-                                android:textColor="@color/colorPrimaryText" />
-
-                            <com.devspark.robototextview.widget.RobotoTextView
-                                android:id="@+id/score3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                android:text="340"
-                                android:textColor="@color/colorAccent"
-                                app:typeface="roboto_bold" />
-
-                        </LinearLayout>
                     </LinearLayout>
-                </RelativeLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/image3"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/user_holder" />
+
+                        <com.devspark.robototextview.widget.RobotoTextView
+                            android:id="@+id/name3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Prasanna Mishra"
+                            android:textColor="@color/colorPrimaryText" />
+
+                        <com.devspark.robototextview.widget.RobotoTextView
+                            android:id="@+id/score3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="340"
+                            android:textColor="@color/colorAccent"
+                            app:typeface="roboto_bold" />
+
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <android.support.v7.widget.CardView

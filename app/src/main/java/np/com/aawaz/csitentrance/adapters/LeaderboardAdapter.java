@@ -27,7 +27,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = inflater.inflate(R.layout.score_board_item, parent, false);
+        View v = inflater.inflate(R.layout.leader_board_item, parent, false);
         return new ViewHolder(v);
     }
 

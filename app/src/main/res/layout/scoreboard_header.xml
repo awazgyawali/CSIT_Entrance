@@ -3,7 +3,6 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorAccent"
     android:orientation="vertical">
 
     <com.devspark.robototextview.widget.RobotoTextView
@@ -11,82 +10,135 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Your Rank: 1002"
-        android:textColor="@color/white"
+        android:text="Accuracy"
+        android:textColor="@color/colorPrimary"
         custom:typeface="roboto_bold" />
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_margin="3dp"
+        custom:cardBackgroundColor="@color/white">
 
-        <RelativeLayout
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:padding="10dp">
+            android:orientation="vertical">
 
-            <com.github.lzyzsd.circleprogress.ArcProgress
-                android:id="@+id/arc_math"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                custom:arc_bottom_text="Physics"
-                custom:arc_progress="55" />
-        </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:padding="10dp">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-            <com.github.lzyzsd.circleprogress.ArcProgress
-                android:id="@+id/arc_english"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                custom:arc_bottom_text="Chemistry"
-                custom:arc_progress="55" />
+                    <com.github.lzyzsd.circleprogress.ArcProgress
+                        android:id="@+id/arc_physics"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        custom:arc_finished_color="@color/physics"
+                        custom:arc_progress="25"
+                        custom:arc_text_color="@color/physics"
+                        custom:arc_unfinished_color="@color/background" />
 
-        </RelativeLayout>
-    </LinearLayout>
+                    <com.devspark.robototextview.widget.RobotoTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Physics"
+                        android:textColor="@color/physics" />
+                </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:padding="10dp">
+                    <com.github.lzyzsd.circleprogress.ArcProgress
+                        android:id="@+id/arc_chem"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        custom:arc_finished_color="@color/chemistry"
+                        custom:arc_progress="45"
+                        custom:arc_text_color="@color/chemistry"
+                        custom:arc_unfinished_color="@color/background" />
 
-            <com.github.lzyzsd.circleprogress.ArcProgress
-                android:id="@+id/arc_physics"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                custom:arc_bottom_text="Mathematics"
-                custom:arc_progress="55" />
-        </RelativeLayout>
+                    <com.devspark.robototextview.widget.RobotoTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Chemistry"
+                        android:textColor="@color/chemistry" />
+                </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:padding="10dp">
+            </LinearLayout>
 
-            <com.github.lzyzsd.circleprogress.ArcProgress
-                android:id="@+id/arc_chem"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                custom:arc_bottom_text="English"
-                custom:arc_progress="55" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        </RelativeLayout>
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <com.github.lzyzsd.circleprogress.ArcProgress
+                        android:id="@+id/arc_math"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        custom:arc_finished_color="@color/math"
+                        custom:arc_progress="60"
+                        custom:arc_text_color="@color/math"
+                        custom:arc_unfinished_color="@color/background" />
+
+                    <com.devspark.robototextview.widget.RobotoTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Mathematics"
+                        android:textColor="@color/math" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <com.github.lzyzsd.circleprogress.ArcProgress
+                        android:id="@+id/arc_english"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        custom:arc_finished_color="@color/english"
+                        custom:arc_progress="72"
+                        custom:arc_text_color="@color/english"
+                        custom:arc_unfinished_color="@color/background" />
+
+                    <com.devspark.robototextview.widget.RobotoTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="English"
+                        android:textColor="@color/english" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

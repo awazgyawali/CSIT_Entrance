@@ -146,5 +146,16 @@
     <string name="postScoreurl">http://www.avaaj.com.np/jsonFeed/uploadScore.php</string>
     <string name="fetchScoreurl">http://brainants.com/nepalGov/leaderBoard.json</string>
     <string name="url">http://www.avaaj.com.np/jsonFeed/news_feed.php</string>
+    <string-array name="years">
+        <item>TU Examination 2069</item>
+        <item>TU Examination 2070</item>
+        <item>TU Examination 2071</item>
+        <item>TU Examination 2072</item>
+
+        <item>Model Question 1</item>
+        <item>Model Question 2</item>
+        <item>Model Question 3</item>
+        <item>Model Question 4</item>
+    </string-array>
 
 </resources>

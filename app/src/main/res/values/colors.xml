@@ -11,6 +11,11 @@
     <color name="background">#e9e9e9</color>
 
 
+    <color name="physics">#DB2705</color>
+    <color name="chemistry">#2AA6C1</color>
+    <color name="math">#009688</color>
+    <color name="english">#2A5FBD</color>
+
     <color name="primary1">#2d3e4e</color>
     <color name="primary2">#922b72</color>
     <color name="primary3">#2881bb</color>
