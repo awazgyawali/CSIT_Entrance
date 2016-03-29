@@ -17,7 +17,6 @@
             android:padding="10dp"
             android:text="Old Questions"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
             app:typeface="roboto_bold" />
 
 
@@ -186,7 +185,6 @@
             android:padding="10dp"
             android:text="Model Questions"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
             app:typeface="roboto_bold" />
 
         <LinearLayout

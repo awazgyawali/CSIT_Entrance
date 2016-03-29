@@ -12,6 +12,6 @@
         android:layout_margin="5dp"
         android:text="tested"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#000" />
+        android:textColor="@color/colorPrimaryText" />
 
 </android.support.v7.widget.CardView>

@@ -29,11 +29,13 @@ public class EachScoreboard {
         ArcProgress chemArc = (ArcProgress) view.findViewById(R.id.arc_chem);
         ArcProgress mathArc = (ArcProgress) view.findViewById(R.id.arc_math);
         ArcProgress engArc = (ArcProgress) view.findViewById(R.id.arc_english);
+        RobotoTextView totalScore = (RobotoTextView) view.findViewById(R.id.totalScoreScoreboard);
 
         phyArc.setProgress(spHandler.getAccuracy(SPHandler.PHYSICS));
         chemArc.setProgress(spHandler.getAccuracy(SPHandler.CHEMISTRY));
         mathArc.setProgress(spHandler.getAccuracy(SPHandler.MATH));
         engArc.setProgress(spHandler.getAccuracy(SPHandler.ENGLISH));
+        totalScore.setText("Total: " + spHandler.getTotalScore());
 
         return view;
     }

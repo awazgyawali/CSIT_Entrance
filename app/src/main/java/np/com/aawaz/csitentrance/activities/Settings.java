@@ -3,6 +3,7 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.RelativeLayout;
 
 import np.com.aawaz.csitentrance.R;
 
@@ -12,6 +13,7 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
     }
     private void removeAllTheProgress() {
         SharedPreferences.Editor pref = getSharedPreferences("values", MODE_PRIVATE).edit();

@@ -3,7 +3,6 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -13,9 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
-
-import com.devspark.robototextview.widget.RobotoTextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,7 +20,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.fragments.other_fragments.AnswersDrawer;
 import np.com.aawaz.csitentrance.fragments.other_fragments.QuestionFragment;
@@ -41,15 +36,12 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
     ArrayList<String> d = new ArrayList<>();
     ArrayList<String> answer = new ArrayList<>();
 
-    ProgressBar pb;
-
-    RobotoTextView scoreTxt, qNoTxt, topic;
     DrawerLayout drawerLayout;
     AnswersDrawer answersDrawer;
     CustomViewPager customViewPager;
 
-    String[] titles = {"", "2069 Entrance Question", "2070 Entrance Question", "2071 Entrance Question", "Model Question 1",
-            "Model Question 2", "Model Question 3", "Model Question 4", "Model Question 5"};
+    String[] titles = {"", "2069", "2070", "2071", "2072", "Model 1",
+            "Model 2", "Model 3", "Model 4"};
 
     int qNo = 0;
     int score = 0;
@@ -77,29 +69,19 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        addProfPic();
-
         code = getIntent().getIntExtra("position", 1);
 
-        pb = (ProgressBar) findViewById(R.id.progressBar);
-        topic = (RobotoTextView) findViewById(R.id.topic);
-        scoreTxt = (RobotoTextView) findViewById(R.id.score);
-        qNoTxt = (RobotoTextView) findViewById(R.id.noOfQuestion);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayoutQuiz);
         customViewPager = (CustomViewPager) findViewById(R.id.viewPagerQuestion);
         answersDrawer = (AnswersDrawer) getSupportFragmentManager().findFragmentById(R.id.answerFragment);
 
-        topic.setText(titles[code]);
-
         //Last Stage of the game
         fetchFromSp();
 
-        //Load Question and Options to the ArrayList
+        //Load and Options to the ArrayList
         setDataToArrayList();
 
         initilizeViewPager();
-
-        pb.setMax(120);
     }
 
     private void initilizeViewPager() {
@@ -119,12 +101,6 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
         customViewPager.setCurrentItem(qNo);
     }
 
-    private void addProfPic() {
-        CircleImageView img = (CircleImageView) findViewById(R.id.profQue);
-        SharedPreferences pref = getSharedPreferences("info", Context.MODE_PRIVATE);
-        img.setImageURI(Uri.parse(pref.getString("ImageLink", "")));
-    }
-
     private void fetchFromSp() {
         qNo = getSharedPreferences("values", MODE_PRIVATE).getInt("played" + code, 0);
         score = getSharedPreferences("values", MODE_PRIVATE).getInt("score" + code, 0);
@@ -134,20 +110,9 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
 
     @Override
     public void selected(boolean correct) {
-
         qNo++;
-
         if (correct)
             score++;
-
-        if (qNo == 99)
-            qNoTxt.setText("Completed");
-        else
-            qNoTxt.setText((qNo + 1) + " / 100");
-        scoreTxt.setText(score + "");
-
-        pb.setProgress(21 + qNo);
-
         answersDrawer.increaseSize();
         customViewPager.setCurrentItem(customViewPager.getCurrentItem() + 1);
     }

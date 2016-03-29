@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.QuizActivity;
-import np.com.aawaz.csitentrance.activities.WebViewActivity;
+import np.com.aawaz.csitentrance.activities.FullQuestionActivity;
 
 public class YearsList extends Fragment {
 
@@ -114,7 +114,7 @@ public class YearsList extends Fragment {
     }
 
     public void openFullQuestion(int position) {
-        Intent intent = new Intent(getContext(), WebViewActivity.class);
+        Intent intent = new Intent(getContext(), FullQuestionActivity.class);
         intent.putExtra("code", position + 1);
         startActivity(intent);
     }

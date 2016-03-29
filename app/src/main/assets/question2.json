@@ -9,7 +9,7 @@
       "ans": "b"
     },
     {
-      "question": "2. The range of the function y=y=$\\sqrt{a^2-x^2}$, a$>$0 is equals to",
+      "question": "2. The range of the function y=$\\sqrt{a^2-x^2}$, a$>$0 is equals to",
       "a": "[-a,a]",
       "b": "(-a,a)",
       "c": "[0,a]",

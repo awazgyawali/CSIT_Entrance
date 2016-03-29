@@ -1,96 +1,72 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayoutQuiz"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="np.com.aawaz.csitentrance.activities.QuizActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/quizToolbar"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:theme="@style/Theme.AppCompat" />
+            android:layout_height="180dp"
+            android:background="@color/colorPrimary">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/quizToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:theme="@style/Theme.AppCompat" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="2dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <com.devspark.robototextview.widget.RobotoTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Aawaz Gyawali"
+                        android:textColor="@color/white"
+                        app:typeface="roboto_bold" />
+
+                    <com.devspark.robototextview.widget.RobotoTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Score: 63"
+                        android:textColor="@color/white_transparent"
+                        app:typeface="roboto_bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
 
         <np.com.aawaz.csitentrance.misc.CustomViewPager
             android:id="@+id/viewPagerQuestion"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent" />
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:id="@+id/bottomBar"
-                android:layout_width="match_parent"
-                android:layout_height="70dp">
-
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginTop="2dp"
-                    android:max="120"
-                    android:progress="50"
-                    android:progressDrawable="@drawable/primary_progress" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profQue"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp" />
-
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:id="@+id/topic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/profQue"
-                    android:layout_marginLeft="16dp"
-                    android:layout_toEndOf="@+id/profQue"
-                    android:layout_toRightOf="@+id/profQue"
-                    android:text="To-Do Topic Name"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000"
-                    android:textStyle="bold" />
-
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:id="@+id/noOfQuestion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/topic"
-                    android:layout_alignStart="@+id/topic"
-                    android:layout_below="@+id/topic"
-                    android:text="1 / 100"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000" />
-
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:id="@+id/score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/topic"
-                    android:layout_marginRight="16dp"
-                    android:text="0"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <fragment
         android:id="@+id/answerFragment"

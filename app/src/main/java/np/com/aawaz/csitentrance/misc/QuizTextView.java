@@ -3,15 +3,28 @@ package np.com.aawaz.csitentrance.misc;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
 import android.webkit.WebView;
-import android.widget.TextView;
 
-public class QuizTextView extends WebView{
+public class QuizTextView extends WebView {
     public QuizTextView(Context context) {
         super(context);
     }
 
     public void initializer() {
+        setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+        setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         getSettings().setJavaScriptEnabled(true);
         getSettings().setBuiltInZoomControls(true);
         loadDataWithBaseURL("http://bar/", "<script type='text/x-mathjax-config'>"
@@ -63,12 +76,7 @@ public class QuizTextView extends WebView{
     }
 
     private String doubleEscapeTeX(String s) {
-        String t = "";
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '\'') t += '\\';
-            if (s.charAt(i) != '\n') t += s.charAt(i);
-            if (s.charAt(i) == '\\') t += "\\";
-        }
-        return t;
+        s.replace("\\\\", "\\\\\\");
+        return s;
     }
 }

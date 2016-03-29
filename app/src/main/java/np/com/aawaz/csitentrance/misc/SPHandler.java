@@ -58,4 +58,8 @@ public class SPHandler {
         return (int) (((float) getScore(name) / (float) getPlayed(name)) * 100);
     }
 
+    public int getTotalScore() {
+        return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) +
+                getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4);
+    }
 }

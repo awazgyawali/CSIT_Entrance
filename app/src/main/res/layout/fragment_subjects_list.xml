@@ -18,7 +18,6 @@
             android:padding="10dp"
             android:text="Subjects"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
             app:typeface="roboto_bold" />
 
 
@@ -28,7 +27,7 @@
             android:orientation="horizontal">
 
             <android.support.v7.widget.CardView
-                android:id="@+id/question2069"
+                android:id="@+id/physc"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="3dp"
@@ -59,7 +58,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/question2070"
+                android:id="@+id/chems"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="3dp"
@@ -96,7 +95,7 @@
             android:orientation="horizontal">
 
             <android.support.v7.widget.CardView
-                android:id="@+id/question2071"
+                android:id="@+id/maths"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="3dp"
@@ -107,20 +106,6 @@
                 app:cardCornerRadius="5dp"
                 app:cardElevation="3dp">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingBottom="10dp" />
-
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/colorPrimary"
-                    app:typeface="roboto_bold" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -142,7 +127,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/question2072"
+                android:id="@+id/english"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="3dp"
