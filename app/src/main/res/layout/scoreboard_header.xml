@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorAccent"
+    android:orientation="vertical">
+
+    <com.devspark.robototextview.widget.RobotoTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Your Rank: 1002"
+        android:textColor="@color/white"
+        custom:typeface="roboto_bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:padding="10dp">
+
+            <com.github.lzyzsd.circleprogress.ArcProgress
+                android:id="@+id/arc_math"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                custom:arc_bottom_text="Physics"
+                custom:arc_progress="55" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:padding="10dp">
+
+            <com.github.lzyzsd.circleprogress.ArcProgress
+                android:id="@+id/arc_english"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                custom:arc_bottom_text="Chemistry"
+                custom:arc_progress="55" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:padding="10dp">
+
+            <com.github.lzyzsd.circleprogress.ArcProgress
+                android:id="@+id/arc_physics"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                custom:arc_bottom_text="Mathematics"
+                custom:arc_progress="55" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:padding="10dp">
+
+            <com.github.lzyzsd.circleprogress.ArcProgress
+                android:id="@+id/arc_chem"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                custom:arc_bottom_text="English"
+                custom:arc_progress="55" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -17,6 +17,7 @@ import com.google.android.gms.gcm.GcmListenerService;
 import java.util.Random;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.MainActivity;
 
 public class MyIntentService extends GcmListenerService {
     @Override

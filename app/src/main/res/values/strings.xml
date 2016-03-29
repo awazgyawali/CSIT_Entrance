@@ -144,7 +144,7 @@
     <string name="uploadImage">http://avaaj.com.np/jsonFeed/upload_image.php</string>
     <string name="viewResult">http://avaaj.com.np/jsonFeed/result.php?rollNo=</string>
     <string name="postScoreurl">http://www.avaaj.com.np/jsonFeed/uploadScore.php</string>
-    <string name="fetchScoreurl">http://www.avaaj.com.np/jsonFeed/downloadScore.php</string>
+    <string name="fetchScoreurl">http://brainants.com/nepalGov/leaderBoard.json</string>
     <string name="url">http://www.avaaj.com.np/jsonFeed/news_feed.php</string>
 
 </resources>

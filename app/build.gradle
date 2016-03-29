@@ -32,6 +32,7 @@ dependencies {
     }
 
 
+
     compile 'com.github.johnkil.android-robototextview:robototextview:2.5.0'
     compile 'com.heinrichreimersoftware:material-intro:1.1'
     compile 'com.android.support:design:23.2.1'
@@ -50,7 +51,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-appindexing:8.3.0'
     compile 'com.truizlop.fabreveallayout:library:1.0.0'
     compile 'com.getbase:floatingactionbutton:1.10.1'
-
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
+    compile 'com.github.lzyzsd:circleprogress:1.1.0@aar'
 }

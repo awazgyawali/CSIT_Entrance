@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
@@ -18,7 +19,7 @@ public class QuestionFragment extends Fragment {
 
     QuizTextView question, option1, option2, option3, option4;
 
-    FloatingActionButton fab;
+    LinearLayout fab;
 
     int clickedAns = 0;
     private QuizInterface listener;
@@ -51,7 +52,7 @@ public class QuestionFragment extends Fragment {
         option3 = (QuizTextView) view.findViewById(R.id.option3);
         option4 = (QuizTextView) view.findViewById(R.id.option4);
 
-        fab = (FloatingActionButton) view.findViewById(R.id.AnswerFab);
+        fab = (LinearLayout) view.findViewById(R.id.AnswerFab);
     }
 
     @Override

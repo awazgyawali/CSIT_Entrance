@@ -9,14 +9,16 @@
     android:background="@color/white"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="15dp">
+    android:paddingBottom="16dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="16dp">
 
     <com.devspark.robototextview.widget.RobotoTextView
         android:id="@+id/numbering"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1."
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/black"
         app:typeface="roboto_bold" />
 
@@ -28,8 +30,7 @@
         android:ellipsize="end"
         android:paddingLeft="10dp"
         android:text="Aawaz Gyawali"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000" />
+        android:textColor="@color/colorPrimaryText" />
 
     <com.devspark.robototextview.widget.RobotoTextView
         android:id="@+id/scoreboardScore"
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
+        app:typeface="roboto_bold"
         android:text="02"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000" />
+        android:textColor="@color/colorAccent" />
 </LinearLayout>

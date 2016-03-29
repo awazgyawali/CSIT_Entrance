@@ -14,6 +14,7 @@
         <com.devspark.robototextview.widget.RobotoTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:padding="10dp"
             android:text="Subjects"
             android:textColor="@color/colorPrimary"
@@ -35,17 +36,25 @@
                 android:gravity="center"
                 android:textColor="@color/colorPrimary"
                 android:textSize="30sp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="5dp"
                 app:cardElevation="3dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:selectableItemBackground"
+                    android:paddingBottom="10dp"
+                    android:src="@drawable/physics" />
 
                 <com.devspark.robototextview.widget.RobotoTextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:text="Physics"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimary"
                     app:typeface="roboto_bold" />
             </android.support.v7.widget.CardView>
 
@@ -58,17 +67,25 @@
                 android:gravity="center"
                 android:textColor="@color/colorPrimary"
                 android:textSize="30sp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="5dp"
                 app:cardElevation="3dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:selectableItemBackground"
+                    android:paddingBottom="10dp"
+                    android:src="@drawable/chemistry" />
 
                 <com.devspark.robototextview.widget.RobotoTextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:text="Chemistry"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimary"
                     app:typeface="roboto_bold" />
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -87,25 +104,40 @@
                 android:gravity="center"
                 android:textColor="@color/colorPrimary"
                 android:textSize="30sp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="5dp"
                 app:cardElevation="3dp">
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
+                    android:paddingBottom="10dp" />
 
                 <com.devspark.robototextview.widget.RobotoTextView
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimary"
+                    app:typeface="roboto_bold" />
+
+                <ImageView
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="?android:selectableItemBackground"
+                    android:paddingBottom="10dp"
+                    android:src="@drawable/math" />
+
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:text="Mathematics"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimary"
                     app:typeface="roboto_bold" />
             </android.support.v7.widget.CardView>
 
@@ -118,17 +150,25 @@
                 android:gravity="center"
                 android:textColor="@color/colorPrimary"
                 android:textSize="30sp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="5dp"
                 app:cardElevation="3dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:selectableItemBackground"
+                    android:paddingBottom="10dp"
+                    android:src="@drawable/english" />
 
                 <com.devspark.robototextview.widget.RobotoTextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:text="English"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimary"
                     app:typeface="roboto_bold" />
             </android.support.v7.widget.CardView>
         </LinearLayout>

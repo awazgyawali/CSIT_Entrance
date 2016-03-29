@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -24,6 +25,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -32,13 +34,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.Profile;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.squareup.picasso.Picasso;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
@@ -46,6 +52,9 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -65,10 +74,10 @@ public class SignUp extends Fragment implements TextWatcher {
     RelativeLayout profilePicture;
     CircleImageView imageView;
     FancyButton fbLogin, twitterLogin;
-    private File file;
     private CallbackManager callBackManager;
     TwitterLoginButton twitterLoginButton;
     private Bitmap bitmap;
+    private View view;
 
     public SignUp() {
         // Required empty public constructor
@@ -94,13 +103,18 @@ public class SignUp extends Fragment implements TextWatcher {
                     @Override
                     public void success(Result<String> result) {
                         // Do something with the result, which provides the email address
+                        email.setText(result.data);
                     }
 
                     @Override
                     public void failure(TwitterException exception) {
                         // Do something on failure
                     }
+
                 });
+
+                name.setText(result.data.getUserName().split(" ")[0]);
+                sur.setText(result.data.getUserName().split(" ")[1]);
             }
 
             @Override
@@ -124,13 +138,11 @@ public class SignUp extends Fragment implements TextWatcher {
 
         final LoginButton facebookLoginButton = new LoginButton(getContext());
         facebookLoginButton.setFragment(this);
-        facebookLoginButton.setPublishPermissions("publish_actions");
+        facebookLoginButton.setReadPermissions("email");
         facebookLoginButton.registerCallback(callBackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Profile profile = Profile.getCurrentProfile();
-                name.setText(profile.getFirstName());
-                sur.setText(profile.getLastName());
+                postFbLoginWork();
             }
 
             @Override
@@ -152,6 +164,55 @@ public class SignUp extends Fragment implements TextWatcher {
         });
     }
 
+    private void postFbLoginWork() {
+        final MaterialDialog dialog = new MaterialDialog.Builder(getContext())
+                .content("Loading in...")
+                .progress(true, 0)
+                .cancelable(false)
+                .build();
+
+        dialog.show();
+        Bundle bundle = new Bundle();
+        bundle.putString("fields", "id,name,email,first_name,last_name");
+        new GraphRequest(AccessToken.getCurrentAccessToken(), "me", bundle, HttpMethod.GET, new GraphRequest.Callback() {
+            @Override
+            public void onCompleted(GraphResponse response) {
+                if (response.getError() != null) {
+                    Snackbar.make(view, "Unable to connect.", Snackbar.LENGTH_SHORT).setAction("Retry", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            postFbLoginWork();
+                        }
+                    }).show();
+                    dialog.dismiss();
+                    return;
+                }
+                try {
+                    Log.d("Debug", response.toString());
+                    JSONObject object = response.getJSONObject();
+                    SharedPreferences.Editor editor = pref.edit();
+                    //email save garera complete login activity ma name ani email pass gareko
+                    editor.putString("email", object.getString("email"));
+                    editor.putString("FirstName", object.getString("first_name"));
+                    editor.putString("LastName", object.getString("last_name"));
+                    editor.putString("FullName", object.getString("name"));
+                    editor.putString("UserID", object.getString("id"));
+                    editor.apply();
+
+                    name.setText(pref.getString("FirstName", ""));
+                    sur.setText(pref.getString("LastName", ""));
+
+                    email.setText(pref.getString("email", ""));
+                    Picasso.with(getContext()).load("https://graph.facebook.com/" + pref.getString("UserID", "") + "/picture?type=large").into(imageView);
+                    dialog.dismiss();
+                } catch (JSONException ignored) {
+                    ignored.printStackTrace();
+                }
+            }
+        }).executeAsync();
+        return;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -162,6 +223,7 @@ public class SignUp extends Fragment implements TextWatcher {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        this.view = view;
         name = (EditText) view.findViewById(R.id.NameText);
         sur = (EditText) view.findViewById(R.id.LastText);
         phone = (EditText) view.findViewById(R.id.phoneNo);
@@ -208,7 +270,6 @@ public class SignUp extends Fragment implements TextWatcher {
                     editor.putString("E-mail", email.getText().toString());
                     editor.putString("PhoneNo", phone.getText().toString() + "");
                     editor.putString("uniqueID", email.getText().toString());
-                    editor.putString("ImageLink", file.getPath());
                     editor.apply();
                     startActivity(new Intent(getContext(), MainActivity.class));
                     getActivity().finish();
@@ -232,7 +293,7 @@ public class SignUp extends Fragment implements TextWatcher {
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         if (!name.getText().toString().equals("") && phone.getText().toString().length() == 10
-                && !sur.getText().toString().equals("") && !email.getText().toString().equals("") && file != null) {
+                && !sur.getText().toString().equals("") && !email.getText().toString().equals("") && imageView.getDrawable() != null) {
             fab.show();
         } else {
             fab.hide();
@@ -252,23 +313,23 @@ public class SignUp extends Fragment implements TextWatcher {
 
         if (requestCode == 1 && resultCode == AppCompatActivity.RESULT_OK
                 && null != data) {
+
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
-            Cursor cursor = getContext().getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
+            Cursor cursor = getActivity().getContentResolver().query(
+                    selectedImage, filePathColumn, null, null, null);
             cursor.moveToFirst();
 
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
+            String filePath = cursor.getString(columnIndex);
             cursor.close();
 
 
-            file = new File(picturePath);
-            imageView.setImageURI(Uri.fromFile(file));
+            Bitmap yourSelectedImage = BitmapFactory.decodeFile(filePath);
 
-            onTextChanged(null, 0, 0, 0);
-            decodeFile(picturePath);
+            imageView.setImageBitmap(yourSelectedImage);
+            decodeFile(filePath);
         }
     }
 

@@ -2,7 +2,6 @@ package np.com.aawaz.csitentrance.adapters;
 
 
 import android.content.Context;
-import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,16 +13,14 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 
-public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.ViewHolder> {
+public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.ViewHolder> {
     private ArrayList<Integer> scores;
     private ArrayList<String> names;
     private LayoutInflater inflater;
-    private Context context;
 
 
-    public ScoreBoardAdapter(Context context, ArrayList<String> names, ArrayList<Integer> scores, ArrayList<String> imageLink) {
+    public LeaderboardAdapter(Context context, ArrayList<String> names, ArrayList<Integer> scores, ArrayList<String> imageLink) {
         inflater = LayoutInflater.from(context);
-        this.context = context;
         this.names = names;
         this.scores = scores;
     }
@@ -38,12 +35,12 @@ public class ScoreBoardAdapter extends RecyclerView.Adapter<ScoreBoardAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.name.setText(names.get(position));
         holder.score.setText(scores.get(position) + "");
-        holder.numbering.setText(position + 1+". ");
+        holder.numbering.setText(position + 4 + ". ");
     }
 
     @Override
     public int getItemCount() {
-        return names.size() > 10 ? 10 : names.size();
+        return names.size() > 7 ? 7 : names.size();
     }
 
 
