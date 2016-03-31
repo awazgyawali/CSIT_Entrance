@@ -3,6 +3,7 @@ package np.com.aawaz.csitentrance.fragments.other_fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.devspark.robototextview.widget.RobotoTextView;
 
+import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
 import np.com.aawaz.csitentrance.misc.QuizTextView;
@@ -25,12 +27,14 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     QuizTextView question, option1, option2, option3, option4;
     RobotoTextView questionRo, option1Ro, option2Ro, option3Ro, option4Ro;
     RelativeLayout option1Listener, option2Listener, option3Listener, option4Listener;
-    CardView option1Selected, option2Selected, option3Selected, option4Selected;
+    FancyButton option1Selected, option2Selected, option3Selected, option4Selected;
 
     CardView submit;
 
     int clickedAns = 0;
     private QuizInterface listener;
+    String[] subjects = {"Physics", "Chemistry", "Math", "English"};
+    int[] subColor = {R.color.physics, R.color.chemistry, R.color.math, R.color.english};
 
     public QuestionFragment() {
         // Required empty public constructor
@@ -73,28 +77,30 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         option4Listener = (RelativeLayout) view.findViewById(R.id.option4);
 
 
-        option1Selected = (CardView) view.findViewById(R.id.optSelected1);
-        option2Selected = (CardView) view.findViewById(R.id.optSelected2);
-        option3Selected = (CardView) view.findViewById(R.id.optSelected3);
-        option4Selected = (CardView) view.findViewById(R.id.optSelected4);
+        option1Selected = (FancyButton) view.findViewById(R.id.optSelected1);
+        option2Selected = (FancyButton) view.findViewById(R.id.optSelected2);
+        option3Selected = (FancyButton) view.findViewById(R.id.optSelected3);
+        option4Selected = (FancyButton) view.findViewById(R.id.optSelected4);
 
         submit = (CardView) view.findViewById(R.id.AnswerFab);
 
         YoYo.with(Techniques.SlideOutDown)
-                .duration(500)
+                .duration(0)
                 .playOn(submit);
+        submit.setOnClickListener(null);
 
         option1Listener.setOnClickListener(this);
         option2Listener.setOnClickListener(this);
         option3Listener.setOnClickListener(this);
         option4Listener.setOnClickListener(this);
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkAnswer();
-            }
-        });
+
+        FancyButton tag = (FancyButton) view.findViewById(R.id.subjectTag);
+
+        tag.setText(subjects[getArguments().getInt("position") / 25]);
+        tag.setTextColor(subColor[getArguments().getInt("position") / 25]);
+        tag.setBorderColor(subColor[getArguments().getInt("position") / 25]);
+
     }
 
     @Override
@@ -175,7 +181,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
             option3Ro.setText(Html.fromHtml(opt3Text));
         }
 
-        if (opt1Text.contains("$")) {
+        if (opt4Text.contains("$")) {
             option4Ro.setVisibility(View.GONE);
             option4.setVisibility(View.VISIBLE);
 
@@ -200,9 +206,9 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     public void checkAnswer() {
         if ((clickedAns == 1 && getArguments().getString("ans").equals("a")) || (clickedAns == 2 && getArguments().getString("ans").equals("b")) ||
                 (clickedAns == 3 && getArguments().getString("ans").equals("c")) || (clickedAns == 4 && getArguments().getString("ans").equals("d"))) {
-            listener.selected(true);
+            listener.selected(submit,true);
         } else {
-            listener.selected(false);
+            listener.selected(submit,false);
         }
     }
 
@@ -220,31 +226,38 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkAnswer();
+            }
+        });
+
         if (clickedAns == 0)
             YoYo.with(Techniques.SlideInUp)
                     .duration(500)
                     .playOn(submit);
 
-        option1Selected.setCardElevation(getResources().getDimension(R.dimen.cardview_default_elevation));
-        option2Selected.setCardElevation(getResources().getDimension(R.dimen.cardview_default_elevation));
-        option3Selected.setCardElevation(getResources().getDimension(R.dimen.cardview_default_elevation));
-        option4Selected.setCardElevation(getResources().getDimension(R.dimen.cardview_default_elevation));
+        option1Selected.setBorderColor(ContextCompat.getColor(getContext(), R.color.colorUnselected));
+        option2Selected.setBorderColor(ContextCompat.getColor(getContext(), R.color.colorUnselected));
+        option3Selected.setBorderColor(ContextCompat.getColor(getContext(), R.color.colorUnselected));
+        option4Selected.setBorderColor(ContextCompat.getColor(getContext(), R.color.colorUnselected));
         switch (view.getId()) {
             case R.id.option1:
                 clickedAns = 1;
-                option1Selected.setCardElevation(getResources().getDimension(R.dimen.card_max_elevation));
+                option1Selected.setBorderColor(ContextCompat.getColor(getContext(), R.color.colorSelected));
                 break;
             case R.id.option2:
                 clickedAns = 2;
-                option2Selected.setCardElevation(getResources().getDimension(R.dimen.card_max_elevation));
+                option2Selected.setBorderColor(ContextCompat.getColor(getContext(), R.color.colorSelected));
                 break;
             case R.id.option3:
                 clickedAns = 3;
-                option3Selected.setCardElevation(getResources().getDimension(R.dimen.card_max_elevation));
+                option3Selected.setBorderColor(ContextCompat.getColor(getContext(), R.color.colorSelected));
                 break;
             case R.id.option4:
                 clickedAns = 4;
-                option4Selected.setCardElevation(getResources().getDimension(R.dimen.card_max_elevation));
+                option4Selected.setBorderColor(ContextCompat.getColor(getContext(), R.color.colorSelected));
                 break;
         }
 

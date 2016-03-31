@@ -2,7 +2,6 @@ package np.com.aawaz.csitentrance.fragments.other_fragments;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
@@ -22,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.devspark.robototextview.widget.RobotoTextView;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -174,8 +174,8 @@ public class CommentsFragment extends BottomSheetDialogFragment {
             ((BottomSheetBehavior) behavior).setBottomSheetCallback(mBottomSheetBehaviorCallback);
         }
 
+        Picasso.with(getContext()).load(getContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("ImageLink", "")).into(profileImage);
 
-        profileImage.setImageURI(Uri.parse(getContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("ImageLink", "")));
         fetchFromInternet();
     }
 }

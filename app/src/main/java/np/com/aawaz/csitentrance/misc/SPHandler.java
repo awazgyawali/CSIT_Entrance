@@ -51,7 +51,7 @@ public class SPHandler {
     }
 
     public void increaseScore(String name) {
-        editor.putInt(name + SCORE, getPlayed(name) + 1).apply();
+        editor.putInt(name + SCORE, getScore(name) + 1).apply();
     }
 
     public int getAccuracy(String name) {

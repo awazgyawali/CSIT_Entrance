@@ -29,7 +29,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:background="@color/primary5">
+                android:background="@color/colorAccent">
 
                 <TextView
                     android:id="@+id/detailBook"

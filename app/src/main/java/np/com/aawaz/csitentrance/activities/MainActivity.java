@@ -3,7 +3,6 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -20,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.devspark.robototextview.widget.RobotoTextView;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("info", Context.MODE_PRIVATE);
         name.setText(pref.getString("Name", "") + " " + pref.getString("Surname", ""));
         email.setText(pref.getString("E-mail", ""));
-        imageView.setImageURI(Uri.parse(pref.getString("ImageLink", "")));
+        Picasso.with(this).load(pref.getString("ImageLink", "")).into(imageView);
     }
 
     private void navigate(MenuItem item) {

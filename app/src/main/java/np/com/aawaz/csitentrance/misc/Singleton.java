@@ -35,10 +35,6 @@ public class Singleton {
         return sInstance;
     }
 
-    public static String getImageLini() {
-        return MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("ImageLink", "");
-    }
-
     public RequestQueue getRequestQueue() {
         return mRequestQueue;
     }

@@ -269,7 +269,7 @@ public class SignUp extends Fragment implements TextWatcher {
                     editor.putString("Surname", sur.getText().toString());
                     editor.putString("E-mail", email.getText().toString());
                     editor.putString("PhoneNo", phone.getText().toString() + "");
-                    editor.putString("uniqueID", email.getText().toString());
+                    editor.putString("ImageLink", "http://google.com/image.png");
                     editor.apply();
                     startActivity(new Intent(getContext(), MainActivity.class));
                     getActivity().finish();
@@ -325,10 +325,9 @@ public class SignUp extends Fragment implements TextWatcher {
             String filePath = cursor.getString(columnIndex);
             cursor.close();
 
-
-            Bitmap yourSelectedImage = BitmapFactory.decodeFile(filePath);
-
-            imageView.setImageBitmap(yourSelectedImage);
+            Picasso.with(getContext())
+                    .load(new File(filePath))
+                    .into(imageView);
             decodeFile(filePath);
         }
     }

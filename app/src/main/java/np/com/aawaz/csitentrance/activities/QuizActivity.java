@@ -3,15 +3,24 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.os.AsyncTaskCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+import com.devspark.robototextview.widget.RobotoTextView;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,11 +29,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.fragments.other_fragments.AnswersDrawer;
 import np.com.aawaz.csitentrance.fragments.other_fragments.QuestionFragment;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
 import np.com.aawaz.csitentrance.misc.CustomViewPager;
+import np.com.aawaz.csitentrance.misc.SPHandler;
 
 
 public class QuizActivity extends AppCompatActivity implements QuizInterface {
@@ -39,13 +50,13 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
     DrawerLayout drawerLayout;
     AnswersDrawer answersDrawer;
     CustomViewPager customViewPager;
+    String[] subjectArray = {SPHandler.PHYSICS, SPHandler.CHEMISTRY, SPHandler.MATH, SPHandler.ENGLISH};
 
-    String[] titles = {"", "2069", "2070", "2071", "2072", "Model 1",
-            "Model 2", "Model 3", "Model 4"};
-
-    int qNo = 0;
-    int score = 0;
-    int code;
+    int qNo;
+    int score;
+    String code;
+    private RobotoTextView scoreText;
+    private SPHandler spHandler;
 
     public static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();
@@ -69,7 +80,8 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        code = getIntent().getIntExtra("position", 1);
+        code = getIntent().getStringExtra("code");
+        spHandler = new SPHandler();
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayoutQuiz);
         customViewPager = (CustomViewPager) findViewById(R.id.viewPagerQuestion);
@@ -82,6 +94,22 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
         setDataToArrayList();
 
         initilizeViewPager();
+
+        setHeader();
+    }
+
+    private void setHeader() {
+        SharedPreferences pref = getSharedPreferences("info", Context.MODE_PRIVATE);
+        CircleImageView quizProf = (CircleImageView) findViewById(R.id.quizProfilePic);
+        RobotoTextView name = (RobotoTextView) findViewById(R.id.quizName);
+        scoreText = (RobotoTextView) findViewById(R.id.quizScore);
+        Picasso.with(this)
+                .load(pref.getString("ImageLink", ""))
+                .into(quizProf);
+
+        name.setText(pref.getString("Name", "") + " " + pref.getString("Surname", ""));
+
+        scoreText.setText("Your Score: " + spHandler.getScore(code));
     }
 
     private void initilizeViewPager() {
@@ -102,24 +130,55 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
     }
 
     private void fetchFromSp() {
-        qNo = getSharedPreferences("values", MODE_PRIVATE).getInt("played" + code, 0);
-        score = getSharedPreferences("values", MODE_PRIVATE).getInt("score" + code, 0);
+        qNo = spHandler.getPlayed(code);
+        score = spHandler.getScore(code);
 
-        answersDrawer.setInitialData(qNo, code);
+        answersDrawer.setInitialData(qNo, getIntent().getIntExtra("position", 1));
     }
 
     @Override
-    public void selected(boolean correct) {
-        qNo++;
-        if (correct)
-            score++;
-        answersDrawer.increaseSize();
-        customViewPager.setCurrentItem(customViewPager.getCurrentItem() + 1);
+    public void selected(CardView submit, boolean correct) {
+        spHandler.increasePlayed(code);
+        spHandler.increasePlayed(subjectArray[customViewPager.getCurrentItem() / 25]);
+        if (correct) {
+            spHandler.increaseScore(code);
+            spHandler.increaseScore(subjectArray[customViewPager.getCurrentItem() / 25]);
+            answersDrawer.increaseSize();
+            scoreText.setText("Your Score: " + spHandler.getScore(code));
+            submit.setCardBackgroundColor(ContextCompat.getColor(this, R.color.colorSelected));
+            RobotoTextView text = (RobotoTextView) submit.findViewById(R.id.submit_button_text);
+            text.setText("Correct");
+            submit.setOnClickListener(null);
+            YoYo.with(Techniques.Tada).duration(500).playOn(submit);
+        } else {
+            submit.setCardBackgroundColor(ContextCompat.getColor(this, R.color.background_1));
+            RobotoTextView text = (RobotoTextView) submit.findViewById(R.id.submit_button_text);
+            text.setText("In-Correct");
+            submit.setOnClickListener(null);
+            YoYo.with(Techniques.Shake).duration(500).playOn(submit);
+        }
+        AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                customViewPager.setCurrentItem(customViewPager.getCurrentItem() + 1);
+            }
+        });
     }
 
     public void setDataToArrayList() {
         try {
-            JSONObject obj = new JSONObject(AssetJSONFile("question" + code + ".json", this));
+            JSONObject obj = new JSONObject(AssetJSONFile("question" + getIntent().getIntExtra("position", 1) + ".json", this));
             JSONArray m_jArry = obj.getJSONArray("questions");
             for (int i = 0; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
@@ -132,15 +191,6 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
             }
         } catch (Exception ignored) {
         }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        SharedPreferences.Editor editor = getSharedPreferences("values", MODE_PRIVATE).edit();
-        editor.putInt("played" + code, qNo);
-        editor.putInt("score" + code, score);
-        editor.apply();
     }
 
     @Override

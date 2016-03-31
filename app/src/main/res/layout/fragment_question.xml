@@ -1,5 +1,6 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,29 +17,63 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="60dp"
             app:cardBackgroundColor="@color/white">
 
-            <RelativeLayout
-                android:id="@+id/question"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:padding="5dp">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <np.com.aawaz.csitentrance.misc.QuizTextView
-                    android:id="@+id/questionWeb"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="center">
 
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:id="@+id/questionRobo"
+                    <com.devspark.robototextview.widget.RobotoTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Model Question 1"
+                        android:textColor="@color/colorPrimary"
+                        app:typeface="roboto_bold" />
+
+                    <mehdi.sakout.fancybuttons.FancyButton
+                        android:id="@+id/subjectTag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        fancy:fb_borderColor="@color/physics"
+                        fancy:fb_borderWidth="2dp"
+                        fancy:fb_defaultColor="@color/white"
+                        fancy:fb_radius="5dp"
+                        fancy:fb_text="Physics"
+                        fancy:fb_textColor="@color/physics" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/question"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="+2"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="17sp" />
-            </RelativeLayout>
+                    android:layout_height="150dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <np.com.aawaz.csitentrance.misc.QuizTextView
+                        android:id="@+id/questionWeb"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <com.devspark.robototextview.widget.RobotoTextView
+                        android:id="@+id/questionRobo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="+2"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="17sp" />
+                </RelativeLayout>
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
@@ -56,66 +91,90 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <android.support.v7.widget.CardView
+                <mehdi.sakout.fancybuttons.FancyButton
                     android:id="@+id/optSelected1"
-                    app:cardBackgroundColor="@color/white"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="2dp"
+                    android:layout_margin="3dp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="10dp">
-
-                    <np.com.aawaz.csitentrance.misc.QuizTextView
-                        android:id="@+id/optionWeb1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="10dp" />
-
-                    <com.devspark.robototextview.widget.RobotoTextView
-                        android:id="@+id/optionRobo1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textSize="17sp" />
+                    android:padding="-2dp"
+                    fancy:fb_borderColor="@color/colorUnselected"
+                    fancy:fb_borderWidth="3dp"
+                    fancy:fb_defaultColor="@color/white"
+                    fancy:fb_iconPaddingLeft="0dp"
+                    fancy:fb_radius="5dp"
+                    fancy:fb_text="">
 
                     <RelativeLayout
-                        android:id="@+id/option1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </android.support.v7.widget.CardView>
+                        android:layout_height="match_parent"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="10dp">
 
-                <android.support.v7.widget.CardView
+                        <np.com.aawaz.csitentrance.misc.QuizTextView
+                            android:id="@+id/optionWeb1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="2dp" />
+
+                        <com.devspark.robototextview.widget.RobotoTextView
+                            android:id="@+id/optionRobo1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="17sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/option1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </RelativeLayout>
+                </mehdi.sakout.fancybuttons.FancyButton>
+
+                <mehdi.sakout.fancybuttons.FancyButton
                     android:id="@+id/optSelected2"
-                    app:cardBackgroundColor="@color/white"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="2dp"
+                    android:layout_margin="3dp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="10dp">
-
-                    <np.com.aawaz.csitentrance.misc.QuizTextView
-                        android:id="@+id/optionWeb2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="10dp" />
-
-                    <com.devspark.robototextview.widget.RobotoTextView
-                        android:id="@+id/optionRobo2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textSize="17sp" />
+                    android:padding="-2dp"
+                    fancy:fb_borderColor="@color/colorUnselected"
+                    fancy:fb_borderWidth="3dp"
+                    fancy:fb_defaultColor="@color/white"
+                    fancy:fb_radius="5dp"
+                    fancy:fb_text="">
 
                     <RelativeLayout
-                        android:id="@+id/option2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </android.support.v7.widget.CardView>
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="10dp">
 
+                        <np.com.aawaz.csitentrance.misc.QuizTextView
+                            android:id="@+id/optionWeb2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="2dp" />
+
+                        <com.devspark.robototextview.widget.RobotoTextView
+                            android:id="@+id/optionRobo2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="17sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/option2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </RelativeLayout>
+                </mehdi.sakout.fancybuttons.FancyButton>
             </LinearLayout>
 
             <LinearLayout
@@ -124,67 +183,92 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <android.support.v7.widget.CardView
+                <mehdi.sakout.fancybuttons.FancyButton
                     android:id="@+id/optSelected3"
-                    app:cardBackgroundColor="@color/white"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="2dp"
+                    android:layout_margin="3dp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="20dp">
-
-                    <np.com.aawaz.csitentrance.misc.QuizTextView
-                        android:id="@+id/optionWeb3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="10dp" />
-
-                    <com.devspark.robototextview.widget.RobotoTextView
-                        android:id="@+id/optionRobo3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textSize="17sp" />
+                    android:padding="-2dp"
+                    fancy:fb_borderColor="@color/colorUnselected"
+                    fancy:fb_borderWidth="3dp"
+                    fancy:fb_defaultColor="@color/white"
+                    fancy:fb_radius="5dp"
+                    fancy:fb_text="">
 
                     <RelativeLayout
-                        android:id="@+id/option3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </android.support.v7.widget.CardView>
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="20dp">
 
+                        <np.com.aawaz.csitentrance.misc.QuizTextView
+                            android:id="@+id/optionWeb3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="2dp" />
 
-                <android.support.v7.widget.CardView
+                        <com.devspark.robototextview.widget.RobotoTextView
+                            android:id="@+id/optionRobo3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="17sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/option3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </RelativeLayout>
+
+                </mehdi.sakout.fancybuttons.FancyButton>
+
+                <mehdi.sakout.fancybuttons.FancyButton
                     android:id="@+id/optSelected4"
-                    app:cardBackgroundColor="@color/white"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="2dp"
+                    android:layout_margin="3dp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="10dp">
-
-                    <np.com.aawaz.csitentrance.misc.QuizTextView
-                        android:id="@+id/optionWeb4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="10dp" />
-
-                    <com.devspark.robototextview.widget.RobotoTextView
-                        android:id="@+id/optionRobo4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textSize="17sp" />
+                    android:padding="-2dp"
+                    fancy:fb_borderColor="@color/colorUnselected"
+                    fancy:fb_borderWidth="3dp"
+                    fancy:fb_defaultColor="@color/white"
+                    fancy:fb_radius="5dp"
+                    fancy:fb_text="">
 
                     <RelativeLayout
-                        android:id="@+id/option4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </android.support.v7.widget.CardView>
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="10dp">
+
+                        <np.com.aawaz.csitentrance.misc.QuizTextView
+                            android:id="@+id/optionWeb4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="2dp" />
+
+                        <com.devspark.robototextview.widget.RobotoTextView
+                            android:id="@+id/optionRobo4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="17sp" />
+
+                        <RelativeLayout
+                            android:id="@+id/option4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </RelativeLayout>
+                </mehdi.sakout.fancybuttons.FancyButton>
             </LinearLayout>
 
         </LinearLayout>
@@ -203,15 +287,18 @@
             android:layout_marginBottom="-20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            app:cardBackgroundColor="@color/colorAccent"
-            app:cardCornerRadius="10dp">
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="20dp"
+            app:cardMaxElevation="20dp">
 
             <com.devspark.robototextview.widget.RobotoTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
-                android:padding="10dp"
+                android:padding="15dp"
+                android:id="@+id/submit_button_text"
                 android:text="SUBMIT"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/white"
