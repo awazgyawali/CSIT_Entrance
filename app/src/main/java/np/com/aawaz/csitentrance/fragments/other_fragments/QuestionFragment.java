@@ -17,8 +17,9 @@ import com.devspark.robototextview.widget.RobotoTextView;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.interfaces.QuizInterface;
 import np.com.aawaz.csitentrance.custom_views.QuizTextView;
+import np.com.aawaz.csitentrance.interfaces.QuizInterface;
+import np.com.aawaz.csitentrance.misc.SPHandler;
 
 public class QuestionFragment extends Fragment implements View.OnClickListener {
 
@@ -38,17 +39,18 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
-    public static QuestionFragment newInstance(int position, String question, String a, String b,
+    public static QuestionFragment newInstance(int code, int position, String question, String a, String b,
                                                String c, String d, String ans) {
         QuestionFragment fragment = new QuestionFragment();
         Bundle args = new Bundle();
         args.putString("question", question);
         args.putString("a", a);
-
         args.putString("b", b);
         args.putString("c", c);
         args.putString("d", d);
         args.putString("ans", ans);
+
+        args.putInt("code", code);
         args.putInt("position", position);
         fragment.setArguments(args);
         return fragment;
@@ -94,11 +96,12 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
 
         FancyButton tag = (FancyButton) view.findViewById(R.id.subjectTag);
+        RobotoTextView yearTitleQuiz = (RobotoTextView) view.findViewById(R.id.yearTitleQuiz);
+        yearTitleQuiz.setText(getResources().getStringArray(R.array.years)[getArguments().getInt("code")]);
 
-        tag.setText(subjects[getArguments().getInt("position") / 25]);
-        tag.setTextColor(subColor[getArguments().getInt("position") / 25]);
-        tag.setBorderColor(subColor[getArguments().getInt("position") / 25]);
-
+        tag.setText(SPHandler.getInstance().getSubjectName(SPHandler.getInstance().getSubjectCode(getArguments().getInt("code"), getArguments().getInt("position"))));
+        tag.setTextColor(SPHandler.getInstance().getSubjectColor(SPHandler.getInstance().getSubjectCode(getArguments().getInt("code"), getArguments().getInt("position"))));
+        tag.setBorderColor(SPHandler.getInstance().getSubjectColor(SPHandler.getInstance().getSubjectCode(getArguments().getInt("code"), getArguments().getInt("position"))));
     }
 
     @Override
@@ -170,9 +173,9 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     public void checkAnswer() {
         if ((clickedAns == 1 && getArguments().getString("ans").equals("a")) || (clickedAns == 2 && getArguments().getString("ans").equals("b")) ||
                 (clickedAns == 3 && getArguments().getString("ans").equals("c")) || (clickedAns == 4 && getArguments().getString("ans").equals("d"))) {
-            listener.selected(submit,true);
+            listener.selected(submit, true);
         } else {
-            listener.selected(submit,false);
+            listener.selected(submit, false);
         }
     }
 

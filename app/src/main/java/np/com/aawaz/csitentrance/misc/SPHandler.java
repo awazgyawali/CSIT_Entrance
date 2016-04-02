@@ -2,6 +2,9 @@ package np.com.aawaz.csitentrance.misc;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v4.content.ContextCompat;
+
+import np.com.aawaz.csitentrance.R;
 
 public class SPHandler {
     private static SPHandler spHandler;
@@ -92,6 +95,10 @@ public class SPHandler {
         return infoSp.getBoolean("LoggedIn", false);
     }
 
+    public void setLoggedIn() {
+        infoEditor.putBoolean("LoggedIn", true).apply();
+    }
+
     public boolean isResultPublished() {
         return infoSp.getBoolean("published", false);
     }
@@ -122,5 +129,48 @@ public class SPHandler {
 
     public void setImageLink(String link) {
         infoEditor.putString("ImageLink", link).apply();
+    }
+
+    public String getSubjectCode(int index, int questionNo) {
+        String[][] subjects = {new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
+                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},
+                new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
+                new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},
+                new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH}};
+        return subjects[index][questionNo / 25];
+    }
+
+    public int getSubjectColor(String subCode) {
+        switch (subCode) {
+            case "math":
+                return ContextCompat.getColor(MyApplication.getAppContext(), R.color.math);
+            case "phy":
+                return ContextCompat.getColor(MyApplication.getAppContext(), R.color.physics);
+            case "chem":
+                return ContextCompat.getColor(MyApplication.getAppContext(), R.color.chemistry);
+            case "eng":
+                return ContextCompat.getColor(MyApplication.getAppContext(), R.color.english);
+            default:
+                return ContextCompat.getColor(MyApplication.getAppContext(), R.color.colorPrimary);
+
+        }
+    }
+
+    public String getSubjectName(String subCode) {
+        switch (subCode) {
+            case "math":
+                return "Mathematics";
+            case "phy":
+                return "Physics";
+            case "chem":
+                return "Chemistry";
+            case "eng":
+                return "English";
+            default:
+                return "";
+        }
     }
 }

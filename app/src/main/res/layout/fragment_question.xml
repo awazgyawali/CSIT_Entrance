@@ -36,6 +36,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Model Question 1"
+                        android:id="@+id/yearTitleQuiz"
+                        android:layout_marginLeft="5dp"
                         android:textColor="@color/colorPrimary"
                         app:typeface="roboto_bold" />
 

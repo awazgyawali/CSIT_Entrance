@@ -1,7 +1,6 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -31,10 +30,10 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.custom_views.CustomViewPager;
 import np.com.aawaz.csitentrance.fragments.other_fragments.AnswersDrawer;
 import np.com.aawaz.csitentrance.fragments.other_fragments.QuestionFragment;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
-import np.com.aawaz.csitentrance.custom_views.CustomViewPager;
 import np.com.aawaz.csitentrance.misc.SPHandler;
 
 
@@ -50,7 +49,6 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
     DrawerLayout drawerLayout;
     AnswersDrawer answersDrawer;
     CustomViewPager customViewPager;
-    String[] subjectArray = {SPHandler.PHYSICS, SPHandler.CHEMISTRY, SPHandler.MATH, SPHandler.ENGLISH};
 
     int qNo;
     int score;
@@ -115,7 +113,7 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
         customViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return QuestionFragment.newInstance(position, questions.get(position), a.get(position),
+                return QuestionFragment.newInstance(getIntent().getIntExtra("position", 1) - 1, position, questions.get(position), a.get(position),
                         b.get(position), c.get(position), d.get(position), answer.get(position))
                         .setListener(QuizActivity.this);
             }
@@ -138,11 +136,11 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
     @Override
     public void selected(CardView submit, boolean correct) {
         spHandler.increasePlayed(code);
-        spHandler.increasePlayed(subjectArray[customViewPager.getCurrentItem() / 25]);
+        spHandler.increasePlayed(spHandler.getSubjectCode(getIntent().getIntExtra("position", 1) - 1, qNo));
+        answersDrawer.increaseSize();
         if (correct) {
             spHandler.increaseScore(code);
-            spHandler.increaseScore(subjectArray[customViewPager.getCurrentItem() / 25]);
-            answersDrawer.increaseSize();
+            spHandler.increaseScore(spHandler.getSubjectCode(getIntent().getIntExtra("position", 1) - 1, qNo));
             scoreText.setText("Your Score: " + spHandler.getScore(code));
             submit.setCardBackgroundColor(ContextCompat.getColor(this, R.color.colorSelected));
             RobotoTextView text = (RobotoTextView) submit.findViewById(R.id.submit_button_text);
@@ -174,7 +172,6 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
             }
         });
     }
-
     public void setDataToArrayList() {
         try {
             JSONObject obj = new JSONObject(AssetJSONFile("question" + getIntent().getIntExtra("position", 1) + ".json", this));

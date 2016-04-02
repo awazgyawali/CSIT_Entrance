@@ -2,7 +2,6 @@ package np.com.aawaz.csitentrance.fragments.other_fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -15,8 +14,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,12 +22,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -47,29 +38,22 @@ import com.squareup.picasso.Target;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.misc.SPHandler;
-import np.com.aawaz.csitentrance.misc.Singleton;
 
 public class SignUp extends Fragment implements TextWatcher {
     EditText name, sur, email, phone;
-    SharedPreferences pref;
     FloatingActionButton fab;
     RelativeLayout profilePicture;
     CircleImageView imageView;
     FancyButton fbLogin;
     private CallbackManager callBackManager;
-    private Bitmap bitmap;
     private View view;
 
     public SignUp() {
@@ -79,7 +63,7 @@ public class SignUp extends Fragment implements TextWatcher {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        pref = getContext().getSharedPreferences("info", Context.MODE_PRIVATE);
+        SPHandler.getInstance().setImageLink(null);
         firstTime();
 
         handleFacebook();
@@ -151,23 +135,21 @@ public class SignUp extends Fragment implements TextWatcher {
                     return;
                 }
                 try {
-                    JSONObject object = response.getJSONObject();
-                    SharedPreferences.Editor editor = pref.edit();
+                    final JSONObject object = response.getJSONObject();
                     //email save garera complete login activity ma name ani email pass gareko
-                    editor.putString("email", object.getString("email"));
-                    editor.putString("FirstName", object.getString("first_name"));
-                    editor.putString("LastName", object.getString("last_name"));
-                    editor.putString("FullName", object.getString("name"));
-                    editor.apply();
-
-                    name.setText(pref.getString("FirstName", ""));
-                    sur.setText(pref.getString("LastName", ""));
-
-                    email.setText(pref.getString("email", ""));
-                    Picasso.with(getContext()).load("https://graph.facebook.com/" + pref.getString("UserID", "") + "/picture?type=large").into(new Target() {
+                    email.setText(object.getString("email"));
+                    name.setText(object.getString("first_name"));
+                    sur.setText(object.getString("last_name"));
+                    Picasso.with(getContext()).load("https://graph.facebook.com/" + object.getString("id") + "/picture?type=large").into(new Target() {
                         @Override
                         public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                            imageView.setImageBitmap(bitmap);
+                            try {
+                                SPHandler.getInstance().setImageLink("https://graph.facebook.com/" + object.getString("id") + "/picture?type=large");
+                                imageView.setImageBitmap(bitmap);
+                                onTextChanged("", 1, 1, 1);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
 
                         @Override
@@ -225,6 +207,7 @@ public class SignUp extends Fragment implements TextWatcher {
             @Override
             public void onClick(View view) {
                 SPHandler.getInstance().saveLoginData(name.getText().toString(), sur.getText().toString(), email.getText().toString(), phone.getText().toString());
+                SPHandler.getInstance().setLoggedIn();
                 startActivity(new Intent(getContext(), MainActivity.class));
                 getActivity().finish();
             }
@@ -268,11 +251,11 @@ public class SignUp extends Fragment implements TextWatcher {
                 && data != null) {
             try {
                 final Uri imageUri = data.getData();
-                Log.d("Debug", data.toString());
                 SPHandler.getInstance().setImageLink(imageUri.toString());
                 final InputStream imageStream = getContext().getContentResolver().openInputStream(imageUri);
                 final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                 imageView.setImageBitmap(selectedImage);
+                onTextChanged("", 1, 1, 1);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
