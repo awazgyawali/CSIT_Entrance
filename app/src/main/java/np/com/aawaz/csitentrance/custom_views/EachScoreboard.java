@@ -17,7 +17,7 @@ public class EachScoreboard {
 
     public EachScoreboard() {
         // Required empty public constructor
-        spHandler = new SPHandler();
+        spHandler = SPHandler.getInstance();
     }
 
     public EachScoreboard setView(View view) {

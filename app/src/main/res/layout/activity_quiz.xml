@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:hardwareAccelerated="false"
     tools:context="np.com.aawaz.csitentrance.activities.QuizActivity">
 
     <RelativeLayout
@@ -64,7 +65,7 @@
 
         </RelativeLayout>
 
-        <np.com.aawaz.csitentrance.misc.CustomViewPager
+        <np.com.aawaz.csitentrance.custom_views.CustomViewPager
             android:id="@+id/viewPagerQuestion"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

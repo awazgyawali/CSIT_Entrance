@@ -15,7 +15,7 @@
         android:theme="@style/Theme.AppCompat"
         app:title="Entrance News" />
 
-    <np.com.aawaz.csitentrance.misc.TouchImageView
+    <np.com.aawaz.csitentrance.custom_views.TouchImageView
         android:id="@+id/imageViewerImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -64,6 +64,10 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         return messages.size();
     }
 
+    public void addToTop() {
+        notifyItemInserted(0);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         RobotoTextView commentCount, realPost, postedBy, time;
         CircleImageView profile;

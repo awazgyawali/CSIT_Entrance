@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.misc.EachScoreboard;
+import np.com.aawaz.csitentrance.custom_views.EachScoreboard;
 import np.com.aawaz.csitentrance.misc.MyApplication;
 
 public class ScoreboardAdapter extends RecyclerView.Adapter<ScoreboardAdapter.VH> {

@@ -3,12 +3,11 @@ package np.com.aawaz.csitentrance.fragments.other_fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,9 +20,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.AuthFailureError;
@@ -32,8 +31,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -45,19 +42,15 @@ import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.squareup.picasso.Picasso;
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.Callback;
-import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterException;
-import com.twitter.sdk.android.core.TwitterSession;
-import com.twitter.sdk.android.core.identity.TwitterAuthClient;
-import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.squareup.picasso.Target;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,6 +58,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
+import np.com.aawaz.csitentrance.misc.SPHandler;
 import np.com.aawaz.csitentrance.misc.Singleton;
 
 public class SignUp extends Fragment implements TextWatcher {
@@ -73,9 +67,8 @@ public class SignUp extends Fragment implements TextWatcher {
     FloatingActionButton fab;
     RelativeLayout profilePicture;
     CircleImageView imageView;
-    FancyButton fbLogin, twitterLogin;
+    FancyButton fbLogin;
     private CallbackManager callBackManager;
-    TwitterLoginButton twitterLoginButton;
     private Bitmap bitmap;
     private View view;
 
@@ -90,46 +83,14 @@ public class SignUp extends Fragment implements TextWatcher {
         firstTime();
 
         handleFacebook();
-        handleTwitter();
+
+        handleButtons();
     }
 
-    private void handleTwitter() {
-        twitterLoginButton = new TwitterLoginButton(getContext());
-        twitterLoginButton.setCallback(new Callback<TwitterSession>() {
-            @Override
-            public void success(Result<TwitterSession> result) {
-                TwitterAuthClient authClient = new TwitterAuthClient();
-                authClient.requestEmail(Twitter.getSessionManager().getActiveSession(), new Callback<String>() {
-                    @Override
-                    public void success(Result<String> result) {
-                        // Do something with the result, which provides the email address
-                        email.setText(result.data);
-                    }
-
-                    @Override
-                    public void failure(TwitterException exception) {
-                        // Do something on failure
-                    }
-
-                });
-
-                name.setText(result.data.getUserName().split(" ")[0]);
-                sur.setText(result.data.getUserName().split(" ")[1]);
-            }
-
-            @Override
-            public void failure(TwitterException e) {
-
-            }
-        });
-
-        twitterLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                twitterLoginButton.callOnClick();
-            }
-        });
-
+    private void handleButtons() {
+        if (SPHandler.getInstance().isSocialLoggedIn()) {
+            fbLogin.setVisibility(View.GONE);
+        }
     }
 
     private void handleFacebook() {
@@ -142,6 +103,8 @@ public class SignUp extends Fragment implements TextWatcher {
         facebookLoginButton.registerCallback(callBackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                SPHandler.getInstance().setSocialLoggedIn();
+                handleButtons();
                 postFbLoginWork();
             }
 
@@ -188,7 +151,6 @@ public class SignUp extends Fragment implements TextWatcher {
                     return;
                 }
                 try {
-                    Log.d("Debug", response.toString());
                     JSONObject object = response.getJSONObject();
                     SharedPreferences.Editor editor = pref.edit();
                     //email save garera complete login activity ma name ani email pass gareko
@@ -196,14 +158,28 @@ public class SignUp extends Fragment implements TextWatcher {
                     editor.putString("FirstName", object.getString("first_name"));
                     editor.putString("LastName", object.getString("last_name"));
                     editor.putString("FullName", object.getString("name"));
-                    editor.putString("UserID", object.getString("id"));
                     editor.apply();
 
                     name.setText(pref.getString("FirstName", ""));
                     sur.setText(pref.getString("LastName", ""));
 
                     email.setText(pref.getString("email", ""));
-                    Picasso.with(getContext()).load("https://graph.facebook.com/" + pref.getString("UserID", "") + "/picture?type=large").into(imageView);
+                    Picasso.with(getContext()).load("https://graph.facebook.com/" + pref.getString("UserID", "") + "/picture?type=large").into(new Target() {
+                        @Override
+                        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                            imageView.setImageBitmap(bitmap);
+                        }
+
+                        @Override
+                        public void onBitmapFailed(Drawable errorDrawable) {
+
+                        }
+
+                        @Override
+                        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                        }
+                    });
                     dialog.dismiss();
                 } catch (JSONException ignored) {
                     ignored.printStackTrace();
@@ -229,7 +205,6 @@ public class SignUp extends Fragment implements TextWatcher {
         phone = (EditText) view.findViewById(R.id.phoneNo);
         email = (EditText) view.findViewById(R.id.email);
         fbLogin = (FancyButton) view.findViewById(R.id.fbLogin);
-        twitterLogin = (FancyButton) view.findViewById(R.id.twitterLogin);
         fab = (FloatingActionButton) view.findViewById(R.id.fabBtn);
         profilePicture = (RelativeLayout) view.findViewById(R.id.profilePicChooser);
         imageView = (CircleImageView) view.findViewById(R.id.profile_image);
@@ -249,40 +224,17 @@ public class SignUp extends Fragment implements TextWatcher {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (phone.getText().toString().length() != 10 || !email.getText().toString().contains(".com") || !email.getText().toString().contains("@")) {
-                    if (phone.getText().toString().length() != 10) {
-                        YoYo.with(Techniques.Shake)
-                                .duration(1000)
-                                .playOn(phone);
-                        Toast.makeText(getContext(), "Invalid mobile number.", Toast.LENGTH_SHORT).show();
-                        phone.setText("");
-                    } else {
-                        YoYo.with(Techniques.Shake)
-                                .duration(1000)
-                                .playOn(email);
-                        Toast.makeText(getContext(), "Invalid email.", Toast.LENGTH_SHORT).show();
-                        email.setText("");
-                    }
-                } else {
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("Name", name.getText().toString());
-                    editor.putString("Surname", sur.getText().toString());
-                    editor.putString("E-mail", email.getText().toString());
-                    editor.putString("PhoneNo", phone.getText().toString() + "");
-                    editor.putString("ImageLink", "http://google.com/image.png");
-                    editor.apply();
-                    startActivity(new Intent(getContext(), MainActivity.class));
-                    getActivity().finish();
-                }
+                SPHandler.getInstance().saveLoginData(name.getText().toString(), sur.getText().toString(), email.getText().toString(), phone.getText().toString());
+                startActivity(new Intent(getContext(), MainActivity.class));
+                getActivity().finish();
             }
         });
     }
 
     public void selectImageFromGallery() {
-        Intent intent = new Intent();
+        Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+        startActivityForResult(intent, 1);
     }
 
     @Override
@@ -293,7 +245,10 @@ public class SignUp extends Fragment implements TextWatcher {
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         if (!name.getText().toString().equals("") && phone.getText().toString().length() == 10
-                && !sur.getText().toString().equals("") && !email.getText().toString().equals("") && imageView.getDrawable() != null) {
+                && !sur.getText().toString().equals("") && !email.getText().toString().equals("")
+                && SPHandler.getInstance().getImageLink() != null) {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             fab.show();
         } else {
             fab.hide();
@@ -308,97 +263,19 @@ public class SignUp extends Fragment implements TextWatcher {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        twitterLoginButton.onActivityResult(requestCode, resultCode, data);
         callBackManager.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == 1 && resultCode == AppCompatActivity.RESULT_OK
-                && null != data) {
-
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-
-            Cursor cursor = getActivity().getContentResolver().query(
-                    selectedImage, filePathColumn, null, null, null);
-            cursor.moveToFirst();
-
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String filePath = cursor.getString(columnIndex);
-            cursor.close();
-
-            Picasso.with(getContext())
-                    .load(new File(filePath))
-                    .into(imageView);
-            decodeFile(filePath);
+                && data != null) {
+            try {
+                final Uri imageUri = data.getData();
+                Log.d("Debug", data.toString());
+                SPHandler.getInstance().setImageLink(imageUri.toString());
+                final InputStream imageStream = getContext().getContentResolver().openInputStream(imageUri);
+                final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                imageView.setImageBitmap(selectedImage);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
-    }
-
-    public void decodeFile(String filePath) {
-        // Decode image size
-        BitmapFactory.Options o = new BitmapFactory.Options();
-        o.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(filePath, o);
-
-        // The new size we want to scale to
-        final int REQUIRED_SIZE = 256;
-
-        // Find the correct scale value. It should be the power of 2.
-        int width_tmp = o.outWidth, height_tmp = o.outHeight;
-        int scale = 1;
-        while (true) {
-            if (width_tmp < REQUIRED_SIZE && height_tmp < REQUIRED_SIZE)
-                break;
-            width_tmp /= 2;
-            height_tmp /= 2;
-            scale *= 2;
-        }
-
-        // Decode with inSampleSize
-        BitmapFactory.Options o2 = new BitmapFactory.Options();
-        o2.inSampleSize = scale;
-        bitmap = BitmapFactory.decodeFile(filePath, o2);
-
-        imageView.setImageBitmap(bitmap);
-    }
-
-
-    private void onPhotoReturned(File imageFile) {
-
-
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-        byte[] data = bos.toByteArray();
-        final String file = Base64.encodeToString(data, Base64.DEFAULT);
-
-        StringRequest request = new StringRequest(Request.Method.POST, getString(R.string.uploadImage), new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("debug", response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("base64", file);
-                params.put("ImageName", Singleton.getEmail());
-                return params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("Content-Type", "application/x-www-form-urlencoded");
-                return params;
-            }
-        };
-
-        request.setRetryPolicy(new DefaultRetryPolicy(30000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-        Singleton.getInstance().getRequestQueue().add(request);
     }
 }

@@ -27,30 +27,22 @@ public class MyIntentService extends GcmListenerService {
                 + getPackageName() + "/" + R.raw.notification);
 
         NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
-        bigText.bigText(data.getString("message").replace("{{name}}", Singleton.getName()));
-        bigText.setBigContentTitle(data.getString("title").replace("{{name}}", Singleton.getName()));
+        bigText.bigText(data.getString("message").replace("{{name}}", SPHandler.getInstance().getFullName()));
+        bigText.setBigContentTitle(data.getString("title").replace("{{name}}", SPHandler.getInstance().getFullName()));
 
         notificationCompat.setStyle(bigText);
 
         notificationCompat.setAutoCancel(true)
-                .setTicker(data.getString("title").replace("{{name}}", Singleton.getName()))
+                .setTicker(data.getString("title").replace("{{name}}", SPHandler.getInstance().getFullName()))
                 .setWhen(System.currentTimeMillis())
-                .setContentTitle(data.getString("title").replace("{{name}}", Singleton.getName()))
+                .setContentTitle(data.getString("title").replace("{{name}}", SPHandler.getInstance().getFullName()))
                 .setSmallIcon(R.drawable.splash_icon)
                 .setVibrate(new long[]{100, 100})
                 .setLights(Color.BLUE, 3000, 3000)
                 .setSound(sound)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
-                .setContentText(data.getString("message").replace("{{name}}", Singleton.getName()));
+                .setContentText(data.getString("message").replace("{{name}}", SPHandler.getInstance().getFullName()));
 
-        if (Integer.parseInt(data.getString("show")) == 1) {
-            ContentValues values = new ContentValues();
-            values.put("title", data.getString("title").replace("{{name}}", Singleton.getName()));
-            values.put("desc", data.getString("message").replace("{{name}}", Singleton.getName()));
-            values.put("link", data.getString("link"));
-            values.put("show", 1);
-            Singleton.getInstance().getDatabase().insert("notifications", null, values);
-        }
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(Intent.ACTION_VIEW, Uri.parse(data.getString("link"))), PendingIntent.FLAG_UPDATE_CURRENT);
         notificationCompat.setContentIntent(pendingIntent);
         NotificationManager notificationManagerCompat = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

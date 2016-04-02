@@ -9,8 +9,6 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.RelativeLayout;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -20,7 +18,7 @@ import com.devspark.robototextview.widget.RobotoTextView;
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
-import np.com.aawaz.csitentrance.misc.QuizTextView;
+import np.com.aawaz.csitentrance.custom_views.QuizTextView;
 
 public class QuestionFragment extends Fragment implements View.OnClickListener {
 
@@ -112,17 +110,10 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         final String opt3Text = getArguments().getString("c");
         final String opt4Text = getArguments().getString("d");
 
-        if (questionText.contains("$")) {
+        if (questionText.contains("<img")) {
             questionRo.setVisibility(View.GONE);
             question.setVisibility(View.VISIBLE);
-            question.initializer();
-            question.setWebViewClient(new WebViewClient() {
-                @Override
-                public void onPageFinished(WebView view, String url) {
-                    super.onPageFinished(view, url);
-                    question.setScript(questionText);
-                }
-            });
+            question.setScript(questionText);
         } else {
             question.setVisibility(View.GONE);
             questionRo.setVisibility(View.VISIBLE);
@@ -130,69 +121,42 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         }
 
 
-        if (opt1Text.contains("$")) {
+        if (opt1Text.contains("<img")) {
             option1Ro.setVisibility(View.GONE);
             option1.setVisibility(View.VISIBLE);
-            option1.initializer();
-            option1.setWebViewClient(new WebViewClient() {
-                @Override
-                public void onPageFinished(WebView view, String url) {
-                    super.onPageFinished(view, url);
-                    option1.setScript(opt1Text);
-                }
-            });
+            option1.setScript(opt1Text);
+
         } else {
             option1.setVisibility(View.GONE);
             option1Ro.setVisibility(View.VISIBLE);
             option1Ro.setText(Html.fromHtml(opt1Text));
         }
 
-        if (opt2Text.contains("$")) {
+        if (opt2Text.contains("<img")) {
             option2Ro.setVisibility(View.GONE);
             option2.setVisibility(View.VISIBLE);
-            option2.initializer();
-            option2.setWebViewClient(new WebViewClient() {
-                @Override
-                public void onPageFinished(WebView view, String url) {
-                    super.onPageFinished(view, url);
-                    option2.setScript(opt2Text);
-                }
-            });
+            option2.setScript(opt2Text);
+
         } else {
             option2.setVisibility(View.GONE);
             option2Ro.setVisibility(View.VISIBLE);
             option2Ro.setText(Html.fromHtml(opt2Text));
         }
 
-        if (opt3Text.contains("$")) {
+        if (opt3Text.contains("<img")) {
             option3Ro.setVisibility(View.GONE);
             option3.setVisibility(View.VISIBLE);
-            option3.initializer();
-            option3.setWebViewClient(new WebViewClient() {
-                @Override
-                public void onPageFinished(WebView view, String url) {
-                    super.onPageFinished(view, url);
-                    option3.setScript(opt3Text);
-                }
-            });
+            option3.setScript(opt3Text);
         } else {
             option3.setVisibility(View.GONE);
             option3Ro.setVisibility(View.VISIBLE);
             option3Ro.setText(Html.fromHtml(opt3Text));
         }
 
-        if (opt4Text.contains("$")) {
+        if (opt4Text.contains("<img")) {
             option4Ro.setVisibility(View.GONE);
             option4.setVisibility(View.VISIBLE);
-
-            option4.initializer();
-            option4.setWebViewClient(new WebViewClient() {
-                @Override
-                public void onPageFinished(WebView view, String url) {
-                    super.onPageFinished(view, url);
-                    option4.setScript(opt4Text);
-                }
-            });
+            option4.setScript(opt4Text);
         } else {
             option4.setVisibility(View.GONE);
             option4Ro.setVisibility(View.VISIBLE);

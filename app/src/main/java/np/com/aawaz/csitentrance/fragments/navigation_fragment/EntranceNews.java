@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.os.AsyncTaskCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.NewsAdapter;
 import np.com.aawaz.csitentrance.fragments.other_fragments.EachNews;
@@ -47,6 +49,7 @@ public class EntranceNews extends Fragment {
     NewsAdapter newsAdapter;
     private LinearLayout errorLayout;
     ProgressBar progress;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -61,7 +64,14 @@ public class EntranceNews extends Fragment {
         recy = (RecyclerView) view.findViewById(R.id.newsFeedRecy);
         errorLayout = (LinearLayout) view.findViewById(R.id.errorNews);
         progress = (ProgressBar) view.findViewById(R.id.progressbarNews);
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshNews);
 
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchRegular();
+            }
+        });
         errorLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +86,7 @@ public class EntranceNews extends Fragment {
         recy.setVisibility(View.VISIBLE);
         newsAdapter = new NewsAdapter(getContext(), title, messages, time, imageUrl);
         recy.setLayoutManager(new LinearLayoutManager(getContext()));
+        recy.setItemAnimator(new SlideInLeftAnimator());
         recy.setAdapter(newsAdapter);
         newsAdapter.setOnClickListener(new ClickListener() {
             @Override
@@ -110,12 +121,67 @@ public class EntranceNews extends Fragment {
         }
         if (cursor.getCount() == 0)
             fetchNewsForFirstTime();
-        else
-            //todo new chha bhane upadting news bahnne
+        else {
+            if (Singleton.isNwConnected(getContext()))
+                fetchRegular();
             fillData();
+        }
 
         cursor.close();
     }
+
+    private void fetchRegular() {
+        setRefreshing(true);
+        JsonArrayRequest request = new JsonArrayRequest(getString(R.string.newsLink), new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                if (response.length() > title.size()) {
+                    for (int i = (response.length() - title.size() - 1); i >= 0; i--) {
+                        try {
+                            JSONObject object = response.getJSONObject(i);
+
+                            messages.add(0, object.getString("notice"));
+                            try {
+                                imageUrl.add(0, object.getString("full_picture"));
+                            } catch (Exception e) {
+                                imageUrl.add(0, "null");
+                            }
+                            time.add(0, object.getString("time"));
+                            title.add(0, object.getString("title"));
+
+                            newsAdapter.addToTop();
+                            recy.smoothScrollToPosition(0);
+
+                            setRefreshing(false);
+                        } catch (Exception ignored) {
+                            ignored.printStackTrace();
+                            setRefreshing(false);
+                        }
+                    }
+                    storeToDb();
+                } else {
+                    setRefreshing(false);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                setRefreshing(false);
+            }
+        });
+        Singleton.getInstance().getRequestQueue().add(request);
+    }
+
+    private void setRefreshing(final boolean refreshing) {
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(refreshing);
+            }
+        });
+    }
+
 
     public void fetchNewsForFirstTime() {
         requestQueue = Singleton.getInstance().getRequestQueue();

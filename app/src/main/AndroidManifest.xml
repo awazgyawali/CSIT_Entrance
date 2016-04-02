@@ -7,15 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature
-        android:name="android.hardware.camera.autofocus"
-        android:required="false" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".misc.MyApplication"
@@ -79,15 +71,6 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="9cfaedb2af986a27f7bd621e43ec9f21adaf8e68" />
-
-        <service
-            android:name=".misc.BackgroundTaskHandler"
-            android:exported="true"
-            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
-            <intent-filter>
-                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
-            </intent-filter>
-        </service>
 
         <provider
             android:name="com.facebook.FacebookContentProvider"

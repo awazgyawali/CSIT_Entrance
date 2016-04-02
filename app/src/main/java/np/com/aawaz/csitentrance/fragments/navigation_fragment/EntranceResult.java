@@ -1,7 +1,6 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -24,16 +23,23 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.devspark.robototextview.widget.RobotoTextView;
 import com.truizlop.fabreveallayout.FABRevealLayout;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.custom_views.CustomSlideView;
+import np.com.aawaz.csitentrance.misc.SPHandler;
 import np.com.aawaz.csitentrance.misc.Singleton;
 
 public class EntranceResult extends Fragment {
     RequestQueue requestQueue;
-    SharedPreferences result;
     FloatingActionButton resultButton;
 
     ViewSwitcher resultViewSwitcher;
@@ -43,6 +49,7 @@ public class EntranceResult extends Fragment {
     ProgressBar progressBarResult;
     RobotoTextView resultHolder;
     ImageView cross;
+    SliderLayout adSlider;
     private InputMethodManager imm;
 
 
@@ -89,6 +96,7 @@ public class EntranceResult extends Fragment {
         resultHolder = (RobotoTextView) view.findViewById(R.id.resultHolder);
         progressBarResult = (ProgressBar) view.findViewById(R.id.progressBarResult);
         cross = (ImageView) view.findViewById(R.id.crossResult);
+        adSlider = (SliderLayout) view.findViewById(R.id.result_ad_slider);
         cross.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,15 +131,51 @@ public class EntranceResult extends Fragment {
         super.onActivityCreated(savedInstanceState);
         requestQueue = Singleton.getInstance().getRequestQueue();
         imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        result = getContext().getSharedPreferences("resultInfo", Context.MODE_PRIVATE);
 
-        if (result.getBoolean("published", false)) {
+        if (SPHandler.getInstance().isResultPublished()) {
             resultViewSwitcher.showNext();
             rollNo.requestFocus();
             workForViewingResult();
         } else {
             isPublishedCheck();
         }
+
+        readyAd();
+    }
+
+    private void readyAd() {
+        final JsonArrayRequest request = new JsonArrayRequest(getString(R.string.sliderAd), new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        final JSONObject object = response.getJSONObject(i);
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("destination_url", object.getString("destination_url"));
+                        bundle.putString("description", object.getString("sub_title"));
+
+                        CustomSlideView textSliderView = new CustomSlideView(getContext());
+                        // initialize a SliderLayout
+                        textSliderView
+                                .description(object.getString("title"))
+                                .image(object.getString("image_url"))
+                                .bundle(bundle)
+                                .setScaleType(BaseSliderView.ScaleType.CenterCrop);
+
+                        adSlider.addSlider(textSliderView);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        Singleton.getInstance().getRequestQueue().add(request);
     }
 
     private void isPublishedCheck() {
@@ -145,7 +189,7 @@ public class EntranceResult extends Fragment {
             @Override
             public void onResponse(String response) {
                 if (response.contains("published")) {
-                    result.edit().putBoolean("published", true).apply();
+                    SPHandler.getInstance().setResultPublished();
                     workForViewingResult();
                     resultViewSwitcher.showNext();
                     rollNo.requestFocus();

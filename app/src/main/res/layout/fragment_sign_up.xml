@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/firstLayout"
+    android:id="@+id/coreSign"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp">
@@ -28,7 +28,6 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/fabBtn"
             android:orientation="vertical">
-
 
             <RelativeLayout
                 android:id="@+id/profilePicChooser"
@@ -147,18 +146,6 @@
                 fancy:fb_iconResource="@drawable/facebook"
                 fancy:fb_radius="5dp"
                 fancy:fb_text="Login with Facebook" />
-
-            <mehdi.sakout.fancybuttons.FancyButton
-                android:id="@+id/twitterLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:padding="15dp"
-                fancy:fb_defaultColor="#55acee"
-                fancy:fb_iconResource="@drawable/twitter"
-                fancy:fb_radius="5dp"
-                fancy:fb_text="Login with Twitter" />
         </LinearLayout>
     </ScrollView>
 
@@ -170,7 +157,6 @@
         android:layout_alignParentRight="true"
         android:layout_gravity="right"
         android:layout_margin="10dp"
-        android:src="@drawable/done"
-        android:visibility="gone"
-        app:backgroundTint="#fff" />
+        android:src="@drawable/double_done"
+        android:visibility="gone" />
 </RelativeLayout>

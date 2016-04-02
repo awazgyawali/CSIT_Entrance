@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.CommentAdapter;
+import np.com.aawaz.csitentrance.misc.SPHandler;
 import np.com.aawaz.csitentrance.misc.Singleton;
 
 public class CommentsFragment extends BottomSheetDialogFragment {
@@ -174,7 +175,7 @@ public class CommentsFragment extends BottomSheetDialogFragment {
             ((BottomSheetBehavior) behavior).setBottomSheetCallback(mBottomSheetBehaviorCallback);
         }
 
-        Picasso.with(getContext()).load(getContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("ImageLink", "")).into(profileImage);
+        Picasso.with(getContext()).load(SPHandler.getInstance().getImageLink()).into(profileImage);
 
         fetchFromInternet();
     }

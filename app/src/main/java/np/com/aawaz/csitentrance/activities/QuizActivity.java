@@ -34,7 +34,7 @@ import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.fragments.other_fragments.AnswersDrawer;
 import np.com.aawaz.csitentrance.fragments.other_fragments.QuestionFragment;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
-import np.com.aawaz.csitentrance.misc.CustomViewPager;
+import np.com.aawaz.csitentrance.custom_views.CustomViewPager;
 import np.com.aawaz.csitentrance.misc.SPHandler;
 
 
@@ -81,7 +81,7 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         code = getIntent().getStringExtra("code");
-        spHandler = new SPHandler();
+        spHandler = SPHandler.getInstance();
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayoutQuiz);
         customViewPager = (CustomViewPager) findViewById(R.id.viewPagerQuestion);
@@ -99,15 +99,14 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
     }
 
     private void setHeader() {
-        SharedPreferences pref = getSharedPreferences("info", Context.MODE_PRIVATE);
         CircleImageView quizProf = (CircleImageView) findViewById(R.id.quizProfilePic);
         RobotoTextView name = (RobotoTextView) findViewById(R.id.quizName);
         scoreText = (RobotoTextView) findViewById(R.id.quizScore);
         Picasso.with(this)
-                .load(pref.getString("ImageLink", ""))
+                .load(SPHandler.getInstance().getImageLink())
                 .into(quizProf);
 
-        name.setText(pref.getString("Name", "") + " " + pref.getString("Surname", ""));
+        name.setText(SPHandler.getInstance().getFullName());
 
         scoreText.setText("Your Score: " + spHandler.getScore(code));
     }

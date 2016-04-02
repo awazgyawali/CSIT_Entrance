@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import com.squareup.picasso.Picasso;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.misc.TouchImageView;
+import np.com.aawaz.csitentrance.custom_views.TouchImageView;
 
 public class ImageViewActivity extends AppCompatActivity {
 

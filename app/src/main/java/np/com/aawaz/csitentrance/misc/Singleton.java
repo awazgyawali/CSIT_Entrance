@@ -3,6 +3,8 @@ package np.com.aawaz.csitentrance.misc;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -43,12 +45,18 @@ public class Singleton {
         return mDatabase.getWritableDatabase();
     }
 
-    public static String getName() {
-        return MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("Name", "");
-    }
 
-    public static String getEmail() {
-        return MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE).getString("E-mail", "");
+    public static boolean isNwConnected(Context context) {
+        if (context == null) {
+            return true;
+        }
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo nwInfo = connectivityManager.getActiveNetworkInfo();
+        if (nwInfo != null && nwInfo.isConnectedOrConnecting()) {
+            return true;
+        }
+        return false;
     }
 }
 

@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="3dp"
     app:cardBackgroundColor="@color/white"
-    tools:context=".misc.EachScoreboard">
+    tools:context=".custom_views.EachScoreboard">
 
     <LinearLayout
         android:layout_width="match_parent"

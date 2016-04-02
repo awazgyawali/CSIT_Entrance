@@ -17,6 +17,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -88,10 +89,13 @@ public class SearchActivity extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbarSearch));
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         emptyLayout = (LinearLayout) findViewById(R.id.emptyLayout);
         search = (AppCompatEditText) findViewById(R.id.searchEditText);
         colzRecy = (RecyclerView) findViewById(R.id.searchRecycler);
+
+        imm.showSoftInput(search,InputMethodManager.HIDE_IMPLICIT_ONLY);
+
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

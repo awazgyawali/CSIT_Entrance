@@ -3,17 +3,15 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.facebook.FacebookSdk;
 import com.facebook.share.widget.LikeView;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 
 public class About extends AppCompatActivity {
@@ -22,26 +20,13 @@ public class About extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(this);
-
         setContentView(R.layout.activity_about);
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbarAbout));
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final Button feedback = (Button) findViewById(R.id.fed);
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appBarAbout);
-        final CircleImageView logo = (CircleImageView) findViewById(R.id.logoView);
-
-        feedback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                feedBack();
-            }
-        });
-
-        likeButton();
-
+        RecyclerView products = (RecyclerView) findViewById(R.id.productsRecycler);
     }
 
     public void feedBack() {
@@ -56,7 +41,7 @@ public class About extends AppCompatActivity {
     }
 
     private void likeButton() {
-        LikeView likeView = (LikeView) findViewById(R.id.likeButton);
+        LikeView likeView = new LikeView(this);
         likeView.setLikeViewStyle(LikeView.Style.STANDARD);
         likeView.setAuxiliaryViewPosition(LikeView.AuxiliaryViewPosition.INLINE);
         likeView.setObjectIdAndType(

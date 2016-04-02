@@ -81,6 +81,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         this.listener = listener;
     }
 
+    public void addToTop() {
+        notifyItemInserted(0);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         RobotoTextView title, newsDetail, time;
         ImageView imageView;

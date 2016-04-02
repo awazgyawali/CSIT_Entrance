@@ -1,101 +1,181 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="np.com.aawaz.csitentrance.activities.About">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarAbout"
+    <ImageView
+        android:id="@+id/headerImageAbout"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:fitsSystemWindows="true">
+        android:layout_height="150dp"
+        android:fitsSystemWindows="true"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/back_header" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/back_header" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarAbout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        app:layout_collapseMode="pin"
+        app:layout_scrollFlags="scroll|enterAlways">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbarAbout"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            app:layout_collapseMode="pin"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:title="About Us">
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About Us"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            app:typeface="roboto_bold" />
+    </android.support.v7.widget.Toolbar>
 
-            <com.devspark.robototextview.widget.RobotoTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="About Us"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/white"
-                app:typeface="roboto_bold" />
-        </android.support.v7.widget.Toolbar>
-
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.NestedScrollView
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_below="@+id/headerImageAbout">
 
-        <LinearLayout
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="65dp"
-            android:orientation="vertical">
+            android:background="@color/white"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <com.devspark.robototextview.widget.RobotoTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/versionNum"
-                android:textColor="@color/colorPrimary" />
-
-            <com.devspark.robototextview.widget.RobotoTextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="BrainAnts Technology"
-                android:textColor="@color/colorAccent" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <com.facebook.share.widget.LikeView
-                android:id="@+id/likeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="true"
+                    android:orientation="horizontal">
 
-            <com.devspark.robototextview.widget.RobotoTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="Our Products"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:typeface="roboto_bold" />
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-            <Button
-                android:id="@+id/fed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:text="Give Feedback"
-                android:textAllCaps="false" />
+                        <mehdi.sakout.fancybuttons.FancyButton
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="15dp"
+                            app:fb_text="Like"
+                            fancy:fb_defaultColor="#3b5999"
+                            fancy:fb_iconPaddingBottom="5dp"
+                            fancy:fb_iconPosition="top"
+                            fancy:fb_iconResource="@drawable/like"
+                            fancy:fb_radius="0dp" />
 
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+                        <mehdi.sakout.fancybuttons.FancyButton
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="15dp"
+                            app:fb_text="Follow"
+                            fancy:fb_defaultColor="#55acee"
+                            fancy:fb_iconPaddingBottom="5dp"
+                            fancy:fb_iconPosition="top"
+                            fancy:fb_iconResource="@drawable/follow"
+                            fancy:fb_radius="0dp" />
+                    </LinearLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/logoView"
-        android:layout_width="124dp"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="65dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.devspark.robototextview.widget.RobotoTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Your Path to CSIT"
+                            android:textColor="@color/colorAccent"
+                            app:typeface="roboto_italic" />
+
+                        <com.devspark.robototextview.widget.RobotoTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="By Brainants Technology"
+                            android:textColor="@color/colorPrimary" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <mehdi.sakout.fancybuttons.FancyButton
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="15dp"
+                            app:fb_text="Rate"
+                            fancy:fb_defaultColor="#ff6600"
+                            fancy:fb_iconPaddingBottom="5dp"
+                            fancy:fb_iconPosition="top"
+                            fancy:fb_iconResource="@drawable/rate"
+                            fancy:fb_radius="0dp" />
+
+                        <mehdi.sakout.fancybuttons.FancyButton
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="15dp"
+                            app:fb_text="Feedback"
+                            fancy:fb_defaultColor="#00b489"
+                            fancy:fb_iconPaddingBottom="5dp"
+                            fancy:fb_iconPosition="top"
+                            fancy:fb_iconResource="@drawable/feedback"
+                            fancy:fb_radius="0dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Our Products"
+                    android:textColor="@color/colorPrimary"
+                    app:typeface="roboto_bold" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/productsRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.design.widget.CoordinatorLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="124dp"
-        android:src="@drawable/splash_icon"
-        app:layout_anchor="@id/appBarAbout"
-        app:layout_anchorGravity="center|bottom" />
-</android.support.design.widget.CoordinatorLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="88dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/logoView"
+            android:layout_width="124dp"
+            android:layout_height="124dp"
+            android:src="@drawable/splash_icon" />
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="15dp"
+            android:text="v2.0"
+            android:textColor="@color/white"
+            app:typeface="roboto_bold" />
+    </RelativeLayout>
+
+</RelativeLayout>

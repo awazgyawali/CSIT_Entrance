@@ -137,15 +137,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="getForum">http://brainants.com/nepalGov/getForum.json</string>
+    <string name="sliderAd">http://brainants.com/nepalGov/resultSlider.json</string>
     <string name="postForum">http://brainants.com/apis/bsccsit/v1/postForum</string>
     <string name="getComment">http://brainants.com/nepalGov/getComments.json?post_id=</string>
-    <string name="newsLink">http://brainants.com/apis/bsccsit/v1/allnotices</string>
+    <string name="newsLink">http://brainants.com/nepalGov/getNews.json</string>
     <string name="isPublished">http://avaaj.com.np/jsonFeed/isPublished.php</string>
     <string name="uploadImage">http://avaaj.com.np/jsonFeed/upload_image.php</string>
     <string name="viewResult">http://avaaj.com.np/jsonFeed/result.php?rollNo=</string>
     <string name="postScoreurl">http://www.avaaj.com.np/jsonFeed/uploadScore.php</string>
     <string name="fetchScoreurl">http://brainants.com/nepalGov/leaderBoard.json</string>
     <string name="url">http://www.avaaj.com.np/jsonFeed/news_feed.php</string>
+
     <string-array name="years">
         <item>TU Examination 2069</item>
         <item>TU Examination 2070</item>

@@ -11,11 +11,10 @@ import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.fragments.other_fragments.SignUp;
+import np.com.aawaz.csitentrance.misc.SPHandler;
 
 
 public class LoginActivity extends IntroActivity {
-
-    SharedPreferences pref;
 
     Context context;
 
@@ -27,8 +26,7 @@ public class LoginActivity extends IntroActivity {
         setFinishEnabled(false);
         setSkipEnabled(false);
         context = this;
-        pref = getSharedPreferences("info", MODE_PRIVATE);
-        if (!pref.getString("Name", "").equals("")) {
+        if (SPHandler.getInstance().isLoggedIn()) {
             setContentView(R.layout.splash_screen);
             setFinishEnabled(false);
             setSkipEnabled(false);
