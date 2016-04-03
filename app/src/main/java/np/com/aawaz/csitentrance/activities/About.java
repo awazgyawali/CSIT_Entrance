@@ -26,6 +26,7 @@ public class About extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         RecyclerView products = (RecyclerView) findViewById(R.id.productsRecycler);
     }
 
