@@ -128,7 +128,7 @@ public class EntranceForum extends Fragment {
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
                 Post newPost = dataSnapshot.getValue(Post.class);
                 adapter.addToTop(newPost);
-                key.add(dataSnapshot.getKey());
+                key.add(0,dataSnapshot.getKey());
             }
 
             @Override

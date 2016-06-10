@@ -1,7 +1,6 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -9,7 +8,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.os.AsyncTaskCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,8 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.CSITColleges;
@@ -34,7 +31,6 @@ import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceResult;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.Home;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.LeaderBoard;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.More;
-import np.com.aawaz.csitentrance.misc.SPHandler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -106,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         Picasso.with(this)
                 .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
+                .error(ContextCompat.getDrawable(this, R.drawable.account_holder))
                 .into(imageView);
     }
 

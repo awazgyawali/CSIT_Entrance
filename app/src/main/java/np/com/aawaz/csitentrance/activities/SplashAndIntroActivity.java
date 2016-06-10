@@ -3,11 +3,9 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.view.View;
 
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
@@ -16,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import np.com.aawaz.csitentrance.R;
 
 
-public class LoginActivity extends AppIntro {
+public class SplashAndIntroActivity extends AppIntro {
 
     Context context;
 
@@ -88,14 +86,14 @@ public class LoginActivity extends AppIntro {
     @Override
     public void onSkipPressed(Fragment currentFragment) {
         super.onSkipPressed(currentFragment);
-        startActivity(new Intent(this, SignUp.class));
+        startActivity(new Intent(this, SignInActivity.class));
         finish();
     }
 
     @Override
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
-        startActivity(new Intent(this, SignUp.class));
+        startActivity(new Intent(this, SignInActivity.class));
         finish();
     }
 

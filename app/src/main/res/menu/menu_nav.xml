@@ -46,7 +46,9 @@
             android:title="Entrance Result" />
     </group>
 
-    <group android:checkableBehavior="none">
+    <group
+        android:id="@+id/technical"
+        android:checkableBehavior="none">
 
         <item
             android:id="@+id/settings"

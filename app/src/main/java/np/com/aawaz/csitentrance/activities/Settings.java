@@ -3,6 +3,7 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.RelativeLayout;
 
 import np.com.aawaz.csitentrance.R;
@@ -13,6 +14,12 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbarSetting));
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Settings");
+
 
     }
     private void removeAllTheProgress() {

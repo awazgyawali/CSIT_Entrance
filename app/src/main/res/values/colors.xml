@@ -28,6 +28,7 @@
 
     <color name="colorSelected">#4CAF50</color>
     <color name="colorUnselected">#e0e0e0</color>
+    <color name="divider">#727272</color>
 
 
 </resources>

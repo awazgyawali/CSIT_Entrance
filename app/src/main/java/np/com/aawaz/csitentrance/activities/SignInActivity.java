@@ -8,12 +8,14 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.devspark.robototextview.widget.RobotoTextView;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -26,40 +28,32 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.auth.TwitterAuthProvider;
-import com.twitter.sdk.android.core.Callback;
-import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterException;
-import com.twitter.sdk.android.core.TwitterSession;
-import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 import np.com.aawaz.csitentrance.R;
 
-public class SignUp extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     private static final int RC_SIGN_IN = 1001;
-    CardView facebook, google, twitter, email;
+    CardView facebook, google, email;
     GoogleApiClient client;
     private FirebaseAuth mAuth;
 
-    private TwitterLoginButton twitterLoginButton;
     private CallbackManager callBackManager;
     private TextInputEditText username = null,
             password = null;
 
+    ProgressBar progressBar;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
 
-    public SignUp() {
+    public SignInActivity() {
         // Required empty public constructor
     }
 
@@ -67,7 +61,7 @@ public class SignUp extends AppCompatActivity implements GoogleApiClient.OnConne
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_sign_in);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
@@ -80,7 +74,7 @@ public class SignUp extends AppCompatActivity implements GoogleApiClient.OnConne
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    startActivity(new Intent(SignUp.this, MainActivity.class));
+                    startActivity(new Intent(SignInActivity.this, MainActivity.class));
                     finish();
                 }
             }
@@ -92,36 +86,17 @@ public class SignUp extends AppCompatActivity implements GoogleApiClient.OnConne
 
         handleGoogle();
 
-        handleTwitter();
-
         handleSignInButton();
 
         handleSignUp();
     }
 
     private void handleSignUp() {
-
-    }
-
-    private void handleTwitter() {
-        twitterLoginButton = new TwitterLoginButton(this);
-        twitterLoginButton.setCallback(new Callback<TwitterSession>() {
-            @Override
-            public void success(Result<TwitterSession> result) {
-                TwitterSession session = result.data;
-                attachCredToFirebase(TwitterAuthProvider.getCredential(session.getAuthToken().token,
-                        session.getAuthToken().secret));
-            }
-
-            @Override
-            public void failure(TwitterException exception) {
-                Log.d("TwitterKit", "Login with Twitter failure", exception);
-            }
-        });
-        twitter.setOnClickListener(new View.OnClickListener() {
+        RobotoTextView create = (RobotoTextView) findViewById(R.id.createAccount);
+        create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                twitterLoginButton.callOnClick();
+                startActivityForResult(new Intent(SignInActivity.this, SignUpActivity.class), 100);
             }
         });
     }
@@ -145,6 +120,7 @@ public class SignUp extends AppCompatActivity implements GoogleApiClient.OnConne
                 .icon(ContextCompat.getDrawable(this, R.drawable.email))
                 .positiveText("Sign In")
                 .neutralText("Forgot Password")
+                .autoDismiss(false)
                 .customView(R.layout.email_login, false)
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
@@ -156,7 +132,7 @@ public class SignUp extends AppCompatActivity implements GoogleApiClient.OnConne
                                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                         @Override
                                         public void onSuccess(AuthResult authResult) {
-
+                                            dialog.dismiss();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -174,7 +150,7 @@ public class SignUp extends AppCompatActivity implements GoogleApiClient.OnConne
                 .onNeutral(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        new MaterialDialog.Builder(SignUp.this)
+                        new MaterialDialog.Builder(SignInActivity.this)
                                 .title("Forgot Password")
                                 .input("Email", "", false, new MaterialDialog.InputCallback() {
                                     @Override
@@ -183,7 +159,7 @@ public class SignUp extends AppCompatActivity implements GoogleApiClient.OnConne
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
-                                                        Toast.makeText(SignUp.this, "Email has been sent!", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(SignInActivity.this, "Email has been sent!", Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
                                     }
@@ -256,7 +232,7 @@ public class SignUp extends AppCompatActivity implements GoogleApiClient.OnConne
         google = (CardView) findViewById(R.id.loginGoogle);
         facebook = (CardView) findViewById(R.id.loginFacebook);
         email = (CardView) findViewById(R.id.loginEmail);
-        twitter = (CardView) findViewById(R.id.loginTwitter);
+        progressBar = (ProgressBar) findViewById(R.id.processing);
     }
 
     @Override
@@ -264,8 +240,6 @@ public class SignUp extends AppCompatActivity implements GoogleApiClient.OnConne
         super.onActivityResult(requestCode, resultCode, data);
         //For fb login
         callBackManager.onActivityResult(requestCode, resultCode, data);
-
-        twitterLoginButton.onActivityResult(requestCode, resultCode, data);
 
         //For Google Login
         if (requestCode == RC_SIGN_IN) {
@@ -277,28 +251,30 @@ public class SignUp extends AppCompatActivity implements GoogleApiClient.OnConne
                 Toast.makeText(this, "Something went wrong.", Toast.LENGTH_SHORT).show();
             }
         }
+
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
     }
 
     public void attachCredToFirebase(AuthCredential credential) {
-        Log.d("Debug", "Attach request: " + credential.getProvider());
+        progressBar.setVisibility(View.VISIBLE);
         mAuth.signInWithCredential(credential)
                 .addOnSuccessListener(this, new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        Log.d("Debug", "Succesfully attached to firebase");
+                        progressBar.setVisibility(View.GONE);
                     }
                 })
                 .addOnFailureListener(this, new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.d("Debug", "Error in attaching");
-
-                        Log.w("Debug", "signInWithCredential",e);
-                        Toast.makeText(SignUp.this, "Authentication failed.",
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(SignInActivity.this, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
-        Log.d("Debug", "Attach request added ");
     }
 
 
@@ -320,4 +296,10 @@ public class SignUp extends AppCompatActivity implements GoogleApiClient.OnConne
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
+    }
 }
