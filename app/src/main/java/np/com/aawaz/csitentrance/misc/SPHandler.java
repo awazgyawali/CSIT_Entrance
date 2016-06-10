@@ -79,56 +79,12 @@ public class SPHandler {
                 getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4);
     }
 
-    public String getFullName() {
-        return infoSp.getString("First-Name", "") + " " + infoSp.getString("Last-Name", "");
-    }
-
-    public String getEmail() {
-        return infoSp.getString("E-Mail", "");
-    }
-
-    public String getImageLink() {
-        return infoSp.getString("ImageLink", null);
-    }
-
-    public boolean isLoggedIn() {
-        return infoSp.getBoolean("LoggedIn", false);
-    }
-
-    public void setLoggedIn() {
-        infoEditor.putBoolean("LoggedIn", true).apply();
-    }
-
     public boolean isResultPublished() {
         return infoSp.getBoolean("published", false);
     }
 
     public void setResultPublished() {
         infoEditor.putBoolean("published", true).apply();
-    }
-
-    public String getID() {
-        return infoSp.getString("UserID", "");
-    }
-
-    public boolean isSocialLoggedIn() {
-        return infoSp.getBoolean("socialLogged", false);
-    }
-
-    public void setSocialLoggedIn() {
-        infoEditor.putBoolean("socialLogged", true).apply();
-    }
-
-    public void saveLoginData(String firstname, String surname, String email, String phone) {
-        infoEditor.putString("First-Name", firstname)
-                .putString("Last-Name", surname)
-                .putString("E-Mail", email)
-                .putString("Phone", phone)
-                .apply();
-    }
-
-    public void setImageLink(String link) {
-        infoEditor.putString("ImageLink", link).apply();
     }
 
     public String getSubjectCode(int index, int questionNo) {

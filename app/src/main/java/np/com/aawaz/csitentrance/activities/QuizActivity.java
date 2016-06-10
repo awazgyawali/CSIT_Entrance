@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.devspark.robototextview.widget.RobotoTextView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -101,10 +102,10 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
         RobotoTextView name = (RobotoTextView) findViewById(R.id.quizName);
         scoreText = (RobotoTextView) findViewById(R.id.quizScore);
         Picasso.with(this)
-                .load(SPHandler.getInstance().getImageLink())
+                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
                 .into(quizProf);
 
-        name.setText(SPHandler.getInstance().getFullName());
+        name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
 
         scoreText.setText("Your Score: " + spHandler.getScore(code));
     }

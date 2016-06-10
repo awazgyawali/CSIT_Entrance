@@ -27,9 +27,7 @@
             android:title="More" />
     </group>
 
-    <group
-        android:id="@+id/entrance"
-        android:checkableBehavior="single">
+    <group android:checkableBehavior="single">
 
         <item
             android:id="@+id/entranceNews"
@@ -48,9 +46,7 @@
             android:title="Entrance Result" />
     </group>
 
-    <group
-        android:id="@+id/sec"
-        android:checkableBehavior="none">
+    <group android:checkableBehavior="none">
 
         <item
             android:id="@+id/settings"

@@ -162,7 +162,6 @@
         android:layout_marginTop="88dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/logoView"
             android:layout_width="124dp"
             android:layout_height="124dp"
             android:src="@drawable/splash_icon" />

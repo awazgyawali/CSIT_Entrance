@@ -14,14 +14,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.devspark.robototextview.widget.RobotoTextView;
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.android.gms.iid.InstanceID;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -55,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
+
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
         mNavigationView = (NavigationView) findViewById(R.id.navigationView);
@@ -94,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         drawerToggle.syncState();
-        justTest();
     }
 
     private void manageHeader() {
@@ -102,9 +102,11 @@ public class MainActivity extends AppCompatActivity {
         RobotoTextView name = (RobotoTextView) mNavigationView.getHeaderView(0).findViewById(R.id.userName);
         RobotoTextView email = (RobotoTextView) mNavigationView.getHeaderView(0).findViewById(R.id.userEmail);
         CircleImageView imageView = (CircleImageView) mNavigationView.getHeaderView(0).findViewById(R.id.user_profile);
-        name.setText(SPHandler.getInstance().getFullName());
-        email.setText(SPHandler.getInstance().getEmail());
-        Picasso.with(this).load(SPHandler.getInstance().getImageLink()).into(imageView);
+        name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+        email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        Picasso.with(this)
+                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
+                .into(imageView);
     }
 
     private void navigate(MenuItem item) {
@@ -149,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.entranceForum:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceForum()).commit();
                 setTitle("Entrance Forum");
-                setAppBarElevation(0);
                 item.setChecked(true);
                 break;
 
@@ -216,24 +217,5 @@ public class MainActivity extends AppCompatActivity {
 
     public String getToolbarTitle() {
         return titleMain.getText().toString();
-    }
-
-    private void justTest() {
-        AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-
-                InstanceID instanceID = InstanceID.getInstance(MainActivity.this);
-                String token = null;
-                try {
-                    token = instanceID.getToken(MainActivity.this.getString(R.string.gcm_defaultSenderId), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                Log.d("Debug", token);
-                return null;
-            }
-        });
-
     }
 }

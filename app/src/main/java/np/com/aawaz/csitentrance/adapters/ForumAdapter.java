@@ -2,6 +2,7 @@ package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,10 @@ import com.devspark.robototextview.widget.RobotoTextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.MyApplication;
@@ -21,26 +24,22 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
     Context context;
     LayoutInflater inflater;
-    ArrayList<String> messages, poster, time, image_link;
-    ArrayList<Integer> comments;
+    ArrayList<Post> posts = new ArrayList<>();
 
     ClickListener clickListener;
 
 
-    public ForumAdapter(Context context, ArrayList<String> poster, ArrayList<String> messages,
-                        ArrayList<Integer> comments, ArrayList<String> time, ArrayList<String> image_link) {
+    public ForumAdapter(Context context) {
         this.context = context;
-        this.messages = messages;
-        this.poster = poster;
-        this.comments = comments;
-        this.time = time;
-        this.image_link = image_link;
         inflater = LayoutInflater.from(context);
-
     }
 
     public void setClickListener(ClickListener clickListener) {
         this.clickListener = clickListener;
+    }
+
+    public void add() {
+
     }
 
     @Override
@@ -50,22 +49,34 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.commentCount.setText("+" + comments.get(position));
-        holder.postedBy.setText(poster.get(position));
-        holder.realPost.setText(messages.get(position));
-        holder.time.setText(time.get(position));
+
+        holder.postedBy.setText(posts.get(position).author);
+        holder.realPost.setText(posts.get(position).body);
+        holder.time.setText(DateUtils.getRelativeTimeSpanString(posts.get(position).time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
         Picasso.with(MyApplication.getAppContext())
-                .load(image_link.get(position))
+                .load(posts.get(position).uid)
                 .into(holder.profile);
     }
 
     @Override
     public int getItemCount() {
-        return messages.size();
+        return posts.size();
     }
 
-    public void addToTop() {
+    public void addToTop(Post post) {
+        posts.add(0, post);
         notifyItemInserted(0);
+    }
+
+    public void removeItemAtPosition(int i) {
+        posts.remove(i);
+        notifyItemRemoved(i);
+    }
+
+    public void editItemAtPosition(int i, Post post) {
+        posts.remove(i);
+        posts.add(i, post);
+        notifyItemChanged(i);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

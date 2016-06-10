@@ -1,15 +1,8 @@
 apply plugin: 'com.android.application'
-
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-}
-
 apply plugin: 'io.fabric'
-apply plugin: 'com.google.gms.google-services'
-
 android {
     compileSdkVersion 23
-    buildToolsVersion '23.0.2'
+    buildToolsVersion '23.0.3'
 
     defaultConfig {
         applicationId "np.com.aawaz.csitentrance"
@@ -31,35 +24,38 @@ dependencies {
     compile('com.github.afollestad.material-dialogs:core:0.8.5.6@aar') {
         transitive = true
     }
-
-    compile('com.twitter.sdk.android:twitter:1.13.0@aar') {
-        transitive = true;
-    }
-
     compile 'com.github.johnkil.android-robototextview:robototextview:2.5.0'
-    compile 'com.heinrichreimersoftware:material-intro:1.1'
-    compile 'com.facebook.android:facebook-android-sdk:4.10.0'
-    compile 'com.android.support:design:23.2.1'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:recyclerview-v7:23.2.1'
-    compile 'com.android.support:cardview-v7:23.2.1'
-    compile 'com.android.support:support-v4:23.2.1'
-    compile 'com.google.android.gms:play-services-gcm:8.3.0'
+    compile 'com.github.paolorotolo:appintro:4.0.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
+
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.android.support:cardview-v7:23.4.0'
+    compile 'com.android.support:support-v4:23.4.0'
+
     compile 'de.hdodenhof:circleimageview:2.0.0'
+//todo okhttp or retrofit ma convert
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.daimajia.easing:library:1.0.1@aar'
-
     compile 'com.daimajia.androidanimations:library:1.1.3@aar'
     compile 'com.github.medyo:fancybuttons:1.5@aar'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.google.android.gms:play-services-appindexing:8.3.0'
     compile 'com.truizlop.fabreveallayout:library:1.0.0'
-    compile 'com.getbase:floatingactionbutton:1.10.1'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
     compile 'com.github.lzyzsd:circleprogress:1.1.0@aar'
-    compile 'jp.wasabeef:recyclerview-animators:2.2.1'
-    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+
+    compile 'com.google.firebase:firebase-core:9.0.2'
+    compile 'com.google.firebase:firebase-messaging:9.0.2'
+    compile 'com.google.firebase:firebase-crash:9.0.2'
+    compile 'com.google.firebase:firebase-auth:9.0.2'
+    compile 'com.google.firebase:firebase-database:9.0.2'
+
+    compile 'com.google.android.gms:play-services-auth:9.0.2'
+
+    compile('com.twitter.sdk.android:twitter:1.13.2@aar') {
         transitive = true;
     }
 }
+apply plugin: 'com.google.gms.google-services'

@@ -3,11 +3,8 @@
     <color name="colorPrimary">#125688</color>
     <color name="colorPrimaryDark">#0c3a5b</color>
     <color name="colorAccent">#2196F3</color>
-    <color name="colorPrimaryLight">#E1BEE7</color>
-    <color name="colorIcon">#FFFFFF</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#727272</color>
-    <color name="colorDivider">#B6B6B6</color>
     <color name="background">#e9e9e9</color>
 
 
@@ -16,28 +13,16 @@
     <color name="math">#009688</color>
     <color name="english">#2A5FBD</color>
 
-    <color name="back">#eee</color>
-
-    <color name="green">#4CAF50</color>
-    <color name="red">#F44336</color>
-
-    <color name="blueFeedback">#3F51B5</color>
     <color name="white">#ffffff</color>
     <color name="grey">#727272</color>
     <color name="black">#000000</color>
 
     <color name="background_1">#f44336</color>
-    <color name="background_dark_1">#d32f2f</color>
     <color name="background_2">#E91E63</color>
-    <color name="background_dark_2">#C2185B</color>
     <color name="background_3">#9C27B0</color>
-    <color name="background_dark_3">#7B1FA2</color>
     <color name="background_4">#673AB7</color>
-    <color name="background_dark_4">#512DA8</color>
     <color name="background_5">#3F51B5</color>
-    <color name="background_dark_5">#303F9F</color>
     <color name="background_6">#2196F3</color>
-    <color name="background_dark_6">#1976D2</color>
 
     <color name="white_transparent">#80ffffff</color>
 

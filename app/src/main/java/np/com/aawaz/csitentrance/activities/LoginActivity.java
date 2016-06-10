@@ -2,41 +2,40 @@ package np.com.aawaz.csitentrance.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.view.View;
 
-import com.heinrichreimersoftware.materialintro.app.IntroActivity;
-import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
-import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
+import com.github.paolorotolo.appintro.AppIntro;
+import com.github.paolorotolo.appintro.AppIntroFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.fragments.other_fragments.SignUp;
-import np.com.aawaz.csitentrance.misc.SPHandler;
 
 
-public class LoginActivity extends IntroActivity {
+public class LoginActivity extends AppIntro {
 
     Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setFullscreen(true);
 
         super.onCreate(savedInstanceState);
-        setFinishEnabled(false);
-        setSkipEnabled(false);
         context = this;
-        if (SPHandler.getInstance().isLoggedIn()) {
-            setContentView(R.layout.splash_screen);
-            setFinishEnabled(false);
-            setSkipEnabled(false);
-            addSlide(new SimpleSlide.Builder()
-                    .title(R.string.app_name)
-                    .description(R.string.tag_link)
-                    .image(R.drawable.splash_icon)
-                    .background(R.color.background)
-                    .backgroundDark(R.color.background)
-                    .build());
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+
+            showSkipButton(false);
+            setProgressButtonEnabled(false);
+            setBarColor(Color.TRANSPARENT);
+            setSeparatorColor(Color.TRANSPARENT);
+
+            addSlide(AppIntroFragment.newInstance(getString(R.string.app_name),
+                    getString(R.string.tag_link),
+                    R.drawable.splash_icon,
+                    ContextCompat.getColor(this, R.color.colorPrimary)));
 
             Thread background = new Thread() {
                 public void run() {
@@ -52,61 +51,52 @@ public class LoginActivity extends IntroActivity {
             };
             background.start();
         } else {
-            addSlide(new SimpleSlide.Builder()
-                    .title(R.string.intro_one)
-                    .description(R.string.description_1)
-                    .image(R.drawable.play)
-                    .background(R.color.background_1)
-                    .backgroundDark(R.color.background_dark_1)
-                    .build());
 
-            addSlide(new SimpleSlide.Builder()
-                    .title(R.string.intro_two)
-                    .description(R.string.description_2)
-                    .image(R.drawable.scoreboard_big)
-                    .background(R.color.background_2)
-                    .backgroundDark(R.color.background_dark_2)
-                    .build());
+            addSlide(AppIntroFragment.newInstance(getString(R.string.intro_one),
+                    getString(R.string.description_1),
+                    R.drawable.play,
+                    ContextCompat.getColor(this, R.color.background_1)));
 
-            addSlide(new SimpleSlide.Builder()
-                    .title(R.string.intro_three)
-                    .description(R.string.description_3)
-                    .image(R.drawable.school_big)
-                    .background(R.color.background_3)
-                    .backgroundDark(R.color.background_dark_3)
-                    .build());
+            addSlide(AppIntroFragment.newInstance(getString(R.string.intro_two),
+                    getString(R.string.description_2),
+                    R.drawable.scoreboard_big,
+                    ContextCompat.getColor(this, R.color.background_2)));
 
+            addSlide(AppIntroFragment.newInstance(getString(R.string.intro_three),
+                    getString(R.string.description_3),
+                    R.drawable.school_big,
+                    ContextCompat.getColor(this, R.color.background_3)));
 
-            addSlide(new SimpleSlide.Builder()
-                    .title(R.string.intro_four)
-                    .description(R.string.description_4)
-                    .image(R.drawable.news_big)
-                    .background(R.color.background_4)
-                    .backgroundDark(R.color.background_dark_4)
-                    .build());
+            addSlide(AppIntroFragment.newInstance(getString(R.string.intro_four),
+                    getString(R.string.description_4),
+                    R.drawable.news_big,
+                    ContextCompat.getColor(this, R.color.background_4)));
 
-            addSlide(new SimpleSlide.Builder()
-                    .title(R.string.intro_five)
-                    .description(R.string.description_5)
-                    .image(R.drawable.forum_big)
-                    .background(R.color.background_5)
-                    .backgroundDark(R.color.background_dark_5)
-                    .build());
+            addSlide(AppIntroFragment.newInstance(getString(R.string.intro_five),
+                    getString(R.string.description_5),
+                    R.drawable.forum_big,
+                    ContextCompat.getColor(this, R.color.background_5)));
 
-            addSlide(new SimpleSlide.Builder()
-                    .title(R.string.intro_six)
-                    .description(R.string.description_6)
-                    .image(R.drawable.result_big)
-                    .background(R.color.background_6)
-                    .backgroundDark(R.color.background_dark_6)
-                    .build());
-
-            addSlide(new FragmentSlide.Builder()
-                    .background(R.color.colorPrimary)
-                    .backgroundDark(R.color.colorPrimaryDark)
-                    .fragment(new SignUp())
-                    .build());
+            addSlide(AppIntroFragment.newInstance(getString(R.string.intro_six),
+                    getString(R.string.description_6),
+                    R.drawable.result_big,
+                    ContextCompat.getColor(this, R.color.background_6)));
+            setDoneText("Get Started");
         }
+    }
+
+    @Override
+    public void onSkipPressed(Fragment currentFragment) {
+        super.onSkipPressed(currentFragment);
+        startActivity(new Intent(this, SignUp.class));
+        finish();
+    }
+
+    @Override
+    public void onDonePressed(Fragment currentFragment) {
+        super.onDonePressed(currentFragment);
+        startActivity(new Intent(this, SignUp.class));
+        finish();
     }
 
     @Override

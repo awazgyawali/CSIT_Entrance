@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.devspark.robototextview.widget.RobotoTextView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -175,7 +176,9 @@ public class CommentsFragment extends BottomSheetDialogFragment {
             ((BottomSheetBehavior) behavior).setBottomSheetCallback(mBottomSheetBehaviorCallback);
         }
 
-        Picasso.with(getContext()).load(SPHandler.getInstance().getImageLink()).into(profileImage);
+        Picasso.with(getContext())
+                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
+                .into(profileImage);
 
         fetchFromInternet();
     }

@@ -2,65 +2,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="5dp"
     tools:context="np.com.aawaz.csitentrance.fragments.other_fragments.EachNews">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:gravity="center"
+            android:orientation="horizontal"
             android:padding="16dp">
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/newsBottomTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Demo Title"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimary"
+                app:typeface="roboto_bold" />
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/newsBottomTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time and day"
+                android:textColor="@color/colorSecondaryText" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
 
                 <com.devspark.robototextview.widget.RobotoTextView
-                    android:id="@+id/newsBottomTitle"
-                    android:layout_width="0dp"
+                    android:id="@+id/newsBottomDetail"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Demo Title"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/colorPrimary"
-                    app:typeface="roboto_bold" />
+                    android:ellipsize="end"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:text="Demo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahah"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorPrimaryText" />
 
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:id="@+id/newsBottomTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Time and day"
-                    android:textColor="@color/colorSecondaryText" />
-
+                <ImageView
+                    android:id="@+id/newsBottomImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="centerCrop" />
             </LinearLayout>
-
-
-            <com.devspark.robototextview.widget.RobotoTextView
-                android:id="@+id/newsBottomDetail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:ellipsize="end"
-                android:text="Demo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahah"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/colorPrimaryText" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/newsBottomImage"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:scaleType="centerCrop" />
+        </ScrollView>
     </LinearLayout>
-
-
 </android.support.v7.widget.CardView>

@@ -1,49 +1,68 @@
 {
   "project_info": {
-    "project_id": "csit-entrance",
-    "project_number": "528618144444",
-    "name": "CSIT Entrance"
+    "project_number": "243712876576",
+    "firebase_url": "https://csit-entrance-7d58.firebaseio.com",
+    "project_id": "csit-entrance-7d58",
+    "storage_bucket": "csit-entrance-7d58.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:528618144444:android:ef6678418eb36164",
-        "client_id": "android:np.com.aawaz.csitentrance",
-        "client_type": 1,
+        "mobilesdk_app_id": "1:243712876576:android:ef6678418eb36164",
         "android_client_info": {
-          "package_name": "np.com.aawaz.csitentrance",
-          "certificate_hash": []
+          "package_name": "np.com.aawaz.csitentrance"
         }
       },
       "oauth_client": [
         {
-          "client_id": "528618144444-d4kingb2sg7mutkf49j5g86dnkf0oaea.apps.googleusercontent.com",
+          "client_id": "243712876576-bqd2hbipublnq778d4p34tfbu6r9gnro.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "np.com.aawaz.csitentrance",
-            "certificate_hash": "508FCE8C0153BE257D1319FE71DCBE99BEAEAC41"
+            "certificate_hash": "9C50A0F9DC04556156484926E3D15C4FAF585571"
           }
         },
         {
-          "client_id": "528618144444-vmj7mif62chs6f2pkvmc2obotn9po4pe.apps.googleusercontent.com",
+          "client_id": "243712876576-3m4a2fe5iqfcndv2rdrosmplf4ola1i6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "np.com.aawaz.csitentrance",
+            "certificate_hash": "70FA9DC531ADC6D8E88C65504FF0B656004FA129"
+          }
+        },
+        {
+          "client_id": "243712876576-cjs88eqjmgetmtepd794uhuje2prld1p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "np.com.aawaz.csitentrance",
+            "certificate_hash": "44E286802A98AFEB685EE503BE115D7EFAF3C719"
+          }
+        },
+        {
+          "client_id": "243712876576-imtp04otk51p284lf9aovpoqj4kk1svl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "np.com.aawaz.csitentrance",
+            "certificate_hash": "B79ED18CED81D0E29E5602403FFE68BD17F00666"
+          }
+        },
+        {
+          "client_id": "243712876576-isvpk0jm7rseqrq4ql9l78ov6hu89em6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
-      "api_key": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW7ffdS9wNRfTJg4R14GT_1gc5qrtHx1c"
+        }
+      ],
       "services": {
         "analytics_service": {
           "status": 1
         },
-        "cloud_messaging_service": {
-          "status": 2,
-          "apns_config": []
-        },
         "appinvite_service": {
           "status": 1,
           "other_platform_oauth_client": []
-        },
-        "google_signin_service": {
-          "status": 2
         },
         "ads_service": {
           "status": 1
@@ -51,6 +70,5 @@
       }
     }
   ],
-  "client_info": [],
-  "ARTIFACT_VERSION": "1"
+  "configuration_version": "1"
 }
