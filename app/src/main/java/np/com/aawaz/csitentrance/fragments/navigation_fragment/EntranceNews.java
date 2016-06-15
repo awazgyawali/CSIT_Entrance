@@ -11,18 +11,18 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.NewsAdapter;
 import np.com.aawaz.csitentrance.objects.News;
 
 
-public class EntranceNews extends Fragment implements ChildEventListener {
+public class EntranceNews extends Fragment implements ValueEventListener {
 
     RecyclerView recy;
     NewsAdapter newsAdapter;
@@ -61,29 +61,14 @@ public class EntranceNews extends Fragment implements ChildEventListener {
     }
 
     private void addOneTimeListener() {
-        reference.addChildEventListener(this);
+        reference.addListenerForSingleValueEvent(this);
     }
 
-
     @Override
-    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-        newsAdapter.addToTop(dataSnapshot.getValue(News.class));
+    public void onDataChange(DataSnapshot dataSnapshot) {
+        for (DataSnapshot child : dataSnapshot.getChildren())
+            newsAdapter.addToTop(child.getValue(News.class));
         progress.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-    }
-
-    @Override
-    public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-    }
-
-    @Override
-    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
     }
 
     @Override

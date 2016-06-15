@@ -17,39 +17,38 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.devspark.robototextview.widget.RobotoTextView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.CommentAdapter;
-import np.com.aawaz.csitentrance.misc.SPHandler;
-import np.com.aawaz.csitentrance.misc.Singleton;
+import np.com.aawaz.csitentrance.objects.Comment;
 
 public class CommentsFragment extends BottomSheetDialogFragment {
 
     RecyclerView commentsRecyclerView;
     ProgressBar progressBar;
 
-    ArrayList<String> comments = new ArrayList<>(),
-            commenter = new ArrayList<>(),
-            image_link = new ArrayList<>(),
-            time = new ArrayList<>();
-
     AppCompatEditText commentEditText;
     ImageButton commentButton;
     CircleImageView profileImage;
     RobotoTextView commentNumber, errorMessage;
     LinearLayout commentAdder;
+    CommentAdapter adapter;
+    ArrayList<String> key = new ArrayList<>();
+
+    DatabaseReference reference;
 
     public CommentsFragment() {
         // Required empty public constructor
@@ -78,9 +77,19 @@ public class CommentsFragment extends BottomSheetDialogFragment {
         commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View views) {
-                //todo post comment
+                sendPostRequestThroughGraph(commentEditText.getText().toString());
             }
         });
+    }
+
+    private void sendPostRequestThroughGraph(final String message) {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        Comment comment = new Comment(currentUser.getUid(), currentUser.getDisplayName(), System.currentTimeMillis(), message, currentUser.getPhotoUrl().toString());
+        Map<String, Object> postValues = comment.toMap();
+
+        reference.push().setValue(postValues);
+        commentEditText.setText("");
     }
 
     public void onViewCreated(View view) {
@@ -95,54 +104,74 @@ public class CommentsFragment extends BottomSheetDialogFragment {
         errorMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fetchFromInternet();
             }
         });
-        commentsRecyclerView.setVisibility(View.GONE);
         errorMessage.setVisibility(View.GONE);
     }
 
-    private void fillViews() throws Exception {
-        progressBar.setVisibility(View.GONE);
-        commentAdder.setVisibility(View.VISIBLE);
-        commentsRecyclerView.setVisibility(View.VISIBLE);
+    private void fillViews() {
         commentsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        CommentAdapter adapter = new CommentAdapter(getActivity(), commenter, comments, image_link, time);
+        adapter = new CommentAdapter(getActivity());
         commentsRecyclerView.setAdapter(adapter);
         readyCommentButton();
+        addListener();
     }
 
-    private void fetchFromInternet() {
-        errorMessage.setVisibility(View.GONE);
-        commentsRecyclerView.setVisibility(View.GONE);
+
+    private void addListener() {
         progressBar.setVisibility(View.VISIBLE);
-        int requestId = getArguments().getInt("post_id");
-        commentNumber.setText(getArguments().getInt("comments") + " Comments");
-        JsonArrayRequest request = new JsonArrayRequest(getActivity().getString(R.string.getComment) + requestId, new Response.Listener<JSONArray>() {
+        reference.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onResponse(JSONArray response) {
-                try {
-                    for (int i = 0; i < response.length(); i++) {
-                        JSONObject commentObject = response.getJSONObject(i);
-                        comments.add(commentObject.getString("comment"));
-                        commenter.add(commentObject.getString("name"));
-                        time.add(commentObject.getString("time"));
-                        image_link.add(commentObject.getString("image_link"));
-                    }
-                    fillViews();
-                } catch (Exception ignored) {
-                    errorMessage.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.GONE);
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                errorMessage.setVisibility(View.VISIBLE);
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+                Comment newPost = dataSnapshot.getValue(Comment.class);
+                adapter.addToTop(newPost);
+                key.add(dataSnapshot.getKey());
                 progressBar.setVisibility(View.GONE);
+                errorMessage.setVisibility(View.GONE);
+                maintainCommentNo();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+                int position = -1;
+                for (int i = 0; i < key.size(); i++) {
+                    if (key.get(i).equals(dataSnapshot.getKey()))
+                        position = i;
+                }
+                if (position == -1)
+                    return;
+                adapter.editItemAtPosition(position, dataSnapshot.getValue(Comment.class));
+                maintainCommentNo();
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                int position = -1;
+                for (int i = 0; i < key.size(); i++) {
+                    if (key.get(i).equals(dataSnapshot.getKey()))
+                        position = i;
+                }
+                if (position == -1)
+                    return;
+                adapter.removeItemAtPosition(position);
+                key.remove(position);
+                maintainCommentNo();
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                progressBar.setVisibility(View.GONE);
+                errorMessage.setVisibility(View.VISIBLE);
             }
         });
-        Singleton.getInstance().getRequestQueue().add(request);
+    }
+
+    private void maintainCommentNo() {
+        commentNumber.setText(adapter.getItemCount() + " comments");
     }
 
     private BottomSheetBehavior.BottomSheetCallback mBottomSheetBehaviorCallback = new BottomSheetBehavior.BottomSheetCallback() {
@@ -166,8 +195,22 @@ public class CommentsFragment extends BottomSheetDialogFragment {
     public void setupDialog(Dialog dialog, int style) {
         super.setupDialog(dialog, style);
         View contentView = View.inflate(getContext(), R.layout.fragment_comments, null);
+        DatabaseReference rootReference = FirebaseDatabase.getInstance().getReference();
+
+        reference = rootReference.child("forum").child(getArguments().getString("key")).child("comments");
+
         dialog.setContentView(contentView);
         onViewCreated(contentView);
+        fillViews();
+
+        if (getArguments().getInt("comment_count") == 0) {
+            progressBar.setVisibility(View.GONE);
+            errorMessage.setText("No Comments");
+            errorMessage.setVisibility(View.VISIBLE);
+        }
+
+
+        commentNumber.setText(getArguments().getInt("comment_count") + " comments");
 
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) ((View) contentView.getParent()).getLayoutParams();
         CoordinatorLayout.Behavior behavior = params.getBehavior();
@@ -179,7 +222,5 @@ public class CommentsFragment extends BottomSheetDialogFragment {
         Picasso.with(getContext())
                 .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
                 .into(profileImage);
-
-        fetchFromInternet();
     }
 }

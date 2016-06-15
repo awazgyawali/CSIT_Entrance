@@ -2,24 +2,25 @@ package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialogFragment;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -30,25 +31,25 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
-import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
 import np.com.aawaz.csitentrance.fragments.other_fragments.CommentsFragment;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
-import np.com.aawaz.csitentrance.misc.SPHandler;
+import np.com.aawaz.csitentrance.objects.SPHandler;
+import np.com.aawaz.csitentrance.objects.Post;
 
 
 public class EntranceForum extends Fragment {
 
-    private static final String TAG = "DEbug";
     RecyclerView recyclerView;
 
     AppCompatEditText questionEditText;
     ProgressBar progressBar;
     LinearLayout errorPart;
-    FloatingActionButton fab;
+    ImageView fab;
 
     ForumAdapter adapter;
 
@@ -71,10 +72,8 @@ public class EntranceForum extends Fragment {
         errorPart = (LinearLayout) view.findViewById(R.id.errorPart);
         progressBar = (ProgressBar) view.findViewById(R.id.progressCircleFullFeed);
         recyclerView = (RecyclerView) view.findViewById(R.id.fullFeedRecycler);
-        fab = (FloatingActionButton) view.findViewById(R.id.fabAddForum);
+        fab = (ImageView) view.findViewById(R.id.fabAddForum);
         questionEditText = (AppCompatEditText) view.findViewById(R.id.questionEditText);
-
-        fab.hide();
 
         questionEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -85,9 +84,9 @@ public class EntranceForum extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length() == 0)
-                    fab.hide();
+                    fab.setVisibility(View.GONE);
                 else
-                    fab.show();
+                    fab.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -109,7 +108,7 @@ public class EntranceForum extends Fragment {
                 sendPostRequestThroughGraph(questionEditText.getText().toString());
             }
         });
-        fab.hide();
+        fab.setVisibility(View.GONE);
     }
 
     @Override
@@ -127,8 +126,10 @@ public class EntranceForum extends Fragment {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
                 Post newPost = dataSnapshot.getValue(Post.class);
+                newPost.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
                 adapter.addToTop(newPost);
-                key.add(0,dataSnapshot.getKey());
+                key.add(0, dataSnapshot.getKey());
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -140,7 +141,9 @@ public class EntranceForum extends Fragment {
                 }
                 if (position == -1)
                     return;
-                adapter.editItemAtPosition(position, dataSnapshot.getValue(Post.class));
+                Post post = dataSnapshot.getValue(Post.class);
+                post.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
+                adapter.editItemAtPosition(position, post);
             }
 
             @Override
@@ -158,14 +161,14 @@ public class EntranceForum extends Fragment {
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
-                Log.d(TAG, "onChildMoved:" + dataSnapshot.getKey());
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.w(TAG, "postComments:onCancelled", databaseError.toException());
                 Toast.makeText(getContext(), "Failed to load comments.",
                         Toast.LENGTH_SHORT).show();
+                errorPart.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
             }
         });
     }
@@ -178,21 +181,91 @@ public class EntranceForum extends Fragment {
         adapter.setClickListener(new ClickListener() {
             @Override
             public void itemClicked(View view, int position) {
+                Bundle bundle = new Bundle();
+                bundle.putString("key", key.get(position));
+                bundle.putInt("comment_count", adapter.getCommentCount(position));
+
                 BottomSheetDialogFragment bottomSheetDialogFragment = new CommentsFragment();
-                //pathaune ho comments haru
+                bottomSheetDialogFragment.setArguments(bundle);
                 bottomSheetDialogFragment.show(getChildFragmentManager(), bottomSheetDialogFragment.getTag());
+            }
+
+            @Override
+            public void itemLongClicked(View view, final int position) {
+                if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(adapter.getUidAt(position))) {
+                    new MaterialDialog.Builder(getContext())
+                            .title("Select any option")
+                            .items("Edit", "Delete")
+                            .itemsCallback(new MaterialDialog.ListCallback() {
+                                @Override
+                                public void onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
+                                    if (which == 0)
+                                        showDialogToEdit(adapter.getMessageAt(position), position);
+                                    else if (which == 1)
+                                        FirebaseDatabase.getInstance().getReference().child("forum").child(key.get(position)).removeValue();
+                                }
+                            })
+                            .build()
+                            .show();
+                }
             }
         });
     }
 
+    private void showDialogToEdit(String message, final int position) {
+        new MaterialDialog.Builder(getContext())
+                .title("Edit post")
+                .input("Your message", message, false, new MaterialDialog.InputCallback() {
+                    @Override
+                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                        Map<String, Object> map = new HashMap<String, Object>();
+                        map.put("message", input.toString());
+                        FirebaseDatabase.getInstance().getReference().child("forum").child(key.get(position)).updateChildren(map);
+                    }
+                })
+                .positiveText("Save")
+                .show();
+    }
+
 
     private void sendPostRequestThroughGraph(final String message) {
+        if (canPost()) {
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            Post post = new Post(currentUser.getUid(), currentUser.getDisplayName(), new Date().getTime(), message, FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString());
+            Map<String, Object> postValues = post.toMap();
 
-        Post post = new Post(currentUser.getUid(), currentUser.getDisplayName(), new Date().getTime(), message);
-        Map<String, Object> postValues = post.toMap();
+            reference.push().setValue(postValues);
+            SPHandler.getInstance().setLastPostedTime(System.currentTimeMillis());
+            questionEditText.setText("");
+        } else {
+            new MaterialDialog.Builder(getContext())
+                    .title("Opps...")
+                    .content("You can ask one question per hour, please come back later. And don't worry your message will be stored in the editor.")
+                    .show();
+        }
 
-        reference.push().setValue(postValues);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        SPHandler.getInstance().setForumText(questionEditText.getText().toString());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        questionEditText.setText(SPHandler.getInstance().getForumText());
+    }
+
+    private boolean canPost() {
+        long preTime = SPHandler.getInstance().getLastPostedTime();
+        long postTime = System.currentTimeMillis();
+
+        long difference = (postTime - preTime) / (60 * 60 * 1000);
+
+        //return difference >= 1;
+        return true;
     }
 }

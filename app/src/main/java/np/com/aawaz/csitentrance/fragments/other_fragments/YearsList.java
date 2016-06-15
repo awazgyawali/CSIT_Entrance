@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.FullQuestionActivity;
 import np.com.aawaz.csitentrance.activities.QuizActivity;
-import np.com.aawaz.csitentrance.misc.SPHandler;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class YearsList extends Fragment {
 

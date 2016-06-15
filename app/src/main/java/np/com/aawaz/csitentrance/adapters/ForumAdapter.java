@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.MyApplication;
+import np.com.aawaz.csitentrance.objects.Post;
 
 
 public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> {
@@ -49,9 +49,10 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
         holder.postedBy.setText(posts.get(position).author);
         holder.realPost.setText(posts.get(position).message);
+        holder.commentCount.setText("+" + posts.get(position).comment_count);
         holder.time.setText(DateUtils.getRelativeTimeSpanString(posts.get(position).time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
         Picasso.with(MyApplication.getAppContext())
-                .load(posts.get(position).uid)
+                .load(posts.get(position).image_url)
                 .into(holder.profile);
     }
 
@@ -76,6 +77,18 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         notifyItemChanged(i);
     }
 
+    public String getUidAt(int position) {
+        return posts.get(position).uid;
+    }
+
+    public int getCommentCount(int position) {
+        return posts.get(position).comment_count;
+    }
+
+    public String getMessageAt(int position) {
+        return posts.get(position).message;
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         RobotoTextView commentCount, realPost, postedBy, time;
         CircleImageView profile;
@@ -91,6 +104,13 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
                 @Override
                 public void onClick(View view) {
                     clickListener.itemClicked(view, getAdapterPosition());
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    clickListener.itemLongClicked(v, getAdapterPosition());
+                    return true;
                 }
             });
         }

@@ -1,10 +1,11 @@
-package np.com.aawaz.csitentrance.misc;
+package np.com.aawaz.csitentrance.objects;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.content.ContextCompat;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.misc.MyApplication;
 
 public class SPHandler {
     private static SPHandler spHandler;
@@ -128,5 +129,37 @@ public class SPHandler {
             default:
                 return "";
         }
+    }
+
+    public long getLastPostedTime() {
+        return scoreSp.getLong("lastPosted", 0);
+    }
+
+    public String getForumText() {
+        return scoreSp.getString("forumText", "");
+    }
+
+    public void setLastPostedTime(long time) {
+        scoreEditor.putLong("lastPosted", time).apply();
+    }
+
+    public void setForumText(String forumText) {
+        scoreEditor.putString("forumText", forumText).apply();
+    }
+
+    public void setNewsSubscribed(boolean newsSubscribed) {
+        scoreEditor.putBoolean("newsSub", newsSubscribed).apply();
+    }
+
+    public void setForumSubscribed(boolean newsSubscribed) {
+        scoreEditor.putBoolean("forumSub", newsSubscribed).apply();
+    }
+
+    public boolean getForumSubscribed() {
+        return scoreSp.getBoolean("forumSub", true);
+    }
+
+    public boolean getNewsSubscribed() {
+        return scoreSp.getBoolean("newsSub", true);
     }
 }

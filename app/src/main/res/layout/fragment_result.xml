@@ -112,10 +112,21 @@
             android:layout_height="wrap_content"
             android:src="@drawable/double_done" />
 
-        <com.daimajia.slider.library.SliderLayout
-            android:id="@+id/result_ad_slider"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/addLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/result_ad_slider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"

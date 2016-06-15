@@ -43,7 +43,7 @@ public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return colleges.size() + 1;
+        return colleges.size();
     }
 
 

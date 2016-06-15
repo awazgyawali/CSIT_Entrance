@@ -35,7 +35,7 @@ import np.com.aawaz.csitentrance.custom_views.CustomViewPager;
 import np.com.aawaz.csitentrance.fragments.other_fragments.AnswersDrawer;
 import np.com.aawaz.csitentrance.fragments.other_fragments.QuestionFragment;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
-import np.com.aawaz.csitentrance.misc.SPHandler;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 
 public class QuizActivity extends AppCompatActivity implements QuizInterface {

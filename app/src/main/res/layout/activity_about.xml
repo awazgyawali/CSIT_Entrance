@@ -1,180 +1,124 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.activities.About">
 
     <ImageView
-        android:id="@+id/headerImageAbout"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:fitsSystemWindows="true"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/back_header" />
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbarAbout"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:theme="@style/Theme.AppCompat.NoActionBar"
-        app:layout_collapseMode="pin"
-        app:layout_scrollFlags="scroll|enterAlways">
-
-        <com.devspark.robototextview.widget.RobotoTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="About Us"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white"
-            app:typeface="roboto_bold" />
-    </android.support.v7.widget.Toolbar>
-
-    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/headerImageAbout">
+        android:alpha="1"
+        android:background="@color/grey"
+        android:scaleType="centerCrop"
+        android:src="@drawable/about_wall" />
 
-        <android.support.v4.widget.NestedScrollView
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha=".5"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/view"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/splash_icon" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:baselineAligned="true"
-                    android:orientation="horizontal">
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="145dp"
+                android:text="v2.0"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:typeface="roboto_thin" />
+        </RelativeLayout>
 
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|bottom"
+            android:orientation="horizontal">
 
-                        <mehdi.sakout.fancybuttons.FancyButton
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="15dp"
-                            app:fb_text="Like"
-                            fancy:fb_defaultColor="#3b5999"
-                            fancy:fb_iconPaddingBottom="5dp"
-                            fancy:fb_iconPosition="top"
-                            fancy:fb_iconResource="@drawable/like"
-                            fancy:fb_radius="0dp" />
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:padding="15dp"
+                fancy:fb_borderColor="#F44336"
+                fancy:fb_borderWidth="2dp"
+                fancy:fb_defaultColor="#00ffffff"
+                fancy:fb_iconResource="@drawable/like"
+                fancy:fb_radius="10dp"
+                fancy:fb_text="Like"
+                fancy:fb_textColor="#F44336" />
 
-                        <mehdi.sakout.fancybuttons.FancyButton
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="15dp"
-                            app:fb_text="Follow"
-                            fancy:fb_defaultColor="#55acee"
-                            fancy:fb_iconPaddingBottom="5dp"
-                            fancy:fb_iconPosition="top"
-                            fancy:fb_iconResource="@drawable/follow"
-                            fancy:fb_radius="0dp" />
-                    </LinearLayout>
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:padding="15dp"
+                fancy:fb_borderColor="#FFEB3B"
+                fancy:fb_borderWidth="2dp"
+                fancy:fb_defaultColor="#00ffffff"
+                fancy:fb_iconResource="@drawable/rate"
+                fancy:fb_radius="10dp"
+                fancy:fb_text="Rate"
+                fancy:fb_textColor="#FFEB3B" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="65dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+        </LinearLayout>
 
-                        <com.devspark.robototextview.widget.RobotoTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Your Path to CSIT"
-                            android:textColor="@color/colorAccent"
-                            app:typeface="roboto_italic" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
 
-                        <com.devspark.robototextview.widget.RobotoTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="By Brainants Technology"
-                            android:textColor="@color/colorPrimary" />
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:padding="15dp"
+                fancy:fb_borderColor="#009688"
+                fancy:fb_borderWidth="2dp"
+                fancy:fb_defaultColor="#00ffffff"
+                fancy:fb_iconResource="@drawable/feedback"
+                fancy:fb_radius="10dp"
+                fancy:fb_text="Feedback"
+                fancy:fb_textColor="#009688" />
+        </RelativeLayout>
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <mehdi.sakout.fancybuttons.FancyButton
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="15dp"
-                            app:fb_text="Rate"
-                            fancy:fb_defaultColor="#ff6600"
-                            fancy:fb_iconPaddingBottom="5dp"
-                            fancy:fb_iconPosition="top"
-                            fancy:fb_iconResource="@drawable/rate"
-                            fancy:fb_radius="0dp" />
-
-                        <mehdi.sakout.fancybuttons.FancyButton
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="15dp"
-                            app:fb_text="Feedback"
-                            fancy:fb_defaultColor="#00b489"
-                            fancy:fb_iconPaddingBottom="5dp"
-                            fancy:fb_iconPosition="top"
-                            fancy:fb_iconResource="@drawable/feedback"
-                            fancy:fb_radius="0dp" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <com.devspark.robototextview.widget.RobotoTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="Our Products"
-                    android:textColor="@color/colorPrimary"
-                    app:typeface="roboto_bold" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/productsRecycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-
-        </android.support.v4.widget.NestedScrollView>
-    </android.support.design.widget.CoordinatorLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="124dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="88dp">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="124dp"
-            android:layout_height="124dp"
-            android:src="@drawable/splash_icon" />
 
         <com.devspark.robototextview.widget.RobotoTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:paddingBottom="15dp"
-            android:text="v2.0"
-            android:textColor="@color/white"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:gravity="bottom"
+            android:text="csitentrance.brainants.com"
+            android:textColor="@color/colorPrimary"
             app:typeface="roboto_bold" />
-    </RelativeLayout>
-
-</RelativeLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

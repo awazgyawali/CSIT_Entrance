@@ -54,7 +54,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/arrow_right"
                 fancy:fb_defaultColor="@color/white"
                 fancy:fb_iconResource="@drawable/arrow_right_accent"
                 fancy:fb_radius="5dp"

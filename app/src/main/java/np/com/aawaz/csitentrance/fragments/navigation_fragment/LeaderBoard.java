@@ -117,18 +117,19 @@ public class LeaderBoard extends Fragment {
                         JSONObject jo_inside = jsonArray.getJSONObject(i);
 
                         if (i < 3) {
-                            topNames[i].setText(jo_inside.getString("Name"));
-                            topScores[i].setText(jo_inside.getInt("Score") + "");
-                            Picasso.with(getContext()).load(jo_inside.getString("ImageLink")).into(circleImageViews[i]);
+                            topNames[i].setText(jo_inside.getString("name"));
+                            topScores[i].setText(String.valueOf(jo_inside.getInt("score")));
+                            Picasso.with(getContext())
+                                    .load(jo_inside.getString("image_link"))
+                                    .into(circleImageViews[i]);
                         } else {
-                            names.add(jo_inside.getString("Name"));
-                            scores.add(jo_inside.getInt("Score"));
-                            images.add(jo_inside.getString("ImageLink"));
+                            names.add(jo_inside.getString("name"));
+                            scores.add(jo_inside.getInt("score"));
+                            images.add(jo_inside.getString("image_link"));
                         }
                     }
                     callFillRecyclerView();
                 } catch (JSONException e) {
-                    e.printStackTrace();
                     errorLayout.setVisibility(View.VISIBLE);
                     progress.setVisibility(View.GONE);
                 }

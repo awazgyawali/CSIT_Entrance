@@ -1,8 +1,12 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -16,7 +20,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.devspark.robototextview.widget.RobotoTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,12 +31,14 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.CSITColleges;
+import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceFAQs;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceForum;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceNews;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceResult;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.Home;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.LeaderBoard;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.More;
+import np.com.aawaz.csitentrance.objects.Feedback;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     static RobotoTextView titleMain;
     AppBarLayout appBarLayout;
+    RobotoTextView name;
+    CircleImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
         mNavigationView = (NavigationView) findViewById(R.id.navigationView);
         manager = getSupportFragmentManager();
@@ -60,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabLayoutMain);
         appBarLayout = (AppBarLayout) findViewById(R.id.appBarMain);
         titleMain = (RobotoTextView) findViewById(R.id.titleMain);
+
 
         setTitle("Play Quiz");
         manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
@@ -95,9 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void manageHeader() {
 
-        RobotoTextView name = (RobotoTextView) mNavigationView.getHeaderView(0).findViewById(R.id.userName);
+        name = (RobotoTextView) mNavigationView.getHeaderView(0).findViewById(R.id.userName);
         RobotoTextView email = (RobotoTextView) mNavigationView.getHeaderView(0).findViewById(R.id.userEmail);
-        CircleImageView imageView = (CircleImageView) mNavigationView.getHeaderView(0).findViewById(R.id.user_profile);
+        imageView = (CircleImageView) mNavigationView.getHeaderView(0).findViewById(R.id.user_profile);
         name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
         email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         Picasso.with(this)
@@ -113,8 +122,25 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.settings) {
             startActivity(new Intent(MainActivity.this, Settings.class));
             return;
-        } else if (id == R.id.aboutUs) {
-            startActivity(new Intent(MainActivity.this, About.class));
+        } else if (id == R.id.rate) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=np.com.aawaz.csitentrance")));
+            return;
+        } else if (id == R.id.like) {
+            startActivity(new Intent(Intent.ACTION_VIEW, newFacebookIntent()));
+            return;
+        } else if (id == R.id.feedback) {
+            new MaterialDialog.Builder(this)
+                    .title("Send Feedback")
+                    .input("Feedback text...", "", false, new MaterialDialog.InputCallback() {
+                        @Override
+                        public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                            Feedback feedback = new Feedback(input.toString());
+                            FirebaseDatabase.getInstance().getReference().child("feedback").push().setValue(feedback);
+                            Toast.makeText(MainActivity.this, "Thanks for your feedback.", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .positiveText("Send")
+                    .show();
             return;
         }
         tabLayout.setVisibility(View.GONE);
@@ -136,6 +162,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.more:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new More()).commit();
                 setTitle("More");
+                item.setChecked(true);
+                break;
+
+            case R.id.entranceFAQ:
+                manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceFAQs()).commit();
+                setTitle("Entrance FAQs");
                 item.setChecked(true);
                 break;
 
@@ -199,6 +231,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1001 && resultCode == 202) {
+            name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+            Picasso.with(this)
+                    .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
+                    .into(imageView);
+        }
+    }
+
+    @Override
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(mNavigationView))
             mDrawerLayout.closeDrawer(mNavigationView);
@@ -214,5 +257,21 @@ public class MainActivity extends AppCompatActivity {
 
     public String getToolbarTitle() {
         return titleMain.getText().toString();
+    }
+
+    public Uri newFacebookIntent() {
+        String url = "https://www.facebook.com/CSITentrance/";
+        Uri uri = null;
+        try {
+            ApplicationInfo applicationInfo = getPackageManager().getApplicationInfo("com.facebook.katana", 0);
+            if (applicationInfo.enabled) {
+                // http://stackoverflow.com/a/24547437/1048340
+                uri = Uri.parse("fb://facewebmodal/f?href=" + url);
+            }
+        } catch (PackageManager.NameNotFoundException ignored) {
+            uri = Uri.parse(url);
+
+        }
+        return uri;
     }
 }

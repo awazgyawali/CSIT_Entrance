@@ -8,7 +8,7 @@ import com.github.lzyzsd.circleprogress.ArcProgress;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.misc.MyApplication;
-import np.com.aawaz.csitentrance.misc.SPHandler;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class EachScoreboard {
 

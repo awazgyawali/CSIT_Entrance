@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.activities.ImageViewActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbarImageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:theme="@style/Theme.AppCompat"
-        app:title="Entrance News" />
-
     <np.com.aawaz.csitentrance.custom_views.TouchImageView
-        android:id="@+id/imageViewerImage"
+        android:id="@+id/image_full_size"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true" />
+</android.support.design.widget.CoordinatorLayout>

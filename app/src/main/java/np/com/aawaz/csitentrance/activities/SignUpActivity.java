@@ -9,6 +9,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -173,6 +174,7 @@ public class SignUpActivity extends AppCompatActivity {
                         .setDisplayName(nameText.getText().toString())
                         .setPhotoUri(downloadUrl)
                         .build();
+
                 firebaseAuth.getCurrentUser().updateProfile(profileUpdates)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
@@ -190,5 +192,11 @@ public class SignUpActivity extends AppCompatActivity {
                         });
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }

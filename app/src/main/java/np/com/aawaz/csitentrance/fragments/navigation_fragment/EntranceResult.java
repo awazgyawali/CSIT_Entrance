@@ -15,27 +15,25 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.devspark.robototextview.widget.RobotoTextView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.truizlop.fabreveallayout.FABRevealLayout;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.custom_views.CustomSlideView;
-import np.com.aawaz.csitentrance.misc.SPHandler;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 import np.com.aawaz.csitentrance.misc.Singleton;
 
 public class EntranceResult extends Fragment {
@@ -46,7 +44,7 @@ public class EntranceResult extends Fragment {
     AppCompatEditText rollNo;
     FABRevealLayout revealLayout;
 
-    ProgressBar progressBarResult;
+    ProgressBar progressBarResult, adLoading;
     RobotoTextView resultHolder;
     ImageView cross;
     SliderLayout adSlider;
@@ -95,6 +93,7 @@ public class EntranceResult extends Fragment {
         revealLayout = (FABRevealLayout) view.findViewById(R.id.fab_reveal_layout);
         resultHolder = (RobotoTextView) view.findViewById(R.id.resultHolder);
         progressBarResult = (ProgressBar) view.findViewById(R.id.progressBarResult);
+        adLoading = (ProgressBar) view.findViewById(R.id.addLoading);
         cross = (ImageView) view.findViewById(R.id.crossResult);
         adSlider = (SliderLayout) view.findViewById(R.id.result_ad_slider);
         cross.setOnClickListener(new View.OnClickListener() {
@@ -136,74 +135,38 @@ public class EntranceResult extends Fragment {
             resultViewSwitcher.showNext();
             rollNo.requestFocus();
             workForViewingResult();
-        } else {
-            isPublishedCheck();
         }
-
         readyAd();
     }
 
     private void readyAd() {
-        final JsonArrayRequest request = new JsonArrayRequest(getString(R.string.sliderAd), new Response.Listener<JSONArray>() {
+        FirebaseDatabase.getInstance().getReference().child("result_ad").addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
-            public void onResponse(JSONArray response) {
-                try {
-                    for (int i = 0; i < response.length(); i++) {
-                        final JSONObject object = response.getJSONObject(i);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    adLoading.setVisibility(View.GONE);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("destination_url", child.child("destination_url").getValue(String.class));
+                    bundle.putString("description", child.child("sub_title").getValue(String.class));
 
-                        Bundle bundle = new Bundle();
-                        bundle.putString("destination_url", object.getString("destination_url"));
-                        bundle.putString("description", object.getString("sub_title"));
+                    CustomSlideView textSliderView = new CustomSlideView(getContext());
+                    // initialize a SliderLayout
+                    textSliderView
+                            .description(child.child("title").getValue(String.class))
+                            .image(child.child("image_url").getValue(String.class))
+                            .bundle(bundle)
+                            .setScaleType(BaseSliderView.ScaleType.CenterCrop);
 
-                        CustomSlideView textSliderView = new CustomSlideView(getContext());
-                        // initialize a SliderLayout
-                        textSliderView
-                                .description(object.getString("title"))
-                                .image(object.getString("image_url"))
-                                .bundle(bundle)
-                                .setScaleType(BaseSliderView.ScaleType.CenterCrop);
-
-                        adSlider.addSlider(textSliderView);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    adSlider.addSlider(textSliderView);
                 }
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        Singleton.getInstance().getRequestQueue().add(request);
-    }
 
-    private void isPublishedCheck() {
-        final MaterialDialog dialog = new MaterialDialog.Builder(getContext())
-                .content("Connecting...")
-                .progress(true, 0)
-                .cancelable(false)
-                .build();
-        dialog.show();
-        StringRequest request = new StringRequest(Request.Method.GET, getString(R.string.isPublished), new Response.Listener<String>() {
             @Override
-            public void onResponse(String response) {
-                if (response.contains("published")) {
-                    SPHandler.getInstance().setResultPublished();
-                    workForViewingResult();
-                    resultViewSwitcher.showNext();
-                    rollNo.requestFocus();
-                    dialog.dismiss();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                dialog.dismiss();
-                Toast.makeText(getContext(), "Unable to connect to the server. Please try again.", Toast.LENGTH_SHORT).show();
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
-        requestQueue.add(request);
     }
 
     @Nullable

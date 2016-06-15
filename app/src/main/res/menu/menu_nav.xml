@@ -30,6 +30,11 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/entranceFAQ"
+            android:checkable="true"
+            android:icon="@drawable/faqs"
+            android:title="Entrance FAQs" />
+        <item
             android:id="@+id/entranceNews"
             android:checkable="true"
             android:icon="@drawable/news"
@@ -55,8 +60,16 @@
             android:icon="@drawable/settings"
             android:title="Settings" />
         <item
-            android:id="@+id/aboutUs"
-            android:icon="@drawable/about"
-            android:title="About Us" />
+            android:id="@+id/feedback"
+            android:icon="@drawable/feedback"
+            android:title="Send Feedback" />
+        <item
+            android:id="@+id/like"
+            android:icon="@drawable/like"
+            android:title="Like Us" />
+        <item
+            android:id="@+id/rate"
+            android:icon="@drawable/rate"
+            android:title="Rate Us" />
     </group>
 </menu>

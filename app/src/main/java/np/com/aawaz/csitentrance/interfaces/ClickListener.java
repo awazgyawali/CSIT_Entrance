@@ -4,4 +4,6 @@ import android.view.View;
 
 public interface ClickListener {
     void itemClicked(View view, int position);
+
+    void itemLongClicked(View view, int position);
 }

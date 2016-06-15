@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="5dp"
-    tools:context=".fragments.other_fragments.SubjectYearChooser">
+    app:cardCornerRadius="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -43,6 +43,7 @@
                     android:layout_height="match_parent"
                     android:background="?android:selectableItemBackground"
                     android:paddingBottom="10dp"
+                    android:id="@+id/phyImage"
                     android:src="@drawable/physics" />
 
                 <com.devspark.robototextview.widget.RobotoTextView
@@ -74,6 +75,7 @@
                     android:layout_height="match_parent"
                     android:background="?android:selectableItemBackground"
                     android:paddingBottom="10dp"
+                    android:id="@+id/chemImage"
                     android:src="@drawable/chemistry" />
 
                 <com.devspark.robototextview.widget.RobotoTextView
@@ -108,6 +110,7 @@
 
 
                 <ImageView
+                    android:id="@+id/mthImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?android:selectableItemBackground"
@@ -143,6 +146,7 @@
                     android:layout_height="match_parent"
                     android:background="?android:selectableItemBackground"
                     android:paddingBottom="10dp"
+                    android:id="@+id/engImage"
                     android:src="@drawable/english" />
 
                 <com.devspark.robototextview.widget.RobotoTextView

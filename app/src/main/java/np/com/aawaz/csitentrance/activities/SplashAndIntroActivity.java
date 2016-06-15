@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import np.com.aawaz.csitentrance.R;
 
@@ -20,12 +21,17 @@ public class SplashAndIntroActivity extends AppIntro {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         context = this;
+        try {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        } catch (Exception ignored) {
+        }
+
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
             showSkipButton(false);
+            setProgressBarVisibility(false);
             setProgressButtonEnabled(false);
             setBarColor(Color.TRANSPARENT);
             setSeparatorColor(Color.TRANSPARENT);

@@ -13,16 +13,20 @@ public class Post {
     public String author;
     public long time_stamp;
     public String message;
+    public String image_url;
+    public int comment_count;
 
     public Post() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public Post(String uid, String author, long time_stamp, String message) {
+    public Post(String uid, String author, long time_stamp, String message, String image_url) {
         this.uid = uid;
         this.author = author;
         this.time_stamp = time_stamp;
         this.message = message;
+        this.image_url = image_url;
+        this.comment_count = 0;
     }
 
 
@@ -33,7 +37,9 @@ public class Post {
         result.put("author", author);
         result.put("time_stamp", time_stamp);
         result.put("comments", "");
+        result.put("comment_count", comment_count);
         result.put("message", message);
+        result.put("image_url", image_url);
 
         return result;
     }

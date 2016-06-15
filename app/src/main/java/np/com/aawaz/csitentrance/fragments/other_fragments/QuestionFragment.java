@@ -19,7 +19,7 @@ import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.custom_views.QuizTextView;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
-import np.com.aawaz.csitentrance.misc.SPHandler;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class QuestionFragment extends Fragment implements View.OnClickListener {
 

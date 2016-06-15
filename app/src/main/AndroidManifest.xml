@@ -32,6 +32,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
@@ -48,17 +49,21 @@
                     android:scheme="csitentrance" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.QuizActivity"
             android:label="@string/title_activity_quiz" />
+
         <activity
             android:name=".activities.About"
             android:label="@string/title_activity_about"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.FullQuestionActivity"
             android:label="@string/title_activity_full_question"
             android:screenOrientation="portrait" />
+
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -68,22 +73,25 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="9cfaedb2af986a27f7bd621e43ec9f21adaf8e68" />
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="com.facebook.app.FacebookContentProvider768172639946667"
             android:exported="true" />
 
-        <activity android:name=".activities.Settings" />
+        <activity
+            android:name=".activities.Settings"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <activity
             android:name=".activities.SearchActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <activity android:name=".activities.ImageViewActivity" />
         <activity android:name=".activities.SignInActivity" />
         <activity android:name=".activities.SignUpActivity" />
+        <activity android:name=".activities.EachNews" />
+        <activity android:name=".activities.SubjectChooserActivity" />
     </application>
 
 </manifest>

@@ -36,6 +36,7 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import np.com.aawaz.csitentrance.R;
 
@@ -74,6 +75,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
+                    FirebaseMessaging.getInstance().subscribeToTopic("news");
+                    FirebaseMessaging.getInstance().subscribeToTopic("forum");
                     startActivity(new Intent(SignInActivity.this, MainActivity.class));
                     finish();
                 }
@@ -253,6 +256,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         }
 
         if (mAuth.getCurrentUser() != null) {
+            FirebaseMessaging.getInstance().subscribeToTopic("news");
+            FirebaseMessaging.getInstance().subscribeToTopic("forum");
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }

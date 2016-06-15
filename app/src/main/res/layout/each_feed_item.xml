@@ -14,9 +14,9 @@
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/forumPic"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:id="@+id/forumPic"
             android:src="@drawable/user_holder" />
 
         <com.devspark.robototextview.widget.RobotoTextView
@@ -52,12 +52,12 @@
                 app:typeface="roboto_bold" />
 
             <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/forumTime"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textColor="@color/colorSecondaryText"
-                android:id="@+id/forumTime"
-                android:text="14 days ago" />
+                android:text="14 days ago"
+                android:textColor="@color/colorSecondaryText" />
         </LinearLayout>
 
         <com.devspark.robototextview.widget.RobotoTextView
@@ -66,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:ellipsize="end"
+            android:gravity="center_vertical"
             android:lines="3"
             android:text="Demo post alihchhu la koi risunhchhu la koi risunnna ta risaunnan ni hagi"
             android:textColor="@color/colorPrimaryText" />

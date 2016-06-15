@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="np.com.aawaz.csitentrance.activities.EachNews">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/each_news_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:padding="16dp"
+            android:text="Entrance result got published."
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="#262626"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/each_news_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="20 min ago."
+            android:typeface="serif" />
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/each_news_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:autoLink="all"
+            android:text="This block will contain the news" />
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
