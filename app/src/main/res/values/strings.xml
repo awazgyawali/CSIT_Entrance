@@ -27,11 +27,9 @@
     <string name="tag_link">Your key to CSIT Entrance.</string>
 
 
-    <string name="sliderAd">http://brainants.com/nepalGov/resultSlider.json</string>
-    <string name="getComment">http://brainants.com/nepalGov/getComments.json?post_id=</string>
-    <string name="isPublished">http://avaaj.com.np/jsonFeed/isPublished.php</string>
-    <string name="viewResult">http://avaaj.com.np/jsonFeed/result.php?rollNo=</string>
-    <string name="fetchScoreurl">http://brainants.com/nepalGov/leaderBoard.json</string>
+    <string name="viewResult">http://csitentrance.brainants.com/result.php?rollNo=</string>
+    <string name="fetchScoreurl">http://csitentrance.brainants.com/leader_board.php</string>
+    <string name="uploadScore">http://csitentrance.brainants.com/upload_score.php</string>
 
     <string-array name="years">
         <item>TU Examination 2069</item>
@@ -44,10 +42,4 @@
         <item>Model Question 3</item>
         <item>Model Question 4</item>
     </string-array>
-    <string name="title_activity_each_news">EachNews</string>
-    <string name="title_activity_subject_chooser">SubjectChooserActivity</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>

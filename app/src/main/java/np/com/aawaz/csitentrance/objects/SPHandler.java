@@ -69,6 +69,15 @@ public class SPHandler {
 
     public void increaseScore(String name) {
         scoreEditor.putInt(name + SCORE, getScore(name) + 1).apply();
+        setScoreChanged(true);
+    }
+
+    public boolean isScoreChanged() {
+        return scoreSp.getBoolean("changed", false);
+    }
+
+    public void setScoreChanged(boolean changed) {
+        scoreEditor.putBoolean("changed", changed).apply();
     }
 
     public int getAccuracy(String name) {

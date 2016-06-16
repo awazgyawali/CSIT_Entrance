@@ -64,7 +64,7 @@ public class Settings extends AppCompatActivity {
                 else
                     FirebaseMessaging.getInstance().subscribeToTopic("forum");
                 forumSub = !forumSub;
-                SPHandler.getInstance().setNewsSubscribed(forumSub);
+                SPHandler.getInstance().setForumSubscribed(forumSub);
             }
         });
         clearAll.setOnClickListener(new View.OnClickListener() {

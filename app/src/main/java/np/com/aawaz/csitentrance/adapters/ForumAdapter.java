@@ -49,7 +49,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
         holder.postedBy.setText(posts.get(position).author);
         holder.realPost.setText(posts.get(position).message);
-        holder.commentCount.setText("+" + posts.get(position).comment_count);
+        holder.commentCount.setText(posts.get(position).comment_count + " comments");
         holder.time.setText(DateUtils.getRelativeTimeSpanString(posts.get(position).time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
         Picasso.with(MyApplication.getAppContext())
                 .load(posts.get(position).image_url)

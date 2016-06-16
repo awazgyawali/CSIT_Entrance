@@ -38,7 +38,10 @@ import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceResult;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.Home;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.LeaderBoard;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.More;
+import np.com.aawaz.csitentrance.misc.MyApplication;
 import np.com.aawaz.csitentrance.objects.Feedback;
+import np.com.aawaz.csitentrance.objects.SPHandler;
+import np.com.aawaz.csitentrance.services.ScoreUploader;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     AppBarLayout appBarLayout;
     RobotoTextView name;
     CircleImageView imageView;
+    String[] navigationText = new String[]{"leaderboard", "colleges", "more", "faqs", "news", "forum", "result", "setting", "feedback", "like", "rate"};
+    int[] navigationId = new int[]{R.id.leaderBoard, R.id.csitColleges, R.id.more, R.id.entranceFAQ, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.like, R.id.rate};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
+
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
         mNavigationView = (NavigationView) findViewById(R.id.navigationView);
@@ -100,6 +106,34 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         drawerToggle.syncState();
+
+        handlingIntent();
+    }
+
+    private void handlingIntent() {
+
+        if (getIntent().getStringExtra("result_published") != null)
+            SPHandler.getInstance().setResultPublished();
+
+        if (getIntent().getStringExtra("fragment") != null) {
+            String string = getIntent().getStringExtra("fragment");
+            for (int i = 0; i < navigationText.length; i++)
+                if (navigationText[i].equals(string))
+                    navigate(mNavigationView.getMenu().findItem(navigationId[i]));
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        uploadScore();
+    }
+
+    private void uploadScore() {
+        if (SPHandler.getInstance().isScoreChanged())
+
+            startService(new Intent(MyApplication.getAppContext(), ScoreUploader.class));
     }
 
     private void manageHeader() {
@@ -245,6 +279,8 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(mNavigationView))
             mDrawerLayout.closeDrawer(mNavigationView);
+        else if (getToolbarTitle().equals("Full Question") || getToolbarTitle().equals("Scoreboard"))
+            Home.viewPager.setCurrentItem(0, true);
         else if (!getToolbarTitle().equals("Play Quiz"))
             navigate(mNavigationView.getMenu().findItem(R.id.main_home));
         else

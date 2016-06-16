@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,12 +36,55 @@ public class EntranceNews extends Fragment implements ValueEventListener {
     DatabaseReference reference;
 
 
+    private GoogleApiClient mClient;
+    private Uri mUrl;
+    private String mTitle;
+    private String mDescription;
+
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //Setting the data
         readyAdapter();
         addOneTimeListener();
+        appIndexing();
+    }
+
+
+    private void appIndexing() {
+        mClient = new GoogleApiClient.Builder(getContext()).addApi(AppIndex.API).build();
+        mUrl = Uri.parse("http://csitentrance.brainants.com/news");
+        mTitle = "Latest news about the BSc CSIT entrance exam.";
+        mDescription = "All the information you need to know about the BSc CSIT admission process";
+    }
+
+
+    public Action getAction() {
+        Thing object = new Thing.Builder()
+                .setName(mTitle)
+                .setDescription(mDescription)
+                .setUrl(mUrl)
+                .build();
+
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mClient.connect();
+        AppIndex.AppIndexApi.start(mClient, getAction());
+    }
+
+    @Override
+    public void onStop() {
+        AppIndex.AppIndexApi.end(mClient, getAction());
+        mClient.disconnect();
+        super.onStop();
     }
 
     @Override
@@ -61,6 +109,8 @@ public class EntranceNews extends Fragment implements ValueEventListener {
     }
 
     private void addOneTimeListener() {
+        errorLayout.setVisibility(View.GONE);
+        progress.setVisibility(View.VISIBLE);
         reference.addListenerForSingleValueEvent(this);
     }
 

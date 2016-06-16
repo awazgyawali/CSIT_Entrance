@@ -5,13 +5,13 @@
     android:layout_height="wrap_content"
     android:layout_margin="3dp"
     android:background="@color/white"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="10dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/forumPic"
@@ -19,37 +19,36 @@
             android:layout_height="40dp"
             android:src="@drawable/user_holder" />
 
-        <com.devspark.robototextview.widget.RobotoTextView
-            android:id="@+id/commentCount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="+2"
-            android:textColor="@color/colorSecondaryText" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
 
-            <com.devspark.robototextview.widget.RobotoTextView
-                android:id="@+id/postedBy"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="Aawaz Gyawali"
-                android:textColor="@color/colorPrimary"
-                app:typeface="roboto_bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:id="@+id/postedBy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Aawaz Gyawali"
+                    android:textColor="@color/colorPrimary"
+                    app:typeface="roboto_bold" />
+
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:id="@+id/commentCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="2 comments"
+                    android:textColor="@color/colorSecondaryText" />
+            </LinearLayout>
 
             <com.devspark.robototextview.widget.RobotoTextView
                 android:id="@+id/forumTime"
@@ -59,16 +58,17 @@
                 android:text="14 days ago"
                 android:textColor="@color/colorSecondaryText" />
         </LinearLayout>
-
-        <com.devspark.robototextview.widget.RobotoTextView
-            android:id="@+id/realPost"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:lines="3"
-            android:text="Demo post alihchhu la koi risunhchhu la koi risunnna ta risaunnan ni hagi"
-            android:textColor="@color/colorPrimaryText" />
     </LinearLayout>
+
+
+    <com.devspark.robototextview.widget.RobotoTextView
+        android:id="@+id/realPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lines="3"
+        android:text="Demo post alihchhu la koi risunhchhu la koi risunnna ta risaunnan ni hagi"
+        android:textColor="@color/colorPrimaryText" />
 </LinearLayout>

@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:orientation="vertical"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="5dp"
-    tools:context=".fragments.other_fragments.CommentsFragment">
+    app:cardCornerRadius="10dp"
+    tools:context=".activities.CommentsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +21,6 @@
             android:id="@+id/numberComments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/down"
             android:padding="10dp"
             android:text="10 Comments"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -29,12 +29,13 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/commentsRecyOfFullPost"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
 
             <ProgressBar
                 android:id="@+id/progressbarSingleFeed"

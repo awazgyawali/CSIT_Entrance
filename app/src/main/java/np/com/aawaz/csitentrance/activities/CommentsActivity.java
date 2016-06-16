@@ -1,22 +1,20 @@
-package np.com.aawaz.csitentrance.fragments.other_fragments;
+package np.com.aawaz.csitentrance.activities;
 
-import android.app.Dialog;
-import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.BottomSheetDialogFragment;
-import android.support.design.widget.CoordinatorLayout;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.devspark.robototextview.widget.RobotoTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,14 +26,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.CommentAdapter;
+import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.objects.Comment;
 
-public class CommentsFragment extends BottomSheetDialogFragment {
+public class CommentsActivity extends AppCompatActivity {
 
     RecyclerView commentsRecyclerView;
     ProgressBar progressBar;
@@ -50,7 +50,7 @@ public class CommentsFragment extends BottomSheetDialogFragment {
 
     DatabaseReference reference;
 
-    public CommentsFragment() {
+    public CommentsActivity() {
         // Required empty public constructor
     }
 
@@ -92,15 +92,15 @@ public class CommentsFragment extends BottomSheetDialogFragment {
         commentEditText.setText("");
     }
 
-    public void onViewCreated(View view) {
-        progressBar = (ProgressBar) view.findViewById(R.id.progressbarSingleFeed);
-        commentsRecyclerView = (RecyclerView) view.findViewById(R.id.commentsRecyOfFullPost);
-        commentEditText = (AppCompatEditText) view.findViewById(R.id.addCommentText);
-        commentButton = (ImageButton) view.findViewById(R.id.commentButton);
-        profileImage = (CircleImageView) view.findViewById(R.id.profileImage);
-        commentNumber = (RobotoTextView) view.findViewById(R.id.numberComments);
-        errorMessage = (RobotoTextView) view.findViewById(R.id.errorComment);
-        commentAdder = (LinearLayout) view.findViewById(R.id.commentAdder);
+    public void readyViews() {
+        progressBar = (ProgressBar) findViewById(R.id.progressbarSingleFeed);
+        commentsRecyclerView = (RecyclerView) findViewById(R.id.commentsRecyOfFullPost);
+        commentEditText = (AppCompatEditText) findViewById(R.id.addCommentText);
+        commentButton = (ImageButton) findViewById(R.id.commentButton);
+        profileImage = (CircleImageView) findViewById(R.id.profileImage);
+        commentNumber = (RobotoTextView) findViewById(R.id.numberComments);
+        errorMessage = (RobotoTextView) findViewById(R.id.errorComment);
+        commentAdder = (LinearLayout) findViewById(R.id.commentAdder);
         errorMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,11 +110,53 @@ public class CommentsFragment extends BottomSheetDialogFragment {
     }
 
     private void fillViews() {
-        commentsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new CommentAdapter(getActivity());
+        commentsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new CommentAdapter(this);
         commentsRecyclerView.setAdapter(adapter);
+        adapter.setClickEventListener(new ClickListener() {
+            @Override
+            public void itemClicked(View view, int position) {
+
+            }
+
+            @Override
+            public void itemLongClicked(View view, final int position) {
+
+                if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(adapter.getUidAt(position))) {
+                    new MaterialDialog.Builder(CommentsActivity.this)
+                            .title("Select any option")
+                            .items("Edit", "Delete")
+                            .itemsCallback(new MaterialDialog.ListCallback() {
+                                @Override
+                                public void onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
+                                    if (which == 0)
+                                        showDialogToEdit(adapter.getMessageAt(position), position);
+                                    else if (which == 1)
+                                        reference.child(key.get(position)).removeValue();
+                                }
+                            })
+                            .build()
+                            .show();
+                }
+            }
+        });
         readyCommentButton();
         addListener();
+    }
+
+    private void showDialogToEdit(String message, final int position) {
+        new MaterialDialog.Builder(this)
+                .title("Edit post")
+                .input("Your message", message, false, new MaterialDialog.InputCallback() {
+                    @Override
+                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                        Map<String, Object> map = new HashMap<String, Object>();
+                        map.put("message", input.toString());
+                        reference.child(key.get(position)).updateChildren(map);
+                    }
+                })
+                .positiveText("Save")
+                .show();
     }
 
 
@@ -174,52 +216,28 @@ public class CommentsFragment extends BottomSheetDialogFragment {
         commentNumber.setText(adapter.getItemCount() + " comments");
     }
 
-    private BottomSheetBehavior.BottomSheetCallback mBottomSheetBehaviorCallback = new BottomSheetBehavior.BottomSheetCallback() {
-
-        @Override
-        public void onStateChanged(@NonNull View bottomSheet, int newState) {
-            if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(commentEditText.getWindowToken(), 0);
-                dismiss();
-            }
-
-        }
-
-        @Override
-        public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-        }
-    };
-
     @Override
-    public void setupDialog(Dialog dialog, int style) {
-        super.setupDialog(dialog, style);
-        View contentView = View.inflate(getContext(), R.layout.fragment_comments, null);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_comment);
+
         DatabaseReference rootReference = FirebaseDatabase.getInstance().getReference();
+        reference = rootReference.child("forum").child(getIntent().getStringExtra("key")).child("comments");
 
-        reference = rootReference.child("forum").child(getArguments().getString("key")).child("comments");
+        readyViews();
 
-        dialog.setContentView(contentView);
-        onViewCreated(contentView);
         fillViews();
 
-        if (getArguments().getInt("comment_count") == 0) {
+        if (getIntent().getIntExtra("comment_count", 0) == 0) {
             progressBar.setVisibility(View.GONE);
             errorMessage.setText("No Comments");
             errorMessage.setVisibility(View.VISIBLE);
         }
 
 
-        commentNumber.setText(getArguments().getInt("comment_count") + " comments");
+        commentNumber.setText(getIntent().getIntExtra("comment_count", 0) + " comments");
 
-        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) ((View) contentView.getParent()).getLayoutParams();
-        CoordinatorLayout.Behavior behavior = params.getBehavior();
-
-        if (behavior != null && behavior instanceof BottomSheetBehavior) {
-            ((BottomSheetBehavior) behavior).setBottomSheetCallback(mBottomSheetBehaviorCallback);
-        }
-
-        Picasso.with(getContext())
+        Picasso.with(this)
                 .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
                 .into(profileImage);
     }

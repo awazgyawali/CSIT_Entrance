@@ -20,7 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.FAQAdapter;
 import np.com.aawaz.csitentrance.objects.FAQ;
-import np.com.aawaz.csitentrance.objects.FeaturedCollege;
 
 public class EntranceFAQs extends Fragment implements ValueEventListener {
     RecyclerView recyclerView;
@@ -33,13 +32,18 @@ public class EntranceFAQs extends Fragment implements ValueEventListener {
     }
 
 
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyFaq);
         progressBar = (ProgressBar) view.findViewById(R.id.progress_bar_faq);
         error = (LinearLayout) view.findViewById(R.id.error_faq);
+        error.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readyOneTimeListener();
+            }
+        });
     }
 
     @Override
@@ -51,11 +55,13 @@ public class EntranceFAQs extends Fragment implements ValueEventListener {
     }
 
     private void readyOneTimeListener() {
+        progressBar.setVisibility(View.VISIBLE);
+        error.setVisibility(View.GONE);
         FirebaseDatabase.getInstance().getReference().child("faqs").addListenerForSingleValueEvent(this);
     }
 
     private void readyAdapter() {
-        adapter=new FAQAdapter(getContext());
+        adapter = new FAQAdapter(getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }

@@ -1,10 +1,10 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -28,6 +29,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,14 +38,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.CommentsActivity;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
-import np.com.aawaz.csitentrance.fragments.other_fragments.CommentsFragment;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
-import np.com.aawaz.csitentrance.objects.SPHandler;
 import np.com.aawaz.csitentrance.objects.Post;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 
-public class EntranceForum extends Fragment {
+public class EntranceForum extends Fragment implements ChildEventListener {
 
     RecyclerView recyclerView;
 
@@ -98,7 +101,7 @@ public class EntranceForum extends Fragment {
         errorPart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                errorPart.setVisibility(View.GONE);
+                addListener();
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {
@@ -122,55 +125,57 @@ public class EntranceForum extends Fragment {
     }
 
     private void addListener() {
-        reference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-                Post newPost = dataSnapshot.getValue(Post.class);
-                newPost.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
-                adapter.addToTop(newPost);
-                key.add(0, dataSnapshot.getKey());
-                progressBar.setVisibility(View.GONE);
-            }
+        errorPart.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+        reference.addChildEventListener(this);
+    }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
-                int position = -1;
-                for (int i = 0; i < key.size(); i++) {
-                    if (key.get(i).equals(dataSnapshot.getKey()))
-                        position = i;
-                }
-                if (position == -1)
-                    return;
-                Post post = dataSnapshot.getValue(Post.class);
-                post.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
-                adapter.editItemAtPosition(position, post);
-            }
+    @Override
+    public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+        Post newPost = dataSnapshot.getValue(Post.class);
+        newPost.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
+        adapter.addToTop(newPost);
+        key.add(0, dataSnapshot.getKey());
+        progressBar.setVisibility(View.GONE);
+    }
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                int position = -1;
-                for (int i = 0; i < key.size(); i++) {
-                    if (key.get(i).equals(dataSnapshot.getKey()))
-                        position = i;
-                }
-                if (position == -1)
-                    return;
-                adapter.removeItemAtPosition(position);
-                key.remove(position);
-            }
+    @Override
+    public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+        int position = -1;
+        for (int i = 0; i < key.size(); i++) {
+            if (key.get(i).equals(dataSnapshot.getKey()))
+                position = i;
+        }
+        if (position == -1)
+            return;
+        Post post = dataSnapshot.getValue(Post.class);
+        post.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
+        adapter.editItemAtPosition(position, post);
+    }
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
-            }
+    @Override
+    public void onChildRemoved(DataSnapshot dataSnapshot) {
+        int position = -1;
+        for (int i = 0; i < key.size(); i++) {
+            if (key.get(i).equals(dataSnapshot.getKey()))
+                position = i;
+        }
+        if (position == -1)
+            return;
+        adapter.removeItemAtPosition(position);
+        key.remove(position);
+    }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getContext(), "Failed to load comments.",
-                        Toast.LENGTH_SHORT).show();
-                errorPart.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.GONE);
-            }
-        });
+    @Override
+    public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+    }
+
+    @Override
+    public void onCancelled(DatabaseError databaseError) {
+        Toast.makeText(getContext(), "Failed to load comments.",
+                Toast.LENGTH_SHORT).show();
+        errorPart.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
     }
 
     private void fillRecyclerView() {
@@ -181,13 +186,9 @@ public class EntranceForum extends Fragment {
         adapter.setClickListener(new ClickListener() {
             @Override
             public void itemClicked(View view, int position) {
-                Bundle bundle = new Bundle();
-                bundle.putString("key", key.get(position));
-                bundle.putInt("comment_count", adapter.getCommentCount(position));
-
-                BottomSheetDialogFragment bottomSheetDialogFragment = new CommentsFragment();
-                bottomSheetDialogFragment.setArguments(bundle);
-                bottomSheetDialogFragment.show(getChildFragmentManager(), bottomSheetDialogFragment.getTag());
+                startActivity(new Intent(getContext(), CommentsActivity.class)
+                        .putExtra("key", key.get(position))
+                        .putExtra("comment_count", adapter.getCommentCount(position)));
             }
 
             @Override
@@ -237,6 +238,7 @@ public class EntranceForum extends Fragment {
 
             reference.push().setValue(postValues);
             SPHandler.getInstance().setLastPostedTime(System.currentTimeMillis());
+            sendNotificationToAllTheSubscribers(message);
             questionEditText.setText("");
         } else {
             new MaterialDialog.Builder(getContext())
@@ -245,6 +247,16 @@ public class EntranceForum extends Fragment {
                     .show();
         }
 
+    }
+
+    private void sendNotificationToAllTheSubscribers(String string) {
+        FirebaseMessaging fm = FirebaseMessaging.getInstance();
+        fm.send(new RemoteMessage.Builder(FirebaseOptions.fromResource(getContext()).getGcmSenderId() + "@gcm.googleapis.com")
+                .addData("fragment", "Result")
+                .addData("title", "Entrance Forum")
+                .addData("body", string)
+                .addData("to","forum")
+                .build());
     }
 
     @Override
@@ -265,7 +277,6 @@ public class EntranceForum extends Fragment {
 
         long difference = (postTime - preTime) / (60 * 60 * 1000);
 
-        //return difference >= 1;
-        return true;
+        return difference >= 1;
     }
 }

@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -25,6 +26,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.devspark.robototextview.widget.RobotoTextView;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,8 +38,8 @@ import com.truizlop.fabreveallayout.FABRevealLayout;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.custom_views.CustomSlideView;
-import np.com.aawaz.csitentrance.objects.SPHandler;
 import np.com.aawaz.csitentrance.misc.Singleton;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class EntranceResult extends Fragment {
     RequestQueue requestQueue;
@@ -50,6 +55,11 @@ public class EntranceResult extends Fragment {
     SliderLayout adSlider;
     private InputMethodManager imm;
 
+
+    private GoogleApiClient mClient;
+    private Uri mUrl;
+    private String mTitle;
+    private String mDescription;
 
     private void workForViewingResult() {
         resultButton.setOnClickListener(new View.OnClickListener() {
@@ -139,6 +149,41 @@ public class EntranceResult extends Fragment {
         readyAd();
     }
 
+    private void appIndexing() {
+        mClient = new GoogleApiClient.Builder(getContext()).addApi(AppIndex.API).build();
+        mUrl = Uri.parse("http://csitentrance.brainants.com/result");
+        mTitle = "BSc CSIT Entrance Exam Result";
+        mDescription = "View entrance result of 2073.";
+    }
+
+
+    public Action getAction() {
+        Thing object = new Thing.Builder()
+                .setName(mTitle)
+                .setDescription(mDescription)
+                .setUrl(mUrl)
+                .build();
+
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mClient.connect();
+        AppIndex.AppIndexApi.start(mClient, getAction());
+    }
+
+    @Override
+    public void onStop() {
+        AppIndex.AppIndexApi.end(mClient, getAction());
+        mClient.disconnect();
+        super.onStop();
+    }
+
     private void readyAd() {
         FirebaseDatabase.getInstance().getReference().child("result_ad").addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -172,6 +217,7 @@ public class EntranceResult extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        appIndexing();
         return inflater.inflate(R.layout.fragment_result, container, false);
     }
 }

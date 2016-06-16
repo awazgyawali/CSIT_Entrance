@@ -13,6 +13,7 @@ public class ImageViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.image_view_activity);
 
         TouchImageView imageView = (TouchImageView) findViewById(R.id.image_full_size);
 

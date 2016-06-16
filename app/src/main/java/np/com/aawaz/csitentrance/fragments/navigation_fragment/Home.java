@@ -21,7 +21,7 @@ import np.com.aawaz.csitentrance.fragments.other_fragments.YearsList;
 public class Home extends Fragment {
 
 
-    ViewPager viewPager;
+    public static ViewPager viewPager;
     TabLayout tabLayout;
 
     public Home() {
@@ -32,7 +32,7 @@ public class Home extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        final String[] titles={"Play Quiz","Play Quiz","Full Question","Scoreboard"};
+        final String[] titles = {"Play Quiz", "Play Quiz", "Full Question", "Scoreboard"};
         tabLayout.removeAllTabs();
         viewPager.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
             @Override
@@ -78,7 +78,6 @@ public class Home extends Fragment {
         tabLayout.getTabAt(2).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_file));
         tabLayout.getTabAt(3).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_scoreboard));
     }
-
 
 
     @Override

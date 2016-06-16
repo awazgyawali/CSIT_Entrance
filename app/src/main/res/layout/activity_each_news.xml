@@ -17,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:fitsSystemWindows="true"
-            android:theme="@style/Theme.AppCompat"
             app:contentScrim="@color/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -25,6 +24,7 @@
                 android:id="@+id/toolbar_each_news"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:theme="@style/Theme.AppCompat"
                 app:layout_collapseMode="pin" />
 
             <ImageView

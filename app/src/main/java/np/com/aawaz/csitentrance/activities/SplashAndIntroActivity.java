@@ -45,7 +45,7 @@ public class SplashAndIntroActivity extends AppIntro {
                 public void run() {
                     try {
                         sleep(1500);
-                        Intent intent = new Intent(context, MainActivity.class);
+                        Intent intent = new Intent(context, MainActivity.class).replaceExtras(getIntent().getExtras());
                         startActivity(intent);
                         finish();
                     } catch (Exception e) {

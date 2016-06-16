@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -52,7 +53,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
     ProgressBar progressBar;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
+    private boolean processing = false;
 
     public SignInActivity() {
         // Required empty public constructor
@@ -141,10 +142,9 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            e.printStackTrace();
                                             dialog.setCancelable(true);
                                             dialog.getActionButton(DialogAction.POSITIVE).setText("Sign In");
-                                            username.setError("Email or password didn't match.");
+                                            ((TextInputLayout) username.getParent()).setError("Email or password didn't match.");
                                         }
                                     });
                         }
@@ -194,8 +194,12 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(client);
-                startActivityForResult(signInIntent, RC_SIGN_IN);
+                if (!processing) {
+                    processing = true;
+                    progressBar.setVisibility(View.VISIBLE);
+                    Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(client);
+                    startActivityForResult(signInIntent, RC_SIGN_IN);
+                }
             }
         });
     }
@@ -214,19 +218,22 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
             @Override
             public void onCancel() {
-
+                processing = false;
             }
 
             @Override
             public void onError(FacebookException error) {
-                error.printStackTrace();
+                processing = true;
             }
         });
 
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                facebookLoginButton.callOnClick();
+                if (!processing) {
+                    processing = true;
+                    facebookLoginButton.callOnClick();
+                }
             }
         });
     }
@@ -251,7 +258,9 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 GoogleSignInAccount account = result.getSignInAccount();
                 attachCredToFirebase(GoogleAuthProvider.getCredential(account.getIdToken(), null));
             } else {
-                Toast.makeText(this, "Something went wrong.", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
+                processing = false;
+                Toast.makeText(this, "Unable to connect. CHeck your internet connection.", Toast.LENGTH_SHORT).show();
             }
         }
 

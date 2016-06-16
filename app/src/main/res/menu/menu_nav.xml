@@ -27,7 +27,9 @@
             android:title="More" />
     </group>
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/middle_menu"
+        android:checkableBehavior="single">
 
         <item
             android:id="@+id/entranceFAQ"
@@ -52,7 +54,7 @@
     </group>
 
     <group
-        android:id="@+id/technical"
+        android:id="@+id/bottomMenu"
         android:checkableBehavior="none">
 
         <item

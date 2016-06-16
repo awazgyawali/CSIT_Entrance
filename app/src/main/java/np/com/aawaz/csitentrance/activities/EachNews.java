@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +13,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.devspark.robototextview.widget.RobotoTextView;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.squareup.picasso.Picasso;
 
 import np.com.aawaz.csitentrance.R;
 
 public class EachNews extends AppCompatActivity {
+
+    private GoogleApiClient mClient;
+    private Uri mUrl;
+    private String mTitle;
+    private String mDescription;
+
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +50,7 @@ public class EachNews extends AppCompatActivity {
                 title = (TextView) findViewById(R.id.each_news_title);
         ImageView imageView = (ImageView) findViewById(R.id.each_news_image);
 
-        final Bundle bundle = getIntent().getBundleExtra("data");
+        bundle = getIntent().getBundleExtra("data");
         title.setText(bundle.getString("title"));
         newsDetail.setText(Html.fromHtml(bundle.getString("detail")));
         time.setText(bundle.getString("time"));
@@ -60,6 +72,43 @@ public class EachNews extends AppCompatActivity {
             }
         });
     }
+
+
+    private void appIndexing() {
+        mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        mUrl = Uri.parse("http://csitentrance.brainants.com/news");
+        mTitle = bundle.getString("title");
+        mDescription = bundle.getString("detail");
+    }
+
+
+    public Action getAction() {
+        Thing object = new Thing.Builder()
+                .setName(mTitle)
+                .setDescription(mDescription)
+                .setUrl(mUrl)
+                .build();
+
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mClient.connect();
+        AppIndex.AppIndexApi.start(mClient, getAction());
+    }
+
+    @Override
+    public void onStop() {
+        AppIndex.AppIndexApi.end(mClient, getAction());
+        mClient.disconnect();
+        super.onStop();
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
