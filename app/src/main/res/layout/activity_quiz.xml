@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:hardwareAccelerated="false"
-    tools:context="np.com.aawaz.csitentrance.activities.QuizActivity">
+    tools:context=".activities.YearQuizActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

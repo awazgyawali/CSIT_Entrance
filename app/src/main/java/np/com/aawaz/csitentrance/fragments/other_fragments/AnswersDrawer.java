@@ -43,6 +43,13 @@ public class AnswersDrawer extends Fragment {
         recyclerView.scrollToPosition(adapter.getItemCount() - 1);
     }
 
+    public void setInitialForSubject(int qNo, int code, int startFrom) {
+        adapter = new AnswerAdapter(getContext(), qNo, code, startFrom);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.scrollToPosition(adapter.getItemCount() - 1);
+    }
+
     public void increaseSize() {
         adapter.increaseSize();
         recyclerView.scrollToPosition(adapter.getItemCount() - 1);

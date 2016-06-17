@@ -1,8 +1,11 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -38,6 +41,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+
+import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 
@@ -100,9 +107,27 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(SignInActivity.this, SignUpActivity.class), 100);
+                askPermissionAndContinue(new Intent(SignInActivity.this, SignUpActivity.class), 100);
             }
         });
+    }
+
+    private void askPermissionAndContinue(final Intent intent, final int req) {
+        new TedPermission(this)
+                .setPermissionListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted() {
+                        startActivityForResult(intent, req);
+                    }
+
+                    @Override
+                    public void onPermissionDenied(ArrayList<String> arrayList) {
+
+                    }
+                })
+                .setDeniedMessage("It seems that you rejected the permission request.\n\nPlease turn on Storage permissions from settings to proceed.")
+                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .check();
     }
 
     private void handleSignInButton() {

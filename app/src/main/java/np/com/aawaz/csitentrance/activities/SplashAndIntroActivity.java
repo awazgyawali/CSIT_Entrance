@@ -1,16 +1,26 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.os.AsyncTaskCompat;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+
+import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 
@@ -40,7 +50,6 @@ public class SplashAndIntroActivity extends AppIntro {
                     getString(R.string.tag_link),
                     R.drawable.splash_icon,
                     ContextCompat.getColor(this, R.color.colorPrimary)));
-
             Thread background = new Thread() {
                 public void run() {
                     try {
@@ -99,7 +108,7 @@ public class SplashAndIntroActivity extends AppIntro {
     @Override
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
-        startActivity(new Intent(this, SignInActivity.class));
+        startActivity((new Intent(this, SignInActivity.class)));
         finish();
     }
 

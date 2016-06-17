@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -43,7 +44,7 @@ import np.com.aawaz.csitentrance.interfaces.QuizInterface;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 
-public class QuizActivity extends AppCompatActivity implements QuizInterface {
+public class YearQuizActivity extends AppCompatActivity implements QuizInterface {
 
     ArrayList<String> questions = new ArrayList<>();
     ArrayList<String> a = new ArrayList<>();
@@ -162,9 +163,9 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
         customViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return QuestionFragment.newInstance(getIntent().getIntExtra("position", 1) - 1, position, questions.get(position), a.get(position),
+                return QuestionFragment.newInstance(getIntent().getIntExtra("position", 1), position, questions.get(position), a.get(position),
                         b.get(position), c.get(position), d.get(position), answer.get(position))
-                        .setListener(QuizActivity.this);
+                        .setListener(YearQuizActivity.this);
             }
 
             @Override
@@ -179,17 +180,17 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
         qNo = spHandler.getPlayed(code);
         score = spHandler.getScore(code);
 
-        answersDrawer.setInitialData(qNo, getIntent().getIntExtra("position", 1));
+        answersDrawer.setInitialData(qNo, getIntent().getIntExtra("position", 1) + 1);
     }
 
     @Override
     public void selected(CardView submit, boolean correct) {
         spHandler.increasePlayed(code);
-        spHandler.increasePlayed(spHandler.getSubjectCode(getIntent().getIntExtra("position", 1) - 1, qNo));
+        spHandler.increasePlayed(spHandler.getSubjectCode(getIntent().getIntExtra("position", 1), qNo));
         answersDrawer.increaseSize();
         if (correct) {
             spHandler.increaseScore(code);
-            spHandler.increaseScore(spHandler.getSubjectCode(getIntent().getIntExtra("position", 1) - 1, qNo));
+            spHandler.increaseScore(spHandler.getSubjectCode(getIntent().getIntExtra("position", 1), qNo));
             scoreText.setText("Your Score: " + spHandler.getScore(code));
             submit.setCardBackgroundColor(ContextCompat.getColor(this, R.color.colorSelected));
             RobotoTextView text = (RobotoTextView) submit.findViewById(R.id.submit_button_text);
@@ -217,14 +218,19 @@ public class QuizActivity extends AppCompatActivity implements QuizInterface {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                customViewPager.setCurrentItem(customViewPager.getCurrentItem() + 1);
+
+                if (customViewPager.getCurrentItem() < 100)
+                    customViewPager.setCurrentItem(customViewPager.getCurrentItem() + 1);
+                else
+                    //todo Progress report ma lane
+                    Log.d("Debug", "");
             }
         });
     }
 
     public void setDataToArrayList() {
         try {
-            JSONObject obj = new JSONObject(AssetJSONFile("question" + getIntent().getIntExtra("position", 1) + ".json", this));
+            JSONObject obj = new JSONObject(AssetJSONFile("question" + (getIntent().getIntExtra("position", 1) + 1) + ".json", this));
             JSONArray m_jArry = obj.getJSONArray("questions");
             for (int i = 0; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);

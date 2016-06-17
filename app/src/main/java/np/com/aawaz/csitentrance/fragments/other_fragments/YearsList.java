@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.FullQuestionActivity;
-import np.com.aawaz.csitentrance.activities.QuizActivity;
+import np.com.aawaz.csitentrance.activities.YearQuizActivity;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class YearsList extends Fragment {
@@ -126,9 +126,9 @@ public class YearsList extends Fragment {
     public void openQuizQuestion(int position) {
         String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072,
                 SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4};
-        Intent intent = new Intent(getContext(), QuizActivity.class);
+        Intent intent = new Intent(getContext(), YearQuizActivity.class);
         intent.putExtra("code", codes[position]);
-        intent.putExtra("position", position + 1);
+        intent.putExtra("position", position);
         startActivity(intent);
     }
 }

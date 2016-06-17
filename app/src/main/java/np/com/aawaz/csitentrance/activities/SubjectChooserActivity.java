@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -8,13 +9,18 @@ import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class SubjectChooserActivity extends AppCompatActivity {
+    int position;
+    String[] subjectCodes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +31,10 @@ public class SubjectChooserActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        int position = getIntent().getIntExtra("index", -1);
+        position = getIntent().getIntExtra("index", -1);
 
         String[] subjects = {"Physics", "Chemistry", "Math", "English"};
+        subjectCodes = new String[]{SPHandler.PHYSICS, SPHandler.CHEMISTRY, SPHandler.MATH, SPHandler.ENGLISH};
 
         getSupportActionBar().setTitle(subjects[position]);
 
@@ -41,6 +48,80 @@ public class SubjectChooserActivity extends AppCompatActivity {
         image.setImageDrawable(ContextCompat.getDrawable(this, drawables[position]));
         title.setTextColor(ContextCompat.getColor(this, subColor[position]));
         slideAnimator();
+
+        handleViews();
+    }
+
+    private void handleViews() {
+        LinearLayout que69, que70, que71, que72, que1, que2, que3, que4;
+
+        que1 = (LinearLayout) findViewById(R.id.question1);
+        que2 = (LinearLayout) findViewById(R.id.question2);
+        que3 = (LinearLayout) findViewById(R.id.question3);
+        que4 = (LinearLayout) findViewById(R.id.question4);
+        que69 = (LinearLayout) findViewById(R.id.question2069);
+        que70 = (LinearLayout) findViewById(R.id.question2070);
+        que71 = (LinearLayout) findViewById(R.id.question2071);
+        que72 = (LinearLayout) findViewById(R.id.question2072);
+
+        que69.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicked(0);
+            }
+        });
+        que70.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicked(1);
+            }
+        });
+        que71.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicked(2);
+            }
+        });
+        que72.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicked(3);
+            }
+        });
+        que1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicked(4);
+            }
+        });
+        que2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicked(5);
+            }
+        });
+        que3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicked(6);
+            }
+        });
+        que4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicked(7);
+            }
+        });
+    }
+
+    private void clicked(int pos) {
+        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072,
+                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4};
+        Intent intent = new Intent(this, SubjectQuizActivity.class);
+        intent.putExtra("code", codes[pos]);
+        intent.putExtra("position", pos);
+        intent.putExtra("subject", subjectCodes[position]);
+        startActivity(intent);
     }
 
     private void slideAnimator() {

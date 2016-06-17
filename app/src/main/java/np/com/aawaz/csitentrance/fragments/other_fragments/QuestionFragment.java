@@ -43,6 +43,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
                                                String c, String d, String ans) {
         QuestionFragment fragment = new QuestionFragment();
         Bundle args = new Bundle();
+
         args.putString("question", question);
         args.putString("a", a);
         args.putString("b", b);
@@ -52,6 +53,29 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
         args.putInt("code", code);
         args.putInt("position", position);
+
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static QuestionFragment newInstance(int code, int position, String question, String a, String b,
+                                               String c, String d, String ans, String subject) {
+        QuestionFragment fragment = new QuestionFragment();
+        Bundle args = new Bundle();
+
+        args.putString("question", question);
+        args.putString("a", a);
+        args.putString("b", b);
+        args.putString("c", c);
+        args.putString("d", d);
+        args.putString("ans", ans);
+
+        args.putInt("code", code);
+        args.putInt("position", position);
+
+
+        args.putString("subject", subject);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -99,9 +123,15 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         RobotoTextView yearTitleQuiz = (RobotoTextView) view.findViewById(R.id.yearTitleQuiz);
         yearTitleQuiz.setText(getResources().getStringArray(R.array.years)[getArguments().getInt("code")]);
 
-        tag.setText(SPHandler.getInstance().getSubjectName(SPHandler.getInstance().getSubjectCode(getArguments().getInt("code"), getArguments().getInt("position"))));
-        tag.setTextColor(SPHandler.getInstance().getSubjectColor(SPHandler.getInstance().getSubjectCode(getArguments().getInt("code"), getArguments().getInt("position"))));
-        tag.setBorderColor(SPHandler.getInstance().getSubjectColor(SPHandler.getInstance().getSubjectCode(getArguments().getInt("code"), getArguments().getInt("position"))));
+        if (getArguments().getString("subject") == null) {
+            tag.setText(SPHandler.getInstance().getSubjectName(SPHandler.getInstance().getSubjectCode(getArguments().getInt("code"), getArguments().getInt("position"))));
+            tag.setTextColor(SPHandler.getInstance().getSubjectColor(SPHandler.getInstance().getSubjectCode(getArguments().getInt("code"), getArguments().getInt("position"))));
+            tag.setBorderColor(SPHandler.getInstance().getSubjectColor(SPHandler.getInstance().getSubjectCode(getArguments().getInt("code"), getArguments().getInt("position"))));
+        } else {
+            tag.setText(SPHandler.getInstance().getSubjectName(getArguments().getString("subject")));
+            tag.setTextColor(SPHandler.getInstance().getSubjectColor(getArguments().getString("subject")));
+            tag.setBorderColor(SPHandler.getInstance().getSubjectColor(getArguments().getString("subject")));
+        }
     }
 
     @Override

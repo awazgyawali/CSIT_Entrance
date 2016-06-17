@@ -109,6 +109,22 @@ public class SPHandler {
         return subjects[index][questionNo / 25];
     }
 
+    public int getIndexOfQuestion(int index, String subject) {
+
+        String[][] subjects = {new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
+                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},
+                new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
+                new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},
+                new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH}};
+        for (int i = 0; i < 4; i++)
+            if (subjects[index][i].equals(subject))
+                return i * 25;
+        return -1;
+    }
+
     public int getSubjectColor(String subCode) {
         switch (subCode) {
             case "math":

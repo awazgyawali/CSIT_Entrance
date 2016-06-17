@@ -5,9 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".misc.MyApplication"
@@ -49,7 +47,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.QuizActivity"
+            android:name=".activities.YearQuizActivity"
             android:label="@string/title_activity_quiz" />
         <activity
             android:name=".activities.About"
@@ -94,17 +92,23 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <service
             android:name=".services.ScoreUploader"
             android:enabled="true"
             android:exported="true" />
-
         <service android:name=".services.MyInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".activities.SubjectQuizActivity" />
+
+        <activity
+            android:name=".activities.ReportCardActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_report_card"
+            android:theme="@style/FullscreenTheme" />
     </application>
 
 </manifest>

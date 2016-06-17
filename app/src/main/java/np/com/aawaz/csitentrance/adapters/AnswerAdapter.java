@@ -39,6 +39,14 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
         setDataToArrayList();
     }
 
+    public AnswerAdapter(Context context, int size, int code, int startFrom) {
+        inflater = LayoutInflater.from(context);
+        this.size = size;
+        this.code = code;
+        this.context = context;
+        setDataToArrayList(startFrom);
+    }
+
     public static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();
 
@@ -87,6 +95,25 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
                 answer.add(jo_inside.getString("ans"));
             }
 
+        } catch (Exception ignored) {
+        }
+    }
+
+    public void setDataToArrayList(int startFrom) {
+        //Reading from json file and insillizing inside arrayList
+        int endAt = startFrom + 25;
+        try {
+            JSONObject obj = new JSONObject(AssetJSONFile("question" + code + ".json", context));
+            JSONArray m_jArry = obj.getJSONArray("questions");
+            for (int i = startFrom; i < endAt; i++) {
+                JSONObject jo_inside = m_jArry.getJSONObject(i);
+                questions.add(jo_inside.getString("question"));
+                a.add(jo_inside.getString("a"));
+                b.add(jo_inside.getString("b"));
+                c.add(jo_inside.getString("c"));
+                d.add(jo_inside.getString("d"));
+                answer.add(jo_inside.getString("ans"));
+            }
         } catch (Exception ignored) {
         }
     }
