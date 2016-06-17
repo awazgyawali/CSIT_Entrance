@@ -13,7 +13,6 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/appbar_report"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -81,7 +80,6 @@
                     app:typeface="roboto_bold" />
 
                 <View
-                    android:id="@+id/divider"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_below="@id/scorecard"
