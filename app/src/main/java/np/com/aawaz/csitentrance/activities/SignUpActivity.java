@@ -31,6 +31,7 @@ import java.io.ByteArrayOutputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.objects.EventSender;
 
 public class SignUpActivity extends AppCompatActivity {
     TextInputLayout name, email, password;
@@ -180,6 +181,7 @@ public class SignUpActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
+                                    new EventSender().logEvent("email_signedup");
                                     setResult(200);
                                     finish();
                                 } else {

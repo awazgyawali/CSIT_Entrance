@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.CollegesAdapter;
 import np.com.aawaz.csitentrance.interfaces.CollegeMenuClicks;
+import np.com.aawaz.csitentrance.objects.EventSender;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -85,6 +86,8 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        new EventSender().logEvent("searched_college");
+
         setTitle("");
         setSupportActionBar((Toolbar) findViewById(R.id.toolbarSearch));
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);

@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class SubjectChooserActivity extends AppCompatActivity {
@@ -122,6 +123,7 @@ public class SubjectChooserActivity extends AppCompatActivity {
         intent.putExtra("position", pos);
         intent.putExtra("subject", subjectCodes[position]);
         startActivity(intent);
+        new EventSender().logEvent("played_subject");
     }
 
     private void slideAnimator() {

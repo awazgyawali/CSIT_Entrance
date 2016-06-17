@@ -34,6 +34,7 @@ import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.CommentAdapter;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.objects.Comment;
+import np.com.aawaz.csitentrance.objects.EventSender;
 
 public class CommentsActivity extends AppCompatActivity {
 
@@ -55,6 +56,8 @@ public class CommentsActivity extends AppCompatActivity {
     }
 
     private void readyCommentButton() {
+        new EventSender().logEvent("opened_comments");
+
         commentEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

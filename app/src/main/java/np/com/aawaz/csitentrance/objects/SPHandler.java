@@ -89,6 +89,11 @@ public class SPHandler {
                 getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4);
     }
 
+    public int getTotalPlayed() {
+        return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) +
+                getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4);
+    }
+
     public boolean isResultPublished() {
         return infoSp.getBoolean("published", false);
     }
@@ -187,4 +192,5 @@ public class SPHandler {
     public boolean getNewsSubscribed() {
         return scoreSp.getBoolean("newsSub", true);
     }
+
 }

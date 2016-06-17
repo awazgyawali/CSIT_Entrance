@@ -47,6 +47,7 @@ import com.gun0912.tedpermission.TedPermission;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.objects.EventSender;
 
 public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     private static final int RC_SIGN_IN = 1001;
@@ -238,6 +239,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         facebookLoginButton.registerCallback(callBackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                new EventSender().logEvent("fb_signedup");
                 attachCredToFirebase(FacebookAuthProvider.getCredential(loginResult.getAccessToken().getToken()));
             }
 
@@ -281,6 +283,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
                 GoogleSignInAccount account = result.getSignInAccount();
+                new EventSender().logEvent("google_signedup");
                 attachCredToFirebase(GoogleAuthProvider.getCredential(account.getIdToken(), null));
             } else {
                 progressBar.setVisibility(View.GONE);
@@ -309,6 +312,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 .addOnFailureListener(this, new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        new EventSender().logEvent("attach_error");
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(SignInActivity.this, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();

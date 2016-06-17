@@ -66,6 +66,10 @@
             android:icon="@drawable/feedback"
             android:title="Send Feedback" />
         <item
+            android:id="@+id/share"
+            android:icon="@drawable/share"
+            android:title="Invite your friends" />
+        <item
             android:id="@+id/like"
             android:icon="@drawable/like"
             android:title="Like Us" />

@@ -20,6 +20,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.squareup.picasso.Picasso;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.objects.EventSender;
 
 public class EachNews extends AppCompatActivity {
 
@@ -34,6 +35,8 @@ public class EachNews extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_each_news);
+        new EventSender().logEvent("each_news");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_each_news);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);

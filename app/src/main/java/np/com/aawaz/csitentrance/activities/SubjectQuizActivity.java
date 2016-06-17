@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -187,7 +188,18 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
     @Override
     public void selected(CardView submit, boolean correct) {
         spHandler.increasePlayed(subject);
-        answersDrawer.increaseSize();
+        if (customViewPager.getCurrentItem() != 24)
+            answersDrawer.increaseSize();
+        else {
+            startActivity(new Intent(SubjectQuizActivity.this, ReportCardActivity.class)
+                    .putExtra("title", SPHandler.getInstance().getSubjectName(subject))
+                    .putExtra("subject", subject)
+                    .putExtra("code", code)
+                    .putExtra("played", 25)
+                    .putExtra("scored", score)
+                    .putExtra("index", index));
+            finish();
+        }
         if (correct) {
             score++;
             spHandler.increaseScore(subject);
@@ -218,11 +230,8 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                if (customViewPager.getCurrentItem() < 25)
+                if (customViewPager.getCurrentItem() != 24)
                     customViewPager.setCurrentItem(customViewPager.getCurrentItem() + 1);
-                else
-                    //todo Progress report ma lane
-                    Log.d("Debug", "");
             }
         });
     }

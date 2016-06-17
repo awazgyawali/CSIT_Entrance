@@ -12,6 +12,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.share.widget.LikeView;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.objects.EventSender;
 
 public class About extends AppCompatActivity {
 
@@ -20,25 +21,8 @@ public class About extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(this);
         setContentView(R.layout.activity_about);
-    }
 
-    public void feedBack() {
-        Intent sendMail = new Intent(Intent.ACTION_SEND);
-        sendMail.setData(Uri.parse("mailto:"));
-        String[] to = {"csitentrance@gmail.com"};
-        sendMail.putExtra(Intent.EXTRA_EMAIL, to);
-        sendMail.putExtra(Intent.EXTRA_SUBJECT, "Regarding CSIT Entrance Android Application.");
-        sendMail.setType("message/rfc822");
-        Intent chooser = Intent.createChooser(sendMail, "Send e-mail");
-        startActivity(chooser);
-    }
-
-    private void likeButton() {
-        LikeView likeView = new LikeView(this);
-        likeView.setLikeViewStyle(LikeView.Style.STANDARD);
-        likeView.setAuxiliaryViewPosition(LikeView.AuxiliaryViewPosition.INLINE);
-        likeView.setObjectIdAndType(
-                "https://www.facebook.com/CSITentrance", LikeView.ObjectType.PAGE);
+        new EventSender().addValue("screen", "splash").logEvent("splash_screen");
     }
 
     @Override

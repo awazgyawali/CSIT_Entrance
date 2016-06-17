@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -14,7 +15,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -187,7 +187,16 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
     public void selected(CardView submit, boolean correct) {
         spHandler.increasePlayed(code);
         spHandler.increasePlayed(spHandler.getSubjectCode(getIntent().getIntExtra("position", 1), qNo));
-        answersDrawer.increaseSize();
+        if (customViewPager.getCurrentItem() == 99) {
+            startActivity(new Intent(YearQuizActivity.this, ReportCardActivity.class)
+                    .putExtra("title", getResources().getStringArray(R.array.years)[getIntent().getIntExtra("position", 1)])
+                    .putExtra("code", code)
+                    .putExtra("played", 100)
+                    .putExtra("scored", score));
+            finish();
+            return;
+        } else
+            answersDrawer.increaseSize();
         if (correct) {
             spHandler.increaseScore(code);
             spHandler.increaseScore(spHandler.getSubjectCode(getIntent().getIntExtra("position", 1), qNo));
@@ -218,12 +227,8 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-
-                if (customViewPager.getCurrentItem() < 100)
+                if (customViewPager.getCurrentItem() != 99)
                     customViewPager.setCurrentItem(customViewPager.getCurrentItem() + 1);
-                else
-                    //todo Progress report ma lane
-                    Log.d("Debug", "");
             }
         });
     }

@@ -1,8 +1,6 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +22,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.devspark.robototextview.widget.RobotoTextView;
+import com.facebook.share.widget.LikeView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -39,6 +38,7 @@ import np.com.aawaz.csitentrance.fragments.navigation_fragment.Home;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.LeaderBoard;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.More;
 import np.com.aawaz.csitentrance.misc.MyApplication;
+import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Feedback;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 import np.com.aawaz.csitentrance.services.ScoreUploader;
@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
     AppBarLayout appBarLayout;
     RobotoTextView name;
     CircleImageView imageView;
-    String[] navigationText = new String[]{"leaderboard", "colleges", "more", "faqs", "news", "forum", "result", "setting", "feedback", "like", "rate"};
-    int[] navigationId = new int[]{R.id.leaderBoard, R.id.csitColleges, R.id.more, R.id.entranceFAQ, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.like, R.id.rate};
+    String[] navigationText = new String[]{"leaderboard", "colleges", "more", "faqs", "news", "forum", "result", "setting", "feedback", "share", "like", "rate"};
+    int[] navigationId = new int[]{R.id.leaderBoard, R.id.csitColleges, R.id.more, R.id.entranceFAQ, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.share, R.id.like, R.id.rate};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,12 +155,30 @@ public class MainActivity extends AppCompatActivity {
         invalidateOptionsMenu();
         if (id == R.id.settings) {
             startActivity(new Intent(MainActivity.this, Settings.class));
+            new EventSender().logEvent("settings");
+            return;
+        } else if (id == R.id.share) {
+            Intent share = new Intent(android.content.Intent.ACTION_SEND);
+            share.setType("text/plain");
+
+            share.putExtra(Intent.EXTRA_SUBJECT, "CSIT Entrance");
+            share.putExtra(Intent.EXTRA_TEXT, "https://b5b88.app.goo.gl/jdF1");
+
+            startActivity(Intent.createChooser(share, "Share CSIT Entrance"));
+            new EventSender().logEvent("shared_app");
             return;
         } else if (id == R.id.rate) {
+            new EventSender().logEvent("rated_app");
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=np.com.aawaz.csitentrance")));
             return;
         } else if (id == R.id.like) {
-            startActivity(new Intent(Intent.ACTION_VIEW, newFacebookIntent()));
+            LikeView likeView = new LikeView(this);
+            likeView.setLikeViewStyle(LikeView.Style.STANDARD);
+            likeView.setAuxiliaryViewPosition(LikeView.AuxiliaryViewPosition.INLINE);
+            likeView.setObjectIdAndType(
+                    "https://www.facebook.com/CSITentrance", LikeView.ObjectType.PAGE);
+            likeView.callOnClick();
+            new EventSender().logEvent("liked_page");
             return;
         } else if (id == R.id.feedback) {
             new MaterialDialog.Builder(this)
@@ -170,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
                             Feedback feedback = new Feedback(input.toString());
                             FirebaseDatabase.getInstance().getReference().child("feedback").push().setValue(feedback);
+                            new EventSender().logEvent("sent_feedback");
                             Toast.makeText(MainActivity.this, "Thanks for your feedback.", Toast.LENGTH_SHORT).show();
                         }
                     })
@@ -191,29 +210,34 @@ public class MainActivity extends AppCompatActivity {
                 manager.beginTransaction().replace(R.id.fragmentHolder, new LeaderBoard()).commit();
                 setTitle("Leaderboard");
                 item.setChecked(true);
+                new EventSender().logEvent("leaderboard");
                 break;
 
             case R.id.more:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new More()).commit();
                 setTitle("More");
                 item.setChecked(true);
+                new EventSender().logEvent("more");
                 break;
 
             case R.id.entranceFAQ:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceFAQs()).commit();
                 setTitle("Entrance FAQs");
+                new EventSender().logEvent("faqs");
                 item.setChecked(true);
                 break;
 
             case R.id.entranceNews:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceNews()).commit();
                 setTitle("Entrance News");
+                new EventSender().logEvent("news");
                 item.setChecked(true);
                 break;
 
             case R.id.entranceForum:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceForum()).commit();
                 setTitle("Entrance Forum");
+                new EventSender().logEvent("forum");
                 item.setChecked(true);
                 break;
 
@@ -221,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
                 manager.beginTransaction().replace(R.id.fragmentHolder, new CSITColleges()).commit();
                 setTitle("CSIT Colleges");
                 tabLayout.setVisibility(View.VISIBLE);
+                new EventSender().logEvent("colleges");
                 item.setChecked(true);
                 break;
 
@@ -228,6 +253,7 @@ public class MainActivity extends AppCompatActivity {
                 manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceResult()).commit();
                 setTitle("Entrance Result");
                 setAppBarElevation(0);
+                new EventSender().logEvent("result");
                 item.setChecked(true);
                 break;
         }
@@ -293,21 +319,5 @@ public class MainActivity extends AppCompatActivity {
 
     public String getToolbarTitle() {
         return titleMain.getText().toString();
-    }
-
-    public Uri newFacebookIntent() {
-        String url = "https://www.facebook.com/CSITentrance/";
-        Uri uri = null;
-        try {
-            ApplicationInfo applicationInfo = getPackageManager().getApplicationInfo("com.facebook.katana", 0);
-            if (applicationInfo.enabled) {
-                // http://stackoverflow.com/a/24547437/1048340
-                uri = Uri.parse("fb://facewebmodal/f?href=" + url);
-            }
-        } catch (PackageManager.NameNotFoundException ignored) {
-            uri = Uri.parse(url);
-
-        }
-        return uri;
     }
 }
