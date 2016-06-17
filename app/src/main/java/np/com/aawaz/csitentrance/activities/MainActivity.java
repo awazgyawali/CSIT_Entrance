@@ -162,22 +162,21 @@ public class MainActivity extends AppCompatActivity {
             share.setType("text/plain");
 
             share.putExtra(Intent.EXTRA_SUBJECT, "CSIT Entrance");
-            share.putExtra(Intent.EXTRA_TEXT, "https://b5b88.app.goo.gl/jdF1");
+            share.putExtra(Intent.EXTRA_TEXT, "Single app for all BSc CSIT Entrance preparing students.\nhttps://b5b88.app.goo.gl/jdF1");
 
             startActivity(Intent.createChooser(share, "Share CSIT Entrance"));
             new EventSender().logEvent("shared_app");
             return;
         } else if (id == R.id.rate) {
             new EventSender().logEvent("rated_app");
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=np.com.aawaz.csitentrance")));
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=np.com.aawaz.csitentrance")));
+            } catch (Exception e) {
+                Toast.makeText(this, "No play store app found.", Toast.LENGTH_SHORT).show();
+            }
             return;
         } else if (id == R.id.like) {
-            LikeView likeView = new LikeView(this);
-            likeView.setLikeViewStyle(LikeView.Style.STANDARD);
-            likeView.setAuxiliaryViewPosition(LikeView.AuxiliaryViewPosition.INLINE);
-            likeView.setObjectIdAndType(
-                    "https://www.facebook.com/CSITentrance", LikeView.ObjectType.PAGE);
-            likeView.callOnClick();
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/CSITentrance/")));
             new EventSender().logEvent("liked_page");
             return;
         } else if (id == R.id.feedback) {

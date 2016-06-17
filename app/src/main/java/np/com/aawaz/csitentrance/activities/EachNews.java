@@ -74,6 +74,7 @@ public class EachNews extends AppCompatActivity {
                         .putExtra("image_link", bundle.getString("image_link")));
             }
         });
+        appIndexing();
     }
 
 

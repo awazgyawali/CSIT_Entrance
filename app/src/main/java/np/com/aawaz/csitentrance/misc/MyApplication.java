@@ -3,7 +3,7 @@ package np.com.aawaz.csitentrance.misc;
 import android.app.Application;
 import android.content.Context;
 
-import com.google.firebase.database.FirebaseDatabase;
+import com.facebook.FacebookSdk;
 
 
 public class MyApplication extends Application {
@@ -12,6 +12,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         sInstance = this;
+        FacebookSdk.sdkInitialize(this);
         super.onCreate();
     }
 

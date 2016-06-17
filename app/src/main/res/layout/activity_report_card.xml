@@ -7,56 +7,55 @@
     android:orientation="vertical"
     tools:context="np.com.aawaz.csitentrance.activities.ReportCardActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar_report"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/image_report"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerVertical="true"
-            android:layout_margin="10dp"
-            android:src="@drawable/user_holder"
-            app:civ_border_color="@color/white"
-            app:civ_border_width="2dp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
-
-            <com.devspark.robototextview.widget.RobotoTextView
-                android:id="@+id/name_report"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Aawaz Gyawali"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:typeface="roboto_bold" />
-
-            <com.devspark.robototextview.widget.RobotoTextView
-                android:id="@+id/total_report"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total Score: 256"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
-
-    </android.support.design.widget.AppBarLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/appbar_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_report"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/user_holder"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:id="@+id/name_report"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aawaz Gyawali"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:typeface="roboto_bold" />
+
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:id="@+id/total_report"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Score: 256"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
