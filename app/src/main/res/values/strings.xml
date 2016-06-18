@@ -12,18 +12,18 @@
     <string name="close">Close</string>
     <string name="open">Open</string>
 
-    <string name="intro_one">Play with fun</string>
-    <string name="description_1">Allows you to play quiz or view full question of the past year paper. Just designed for you to make learning easier.</string>
-    <string name="intro_two">Scoreboard</string>
-    <string name="description_2">Compare your knowledge with your friends and try to be ahead of them.</string>
+    <string name="intro_one">Prepare Interactively</string>
+    <string name="description_1">Study and Entertainment simultaneously. Play quiz and study. View full questions as you need.</string>
+    <string name="intro_two">Leaderboard</string>
+    <string name="description_2">Compete yourself with other fellow students to stay on top.</string>
     <string name="intro_three">CSIT Colleges</string>
-    <string name="description_3">Find your suitable college name from the list and be there at first.</string>
+    <string name="description_3">Find the details all the BSc.CSIT affiliated colleges.</string>
     <string name="intro_four">Entrance News</string>
-    <string name="description_4">Know everything about the entrance and the important notices in just one click.</string>
+    <string name="description_4">Get every official and unofficial notices and news about entrance from T.U or other related authorities</string>
     <string name="intro_five">Entrance Forum</string>
-    <string name="description_5">Don\'t worry about your queries and curiosity. Our team is here to reply your questioons.</string>
+    <string name="description_5">Discuss your queries with our seniors and experts</string>
     <string name="intro_six">Entrance Result</string>
-    <string name="description_6">Worried where to see result? No worries we are here for you.</string>
+    <string name="description_6">View your result instantly in a more convenient way.</string>
     <string name="tag_link">Your key to CSIT Entrance.</string>
 
 

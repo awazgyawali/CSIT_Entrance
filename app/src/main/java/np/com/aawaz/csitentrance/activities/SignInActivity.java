@@ -59,6 +59,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     private TextInputEditText username = null,
             password = null;
 
+
     ProgressBar progressBar;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private boolean processing = false;
@@ -214,6 +215,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
         client = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
+
                 .addApi(Auth.GOOGLE_SIGN_IN_API, options)
                 .build();
 
