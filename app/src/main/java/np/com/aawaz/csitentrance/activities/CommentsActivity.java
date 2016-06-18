@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,10 @@ import android.widget.ProgressBar;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.devspark.robototextview.widget.RobotoTextView;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -51,6 +56,11 @@ public class CommentsActivity extends AppCompatActivity {
 
     DatabaseReference reference;
 
+    private GoogleApiClient mClient;
+    private Uri mUrl;
+    private String mTitle;
+    private String mDescription;
+
     public CommentsActivity() {
         // Required empty public constructor
     }
@@ -84,6 +94,42 @@ public class CommentsActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void appIndexing() {
+        mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        mUrl = Uri.parse("http://csitentrance.brainants.com/forum");
+        mTitle = getIntent().getStringExtra("message");
+        mDescription = "This app in includes all the discussion about entrance exam of BSc CSIT.";
+    }
+
+
+    public Action getAction() {
+        Thing object = new Thing.Builder()
+                .setName(mTitle)
+                .setDescription(mDescription)
+                .setUrl(mUrl)
+                .build();
+
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mClient.connect();
+        AppIndex.AppIndexApi.start(mClient, getAction());
+    }
+
+    @Override
+    public void onStop() {
+        AppIndex.AppIndexApi.end(mClient, getAction());
+        mClient.disconnect();
+        super.onStop();
+    }
+
 
     private void sendPostRequestThroughGraph(final String message) {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -243,5 +289,6 @@ public class CommentsActivity extends AppCompatActivity {
         Picasso.with(this)
                 .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
                 .into(profileImage);
+        appIndexing();
     }
 }

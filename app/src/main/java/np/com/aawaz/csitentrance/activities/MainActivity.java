@@ -1,6 +1,8 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,9 +22,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.devspark.robototextview.widget.RobotoTextView;
-import com.facebook.share.widget.LikeView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -176,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return;
         } else if (id == R.id.like) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/CSITentrance/")));
+            startActivity(newFacebookIntent());
             new EventSender().logEvent("liked_page");
             return;
         } else if (id == R.id.feedback) {
@@ -192,6 +194,23 @@ public class MainActivity extends AppCompatActivity {
                         }
                     })
                     .positiveText("Send")
+                    .show();
+            return;
+        } else if (id == R.id.logout) {
+            SPHandler.getInstance().clearAll();
+            new MaterialDialog.Builder(this)
+                    .title("Log out")
+                    .content("Are you sure you want to log out?")
+                    .positiveText("Log Out")
+                    .negativeText("Cancel")
+                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            FirebaseAuth.getInstance().signOut();
+                            startActivity(new Intent(MainActivity.this, SignInActivity.class));
+                            finish();
+                        }
+                    })
                     .show();
             return;
         }
@@ -256,6 +275,18 @@ public class MainActivity extends AppCompatActivity {
                 item.setChecked(true);
                 break;
         }
+    }
+
+    private Intent newFacebookIntent() {
+        Uri uri = Uri.parse("https://www.fabecbook.com/CSITEntrance");
+        try {
+            ApplicationInfo applicationInfo = getPackageManager().getApplicationInfo("com.facebook.katana", 0);
+            if (applicationInfo.enabled) {
+                uri = Uri.parse("fb://facewebmodal/f?href=https://www.fabecbook.com/CSITEntrance");
+            }
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+        return new Intent(Intent.ACTION_VIEW, uri);
     }
 
     @Override

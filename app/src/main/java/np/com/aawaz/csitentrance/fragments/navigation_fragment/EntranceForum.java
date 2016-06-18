@@ -2,6 +2,7 @@ package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,6 +22,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,7 +66,6 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     ArrayList<String> key = new ArrayList<>();
 
     DatabaseReference reference;
-
 
     @Nullable
     @Override
@@ -188,6 +192,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
             public void itemClicked(View view, int position) {
                 startActivity(new Intent(getContext(), CommentsActivity.class)
                         .putExtra("key", key.get(position))
+                        .putExtra("message",adapter.getMessageAt(position))
                         .putExtra("comment_count", adapter.getCommentCount(position)));
             }
 
@@ -255,7 +260,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
                 .addData("fragment", "Result")
                 .addData("title", "Entrance Forum")
                 .addData("body", string)
-                .addData("to","forum")
+                .addData("to", "forum")
                 .build());
     }
 

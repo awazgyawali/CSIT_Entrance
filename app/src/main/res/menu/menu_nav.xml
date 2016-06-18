@@ -27,7 +27,9 @@
             android:title="More" />
     </group>
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/second"
+        android:checkableBehavior="single">
 
         <item
             android:id="@+id/entranceFAQ"
@@ -51,12 +53,22 @@
             android:title="Entrance Result" />
     </group>
 
-    <group android:checkableBehavior="none">
+    <group
+        android:id="@+id/third"
+        android:checkableBehavior="none">
 
         <item
             android:id="@+id/settings"
             android:icon="@drawable/settings"
             android:title="Settings" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="Log Out" />
+    </group>
+    <group
+        android:id="@+id/fourth"
+        android:checkableBehavior="none">
         <item
             android:id="@+id/feedback"
             android:icon="@drawable/feedback"
@@ -64,7 +76,7 @@
         <item
             android:id="@+id/share"
             android:icon="@drawable/share"
-            android:title="Invite your friends" />
+            android:title="Invite Friends" />
         <item
             android:id="@+id/like"
             android:icon="@drawable/like"

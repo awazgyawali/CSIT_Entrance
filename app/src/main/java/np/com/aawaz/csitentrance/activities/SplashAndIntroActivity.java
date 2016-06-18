@@ -3,6 +3,7 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -19,6 +20,7 @@ import np.com.aawaz.csitentrance.objects.EventSender;
 public class SplashAndIntroActivity extends AppIntro {
 
     Context context;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +44,14 @@ public class SplashAndIntroActivity extends AppIntro {
                     getString(R.string.tag_link),
                     R.drawable.splash_icon,
                     ContextCompat.getColor(this, R.color.colorPrimary)));
+            intent = new Intent(context, MainActivity.class).replaceExtras(getIntent().getExtras());
+
+            onNewIntent(getIntent());
+
             Thread background = new Thread() {
                 public void run() {
                     try {
                         sleep(1500);
-                        Intent intent = new Intent(context, MainActivity.class).replaceExtras(getIntent().getExtras());
                         startActivity(intent);
                         finish();
                     } catch (Exception e) {
@@ -87,6 +92,16 @@ public class SplashAndIntroActivity extends AppIntro {
                     R.drawable.result_big,
                     ContextCompat.getColor(this, R.color.background_6)));
             setDoneText("Get Started");
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        String action = intent.getAction();
+        Uri data = intent.getData();
+        if (Intent.ACTION_VIEW.equals(action) && data != null) {
+            this.intent.putExtra("fragment", data.getLastPathSegment());
         }
     }
 

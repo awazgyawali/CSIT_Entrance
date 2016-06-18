@@ -193,4 +193,7 @@ public class SPHandler {
         return scoreSp.getBoolean("newsSub", true);
     }
 
+    public void clearAll() {
+        scoreEditor.clear().apply();
+    }
 }

@@ -40,7 +40,7 @@ public class MyMessagingService extends FirebaseMessagingService {
                 //.setSmallIcon(R.mipmap.ic_launcher)
                 .setSmallIcon(R.drawable.splash_icon)
                 .setContentText(remoteMessage.getNotification().getBody())
-                .setContentTitle("ASP")
+                .setContentTitle(remoteMessage.getNotification().getTitle())
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
