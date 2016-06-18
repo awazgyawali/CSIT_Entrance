@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "243712876576-bqd2hbipublnq778d4p34tfbu6r9gnro.apps.googleusercontent.com",
+          "client_id": "243712876576-6gg6lv3pkrr0f952v428eut7rr8au6fk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "np.com.aawaz.csitentrance",
-            "certificate_hash": "9C50A0F9DC04556156484926E3D15C4FAF585571"
+            "certificate_hash": "508FCE8C0153BE257D1319FE71DCBE99BEAEAC41"
           }
         },
         {
@@ -28,22 +28,6 @@
           "android_info": {
             "package_name": "np.com.aawaz.csitentrance",
             "certificate_hash": "70FA9DC531ADC6D8E88C65504FF0B656004FA129"
-          }
-        },
-        {
-          "client_id": "243712876576-cjs88eqjmgetmtepd794uhuje2prld1p.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "np.com.aawaz.csitentrance",
-            "certificate_hash": "44E286802A98AFEB685EE503BE115D7EFAF3C719"
-          }
-        },
-        {
-          "client_id": "243712876576-imtp04otk51p284lf9aovpoqj4kk1svl.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "np.com.aawaz.csitentrance",
-            "certificate_hash": "B79ED18CED81D0E29E5602403FFE68BD17F00666"
           }
         },
         {

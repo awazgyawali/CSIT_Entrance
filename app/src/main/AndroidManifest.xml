@@ -31,17 +31,18 @@
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="home"
-                    android:scheme="csitentrance" />
-
                 <data
                     android:host="csitentrance.brainants.com"
                     android:scheme="http" />
                 <data
                     android:host="csitentrance.brainants.com"
                     android:scheme="https" />
+                <data
+                    android:host="csitnepal.com"
+                    android:scheme="http" />
+                <data
+                    android:host="bsccsit.com"
+                    android:scheme="http" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,11 +55,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.YearQuizActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_quiz" />
-        <activity
-            android:name=".activities.About"
-            android:label="@string/title_activity_about"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FullQuestionActivity"
             android:label="@string/title_activity_full_question"
@@ -68,30 +66,34 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-
-        <provider
-            android:name="com.facebook.FacebookContentProvider"
-            android:authorities="com.facebook.app.FacebookContentProvider768172639946667"
-            android:exported="true" />
-
         <activity
             android:name=".activities.Settings"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activities.SearchActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".activities.ImageViewActivity" />
-        <activity android:name=".activities.SignInActivity" />
-        <activity android:name=".activities.SignUpActivity" />
-        <activity android:name=".activities.EachNews" />
-        <activity android:name=".activities.SubjectChooserActivity" />
+        <activity android:name=".activities.ImageViewActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.EachNews"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.SubjectChooserActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.CommentsActivity"
-            android:theme="@style/Theme.Transparent" />
+            android:theme="@style/Theme.Transparent"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".activities.SubjectQuizActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".activities.ReportCardActivity"
+            android:screenOrientation="portrait" />
 
         <service android:name=".services.MyMessagingService">
             <intent-filter>
@@ -102,15 +104,22 @@
             android:name=".services.ScoreUploader"
             android:enabled="true"
             android:exported="true" />
+
         <service android:name=".services.MyInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name=".activities.SubjectQuizActivity" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
-        <activity android:name=".activities.ReportCardActivity" />
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider768172639946667"
+            android:exported="true" />
+
     </application>
 
 </manifest>

@@ -71,6 +71,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/imageViewCollegeProfile"
                     android:ellipsize="end"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:text="We provide high quality education in affordable price. To know more just call us, we are here to to help you."
                     android:textColor="#727272" />

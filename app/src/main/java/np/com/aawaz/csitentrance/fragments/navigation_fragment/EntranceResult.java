@@ -140,13 +140,31 @@ public class EntranceResult extends Fragment {
         super.onActivityCreated(savedInstanceState);
         requestQueue = Singleton.getInstance().getRequestQueue();
         imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-
         if (SPHandler.getInstance().isResultPublished()) {
-            resultViewSwitcher.showNext();
-            rollNo.requestFocus();
-            workForViewingResult();
+            handlePublished();
+        } else {
+            FirebaseDatabase.getInstance().getReference().child("result_published").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.getValue(boolean.class)) {
+                        handlePublished();
+                        SPHandler.getInstance().setResultPublished();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
         readyAd();
+    }
+
+    private void handlePublished() {
+        resultViewSwitcher.showNext();
+        rollNo.requestFocus();
+        workForViewingResult();
     }
 
     private void appIndexing() {

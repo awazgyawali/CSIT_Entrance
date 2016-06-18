@@ -19,7 +19,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
     private LayoutInflater inflater;
 
 
-    public LeaderboardAdapter(Context context, ArrayList<String> names, ArrayList<Integer> scores, ArrayList<String> imageLink) {
+    public LeaderboardAdapter(Context context, ArrayList<String> names, ArrayList<Integer> scores) {
         inflater = LayoutInflater.from(context);
         this.names = names;
         this.scores = scores;

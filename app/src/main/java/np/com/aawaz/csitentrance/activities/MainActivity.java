@@ -57,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
     AppBarLayout appBarLayout;
     RobotoTextView name;
     CircleImageView imageView;
-    String[] navigationText = new String[]{"leaderboard", "colleges", "more", "faqs", "news", "forum", "result", "setting", "feedback", "share", "like", "rate"};
+    String[] navigationText = new String[]{"leaderboard", "colleges", "more",
+            "faqs", "news", "forum", "result",
+            "setting", "feedback", "share", "like", "rate"};
     int[] navigationId = new int[]{R.id.leaderBoard, R.id.csitColleges, R.id.more, R.id.entranceFAQ, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.share, R.id.like, R.id.rate};
 
     @Override
@@ -114,9 +116,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void handlingIntent() {
 
-        if (getIntent().getStringExtra("result_published") != null)
-            SPHandler.getInstance().setResultPublished();
-
         if (getIntent().getStringExtra("fragment") != null) {
             String string = getIntent().getStringExtra("fragment");
             for (int i = 0; i < navigationText.length; i++)
@@ -130,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         uploadScore();
+        FirebaseDatabase.getInstance().getReference().child("result_published").keepSynced(true);
     }
 
     private void uploadScore() {
@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 .error(ContextCompat.getDrawable(this, R.drawable.account_holder))
                 .into(imageView);
     }
+
 
     private void navigate(MenuItem item) {
         int id = item.getItemId();

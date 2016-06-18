@@ -4,12 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.os.AsyncTaskCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -180,6 +179,17 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
         qNo = spHandler.getPlayed(code);
         score = spHandler.getScore(code);
 
+        if (qNo == 99) {
+            startActivity(new Intent(this, ReportCardActivity.class)
+                    .putExtra("title", getResources().getStringArray(R.array.years)[getIntent().getIntExtra("position", 1)])
+                    .putExtra("code", code)
+                    .putExtra("played", 100)
+                    .putExtra("scored", score));
+            finish();
+            return;
+        }
+
+
         answersDrawer.setInitialData(qNo, getIntent().getIntExtra("position", 1) + 1);
     }
 
@@ -213,24 +223,14 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
             submit.setOnClickListener(null);
             YoYo.with(Techniques.Shake).duration(500).playOn(submit);
         }
-        AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            protected Void doInBackground(Void... voids) {
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
+            public void run() {
                 if (customViewPager.getCurrentItem() != 99)
                     customViewPager.setCurrentItem(customViewPager.getCurrentItem() + 1);
+
             }
-        });
+        }, 500);
     }
 
     public void setDataToArrayList() {

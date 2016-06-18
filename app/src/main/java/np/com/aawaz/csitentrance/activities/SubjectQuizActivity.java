@@ -4,12 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.os.AsyncTaskCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -216,24 +215,13 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
             submit.setOnClickListener(null);
             YoYo.with(Techniques.Shake).duration(500).playOn(submit);
         }
-        AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            protected Void doInBackground(Void... voids) {
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                if (customViewPager.getCurrentItem() != 24)
+            public void run() {
+                if (customViewPager.getCurrentItem() != 99)
                     customViewPager.setCurrentItem(customViewPager.getCurrentItem() + 1);
             }
-        });
+        }, 500);
     }
 
     public void setDataToArrayList() {

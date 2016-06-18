@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 
@@ -15,18 +16,28 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.EventSender;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 
 public class SplashAndIntroActivity extends AppIntro {
 
     Context context;
-    Intent intent;
+    Intent main_activity_intent, sign_in_intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
         new EventSender().logEvent("app_opened");
+        sign_in_intent = new Intent(this, SignInActivity.class);
+        main_activity_intent = new Intent(context, MainActivity.class)
+                .replaceExtras(getIntent().getExtras());
+
+        if (getIntent().getStringExtra("result_published") != null)
+            SPHandler.getInstance().setResultPublished();
+
+        onNewIntent(getIntent());
+
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         } catch (Exception ignored) {
@@ -35,7 +46,7 @@ public class SplashAndIntroActivity extends AppIntro {
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
             showSkipButton(false);
-            setProgressBarVisibility(false);
+
             setProgressButtonEnabled(false);
             setBarColor(Color.TRANSPARENT);
             setSeparatorColor(Color.TRANSPARENT);
@@ -43,23 +54,16 @@ public class SplashAndIntroActivity extends AppIntro {
             addSlide(AppIntroFragment.newInstance(getString(R.string.app_name),
                     getString(R.string.tag_link),
                     R.drawable.splash_icon,
-                    ContextCompat.getColor(this, R.color.colorPrimary)));
-            intent = new Intent(context, MainActivity.class).replaceExtras(getIntent().getExtras());
-
-            onNewIntent(getIntent());
-
-            Thread background = new Thread() {
+                    ContextCompat.getColor(this, R.color.colorPrimaryDark)));
+            selectedIndicatorColor = ContextCompat.getColor(this, R.color.colorPrimaryDark);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
                 public void run() {
-                    try {
-                        sleep(1500);
-                        startActivity(intent);
-                        finish();
-                    } catch (Exception e) {
-                        finish();
-                    }
+                    startActivity(main_activity_intent);
+                    finish();
                 }
-            };
-            background.start();
+            }, 1500);
         } else {
 
             addSlide(AppIntroFragment.newInstance(getString(R.string.intro_one),
@@ -101,21 +105,22 @@ public class SplashAndIntroActivity extends AppIntro {
         String action = intent.getAction();
         Uri data = intent.getData();
         if (Intent.ACTION_VIEW.equals(action) && data != null) {
-            this.intent.putExtra("fragment", data.getLastPathSegment());
+            main_activity_intent.putExtra("fragment", data.getLastPathSegment());
+            sign_in_intent.putExtra("fragment", data.getLastPathSegment());
         }
     }
 
     @Override
     public void onSkipPressed(Fragment currentFragment) {
         super.onSkipPressed(currentFragment);
-        startActivity(new Intent(this, SignInActivity.class));
+        startActivity(sign_in_intent);
         finish();
     }
 
     @Override
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
-        startActivity((new Intent(this, SignInActivity.class)));
+        startActivity(sign_in_intent);
         finish();
     }
 

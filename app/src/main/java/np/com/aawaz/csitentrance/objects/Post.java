@@ -26,7 +26,6 @@ public class Post {
         this.time_stamp = time_stamp;
         this.message = message;
         this.image_url = image_url;
-        this.comment_count = 0;
     }
 
 
@@ -37,7 +36,6 @@ public class Post {
         result.put("author", author);
         result.put("time_stamp", time_stamp);
         result.put("comments", "");
-        result.put("comment_count", comment_count);
         result.put("message", message);
         result.put("image_url", image_url);
 

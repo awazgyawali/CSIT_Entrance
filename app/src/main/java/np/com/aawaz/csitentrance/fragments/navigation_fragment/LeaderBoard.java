@@ -29,12 +29,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.LeaderboardAdapter;
 import np.com.aawaz.csitentrance.misc.Singleton;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 
 public class LeaderBoard extends Fragment {
 
-    ArrayList<String> names = new ArrayList<>(),
-            images = new ArrayList<>();
+    ArrayList<String> names = new ArrayList<>();
     ArrayList<Integer> scores = new ArrayList<>();
     RequestQueue requestQueue;
     RecyclerView mRecyclerView;
@@ -51,11 +51,18 @@ public class LeaderBoard extends Fragment {
     CircleImageView[] circleImageViews;
 
     private LinearLayout errorLayout, coreLeader;
+    private boolean filled = false;
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        fetchFromInternet();
+    private void fillFromLastResponse() {
+        String response = SPHandler.getInstance().getLeaderBoardLastResponse();
+        if (response != null) {
+            try {
+                parser(new JSONObject(response));
+                filled = true;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -95,15 +102,30 @@ public class LeaderBoard extends Fragment {
         progress.setVisibility(View.GONE);
         coreLeader.setVisibility(View.VISIBLE);
         errorLayout.setVisibility(View.GONE);
-        mRecyclerView.setAdapter(new LeaderboardAdapter(getActivity(), names, scores, images));
+        mRecyclerView.setAdapter(new LeaderboardAdapter(getActivity(), names, scores));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         errorLayout.setVisibility(View.GONE);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        fillFromLastResponse();
+        fetchFromInternet();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        requestQueue.cancelAll("score");
+    }
+
     private void fetchFromInternet() {
-        progress.setVisibility(View.VISIBLE);
-        errorLayout.setVisibility(View.GONE);
-        coreLeader.setVisibility(View.GONE);
+        if (!filled) {
+            progress.setVisibility(View.VISIBLE);
+            errorLayout.setVisibility(View.GONE);
+            coreLeader.setVisibility(View.GONE);
+        }
 
         requestQueue = Singleton.getInstance().getRequestQueue();
         String url = getString(R.string.fetchScoreurl);
@@ -111,38 +133,49 @@ public class LeaderBoard extends Fragment {
 
             @Override
             public void onResponse(JSONObject response) {
-                try {
-                    JSONArray jsonArray = response.getJSONArray("scores");
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jo_inside = jsonArray.getJSONObject(i);
-
-                        if (i < 3) {
-                            topNames[i].setText(jo_inside.getString("name"));
-                            topScores[i].setText(String.valueOf(jo_inside.getInt("score")));
-                            Picasso.with(getContext())
-                                    .load(jo_inside.getString("image_link"))
-                                    .into(circleImageViews[i]);
-                        } else {
-                            names.add(jo_inside.getString("name"));
-                            scores.add(jo_inside.getInt("score"));
-                            images.add(jo_inside.getString("image_link"));
-                        }
-                    }
-                    callFillRecyclerView();
-                } catch (JSONException e) {
-                    errorLayout.setVisibility(View.VISIBLE);
-                    progress.setVisibility(View.GONE);
-                }
+                parser(response);
+                SPHandler.getInstance().setLeaderBoardLastResponse(response.toString());
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                errorLayout.setVisibility(View.VISIBLE);
-                progress.setVisibility(View.GONE);
+                if (!filled) {
+                    errorLayout.setVisibility(View.VISIBLE);
+                    progress.setVisibility(View.GONE);
+                }
             }
         });
         requestQueue.add(jsonObjectRequest.setTag("score"));
+    }
+
+    private void parser(JSONObject response) {
+        names.clear();
+        scores.clear();
+        try {
+            JSONArray jsonArray = response.getJSONArray("scores");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jo_inside = jsonArray.getJSONObject(i);
+
+                if (i < 3) {
+                    topNames[i].setText(jo_inside.getString("name"));
+                    topScores[i].setText(String.valueOf(jo_inside.getInt("score")));
+                    Picasso.with(getContext())
+                            .load(jo_inside.getString("image_link"))
+                            .placeholder(R.drawable.account_holder)
+                            .into(circleImageViews[i]);
+                } else {
+                    names.add(jo_inside.getString("name"));
+                    scores.add(jo_inside.getInt("score"));
+                }
+            }
+            callFillRecyclerView();
+        } catch (JSONException e) {
+            if (!filled) {
+                errorLayout.setVisibility(View.VISIBLE);
+                progress.setVisibility(View.GONE);
+            }
+        }
     }
 
     @Nullable

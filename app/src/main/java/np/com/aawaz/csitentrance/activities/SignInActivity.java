@@ -2,10 +2,8 @@ package np.com.aawaz.csitentrance.activities;
 
 import android.Manifest;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -87,7 +85,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 if (user != null) {
                     FirebaseMessaging.getInstance().subscribeToTopic("news");
                     FirebaseMessaging.getInstance().subscribeToTopic("forum");
-                    startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                    startActivity(new Intent(SignInActivity.this, MainActivity.class)
+                            .putExtra("fragment", getIntent().getStringExtra("fragment")));
                     finish();
                 }
             }
@@ -233,7 +232,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     }
 
     private void handleFacebook() {
-        FacebookSdk.sdkInitialize(this);
         callBackManager = CallbackManager.Factory.create();
 
         final LoginButton facebookLoginButton = new LoginButton(this);
@@ -297,7 +295,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         if (mAuth.getCurrentUser() != null) {
             FirebaseMessaging.getInstance().subscribeToTopic("news");
             FirebaseMessaging.getInstance().subscribeToTopic("forum");
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, MainActivity.class)
+                    .putExtra("fragment", getIntent().getStringExtra("fragment")));
             finish();
         }
     }
@@ -318,6 +317,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(SignInActivity.this, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();
+                   processing=false;
                     }
                 });
     }

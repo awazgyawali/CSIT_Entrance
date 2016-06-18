@@ -196,4 +196,12 @@ public class SPHandler {
     public void clearAll() {
         scoreEditor.clear().apply();
     }
+
+    public String getLeaderBoardLastResponse() {
+        return infoSp.getString("leaderboard", null);
+    }
+
+    public void setLeaderBoardLastResponse(String leaderBoardLastResponse) {
+        infoEditor.putString("leaderboard", leaderBoardLastResponse).apply();
+    }
 }

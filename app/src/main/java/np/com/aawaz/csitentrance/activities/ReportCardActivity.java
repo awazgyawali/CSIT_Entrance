@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.devspark.robototextview.widget.RobotoTextView;
@@ -49,7 +50,7 @@ public class ReportCardActivity extends AppCompatActivity {
                 played_total = (RobotoTextView) findViewById(R.id.played_report_total),
                 score_total = (RobotoTextView) findViewById(R.id.score_report_total),
                 accuracy_total = (RobotoTextView) findViewById(R.id.accuracy_report_total);
-        TextView fab = (TextView) findViewById(R.id.reply_report);
+        RelativeLayout fab = (RelativeLayout) findViewById(R.id.reply_report);
 
         title.setText(card_title);
         played.setText(String.valueOf(play));

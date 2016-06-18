@@ -36,7 +36,6 @@ public class Comment {
         result.put("time_stamp", time_stamp);
         result.put("message", message);
         result.put("image_url", image_url);
-
         return result;
     }
 
