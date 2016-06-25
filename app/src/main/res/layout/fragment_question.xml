@@ -32,14 +32,15 @@
                     android:gravity="center">
 
                     <com.devspark.robototextview.widget.RobotoTextView
+                        android:id="@+id/yearTitleQuiz"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:layout_weight="1"
                         android:text="Model Question 1"
-                        android:id="@+id/yearTitleQuiz"
-                        android:layout_marginLeft="5dp"
                         android:textColor="@color/colorPrimary"
                         app:typeface="roboto_bold" />
+
 
                     <mehdi.sakout.fancybuttons.FancyButton
                         android:id="@+id/subjectTag"
@@ -73,6 +74,17 @@
                         android:text="+2"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="17sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/report_bug"
+                        android:text="Report"
+                        android:src="@drawable/bug" />
                 </RelativeLayout>
             </LinearLayout>
 

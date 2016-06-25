@@ -7,7 +7,7 @@ android {
         applicationId "np.com.aawaz.csitentrance"
         minSdkVersion 15
         targetSdkVersion 24
-        versionCode 32
+        versionCode 33
         versionName "2.0"
     }
     buildTypes {

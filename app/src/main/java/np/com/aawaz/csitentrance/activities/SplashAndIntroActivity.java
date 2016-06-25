@@ -38,11 +38,6 @@ public class SplashAndIntroActivity extends AppIntro {
 
         onNewIntent(getIntent());
 
-        try {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        } catch (Exception ignored) {
-        }
-
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
             showSkipButton(false);

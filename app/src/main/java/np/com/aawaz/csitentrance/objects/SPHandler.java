@@ -204,4 +204,12 @@ public class SPHandler {
     public void setLeaderBoardLastResponse(String leaderBoardLastResponse) {
         infoEditor.putString("leaderboard", leaderBoardLastResponse).apply();
     }
+
+    public boolean isFirstBugReport() {
+        return infoSp.getBoolean("bug_report", true);
+    }
+
+    public void setFirstBugReport() {
+        infoEditor.putBoolean("bug_report", false).apply();
+    }
 }

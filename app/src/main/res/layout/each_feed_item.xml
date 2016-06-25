@@ -69,6 +69,6 @@
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:lines="3"
-        android:text="Demo post alihchhu la koi risunhchhu la koi risunnna ta risaunnan ni hagi"
+        android:text="Demo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhumo post alihchhu la koi risunhchhu la koi risunnna ta risaunnan ni hagi"
         android:textColor="@color/colorPrimaryText" />
 </LinearLayout>

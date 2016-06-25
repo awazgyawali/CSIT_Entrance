@@ -15,17 +15,12 @@ public class EventSender {
     }
 
     public void logEvent(String core_message) {
-        FirebaseAnalytics.getInstance(MyApplication.getAppContext()).logEvent("play_radio", bundle);
+        FirebaseAnalytics.getInstance(MyApplication.getAppContext()).logEvent(core_message, bundle);
 
     }
 
     public EventSender addValue(String key, boolean value) {
         bundle.putBoolean(key, value);
-        return this;
-    }
-
-    public EventSender addValue(String key, String value) {
-        bundle.putString(key, value);
         return this;
     }
 }

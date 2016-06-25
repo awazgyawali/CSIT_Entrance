@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.facebook.FacebookSdk;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MyApplication extends Application {
@@ -14,6 +15,12 @@ public class MyApplication extends Application {
         sInstance = this;
         FacebookSdk.sdkInitialize(this);
         super.onCreate();
+
+        try {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        } catch (Exception ignored) {
+            ignored.printStackTrace();
+        }
     }
 
     public static MyApplication getInstance() {

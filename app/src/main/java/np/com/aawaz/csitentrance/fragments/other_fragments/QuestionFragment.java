@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.fragments.other_fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -9,11 +10,17 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.devspark.robototextview.widget.RobotoTextView;
+import com.google.firebase.database.FirebaseDatabase;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
@@ -29,11 +36,10 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     FancyButton option1Selected, option2Selected, option3Selected, option4Selected;
 
     CardView submit;
+    TextView bug;
 
     int clickedAns = 0;
     private QuizInterface listener;
-    String[] subjects = {"Physics", "Chemistry", "Math", "English"};
-    int[] subColor = {R.color.physics, R.color.chemistry, R.color.math, R.color.english};
 
     public QuestionFragment() {
         // Required empty public constructor
@@ -107,6 +113,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         option4Selected = (FancyButton) view.findViewById(R.id.optSelected4);
 
         submit = (CardView) view.findViewById(R.id.AnswerFab);
+        bug = (TextView) view.findViewById(R.id.report_bug);
 
         YoYo.with(Techniques.SlideOutDown)
                 .duration(0)
@@ -196,6 +203,32 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
             option4Ro.setText(Html.fromHtml(opt4Text));
         }
 
+        bug.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (SPHandler.getInstance().isFirstBugReport())
+                    new MaterialDialog.Builder(getContext())
+                            .title("Mistake report")
+                            .content("By clicking Report button this question will be marked as mistake.")
+                            .positiveText("Report")
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    FirebaseDatabase.getInstance().getReference().child("report").push().setValue(getResources().getStringArray(R.array.years)[getArguments().getInt("code")] + " QNo "
+                                            + getArguments().getInt("position") + 1);
+                                    SPHandler.getInstance().setFirstBugReport();
+                                    Toast.makeText(getContext(), "Reported.", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .show();
+                else {
+                    FirebaseDatabase.getInstance().getReference().child("report").push().setValue(getResources().getStringArray(R.array.years)[getArguments().getInt("code")] + " QNo "
+                            + getArguments().getInt("position") + 1);
+                    Toast.makeText(getContext(), "Reported.", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
     }
 
