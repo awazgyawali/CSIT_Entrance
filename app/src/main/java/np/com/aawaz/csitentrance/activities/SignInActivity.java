@@ -21,7 +21,6 @@ import com.devspark.robototextview.widget.RobotoTextView;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
@@ -288,7 +287,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             } else {
                 progressBar.setVisibility(View.GONE);
                 processing = false;
-                Toast.makeText(this, "Unable to connect. CHeck your internet connection.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Unable to connect. Check your internet connection.", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -317,7 +316,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(SignInActivity.this, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();
-                   processing=false;
+                        processing = false;
                     }
                 });
     }

@@ -129,7 +129,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         uploadScore();
+        askPhoneNo();
         FirebaseDatabase.getInstance().getReference().child("result_published").keepSynced(true);
+    }
+
+    private void askPhoneNo() {
+
+        if(SPHandler.getInstance().getPhoneNo()==null)
     }
 
     private void uploadScore() {

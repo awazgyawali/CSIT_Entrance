@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.fragments.other_fragments.SplashFragment;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
@@ -46,10 +47,8 @@ public class SplashAndIntroActivity extends AppIntro {
             setBarColor(Color.TRANSPARENT);
             setSeparatorColor(Color.TRANSPARENT);
 
-            addSlide(AppIntroFragment.newInstance(getString(R.string.app_name),
-                    getString(R.string.tag_link),
-                    R.drawable.splash_icon,
-                    ContextCompat.getColor(this, R.color.colorPrimaryDark)));
+            addSlide(new SplashFragment());
+
             selectedIndicatorColor = ContextCompat.getColor(this, R.color.colorPrimaryDark);
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {

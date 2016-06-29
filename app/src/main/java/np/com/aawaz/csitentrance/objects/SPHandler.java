@@ -212,4 +212,12 @@ public class SPHandler {
     public void setFirstBugReport() {
         infoEditor.putBoolean("bug_report", false).apply();
     }
+
+    public String getPhoneNo() {
+        return infoSp.getString("phone_no", null);
+    }
+
+    public void setPhoneNo(String no) {
+        infoEditor.putString("phone_no", no).apply();
+    }
 }
