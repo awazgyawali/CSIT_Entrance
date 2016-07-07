@@ -23,6 +23,7 @@
             android:maxLines="2"
             android:text="Demo Title"
             android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
             app:typeface="roboto_bold" />
 
         <com.devspark.robototextview.widget.RobotoTextView
@@ -49,7 +50,8 @@
             android:maxLines="3"
             android:text="Demo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahahDemo content ali lamo content lekhi herau na la ahhahahahahah"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/colorPrimaryText" />
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="15sp" />
 
         <ImageView
             android:id="@+id/newsImage"

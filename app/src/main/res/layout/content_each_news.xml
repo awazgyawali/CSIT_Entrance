@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="np.com.aawaz.csitentrance.activities.EachNews">
 
@@ -43,7 +43,8 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="5dp"
             android:autoLink="all"
-            android:text="This block will contain the news" />
+            android:text="This block will contain the news"
+            android:textSize="15sp" />
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

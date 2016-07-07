@@ -20,8 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/splash_icon"
-        android:text="@string/hello_blank_fragment" />
+        android:src="@drawable/splash_icon" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,6 +40,6 @@
         android:padding="10dp"
         android:text="By BrainAnts Technology"
         android:textColor="@color/white"
-        android:textSize="?android:textAppearanceMedium"
+        android:textAppearance="?android:textAppearanceMedium"
         android:textStyle="bold" />
 </RelativeLayout>

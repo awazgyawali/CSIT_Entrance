@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
 
+        askPhoneNo();
+
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
         mNavigationView = (NavigationView) findViewById(R.id.navigationView);
@@ -129,18 +131,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         uploadScore();
-        askPhoneNo();
         FirebaseDatabase.getInstance().getReference().child("result_published").keepSynced(true);
     }
 
     private void askPhoneNo() {
-
-        if(SPHandler.getInstance().getPhoneNo()==null)
+        if (SPHandler.getInstance().getPhoneNo() == null)
+            startActivity(new Intent(MainActivity.this, PhoneNoActivity.class));
     }
 
     private void uploadScore() {
         if (SPHandler.getInstance().isScoreChanged())
-
             startService(new Intent(MyApplication.getAppContext(), ScoreUploader.class));
     }
 

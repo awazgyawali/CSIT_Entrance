@@ -99,6 +99,19 @@
 
 
             <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/change_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackground"
+                android:padding="20dp"
+                android:text="Change contact number"
+                android:textColor="@color/colorPrimaryText" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ccc" />
+            <com.devspark.robototextview.widget.RobotoTextView
                 android:id="@+id/connectFb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -47,12 +47,16 @@ public class ScoreUploader extends Service {
     }
 
     private void uploader() {
+        String image_link = "N/A";
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+        try {
+            image_link = user.getPhotoUrl().toString();
+        } catch (Exception ignored) {
+        }
         url = getString(R.string.uploadScore) + "?name=" + user.getDisplayName()
                 + "&email=" + user.getEmail()
                 + "&score=" + SPHandler.getInstance().getTotalScore()
-                + "&image_link=" + user.getPhotoUrl().toString()
+                + "&image_link=" + image_link
                 + "&instance_id=" + FirebaseInstanceId.getInstance().getToken();
 
         AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {

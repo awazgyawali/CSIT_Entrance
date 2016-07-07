@@ -1,39 +1,16 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.AssetManager;
-import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatEditText;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
+import android.widget.TextView;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.adapters.CollegesAdapter;
-import np.com.aawaz.csitentrance.interfaces.CollegeMenuClicks;
-import np.com.aawaz.csitentrance.objects.EventSender;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class PhoneNoActivity extends AppCompatActivity {
 
@@ -43,18 +20,11 @@ public class PhoneNoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_no);
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbarSearch));
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        final TextInputEditText phone = (TextInputEditText) findViewById(R.id.phone_no);
+        final TextView cont = (TextView) findViewById(R.id.phone_continue);
+        cont.setVisibility(View.GONE);
 
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        emptyLayout = (LinearLayout) findViewById(R.id.emptyLayout);
-        search = (AppCompatEditText) findViewById(R.id.searchEditText);
-        colzRecy = (RecyclerView) findViewById(R.id.searchRecycler);
-
-        imm.showSoftInput(search,InputMethodManager.HIDE_IMPLICIT_ONLY);
-
-        search.addTextChangedListener(new TextWatcher() {
+        phone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -62,20 +32,22 @@ public class PhoneNoActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0) {
-                    colzRecy.setVisibility(View.GONE);
-                    emptyLayout.setVisibility(View.VISIBLE);
-                } else {
-                    colzRecy.setVisibility(View.VISIBLE);
-                    emptyLayout.setVisibility(View.GONE);
-                    setDataToArrayList();
-                    fillNormally();
-                }
+                if (charSequence.length() == 10)
+                    cont.setVisibility(View.VISIBLE);
+                else
+                    cont.setVisibility(View.GONE);
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+        cont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SPHandler.getInstance().setPhoneNo(phone.getText().toString());
+                finish();
             }
         });
     }

@@ -220,4 +220,12 @@ public class SPHandler {
     public void setPhoneNo(String no) {
         infoEditor.putString("phone_no", no).apply();
     }
+
+    public void setBoolean(String set_id, boolean value) {
+        infoEditor.putBoolean(set_id, value).apply();
+    }
+
+    public boolean getBoolean(String set_id) {
+        return infoSp.getBoolean(set_id, false);
+    }
 }

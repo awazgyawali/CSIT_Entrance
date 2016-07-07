@@ -2,12 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="np.com.aawaz.csitentrance">
 
+    <uses-sdk android:maxSdkVersion="24" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-    <uses-sdk android:maxSdkVersion="24" />
     <application
         android:name=".misc.MyApplication"
         android:allowBackup="true"
@@ -31,6 +32,7 @@
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="csitentrance.brainants.com"
                     android:scheme="http" />
@@ -46,6 +48,7 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -55,8 +58,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.YearQuizActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_quiz" />
+            android:label="@string/title_activity_quiz"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FullQuestionActivity"
             android:label="@string/title_activity_full_question"
@@ -74,25 +77,33 @@
             android:name=".activities.SearchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".activities.ImageViewActivity"
+        <activity
+            android:name=".activities.ImageViewActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.SignInActivity"
+        <activity
+            android:name=".activities.SignInActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.SignUpActivity"
+        <activity
+            android:name=".activities.SignUpActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.EachNews"
+        <activity
+            android:name=".activities.EachNews"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.SubjectChooserActivity"
+        <activity
+            android:name=".activities.SubjectChooserActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.CommentsActivity"
-            android:theme="@style/Theme.Transparent"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name=".activities.SubjectQuizActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".activities.SubjectQuizActivity"
+        <activity
+            android:name=".activities.ReportCardActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".activities.ReportCardActivity"
+        <activity
+            android:name=".activities.PhoneNoActivity"
             android:screenOrientation="portrait" />
 
         <service android:name=".services.MyMessagingService">
@@ -104,7 +115,6 @@
             android:name=".services.ScoreUploader"
             android:enabled="true"
             android:exported="true" />
-
         <service android:name=".services.MyInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
@@ -120,6 +130,7 @@
             android:authorities="com.facebook.app.FacebookContentProvider768172639946667"
             android:exported="true" />
 
+        <activity android:name=".activities.PremiumSets"></activity>
     </application>
 
 </manifest>

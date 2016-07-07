@@ -44,6 +44,7 @@ public class Settings extends AppCompatActivity implements GoogleApiClient.OnCon
     CallbackManager callBackManager = CallbackManager.Factory.create();
     private int RC_SIGN_IN = 100;
     private GoogleApiClient client;
+    private TextView changeNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class Settings extends AppCompatActivity implements GoogleApiClient.OnCon
         forum = (SwitchCompat) findViewById(R.id.notifForum);
 
         clearAll = (TextView) findViewById(R.id.clearAll);
+        changeNo = (TextView) findViewById(R.id.change_no);
         connectFb = (TextView) findViewById(R.id.connectFb);
         connectGoogle = (TextView) findViewById(R.id.connectGoogle);
 
@@ -173,6 +175,12 @@ public class Settings extends AppCompatActivity implements GoogleApiClient.OnCon
             @Override
             public void onClick(View view) {
                 facebookLoginButton.callOnClick();
+            }
+        });
+        changeNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Settings.this, PhoneNoActivity.class));
             }
         });
     }

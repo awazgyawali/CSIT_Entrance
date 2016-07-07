@@ -15,6 +15,7 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.PremiumSets;
 
 
 public class More extends Fragment {
@@ -23,6 +24,13 @@ public class More extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        button.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+               // startActivity(new Intent(getContext(), PremiumSets.class));
+                return true;
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
