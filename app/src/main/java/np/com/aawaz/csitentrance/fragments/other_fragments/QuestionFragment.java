@@ -206,29 +206,37 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         bug.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (SPHandler.getInstance().isFirstBugReport())
-                    new MaterialDialog.Builder(getContext())
-                            .title("Mistake report")
-                            .content("By clicking Report button this question will be marked as mistake.")
-                            .positiveText("Report")
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    FirebaseDatabase.getInstance().getReference().child("report").push().setValue(getResources().getStringArray(R.array.years)[getArguments().getInt("code")] + " QNo "
-                                            + getArguments().getInt("position") + 1);
-                                    SPHandler.getInstance().setFirstBugReport();
-                                    Toast.makeText(getContext(), "Reported.", Toast.LENGTH_SHORT).show();
+                new MaterialDialog.Builder(getActivity())
+                        .title("What did you find wrong here ? Question or Answer or Both")
+                        .items(new String[]{"Question", "Answer"})
+                        .itemsCallbackMultiChoice(null, new MaterialDialog.ListCallbackMultiChoice() {
+                            @Override
+                            public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
+                                String str = null;
+                                for (int i = 0; i < which.length; i++) {
+                                    if (i > 0)
+                                        str = "both";
+                                    else
+                                        str = (String) text[i];
+
                                 }
-                            })
-                            .show();
-                else {
-                    FirebaseDatabase.getInstance().getReference().child("report").push().setValue(getResources().getStringArray(R.array.years)[getArguments().getInt("code")] + " QNo "
-                            + getArguments().getInt("position") + 1);
-                    Toast.makeText(getContext(), "Reported.", Toast.LENGTH_SHORT).show();
-                }
+                                FirebaseDatabase.getInstance().getReference().child("report").push().setValue(getResources().getStringArray(R.array.years)[getArguments().getInt("code")] + " QNo "
+                                        + getArguments().getInt("position") + 1 + " Problem with " + str);
+                                Toast.makeText(getActivity(), "Thanks for reporting!!", Toast.LENGTH_SHORT).show();
+                                return true;
+                            }
+                        })
+                        .positiveText("Report")
+                        .show();
+
 
             }
         });
+
+
+
+
+
 
     }
 
