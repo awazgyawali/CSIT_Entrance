@@ -12,13 +12,11 @@ import android.support.v4.content.ContextCompat;
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.fragments.other_fragments.SplashFragment;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.SPHandler;
-
 
 public class SplashAndIntroActivity extends AppIntro {
 

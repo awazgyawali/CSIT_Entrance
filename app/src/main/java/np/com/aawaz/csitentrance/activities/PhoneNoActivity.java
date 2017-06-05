@@ -1,13 +1,16 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.SPHandler;
@@ -21,8 +24,21 @@ public class PhoneNoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_phone_no);
 
         final TextInputEditText phone = (TextInputEditText) findViewById(R.id.phone_no);
-        final TextView cont = (TextView) findViewById(R.id.phone_continue);
-        cont.setVisibility(View.GONE);
+        final CardView cont = (CardView) findViewById(R.id.phone_continue_button);
+        final CardView skip = (CardView) findViewById(R.id.phone_skip_button);
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PhoneNoActivity.this, MainActivity.class)
+                        .putExtra("fragment", getIntent().getStringExtra("fragment")));
+            }
+        });
+        cont.setVisibility(View.INVISIBLE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        }
 
         phone.addTextChangedListener(new TextWatcher() {
             @Override
@@ -35,7 +51,7 @@ public class PhoneNoActivity extends AppCompatActivity {
                 if (charSequence.length() == 10)
                     cont.setVisibility(View.VISIBLE);
                 else
-                    cont.setVisibility(View.GONE);
+                    cont.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -47,6 +63,8 @@ public class PhoneNoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SPHandler.getInstance().setPhoneNo(phone.getText().toString());
+                startActivity(new Intent(PhoneNoActivity.this, MainActivity.class)
+                        .putExtra("fragment", getIntent().getStringExtra("fragment")));
                 finish();
             }
         });

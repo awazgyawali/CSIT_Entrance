@@ -10,6 +10,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -45,6 +46,7 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.EventSender;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     private static final int RC_SIGN_IN = 1001;
@@ -81,12 +83,19 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
+                Log.d("Debug", "Login state changed");
                 if (user != null) {
                     FirebaseMessaging.getInstance().subscribeToTopic("news");
                     FirebaseMessaging.getInstance().subscribeToTopic("forum");
-                    startActivity(new Intent(SignInActivity.this, MainActivity.class)
-                            .putExtra("fragment", getIntent().getStringExtra("fragment")));
-                    finish();
+                    if (SPHandler.getInstance().getPhoneNo() == null) {
+                        startActivity(new Intent(SignInActivity.this, PhoneNoActivity.class)
+                                .putExtra("fragment", getIntent().getStringExtra("fragment")));
+                        finish();
+                    } else {
+                        startActivity(new Intent(SignInActivity.this, MainActivity.class)
+                                .putExtra("fragment", getIntent().getStringExtra("fragment")));
+                        finish();
+                    }
                 }
             }
         };
@@ -307,6 +316,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         progressBar.setVisibility(View.GONE);
+                        Log.d("Debug", "Successful");
                     }
                 })
                 .addOnFailureListener(this, new OnFailureListener() {
@@ -319,6 +329,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                         processing = false;
                     }
                 });
+
     }
 
 
