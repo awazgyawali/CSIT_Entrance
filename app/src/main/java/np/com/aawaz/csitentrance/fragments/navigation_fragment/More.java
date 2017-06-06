@@ -15,8 +15,6 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.activities.PremiumSets;
-
 
 public class More extends Fragment {
     RelativeLayout button;
@@ -27,7 +25,6 @@ public class More extends Fragment {
         button.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-               // startActivity(new Intent(getContext(), PremiumSets.class));
                 return true;
             }
         });

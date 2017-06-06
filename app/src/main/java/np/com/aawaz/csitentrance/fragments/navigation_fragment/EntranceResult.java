@@ -143,7 +143,7 @@ public class EntranceResult extends Fragment {
         if (SPHandler.getInstance().isResultPublished()) {
             handlePublished();
         } else {
-            FirebaseDatabase.getInstance().getReference().child("result_published").addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference().child("result_publish").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.getValue(boolean.class)) {

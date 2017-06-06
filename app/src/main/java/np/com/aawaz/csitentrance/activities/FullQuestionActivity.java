@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.os.AsyncTaskCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
@@ -18,6 +20,8 @@ import com.devspark.robototextview.widget.RobotoTextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -93,10 +97,21 @@ public class FullQuestionActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                webView.loadDataWithBaseURL("", htmlData, "text/html", "utf-8",
-                        null);
+                webView.loadDataWithBaseURL("", htmlData, "text/html", "utf-8", null);
+                writeOnAFile(htmlData);//todo to be removed in the production
             }
         });
+    }
+
+    private void writeOnAFile(String htmlData) {
+        Log.d("Debug", Environment.getExternalStorageDirectory() + "");
+        try {
+            FileWriter w = new FileWriter(new File(Environment.getExternalStorageDirectory(), getResources().getStringArray(R.array.years)[code - 1]));
+            w.write(htmlData);
+            w.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

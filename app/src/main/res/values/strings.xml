@@ -2,7 +2,6 @@
 
     <string name="app_name">CSIT Entrance</string>
     <string name="title_activity_quiz">Quiz Activity</string>
-    <string name="title_activity_about">About Us</string>
     <string name="title_activity_full_question">Full Question</string>
 
 
@@ -11,20 +10,6 @@
 
     <string name="close">Close</string>
     <string name="open">Open</string>
-
-    <string name="intro_one">Prepare Interactively</string>
-    <string name="description_1">Study and Entertainment simultaneously. Play quiz and study. View full questions as you need.</string>
-    <string name="intro_two">Leaderboard</string>
-    <string name="description_2">Compete yourself with other fellow students to stay on top.</string>
-    <string name="intro_three">CSIT Colleges</string>
-    <string name="description_3">Find the details all the BSc.CSIT affiliated colleges.</string>
-    <string name="intro_four">Entrance News</string>
-    <string name="description_4">Get every official and unofficial notices and news about entrance from T.U or other related authorities</string>
-    <string name="intro_five">Entrance Forum</string>
-    <string name="description_5">Discuss your queries with our seniors and experts</string>
-    <string name="intro_six">Entrance Result</string>
-    <string name="description_6">View your result instantly in a more convenient way.</string>
-    <string name="tag_link">Your key to CSIT Entrance.</string>
 
 
     <string name="viewResult">http://csitentrance.brainants.com/result.php?rollNo=</string>
@@ -44,8 +29,6 @@
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="couponValidateUrl" />
     <string name="book_detail">The book for the entrance preparation is out now in the market, this book contains the all the old questions and model question which are designed according to the TU entrance syllabus.\n\nThe main features of the book are listed below \n1. Math Formulas \n2. Grammar Formulas \n3. Physics Important Key \n4. Chemistry Important Reactions  \nand many more.....  \n\nIf you want to get the book, Please contact Gopal Nepal (9849665162), the marketing manager of the book or go to the Thamel Books locates right infront of the Amrit Campus.</string>
 
 </resources>

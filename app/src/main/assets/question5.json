@@ -613,7 +613,7 @@
       "a": "Anesthetic",
       "b": "Oxidized to CCl<sub>4</sub> in light ",
       "c": "Oxidized to COCl<sub>2</sub> in light ",
-      "d": "Reduced to CHCl<sub>2<sub> in light",
+      "d": "Reduced to CHCl<sub>2</sub> in light",
       "ans": "c"
     },
     {
@@ -714,10 +714,10 @@
     },
     {
       "question": "90.The formula of blue vitriol is:",
-      "a": "CuSO<sub>4</sub>.5H<sub>2<sub>O",
+      "a": "CuSO<sub>4</sub>.5H<sub>2</sub>O",
       "b": "CuSO<sub>4</sub>",
-      "c": "CuSO<sub>4</sub>.H<sub>2<sub>O",
-      "d": "CuSO<sub>4</sub>.7H<sub>2<sub>O",
+      "c": "CuSO<sub>4</sub>.H<sub>2</sub>O",
+      "d": "CuSO<sub>4</sub>.7H<sub>2</sub>O",
       "ans": "a"
     },
     {
@@ -729,7 +729,7 @@
       "ans": "a"
     },
     {
-      "question": "92.FeSO<sub>4<sub>.7H<sub>2<sub>O is also known as:",
+      "question": "92.FeSO<sub>4</sub>.7H<sub>2</sub>O is also known as:",
       "a": "Blue vitriol",
       "b": "Malachite",
       "c": "Calomel",
@@ -738,10 +738,10 @@
     },
     {
       "question": "93.The product of the reaction: CH3Cl+AgCN→ is",
-      "a": "CH<sub>3<sub>CN",
-      "b": "CH<sub>3<sub>COOH",
-      "c": "CH<sub>3<sub>CONH<sub>2<sub>",
-      "d": "CH<sub>3<sub>NC",
+      "a": "CH<sub>3</sub>CN",
+      "b": "CH<sub>3</sub>COOH",
+      "c": "CH<sub>3</sub>CONH<sub>2</sub>",
+      "d": "CH<sub>3</sub>NC",
       "ans": "d"
     },
     {

@@ -2,8 +2,6 @@ package np.com.aawaz.csitentrance.custom_views;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.View;
 import android.webkit.WebView;
 
 public class QuizTextView extends WebView {

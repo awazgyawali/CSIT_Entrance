@@ -7,9 +7,9 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.devspark.robototextview.widget.RobotoTextView;
 
 import np.com.aawaz.csitentrance.R;
 
@@ -26,11 +26,13 @@ public class CustomSlideView extends BaseSliderView {
         View v = LayoutInflater.from(getContext()).inflate(R.layout.custom_slide, null);
 
         ImageView target = (ImageView) v.findViewById(R.id.image_ad);
-        RobotoTextView description = (RobotoTextView) v.findViewById(R.id.description);
-        RobotoTextView title = (RobotoTextView) v.findViewById(R.id.title);
-        CardView button = (CardView) v.findViewById(R.id.card_ad);
+        TextView description = (TextView) v.findViewById(R.id.description);
+        TextView title = (TextView) v.findViewById(R.id.title);
+        TextView address = (TextView) v.findViewById(R.id.address);//todo assign from furebase
+        TextView call = (TextView) v.findViewById(R.id.call_result);
+        TextView knowmore = (TextView) v.findViewById(R.id.know_more_result);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        knowmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getBundle().getString("destination_url"))));

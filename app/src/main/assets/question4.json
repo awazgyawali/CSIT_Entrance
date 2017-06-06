@@ -265,7 +265,7 @@
       "ans": "b"
     },
     {
-      "question": "34.The sum 1+<img width=\"68\" height=\"28\" src=\"question4s_files/image028.png\" v:shapes=\"_x0000_i1025\">…… to infinity is",
+      "question": "34.The sum 1+<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAcCAMAAADvEOkaAAAAAXNSR0IArs4c6QAAAGNQTFRFAAAAAAAAAAArAABVACuAAFWqKwAAKwBVKyuAK1WqK4DUVQAAVQArVSuAVVUrVVWqVYDUVar/gCsAgCtVgNT/qlUAqlUrqlVVqoCAqv//1IAr1IBV1P///6pV/9SA//+q///U4hEz3gAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA+ElEQVRIS92V2xKCMAxEU++CVxSVCi3//5Wmo4MjPR0HX3TsE7Ndtps0ScXnxkxqiVdpzOgYwYFusj7s17VfxWSRcwXK4nYiJ6K7JdFZRJlEV4ORvSCq4WCYbER8vicrqkPqZMQt6rYAEc0Vi2BG1PYUjIRrIFwPZdsdyvckMggfRNajkf9VEa1iXWqtLe6fj2JP4B3c5z+z/dVwXi79d5y8qcX0dpPq1rag/rM0q7QXEl183YCIm1dSUk+1BxpiTWYTIoSLpXHit2KzS9yxbobNjcKisVOyQjg2Dkc1Gp5syXAiEbVnDIr4HJ6MMHrH+A58XB7/+eMNwkwRp12vMoAAAAAASUVORK5CYII=\" name=\"Object7\" align=\"absmiddle\" hspace=\"8\">…… to infinity is",
       "a": "6",
       "b": "7",
       "c": "8",
@@ -273,7 +273,7 @@
       "ans": "a"
     },
     {
-      "question": "35.Solve for x. <img width=\"85\" height=\"49\" src=\"question4s_files/image030.png\" v:shapes=\"_x0000_i1025\">= 0",
+      "question": "35.Solve for x. <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFUAAAAxCAMAAACcThUkAAAAAXNSR0IArs4c6QAAAFpQTFRFAAAAAAAAAAArAABVACuAAFWqKwAAKwArK4DUVQAAVQArVSuAVar/gCsAgCtVgFWAgNTUgNT/qlUAqlUrqlVVqv//1IAr1NSA1P+q1P///6pV/9SA//+q///UwOfk/QAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABnUlEQVRYR+2XwVbDIBREoa1tU8UatGiT8P+/6QNCTgJv4KR6uspbuBC4wACTqRD9qRX/WYG3iqql3KFFjG2rqVadhVWHO7c11yY0ta2meprZ36BghqH2x8N9aF4qIruRoDo3YbJWe/25fLzjhQTU0LwBppHSTZgpYBU8ikiyCkH9jKyuprZ9oelMcHW0qmytTtiyqmWocMKm1OH1+9R+lYTt3F4+2Qvr9LaK2hOq3t+skgXZSDdJBW5Wf5TSTfrYfa297o26KYAUGC7w60AOgo0wjANUgwfSi/Tvh61xHE/VZ2+TbGkiOgfhKo5DCkDq0JBj9Uf0qMO4B6gExLadUslVQvndFda6irrU6ckK+PPHZ1nRFX69zK7FN2u8HfxpdZO+zP2hfII+QnHc5i6bAk9SoJSk55eX7zc6epo0C0l6zgSJOzo6p0ApSc/Reb/o6Cy1lgpHdJa4J0dnqNiSl6aQ9/P/cX9yKk7SS19n+hWoldA7rZfphxX4AzQkYi5rF5L0QlW+X3T0RNdikp5hUb/R0Vf9gq1F7K19ocAvPpYoAxM8jBMAAAAASUVORK5CYII=\" name=\"Object7\" align=\"absmiddle\" hspace=\"8\"> = 0",
       "a": "-5",
       "b": "5",
       "c": "0",
@@ -281,7 +281,7 @@
       "ans": "a"
     },
     {
-      "question": "36.Simplify : <img width=\"154\" height=\"22\" src=\"question4s_files/image032.png\" v:shapes=\"_x0000_i1025\">",
+      "question": "36.Simplify : 3√-4 + 5√-9 - 4√-25",
       "a": "-i",
       "b": "1",
       "c": "i",
@@ -289,7 +289,7 @@
       "ans": "c"
     },
     {
-      "question": "37.Express <img width=\"60\" height=\"22\" src=\"question4s_files/image038.png\" v:shapes=\"_x0000_i1025\"> in polar form.",
+      "question": "37.Express 2 +2√3i in polar form.",
       "a": "4(cos30°+isin30°)",
       "b": "4(cos60°+isin60°)",
       "c": "4(cos90°+isin90°)",
@@ -297,7 +297,7 @@
       "ans": "b"
     },
     {
-      "question": "38.The equation whose one root is <img width=\"43\" height=\"22\" src=\"question4s_files/image048.png\" v:shapes=\"_x0000_i1025\"> is",
+      "question": "38.The equation whose one root is 2+√3 is",
       "a": "x<sup>2</sup>+4x+1=0",
       "b": "x<sup>2</sup>+4x-1=0",
       "c": "x<sup>2</sup>-4x+1=0",

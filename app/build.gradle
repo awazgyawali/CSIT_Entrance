@@ -45,7 +45,6 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
 
     compile 'com.github.medyo:fancybuttons:1.8.3'
-    compile 'com.github.paolorotolo:appintro:4.1.0'
     compile 'com.github.lzyzsd:circleprogress:1.2.1'
     compile 'com.github.ParkSangGwon:TedPermission:v1.0.3'
     compile 'com.github.johnkil.android-robototextview:robototextview:3.0.0'

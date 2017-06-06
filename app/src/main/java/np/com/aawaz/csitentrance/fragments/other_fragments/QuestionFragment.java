@@ -37,6 +37,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
     int clickedAns = 0;
     private QuizInterface listener;
+    int timesPlayed = 0;
 
     public QuestionFragment() {
         // Required empty public constructor
@@ -141,6 +142,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        timesPlayed = SPHandler.getInstance().getTimesPlayed();
         final String questionText = getArguments().getString("question");
         final String opt1Text = getArguments().getString("a");
         final String opt2Text = getArguments().getString("b");
@@ -241,6 +243,19 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         } else {
             listener.selected(submit, false);
         }
+        if (timesPlayed == 0)
+            showDialogAd();
+        increaseTimesPlayed();
+    }
+
+    private void increaseTimesPlayed() {
+        timesPlayed = (timesPlayed++) % 20;//todo remote config bata control over the behaviour
+        SPHandler.getInstance().setTimesPlayed(timesPlayed);
+    }
+
+    private void showDialogAd() {
+        PopupDialogFragment popupDialogFragment = new PopupDialogFragment();
+        popupDialogFragment.show(getChildFragmentManager(), "popup");
     }
 
     @Override
