@@ -98,22 +98,9 @@ public class FullQuestionActivity extends AppCompatActivity {
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
                 webView.loadDataWithBaseURL("", htmlData, "text/html", "utf-8", null);
-                writeOnAFile(htmlData);//todo to be removed in the production
             }
         });
     }
-
-    private void writeOnAFile(String htmlData) {
-        Log.d("Debug", Environment.getExternalStorageDirectory() + "");
-        try {
-            FileWriter w = new FileWriter(new File(Environment.getExternalStorageDirectory(), getResources().getStringArray(R.array.years)[code - 1]));
-            w.write(htmlData);
-            w.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

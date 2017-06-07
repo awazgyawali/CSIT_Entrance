@@ -37,7 +37,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
     int clickedAns = 0;
     private QuizInterface listener;
-    int timesPlayed = 0;
+    Integer timesPlayed;
 
     public QuestionFragment() {
         // Required empty public constructor
@@ -243,13 +243,10 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         } else {
             listener.selected(submit, false);
         }
-        if (timesPlayed == 0)
-            showDialogAd();
-        increaseTimesPlayed();
     }
 
     private void increaseTimesPlayed() {
-        timesPlayed = (timesPlayed++) % 20;//todo remote config bata control over the behaviour
+        timesPlayed = timesPlayed + 1;
         SPHandler.getInstance().setTimesPlayed(timesPlayed);
     }
 
@@ -276,6 +273,11 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 checkAnswer();
+                Toast.makeText(getContext(), "Times" + timesPlayed, Toast.LENGTH_SHORT).show();
+                increaseTimesPlayed();
+                if ((timesPlayed % 20) == 0) {
+                    showDialogAd();
+                }
             }
         });
 

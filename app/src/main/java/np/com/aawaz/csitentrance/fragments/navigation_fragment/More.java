@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -17,7 +17,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import np.com.aawaz.csitentrance.R;
 
 public class More extends Fragment {
-    RelativeLayout button;
+    LinearLayout button;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -51,13 +51,13 @@ public class More extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        button = (RelativeLayout) view.findViewById(R.id.button);
+        button = (LinearLayout) view.findViewById(R.id.button);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_more,container,false);
+        return inflater.inflate(R.layout.activity_more, container, false);
     }
 }
 

@@ -85,13 +85,6 @@ public class FeaturedCollegeAdapter extends RecyclerView.Adapter<FeaturedCollege
                         .show();
             }
         });
-
-        holder.website.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(colleges.get(position).know_more)));
-            }
-        });
     }
 
 
@@ -109,7 +102,7 @@ public class FeaturedCollegeAdapter extends RecyclerView.Adapter<FeaturedCollege
         ImageView banner;
         CircleImageView profilePic;
         RobotoTextView name, address, detail;
-        TextView call, website, knowMore;
+        TextView call, website;
 
         public VH(View itemView) {
             super(itemView);
@@ -120,7 +113,6 @@ public class FeaturedCollegeAdapter extends RecyclerView.Adapter<FeaturedCollege
             detail = (RobotoTextView) itemView.findViewById(R.id.detailFeatured);
             call = (TextView) itemView.findViewById(R.id.callFeatured);
             website = (TextView) itemView.findViewById(R.id.websiteFeatured);
-            knowMore = (TextView) itemView.findViewById(R.id.knowMoreFeatured);
         }
     }
 }

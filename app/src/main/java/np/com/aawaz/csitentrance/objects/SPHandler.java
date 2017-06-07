@@ -95,11 +95,11 @@ public class SPHandler {
     }
 
     public boolean isResultPublished() {
-        return infoSp.getBoolean("result_published", false);
+        return infoSp.getBoolean("result_publish", false);
     }
 
     public void setResultPublished() {
-        infoEditor.putBoolean("result_published", true).apply();
+        infoEditor.putBoolean("result_publish", true).apply();
     }
 
     public String getSubjectCode(int index, int questionNo) {
@@ -234,7 +234,7 @@ public class SPHandler {
     }
 
     public int getTimesPlayed() {
-        return infoSp.getInt("times_played", 0);
+        return infoSp.getInt("times_played",2);
     }
 
 }

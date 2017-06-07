@@ -115,7 +115,6 @@
     <orderEntry type="library" exported="" name="firebase-core-10.2.6" level="project" />
     <orderEntry type="library" exported="" name="bolts-android-1.4.0" level="project" />
     <orderEntry type="library" exported="" name="firebase-crash-10.2.6" level="project" />
-    <orderEntry type="library" exported="" name="firebase-config-10.2.6" level="project" />
     <orderEntry type="library" exported="" name="firebase-perf-10.2.6" level="project" />
     <orderEntry type="library" exported="" name="firebase-storage-10.2.6" level="project" />
     <orderEntry type="library" exported="" name="library-2.4.0" level="project" />

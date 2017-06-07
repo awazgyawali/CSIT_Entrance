@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -15,44 +14,45 @@
         android:id="@+id/image_ad"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="0dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/wallpaper"
+        android:src="@drawable/students"
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="0dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/title" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
+        android:layout_marginBottom="0dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
+        android:paddingTop="8dp"
         android:text="Samriddhi College"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/address_slide"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/address" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/address"
+        android:id="@+id/address_slide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:text="Sifal, Kathmandu"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/description"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/description" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/description"
@@ -65,17 +65,6 @@
         android:layout_marginStart="8dp"
         android:gravity="center"
         android:text="Samriddhi college announces admission open for the 2074 intake of the BSc CSIT program. Pursue your carrer with the Nepal's best IT course offered by TU.\n\n Fee Structure:- Rs 4,30,000\n\nHurry up and book your seat now.\n\n Call now at 071-4322409"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/grey"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -85,7 +74,8 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -93,34 +83,21 @@
 
         <TextView
             android:id="@+id/call_result"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="?selectableItemBackground"
-            android:drawablePadding="10dp"
-            android:drawableTop="@drawable/call_blue"
+            android:drawableLeft="@drawable/call_white"
+            android:padding="12dp"
             android:gravity="center"
+            android:drawablePadding="25dp"
             android:text="Call Now"
-            android:textColor="@color/colorPrimary"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
 
-        <TextView
-            android:id="@+id/know_more_result"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="?selectableItemBackground"
-            android:drawablePadding="10dp"
-            android:drawableTop="@drawable/more"
-            android:gravity="center"
-            android:text="Know More"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
-            app:layout_constraintLeft_toRightOf="@+id/call_result"
-            app:layout_constraintRight_toLeftOf="@+id/closePopup" />
-        =
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -23,6 +23,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.devspark.robototextview.widget.RobotoTextView;
@@ -210,6 +211,8 @@ public class EntranceResult extends Fragment {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     adLoading.setVisibility(View.GONE);
                     Bundle bundle = new Bundle();
+                    bundle.putString("address", child.child("address").getValue(String.class));
+                    bundle.putString("phone_no", child.child("phone_no").getValue(String.class));
                     bundle.putString("destination_url", child.child("destination_url").getValue(String.class));
                     bundle.putString("description", child.child("sub_title").getValue(String.class));
 
@@ -222,6 +225,7 @@ public class EntranceResult extends Fragment {
                             .setScaleType(BaseSliderView.ScaleType.CenterCrop);
 
                     adSlider.addSlider(textSliderView);
+                    adSlider.setIndicatorVisibility(PagerIndicator.IndicatorVisibility.Invisible);
                 }
             }
 

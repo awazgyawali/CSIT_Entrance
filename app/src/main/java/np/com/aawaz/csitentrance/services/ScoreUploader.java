@@ -57,7 +57,7 @@ public class ScoreUploader extends Service {
                 + "&email=" + user.getEmail()
                 + "&score=" + SPHandler.getInstance().getTotalScore()
                 + "&image_link=" + image_link
-                + "&phone_no=" + SPHandler.getInstance().getPhoneNo()
+                + "&phone_number=" + SPHandler.getInstance().getPhoneNo()
                 + "&instance_id=" + FirebaseInstanceId.getInstance().getToken();
 
         AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {
