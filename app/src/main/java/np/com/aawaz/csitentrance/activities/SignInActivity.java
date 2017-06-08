@@ -322,6 +322,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 .addOnFailureListener(this, new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        e.printStackTrace();
                         new EventSender().logEvent("attach_error");
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(SignInActivity.this, "Authentication failed.",
@@ -335,6 +336,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d("Debug", connectionResult.getErrorMessage());
     }
 
     @Override
