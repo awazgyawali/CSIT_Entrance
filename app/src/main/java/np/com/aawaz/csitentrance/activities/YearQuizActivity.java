@@ -3,7 +3,6 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -20,10 +19,8 @@ import android.view.MenuItem;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.devspark.robototextview.widget.RobotoTextView;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.appindexing.FirebaseUserActions;
+import com.google.firebase.appindexing.builders.Actions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
@@ -63,10 +60,8 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
     private SPHandler spHandler;
 
 
-    private GoogleApiClient mClient;
-    private Uri mUrl;
+    private String mUrl;
     private String mTitle;
-    private String mDescription;
 
     public static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();
@@ -111,37 +106,23 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
     }
 
     private void appIndexing() {
-        mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-        mUrl = Uri.parse("http://csitentrance.brainants.com/questions");
+        mUrl = "http://csitentrance.brainants.com/questions";
         mTitle = "BSc CSIT Entrance Qld Questions";
-        mDescription = "Play quiz or view all the old questions of BSc CSIT entrance exam.";
     }
 
-
-    public Action getAction() {
-        Thing object = new Thing.Builder()
-                .setName(mTitle)
-                .setDescription(mDescription)
-                .setUrl(mUrl)
-                .build();
-
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
+    public com.google.firebase.appindexing.Action getAction() {
+        return Actions.newView(mTitle, mUrl);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        mClient.connect();
-        AppIndex.AppIndexApi.start(mClient, getAction());
+        FirebaseUserActions.getInstance().start(getAction());
     }
 
     @Override
     public void onStop() {
-        AppIndex.AppIndexApi.end(mClient, getAction());
-        mClient.disconnect();
+        FirebaseUserActions.getInstance().end(getAction());
         super.onStop();
     }
 

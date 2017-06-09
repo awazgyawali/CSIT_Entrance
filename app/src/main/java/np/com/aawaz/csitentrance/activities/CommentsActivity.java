@@ -1,6 +1,5 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,10 +16,9 @@ import android.widget.ProgressBar;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.devspark.robototextview.widget.RobotoTextView;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.appindexing.Action;
+import com.google.firebase.appindexing.FirebaseUserActions;
+import com.google.firebase.appindexing.builders.Actions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -56,8 +54,7 @@ public class CommentsActivity extends AppCompatActivity {
 
     DatabaseReference reference;
 
-    private GoogleApiClient mClient;
-    private Uri mUrl;
+    private String mUrl;
     private String mTitle;
     private String mDescription;
 
@@ -96,40 +93,26 @@ public class CommentsActivity extends AppCompatActivity {
     }
 
     private void appIndexing() {
-        mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-        mUrl = Uri.parse("http://csitentrance.brainants.com/forum");
+        mUrl = "http://csitentrance.brainants.com/forum";
         mTitle = getIntent().getStringExtra("message");
         mDescription = "This app in includes all the discussion about entrance exam of BSc CSIT.";
     }
 
-
     public Action getAction() {
-        Thing object = new Thing.Builder()
-                .setName(mTitle)
-                .setDescription(mDescription)
-                .setUrl(mUrl)
-                .build();
-
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
+        return Actions.newView(mTitle, mUrl);
     }
 
     @Override
-    public void onStart() {
+    protected void onStart() {
         super.onStart();
-        mClient.connect();
-        AppIndex.AppIndexApi.start(mClient, getAction());
+        FirebaseUserActions.getInstance().start(getAction());
     }
 
     @Override
-    public void onStop() {
-        AppIndex.AppIndexApi.end(mClient, getAction());
-        mClient.disconnect();
+    protected void onStop() {
+        FirebaseUserActions.getInstance().end(getAction());
         super.onStop();
     }
-
 
     private void sendPostRequestThroughGraph(final String message) {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -199,7 +182,7 @@ public class CommentsActivity extends AppCompatActivity {
                 .input("Your message", message, false, new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                        Map<String, Object> map = new HashMap<String, Object>();
+                        Map<String, Object> map = new HashMap<>();
                         map.put("message", input.toString());
                         reference.child(key.get(position)).updateChildren(map);
                     }

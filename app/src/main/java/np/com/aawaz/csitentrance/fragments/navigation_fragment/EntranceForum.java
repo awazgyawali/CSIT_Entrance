@@ -219,7 +219,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
                 .input("Your message", message, false, new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                        Map<String, Object> map = new HashMap<String, Object>();
+                        Map<String, Object> map = new HashMap<>();
                         map.put("message", input.toString());
                         FirebaseDatabase.getInstance().getReference().child("forum").child(key.get(position)).updateChildren(map);
                     }

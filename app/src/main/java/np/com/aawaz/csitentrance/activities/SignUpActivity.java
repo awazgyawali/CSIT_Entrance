@@ -35,7 +35,7 @@ import np.com.aawaz.csitentrance.objects.EventSender;
 
 public class SignUpActivity extends AppCompatActivity {
     TextInputLayout name, email, password;
-    TextInputEditText nameText, emailText, passowrdText;
+    TextInputEditText nameText, emailText, passwordText;
     TextView buttonSignup;
     CircleImageView imageView;
     ProgressBar loading;
@@ -57,17 +57,17 @@ public class SignUpActivity extends AppCompatActivity {
 
         nameText = (TextInputEditText) findViewById(R.id.signUpName);
         emailText = (TextInputEditText) findViewById(R.id.signUpEmail);
-        passowrdText = (TextInputEditText) findViewById(R.id.signUpPassword);
+        passwordText = (TextInputEditText) findViewById(R.id.signUpPassword);
+
+        name = (TextInputLayout) findViewById(R.id.signUpNameLayout);
+        email = (TextInputLayout) findViewById(R.id.signUpEmailLayout);
+        password = (TextInputLayout) findViewById(R.id.signUpPasswordLayout);
 
         imageView = (CircleImageView) findViewById(R.id.profilePictureChooser);
 
         buttonSignup = (TextView) findViewById(R.id.buttonSignUp);
 
         loading = (ProgressBar) findViewById(R.id.loadingSignUp);
-
-        name = (TextInputLayout) nameText.getParent();
-        email = (TextInputLayout) emailText.getParent();
-        password = (TextInputLayout) passowrdText.getParent();
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +86,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (validateEverything()) {
                     buttonSignup.setVisibility(View.GONE);
                     loading.setVisibility(View.VISIBLE);
-                    firebaseAuth.createUserWithEmailAndPassword(emailText.getText().toString(), passowrdText.getText().toString())
+                    firebaseAuth.createUserWithEmailAndPassword(emailText.getText().toString(), passwordText.getText().toString())
                             .addOnSuccessListener(SignUpActivity.this, new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
@@ -121,10 +121,10 @@ public class SignUpActivity extends AppCompatActivity {
             flag = false;
         }
 
-        if (passowrdText.getText().length() == 0) {
+        if (passwordText.getText().length() == 0) {
             password.setError("Password cannot be empty.");
             flag = false;
-        } else if (passowrdText.getText().length() < 6) {
+        } else if (passwordText.getText().length() < 6) {
             password.setError("Password must be longer than 6 characters..");
             flag = false;
         }
@@ -148,7 +148,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         StorageReference storageRef = storage.getReferenceFromUrl("gs://csit-entrance-7d58.appspot.com");
 
-        StorageReference imagesRef = storageRef.child("profile_pictures").child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString() + ".jpg");
+        StorageReference imagesRef = storageRef.child("profile_pictures").child(FirebaseAuth.getInstance().getCurrentUser().getUid() + ".jpg");
 
         imageView.setDrawingCacheEnabled(true);
         imageView.buildDrawingCache();

@@ -19,7 +19,7 @@
 
     <color name="background_1">#f44336</color>
 
-    <color name="white_transparent">#80ffffff</color>
+    <color name="white_transparent">#eeffffff</color>
 
     <color name="colorSelected">#4CAF50</color>
     <color name="colorUnselected">#e0e0e0</color>
@@ -27,4 +27,5 @@
     <color name="black_overlay">#66000000</color>
 
     <color name="divider">#bcbcbc</color>
+    <color name="transparent" >#00000000</color>
 </resources>

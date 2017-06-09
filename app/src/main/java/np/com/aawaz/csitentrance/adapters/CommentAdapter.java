@@ -36,17 +36,17 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.comment.setText(comments.get(position).message);
-        holder.commenter.setText(comments.get(position).author);
-        holder.time.setText(DateUtils.getRelativeTimeSpanString(comments.get(position).time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        holder.comment.setText(comments.get(holder.getAdapterPosition()).message);
+        holder.commenter.setText(comments.get(holder.getAdapterPosition()).author);
+        holder.time.setText(DateUtils.getRelativeTimeSpanString(comments.get(holder.getAdapterPosition()).time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
         Picasso.with(MyApplication.getAppContext())
-                .load(comments.get(position).image_url)
+                .load(comments.get(holder.getAdapterPosition()).image_url)
                 .into(holder.circleImageView);
         holder.core.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                clickEventListener.itemLongClicked(v, position);
+                clickEventListener.itemLongClicked(v, holder.getAdapterPosition());
                 return true;
             }
         });

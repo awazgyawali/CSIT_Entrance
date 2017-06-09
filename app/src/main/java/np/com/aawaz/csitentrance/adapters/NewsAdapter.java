@@ -50,16 +50,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.title.setText(news.get(position).title);
-        holder.newsDetail.setText(Html.fromHtml(news.get(position).message));
-        holder.time.setText(convertToSimpleDate(news.get(position).time_stamp));
+        holder.title.setText(news.get(holder.getAdapterPosition()).title);
+        holder.newsDetail.setText(Html.fromHtml(news.get(holder.getAdapterPosition()).message));
+        holder.time.setText(convertToSimpleDate(news.get(holder.getAdapterPosition()).time_stamp));
 
-        if (news.get(position).image_url.equals("null"))
+        if (news.get(holder.getAdapterPosition()).image_url.equals("null"))
             holder.imageView.setVisibility(View.GONE);
         else {
             holder.imageView.setVisibility(View.VISIBLE);
             Picasso.with(context)
-                    .load(news.get(position).image_url)
+                    .load(news.get(holder.getAdapterPosition()).image_url)
                     .into(holder.imageView);
         }
         holder.core.setOnClickListener(new View.OnClickListener() {
@@ -67,12 +67,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             public void onClick(View v) {
 
                 Bundle bundle = new Bundle();
-                bundle.putString("title", news.get(position).title);
-                bundle.putString("detail", news.get(position).message);
-                bundle.putLong("time", news.get(position).time_stamp);
-                bundle.putString("image_link", news.get(position).image_url);
+                bundle.putString("title", news.get(holder.getAdapterPosition()).title);
+                bundle.putString("detail", news.get(holder.getAdapterPosition()).message);
+                bundle.putLong("time", news.get(holder.getAdapterPosition()).time_stamp);
+                bundle.putString("image_link", news.get(holder.getAdapterPosition()).image_url);
 
-                if (news.get(position).image_url.equals("null"))
+                if (news.get(holder.getAdapterPosition()).image_url.equals("null"))
                     context.startActivity(new Intent(context, EachNews.class).putExtra("data", bundle));
                 else {
                     if (Build.VERSION.SDK_INT >= 21)

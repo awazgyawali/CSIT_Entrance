@@ -1,7 +1,6 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -27,10 +26,8 @@ import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.devspark.robototextview.widget.RobotoTextView;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.appindexing.FirebaseUserActions;
+import com.google.firebase.appindexing.builders.Actions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -57,10 +54,8 @@ public class EntranceResult extends Fragment {
     private InputMethodManager imm;
 
 
-    private GoogleApiClient mClient;
-    private Uri mUrl;
+    private String mUrl;
     private String mTitle;
-    private String mDescription;
 
     private void workForViewingResult() {
         resultButton.setOnClickListener(new View.OnClickListener() {
@@ -169,37 +164,23 @@ public class EntranceResult extends Fragment {
     }
 
     private void appIndexing() {
-        mClient = new GoogleApiClient.Builder(getContext()).addApi(AppIndex.API).build();
-        mUrl = Uri.parse("http://csitentrance.brainants.com/result");
+        mUrl = "http://csitentrance.brainants.com/result";
         mTitle = "BSc CSIT Entrance Exam Result";
-        mDescription = "View entrance result of 2073.";
     }
 
-
-    public Action getAction() {
-        Thing object = new Thing.Builder()
-                .setName(mTitle)
-                .setDescription(mDescription)
-                .setUrl(mUrl)
-                .build();
-
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
+    public com.google.firebase.appindexing.Action getAction() {
+        return Actions.newView(mTitle, mUrl);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        mClient.connect();
-        AppIndex.AppIndexApi.start(mClient, getAction());
+        FirebaseUserActions.getInstance().start(getAction());
     }
 
     @Override
     public void onStop() {
-        AppIndex.AppIndexApi.end(mClient, getAction());
-        mClient.disconnect();
+        FirebaseUserActions.getInstance().end(getAction());
         super.onStop();
     }
 

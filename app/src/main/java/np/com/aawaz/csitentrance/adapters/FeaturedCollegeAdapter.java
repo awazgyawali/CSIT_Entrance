@@ -38,30 +38,30 @@ public class FeaturedCollegeAdapter extends RecyclerView.Adapter<FeaturedCollege
     }
 
     @Override
-    public void onBindViewHolder(VH holder, final int position) {
+    public void onBindViewHolder(final VH holder, final int position) {
         Picasso.with(context)
-                .load(colleges.get(position).banner_image)
+                .load(colleges.get(holder.getAdapterPosition()).banner_image)
                 .into(holder.banner);
 
         Picasso.with(context)
-                .load(colleges.get(position).profile_image)
+                .load(colleges.get(holder.getAdapterPosition()).profile_image)
                 .into(holder.profilePic);
-        holder.name.setText(colleges.get(position).name);
-        holder.address.setText(colleges.get(position).address);
-        holder.detail.setText(colleges.get(position).detail);
+        holder.name.setText(colleges.get(holder.getAdapterPosition()).name);
+        holder.address.setText(colleges.get(holder.getAdapterPosition()).address);
+        holder.detail.setText(colleges.get(holder.getAdapterPosition()).detail);
 
         holder.call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new MaterialDialog.Builder(context)
                         .title("Call Confirmation")
-                        .content("Call " + colleges.get(position).phone + "?")
+                        .content("Call " + colleges.get(holder.getAdapterPosition()).phone + "?")
                         .positiveText("Call")
                         .negativeText("Cancel")
                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", String.valueOf(colleges.get(position).phone), null)));
+                                context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", String.valueOf(colleges.get(holder.getAdapterPosition()).phone), null)));
                             }
                         })
                         .show();
@@ -73,13 +73,13 @@ public class FeaturedCollegeAdapter extends RecyclerView.Adapter<FeaturedCollege
             public void onClick(View v) {
                 new MaterialDialog.Builder(context)
                         .title("Confirmation.")
-                        .content("Open " + colleges.get(position).website + "?")
+                        .content("Open " + colleges.get(holder.getAdapterPosition()).website + "?")
                         .positiveText("Open")
                         .negativeText("Cancel")
                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(colleges.get(position).website)));
+                                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(colleges.get(holder.getAdapterPosition()).website)));
                             }
                         })
                         .show();

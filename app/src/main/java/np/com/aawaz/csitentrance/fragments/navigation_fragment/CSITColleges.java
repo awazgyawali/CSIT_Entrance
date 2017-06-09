@@ -1,7 +1,6 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -12,10 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.appindexing.Action;
+import com.google.firebase.appindexing.FirebaseUserActions;
+import com.google.firebase.appindexing.builders.Actions;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
@@ -26,55 +24,39 @@ public class CSITColleges extends Fragment {
     TabLayout tabLayout;
     ViewPager viewPager;
 
-    private GoogleApiClient mClient;
-    private Uri mUrl;
+    private String mUrl;
     private String mTitle;
-    private String mDescription;
 
     public CSITColleges() {
         // Required empty public constructor
     }
 
-    public static CSITColleges newInstance(String param1, String param2) {
+    public static CSITColleges newInstance() {
         return new CSITColleges();
     }
 
 
     private void appIndexing() {
-        mClient = new GoogleApiClient.Builder(getContext()).addApi(AppIndex.API).build();
-        mUrl = Uri.parse("http://csitentrance.brainants.com/colleges");
+        mUrl = "http://csitentrance.brainants.com/colleges";
         mTitle = "Colleges of Bsc CSIT in Nepal";
-        mDescription = "Get list of all BSc CSIT Colleges with their contact detail all around Nepal.";
     }
 
 
     public Action getAction() {
-        Thing object = new Thing.Builder()
-                .setName(mTitle)
-                .setDescription(mDescription)
-                .setUrl(mUrl)
-                .build();
-
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
+        return Actions.newView(mTitle, mUrl);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        mClient.connect();
-        AppIndex.AppIndexApi.start(mClient, getAction());
+        FirebaseUserActions.getInstance().start(getAction());
     }
 
     @Override
     public void onStop() {
-        AppIndex.AppIndexApi.end(mClient, getAction());
-        mClient.disconnect();
+        FirebaseUserActions.getInstance().end(getAction());
         super.onStop();
     }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

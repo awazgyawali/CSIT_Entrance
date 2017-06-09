@@ -139,6 +139,7 @@ public class Settings extends AppCompatActivity implements GoogleApiClient.OnCon
                     .addApi(Auth.GOOGLE_SIGN_IN_API, options)
                     .build();
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
         connectGoogle.setOnClickListener(new View.OnClickListener() {

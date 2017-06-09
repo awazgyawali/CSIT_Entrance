@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.devspark.robototextview.widget.RobotoTextView;
 import com.facebook.CallbackManager;
@@ -30,8 +29,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
@@ -50,18 +51,17 @@ import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     private static final int RC_SIGN_IN = 1001;
-    CardView facebook, google, email;
+    CardView facebook, google;
     GoogleApiClient client;
     private FirebaseAuth mAuth;
 
     private CallbackManager callBackManager;
-    private TextInputEditText username = null,
-            password = null;
-
 
     ProgressBar progressBar;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private boolean processing = false;
+    private TextInputEditText username, password;
+    private CardView signIn;
 
     public SignInActivity() {
         // Required empty public constructor
@@ -73,6 +73,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
@@ -83,15 +84,15 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                Log.d("Debug", "Login state changed");
                 if (user != null) {
                     FirebaseMessaging.getInstance().subscribeToTopic("news");
                     FirebaseMessaging.getInstance().subscribeToTopic("forum");
-                    if (SPHandler.getInstance().getPhoneNo() == null) {
+                    if (user.getPhoneNumber() == null) {
                         startActivity(new Intent(SignInActivity.this, PhoneNoActivity.class)
                                 .putExtra("fragment", getIntent().getStringExtra("fragment")));
                         finish();
                     } else {
+                        SPHandler.getInstance().setPhoneNo(user.getPhoneNumber());
                         startActivity(new Intent(SignInActivity.this, MainActivity.class)
                                 .putExtra("fragment", getIntent().getStringExtra("fragment")));
                         finish();
@@ -140,76 +141,46 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     }
 
     private void handleSignInButton() {
-        email.setOnClickListener(new View.OnClickListener() {
+        signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MaterialDialog dialog = setupEmailSignInDialog();
-
-                dialog.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
-                dialog.show();
+                if (username.getText().length() != 0 && password.getText().length() != 0) {
+                    signIn.setVisibility(View.INVISIBLE);
+                    progressBar.setVisibility(View.VISIBLE);
+                    mAuth.signInWithEmailAndPassword(username.getText().toString(), password.getText().toString())
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    signIn.setVisibility(View.VISIBLE);
+                                    progressBar.setVisibility(View.INVISIBLE);
+                                    password.clearComposingText();
+                                    Snackbar.make(findViewById(R.id.mainSignInView), "Invalid username password.", Snackbar.LENGTH_SHORT).setAction("Forgot password?", new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            forgotPassword();
+                                        }
+                                    }).show();
+                                }
+                            });
+                }
             }
         });
-
     }
 
-    public MaterialDialog setupEmailSignInDialog() {
-        MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .title("Sign in with e-mail")
-                .icon(ContextCompat.getDrawable(this, R.drawable.email))
-                .positiveText("Sign In")
-                .neutralText("Forgot Password")
-                .autoDismiss(false)
-                .customView(R.layout.email_login, false)
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
+    private void forgotPassword() {
+        new MaterialDialog.Builder(this).title("Forgot password")
+                .input("Email to sent reset link.", username.getText().toString(), false, new MaterialDialog.InputCallback() {
                     @Override
-                    public void onClick(@NonNull final MaterialDialog dialog, @NonNull DialogAction which) {
-                        if (username.getText().length() != 0 && password.getText().length() != 0) {
-                            dialog.setCancelable(false);
-                            dialog.getActionButton(DialogAction.POSITIVE).setText("Signing in...");
-                            mAuth.signInWithEmailAndPassword(username.getText().toString(), password.getText().toString())
-                                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                        @Override
-                                        public void onSuccess(AuthResult authResult) {
-                                            dialog.dismiss();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            dialog.setCancelable(true);
-                                            dialog.getActionButton(DialogAction.POSITIVE).setText("Sign In");
-                                            ((TextInputLayout) username.getParent()).setError("Email or password didn't match.");
-                                        }
-                                    });
-                        }
-                    }
-                })
-                .onNeutral(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        new MaterialDialog.Builder(SignInActivity.this)
-                                .title("Forgot Password")
-                                .input("Email", "", false, new MaterialDialog.InputCallback() {
+                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                        mAuth.sendPasswordResetEmail(input.toString())
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
-                                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                                        mAuth.sendPasswordResetEmail(input.toString())
-                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void aVoid) {
-                                                        Toast.makeText(SignInActivity.this, "Email has been sent!", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                });
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(SignInActivity.this, "Email has been sent!", Toast.LENGTH_SHORT).show();
                                     }
-                                })
-                                .show();
+                                });
                     }
-                })
-                .build();
-
-        username = (TextInputEditText) dialog.getView().findViewById(R.id.username);
-        password = (TextInputEditText) dialog.getView().findViewById(R.id.password);
-
-        return dialog;
+                });
     }
 
     private void handleGoogle() {
@@ -276,8 +247,10 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     public void setupViews() {
         google = (CardView) findViewById(R.id.loginGoogle);
         facebook = (CardView) findViewById(R.id.loginFacebook);
-        email = (CardView) findViewById(R.id.loginEmail);
+        username = (TextInputEditText) findViewById(R.id.username);
+        password = (TextInputEditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.processing);
+        signIn = (CardView) findViewById(R.id.signIn);
     }
 
     @Override
@@ -312,11 +285,10 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     public void attachCredToFirebase(AuthCredential credential) {
         progressBar.setVisibility(View.VISIBLE);
         mAuth.signInWithCredential(credential)
-                .addOnSuccessListener(this, new OnSuccessListener<AuthResult>() {
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onSuccess(AuthResult authResult) {
-                        progressBar.setVisibility(View.GONE);
-                        Log.d("Debug", "Successful");
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d("Debug","Callback received.");
                     }
                 })
                 .addOnFailureListener(this, new OnFailureListener() {
@@ -325,7 +297,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                         e.printStackTrace();
                         new EventSender().logEvent("attach_error");
                         progressBar.setVisibility(View.GONE);
-                        Toast.makeText(SignInActivity.this, "Authentication failed.",
+                        Toast.makeText(SignInActivity.this, "Authentication failed. Try another login option.",
                                 Toast.LENGTH_SHORT).show();
                         processing = false;
                     }
@@ -336,7 +308,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d("Debug", connectionResult.getErrorMessage());
     }
 
     @Override

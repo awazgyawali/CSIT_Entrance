@@ -105,6 +105,8 @@ public class PhoneNoActivity extends AppCompatActivity {
             }
         });
 
+        phone.setText(SPHandler.getInstance().getPhoneNo());
+
         mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             @Override
@@ -140,6 +142,7 @@ public class PhoneNoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (c_code.getText().toString().length() > 1) {
+                    SPHandler.getInstance().setPhoneNo(phone.getText().toString());
                     PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
                             60,
                             TimeUnit.SECONDS,
@@ -160,7 +163,7 @@ public class PhoneNoActivity extends AppCompatActivity {
         });
     }
 
-    private void onVerified(PhoneAuthCredential credential) {
+    private void onVerified() {
         SPHandler.getInstance().setPhoneNo(phone.getText().toString());
         startActivity(new Intent(PhoneNoActivity.this, MainActivity.class)
                 .putExtra("fragment", getIntent().getStringExtra("fragment")));
@@ -180,7 +183,7 @@ public class PhoneNoActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             verifying.dismiss();
-                            onVerified(credential);
+                            onVerified();
                         } else {
                             verifying.dismiss();
                             Toast.makeText(PhoneNoActivity.this, "Invalid verification code.", Toast.LENGTH_SHORT).show();

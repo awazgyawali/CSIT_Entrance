@@ -234,7 +234,7 @@ public class SPHandler {
     }
 
     public int getTimesPlayed() {
-        return infoSp.getInt("times_played",2);
+        return infoSp.getInt("times_played", 2);
     }
 
 }
