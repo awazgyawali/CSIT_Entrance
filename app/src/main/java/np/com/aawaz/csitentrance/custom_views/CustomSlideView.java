@@ -33,7 +33,7 @@ public class CustomSlideView extends BaseSliderView {
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", getBundle().getString("phone_no"), null)));
+                context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", String.valueOf(getBundle().getLong("phone_no")), null)));
             }
         });
 

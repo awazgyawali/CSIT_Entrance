@@ -24,7 +24,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,7 +38,7 @@ import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
-public class Settings extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class SettingsActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     boolean newsSub,
             forumSub;
@@ -54,7 +57,7 @@ public class Settings extends AppCompatActivity implements GoogleApiClient.OnCon
         setSupportActionBar((Toolbar) findViewById(R.id.toolbarSetting));
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Settings");
+        getSupportActionBar().setTitle("SettingsActivity");
 
         news = (SwitchCompat) findViewById(R.id.notifNews);
         forum = (SwitchCompat) findViewById(R.id.notifForum);
@@ -71,9 +74,9 @@ public class Settings extends AppCompatActivity implements GoogleApiClient.OnCon
             @Override
             public void onClick(View v) {
                 if (newsSub)
-                    FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("new");
                 else
-                    FirebaseMessaging.getInstance().subscribeToTopic("news");
+                    FirebaseMessaging.getInstance().subscribeToTopic("new");
                 newsSub = !newsSub;
                 SPHandler.getInstance().setNewsSubscribed(newsSub);
             }
@@ -83,9 +86,9 @@ public class Settings extends AppCompatActivity implements GoogleApiClient.OnCon
             @Override
             public void onClick(View v) {
                 if (forumSub)
-                    FirebaseMessaging.getInstance().unsubscribeFromTopic("forum");
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("forums");
                 else
-                    FirebaseMessaging.getInstance().subscribeToTopic("forum");
+                    FirebaseMessaging.getInstance().subscribeToTopic("forums");
                 forumSub = !forumSub;
                 SPHandler.getInstance().setForumSubscribed(forumSub);
             }
@@ -93,7 +96,7 @@ public class Settings extends AppCompatActivity implements GoogleApiClient.OnCon
         clearAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MaterialDialog.Builder(Settings.this)
+                new MaterialDialog.Builder(SettingsActivity.this)
                         .title("Confirmation")
                         .content("This will delete your progress for all years quiz and even from the leader board.")
                         .positiveText("Clear all")
@@ -112,9 +115,13 @@ public class Settings extends AppCompatActivity implements GoogleApiClient.OnCon
     }
 
     private void handleConnections() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         handleFacebook();
         handleGoogle();
+        checkAttachment();
+    }
+
+    private void checkAttachment() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         for (String provider : user.getProviders()) {
             if (provider.equals("facebook.com")) {
                 connectFb.setText("Connected with Facebook");
@@ -163,12 +170,12 @@ public class Settings extends AppCompatActivity implements GoogleApiClient.OnCon
 
             @Override
             public void onCancel() {
-                Toast.makeText(Settings.this, "User aborted connection.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SettingsActivity.this, "User aborted connection.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException error) {
-                Toast.makeText(Settings.this, "Unable to connect connection.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SettingsActivity.this, "Unable to connect connection.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -181,13 +188,19 @@ public class Settings extends AppCompatActivity implements GoogleApiClient.OnCon
         changeNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Settings.this, PhoneNoActivity.class));
+                startActivity(new Intent(SettingsActivity.this, PhoneNoActivity.class));
             }
         });
     }
 
     private void addAccount(AuthCredential credential) {
-        FirebaseAuth.getInstance().getCurrentUser().linkWithCredential(credential);
+        FirebaseAuth.getInstance().getCurrentUser().linkWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                checkAttachment();
+            }
+        });
+
     }
 
     private void removeAllTheProgress() {

@@ -7,18 +7,19 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.IBinder;
-import android.support.v4.os.AsyncTaskCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.io.IOException;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.SPHandler;
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -60,25 +61,24 @@ public class ScoreUploader extends Service {
                 + "&phone_number=" + SPHandler.getInstance().getPhoneNo()
                 + "&instance_id=" + FirebaseInstanceId.getInstance().getToken();
 
-        AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
             @Override
-            protected Void doInBackground(Void... params) {
+            public void onFailure(Call call, IOException e) {
+                ScoreUploader.this.stopSelf();
+            }
 
-                OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder()
-                        .url(url)
-                        .build();
-                try {
-                    Response response = client.newCall(request).execute();
-                    if (response.isSuccessful())
-                        SPHandler.getInstance().setScoreChanged(false);
-                    stopSelf();
-                } catch (IOException e) {
-                    ScoreUploader.this.stopSelf();
-                }
-                return null;
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful())
+                    SPHandler.getInstance().setScoreChanged(false);
+                stopSelf();
             }
         });
+
     }
 
     @Override

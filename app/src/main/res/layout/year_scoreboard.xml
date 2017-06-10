@@ -13,13 +13,13 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <com.devspark.robototextview.widget.RobotoTextView
+        <TextView
             android:id="@+id/titleScoreboardCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tu Examination 2069"
             android:textColor="@color/colorPrimary"
-            app:typeface="roboto_bold" />
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
@@ -41,7 +41,7 @@
                     android:text="Played"
                     android:textColor="@color/colorPrimaryText" />
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:id="@+id/playedScoreboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                     android:text="65"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -58,7 +58,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
@@ -66,7 +66,7 @@
                     android:text="Scored"
                     android:textColor="@color/colorPrimaryText" />
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:id="@+id/scoreScoreboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                     android:text="45"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -83,7 +83,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
@@ -91,7 +91,7 @@
                     android:text="Accuracy"
                     android:textColor="@color/colorPrimaryText" />
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:id="@+id/accuracyScoreboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
                     android:text="35.7%"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorAccent"
-                    app:typeface="roboto_bold" />
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

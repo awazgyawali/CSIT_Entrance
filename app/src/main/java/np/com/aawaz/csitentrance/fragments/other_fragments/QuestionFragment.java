@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.google.firebase.database.FirebaseDatabase;
 
 import mehdi.sakout.fancybuttons.FancyButton;
@@ -28,7 +27,7 @@ import np.com.aawaz.csitentrance.objects.SPHandler;
 public class QuestionFragment extends Fragment implements View.OnClickListener {
 
     QuizTextView question, option1, option2, option3, option4;
-    RobotoTextView questionRo, option1Ro, option2Ro, option3Ro, option4Ro;
+    TextView questionRo, option1Ro, option2Ro, option3Ro, option4Ro;
     RelativeLayout option1Listener, option2Listener, option3Listener, option4Listener;
     FancyButton option1Selected, option2Selected, option3Selected, option4Selected;
 
@@ -93,11 +92,11 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         option3 = (QuizTextView) view.findViewById(R.id.optionWeb3);
         option4 = (QuizTextView) view.findViewById(R.id.optionWeb4);
 
-        questionRo = (RobotoTextView) view.findViewById(R.id.questionRobo);
-        option1Ro = (RobotoTextView) view.findViewById(R.id.optionRobo1);
-        option2Ro = (RobotoTextView) view.findViewById(R.id.optionRobo2);
-        option3Ro = (RobotoTextView) view.findViewById(R.id.optionRobo3);
-        option4Ro = (RobotoTextView) view.findViewById(R.id.optionRobo4);
+        questionRo = (TextView) view.findViewById(R.id.questionRobo);
+        option1Ro = (TextView) view.findViewById(R.id.optionRobo1);
+        option2Ro = (TextView) view.findViewById(R.id.optionRobo2);
+        option3Ro = (TextView) view.findViewById(R.id.optionRobo3);
+        option4Ro = (TextView) view.findViewById(R.id.optionRobo4);
 
         option1Listener = (RelativeLayout) view.findViewById(R.id.option1);
         option2Listener = (RelativeLayout) view.findViewById(R.id.option2);
@@ -125,7 +124,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
 
         FancyButton tag = (FancyButton) view.findViewById(R.id.subjectTag);
-        RobotoTextView yearTitleQuiz = (RobotoTextView) view.findViewById(R.id.yearTitleQuiz);
+        TextView yearTitleQuiz = (TextView) view.findViewById(R.id.yearTitleQuiz);
         yearTitleQuiz.setText(getResources().getStringArray(R.array.years)[getArguments().getInt("code")]);
 
         if (getArguments().getString("subject") == null) {

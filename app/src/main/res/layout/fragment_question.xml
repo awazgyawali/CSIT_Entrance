@@ -31,7 +31,7 @@
                     android:layout_margin="5dp"
                     android:gravity="center">
 
-                    <com.devspark.robototextview.widget.RobotoTextView
+                    <TextView
                         android:id="@+id/yearTitleQuiz"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                         android:layout_weight="1"
                         android:text="Model Question 1"
                         android:textColor="@color/colorPrimary"
-                        app:typeface="roboto_bold" />
+                        android:textStyle="bold" />
 
 
                     <mehdi.sakout.fancybuttons.FancyButton
@@ -66,7 +66,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
-                    <com.devspark.robototextview.widget.RobotoTextView
+                    <TextView
                         android:id="@+id/questionRobo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -76,15 +76,15 @@
                         android:textSize="17sp" />
 
                     <TextView
+                        android:id="@+id/report_bug"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginBottom="5dp"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentRight="true"
-                        android:id="@+id/report_bug"
-                        android:text="Report"
-                        android:src="@drawable/bug" />
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/bug"
+                        android:text="Report" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -131,7 +131,7 @@
                             android:layout_centerInParent="true"
                             android:layout_margin="2dp" />
 
-                        <com.devspark.robototextview.widget.RobotoTextView
+                        <TextView
                             android:id="@+id/optionRobo1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -174,7 +174,7 @@
                             android:layout_centerInParent="true"
                             android:layout_margin="2dp" />
 
-                        <com.devspark.robototextview.widget.RobotoTextView
+                        <TextView
                             android:id="@+id/optionRobo2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -224,7 +224,7 @@
                             android:layout_centerInParent="true"
                             android:layout_margin="2dp" />
 
-                        <com.devspark.robototextview.widget.RobotoTextView
+                        <TextView
                             android:id="@+id/optionRobo3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -268,7 +268,7 @@
                             android:layout_centerInParent="true"
                             android:layout_margin="2dp" />
 
-                        <com.devspark.robototextview.widget.RobotoTextView
+                        <TextView
                             android:id="@+id/optionRobo4"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -303,7 +303,7 @@
             app:cardBackgroundColor="@color/colorPrimary"
             app:cardCornerRadius="10dp">
 
-            <com.devspark.robototextview.widget.RobotoTextView
+            <TextView
                 android:id="@+id/submit_button_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -313,7 +313,7 @@
                 android:text="SUBMIT"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/white"
-                app:typeface="roboto_bold" />
+                android:textStyle="bold" />
         </android.support.v7.widget.CardView>
     </RelativeLayout>
 

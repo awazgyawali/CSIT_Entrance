@@ -17,13 +17,13 @@
             android:layout_height="wrap_content"
             android:theme="@style/Theme.AppCompat.NoActionBar">
 
-            <com.devspark.robototextview.widget.RobotoTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Full Question"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/white"
-                app:typeface="roboto_bold" />
+                android:textStyle="bold" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -34,7 +34,7 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.devspark.robototextview.widget.RobotoTextView
+        <TextView
             android:id="@+id/titleFullQuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             android:padding="10dp"
             android:text="Tu Examination Year 2069"
             android:textColor="@color/colorPrimary"
-            app:typeface="roboto_bold" />
+            android:textStyle="bold" />
 
 
         <RelativeLayout

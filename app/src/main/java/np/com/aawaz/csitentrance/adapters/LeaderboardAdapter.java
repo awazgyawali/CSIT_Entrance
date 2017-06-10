@@ -6,8 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.devspark.robototextview.widget.RobotoTextView;
 
 import java.util.ArrayList;
 
@@ -45,13 +45,13 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        RobotoTextView name, score, numbering;
+        TextView name, score, numbering;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            numbering = (RobotoTextView) itemView.findViewById(R.id.numbering);
-            name = (RobotoTextView) itemView.findViewById(R.id.scoreboardName);
-            score = (RobotoTextView) itemView.findViewById(R.id.scoreboardScore);
+            numbering = (TextView) itemView.findViewById(R.id.numbering);
+            name = (TextView) itemView.findViewById(R.id.scoreboardName);
+            score = (TextView) itemView.findViewById(R.id.scoreboardScore);
         }
     }
 }

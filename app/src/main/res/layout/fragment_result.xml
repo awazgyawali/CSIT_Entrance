@@ -32,22 +32,22 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Result is not live yet."
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white"
-                    fancy:typeface="roboto_bold" />
+                    android:textStyle="bold" />
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="We will notify you once the result has been published."
                     android:textColor="@color/white_transparent"
-                    fancy:typeface="roboto_italic" />
+                    android:textStyle="italic" />
 
             </LinearLayout>
 
@@ -57,22 +57,22 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Result is live now."
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white"
-                    fancy:typeface="roboto_bold" />
+                    android:textStyle="bold" />
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Please enter your Roll no to view your result."
                     android:textColor="@color/white_transparent"
-                    fancy:typeface="roboto_italic" />
+                    android:textStyle="italic" />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -147,7 +147,7 @@
                 android:layout_centerInParent="true"
                 android:theme="@style/WhiteProgressBar" />
 
-            <com.devspark.robototextview.widget.RobotoTextView
+            <TextView
                 android:id="@+id/resultHolder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

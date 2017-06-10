@@ -5,8 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.devspark.robototextview.widget.RobotoTextView;
 
 import java.util.ArrayList;
 
@@ -44,12 +44,12 @@ public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.VH> {
     }
 
     public class VH extends RecyclerView.ViewHolder {
-        RobotoTextView question, answer;
+        TextView question, answer;
 
         public VH(View itemView) {
             super(itemView);
-            question = (RobotoTextView) itemView.findViewById(R.id.question);
-            answer = (RobotoTextView) itemView.findViewById(R.id.answer);
+            question = (TextView) itemView.findViewById(R.id.question);
+            answer = (TextView) itemView.findViewById(R.id.answer);
         }
     }
 }

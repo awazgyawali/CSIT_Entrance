@@ -5,13 +5,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.devspark.robototextview.widget.RobotoTextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="Your Accuracy"
         android:textColor="@color/colorPrimary"
-        custom:typeface="roboto_bold" />
+        android:textStyle="bold" />
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
                         custom:arc_text_color="@color/physics"
                         custom:arc_unfinished_color="@color/background" />
 
-                    <com.devspark.robototextview.widget.RobotoTextView
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -71,7 +71,7 @@
                         custom:arc_text_color="@color/chemistry"
                         custom:arc_unfinished_color="@color/background" />
 
-                    <com.devspark.robototextview.widget.RobotoTextView
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -103,7 +103,7 @@
                         custom:arc_text_color="@color/math"
                         custom:arc_unfinished_color="@color/background" />
 
-                    <com.devspark.robototextview.widget.RobotoTextView
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -128,7 +128,7 @@
                         custom:arc_text_color="@color/english"
                         custom:arc_unfinished_color="@color/background" />
 
-                    <com.devspark.robototextview.widget.RobotoTextView
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -146,15 +146,15 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
-        <com.devspark.robototextview.widget.RobotoTextView
+        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Your Scores"
             android:textColor="@color/colorPrimary"
-            custom:typeface="roboto_bold" />
+            android:textStyle="bold" />
 
-        <com.devspark.robototextview.widget.RobotoTextView
+        <TextView
             android:id="@+id/totalScoreScoreboard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -162,7 +162,7 @@
             android:gravity="right"
             android:text="Total: 530"
             android:textColor="@color/colorAccent"
-            custom:typeface="roboto_bold_italic" />
+            android:textStyle="bold|italic" />
     </LinearLayout>
 
 </LinearLayout>

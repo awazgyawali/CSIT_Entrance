@@ -2,8 +2,8 @@ package np.com.aawaz.csitentrance.custom_views;
 
 
 import android.view.View;
+import android.widget.TextView;
 
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.github.lzyzsd.circleprogress.ArcProgress;
 
 import np.com.aawaz.csitentrance.R;
@@ -31,7 +31,7 @@ public class EachScoreboard {
         ArcProgress chemArc = (ArcProgress) view.findViewById(R.id.arc_chem);
         ArcProgress mathArc = (ArcProgress) view.findViewById(R.id.arc_math);
         ArcProgress engArc = (ArcProgress) view.findViewById(R.id.arc_english);
-        RobotoTextView totalScore = (RobotoTextView) view.findViewById(R.id.totalScoreScoreboard);
+        TextView totalScore = (TextView) view.findViewById(R.id.totalScoreScoreboard);
 
         phyArc.setProgress(spHandler.getAccuracy(SPHandler.PHYSICS));
         chemArc.setProgress(spHandler.getAccuracy(SPHandler.CHEMISTRY));
@@ -47,10 +47,10 @@ public class EachScoreboard {
         String[] spTexts = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072,
                 SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4};
 
-        RobotoTextView title = (RobotoTextView) view.findViewById(R.id.titleScoreboardCard);
-        RobotoTextView played = (RobotoTextView) view.findViewById(R.id.playedScoreboard);
-        RobotoTextView score = (RobotoTextView) view.findViewById(R.id.scoreScoreboard);
-        RobotoTextView accuracy = (RobotoTextView) view.findViewById(R.id.accuracyScoreboard);
+        TextView title = (TextView) view.findViewById(R.id.titleScoreboardCard);
+        TextView played = (TextView) view.findViewById(R.id.playedScoreboard);
+        TextView score = (TextView) view.findViewById(R.id.scoreScoreboard);
+        TextView accuracy = (TextView) view.findViewById(R.id.accuracyScoreboard);
 
         title.setText(titles[position]);
         played.setText(spHandler.getPlayed(spTexts[position]) + "");

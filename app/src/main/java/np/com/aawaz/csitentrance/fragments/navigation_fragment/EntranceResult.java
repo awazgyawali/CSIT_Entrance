@@ -15,17 +15,12 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
 import com.google.firebase.database.DataSnapshot;
@@ -36,11 +31,11 @@ import com.truizlop.fabreveallayout.FABRevealLayout;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.custom_views.CustomSlideView;
-import np.com.aawaz.csitentrance.misc.Singleton;
+import np.com.aawaz.csitentrance.interfaces.ResponseListener;
 import np.com.aawaz.csitentrance.objects.SPHandler;
+import np.com.aawaz.csitentrance.services.NetworkRequester;
 
 public class EntranceResult extends Fragment {
-    RequestQueue requestQueue;
     FloatingActionButton resultButton;
 
     ViewSwitcher resultViewSwitcher;
@@ -48,7 +43,7 @@ public class EntranceResult extends Fragment {
     FABRevealLayout revealLayout;
 
     ProgressBar progressBarResult, adLoading;
-    RobotoTextView resultHolder;
+    TextView resultHolder;
     ImageView cross;
     SliderLayout adSlider;
     private InputMethodManager imm;
@@ -65,9 +60,10 @@ public class EntranceResult extends Fragment {
                 imm.hideSoftInputFromWindow(rollNo.getWindowToken(), 0);
                 progressBarResult.setVisibility(View.VISIBLE);
                 resultHolder.setVisibility(View.GONE);
-                StringRequest request = new StringRequest(Request.Method.GET, getString(R.string.viewResult) + rollNo.getText(), new Response.Listener<String>() {
+
+                new NetworkRequester(getString(R.string.viewResult) + rollNo.getText(), new ResponseListener() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onSuccess(String response) {
                         resultHolder.setVisibility(View.VISIBLE);
                         progressBarResult.setVisibility(View.GONE);
                         if (response.contains("null")) {
@@ -75,17 +71,15 @@ public class EntranceResult extends Fragment {
                         } else {
                             resultHolder.setText(Html.fromHtml(response));
                         }
-
                     }
-                }, new Response.ErrorListener() {
+
                     @Override
-                    public void onErrorResponse(VolleyError error) {
+                    public void onFailure() {
                         resultHolder.setText("Unable to connect to the server.\n Please try again.");
                         resultHolder.setVisibility(View.VISIBLE);
                         progressBarResult.setVisibility(View.GONE);
                     }
                 });
-                requestQueue.add(request);
             }
         });
     }
@@ -97,7 +91,7 @@ public class EntranceResult extends Fragment {
         resultButton = (FloatingActionButton) view.findViewById(R.id.resultReqButton);
         rollNo = (AppCompatEditText) view.findViewById(R.id.resultRollNo);
         revealLayout = (FABRevealLayout) view.findViewById(R.id.fab_reveal_layout);
-        resultHolder = (RobotoTextView) view.findViewById(R.id.resultHolder);
+        resultHolder = (TextView) view.findViewById(R.id.resultHolder);
         progressBarResult = (ProgressBar) view.findViewById(R.id.progressBarResult);
         adLoading = (ProgressBar) view.findViewById(R.id.addLoading);
         cross = (ImageView) view.findViewById(R.id.crossResult);
@@ -134,7 +128,6 @@ public class EntranceResult extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        requestQueue = Singleton.getInstance().getRequestQueue();
         imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (SPHandler.getInstance().isResultPublished()) {
             handlePublished();
@@ -193,7 +186,7 @@ public class EntranceResult extends Fragment {
                     adLoading.setVisibility(View.GONE);
                     Bundle bundle = new Bundle();
                     bundle.putString("address", child.child("address").getValue(String.class));
-                    bundle.putString("phone_no", child.child("phone_no").getValue(String.class));
+                    bundle.putLong("phone_no", child.child("phone_no").getValue(Long.class));
                     bundle.putString("destination_url", child.child("destination_url").getValue(String.class));
                     bundle.putString("description", child.child("sub_title").getValue(String.class));
 

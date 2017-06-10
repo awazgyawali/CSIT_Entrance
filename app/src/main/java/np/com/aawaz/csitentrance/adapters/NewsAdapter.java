@@ -13,8 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -96,15 +96,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        RobotoTextView title, newsDetail, time;
+        TextView title, newsDetail, time;
         ImageView imageView;
         View core;
 
         public ViewHolder(final View itemView) {
             super(itemView);
-            title = (RobotoTextView) itemView.findViewById(R.id.newsTitle);
-            newsDetail = (RobotoTextView) itemView.findViewById(R.id.newsDetail);
-            time = (RobotoTextView) itemView.findViewById(R.id.newsTime);
+            title = (TextView) itemView.findViewById(R.id.newsTitle);
+            newsDetail = (TextView) itemView.findViewById(R.id.newsDetail);
+            time = (TextView) itemView.findViewById(R.id.newsTime);
             imageView = (ImageView) itemView.findViewById(R.id.newsImage);
             core = itemView;
         }

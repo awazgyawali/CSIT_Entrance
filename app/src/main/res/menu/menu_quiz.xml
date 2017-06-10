@@ -2,8 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_answer"
+        android:icon="@drawable/answers"
         android:orderInCategory="1"
         android:title="Answer"
-        android:icon="@drawable/answers"
         app:showAsAction="always" />
 </menu>

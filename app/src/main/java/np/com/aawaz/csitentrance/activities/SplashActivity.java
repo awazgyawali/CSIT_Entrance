@@ -39,12 +39,15 @@ public class SplashActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(main_activity_intent);
+                    if (FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber() == null)
+                        startActivity(new Intent(SplashActivity.this, PhoneNoActivity.class));
+
+                    else
+                        startActivity(main_activity_intent);
                     finish();
                 }
             }, 2000);

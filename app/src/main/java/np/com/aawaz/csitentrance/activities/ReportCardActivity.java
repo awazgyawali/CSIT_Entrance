@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
@@ -40,15 +40,15 @@ public class ReportCardActivity extends AppCompatActivity {
                 position = i;
 
         CircleImageView imageView = (CircleImageView) findViewById(R.id.image_report);
-        RobotoTextView name = (RobotoTextView) findViewById(R.id.name_report),
-                total_score = (RobotoTextView) findViewById(R.id.total_report),
-                title = (RobotoTextView) findViewById(R.id.title_report),
-                played = (RobotoTextView) findViewById(R.id.played_report),
-                score = (RobotoTextView) findViewById(R.id.score_report),
-                accuracy = (RobotoTextView) findViewById(R.id.accuracy_report),
-                played_total = (RobotoTextView) findViewById(R.id.played_report_total),
-                score_total = (RobotoTextView) findViewById(R.id.score_report_total),
-                accuracy_total = (RobotoTextView) findViewById(R.id.accuracy_report_total);
+        TextView name = (TextView) findViewById(R.id.name_report),
+                total_score = (TextView) findViewById(R.id.total_report),
+                title = (TextView) findViewById(R.id.title_report),
+                played = (TextView) findViewById(R.id.played_report),
+                score = (TextView) findViewById(R.id.score_report),
+                accuracy = (TextView) findViewById(R.id.accuracy_report),
+                played_total = (TextView) findViewById(R.id.played_report_total),
+                score_total = (TextView) findViewById(R.id.score_report_total),
+                accuracy_total = (TextView) findViewById(R.id.accuracy_report_total);
         RelativeLayout fab = (RelativeLayout) findViewById(R.id.reply_report);
 
         title.setText(card_title);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single" android:id="@+id/core">
         <item
             android:id="@+id/main_home"
             android:checkable="true"
@@ -25,7 +25,7 @@
             android:title="More" />
     </group>
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single" android:id="@+id/entrance_options">
 
         <item
             android:id="@+id/entranceFAQ"
@@ -49,7 +49,7 @@
             android:title="Entrance Result" />
     </group>
 
-    <group android:checkableBehavior="none">
+    <group android:checkableBehavior="none" android:id="@+id/tech">
 
         <item
             android:id="@+id/settings"
@@ -60,7 +60,7 @@
             android:icon="@drawable/logout"
             android:title="Log Out" />
     </group>
-    <group android:checkableBehavior="none">
+    <group android:checkableBehavior="none"  android:id="@+id/grow">
         <item
             android:id="@+id/feedback"
             android:icon="@drawable/feedback"

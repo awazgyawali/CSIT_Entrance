@@ -6,8 +6,8 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -90,15 +90,15 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        RobotoTextView commentCount, realPost, postedBy, time;
+        TextView commentCount, realPost, postedBy, time;
         CircleImageView profile;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            commentCount = (RobotoTextView) itemView.findViewById(R.id.commentCount);
-            realPost = (RobotoTextView) itemView.findViewById(R.id.realPost);
-            postedBy = (RobotoTextView) itemView.findViewById(R.id.postedBy);
-            time = (RobotoTextView) itemView.findViewById(R.id.forumTime);
+            commentCount = (TextView) itemView.findViewById(R.id.commentCount);
+            realPost = (TextView) itemView.findViewById(R.id.realPost);
+            postedBy = (TextView) itemView.findViewById(R.id.postedBy);
+            time = (TextView) itemView.findViewById(R.id.forumTime);
             profile = (CircleImageView) itemView.findViewById(R.id.forumPic);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

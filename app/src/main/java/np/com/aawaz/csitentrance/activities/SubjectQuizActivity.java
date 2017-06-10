@@ -15,10 +15,10 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,7 +54,7 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
 
     int qNo;
     String code, subject;
-    private RobotoTextView scoreText;
+    private TextView scoreText;
     private SPHandler spHandler;
     int index;
 
@@ -127,8 +127,8 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
 
     private void setHeader() {
         CircleImageView quizProf = (CircleImageView) findViewById(R.id.quizProfilePic);
-        RobotoTextView name = (RobotoTextView) findViewById(R.id.quizName);
-        scoreText = (RobotoTextView) findViewById(R.id.quizScore);
+        TextView name = (TextView) findViewById(R.id.quizName);
+        scoreText = (TextView) findViewById(R.id.quizScore);
         Picasso.with(this)
                 .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
                 .into(quizProf);
@@ -182,13 +182,13 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
             spHandler.increaseScore(subject);
             scoreText.setText("Your Score: " + score);
             submit.setCardBackgroundColor(ContextCompat.getColor(this, R.color.colorSelected));
-            RobotoTextView text = (RobotoTextView) submit.findViewById(R.id.submit_button_text);
+            TextView text = (TextView) submit.findViewById(R.id.submit_button_text);
             text.setText("Correct");
             submit.setOnClickListener(null);
             YoYo.with(Techniques.Tada).duration(500).playOn(submit);
         } else {
             submit.setCardBackgroundColor(ContextCompat.getColor(this, R.color.background_1));
-            RobotoTextView text = (RobotoTextView) submit.findViewById(R.id.submit_button_text);
+            TextView text = (TextView) submit.findViewById(R.id.submit_button_text);
             text.setText("In-Correct");
             submit.setOnClickListener(null);
             YoYo.with(Techniques.Shake).duration(500).playOn(submit);

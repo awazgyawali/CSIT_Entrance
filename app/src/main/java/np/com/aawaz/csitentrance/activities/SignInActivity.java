@@ -14,10 +14,10 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -37,6 +37,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -113,7 +114,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     }
 
     private void handleSignUp() {
-        RobotoTextView create = (RobotoTextView) findViewById(R.id.createAccount);
+        TextView create = (TextView) findViewById(R.id.createAccount);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -267,7 +268,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 new EventSender().logEvent("google_signedup");
                 attachCredToFirebase(GoogleAuthProvider.getCredential(account.getIdToken(), null));
             } else {
-                progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.INVISIBLE);
                 processing = false;
                 Toast.makeText(this, "Unable to connect. Check your internet connection.", Toast.LENGTH_SHORT).show();
             }
@@ -288,7 +289,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d("Debug","Callback received.");
+                        Log.d("Debug", "Callback received.");
                     }
                 })
                 .addOnFailureListener(this, new OnFailureListener() {
@@ -296,13 +297,14 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                     public void onFailure(@NonNull Exception e) {
                         e.printStackTrace();
                         new EventSender().logEvent("attach_error");
-                        progressBar.setVisibility(View.GONE);
-                        Toast.makeText(SignInActivity.this, "Authentication failed. Try another login option.",
-                                Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.INVISIBLE);
+                        if (e instanceof FirebaseAuthUserCollisionException) {
+                            Toast.makeText(SignInActivity.this, "Email address in use by another account. Try another option.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
                         processing = false;
                     }
                 });
-
     }
 
 

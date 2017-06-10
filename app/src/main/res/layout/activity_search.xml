@@ -40,7 +40,7 @@
             android:layout_height="196dp"
             android:src="@drawable/building" />
 
-        <com.devspark.robototextview.widget.RobotoTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Start by typing the name or address." />

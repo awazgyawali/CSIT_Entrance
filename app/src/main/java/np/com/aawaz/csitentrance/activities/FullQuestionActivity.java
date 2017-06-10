@@ -12,8 +12,8 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
-import com.devspark.robototextview.widget.RobotoTextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -51,7 +51,7 @@ public class FullQuestionActivity extends AppCompatActivity {
             }
         });
         setDataToArrayList();
-        RobotoTextView title = (RobotoTextView) findViewById(R.id.titleFullQuestion);
+        TextView title = (TextView) findViewById(R.id.titleFullQuestion);
         title.setText(getResources().getStringArray(R.array.years)[code - 1]);
     }
 

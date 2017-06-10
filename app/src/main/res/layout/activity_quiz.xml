@@ -46,21 +46,21 @@
                     android:layout_marginLeft="10dp"
                     android:orientation="vertical">
 
-                    <com.devspark.robototextview.widget.RobotoTextView
+                    <TextView
                         android:id="@+id/quizName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Aawaz Gyawali"
                         android:textColor="@color/white"
-                        app:typeface="roboto_bold" />
+                        android:textStyle="bold" />
 
-                    <com.devspark.robototextview.widget.RobotoTextView
+                    <TextView
                         android:id="@+id/quizScore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Score: 63"
                         android:textColor="@color/white_transparent"
-                        app:typeface="roboto_bold" />
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -68,9 +68,9 @@
 
         <np.com.aawaz.csitentrance.custom_views.CustomViewPager
             android:id="@+id/viewPagerQuestion"
-            android:layout_marginTop="3dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp" />
 
 
     </RelativeLayout>

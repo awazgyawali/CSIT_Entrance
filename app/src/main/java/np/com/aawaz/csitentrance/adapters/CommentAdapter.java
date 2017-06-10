@@ -6,8 +6,8 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -87,16 +87,16 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        RobotoTextView commenter, comment, time;
+        TextView commenter, comment, time;
         CircleImageView circleImageView;
         View core;
 
         public ViewHolder(View itemView) {
             super(itemView);
             core = itemView;
-            commenter = (RobotoTextView) itemView.findViewById(R.id.commenter);
-            comment = (RobotoTextView) itemView.findViewById(R.id.comment);
-            time = (RobotoTextView) itemView.findViewById(R.id.timeComment);
+            commenter = (TextView) itemView.findViewById(R.id.commenter);
+            comment = (TextView) itemView.findViewById(R.id.comment);
+            time = (TextView) itemView.findViewById(R.id.timeComment);
             circleImageView = (CircleImageView) itemView.findViewById(R.id.profileComment);
         }
     }

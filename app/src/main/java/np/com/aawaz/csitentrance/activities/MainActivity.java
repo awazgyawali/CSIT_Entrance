@@ -20,13 +20,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -53,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     public static CoordinatorLayout mainLayout;
     Toolbar toolbar;
-    static RobotoTextView titleMain;
+    static TextView titleMain;
     AppBarLayout appBarLayout;
-    RobotoTextView name;
+    TextView name;
     CircleImageView imageView;
     String[] navigationText = new String[]{"leaderboard", "colleges", "more",
             "faqs", "news", "forum", "result",
@@ -70,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
 
-        askPhoneNo();
+        uploadInstanceId();
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         mainLayout = (CoordinatorLayout) findViewById(R.id.mainParent);
         tabLayout = (TabLayout) findViewById(R.id.tabLayoutMain);
         appBarLayout = (AppBarLayout) findViewById(R.id.appBarMain);
-        titleMain = (RobotoTextView) findViewById(R.id.titleMain);
+        titleMain = (TextView) findViewById(R.id.titleMain);
 
 
         setTitle("Play Quiz");
@@ -134,20 +136,26 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("result_published").keepSynced(true);
     }
 
-    private void askPhoneNo() {
-        if (SPHandler.getInstance().getPhoneNo() == null)
-            startActivity(new Intent(MainActivity.this, PhoneNoActivity.class));
-    }
-
     private void uploadScore() {
         if (SPHandler.getInstance().isScoreChanged())
             startService(new Intent(MyApplication.getAppContext(), ScoreUploader.class));
     }
 
+    private void uploadInstanceId() {
+            if (FirebaseAuth.getInstance().getCurrentUser() != null && SPHandler.getInstance().isInstanceIdAdded()) {
+                FirebaseDatabase.getInstance().getReference()
+                        .child("instance_ids")
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .setValue(FirebaseInstanceId.getInstance().getToken());
+                SPHandler.getInstance().instanceIdAdded();
+                FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
+            }
+    }
+
     private void manageHeader() {
 
-        name = (RobotoTextView) mNavigationView.getHeaderView(0).findViewById(R.id.userName);
-        RobotoTextView email = (RobotoTextView) mNavigationView.getHeaderView(0).findViewById(R.id.userEmail);
+        name = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.userName);
+        TextView email = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.userEmail);
         imageView = (CircleImageView) mNavigationView.getHeaderView(0).findViewById(R.id.user_profile);
         name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
         email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
@@ -163,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.closeDrawer(mNavigationView);
         invalidateOptionsMenu();
         if (id == R.id.settings) {
-            startActivity(new Intent(MainActivity.this, Settings.class));
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             new EventSender().logEvent("settings");
             return;
         } else if (id == R.id.share) {

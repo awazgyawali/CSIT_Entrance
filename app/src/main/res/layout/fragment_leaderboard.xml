@@ -14,13 +14,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.devspark.robototextview.widget.RobotoTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"
             android:text="1"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            app:typeface="roboto_bold" />
+            android:textStyle="bold" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <com.devspark.robototextview.widget.RobotoTextView
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -45,14 +45,14 @@
                         android:gravity="bottom|center"
                         android:text="2"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        app:typeface="roboto_bold" />
+                        android:textStyle="bold" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_weight="1" />
 
-                    <com.devspark.robototextview.widget.RobotoTextView
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -61,7 +61,7 @@
                         android:gravity="bottom|center"
                         android:text="3"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        app:typeface="roboto_bold" />
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -86,7 +86,7 @@
                             android:layout_marginTop="10dp"
                             android:src="@drawable/user_holder" />
 
-                        <com.devspark.robototextview.widget.RobotoTextView
+                        <TextView
                             android:id="@+id/name2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -94,14 +94,14 @@
                             android:text="Roshan Gautam"
                             android:textColor="@color/colorPrimaryText" />
 
-                        <com.devspark.robototextview.widget.RobotoTextView
+                        <TextView
                             android:id="@+id/score2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:text="440"
                             android:textColor="@color/colorAccent"
-                            app:typeface="roboto_bold" />
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -124,7 +124,7 @@
                             android:layout_marginTop="10dp"
                             android:src="@drawable/user_holder" />
 
-                        <com.devspark.robototextview.widget.RobotoTextView
+                        <TextView
                             android:id="@+id/name3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -132,14 +132,14 @@
                             android:text="Prasanna Mishra"
                             android:textColor="@color/colorPrimaryText" />
 
-                        <com.devspark.robototextview.widget.RobotoTextView
+                        <TextView
                             android:id="@+id/score3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:text="340"
                             android:textColor="@color/colorAccent"
-                            app:typeface="roboto_bold" />
+                            android:textStyle="bold" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -164,7 +164,7 @@
                         android:layout_height="80dp"
                         android:src="@drawable/user_holder" />
 
-                    <com.devspark.robototextview.widget.RobotoTextView
+                    <TextView
                         android:id="@+id/name1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -172,14 +172,14 @@
                         android:text="Aawaz Gyawali"
                         android:textColor="@color/colorPrimaryText" />
 
-                    <com.devspark.robototextview.widget.RobotoTextView
+                    <TextView
                         android:id="@+id/score1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="540"
                         android:textColor="@color/colorAccent"
-                        app:typeface="roboto_bold" />
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
@@ -206,14 +206,14 @@
             android:layout_height="196dp"
             android:src="@drawable/no_connection" />
 
-        <com.devspark.robototextview.widget.RobotoTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No internet connection"
             android:textColor="@color/colorSecondaryText"
-            app:typeface="roboto_bold" />
+            android:textStyle="bold" />
 
-        <com.devspark.robototextview.widget.RobotoTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tap to retry."

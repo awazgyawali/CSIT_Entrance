@@ -17,12 +17,14 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
@@ -126,6 +128,13 @@ public class PhoneNoActivity extends AppCompatActivity {
             }
 
             @Override
+            public void onCodeAutoRetrievalTimeOut(String s) {
+                super.onCodeAutoRetrievalTimeOut(s);
+                submit.setVisibility(View.VISIBLE);
+                phone.setEnabled(true);
+            }
+
+            @Override
             public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                 PhoneNoActivity.this.verificationId = verificationId;
                 PhoneNoActivity.this.forceResendingToken = forceResendingToken;
@@ -143,11 +152,18 @@ public class PhoneNoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (c_code.getText().toString().length() > 1) {
                     SPHandler.getInstance().setPhoneNo(phone.getText().toString());
-                    PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
+                    if (forceResendingToken == null)
+                        PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
+                                60,
+                                TimeUnit.SECONDS,
+                                PhoneNoActivity.this,
+                                mCallback);
+                    else  PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
                             60,
                             TimeUnit.SECONDS,
                             PhoneNoActivity.this,
-                            mCallback);
+                            mCallback,
+                            forceResendingToken);
                     dialog.show();
                 } else {
                     Toast.makeText(PhoneNoActivity.this, "Invalid country code.", Toast.LENGTH_SHORT).show();
@@ -187,6 +203,14 @@ public class PhoneNoActivity extends AppCompatActivity {
                         } else {
                             verifying.dismiss();
                             Toast.makeText(PhoneNoActivity.this, "Invalid verification code.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        if (e instanceof FirebaseAuthUserCollisionException) {
+                            Toast.makeText(PhoneNoActivity.this, "Phone number already associated with another account. Please try another number.", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

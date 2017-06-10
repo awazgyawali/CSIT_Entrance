@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.devspark.robototextview.widget.RobotoTextView;
 
 import java.util.ArrayList;
 
@@ -52,13 +52,13 @@ public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHo
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        RobotoTextView colzName, address;
+        TextView colzName, address;
         LinearLayout website, call, maps;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            colzName = (RobotoTextView) itemView.findViewById(R.id.colzName);
-            address = (RobotoTextView) itemView.findViewById(R.id.address);
+            colzName = (TextView) itemView.findViewById(R.id.colzName);
+            address = (TextView) itemView.findViewById(R.id.address);
             website = (LinearLayout) itemView.findViewById(R.id.webSiteButton);
             call = (LinearLayout) itemView.findViewById(R.id.callButton);
             maps = (LinearLayout) itemView.findViewById(R.id.mapsButton);

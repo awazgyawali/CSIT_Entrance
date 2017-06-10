@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
 import com.squareup.picasso.Picasso;
@@ -42,8 +41,8 @@ public class EachNews extends AppCompatActivity {
         collapsingToolbarLayout.setTitle("Entrance News");
 
 
-        RobotoTextView
-                newsDetail = (RobotoTextView) findViewById(R.id.each_news_detail);
+        TextView
+                newsDetail = (TextView) findViewById(R.id.each_news_detail);
         TextView time = (TextView) findViewById(R.id.each_news_time),
                 title = (TextView) findViewById(R.id.each_news_title);
         ImageView imageView = (ImageView) findViewById(R.id.each_news_image);

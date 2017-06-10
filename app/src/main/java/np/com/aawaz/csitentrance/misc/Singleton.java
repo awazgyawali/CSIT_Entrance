@@ -4,16 +4,13 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 
 public class Singleton {
 
     private static Singleton sInstance = null;
-    private RequestQueue mRequestQueue;
 
     private Singleton() {
-        mRequestQueue = Volley.newRequestQueue(MyApplication.getAppContext());
+
     }
 
     public static Singleton getInstance() {
@@ -21,10 +18,6 @@ public class Singleton {
             sInstance = new Singleton();
         }
         return sInstance;
-    }
-
-    public RequestQueue getRequestQueue() {
-        return mRequestQueue;
     }
 
 

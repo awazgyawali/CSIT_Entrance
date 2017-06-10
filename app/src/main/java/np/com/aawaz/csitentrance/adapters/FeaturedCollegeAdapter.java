@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -101,16 +100,16 @@ public class FeaturedCollegeAdapter extends RecyclerView.Adapter<FeaturedCollege
     public class VH extends RecyclerView.ViewHolder {
         ImageView banner;
         CircleImageView profilePic;
-        RobotoTextView name, address, detail;
+        TextView name, address, detail;
         TextView call, website;
 
         public VH(View itemView) {
             super(itemView);
             banner = (ImageView) itemView.findViewById(R.id.imageViewFeatured);
             profilePic = (CircleImageView) itemView.findViewById(R.id.imageViewCollegeProfile);
-            name = (RobotoTextView) itemView.findViewById(R.id.titleFeatured);
-            address = (RobotoTextView) itemView.findViewById(R.id.addressFeatured);
-            detail = (RobotoTextView) itemView.findViewById(R.id.detailFeatured);
+            name = (TextView) itemView.findViewById(R.id.titleFeatured);
+            address = (TextView) itemView.findViewById(R.id.addressFeatured);
+            detail = (TextView) itemView.findViewById(R.id.detailFeatured);
             call = (TextView) itemView.findViewById(R.id.callFeatured);
             website = (TextView) itemView.findViewById(R.id.websiteFeatured);
         }

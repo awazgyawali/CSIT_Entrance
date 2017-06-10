@@ -13,9 +13,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.google.firebase.appindexing.Action;
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
@@ -47,7 +47,7 @@ public class CommentsActivity extends AppCompatActivity {
     AppCompatEditText commentEditText;
     ImageButton commentButton;
     CircleImageView profileImage;
-    RobotoTextView commentNumber, errorMessage;
+    TextView commentNumber, errorMessage;
     LinearLayout commentAdder;
     CommentAdapter adapter;
     ArrayList<String> key = new ArrayList<>();
@@ -56,7 +56,6 @@ public class CommentsActivity extends AppCompatActivity {
 
     private String mUrl;
     private String mTitle;
-    private String mDescription;
 
     public CommentsActivity() {
         // Required empty public constructor
@@ -95,7 +94,6 @@ public class CommentsActivity extends AppCompatActivity {
     private void appIndexing() {
         mUrl = "http://csitentrance.brainants.com/forum";
         mTitle = getIntent().getStringExtra("message");
-        mDescription = "This app in includes all the discussion about entrance exam of BSc CSIT.";
     }
 
     public Action getAction() {
@@ -130,8 +128,8 @@ public class CommentsActivity extends AppCompatActivity {
         commentEditText = (AppCompatEditText) findViewById(R.id.addCommentText);
         commentButton = (ImageButton) findViewById(R.id.commentButton);
         profileImage = (CircleImageView) findViewById(R.id.profileImage);
-        commentNumber = (RobotoTextView) findViewById(R.id.numberComments);
-        errorMessage = (RobotoTextView) findViewById(R.id.errorComment);
+        commentNumber = (TextView) findViewById(R.id.numberComments);
+        errorMessage = (TextView) findViewById(R.id.errorComment);
         commentAdder = (LinearLayout) findViewById(R.id.commentAdder);
         errorMessage.setOnClickListener(new View.OnClickListener() {
             @Override

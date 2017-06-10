@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".activities.Settings">
+    tools:context=".activities.SettingsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                 android:textStyle="bold" />
 
 
-            <com.devspark.robototextview.widget.RobotoTextView
+            <TextView
                 android:id="@+id/clearAll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
                 android:textStyle="bold" />
 
 
-            <com.devspark.robototextview.widget.RobotoTextView
+            <TextView
                 android:id="@+id/change_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,7 +111,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#ccc" />
-            <com.devspark.robototextview.widget.RobotoTextView
+
+            <TextView
                 android:id="@+id/connectFb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,7 +126,7 @@
                 android:layout_height="1dp"
                 android:background="#ccc" />
 
-            <com.devspark.robototextview.widget.RobotoTextView
+            <TextView
                 android:id="@+id/connectGoogle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -144,7 +145,7 @@
                 android:textStyle="bold" />
 
 
-            <com.devspark.robototextview.widget.RobotoTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
@@ -153,7 +154,7 @@
                 android:text="CSIT Entrance - Version 2.0"
                 android:textColor="@color/colorPrimaryText" />
 
-            <com.devspark.robototextview.widget.RobotoTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="20dp"

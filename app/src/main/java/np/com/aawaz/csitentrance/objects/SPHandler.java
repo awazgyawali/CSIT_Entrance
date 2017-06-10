@@ -73,11 +73,11 @@ public class SPHandler {
     }
 
     public boolean isScoreChanged() {
-        return scoreSp.getBoolean("changed", false);
+        return scoreSp.getBoolean("score_changed", true);
     }
 
     public void setScoreChanged(boolean changed) {
-        scoreEditor.putBoolean("changed", changed).apply();
+        scoreEditor.putBoolean("score_changed", changed).apply();
     }
 
     public int getAccuracy(String name) {
@@ -237,4 +237,11 @@ public class SPHandler {
         return infoSp.getInt("times_played", 2);
     }
 
+    public boolean isInstanceIdAdded() {
+        return infoSp.getBoolean("instance", false);
+    }
+
+    public void instanceIdAdded() {
+        infoEditor.putBoolean("instance", true).apply();
+    }
 }

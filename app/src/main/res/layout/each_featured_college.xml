@@ -38,7 +38,7 @@
                     app:civ_border_color="@color/colorPrimary"
                     app:civ_border_width="1dp" />
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:id="@+id/titleFeatured"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -52,19 +52,19 @@
                     android:text="Tinau Technical College"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:typeface="roboto_bold" />
+                    android:textStyle="bold" />
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:id="@+id/addressFeatured"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/titleFeatured"
-                    android:textColor="@color/colorAccent"
                     android:layout_alignStart="@+id/titleFeatured"
                     android:layout_below="@+id/titleFeatured"
-                    android:text="Tilottama-2, Janakinagar" />
+                    android:text="Tilottama-2, Janakinagar"
+                    android:textColor="@color/colorAccent" />
 
-                <com.devspark.robototextview.widget.RobotoTextView
+                <TextView
                     android:id="@+id/detailFeatured"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,6 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#727272" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

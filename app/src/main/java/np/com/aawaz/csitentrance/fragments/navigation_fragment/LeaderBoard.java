@@ -10,13 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.devspark.robototextview.widget.RobotoTextView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -28,25 +23,25 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.LeaderboardAdapter;
-import np.com.aawaz.csitentrance.misc.Singleton;
+import np.com.aawaz.csitentrance.interfaces.ResponseListener;
 import np.com.aawaz.csitentrance.objects.SPHandler;
+import np.com.aawaz.csitentrance.services.NetworkRequester;
 
 
 public class LeaderBoard extends Fragment {
 
     ArrayList<String> names = new ArrayList<>();
     ArrayList<Integer> scores = new ArrayList<>();
-    RequestQueue requestQueue;
     RecyclerView mRecyclerView;
     ProgressBar progress;
 
     CircleImageView image1, image2, image3;
-    RobotoTextView score1, score2, score3;
-    RobotoTextView name1, name2, name3;
+    TextView score1, score2, score3;
+    TextView name1, name2, name3;
 
-    RobotoTextView[] topNames;
+    TextView[] topNames;
 
-    RobotoTextView[] topScores;
+    TextView[] topScores;
 
     CircleImageView[] circleImageViews;
 
@@ -77,16 +72,16 @@ public class LeaderBoard extends Fragment {
         image2 = (CircleImageView) view.findViewById(R.id.image2);
         image3 = (CircleImageView) view.findViewById(R.id.image3);
 
-        name1 = (RobotoTextView) view.findViewById(R.id.name1);
-        name2 = (RobotoTextView) view.findViewById(R.id.name2);
-        name3 = (RobotoTextView) view.findViewById(R.id.name3);
+        name1 = (TextView) view.findViewById(R.id.name1);
+        name2 = (TextView) view.findViewById(R.id.name2);
+        name3 = (TextView) view.findViewById(R.id.name3);
 
-        score1 = (RobotoTextView) view.findViewById(R.id.score1);
-        score2 = (RobotoTextView) view.findViewById(R.id.score2);
-        score3 = (RobotoTextView) view.findViewById(R.id.score3);
+        score1 = (TextView) view.findViewById(R.id.score1);
+        score2 = (TextView) view.findViewById(R.id.score2);
+        score3 = (TextView) view.findViewById(R.id.score3);
 
-        topNames = new RobotoTextView[]{name1, name2, name3};
-        topScores = new RobotoTextView[]{score1, score2, score3};
+        topNames = new TextView[]{name1, name2, name3};
+        topScores = new TextView[]{score1, score2, score3};
         circleImageViews = new CircleImageView[]{image1, image2, image3};
 
 
@@ -114,11 +109,6 @@ public class LeaderBoard extends Fragment {
         fetchFromInternet();
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        requestQueue.cancelAll("score");
-    }
 
     private void fetchFromInternet() {
         if (!filled) {
@@ -127,26 +117,25 @@ public class LeaderBoard extends Fragment {
             coreLeader.setVisibility(View.GONE);
         }
 
-        requestQueue = Singleton.getInstance().getRequestQueue();
-        String url = getString(R.string.fetchScoreurl);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
-
+        new NetworkRequester(getString(R.string.fetchScoreurl), new ResponseListener() {
             @Override
-            public void onResponse(JSONObject response) {
-                parser(response);
-                SPHandler.getInstance().setLeaderBoardLastResponse(response.toString());
+            public void onSuccess(String response) {
+                try {
+                    parser(new JSONObject(response));
+                    SPHandler.getInstance().setLeaderBoardLastResponse(response.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
 
-        }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void onFailure() {
                 if (!filled) {
                     errorLayout.setVisibility(View.VISIBLE);
                     progress.setVisibility(View.GONE);
                 }
             }
         });
-        requestQueue.add(jsonObjectRequest.setTag("score"));
     }
 
     private void parser(JSONObject response) {
