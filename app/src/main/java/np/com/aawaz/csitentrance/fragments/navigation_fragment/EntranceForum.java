@@ -21,7 +21,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -29,8 +28,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,7 +49,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     AppCompatEditText questionEditText;
     ProgressBar progressBar;
     LinearLayout errorPart;
-    ImageView fab;
+    ImageView buttonPost;
 
     ForumAdapter adapter;
 
@@ -74,7 +71,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         errorPart = (LinearLayout) view.findViewById(R.id.errorPart);
         progressBar = (ProgressBar) view.findViewById(R.id.progressCircleFullFeed);
         recyclerView = (RecyclerView) view.findViewById(R.id.fullFeedRecycler);
-        fab = (ImageView) view.findViewById(R.id.fabAddForum);
+        buttonPost = (ImageView) view.findViewById(R.id.postForum);
         questionEditText = (AppCompatEditText) view.findViewById(R.id.questionEditText);
 
         questionEditText.addTextChangedListener(new TextWatcher() {
@@ -86,9 +83,9 @@ public class EntranceForum extends Fragment implements ChildEventListener {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length() == 0)
-                    fab.setVisibility(View.GONE);
+                    buttonPost.setVisibility(View.GONE);
                 else
-                    fab.setVisibility(View.VISIBLE);
+                    buttonPost.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -103,14 +100,14 @@ public class EntranceForum extends Fragment implements ChildEventListener {
                 addListener();
             }
         });
-        fab.setOnClickListener(new View.OnClickListener() {
+        buttonPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imm.hideSoftInputFromWindow(questionEditText.getWindowToken(), 0);
-                sendPostRequestThroughGraph(questionEditText.getText().toString());
+                postToFirebase(questionEditText.getText().toString());
             }
         });
-        fab.setVisibility(View.GONE);
+        buttonPost.setVisibility(View.GONE);
     }
 
     @Override
@@ -187,7 +184,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
             public void itemClicked(View view, int position) {
                 startActivity(new Intent(getContext(), CommentsActivity.class)
                         .putExtra("key", key.get(position))
-                        .putExtra("message",adapter.getMessageAt(position))
+                        .putExtra("message", adapter.getMessageAt(position))
                         .putExtra("comment_count", adapter.getCommentCount(position)));
             }
 
@@ -229,35 +226,24 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     }
 
 
-    private void sendPostRequestThroughGraph(final String message) {
+    private void postToFirebase(final String message) {
         if (canPost()) {
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
             Post post = new Post(currentUser.getUid(), currentUser.getDisplayName(), new Date().getTime(), message, FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString());
             Map<String, Object> postValues = post.toMap();
-
             reference.push().setValue(postValues);
             SPHandler.getInstance().setLastPostedTime(System.currentTimeMillis());
-            sendNotificationToAllTheSubscribers(message);
             questionEditText.setText("");
+            recyclerView.smoothScrollToPosition(0);
         } else {
             new MaterialDialog.Builder(getContext())
                     .title("Opps...")
-                    .content("You can ask one question per hour, please come back later. And don't worry your message will be stored in the editor.")
+                    .content("You can ask one question per hour, please try after " + getRemainingTime() + ".")
                     .show();
         }
 
     }
 
-    private void sendNotificationToAllTheSubscribers(String string) {
-        FirebaseMessaging fm = FirebaseMessaging.getInstance();
-        fm.send(new RemoteMessage.Builder(FirebaseOptions.fromResource(getContext()).getGcmSenderId() + "@gcm.googleapis.com")
-                .addData("fragment", "Result")
-                .addData("title", "Entrance Forum")
-                .addData("body", string)
-                .addData("to", "forum")
-                .build());
-    }
 
     @Override
     public void onPause() {
@@ -278,5 +264,10 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         long difference = (postTime - preTime) / (60 * 60 * 1000);
 
         return difference >= 1;
+    }
+
+    public String getRemainingTime() {
+        long timeInMilis = (SPHandler.getInstance().getLastPostedTime() + 3600000) - System.currentTimeMillis();
+        return timeInMilis / (1000 * 60) + " minutes";
     }
 }

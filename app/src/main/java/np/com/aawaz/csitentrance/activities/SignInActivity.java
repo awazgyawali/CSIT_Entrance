@@ -10,7 +10,6 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -86,8 +85,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    FirebaseMessaging.getInstance().subscribeToTopic("news");
-                    FirebaseMessaging.getInstance().subscribeToTopic("forum");
                     if (user.getPhoneNumber() == null) {
                         startActivity(new Intent(SignInActivity.this, PhoneNoActivity.class)
                                 .putExtra("fragment", getIntent().getStringExtra("fragment")));
@@ -172,14 +169,22 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         new MaterialDialog.Builder(this).title("Forgot password")
                 .input("Email to sent reset link.", username.getText().toString(), false, new MaterialDialog.InputCallback() {
                     @Override
-                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                    public void onInput(@NonNull final MaterialDialog forgot_dialog, CharSequence input) {
                         mAuth.sendPasswordResetEmail(input.toString())
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
+                                        new EventSender().logEvent("forget_password");
                                         Toast.makeText(SignInActivity.this, "Email has been sent!", Toast.LENGTH_SHORT).show();
+                                        forgot_dialog.dismiss();
                                     }
-                                });
+                                })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                            }
+                        });
                     }
                 });
     }
@@ -273,14 +278,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 Toast.makeText(this, "Unable to connect. Check your internet connection.", Toast.LENGTH_SHORT).show();
             }
         }
-
-        if (mAuth.getCurrentUser() != null) {
-            FirebaseMessaging.getInstance().subscribeToTopic("news");
-            FirebaseMessaging.getInstance().subscribeToTopic("forum");
-            startActivity(new Intent(this, MainActivity.class)
-                    .putExtra("fragment", getIntent().getStringExtra("fragment")));
-            finish();
-        }
     }
 
     public void attachCredToFirebase(AuthCredential credential) {
@@ -289,7 +286,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d("Debug", "Callback received.");
+                        new EventSender().logEvent("user_signup");
                     }
                 })
                 .addOnFailureListener(this, new OnFailureListener() {

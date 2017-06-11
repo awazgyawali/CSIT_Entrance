@@ -47,7 +47,7 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
     CallbackManager callBackManager = CallbackManager.Factory.create();
     private int RC_SIGN_IN = 100;
     private GoogleApiClient client;
-    private TextView changeNo;
+    private TextView addPhoneNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
         forum = (SwitchCompat) findViewById(R.id.notifForum);
 
         clearAll = (TextView) findViewById(R.id.clearAll);
-        changeNo = (TextView) findViewById(R.id.change_no);
+        addPhoneNo = (TextView) findViewById(R.id.add_phone_number);
         connectFb = (TextView) findViewById(R.id.connectFb);
         connectGoogle = (TextView) findViewById(R.id.connectGoogle);
 
@@ -115,6 +115,12 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     private void handleConnections() {
+        addPhoneNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SettingsActivity.this, PhoneNoActivity.class));
+            }
+        });
         handleFacebook();
         handleGoogle();
         checkAttachment();
@@ -129,6 +135,9 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
             } else if (provider.equals("google.com")) {
                 connectGoogle.setText("Connected with Google");
                 connectGoogle.setOnClickListener(null);
+            } else if (user.getPhoneNumber() != null) {
+                addPhoneNo.setText("Connected with phone number");
+                addPhoneNo.setOnClickListener(null);
             }
         }
     }
@@ -183,12 +192,6 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
             @Override
             public void onClick(View view) {
                 facebookLoginButton.callOnClick();
-            }
-        });
-        changeNo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SettingsActivity.this, PhoneNoActivity.class));
             }
         });
     }

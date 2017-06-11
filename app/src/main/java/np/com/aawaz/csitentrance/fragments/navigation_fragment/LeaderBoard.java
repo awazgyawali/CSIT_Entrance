@@ -122,7 +122,7 @@ public class LeaderBoard extends Fragment {
             public void onSuccess(String response) {
                 try {
                     parser(new JSONObject(response));
-                    SPHandler.getInstance().setLeaderBoardLastResponse(response.toString());
+                    SPHandler.getInstance().setLeaderBoardLastResponse(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

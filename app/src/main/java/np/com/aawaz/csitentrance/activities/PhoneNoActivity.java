@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +12,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.concurrent.TimeUnit;
 
@@ -40,8 +42,9 @@ public class PhoneNoActivity extends AppCompatActivity {
     TextInputEditText phone, c_code;
     TextInputEditText verify_code;
     private String verificationId;
-    private PhoneAuthProvider.ForceResendingToken forceResendingToken; //todo use to activate resend button
+    private PhoneAuthProvider.ForceResendingToken forceResendingToken;
     private FirebaseAuth mAuth;
+    private ViewSwitcher vs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +54,17 @@ public class PhoneNoActivity extends AppCompatActivity {
         phone = (TextInputEditText) findViewById(R.id.phone_no);
         c_code = (TextInputEditText) findViewById(R.id.c_code);
         verify_code = (TextInputEditText) findViewById(R.id.phone_no_code);
+        vs = (ViewSwitcher) findViewById(R.id.phone_auth_vs);
+        TextView change_phone_no = (TextView) findViewById(R.id.change_phone_no);
+        final TextView code_sent_text = (TextView) findViewById(R.id.code_sent_text);
 
         final CardView submit = (CardView) findViewById(R.id.phone_continue_button);
         final CardView verify = (CardView) findViewById(R.id.phone_verify_button);
-        final ConstraintLayout verify_group = (ConstraintLayout) findViewById(R.id.verify_group);
 
         final MaterialDialog dialog = new MaterialDialog.Builder(PhoneNoActivity.this)
                 .content("Sending verification code")
                 .progress(true, 100)
+                .cancelable(false)
                 .build();
         mAuth = FirebaseAuth.getInstance();
 
@@ -69,6 +75,12 @@ public class PhoneNoActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
+        change_phone_no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vs.showPrevious();
+            }
+        });
 
         phone.addTextChangedListener(new TextWatcher() {
             @Override
@@ -78,7 +90,7 @@ public class PhoneNoActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 10)
+                if (charSequence.length() >= 10)
                     submit.setVisibility(View.VISIBLE);
                 else
                     submit.setVisibility(View.INVISIBLE);
@@ -97,8 +109,10 @@ public class PhoneNoActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (count > 3)
+                if (s.length() > 5)
                     verify.setVisibility(View.VISIBLE);
+                else
+                    verify.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -107,7 +121,7 @@ public class PhoneNoActivity extends AppCompatActivity {
             }
         });
 
-        phone.setText(SPHandler.getInstance().getPhoneNo());
+        phone.setText(SPHandler.getInstance().getPhoneNo().replace("+977", ""));
 
         mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
@@ -131,7 +145,7 @@ public class PhoneNoActivity extends AppCompatActivity {
             public void onCodeAutoRetrievalTimeOut(String s) {
                 super.onCodeAutoRetrievalTimeOut(s);
                 submit.setVisibility(View.VISIBLE);
-                phone.setEnabled(true);
+                ((TextView) submit.getChildAt(0)).setText("Resend Code");
             }
 
             @Override
@@ -140,9 +154,9 @@ public class PhoneNoActivity extends AppCompatActivity {
                 PhoneNoActivity.this.forceResendingToken = forceResendingToken;
                 super.onCodeSent(verificationId, forceResendingToken);
                 dialog.dismiss();
-                verify_group.setVisibility(View.VISIBLE);
+                vs.showNext();
+                code_sent_text.setText("Code sent to " + c_code.getText().toString() + phone.getText());
                 submit.setVisibility(View.INVISIBLE);
-                phone.setEnabled(false);
             }
 
         };
@@ -158,12 +172,13 @@ public class PhoneNoActivity extends AppCompatActivity {
                                 TimeUnit.SECONDS,
                                 PhoneNoActivity.this,
                                 mCallback);
-                    else  PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
-                            60,
-                            TimeUnit.SECONDS,
-                            PhoneNoActivity.this,
-                            mCallback,
-                            forceResendingToken);
+                    else
+                        PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
+                                60,
+                                TimeUnit.SECONDS,
+                                PhoneNoActivity.this,
+                                mCallback,
+                                forceResendingToken);
                     dialog.show();
                 } else {
                     Toast.makeText(PhoneNoActivity.this, "Invalid country code.", Toast.LENGTH_SHORT).show();
@@ -212,6 +227,7 @@ public class PhoneNoActivity extends AppCompatActivity {
                         if (e instanceof FirebaseAuthUserCollisionException) {
                             Toast.makeText(PhoneNoActivity.this, "Phone number already associated with another account. Please try another number.", Toast.LENGTH_LONG).show();
                         }
+                        e.printStackTrace();
                     }
                 });
     }

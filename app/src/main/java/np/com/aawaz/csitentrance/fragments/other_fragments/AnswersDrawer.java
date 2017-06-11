@@ -10,12 +10,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.AnswerAdapter;
 
 public class AnswersDrawer extends Fragment {
     RecyclerView recyclerView;
     AnswerAdapter adapter;
+    private AdView mAdView;
+
 
     public AnswersDrawer() {
         // Required empty public constructor
@@ -33,7 +39,15 @@ public class AnswersDrawer extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = (RecyclerView) view.findViewById(R.id.ansRecycle);
+        mAdView = (AdView) view.findViewById(R.id.adView);
+    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        MobileAds.initialize(getContext(), "ca-app-pub-3751722582271673~2601237142");
+        mAdView.loadAd(adRequest);
     }
 
     public void setInitialData(int qNo, int code) {

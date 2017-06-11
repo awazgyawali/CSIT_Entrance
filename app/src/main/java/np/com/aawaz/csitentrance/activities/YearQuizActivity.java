@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.google.firebase.appindexing.Action;
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -110,7 +111,7 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
         mTitle = "BSc CSIT Entrance Qld Questions";
     }
 
-    public com.google.firebase.appindexing.Action getAction() {
+    public Action getAction() {
         return Actions.newView(mTitle, mUrl);
     }
 

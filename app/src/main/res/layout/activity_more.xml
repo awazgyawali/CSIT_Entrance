@@ -28,7 +28,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/detailBook"
             android:background="#80000000"
             android:drawableLeft="@drawable/call_white"
             android:gravity="center"

@@ -99,12 +99,12 @@
 
 
             <TextView
-                android:id="@+id/change_no"
+                android:id="@+id/add_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?selectableItemBackground"
                 android:padding="20dp"
-                android:text="Change contact number"
+                android:text="Add phone number"
                 android:textColor="@color/colorPrimaryText" />
 
             <View

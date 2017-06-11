@@ -23,7 +23,6 @@
                 android:id="@+id/image_report"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_centerVertical="true"
                 android:layout_margin="10dp"
                 android:src="@drawable/user_holder"
                 app:civ_border_color="@color/white"
@@ -82,7 +81,6 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@id/scorecard"
                     android:background="#ccc" />
 
                 <LinearLayout

@@ -25,6 +25,8 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -142,14 +144,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void uploadInstanceId() {
-            if (FirebaseAuth.getInstance().getCurrentUser() != null && SPHandler.getInstance().isInstanceIdAdded()) {
-                FirebaseDatabase.getInstance().getReference()
-                        .child("instance_ids")
-                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                        .setValue(FirebaseInstanceId.getInstance().getToken());
-                SPHandler.getInstance().instanceIdAdded();
-                FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
-            }
+        if (FirebaseAuth.getInstance().getCurrentUser() != null && SPHandler.getInstance().isInstanceIdAdded()) {
+            FirebaseDatabase.getInstance().getReference()
+                    .child("instance_ids")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .setValue(FirebaseInstanceId.getInstance().getToken());
+            SPHandler.getInstance().instanceIdAdded();
+            FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
+            FirebaseMessaging.getInstance().subscribeToTopic("new");
+            FirebaseMessaging.getInstance().subscribeToTopic("forums");
+        }
     }
 
     private void manageHeader() {
@@ -222,6 +226,8 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                             FirebaseAuth.getInstance().signOut();
+                            if (AccessToken.getCurrentAccessToken() != null)
+                                LoginManager.getInstance().logOut();
                             startActivity(new Intent(MainActivity.this, SignInActivity.class));
                             finish();
                         }

@@ -111,8 +111,10 @@
     <orderEntry type="library" exported="" name="library-1.1.5" level="project" />
     <orderEntry type="library" exported="" name="circleprogress-1.2.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-messaging-11.0.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-gass-11.0.0" level="project" />
     <orderEntry type="library" exported="" name="bolts-android-1.4.0" level="project" />
     <orderEntry type="library" exported="" name="firebase-core-11.0.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-ads-11.0.0" level="project" />
     <orderEntry type="library" exported="" name="firebase-database-11.0.0" level="project" />
     <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="firebase-database-connection-11.0.0" level="project" />
@@ -131,8 +133,10 @@
     <orderEntry type="library" exported="" name="play-services-auth-11.0.0" level="project" />
     <orderEntry type="library" exported="" name="picasso-2.5.2" level="project" />
     <orderEntry type="library" exported="" name="play-services-basement-11.0.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-ads-lite-11.0.0" level="project" />
     <orderEntry type="library" exported="" name="facebook-android-sdk-4.23.0" level="project" />
     <orderEntry type="library" exported="" name="constraint-layout-1.0.2" level="project" />
+    <orderEntry type="library" exported="" name="firebase-ads-11.0.0" level="project" />
     <orderEntry type="library" exported="" name="firebase-storage-11.0.0" level="project" />
     <orderEntry type="library" exported="" name="fancybuttons-1.8.3" level="project" />
     <orderEntry type="library" exported="" name="design-25.3.1" level="project" />
@@ -153,6 +157,7 @@
     <orderEntry type="library" exported="" name="firebase-appindexing-11.0.0" level="project" />
     <orderEntry type="library" exported="" name="constraint-layout-solver-1.0.2" level="project" />
     <orderEntry type="library" exported="" name="okio-1.13.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-safetynet-11.0.0" level="project" />
     <orderEntry type="library" exported="" name="okhttp-3.8.0" level="project" />
     <orderEntry type="library" exported="" name="firebase-analytics-11.0.0" level="project" />
     <orderEntry type="library" exported="" name="library-2.2" level="project" />
