@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.os.AsyncTaskCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -76,8 +78,12 @@ public class AllColleges extends Fragment implements ValueEventListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setDataToArrayList();
-        addFeaturedListener();
-        fillNormally();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // addFeaturedListener(); todo in next update
     }
 
     private void addFeaturedListener() {
@@ -147,19 +153,32 @@ public class AllColleges extends Fragment implements ValueEventListener {
 
     public void setDataToArrayList() {
         //Reading from json file and insillizing inside arrayList
-        try {
-            JSONObject obj = new JSONObject(AssetJSONFile("college_feed.json", getContext()));
-            JSONArray m_jArry = obj.getJSONArray("lists");
-            for (int i = 0; i < m_jArry.length(); i++) {
-                JSONObject jo_inside = m_jArry.getJSONObject(i);
-                names.add(jo_inside.getString("name"));
-                website.add(jo_inside.getString("website"));
-                address.add(jo_inside.getString("address"));
-                phNo.add(jo_inside.getString("phone"));
+        AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    JSONObject obj = new JSONObject(AssetJSONFile("college_feed.json", getContext()));
+                    JSONArray m_jArry = obj.getJSONArray("lists");
+                    for (int i = 0; i < m_jArry.length(); i++) {
+                        JSONObject jo_inside = m_jArry.getJSONObject(i);
+                        names.add(jo_inside.getString("name"));
+                        website.add(jo_inside.getString("website"));
+                        address.add(jo_inside.getString("address"));
+                        phNo.add(jo_inside.getString("phone"));
+                    }
+                } catch (Exception ignored) {
+                    ignored.printStackTrace();
+                }
+                return null;
             }
-        } catch (Exception ignored) {
-            ignored.printStackTrace();
-        }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                fillNormally();
+            }
+        });
+
     }
 
     public boolean isLargeScreen() {

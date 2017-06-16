@@ -33,6 +33,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import java.util.concurrent.TimeUnit;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class PhoneNoActivity extends AppCompatActivity {
@@ -195,6 +196,7 @@ public class PhoneNoActivity extends AppCompatActivity {
     }
 
     private void onVerified() {
+        new EventSender().logEvent("phone_verified");
         SPHandler.getInstance().setPhoneNo(phone.getText().toString());
         startActivity(new Intent(PhoneNoActivity.this, MainActivity.class)
                 .putExtra("fragment", getIntent().getStringExtra("fragment")));

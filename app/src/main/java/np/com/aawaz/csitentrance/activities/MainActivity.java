@@ -42,7 +42,6 @@ import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceNews;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceResult;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.Home;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.LeaderBoard;
-import np.com.aawaz.csitentrance.fragments.navigation_fragment.More;
 import np.com.aawaz.csitentrance.misc.MyApplication;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Feedback;
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     String[] navigationText = new String[]{"leaderboard", "colleges", "more",
             "faqs", "news", "forum", "result",
             "setting", "feedback", "share", "like", "rate"};
-    int[] navigationId = new int[]{R.id.leaderBoard, R.id.csitColleges, R.id.more, R.id.entranceFAQ, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.share, R.id.like, R.id.rate};
+    int[] navigationId = new int[]{R.id.leaderBoard, R.id.csitColleges, R.id.entranceFAQ, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.share, R.id.like, R.id.rate};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
-            uploadInstanceId();
+        uploadInstanceId();
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
@@ -252,13 +251,6 @@ public class MainActivity extends AppCompatActivity {
                 setTitle("Leaderboard");
                 item.setChecked(true);
                 new EventSender().logEvent("leaderboard");
-                break;
-
-            case R.id.more:
-                manager.beginTransaction().replace(R.id.fragmentHolder, new More()).commit();
-                setTitle("More");
-                item.setChecked(true);
-                new EventSender().logEvent("more");
                 break;
 
             case R.id.entranceFAQ:

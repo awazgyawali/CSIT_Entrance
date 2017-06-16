@@ -44,14 +44,6 @@
                 android:textStyle="bold"
                 android:typeface="monospace" />
 
-            <ImageView
-                android:id="@+id/each_news_image"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
-                android:transitionName="destinationNews" />
-
             <TextView
                 android:id="@+id/each_news_time"
                 android:layout_width="match_parent"

@@ -1,8 +1,6 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="app_bar_elevation">4dp</dimen>
-    <dimen name="first_item">10dp</dimen>
-    <dimen name="normal_item">5dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <!-- Default screen margins, per the Android Design guidelines. -->
 </resources>

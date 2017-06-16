@@ -41,7 +41,6 @@ public class EntranceNews extends Fragment implements ValueEventListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //Setting the data
-        readyAdapter();
         addOneTimeListener();
         appIndexing();
     }
@@ -83,23 +82,24 @@ public class EntranceNews extends Fragment implements ValueEventListener {
     }
 
     public void readyAdapter() {
-        newsAdapter = new NewsAdapter(getContext());
         recy.setLayoutManager(new LinearLayoutManager(getContext()));
         recy.setAdapter(newsAdapter);
-        reference = FirebaseDatabase.getInstance().getReference().child("news");
     }
 
     private void addOneTimeListener() {
+        reference = FirebaseDatabase.getInstance().getReference().child("news");
         errorLayout.setVisibility(View.GONE);
         progress.setVisibility(View.VISIBLE);
-        reference.addListenerForSingleValueEvent(this);
+        reference.addValueEventListener(this);
     }
 
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
+        newsAdapter = new NewsAdapter(getContext());
         for (DataSnapshot child : dataSnapshot.getChildren())
             newsAdapter.addToTop(child.getValue(News.class));
         progress.setVisibility(View.GONE);
+        readyAdapter();
     }
 
     @Override

@@ -13,13 +13,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.firebase.appindexing.Action;
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
@@ -179,14 +181,13 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
 
     private void showDialogAd() {
         PopupDialogFragment popupDialogFragment = new PopupDialogFragment();
-        popupDialogFragment.show(getSupportFragmentManager(), "popup");
+        //popupDialogFragment.show(getSupportFragmentManager(), "popup"); todo trigger ad on next update
     }
 
     @Override
     public void selected(CardView submit, boolean correct) {
         spHandler.increasePlayed(code);
         spHandler.increaseTimesPlayed();
-        Log.d("Debug",spHandler.getTimesPlayed()+ " times");
         if ((spHandler.getTimesPlayed() % 15) == 0) {//todo change
             showDialogAd();
         }

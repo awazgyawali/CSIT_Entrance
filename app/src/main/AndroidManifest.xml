@@ -77,9 +77,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".activities.ImageViewActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.SignInActivity"
             android:screenOrientation="portrait" />
         <activity

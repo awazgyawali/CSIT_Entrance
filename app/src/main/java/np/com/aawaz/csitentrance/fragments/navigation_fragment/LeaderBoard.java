@@ -54,7 +54,7 @@ public class LeaderBoard extends Fragment {
             try {
                 parser(new JSONObject(response));
                 filled = true;
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -123,7 +123,7 @@ public class LeaderBoard extends Fragment {
                 try {
                     parser(new JSONObject(response));
                     SPHandler.getInstance().setLeaderBoardLastResponse(response);
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -147,19 +147,19 @@ public class LeaderBoard extends Fragment {
                 JSONObject jo_inside = jsonArray.getJSONObject(i);
 
                 if (i < 3) {
-                    topNames[i].setText(jo_inside.getString("title"));
+                    topNames[i].setText(jo_inside.getString("name"));
                     topScores[i].setText(String.valueOf(jo_inside.getInt("score")));
                     Picasso.with(getContext())
                             .load(jo_inside.getString("image_link"))
                             .placeholder(R.drawable.account_holder)
                             .into(circleImageViews[i]);
                 } else {
-                    names.add(jo_inside.getString("title"));
+                    names.add(jo_inside.getString("name"));
                     scores.add(jo_inside.getInt("score"));
                 }
             }
             callFillRecyclerView();
-        } catch (JSONException e) {
+        } catch (Exception e) {
             if (!filled) {
                 errorLayout.setVisibility(View.VISIBLE);
                 progress.setVisibility(View.GONE);

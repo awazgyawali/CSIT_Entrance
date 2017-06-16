@@ -18,14 +18,10 @@
             android:checkable="true"
             android:icon="@drawable/school"
             android:title="CSIT Colleges" />
-        <item
-            android:id="@+id/more"
-            android:checkable="true"
-            android:icon="@drawable/more"
-            android:title="More" />
+
     </group>
 
-    <group android:checkableBehavior="single" android:id="@+id/entrance_options">
+    <group android:checkableBehavior="single" android:id="@+id/entrance">
 
         <item
             android:id="@+id/entranceFAQ"
@@ -49,7 +45,7 @@
             android:title="Entrance Result" />
     </group>
 
-    <group android:checkableBehavior="none" android:id="@+id/tech">
+    <group android:checkableBehavior="none" android:id="@+id/event">
 
         <item
             android:id="@+id/settings"
@@ -60,7 +56,7 @@
             android:icon="@drawable/logout"
             android:title="Log Out" />
     </group>
-    <group android:checkableBehavior="none"  android:id="@+id/grow">
+    <group android:checkableBehavior="none" android:id="@+id/extra">
         <item
             android:id="@+id/feedback"
             android:icon="@drawable/feedback"

@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:visibility="gone"
             android:padding="10dp"
             android:text="Featured Colleges"
             android:textColor="@color/colorPrimary"
@@ -21,6 +22,7 @@
         <com.daimajia.slider.library.SliderLayout
             android:id="@+id/featured_ad_slider"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content" />
 
         <TextView

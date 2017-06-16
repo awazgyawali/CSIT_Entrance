@@ -167,7 +167,7 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
 
     private void showDialogAd() {
         PopupDialogFragment popupDialogFragment = new PopupDialogFragment();
-        popupDialogFragment.show(getSupportFragmentManager(), "popup");
+        //popupDialogFragment.show(getSupportFragmentManager(), "popup"); todo  trigger ad on next update
     }
 
     @Override

@@ -48,28 +48,11 @@ public class NewsDetailActivity extends AppCompatActivity {
                 newsDetail = (WebView) findViewById(R.id.each_news_detail);
         TextView time = (TextView) findViewById(R.id.each_news_time),
                 title = (TextView) findViewById(R.id.each_news_title);
-        ImageView imageView = (ImageView) findViewById(R.id.each_news_image);
 
         bundle = getIntent().getBundleExtra("data");
         title.setText(bundle.getString("title"));
         newsDetail.loadDataWithBaseURL("", readyWithCSS(bundle.getString("detail")), "text/html", "UTF-8", "");
         time.setText(bundle.getString("time"));
-        if (bundle.getString("image_link").equals("")) {
-            imageView.setVisibility(View.GONE);
-        } else {
-            Picasso.with(this)
-                    .load(bundle.getString("image_link"))
-                    .into(imageView);
-            imageView.setVisibility(View.VISIBLE);
-        }
-
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(NewsDetailActivity.this, ImageViewActivity.class)
-                        .putExtra("image_link", bundle.getString("image_link")));
-            }
-        });
         appIndexing();
     }
 

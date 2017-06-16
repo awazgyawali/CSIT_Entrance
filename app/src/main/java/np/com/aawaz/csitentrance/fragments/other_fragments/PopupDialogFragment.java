@@ -101,6 +101,13 @@ public class PopupDialogFragment extends DialogFragment {
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseDatabase.getInstance().getReference()
+                        .child("ad_user_data")
+                        .child(adToShow.title)
+                        .child("students")
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .setValue(new Feedback(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()));
+
                 startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", String.valueOf(adToShow.phone), null)));
                 dismiss();
             }
@@ -109,10 +116,10 @@ public class PopupDialogFragment extends DialogFragment {
         know.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 FirebaseDatabase.getInstance().getReference()
-                        .child("college_feed")
+                        .child("ad_user_data")
                         .child(adToShow.title)
+                        .child("students")
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .setValue(new Feedback(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()));
 
