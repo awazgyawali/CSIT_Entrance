@@ -53,7 +53,7 @@ public class ScoreUploader extends Service {
             image_link = user.getPhotoUrl().toString();
         } catch (Exception ignored) {
         }
-        url = getString(R.string.uploadScore) + "?name=" + user.getDisplayName()
+        url = getString(R.string.uploadScore) + "?title=" + user.getDisplayName()
                 + "&email=" + user.getEmail()
                 + "&score=" + SPHandler.getInstance().getTotalScore()
                 + "&image_link=" + image_link

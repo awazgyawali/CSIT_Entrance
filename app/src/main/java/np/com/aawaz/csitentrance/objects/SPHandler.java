@@ -229,8 +229,8 @@ public class SPHandler {
         return infoSp.getBoolean(set_id, false);
     }
 
-    public void setTimesPlayed(int timesPlayed) {
-        infoEditor.putInt("times_played", timesPlayed).apply();
+    public void increaseTimesPlayed() {
+        infoEditor.putInt("times_played", getTimesPlayed() + 1).commit();
     }
 
     public int getTimesPlayed() {
@@ -243,5 +243,13 @@ public class SPHandler {
 
     public void instanceIdAdded() {
         infoEditor.putBoolean("instance", true).apply();
+    }
+
+    public int getLastAdPosition() {
+        return infoSp.getInt("last_ad", 0);
+    }
+
+    public void setLastAd(int lastAd) {
+        infoEditor.putInt("last_ad", lastAd);
     }
 }

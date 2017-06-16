@@ -35,7 +35,7 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.fragments.navigation_fragment.CSITColleges;
+import np.com.aawaz.csitentrance.fragments.navigation_fragment.AllColleges;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceFAQs;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceForum;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceNews;
@@ -73,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
-
-        uploadInstanceId();
+            uploadInstanceId();
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
@@ -135,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         uploadScore();
-        FirebaseDatabase.getInstance().getReference().child("result_published").keepSynced(true);
+        FirebaseDatabase.getInstance().getReference().child("ads").keepSynced(true);
     }
 
     private void uploadScore() {
@@ -228,6 +227,9 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseAuth.getInstance().signOut();
                             if (AccessToken.getCurrentAccessToken() != null)
                                 LoginManager.getInstance().logOut();
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("allDevices");
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("new");
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("forums");
                             startActivity(new Intent(MainActivity.this, SignInActivity.class));
                             finish();
                         }
@@ -281,9 +283,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.csitColleges:
-                manager.beginTransaction().replace(R.id.fragmentHolder, new CSITColleges()).commit();
+                manager.beginTransaction().replace(R.id.fragmentHolder, new AllColleges()).commit();
                 setTitle("CSIT Colleges");
-                tabLayout.setVisibility(View.VISIBLE);
                 new EventSender().logEvent("colleges");
                 item.setChecked(true);
                 break;

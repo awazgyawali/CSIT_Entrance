@@ -298,6 +298,9 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                         if (e instanceof FirebaseAuthUserCollisionException) {
                             Toast.makeText(SignInActivity.this, "Email address in use by another account. Try another option.",
                                     Toast.LENGTH_SHORT).show();
+                        } else{
+                            Toast.makeText(SignInActivity.this, "Unable to login.",
+                                    Toast.LENGTH_SHORT).show();
                         }
                         processing = false;
                     }

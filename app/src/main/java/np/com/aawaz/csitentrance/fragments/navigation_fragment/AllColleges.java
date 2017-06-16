@@ -1,4 +1,4 @@
-package np.com.aawaz.csitentrance.fragments.other_fragments;
+package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,14 @@ import android.view.ViewGroup;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.daimajia.slider.library.Indicators.PagerIndicator;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,15 +37,19 @@ import java.util.ArrayList;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.adapters.CollegesAdapter;
+import np.com.aawaz.csitentrance.custom_views.FeaturedSlideView;
 import np.com.aawaz.csitentrance.interfaces.CollegeMenuClicks;
+import np.com.aawaz.csitentrance.objects.FeaturedCollege;
 
 
-public class AllColleges extends Fragment {
+public class AllColleges extends Fragment implements ValueEventListener {
     private ArrayList<String> names = new ArrayList<>(),
             website = new ArrayList<>(),
             address = new ArrayList<>(),
             phNo = new ArrayList<>();
     RecyclerView colzRecy;
+
+    SliderLayout adSlider;
 
     public static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();
@@ -51,18 +63,26 @@ public class AllColleges extends Fragment {
     public static AllColleges newInstance() {
         return new AllColleges();
     }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         colzRecy = (RecyclerView) view.findViewById(R.id.colzRecy);
+        adSlider = (SliderLayout) view.findViewById(R.id.featured_ad_slider);
+        colzRecy.setNestedScrollingEnabled(false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setDataToArrayList();
-
+        addFeaturedListener();
         fillNormally();
+    }
+
+    private void addFeaturedListener() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("ads").child("featured_colleges");
+        reference.addListenerForSingleValueEvent(this);
     }
 
 
@@ -137,8 +157,8 @@ public class AllColleges extends Fragment {
                 address.add(jo_inside.getString("address"));
                 phNo.add(jo_inside.getString("phone"));
             }
-
         } catch (Exception ignored) {
+            ignored.printStackTrace();
         }
     }
 
@@ -151,5 +171,35 @@ public class AllColleges extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_all_colleges, container, false);
+    }
+
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot) {
+        for (DataSnapshot child : dataSnapshot.getChildren())
+            fillFeaturedColleges(child.getValue(FeaturedCollege.class));
+    }
+
+    private void fillFeaturedColleges(FeaturedCollege college) {
+        Bundle bundle = new Bundle();
+        bundle.putString("address", college.address);
+        bundle.putLong("phone_no", college.phone);
+        bundle.putString("destination_url", college.website);
+        bundle.putString("description", college.detail);
+
+        FeaturedSlideView textSliderView = new FeaturedSlideView(getContext());
+        // initialize a SliderLayout
+        textSliderView
+                .description(college.name)
+                .image(college.banner_image)
+                .bundle(bundle)
+                .setScaleType(BaseSliderView.ScaleType.CenterCrop);
+
+        adSlider.addSlider(textSliderView);
+        adSlider.setIndicatorVisibility(PagerIndicator.IndicatorVisibility.Invisible);
+    }
+
+    @Override
+    public void onCancelled(DatabaseError databaseError) {
+
     }
 }

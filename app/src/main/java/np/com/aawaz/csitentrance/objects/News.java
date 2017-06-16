@@ -8,7 +8,7 @@ public class News {
     public String title;
     public String message;
     public long time_stamp;
-    public String image_url;
+    public boolean featured = false;
 
     public News() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)

@@ -12,23 +12,23 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 
 import np.com.aawaz.csitentrance.R;
 
-public class CustomSlideView extends BaseSliderView {
+public class ResultSlideView extends BaseSliderView {
     private final Context context;
 
-    public CustomSlideView(Context context) {
+    public ResultSlideView(Context context) {
         super(context);
         this.context = context;
     }
 
     @Override
     public View getView() {
-        View v = LayoutInflater.from(getContext()).inflate(R.layout.custom_slide, null);
+        View v = LayoutInflater.from(getContext()).inflate(R.layout.result_custom_slide, null);
 
         ImageView target = (ImageView) v.findViewById(R.id.image_ad);
-        TextView description = (TextView) v.findViewById(R.id.description);
-        TextView title = (TextView) v.findViewById(R.id.title);
+        TextView description = (TextView) v.findViewById(R.id.popup_desc);
+        TextView title = (TextView) v.findViewById(R.id.popup_title);
         TextView address = (TextView) v.findViewById(R.id.address_slide);
-        TextView call = (TextView) v.findViewById(R.id.call_result);
+        TextView call = (TextView) v.findViewById(R.id.call_popup);
 
         call.setOnClickListener(new View.OnClickListener() {
             @Override

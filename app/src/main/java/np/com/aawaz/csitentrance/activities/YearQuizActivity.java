@@ -13,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.custom_views.CustomViewPager;
 import np.com.aawaz.csitentrance.fragments.other_fragments.AnswersDrawer;
+import np.com.aawaz.csitentrance.fragments.other_fragments.PopupDialogFragment;
 import np.com.aawaz.csitentrance.fragments.other_fragments.QuestionFragment;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
 import np.com.aawaz.csitentrance.objects.SPHandler;
@@ -175,9 +177,19 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
         answersDrawer.setInitialData(qNo, getIntent().getIntExtra("position", 1) + 1);
     }
 
+    private void showDialogAd() {
+        PopupDialogFragment popupDialogFragment = new PopupDialogFragment();
+        popupDialogFragment.show(getSupportFragmentManager(), "popup");
+    }
+
     @Override
     public void selected(CardView submit, boolean correct) {
         spHandler.increasePlayed(code);
+        spHandler.increaseTimesPlayed();
+        Log.d("Debug",spHandler.getTimesPlayed()+ " times");
+        if ((spHandler.getTimesPlayed() % 15) == 0) {//todo change
+            showDialogAd();
+        }
         spHandler.increasePlayed(spHandler.getSubjectCode(getIntent().getIntExtra("position", 1), qNo));
         if (customViewPager.getCurrentItem() == 99) {
             startActivity(new Intent(YearQuizActivity.this, ReportCardActivity.class)

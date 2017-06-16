@@ -65,9 +65,9 @@ public class SearchActivity extends AppCompatActivity {
             JSONArray m_jArry = new JSONObject(AssetJSONFile("college_feed.json", this)).getJSONArray("lists");
             for (int i = 0; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
-                if (jo_inside.getString("name").toLowerCase().contains(search.getText().toString().toLowerCase()) ||
+                if (jo_inside.getString("title").toLowerCase().contains(search.getText().toString().toLowerCase()) ||
                         jo_inside.getString("address").toLowerCase().contains(search.getText().toString().toLowerCase())) {
-                    names.add(jo_inside.getString("name"));
+                    names.add(jo_inside.getString("title"));
                     website.add(jo_inside.getString("website"));
                     address.add(jo_inside.getString("address"));
                     phNo.add(jo_inside.getString("phone"));

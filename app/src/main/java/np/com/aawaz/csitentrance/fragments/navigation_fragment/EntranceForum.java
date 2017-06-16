@@ -58,6 +58,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     ArrayList<String> key = new ArrayList<>();
 
     DatabaseReference reference;
+    private LinearLayoutManager mLinearLayoutManager;
 
     @Nullable
     @Override
@@ -131,6 +132,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         Post newPost = dataSnapshot.getValue(Post.class);
         newPost.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
         adapter.addToTop(newPost);
+        mLinearLayoutManager.scrollToPositionWithOffset(0, 0);
         key.add(0, dataSnapshot.getKey());
         progressBar.setVisibility(View.GONE);
     }
@@ -178,7 +180,8 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         progressBar.setVisibility(View.GONE);
         adapter = new ForumAdapter(getContext());
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mLinearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLinearLayoutManager);
         adapter.setClickListener(new ClickListener() {
             @Override
             public void itemClicked(View view, int position) {
@@ -234,7 +237,6 @@ public class EntranceForum extends Fragment implements ChildEventListener {
             reference.push().setValue(postValues);
             SPHandler.getInstance().setLastPostedTime(System.currentTimeMillis());
             questionEditText.setText("");
-            recyclerView.smoothScrollToPosition(0);
         } else {
             new MaterialDialog.Builder(getContext())
                     .title("Opps...")

@@ -11,7 +11,7 @@ public class Feedback {
     public String name;
     public String email;
     public String message;
-    public String instance_id;
+    public String uuid;
 
     public Feedback() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
@@ -22,7 +22,7 @@ public class Feedback {
         this.name = user.getDisplayName();
         this.email = user.getEmail();
         this.message = message;
-        this.instance_id = FirebaseInstanceId.getInstance().getToken();
+        this.uuid = user.getUid();
     }
 
 }

@@ -30,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.truizlop.fabreveallayout.FABRevealLayout;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.custom_views.CustomSlideView;
+import np.com.aawaz.csitentrance.custom_views.ResultSlideView;
 import np.com.aawaz.csitentrance.interfaces.ResponseListener;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 import np.com.aawaz.csitentrance.services.NetworkRequester;
@@ -178,7 +178,7 @@ public class EntranceResult extends Fragment {
     }
 
     private void readyAd() {
-        FirebaseDatabase.getInstance().getReference().child("result_ad").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("ads").child("entrance_result").addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -190,7 +190,7 @@ public class EntranceResult extends Fragment {
                     bundle.putString("destination_url", child.child("destination_url").getValue(String.class));
                     bundle.putString("description", child.child("sub_title").getValue(String.class));
 
-                    CustomSlideView textSliderView = new CustomSlideView(getContext());
+                    ResultSlideView textSliderView = new ResultSlideView(getContext());
                     // initialize a SliderLayout
                     textSliderView
                             .description(child.child("title").getValue(String.class))

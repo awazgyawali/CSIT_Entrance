@@ -25,14 +25,14 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/image_ad"
+                android:id="@+id/image_ad_popup"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="0dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/students"
-                app:layout_constraintBottom_toTopOf="@+id/title"
+                app:layout_constraintBottom_toTopOf="@+id/popup_title"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -40,7 +40,7 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/popup_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="0dp"
@@ -53,13 +53,13 @@
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView2"
+                app:layout_constraintBottom_toTopOf="@+id/popup_address"
                 app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/popup_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -67,12 +67,12 @@
                 android:layout_marginRight="8dp"
                 android:text="Sanothimi, Bhaktapur"
                 android:textColor="@color/colorAccent"
-                app:layout_constraintBottom_toTopOf="@+id/description"
+                app:layout_constraintBottom_toTopOf="@+id/popup_desc"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent" />
 
             <TextView
-                android:id="@+id/description"
+                android:id="@+id/popup_desc"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -110,7 +110,7 @@
                 app:layout_constraintRight_toRightOf="parent">
 
                 <TextView
-                    android:id="@+id/call_result"
+                    android:id="@+id/call_popup"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
@@ -124,6 +124,7 @@
                     app:layout_constraintLeft_toLeftOf="parent" />
 
                 <TextView
+                    android:id="@+id/popup_knowmore"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
@@ -135,7 +136,7 @@
                     android:textColor="@color/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintHorizontal_bias="0.504"
-                    app:layout_constraintLeft_toRightOf="@+id/call_result"
+                    app:layout_constraintLeft_toRightOf="@+id/call_popup"
                     app:layout_constraintRight_toLeftOf="@+id/closePopup" />
 
                 <TextView

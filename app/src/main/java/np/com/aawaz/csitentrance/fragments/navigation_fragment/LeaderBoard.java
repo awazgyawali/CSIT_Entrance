@@ -147,14 +147,14 @@ public class LeaderBoard extends Fragment {
                 JSONObject jo_inside = jsonArray.getJSONObject(i);
 
                 if (i < 3) {
-                    topNames[i].setText(jo_inside.getString("name"));
+                    topNames[i].setText(jo_inside.getString("title"));
                     topScores[i].setText(String.valueOf(jo_inside.getInt("score")));
                     Picasso.with(getContext())
                             .load(jo_inside.getString("image_link"))
                             .placeholder(R.drawable.account_holder)
                             .into(circleImageViews[i]);
                 } else {
-                    names.add(jo_inside.getString("name"));
+                    names.add(jo_inside.getString("title"));
                     scores.add(jo_inside.getInt("score"));
                 }
             }

@@ -52,13 +52,6 @@
             android:textColor="@color/colorPrimaryText"
             android:textSize="15sp" />
 
-        <ImageView
-            android:id="@+id/newsImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="5dp"
-            android:scaleType="centerCrop"
-            android:transitionName="sourceNews" />
     </LinearLayout>
 
 </LinearLayout>

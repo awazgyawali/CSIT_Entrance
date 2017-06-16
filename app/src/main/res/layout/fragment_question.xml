@@ -75,16 +75,6 @@
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="17sp" />
 
-                    <TextView
-                        android:id="@+id/report_bug"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginRight="5dp"
-                        android:src="@drawable/bug"
-                        android:text="Report" />
                 </RelativeLayout>
             </LinearLayout>
 

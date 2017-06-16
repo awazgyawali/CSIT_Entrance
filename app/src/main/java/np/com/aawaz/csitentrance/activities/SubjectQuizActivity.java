@@ -13,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.custom_views.CustomViewPager;
 import np.com.aawaz.csitentrance.fragments.other_fragments.AnswersDrawer;
+import np.com.aawaz.csitentrance.fragments.other_fragments.PopupDialogFragment;
 import np.com.aawaz.csitentrance.fragments.other_fragments.QuestionFragment;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
 import np.com.aawaz.csitentrance.objects.SPHandler;
@@ -109,6 +111,7 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
         mUrl = "http://csitentrance.brainants.com/questions";
         mTitle = "BSc CSIT Entrance Qld Questions";
     }
+
     public com.google.firebase.appindexing.Action getAction() {
         return Actions.newView(mTitle, mUrl);
     }
@@ -162,9 +165,19 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
         customViewPager.setCurrentItem(qNo);
     }
 
+    private void showDialogAd() {
+        PopupDialogFragment popupDialogFragment = new PopupDialogFragment();
+        popupDialogFragment.show(getSupportFragmentManager(), "popup");
+    }
+
     @Override
     public void selected(CardView submit, boolean correct) {
         spHandler.increasePlayed(subject);
+        spHandler.increaseTimesPlayed();
+        Log.d("Debug",spHandler.getTimesPlayed()+ " times");
+        if ((spHandler.getTimesPlayed() % 15) == 0) {
+            showDialogAd();
+        }
         if (customViewPager.getCurrentItem() != 24)
             answersDrawer.increaseSize();
         else {

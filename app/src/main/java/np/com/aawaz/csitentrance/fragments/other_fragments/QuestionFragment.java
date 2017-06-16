@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
-import com.google.firebase.database.FirebaseDatabase;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
@@ -32,11 +31,9 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     FancyButton option1Selected, option2Selected, option3Selected, option4Selected;
 
     CardView submit;
-    TextView bug;
 
     int clickedAns = 0;
     private QuizInterface listener;
-    Integer timesPlayed;
 
     public QuestionFragment() {
         // Required empty public constructor
@@ -110,7 +107,6 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         option4Selected = (FancyButton) view.findViewById(R.id.optSelected4);
 
         submit = (CardView) view.findViewById(R.id.AnswerFab);
-        bug = (TextView) view.findViewById(R.id.report_bug);
 
         YoYo.with(Techniques.SlideOutDown)
                 .duration(0)
@@ -141,7 +137,6 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        timesPlayed = SPHandler.getInstance().getTimesPlayed();
         final String questionText = getArguments().getString("question");
         final String opt1Text = getArguments().getString("a");
         final String opt2Text = getArguments().getString("b");
@@ -200,38 +195,6 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
             option4Ro.setVisibility(View.VISIBLE);
             option4Ro.setText(Html.fromHtml(opt4Text));
         }
-
-        bug.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new MaterialDialog.Builder(getActivity())
-                        .title("What's wrong here?")
-                        .items(new String[]{"Question", "Answer"})
-                        .itemsCallbackMultiChoice(null, new MaterialDialog.ListCallbackMultiChoice() {
-                            @Override
-                            public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
-                                String str = null;
-                                for (int i = 0; i < which.length; i++) {
-                                    if (i > 0)
-                                        str = "both";
-                                    else
-                                        str = (String) text[i];
-
-                                }
-                                FirebaseDatabase.getInstance().getReference().child("report").push().setValue(getResources().getStringArray(R.array.years)[getArguments().getInt("code")] + " QNo "
-                                        + getArguments().getInt("position") + 1 + " Problem with " + str);
-                                Toast.makeText(getActivity(), "Thanks for reporting!!", Toast.LENGTH_SHORT).show();
-                                return true;
-                            }
-                        })
-                        .positiveText("Report")
-                        .show();
-
-
-            }
-        });
-
-
     }
 
 
@@ -243,17 +206,6 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
             listener.selected(submit, false);
         }
     }
-
-    private void increaseTimesPlayed() {
-        timesPlayed = timesPlayed + 1;
-        SPHandler.getInstance().setTimesPlayed(timesPlayed);
-    }
-
-    private void showDialogAd() {
-        PopupDialogFragment popupDialogFragment = new PopupDialogFragment();
-        popupDialogFragment.show(getChildFragmentManager(), "popup");
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -272,11 +224,6 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 checkAnswer();
-                Toast.makeText(getContext(), "Times" + timesPlayed, Toast.LENGTH_SHORT).show();
-                increaseTimesPlayed();
-                if ((timesPlayed % 20) == 0) {
-                    showDialogAd();
-                }
             }
         });
 

@@ -1,13 +1,16 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,7 +21,7 @@ import com.squareup.picasso.Picasso;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.EventSender;
 
-public class EachNews extends AppCompatActivity {
+public class NewsDetailActivity extends AppCompatActivity {
 
     private String mUrl;
     private String mTitle;
@@ -37,23 +40,22 @@ public class EachNews extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
 
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) toolbar.getParent();
-        collapsingToolbarLayout.setTitle("Entrance News");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        }
 
-
-        TextView
-                newsDetail = (TextView) findViewById(R.id.each_news_detail);
+        WebView
+                newsDetail = (WebView) findViewById(R.id.each_news_detail);
         TextView time = (TextView) findViewById(R.id.each_news_time),
                 title = (TextView) findViewById(R.id.each_news_title);
         ImageView imageView = (ImageView) findViewById(R.id.each_news_image);
 
         bundle = getIntent().getBundleExtra("data");
         title.setText(bundle.getString("title"));
-        newsDetail.setText(Html.fromHtml(bundle.getString("detail")));
+        newsDetail.loadDataWithBaseURL("", readyWithCSS(bundle.getString("detail")), "text/html", "UTF-8", "");
         time.setText(bundle.getString("time"));
-        if (bundle.getString("image_link").equals("null")) {
+        if (bundle.getString("image_link").equals("")) {
             imageView.setVisibility(View.GONE);
-            collapsingToolbarLayout.setTitle("Entrance News");
         } else {
             Picasso.with(this)
                     .load(bundle.getString("image_link"))
@@ -64,11 +66,40 @@ public class EachNews extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(EachNews.this, ImageViewActivity.class)
+                startActivity(new Intent(NewsDetailActivity.this, ImageViewActivity.class)
                         .putExtra("image_link", bundle.getString("image_link")));
             }
         });
         appIndexing();
+    }
+
+    private String readyWithCSS(String string) {
+        String initial = "<html lang=\"en\">" +
+                "<head>" +
+                "  <meta charset=\"UTF-8\">" +
+                "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
+                "  <title>Document</title>" +
+                "  <style>" +
+                "    body{" +
+                "      margin: 0;" +
+                "      padding: 5px;" +
+                "    }" +
+                "    img {" +
+                "      width: 100%;" +
+                "    }" +
+                "    p {" +
+                "      margin: 5px ;" +
+                "      font-size: 18px;" +
+                "      line-height: 1.5em;" +
+                "      text-align: justify;" +
+                "    }" +
+                "  </style>" +
+                "</head>" +
+                "<body>";
+        String footer = "</body>" +
+                "</html>";
+        return initial + string + footer;
     }
 
 

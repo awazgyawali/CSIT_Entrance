@@ -9,6 +9,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -41,16 +42,19 @@ public class MyMessagingService extends FirebaseMessagingService {
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(),
                         R.drawable.splash_icon))
                 .setSmallIcon(R.drawable.skeleton_logo)
-                .setContentText(remoteMessage.getNotification().getBody())
-                .setContentTitle(remoteMessage.getNotification().getTitle())
+                .setContentText(remoteMessage.getData().get("body"))
+                .setContentTitle(remoteMessage.getData().get("title"))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
+        if (remoteMessage.getData().get("fragment").equals("news"))
+            notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(remoteMessage.getData().get("body")));
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        if (remoteMessage.getData().get("fragment").equals("forum") && !remoteMessage.getData().get("uid").equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+            notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
 
     @Override

@@ -86,7 +86,7 @@
             android:name=".activities.SignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.EachNews"
+            android:name=".activities.NewsDetailActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.SubjectChooserActivity"

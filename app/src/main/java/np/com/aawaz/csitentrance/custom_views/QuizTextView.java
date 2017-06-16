@@ -21,21 +21,18 @@ public class QuizTextView extends WebView {
         String strBody = "<html>"
                 + "<head>"
                 + "     <style type=\"text/css\">"
-                + "     @font-face "
-                + "         {   font-family: Tahoma;"
-                + "             src:url(\"~/android_asset/fonts/Roboto-Regular.ttf\") "
-                + "         }"
                 + "     #text"
-                + "         {   font-family: Tahoma;"
+                + "         {  "
                 + "             font-size:14;"
-                + "             text-align: center;"
                 + "         }"
                 + "     </style>"
-                + ""
                 + "</head>"
+                + "<body>"
                 + "<image_url dir=\"rtl\" id=\"text\">"
                 + data
-                + " </image_url></html>  ";
+                + "</image_url>"
+                + "</body>"
+                + "</html>  ";
 
         loadDataWithBaseURL(null, strBody, "text/html", "utf-8",
                 null);
