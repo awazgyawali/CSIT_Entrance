@@ -39,7 +39,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -85,11 +84,12 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    if (user.getPhoneNumber() == null) {
-                        startActivity(new Intent(SignInActivity.this, PhoneNoActivity.class)
-                                .putExtra("fragment", getIntent().getStringExtra("fragment")));
-                        finish();
-                    } else {
+                    if (user.getPhoneNumber() == null)
+                        phoneIntent();
+                    else if (user.getPhoneNumber().equals(""))
+                        phoneIntent();
+
+                    else {
                         SPHandler.getInstance().setPhoneNo(user.getPhoneNumber());
                         startActivity(new Intent(SignInActivity.this, MainActivity.class)
                                 .putExtra("fragment", getIntent().getStringExtra("fragment")));
@@ -108,6 +108,13 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         handleSignInButton();
 
         handleSignUp();
+    }
+
+    private void phoneIntent() {
+
+        startActivity(new Intent(SignInActivity.this, PhoneNoActivity.class)
+                .putExtra("fragment", getIntent().getStringExtra("fragment")));
+        finish();
     }
 
     private void handleSignUp() {
@@ -179,12 +186,12 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                                         forgot_dialog.dismiss();
                                     }
                                 })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
 
-                            }
-                        });
+                                    }
+                                });
                     }
                 });
     }
@@ -235,7 +242,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
             @Override
             public void onError(FacebookException error) {
-                processing = true;
+                processing = false;
             }
         });
 
@@ -298,7 +305,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                         if (e instanceof FirebaseAuthUserCollisionException) {
                             Toast.makeText(SignInActivity.this, "Email address in use by another account. Try another option.",
                                     Toast.LENGTH_SHORT).show();
-                        } else{
+                        } else {
                             Toast.makeText(SignInActivity.this, "Unable to login.",
                                     Toast.LENGTH_SHORT).show();
                         }
@@ -310,6 +317,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        processing = false;
     }
 
     @Override

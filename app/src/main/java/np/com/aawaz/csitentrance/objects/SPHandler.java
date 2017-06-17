@@ -214,7 +214,7 @@ public class SPHandler {
     }
 
     public String getPhoneNo() {
-        return infoSp.getString("phone_no", null);
+        return infoSp.getString("phone_no", "");
     }
 
     public void setPhoneNo(String no) {

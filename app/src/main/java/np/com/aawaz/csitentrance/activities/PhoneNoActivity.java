@@ -17,18 +17,17 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.concurrent.TimeUnit;
 
@@ -46,6 +45,7 @@ public class PhoneNoActivity extends AppCompatActivity {
     private PhoneAuthProvider.ForceResendingToken forceResendingToken;
     private FirebaseAuth mAuth;
     private ViewSwitcher vs;
+    MaterialDialog verifying;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +124,15 @@ public class PhoneNoActivity extends AppCompatActivity {
 
         phone.setText(SPHandler.getInstance().getPhoneNo().replace("+977", ""));
 
+        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user.getPhoneNumber() != null && !user.getPhoneNumber().equals(""))
+                    onVerified();
+            }
+        });
+
         mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             @Override
@@ -146,7 +155,8 @@ public class PhoneNoActivity extends AppCompatActivity {
             public void onCodeAutoRetrievalTimeOut(String s) {
                 super.onCodeAutoRetrievalTimeOut(s);
                 submit.setVisibility(View.VISIBLE);
-                ((TextView) submit.getChildAt(0)).setText("Resend Code");
+                if (verifying != null)
+                    ((TextView) submit.getChildAt(0)).setText("Resend Code");
             }
 
             @Override
@@ -186,9 +196,14 @@ public class PhoneNoActivity extends AppCompatActivity {
                 }
             }
         });
+
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber() != null) {
+                    onVerified();
+                    return;
+                }
                 PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, verify_code.getText().toString());
                 signInWithPhoneAuthCredential(credential);
             }
@@ -196,6 +211,8 @@ public class PhoneNoActivity extends AppCompatActivity {
     }
 
     private void onVerified() {
+        if (verifying != null)
+            verifying.dismiss();
         new EventSender().logEvent("phone_verified");
         SPHandler.getInstance().setPhoneNo(phone.getText().toString());
         startActivity(new Intent(PhoneNoActivity.this, MainActivity.class)
@@ -204,31 +221,26 @@ public class PhoneNoActivity extends AppCompatActivity {
     }
 
     private void signInWithPhoneAuthCredential(final PhoneAuthCredential credential) {
-        final MaterialDialog verifying = new MaterialDialog.Builder(this)
+        verifying = new MaterialDialog.Builder(this)
                 .content("Verifying the code...")
                 .progress(true, 100)
                 .build();
         verifying.show();
 
         mAuth.getCurrentUser().linkWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            verifying.dismiss();
-                            onVerified();
-                        } else {
-                            verifying.dismiss();
-                            Toast.makeText(PhoneNoActivity.this, "Invalid verification code.", Toast.LENGTH_SHORT).show();
-                        }
+                    public void onSuccess(AuthResult authResult) {
+                        onVerified();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        if (e instanceof FirebaseAuthUserCollisionException) {
+                        if (e instanceof FirebaseAuthUserCollisionException)
                             Toast.makeText(PhoneNoActivity.this, "Phone number already associated with another account. Please try another number.", Toast.LENGTH_LONG).show();
-                        }
+                        else
+                            Toast.makeText(PhoneNoActivity.this, "Invalid verification code.", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
                 });
