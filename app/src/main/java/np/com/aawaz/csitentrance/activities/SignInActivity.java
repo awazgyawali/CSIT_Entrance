@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -150,6 +152,11 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             @Override
             public void onClick(View v) {
                 if (username.getText().length() != 0 && password.getText().length() != 0) {
+                    View view = SignInActivity.this.getCurrentFocus();
+                    if (view != null) {
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    }
                     signIn.setVisibility(View.INVISIBLE);
                     progressBar.setVisibility(View.VISIBLE);
                     mAuth.signInWithEmailAndPassword(username.getText().toString(), password.getText().toString())
@@ -173,7 +180,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     }
 
     private void forgotPassword() {
-        new MaterialDialog.Builder(this).title("Forgot password")
+        new MaterialDialog.Builder(this)
+                .title("Forgot password")
                 .input("Email to sent reset link.", username.getText().toString(), false, new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(@NonNull final MaterialDialog forgot_dialog, CharSequence input) {
@@ -193,7 +201,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                                     }
                                 });
                     }
-                });
+                })
+                .show();
     }
 
     private void handleGoogle() {

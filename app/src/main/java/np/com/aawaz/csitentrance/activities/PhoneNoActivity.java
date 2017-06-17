@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -45,7 +46,7 @@ public class PhoneNoActivity extends AppCompatActivity {
     private PhoneAuthProvider.ForceResendingToken forceResendingToken;
     private FirebaseAuth mAuth;
     private ViewSwitcher vs;
-    MaterialDialog verifying;
+    MaterialDialog verifying, dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class PhoneNoActivity extends AppCompatActivity {
         final CardView submit = (CardView) findViewById(R.id.phone_continue_button);
         final CardView verify = (CardView) findViewById(R.id.phone_verify_button);
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(PhoneNoActivity.this)
+        dialog = new MaterialDialog.Builder(PhoneNoActivity.this)
                 .content("Sending verification code")
                 .progress(true, 100)
                 .cancelable(false)
@@ -128,8 +129,9 @@ public class PhoneNoActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user.getPhoneNumber() != null && !user.getPhoneNumber().equals(""))
-                    onVerified();
+                if (user != null)
+                    if (user.getPhoneNumber() != null && !user.getPhoneNumber().equals(""))
+                        onVerified();
             }
         });
 
@@ -213,6 +215,8 @@ public class PhoneNoActivity extends AppCompatActivity {
     private void onVerified() {
         if (verifying != null)
             verifying.dismiss();
+        if (dialog != null)
+            dialog.dismiss();
         new EventSender().logEvent("phone_verified");
         SPHandler.getInstance().setPhoneNo(phone.getText().toString());
         startActivity(new Intent(PhoneNoActivity.this, MainActivity.class)
@@ -237,9 +241,28 @@ public class PhoneNoActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        if (e instanceof FirebaseAuthUserCollisionException)
-                            Toast.makeText(PhoneNoActivity.this, "Phone number already associated with another account. Please try another number.", Toast.LENGTH_LONG).show();
-                        else
+                        verifying.dismiss();
+                        if (e instanceof FirebaseAuthUserCollisionException) {
+                            new MaterialDialog.Builder(PhoneNoActivity.this)
+                                    .title("Phone number associated with another account.")
+                                    .content("Would you like to login to that account instead?")
+                                    .positiveText("Yes")
+                                    .negativeText("No")
+                                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                        @Override
+                                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                            FirebaseAuth.getInstance().signOut();
+                                            FirebaseAuth.getInstance().signInWithCredential(credential)
+                                                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                                        @Override
+                                                        public void onSuccess(AuthResult authResult) {
+                                                            onVerified();
+                                                        }
+                                                    });
+                                        }
+                                    })
+                                    .show();
+                        } else
                             Toast.makeText(PhoneNoActivity.this, "Invalid verification code.", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
