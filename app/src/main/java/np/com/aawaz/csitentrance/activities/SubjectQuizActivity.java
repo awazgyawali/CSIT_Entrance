@@ -13,7 +13,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -56,14 +55,23 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
 
     int qNo;
     String code, subject;
+    int index;
     private TextView scoreText;
     private SPHandler spHandler;
-    int index;
-
-
     private String mUrl;
     private String mTitle;
     private int score = 0;
+
+    public static String AssetJSONFile(String filename, Context c) throws IOException {
+        AssetManager manager = c.getAssets();
+
+        InputStream file = manager.open(filename);
+        byte[] formArray = new byte[file.available()];
+        file.read(formArray);
+        file.close();
+
+        return new String(formArray);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,17 +102,6 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
 
         appIndexing();
 
-    }
-
-    public static String AssetJSONFile(String filename, Context c) throws IOException {
-        AssetManager manager = c.getAssets();
-
-        InputStream file = manager.open(filename);
-        byte[] formArray = new byte[file.available()];
-        file.read(formArray);
-        file.close();
-
-        return new String(formArray);
     }
 
     private void appIndexing() {
@@ -174,7 +171,6 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
     public void selected(CardView submit, boolean correct) {
         spHandler.increasePlayed(subject);
         spHandler.increaseTimesPlayed();
-        Log.d("Debug",spHandler.getTimesPlayed()+ " times");
         if ((spHandler.getTimesPlayed() % 15) == 0) {
             showDialogAd();
         }

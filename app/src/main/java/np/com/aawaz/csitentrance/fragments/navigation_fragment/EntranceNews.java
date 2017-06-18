@@ -28,11 +28,9 @@ public class EntranceNews extends Fragment implements ValueEventListener {
 
     RecyclerView recy;
     NewsAdapter newsAdapter;
-    private LinearLayout errorLayout;
     ProgressBar progress;
     DatabaseReference reference;
-
-
+    private LinearLayout errorLayout;
     private String mUrl;
     private String mTitle;
 

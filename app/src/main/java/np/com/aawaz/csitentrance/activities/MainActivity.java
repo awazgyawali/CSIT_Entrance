@@ -1,8 +1,6 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -51,19 +49,23 @@ import np.com.aawaz.csitentrance.services.ScoreUploader;
 public class MainActivity extends AppCompatActivity {
 
     public static TabLayout tabLayout;
+    public static CoordinatorLayout mainLayout;
+    static TextView titleMain;
     FragmentManager manager;
     NavigationView mNavigationView;
     DrawerLayout mDrawerLayout;
-    public static CoordinatorLayout mainLayout;
     Toolbar toolbar;
-    static TextView titleMain;
     AppBarLayout appBarLayout;
     TextView name;
     CircleImageView imageView;
-    String[] navigationText = new String[]{"leaderboard", "colleges", "more",
+    String[] navigationText = new String[]{"leaderboard", "colleges",
             "faqs", "news", "forum", "result",
             "setting", "feedback", "share", "like", "rate"};
     int[] navigationId = new int[]{R.id.leaderBoard, R.id.csitColleges, R.id.entranceFAQ, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.share, R.id.like, R.id.rate};
+
+    public static void setTitle(String name) {
+        titleMain.setText(name);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,15 +144,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void uploadInstanceId() {
-        if (FirebaseAuth.getInstance().getCurrentUser() != null && SPHandler.getInstance().isInstanceIdAdded()) {
+        String token = FirebaseInstanceId.getInstance().getToken();
+        if (FirebaseAuth.getInstance().getCurrentUser() != null && !SPHandler.getInstance().isInstanceIdAdded()) {
             FirebaseDatabase.getInstance().getReference()
                     .child("instance_ids")
                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                    .setValue(FirebaseInstanceId.getInstance().getToken());
+                    .setValue(token);
             SPHandler.getInstance().instanceIdAdded();
-            FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
-            FirebaseMessaging.getInstance().subscribeToTopic("new");
-            FirebaseMessaging.getInstance().subscribeToTopic("forums");
         }
     }
 
@@ -166,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
                 .error(ContextCompat.getDrawable(this, R.drawable.account_holder))
                 .into(imageView);
     }
-
 
     private void navigate(MenuItem item) {
         int id = item.getItemId();
@@ -292,14 +291,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Intent newFacebookIntent() {
-        Uri uri = Uri.parse("https://www.fabecbook.com/CSITEntrance");
-        try {
-            ApplicationInfo applicationInfo = getPackageManager().getApplicationInfo("com.facebook.katana", 0);
-            if (applicationInfo.enabled) {
-                uri = Uri.parse("fb://facewebmodal/f?href=https://www.fabecbook.com/CSITEntrance");
-            }
-        } catch (PackageManager.NameNotFoundException ignored) {
-        }
+        Uri uri = Uri.parse("https://m.facebook.com/CSITEntrance");
         return new Intent(Intent.ACTION_VIEW, uri);
     }
 
@@ -355,10 +347,6 @@ public class MainActivity extends AppCompatActivity {
             navigate(mNavigationView.getMenu().findItem(R.id.main_home));
         else
             super.onBackPressed();
-    }
-
-    public static void setTitle(String name) {
-        titleMain.setText(name);
     }
 
     public String getToolbarTitle() {

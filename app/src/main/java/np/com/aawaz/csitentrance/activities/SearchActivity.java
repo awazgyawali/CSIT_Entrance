@@ -37,14 +37,13 @@ import np.com.aawaz.csitentrance.objects.EventSender;
 
 public class SearchActivity extends AppCompatActivity {
 
+    RecyclerView colzRecy;
+    LinearLayout emptyLayout;
+    AppCompatEditText search;
     private ArrayList<String> names = new ArrayList<>(),
             website = new ArrayList<>(),
             address = new ArrayList<>(),
             phNo = new ArrayList<>();
-    RecyclerView colzRecy;
-    LinearLayout emptyLayout;
-    AppCompatEditText search;
-
 
     public static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();
@@ -65,9 +64,9 @@ public class SearchActivity extends AppCompatActivity {
             JSONArray m_jArry = new JSONObject(AssetJSONFile("college_feed.json", this)).getJSONArray("lists");
             for (int i = 0; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
-                if (jo_inside.getString("title").toLowerCase().contains(search.getText().toString().toLowerCase()) ||
+                if (jo_inside.getString("name").toLowerCase().contains(search.getText().toString().toLowerCase()) ||
                         jo_inside.getString("address").toLowerCase().contains(search.getText().toString().toLowerCase())) {
-                    names.add(jo_inside.getString("title"));
+                    names.add(jo_inside.getString("name"));
                     website.add(jo_inside.getString("website"));
                     address.add(jo_inside.getString("address"));
                     phNo.add(jo_inside.getString("phone"));
@@ -97,7 +96,7 @@ public class SearchActivity extends AppCompatActivity {
         search = (AppCompatEditText) findViewById(R.id.searchEditText);
         colzRecy = (RecyclerView) findViewById(R.id.searchRecycler);
 
-        imm.showSoftInput(search,InputMethodManager.HIDE_IMPLICIT_ONLY);
+        imm.showSoftInput(search, InputMethodManager.HIDE_IMPLICIT_ONLY);
 
         search.addTextChangedListener(new TextWatcher() {
             @Override

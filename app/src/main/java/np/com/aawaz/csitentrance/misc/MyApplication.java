@@ -9,6 +9,14 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MyApplication extends Application {
     private static MyApplication sInstance;
 
+    public static MyApplication getInstance() {
+        return sInstance;
+    }
+
+    public static Context getAppContext() {
+        return sInstance.getApplicationContext();
+    }
+
     @Override
     public void onCreate() {
         sInstance = this;
@@ -19,13 +27,5 @@ public class MyApplication extends Application {
         } catch (Exception ignored) {
             ignored.printStackTrace();
         }
-    }
-
-    public static MyApplication getInstance() {
-        return sInstance;
-    }
-
-    public static Context getAppContext() {
-        return sInstance.getApplicationContext();
     }
 }

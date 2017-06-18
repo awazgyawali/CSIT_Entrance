@@ -8,8 +8,8 @@ android {
         applicationId "np.com.aawaz.csitentrance"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 36
-        versionName "2.1-beta1"
+        versionCode 37
+        versionName "2.1-beta2"
     }
     buildTypes {
         release {
@@ -41,7 +41,7 @@ dependencies {
     compile 'com.github.medyo:fancybuttons:1.8.3'
     compile 'com.github.lzyzsd:circleprogress:1.2.1'
     compile 'com.github.ParkSangGwon:TedPermission:v1.0.3'
-    compile 'com.getkeepsafe.taptargetview:taptargetview:1.9.1'
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     compile 'com.google.firebase:firebase-core:11.0.1'
     compile 'com.google.firebase:firebase-messaging:11.0.1'
     compile 'com.google.firebase:firebase-crash:11.0.1'

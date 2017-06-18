@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -29,6 +30,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.concurrent.TimeUnit;
 
@@ -39,20 +41,20 @@ import np.com.aawaz.csitentrance.objects.SPHandler;
 public class PhoneNoActivity extends AppCompatActivity {
 
 
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
     TextInputEditText phone, c_code;
     TextInputEditText verify_code;
+    MaterialDialog verifying, dialog;
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
     private String verificationId;
     private PhoneAuthProvider.ForceResendingToken forceResendingToken;
     private FirebaseAuth mAuth;
     private ViewSwitcher vs;
-    MaterialDialog verifying, dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_no);
-
+        TextView detail = (TextView) findViewById(R.id.phone_string_text);
         phone = (TextInputEditText) findViewById(R.id.phone_no);
         c_code = (TextInputEditText) findViewById(R.id.c_code);
         verify_code = (TextInputEditText) findViewById(R.id.phone_no_code);
@@ -70,6 +72,12 @@ public class PhoneNoActivity extends AppCompatActivity {
                 .build();
         mAuth = FirebaseAuth.getInstance();
 
+        detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy_link))));
+            }
+        });
 
         submit.setVisibility(View.INVISIBLE);
         verify.setVisibility(View.INVISIBLE);
@@ -219,6 +227,12 @@ public class PhoneNoActivity extends AppCompatActivity {
             dialog.dismiss();
         new EventSender().logEvent("phone_verified");
         SPHandler.getInstance().setPhoneNo(phone.getText().toString());
+
+
+        FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
+        FirebaseMessaging.getInstance().subscribeToTopic("new");
+        FirebaseMessaging.getInstance().subscribeToTopic("forums");
+
         startActivity(new Intent(PhoneNoActivity.this, MainActivity.class)
                 .putExtra("fragment", getIntent().getStringExtra("fragment")));
         finish();

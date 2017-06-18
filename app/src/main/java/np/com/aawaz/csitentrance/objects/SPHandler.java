@@ -8,27 +8,23 @@ import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.misc.MyApplication;
 
 public class SPHandler {
-    private static SPHandler spHandler;
-    private final SharedPreferences.Editor scoreEditor;
-    SharedPreferences scoreSp;
-    private final SharedPreferences.Editor infoEditor;
-    SharedPreferences infoSp;
-
     public static String CHEMISTRY = "chem";
     public static String PHYSICS = "phy";
     public static String MATH = "math";
     public static String ENGLISH = "eng";
-
     public static String YEAR2069 = "year2069";
     public static String YEAR2070 = "year2070";
     public static String YEAR2071 = "year2071";
     public static String YEAR2072 = "year2072";
-
     public static String MODEL1 = "model1";
     public static String MODEL2 = "model2";
     public static String MODEL3 = "model3";
     public static String MODEL4 = "model4";
-
+    private static SPHandler spHandler;
+    private final SharedPreferences.Editor scoreEditor;
+    private final SharedPreferences.Editor infoEditor;
+    SharedPreferences scoreSp;
+    SharedPreferences infoSp;
     private String PLAYED = "_played";
     private String SCORE = "_score";
 
@@ -165,32 +161,32 @@ public class SPHandler {
         return scoreSp.getLong("lastPosted", 0);
     }
 
-    public String getForumText() {
-        return scoreSp.getString("forumText", "");
-    }
-
     public void setLastPostedTime(long time) {
         scoreEditor.putLong("lastPosted", time).apply();
+    }
+
+    public String getForumText() {
+        return scoreSp.getString("forumText", "");
     }
 
     public void setForumText(String forumText) {
         scoreEditor.putString("forumText", forumText).apply();
     }
 
-    public void setNewsSubscribed(boolean newsSubscribed) {
-        scoreEditor.putBoolean("newsSub", newsSubscribed).apply();
+    public boolean getForumSubscribed() {
+        return scoreSp.getBoolean("forumSub", true);
     }
 
     public void setForumSubscribed(boolean newsSubscribed) {
         scoreEditor.putBoolean("forumSub", newsSubscribed).apply();
     }
 
-    public boolean getForumSubscribed() {
-        return scoreSp.getBoolean("forumSub", true);
-    }
-
     public boolean getNewsSubscribed() {
         return scoreSp.getBoolean("newsSub", true);
+    }
+
+    public void setNewsSubscribed(boolean newsSubscribed) {
+        scoreEditor.putBoolean("newsSub", newsSubscribed).apply();
     }
 
     public void clearAll() {
@@ -238,11 +234,11 @@ public class SPHandler {
     }
 
     public boolean isInstanceIdAdded() {
-        return infoSp.getBoolean("instance", false);
+        return infoSp.getBoolean("instance_added", false);
     }
 
     public void instanceIdAdded() {
-        infoEditor.putBoolean("instance", true).apply();
+        infoEditor.putBoolean("instance_added", true).apply();
     }
 
     public int getLastAdPosition() {

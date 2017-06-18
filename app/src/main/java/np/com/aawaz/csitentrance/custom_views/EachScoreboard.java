@@ -12,8 +12,8 @@ import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class EachScoreboard {
 
-    private View view;
     SPHandler spHandler;
+    private View view;
 
     public EachScoreboard() {
         // Required empty public constructor

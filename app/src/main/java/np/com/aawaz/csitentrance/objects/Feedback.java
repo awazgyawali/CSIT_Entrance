@@ -3,7 +3,6 @@ package np.com.aawaz.csitentrance.objects;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.IgnoreExtraProperties;
-import com.google.firebase.iid.FirebaseInstanceId;
 
 @IgnoreExtraProperties
 public class Feedback {

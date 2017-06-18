@@ -14,7 +14,6 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -29,6 +28,17 @@ public class FullQuestionActivity extends AppCompatActivity {
     int code;
     String htmlData = "";
     ProgressBar loading;
+
+    public static String AssetJSONFile(String filename, Context c) throws IOException {
+        AssetManager manager = c.getAssets();
+
+        InputStream file = manager.open(filename);
+        byte[] formArray = new byte[file.available()];
+        file.read(formArray);
+        file.close();
+
+        return new String(formArray);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,18 +63,6 @@ public class FullQuestionActivity extends AppCompatActivity {
         setDataToArrayList();
         TextView title = (TextView) findViewById(R.id.titleFullQuestion);
         title.setText(getResources().getStringArray(R.array.years)[code - 1]);
-    }
-
-
-    public static String AssetJSONFile(String filename, Context c) throws IOException {
-        AssetManager manager = c.getAssets();
-
-        InputStream file = manager.open(filename);
-        byte[] formArray = new byte[file.available()];
-        file.read(formArray);
-        file.close();
-
-        return new String(formArray);
     }
 
     public void setDataToArrayList() {

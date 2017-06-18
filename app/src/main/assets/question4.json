@@ -214,7 +214,7 @@
       "b": "x=1,y=0",
       "c": "x=1,y=1",
       "d": "x=1,y=-1",
-      "ans": "c"
+      "ans": "d"
     },
     {
       "question": "28.The range of the function y=x<sup>2</sup>-6x+6 is:",
@@ -366,7 +366,7 @@
       "b": "(-∞,2)",
       "c": "(3,∞)",
       "d": " (-∞,2]⋃[3,∞)",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "47.The maximum value of f(x)=2x<sup>3</sup>-3x<sup>2</sup>-36 is",
@@ -406,7 +406,7 @@
       "b": "C<sub>n</sub>H<sub>2n</sub>",
       "c": "C<sub>n</sub>H<sub>2n-2</sub>",
       "d": "C<sub>n</sub>H<sub>2n+1</sub>",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "52.When Ethyl alcohol is heated with excess of concentrated sulphuric acid at about 160-170°C,it produces:",
@@ -518,7 +518,7 @@
       "b": "orange",
       "c": "pink",
       "d": "red",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "66. Which order of bond angle is correct?",
@@ -542,7 +542,7 @@
       "b": "M/3",
       "c": "M/4",
       "d": "M/5",
-      "ans": "b"
+      "ans": "d"
     },
     {
       "question": "69.The pH of 0.001M NaOH is",

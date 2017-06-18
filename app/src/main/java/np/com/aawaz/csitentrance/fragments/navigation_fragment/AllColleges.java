@@ -45,13 +45,12 @@ import np.com.aawaz.csitentrance.objects.FeaturedCollege;
 
 
 public class AllColleges extends Fragment implements ValueEventListener {
+    RecyclerView colzRecy;
+    SliderLayout adSlider;
     private ArrayList<String> names = new ArrayList<>(),
             website = new ArrayList<>(),
             address = new ArrayList<>(),
             phNo = new ArrayList<>();
-    RecyclerView colzRecy;
-
-    SliderLayout adSlider;
 
     public static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();

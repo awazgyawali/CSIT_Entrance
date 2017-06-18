@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -42,6 +44,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.time.setText(DateUtils.getRelativeTimeSpanString(comments.get(holder.getAdapterPosition()).time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
         Picasso.with(MyApplication.getAppContext())
                 .load(comments.get(holder.getAdapterPosition()).image_url)
+                .placeholder(TextDrawable.builder().buildRound(String.valueOf(comments.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
                 .into(holder.circleImageView);
         holder.core.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

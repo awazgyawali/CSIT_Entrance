@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -53,6 +55,8 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         holder.time.setText(DateUtils.getRelativeTimeSpanString(posts.get(position).time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
         Picasso.with(MyApplication.getAppContext())
                 .load(posts.get(position).image_url)
+                .error(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
+                .placeholder(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
                 .into(holder.profile);
     }
 

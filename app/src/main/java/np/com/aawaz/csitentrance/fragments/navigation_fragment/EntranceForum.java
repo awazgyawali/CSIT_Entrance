@@ -52,12 +52,9 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     ImageView buttonPost;
 
     ForumAdapter adapter;
-
-    private InputMethodManager imm;
-
     ArrayList<String> key = new ArrayList<>();
-
     DatabaseReference reference;
+    private InputMethodManager imm;
     private LinearLayoutManager mLinearLayoutManager;
 
     @Nullable

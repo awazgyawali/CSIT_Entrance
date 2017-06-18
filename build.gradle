@@ -17,5 +17,6 @@ allprojects {
     repositories {
         maven { url "https://jitpack.io" }
         jcenter()
+        maven { url 'http://dl.bintray.com/amulyakhare/maven' }
     }
 }

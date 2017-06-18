@@ -54,11 +54,9 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     private static final int RC_SIGN_IN = 1001;
     CardView facebook, google;
     GoogleApiClient client;
-    private FirebaseAuth mAuth;
-
-    private CallbackManager callBackManager;
-
     ProgressBar progressBar;
+    private FirebaseAuth mAuth;
+    private CallbackManager callBackManager;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private boolean processing = false;
     private TextInputEditText username, password;

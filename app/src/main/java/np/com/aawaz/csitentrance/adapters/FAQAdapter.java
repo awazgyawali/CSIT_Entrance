@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
@@ -15,8 +14,8 @@ import np.com.aawaz.csitentrance.objects.FAQ;
 
 public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.VH> {
 
-    private Context context;
     ArrayList<FAQ> faqs = new ArrayList<>();
+    private Context context;
 
     public FAQAdapter(Context context) {
         this.context = context;

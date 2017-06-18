@@ -1,32 +1,25 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.MenuItem;
-import android.view.View;
 import android.webkit.WebView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
-import com.squareup.picasso.Picasso;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.EventSender;
 
 public class NewsDetailActivity extends AppCompatActivity {
 
+    Bundle bundle;
     private String mUrl;
     private String mTitle;
-
-    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

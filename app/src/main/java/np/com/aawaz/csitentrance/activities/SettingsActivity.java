@@ -57,7 +57,7 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
         setSupportActionBar((Toolbar) findViewById(R.id.toolbarSetting));
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("SettingsActivity");
+        getSupportActionBar().setTitle("Settings");
 
         news = (SwitchCompat) findViewById(R.id.notifNews);
         forum = (SwitchCompat) findViewById(R.id.notifForum);
