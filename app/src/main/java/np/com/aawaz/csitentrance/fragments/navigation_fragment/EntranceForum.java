@@ -211,7 +211,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     }
 
     private void showDialogToEdit(String message, final int position) {
-        new MaterialDialog.Builder(getContext())
+        MaterialDialog dialog = new MaterialDialog.Builder(getContext())
                 .title("Edit post")
                 .input("Your message", message, false, new MaterialDialog.InputCallback() {
                     @Override
@@ -222,7 +222,10 @@ public class EntranceForum extends Fragment implements ChildEventListener {
                     }
                 })
                 .positiveText("Save")
-                .show();
+                .build();
+        dialog.getInputEditText().setLines(5);
+        dialog.getInputEditText().setMaxLines(7);
+        dialog.show();
     }
 
 

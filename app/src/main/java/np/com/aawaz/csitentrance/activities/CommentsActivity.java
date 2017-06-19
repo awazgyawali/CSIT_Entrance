@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.appindexing.Action;
@@ -86,7 +87,10 @@ public class CommentsActivity extends AppCompatActivity {
         commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View views) {
-                sendPostRequestThroughGraph(commentEditText.getText().toString());
+                if (commentEditText.getText().toString().length() > 0)
+                    sendPostRequestThroughGraph(commentEditText.getText().toString());
+                else
+                    Toast.makeText(CommentsActivity.this, "Comment cannot be empty.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -175,7 +179,7 @@ public class CommentsActivity extends AppCompatActivity {
     }
 
     private void showDialogToEdit(String message, final int position) {
-        new MaterialDialog.Builder(this)
+        MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title("Edit post")
                 .input("Your message", message, false, new MaterialDialog.InputCallback() {
                     @Override
@@ -186,7 +190,11 @@ public class CommentsActivity extends AppCompatActivity {
                     }
                 })
                 .positiveText("Save")
-                .show();
+                .build();
+
+        dialog.getInputEditText().setLines(5);
+        dialog.getInputEditText().setMaxLines(7);
+        dialog.show();
     }
 
 

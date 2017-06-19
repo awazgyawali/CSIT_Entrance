@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
             new EventSender().logEvent("liked_page");
             return;
         } else if (id == R.id.feedback) {
-            new MaterialDialog.Builder(this)
+            MaterialDialog dialog = new MaterialDialog.Builder(this)
                     .title("Send Feedback")
                     .input("Feedback text...", "", false, new MaterialDialog.InputCallback() {
                         @Override
@@ -210,7 +210,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                     })
                     .positiveText("Send")
-                    .show();
+                    .build();
+            dialog.getInputEditText().setLines(5);
+            dialog.getInputEditText().setMaxLines(7);
+            dialog.show();
             return;
         } else if (id == R.id.logout) {
             SPHandler.getInstance().clearAll();

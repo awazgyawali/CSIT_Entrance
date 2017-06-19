@@ -23,6 +23,7 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="8dp"
         android:background="@color/white"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -35,9 +36,11 @@
 
             <TextView
                 android:id="@+id/each_news_title"
-                android:layout_width="match_parent"
+                android:layout_width="344dp"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
                 android:text="Entrance result got published."
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="#262626"
@@ -46,10 +49,10 @@
 
             <TextView
                 android:id="@+id/each_news_time"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
                 android:text="20 min ago."
                 android:typeface="serif" />
 
@@ -57,13 +60,12 @@
                 android:id="@+id/each_news_detail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
                 android:autoLink="all"
-                android:text="This block will contain the news"
                 android:textSize="15sp" />
-
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

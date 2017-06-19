@@ -59,13 +59,11 @@ public class NewsDetailActivity extends AppCompatActivity {
                 "  <style>" +
                 "    body{" +
                 "      margin: 0;" +
-                "      padding: 5px;" +
                 "    }" +
                 "    img {" +
                 "      width: 100%;" +
                 "    }" +
                 "    p {" +
-                "      margin: 5px ;" +
                 "      font-size: 18px;" +
                 "      line-height: 1.5em;" +
                 "      text-align: justify;" +
