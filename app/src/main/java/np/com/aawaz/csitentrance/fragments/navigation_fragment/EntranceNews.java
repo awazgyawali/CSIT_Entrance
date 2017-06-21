@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.NewsDetailActivity;
 import np.com.aawaz.csitentrance.adapters.NewsAdapter;
 import np.com.aawaz.csitentrance.objects.News;
 
@@ -41,6 +43,13 @@ public class EntranceNews extends Fragment implements ValueEventListener {
         //Setting the data
         addOneTimeListener();
         appIndexing();
+        checkIntent();
+    }
+
+    private void checkIntent() {
+        if (getActivity().getIntent().getStringExtra("post_id") != null) {
+            startActivity(new Intent(getContext(), NewsDetailActivity.class).putExtra("post_id", getActivity().getIntent().getStringExtra("post_id")));
+        }
     }
 
 
@@ -88,7 +97,7 @@ public class EntranceNews extends Fragment implements ValueEventListener {
         reference = FirebaseDatabase.getInstance().getReference().child("news");
         errorLayout.setVisibility(View.GONE);
         progress.setVisibility(View.VISIBLE);
-        reference.addValueEventListener(this);
+        reference.addListenerForSingleValueEvent(this);
     }
 
     @Override

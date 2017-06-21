@@ -33,10 +33,12 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.custom_views.AnswerDialog;
 import np.com.aawaz.csitentrance.custom_views.CustomViewPager;
 import np.com.aawaz.csitentrance.fragments.other_fragments.AnswersDrawer;
 import np.com.aawaz.csitentrance.fragments.other_fragments.PopupDialogFragment;
 import np.com.aawaz.csitentrance.fragments.other_fragments.QuestionFragment;
+import np.com.aawaz.csitentrance.interfaces.OnDismissListener;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
@@ -168,7 +170,7 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
     }
 
     @Override
-    public void selected(CardView submit, boolean correct) {
+    public void selected(CardView submit, boolean correct, String answer) {
         spHandler.increasePlayed(subject);
         spHandler.increaseTimesPlayed();
         if ((spHandler.getTimesPlayed() % 15) == 0) {
@@ -202,13 +204,29 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
             submit.setOnClickListener(null);
             YoYo.with(Techniques.Shake).duration(500).playOn(submit);
         }
+
+        if (spHandler.shouldShowAnswers() && !correct) {
+            AnswerDialog answerDialog = AnswerDialog.newInstance(answer);
+            answerDialog.show(getSupportFragmentManager(), "answer");
+            answerDialog.setOnDismissListener(new OnDismissListener() {
+
+                @Override
+                public void onDismiss() {
+                    changeQuestion(200);
+                }
+            });
+        } else
+            changeQuestion(500);
+    }
+
+    private void changeQuestion(long time) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 if (customViewPager.getCurrentItem() != 99)
                     customViewPager.setCurrentItem(customViewPager.getCurrentItem() + 1);
             }
-        }, 500);
+        }, time);
     }
 
     public void setDataToArrayList() {

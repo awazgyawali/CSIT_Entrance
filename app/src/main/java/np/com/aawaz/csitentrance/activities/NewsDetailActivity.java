@@ -5,21 +5,34 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateUtils;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Date;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.EventSender;
+import np.com.aawaz.csitentrance.objects.News;
 
 public class NewsDetailActivity extends AppCompatActivity {
 
     Bundle bundle;
     private String mUrl;
     private String mTitle;
+    TextView time, title;
+    WebView newsDetail;
+    ViewSwitcher viewSwitcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +44,51 @@ public class NewsDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle("Entrance News");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
 
-        WebView
-                newsDetail = (WebView) findViewById(R.id.each_news_detail);
-        TextView time = (TextView) findViewById(R.id.each_news_time),
-                title = (TextView) findViewById(R.id.each_news_title);
+        viewSwitcher = (ViewSwitcher) findViewById(R.id.viewSwitcherNews);
+        newsDetail = (WebView) findViewById(R.id.each_news_detail);
+        time = (TextView) findViewById(R.id.each_news_time);
+        title = (TextView) findViewById(R.id.each_news_title);
 
-        bundle = getIntent().getBundleExtra("data");
-        title.setText(bundle.getString("title"));
-        newsDetail.loadDataWithBaseURL("", readyWithCSS(bundle.getString("detail")), "text/html", "UTF-8", "");
-        time.setText(bundle.getString("time"));
+        if (getIntent().getStringExtra("post_id") != null) {
+            fetchFromInternet(getIntent().getStringExtra("post_id"));
+        } else {
+            bundle = getIntent().getBundleExtra("data");
+            title.setText(bundle.getString("title"));
+            newsDetail.loadDataWithBaseURL("", readyWithCSS(bundle.getString("detail")), "text/html", "UTF-8", "");
+            time.setText(bundle.getString("time"));
+            viewSwitcher.showNext();
+        }
         appIndexing();
+    }
+
+    private void fetchFromInternet(String post_id) {
+        FirebaseDatabase.getInstance().getReference().child("news").child(post_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                News news = dataSnapshot.getValue(News.class);
+                title.setText(news.title);
+                newsDetail.loadDataWithBaseURL("", readyWithCSS(news.message), "text/html", "UTF-8", "");
+                time.setText(convertToSimpleDate(news.time_stamp));
+                viewSwitcher.showNext();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(NewsDetailActivity.this, "Unable to fetch news. Check your internet connection.", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
+    }
+
+    private CharSequence convertToSimpleDate(long created_time) {
+        return DateUtils.getRelativeTimeSpanString(created_time, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE);
     }
 
     private String readyWithCSS(String string) {

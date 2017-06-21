@@ -8,10 +8,13 @@ import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+import android.text.Html;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+
+import java.util.Random;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
@@ -31,6 +34,8 @@ public class MyMessagingService extends FirebaseMessagingService {
         Intent intent = new Intent(this, MainActivity.class)
                 .putExtra("fragment", remoteMessage.getData().get("fragment"))
                 .putExtra("result_published", remoteMessage.getData().get("result_published"));
+        if (remoteMessage.getData().get("fragment").equals("news"))
+            intent.putExtra("news_id", remoteMessage.getData().get("news_id"));
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -42,19 +47,22 @@ public class MyMessagingService extends FirebaseMessagingService {
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(),
                         R.drawable.splash_icon))
                 .setSmallIcon(R.drawable.skeleton_logo)
-                .setContentText(remoteMessage.getData().get("body"))
+                .setContentText(Html.fromHtml(remoteMessage.getData().get("body")).toString())
                 .setContentTitle(remoteMessage.getData().get("title"))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
         if (remoteMessage.getData().get("fragment").equals("news"))
-            notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(remoteMessage.getData().get("body")));
+            notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(Html.fromHtml(remoteMessage.getData().get("body").substring(0, 200)).toString()));
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        if (remoteMessage.getData().get("fragment").equals("forum") && !remoteMessage.getData().get("uid").equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
-            notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        if (remoteMessage.getData().get("fragment").equals("forum")) {
+            if (!remoteMessage.getData().get("uid").equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+                notificationManager.notify(new Random().nextInt() /* ID of notification */, notificationBuilder.build());
+        } else
+            notificationManager.notify(new Random().nextInt() /* ID of notification */, notificationBuilder.build());
     }
 
     @Override

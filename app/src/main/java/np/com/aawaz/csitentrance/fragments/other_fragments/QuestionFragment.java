@@ -199,11 +199,24 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     public void checkAnswer() {
         if ((clickedAns == 1 && getArguments().getString("ans").equals("a")) || (clickedAns == 2 && getArguments().getString("ans").equals("b")) ||
                 (clickedAns == 3 && getArguments().getString("ans").equals("c")) || (clickedAns == 4 && getArguments().getString("ans").equals("d"))) {
-            listener.selected(submit, true);
+            listener.selected(submit, true, getAnswer());
         } else {
-            listener.selected(submit, false);
+            listener.selected(submit, false, getAnswer());
         }
     }
+
+    public String getAnswer() {
+        if (getArguments().getString("ans").equals("a"))
+            return getArguments().getString("a");
+        else if (getArguments().getString("ans").equals("b"))
+            return getArguments().getString("b");
+        else if (getArguments().getString("ans").equals("c"))
+            return getArguments().getString("c");
+        else if (getArguments().getString("ans").equals("d"))
+            return getArguments().getString("d");
+        return null;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

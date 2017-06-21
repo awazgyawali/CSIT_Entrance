@@ -8,6 +8,7 @@ import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +43,7 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
 
     boolean newsSub,
             forumSub;
-    SwitchCompat news, forum;
+    SwitchCompat news, forum, showAnswer;
     TextView clearAll, connectFb, connectGoogle;
     CallbackManager callBackManager = CallbackManager.Factory.create();
     private int RC_SIGN_IN = 100;
@@ -61,6 +62,7 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
 
         news = (SwitchCompat) findViewById(R.id.notifNews);
         forum = (SwitchCompat) findViewById(R.id.notifForum);
+        showAnswer = (SwitchCompat) findViewById(R.id.answer_button);
 
         clearAll = (TextView) findViewById(R.id.clearAll);
         addPhoneNo = (TextView) findViewById(R.id.add_phone_number);
@@ -69,10 +71,11 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
 
         news.setChecked(SPHandler.getInstance().getNewsSubscribed());
         forum.setChecked(SPHandler.getInstance().getForumSubscribed());
+        showAnswer.setChecked(SPHandler.getInstance().shouldShowAnswers());
 
-        news.setOnClickListener(new View.OnClickListener() {
+        news.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (newsSub)
                     FirebaseMessaging.getInstance().unsubscribeFromTopic("new");
                 else
@@ -82,15 +85,21 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
             }
         });
 
-        forum.setOnClickListener(new View.OnClickListener() {
+        forum.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (forumSub)
                     FirebaseMessaging.getInstance().unsubscribeFromTopic("forums");
                 else
                     FirebaseMessaging.getInstance().subscribeToTopic("forums");
                 forumSub = !forumSub;
                 SPHandler.getInstance().setForumSubscribed(forumSub);
+            }
+        });
+        showAnswer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SPHandler.getInstance().showAnswer(isChecked);
             }
         });
         clearAll.setOnClickListener(new View.OnClickListener() {

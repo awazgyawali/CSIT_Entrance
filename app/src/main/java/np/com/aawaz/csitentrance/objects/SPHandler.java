@@ -60,6 +60,7 @@ public class SPHandler {
     }
 
     public void increasePlayed(String name) {
+        new EventSender().logEvent("questions_played");
         scoreEditor.putInt(name + PLAYED, getPlayed(name) + 1).apply();
     }
 
@@ -247,5 +248,13 @@ public class SPHandler {
 
     public void setLastAd(int lastAd) {
         infoEditor.putInt("last_ad", lastAd);
+    }
+
+    public void showAnswer(boolean isChecked) {
+        infoEditor.putBoolean("answerShow", isChecked).apply();
+    }
+
+    public boolean shouldShowAnswers() {
+        return infoSp.getBoolean("answerShow", true);
     }
 }
