@@ -20,73 +20,76 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <ViewSwitcher
+        android:id="@+id/viewSwitcherNews"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:orientation="vertical"
-        android:padding="8dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ViewSwitcher
+
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:id="@+id/viewSwitcherNews"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/each_news_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Entrance result got published."
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="#262626"
+                android:textStyle="bold"
+                android:typeface="monospace"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <ProgressBar
-                    android:id="@+id/progressBar2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true" />
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/each_news_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:text="20 min ago."
+                android:typeface="serif"
+                app:layout_constraintLeft_toRightOf="@+id/each_news_author"
+                app:layout_constraintTop_toBottomOf="@+id/each_news_title" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/each_news_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Rameshwor Dhakal"
+                android:textColor="@color/colorAccent"
+                android:textStyle="italic"
+                android:typeface="serif"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/each_news_title" />
 
-                <TextView
-                    android:id="@+id/each_news_title"
-                    android:layout_width="344dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Entrance result got published."
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="#262626"
-                    android:textStyle="bold"
-                    android:typeface="monospace" />
+            <WebView
+                android:id="@+id/each_news_detail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:autoLink="all"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/each_news_time" />
+        </android.support.constraint.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/each_news_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="0dp"
-                    android:text="20 min ago."
-                    android:typeface="serif" />
-
-                <WebView
-                    android:id="@+id/each_news_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:autoLink="all"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-
-        </ViewSwitcher>
-
-    </android.support.v4.widget.NestedScrollView>
-
+    </ViewSwitcher>
 
 </android.support.design.widget.CoordinatorLayout>

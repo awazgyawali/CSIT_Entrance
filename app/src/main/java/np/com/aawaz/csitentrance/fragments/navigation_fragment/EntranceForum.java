@@ -167,7 +167,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
 
     @Override
     public void onCancelled(DatabaseError databaseError) {
-        Toast.makeText(getContext(), "Failed to load comments.",
+        Toast.makeText(getContext(), "Failed to load posts.",
                 Toast.LENGTH_SHORT).show();
         errorPart.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);

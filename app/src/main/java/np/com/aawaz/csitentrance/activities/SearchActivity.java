@@ -95,8 +95,8 @@ public class SearchActivity extends AppCompatActivity {
         emptyLayout = (LinearLayout) findViewById(R.id.emptyLayout);
         search = (AppCompatEditText) findViewById(R.id.searchEditText);
         colzRecy = (RecyclerView) findViewById(R.id.searchRecycler);
-
-        imm.showSoftInput(search, InputMethodManager.HIDE_IMPLICIT_ONLY);
+        search.requestFocus();
+        imm.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT);
 
         search.addTextChangedListener(new TextWatcher() {
             @Override

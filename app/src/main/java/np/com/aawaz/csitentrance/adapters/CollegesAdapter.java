@@ -30,7 +30,7 @@ public class CollegesAdapter extends RecyclerView.Adapter<CollegesAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.colz_item, parent, false);
+        View view = inflater.inflate(R.layout.each_college_item, parent, false);
         return new ViewHolder(view);
     }
 

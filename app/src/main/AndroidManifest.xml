@@ -75,7 +75,8 @@
         <activity
             android:name=".activities.SearchActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
             android:name=".activities.SignInActivity"
             android:screenOrientation="portrait" />

@@ -1,6 +1,5 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,24 +13,27 @@ import android.widget.ProgressBar;
 
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.activities.NewsDetailActivity;
 import np.com.aawaz.csitentrance.adapters.NewsAdapter;
 import np.com.aawaz.csitentrance.objects.News;
 
 
-public class EntranceNews extends Fragment implements ValueEventListener {
+public class EntranceNews extends Fragment implements ChildEventListener {
 
     RecyclerView recy;
     NewsAdapter newsAdapter;
     ProgressBar progress;
     DatabaseReference reference;
+    ArrayList<String> key = new ArrayList<>();
+    LinearLayoutManager linearLayoutManager;
     private LinearLayout errorLayout;
     private String mUrl;
     private String mTitle;
@@ -43,15 +45,7 @@ public class EntranceNews extends Fragment implements ValueEventListener {
         //Setting the data
         addOneTimeListener();
         appIndexing();
-        checkIntent();
     }
-
-    private void checkIntent() {
-        if (getActivity().getIntent().getStringExtra("post_id") != null) {
-            startActivity(new Intent(getContext(), NewsDetailActivity.class).putExtra("post_id", getActivity().getIntent().getStringExtra("post_id")));
-        }
-    }
-
 
     private void appIndexing() {
         mUrl = "http://csitentrance.brainants.com/news";
@@ -88,25 +82,57 @@ public class EntranceNews extends Fragment implements ValueEventListener {
         });
     }
 
-    public void readyAdapter() {
-        recy.setLayoutManager(new LinearLayoutManager(getContext()));
-        recy.setAdapter(newsAdapter);
-    }
 
     private void addOneTimeListener() {
         reference = FirebaseDatabase.getInstance().getReference().child("news");
         errorLayout.setVisibility(View.GONE);
         progress.setVisibility(View.VISIBLE);
-        reference.addListenerForSingleValueEvent(this);
+        newsAdapter = new NewsAdapter(getContext());
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        reference.addChildEventListener(this);
+        recy.setLayoutManager(linearLayoutManager);
+        recy.setAdapter(newsAdapter);
+    }
+
+
+    @Override
+    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+        newsAdapter.addToTop(dataSnapshot.getValue(News.class));
+        linearLayoutManager.scrollToPositionWithOffset(0, 0);
+        key.add(0, dataSnapshot.getKey());
+        progress.setVisibility(View.GONE);
     }
 
     @Override
-    public void onDataChange(DataSnapshot dataSnapshot) {
-        newsAdapter = new NewsAdapter(getContext());
-        for (DataSnapshot child : dataSnapshot.getChildren())
-            newsAdapter.addToTop(child.getValue(News.class));
-        progress.setVisibility(View.GONE);
-        readyAdapter();
+    public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+        int position = -1;
+        for (int i = 0; i < key.size(); i++) {
+            if (key.get(i).equals(dataSnapshot.getKey()))
+                position = i;
+        }
+        if (position == -1)
+            return;
+        News post = dataSnapshot.getValue(News.class);
+        newsAdapter.editItemAtPosition(position, post);
+    }
+
+    @Override
+    public void onChildRemoved(DataSnapshot dataSnapshot) {
+        int position = -1;
+        for (int i = 0; i < key.size(); i++) {
+            if (key.get(i).equals(dataSnapshot.getKey()))
+                position = i;
+        }
+        if (position == -1)
+            return;
+        newsAdapter.removeItemAtPosition(position);
+        key.remove(position);
+    }
+
+
+    @Override
+    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
     }
 
     @Override

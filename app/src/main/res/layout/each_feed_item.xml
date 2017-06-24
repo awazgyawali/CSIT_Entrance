@@ -34,8 +34,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/edit_grey"
                     android:gravity="center_vertical"
                     android:text="Aawaz Gyawali"
+                    android:layout_marginRight="5dp"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
 

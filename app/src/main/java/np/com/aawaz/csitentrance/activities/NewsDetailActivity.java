@@ -30,7 +30,7 @@ public class NewsDetailActivity extends AppCompatActivity {
     Bundle bundle;
     private String mUrl;
     private String mTitle;
-    TextView time, title;
+    TextView time, title,author;
     WebView newsDetail;
     ViewSwitcher viewSwitcher;
 
@@ -54,17 +54,18 @@ public class NewsDetailActivity extends AppCompatActivity {
         newsDetail = (WebView) findViewById(R.id.each_news_detail);
         time = (TextView) findViewById(R.id.each_news_time);
         title = (TextView) findViewById(R.id.each_news_title);
-
-        if (getIntent().getStringExtra("post_id") != null) {
-            fetchFromInternet(getIntent().getStringExtra("post_id"));
+        author = (TextView) findViewById(R.id.each_news_author);
+        if (getIntent().getStringExtra("news_id") != null) {
+            fetchFromInternet(getIntent().getStringExtra("news_id"));
         } else {
             bundle = getIntent().getBundleExtra("data");
             title.setText(bundle.getString("title"));
+            author.setText(bundle.getString("author"));
             newsDetail.loadDataWithBaseURL("", readyWithCSS(bundle.getString("detail")), "text/html", "UTF-8", "");
-            time.setText(bundle.getString("time"));
+            time.setText(convertToSimpleDate(bundle.getLong("time")));
             viewSwitcher.showNext();
+            appIndexing(bundle.getString("title"));
         }
-        appIndexing();
     }
 
     private void fetchFromInternet(String post_id) {
@@ -73,9 +74,11 @@ public class NewsDetailActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 News news = dataSnapshot.getValue(News.class);
                 title.setText(news.title);
-                newsDetail.loadDataWithBaseURL("", readyWithCSS(news.message), "text/html", "UTF-8", "");
+                author.setText(news.author);
+                newsDetail.loadData(readyWithCSS(news.message), "text/html", "UTF-8");
                 time.setText(convertToSimpleDate(news.time_stamp));
                 viewSwitcher.showNext();
+                appIndexing(news.title);
             }
 
             @Override
@@ -119,20 +122,15 @@ public class NewsDetailActivity extends AppCompatActivity {
     }
 
 
-    private void appIndexing() {
+    private void appIndexing(String mTitle) {
         mUrl = "http://csitentrance.brainants.com/news";
-        mTitle = bundle.getString("title");
+        this.mTitle = mTitle;
+        FirebaseUserActions.getInstance().start(getAction());
     }
 
 
     public com.google.firebase.appindexing.Action getAction() {
         return Actions.newView(mTitle, mUrl);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUserActions.getInstance().start(getAction());
     }
 
     @Override

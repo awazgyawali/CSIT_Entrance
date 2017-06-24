@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -26,15 +27,17 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     ArrayList<Comment> comments = new ArrayList<>();
 
     LayoutInflater inflater;
+    private Context context;
     private ClickListener clickEventListener;
 
     public CommentAdapter(Context context) {
         inflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(inflater.inflate(R.layout.comment_each, parent, false));
+        return new ViewHolder(inflater.inflate(R.layout.each_comment, parent, false));
     }
 
     @Override
@@ -42,6 +45,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.comment.setText(comments.get(holder.getAdapterPosition()).message);
         holder.commenter.setText(comments.get(holder.getAdapterPosition()).author);
         holder.time.setText(DateUtils.getRelativeTimeSpanString(comments.get(holder.getAdapterPosition()).time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
+        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(comments.get(position).uid))
+            holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.edit_grey, 0);
+        else
+            holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
         Picasso.with(MyApplication.getAppContext())
                 .load(comments.get(holder.getAdapterPosition()).image_url)
                 .placeholder(TextDrawable.builder().buildRound(String.valueOf(comments.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))

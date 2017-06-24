@@ -18,6 +18,7 @@ import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.NewsDetailActivity;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.objects.News;
+import np.com.aawaz.csitentrance.objects.Post;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
@@ -37,6 +38,18 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         notifyItemInserted(0);
     }
 
+    public void removeItemAtPosition(int i) {
+        news.remove(i);
+        notifyItemRemoved(i);
+    }
+
+    public void editItemAtPosition(int i, News post) {
+        news.remove(i);
+        news.add(i, post);
+        notifyItemChanged(i);
+    }
+
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(inflater.inflate(R.layout.each_news_item, parent, false));
@@ -53,6 +66,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("title", news.get(holder.getAdapterPosition()).title);
+                bundle.putString("author", news.get(holder.getAdapterPosition()).author);
                 bundle.putString("detail", news.get(holder.getAdapterPosition()).message);
                 bundle.putLong("time", news.get(holder.getAdapterPosition()).time_stamp);
                 context.startActivity(new Intent(context, NewsDetailActivity.class).putExtra("data", bundle));
