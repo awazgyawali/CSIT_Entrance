@@ -40,8 +40,9 @@ public class MyMessagingService extends FirebaseMessagingService {
         else
             intent = new Intent(this, MainActivity.class)
                     .putExtra("fragment", remoteMessage.getData().get("fragment"))
-                    .putExtra("result_published", remoteMessage.getData().get("result_published"))
-                    .putExtra("news_id", remoteMessage.getData().get("news_id"));
+                    .putExtra("result_published", remoteMessage.getData().get("result_published"));
+        if (remoteMessage.getData().get("fragment").equals("forum"))
+            intent.putExtra("post_id", remoteMessage.getData().get("post_id"));
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,

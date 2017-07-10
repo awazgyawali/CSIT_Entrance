@@ -116,6 +116,15 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         fillRecyclerView();
         addListener();
+        handleIntent();
+    }
+
+    private void handleIntent() {
+        String post_id = getArguments().getString("post_id");
+        if (post_id != null)
+            startActivity(new Intent(getContext(), CommentsActivity.class)
+                    .putExtra("key", post_id)
+                    .putExtra("message", "Entrance Forum"));
     }
 
     private void addListener() {
@@ -271,5 +280,13 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     public String getRemainingTime() {
         long timeInMilis = (SPHandler.getInstance().getLastPostedTime() + 3600000) - System.currentTimeMillis();
         return timeInMilis / (1000 * 60) + " minutes";
+    }
+
+    public static Fragment newInstance(String post_id) {
+        EntranceForum forum = new EntranceForum();
+        Bundle args = new Bundle();
+        args.putString("post_id", post_id);
+        forum.setArguments(args);
+        return forum;
     }
 }

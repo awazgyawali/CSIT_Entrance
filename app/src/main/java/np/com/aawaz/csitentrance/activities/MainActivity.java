@@ -121,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handlingIntent() {
-
         if (getIntent().getStringExtra("fragment") != null) {
             String string = getIntent().getStringExtra("fragment");
             for (int i = 0; i < navigationText.length; i++)
@@ -270,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.entranceForum:
-                manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceForum()).commit();
+                manager.beginTransaction().replace(R.id.fragmentHolder, EntranceForum.newInstance(getIntent().getStringExtra("post_id"))).commit();
                 setTitle("Entrance Forum");
                 new EventSender().logEvent("forum");
                 item.setChecked(true);

@@ -1,14 +1,18 @@
 package np.com.aawaz.csitentrance.fragments.other_fragments;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
@@ -32,6 +36,7 @@ public class PopupDialogFragment extends DialogFragment {
     TextView title, address, content, call, know, close;
     ViewSwitcher popupViewSwitcher;
     ArrayList<PopupAd> ads = new ArrayList<>();
+    boolean isDataShowing = false;
 
 
     @Nullable
@@ -56,6 +61,15 @@ public class PopupDialogFragment extends DialogFragment {
         popupViewSwitcher.showNext();
     }
 
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+
+        // request a window without the title
+        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        return dialog;
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -86,7 +100,11 @@ public class PopupDialogFragment extends DialogFragment {
     private void fillAd() {
         //sizing the dialog
         int lastAdPosition = SPHandler.getInstance().getLastAdPosition();
-        SPHandler.getInstance().setLastAd((lastAdPosition + 1) % ads.size());
+        if (lastAdPosition >= ads.size()) {
+            lastAdPosition = 0;
+            SPHandler.getInstance().setLastAd(0);
+        } else
+            SPHandler.getInstance().setLastAd((lastAdPosition + 1) % ads.size());
 
         final PopupAd adToShow = ads.get(lastAdPosition);
 
@@ -96,7 +114,7 @@ public class PopupDialogFragment extends DialogFragment {
 
         title.setText(adToShow.title);
         address.setText(adToShow.address);
-        content.setText(adToShow.detail);
+        content.setText(Html.fromHtml(adToShow.detail));
 
         call.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +126,7 @@ public class PopupDialogFragment extends DialogFragment {
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .setValue(new Feedback(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()));
 
-                startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", String.valueOf(adToShow.phone), null)));
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", adToShow.phone, null)));
                 dismiss();
             }
         });
@@ -128,9 +146,11 @@ public class PopupDialogFragment extends DialogFragment {
             }
         });
 
-
-        popupViewSwitcher.showPrevious();
+        if (!isDataShowing) {
+            popupViewSwitcher.showPrevious();
+            isDataShowing = true;
+        }
         final DisplayMetrics metrics = getResources().getDisplayMetrics();
-        getDialog().getWindow().setLayout((9 * metrics.widthPixels) / 10, (9 * metrics.heightPixels) / 10);
+        getDialog().getWindow().setLayout((9 * metrics.widthPixels) / 10, (3 * metrics.heightPixels) / 4);
     }
 }

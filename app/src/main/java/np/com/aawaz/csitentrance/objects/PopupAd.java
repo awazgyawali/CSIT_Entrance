@@ -9,5 +9,5 @@ public class PopupAd {
     public String address;
     public String website;
     public String detail;
-    public long phone;
+    public String phone;
 }

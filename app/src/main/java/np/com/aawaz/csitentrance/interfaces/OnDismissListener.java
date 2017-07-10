@@ -5,5 +5,5 @@ package np.com.aawaz.csitentrance.interfaces;
  */
 
 public interface OnDismissListener {
-    public void onDismiss();
+    void onDismiss();
 }

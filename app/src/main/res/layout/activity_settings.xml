@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                android:text="Show answer on each play"
+                android:text="Show answer dialog every time"
                 android:textColor="@color/black" />
 
 

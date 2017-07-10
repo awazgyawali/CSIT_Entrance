@@ -166,14 +166,14 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
 
     private void showDialogAd() {
         PopupDialogFragment popupDialogFragment = new PopupDialogFragment();
-        //popupDialogFragment.show(getSupportFragmentManager(), "popup"); todo  trigger ad on next update
+        popupDialogFragment.show(getSupportFragmentManager(), "popup");
     }
 
     @Override
     public void selected(CardView submit, boolean correct, String answer) {
         spHandler.increasePlayed(subject);
         spHandler.increaseTimesPlayed();
-        if ((spHandler.getTimesPlayed() % 15) == 0) {
+        if ((spHandler.getTimesPlayed() % 13) == 0) {
             showDialogAd();
         }
         if (customViewPager.getCurrentItem() != 24)

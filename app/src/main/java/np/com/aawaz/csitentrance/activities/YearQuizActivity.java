@@ -180,14 +180,14 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
 
     private void showDialogAd() {
         PopupDialogFragment popupDialogFragment = new PopupDialogFragment();
-        //popupDialogFragment.show(getSupportFragmentManager(), "popup"); todo trigger ad on next update
+        popupDialogFragment.show(getSupportFragmentManager(), "popup");
     }
 
     @Override
     public void selected(CardView submit, boolean correct, String answer) {
         spHandler.increasePlayed(code);
         spHandler.increaseTimesPlayed();
-        if ((spHandler.getTimesPlayed() % 15) == 0) {
+        if ((spHandler.getTimesPlayed() % 13) == 0) {
             showDialogAd();
         }
         spHandler.increasePlayed(spHandler.getSubjectCode(getIntent().getIntExtra("position", 1), qNo));

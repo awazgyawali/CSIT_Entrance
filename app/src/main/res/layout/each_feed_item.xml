@@ -33,12 +33,12 @@
                     android:id="@+id/postedBy"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:drawablePadding="5dp"
                     android:drawableRight="@drawable/edit_grey"
                     android:gravity="center_vertical"
                     android:text="Aawaz Gyawali"
-                    android:layout_marginRight="5dp"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
 
@@ -70,7 +70,7 @@
         android:layout_marginTop="5dp"
         android:ellipsize="end"
         android:gravity="center_vertical"
-        android:lines="3"
+        android:minLines="3"
         android:text="Demo ni hagi"
         android:textColor="@color/colorPrimaryText" />
 </LinearLayout>

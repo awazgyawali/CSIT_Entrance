@@ -19,7 +19,7 @@
       "website": "http://www.academianepal.com/ "
     },
     {
-      "name": "Aims College",
+      "name": "AIMS College",
       "address": "Bhanu tole,College road,Biratnagar",
       "phone": "021537060",
       "website": "null"
@@ -53,6 +53,12 @@
       "address": "Opp. to Batika Hotel,Surkhet road,Nepalgunj",
       "phone": "081521261",
       "website": "null"
+    },
+    {
+      "name": "Bhaktapur Multiple Campus",
+      "address": "Nagarkot Road, Bhaktapur",
+      "phone": "01-6610200",
+      "website": "http://bmcbkt.edu.np/site/"
     },
     {
       "name": "Birat Kshitiz College",
@@ -273,8 +279,8 @@
     {
       "name": "Shree Yantra College",
       "address": "Jhapa",
-      "phone": "null",
-      "website": "null"
+      "phone": "023-584950",
+      "website": "www.damaktechnical.com.np"
     },
     {
       "name": "Siddhanath Science Campus",

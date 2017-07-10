@@ -8,7 +8,6 @@
     android:animateLayoutChanges="true"
     app:cardBackgroundColor="@color/white">
 
-
     <ViewSwitcher
         android:id="@+id/viewSwitcherPopup"
         android:layout_width="match_parent"
@@ -28,64 +27,72 @@
                 android:id="@+id/image_ad_popup"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="0dp"
                 android:layout_marginTop="0dp"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@drawable/students"
-                app:layout_constraintBottom_toTopOf="@+id/popup_title"
+                app:layout_constraintBottom_toTopOf="@+id/guideline3"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.0" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
 
             <TextView
                 android:id="@+id/popup_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="0dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:paddingTop="8dp"
+                android:layout_marginTop="4dp"
                 android:text="Samriddhi College"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/popup_address"
                 app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
             <TextView
                 android:id="@+id/popup_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginTop="0dp"
                 android:text="Sanothimi, Bhaktapur"
                 android:textColor="@color/colorAccent"
-                app:layout_constraintBottom_toTopOf="@+id/popup_desc"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/popup_title" />
 
             <TextView
                 android:id="@+id/popup_desc"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="Samriddhi college announces admission open for the 2074 intake of the BSc CSIT program. Pursue your carrer with the Nepal's best IT course offered by TU.\n\n Fee Structure:- Rs 4,30,000\n\nHurry up and book your seat now.\n\n Call now at 071-4322409"
                 app:layout_constraintBottom_toTopOf="@+id/view3"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/popup_address" />
 
             <View
                 android:id="@+id/view3"
