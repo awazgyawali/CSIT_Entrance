@@ -127,6 +127,10 @@
             android:authorities="com.facebook.app.FacebookContentProvider768172639946667"
             android:exported="true" />
 
+        <activity
+            android:name=".activities.NotificationActivity"
+            android:label="@string/title_activity_notification"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

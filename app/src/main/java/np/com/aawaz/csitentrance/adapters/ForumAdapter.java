@@ -59,11 +59,15 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
             holder.postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.edit_grey, 0);
         else
             holder.postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-        Picasso.with(MyApplication.getAppContext())
-                .load(posts.get(position).image_url)
-                .error(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
-                .placeholder(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
-                .into(holder.profile);
+        try {
+            Picasso.with(MyApplication.getAppContext())
+                    .load(posts.get(position).image_url)
+                    .error(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
+                    .placeholder(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
+                    .into(holder.profile);
+        } catch (IllegalArgumentException e){
+            holder.profile.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE));
+        }
     }
 
     @Override

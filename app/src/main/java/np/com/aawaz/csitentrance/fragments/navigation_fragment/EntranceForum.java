@@ -233,6 +233,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
                 .positiveText("Save")
                 .build();
         dialog.getInputEditText().setLines(5);
+        dialog.getInputEditText().setSingleLine(false);
         dialog.getInputEditText().setMaxLines(7);
         dialog.show();
     }

@@ -150,6 +150,9 @@ public class MainActivity extends AppCompatActivity {
                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                     .setValue(token);
             SPHandler.getInstance().instanceIdAdded();
+            FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
+            FirebaseMessaging.getInstance().subscribeToTopic("new");
+            FirebaseMessaging.getInstance().subscribeToTopic("forums");
         }
     }
 
@@ -211,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
                     .positiveText("Send")
                     .build();
             dialog.getInputEditText().setLines(5);
+            dialog.getInputEditText().setSingleLine(false);
             dialog.getInputEditText().setMaxLines(7);
             dialog.show();
             return;
@@ -323,6 +327,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.search) {
             startActivity(new Intent(this, SearchActivity.class));
+            return true;
+        } else if(item.getItemId()==R.id.notifications){
+            startActivity(new Intent(this, NotificationActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

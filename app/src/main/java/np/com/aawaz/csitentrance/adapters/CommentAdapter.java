@@ -49,11 +49,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.edit_grey, 0);
         else
             holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-
-        Picasso.with(MyApplication.getAppContext())
-                .load(comments.get(holder.getAdapterPosition()).image_url)
-                .placeholder(TextDrawable.builder().buildRound(String.valueOf(comments.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
-                .into(holder.circleImageView);
+        try {
+            Picasso.with(MyApplication.getAppContext())
+                    .load(comments.get(holder.getAdapterPosition()).image_url)
+                    .placeholder(TextDrawable.builder().buildRound(String.valueOf(comments.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
+                    .into(holder.circleImageView);
+        } catch (Exception e) {
+            holder.circleImageView.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(comments.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE));
+        }
         holder.core.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

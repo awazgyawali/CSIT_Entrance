@@ -16,10 +16,12 @@ public class SPHandler {
     public static String YEAR2070 = "year2070";
     public static String YEAR2071 = "year2071";
     public static String YEAR2072 = "year2072";
+    public static String YEAR2073 = "year2073";
     public static String MODEL1 = "model1";
     public static String MODEL2 = "model2";
     public static String MODEL3 = "model3";
     public static String MODEL4 = "model4";
+    public static String MODEL5 = "model5";
     private static SPHandler spHandler;
     private final SharedPreferences.Editor scoreEditor;
     private final SharedPreferences.Editor infoEditor;
@@ -82,13 +84,13 @@ public class SPHandler {
     }
 
     public int getTotalScore() {
-        return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) +
-                getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4);
+        return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) +getScore(YEAR2073) +
+                getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4)+getScore(MODEL5);
     }
 
     public int getTotalPlayed() {
-        return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) +
-                getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4);
+        return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) +getPlayed(YEAR2073) +
+                getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4)+getPlayed(MODEL5);
     }
 
     public boolean isResultPublished() {
@@ -103,11 +105,13 @@ public class SPHandler {
         String[][] subjects = {new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
                 new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
                 new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
                 new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},
                 new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
                 new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},
-                new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH}};
+                new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH},
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
+                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS}};
         return subjects[index][questionNo / 25];
     }
 
@@ -116,11 +120,13 @@ public class SPHandler {
         String[][] subjects = {new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
                 new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
                 new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
                 new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},
                 new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
                 new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},
-                new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH}};
+                new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH},
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
+                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS}};
         for (int i = 0; i < 4; i++)
             if (subjects[index][i].equals(subject))
                 return i * 25;
@@ -202,28 +208,12 @@ public class SPHandler {
         infoEditor.putString("leaderboard", leaderBoardLastResponse).apply();
     }
 
-    public boolean isFirstBugReport() {
-        return infoSp.getBoolean("bug_report", true);
-    }
-
-    public void setFirstBugReport() {
-        infoEditor.putBoolean("bug_report", false).apply();
-    }
-
     public String getPhoneNo() {
         return infoSp.getString("phone_no", "");
     }
 
     public void setPhoneNo(String no) {
         infoEditor.putString("phone_no", no).apply();
-    }
-
-    public void setBoolean(String set_id, boolean value) {
-        infoEditor.putBoolean(set_id, value).apply();
-    }
-
-    public boolean getBoolean(String set_id) {
-        return infoSp.getBoolean(set_id, false);
     }
 
     public void increaseTimesPlayed() {
@@ -235,11 +225,11 @@ public class SPHandler {
     }
 
     public boolean isInstanceIdAdded() {
-        return infoSp.getBoolean("instance_added", false);
+        return infoSp.getBoolean("instance_id", false);
     }
 
     public void instanceIdAdded() {
-        infoEditor.putBoolean("instance_added", true).apply();
+        infoEditor.putBoolean("instance_id", true).apply();
     }
 
     public int getLastAdPosition() {

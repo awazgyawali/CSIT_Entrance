@@ -41,6 +41,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -88,7 +89,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                         phoneIntent();
                     else if (user.getPhoneNumber().equals(""))
                         phoneIntent();
-
                     else {
                         SPHandler.getInstance().setPhoneNo(user.getPhoneNumber());
                         startActivity(new Intent(SignInActivity.this, MainActivity.class)

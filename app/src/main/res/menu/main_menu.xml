@@ -6,4 +6,9 @@
         android:icon="@drawable/search"
         android:title="Search"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/notifications"
+        android:icon="@drawable/notification"
+        android:title="Search"
+        app:showAsAction="always" />
 </menu>

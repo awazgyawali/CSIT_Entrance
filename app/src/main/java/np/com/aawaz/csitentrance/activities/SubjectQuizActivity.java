@@ -174,7 +174,7 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
         spHandler.increasePlayed(subject);
         spHandler.increaseTimesPlayed();
         if ((spHandler.getTimesPlayed() % 13) == 0) {
-            showDialogAd();
+            //showDialogAd(); todo
         }
         if (customViewPager.getCurrentItem() != 24)
             answersDrawer.increaseSize();

@@ -229,10 +229,6 @@ public class PhoneNoActivity extends AppCompatActivity {
         SPHandler.getInstance().setPhoneNo(phone.getText().toString());
 
 
-        FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
-        FirebaseMessaging.getInstance().subscribeToTopic("new");
-        FirebaseMessaging.getInstance().subscribeToTopic("forums");
-
         startActivity(new Intent(PhoneNoActivity.this, MainActivity.class)
                 .putExtra("fragment", getIntent().getStringExtra("fragment")));
         finish();

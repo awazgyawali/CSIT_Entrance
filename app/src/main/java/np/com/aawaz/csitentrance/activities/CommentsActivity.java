@@ -193,6 +193,7 @@ public class CommentsActivity extends AppCompatActivity {
                 .build();
 
         dialog.getInputEditText().setLines(5);
+        dialog.getInputEditText().setSingleLine(false);
         dialog.getInputEditText().setMaxLines(7);
         dialog.show();
     }

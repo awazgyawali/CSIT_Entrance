@@ -54,16 +54,18 @@ public class SubjectChooserActivity extends AppCompatActivity {
     }
 
     private void handleViews() {
-        LinearLayout que69, que70, que71, que72, que1, que2, que3, que4;
+        LinearLayout que69, que70, que71, que72,que73, que1, que2, que3, que4,que5;
 
         que1 = (LinearLayout) findViewById(R.id.question1);
         que2 = (LinearLayout) findViewById(R.id.question2);
         que3 = (LinearLayout) findViewById(R.id.question3);
         que4 = (LinearLayout) findViewById(R.id.question4);
+        que5 = (LinearLayout) findViewById(R.id.question5);
         que69 = (LinearLayout) findViewById(R.id.question2069);
         que70 = (LinearLayout) findViewById(R.id.question2070);
         que71 = (LinearLayout) findViewById(R.id.question2071);
         que72 = (LinearLayout) findViewById(R.id.question2072);
+        que73 = (LinearLayout) findViewById(R.id.question2073);
 
         que69.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +89,12 @@ public class SubjectChooserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 clicked(3);
+            }
+        });
+        que73.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicked(8);
             }
         });
         que1.setOnClickListener(new View.OnClickListener() {
@@ -113,11 +121,17 @@ public class SubjectChooserActivity extends AppCompatActivity {
                 clicked(7);
             }
         });
+        que5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicked(9);
+            }
+        });
     }
 
     private void clicked(int pos) {
         String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4};
+                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4,SPHandler.YEAR2073,SPHandler.MODEL5};
         Intent intent = new Intent(this, SubjectQuizActivity.class);
         intent.putExtra("code", codes[pos]);
         intent.putExtra("position", pos);

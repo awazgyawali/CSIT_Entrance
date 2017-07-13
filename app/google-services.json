@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "243712876576-n143tklgut5tqn5920u81b19v284jls8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "np.com.aawaz.csitentrance",
+            "certificate_hash": "0da17c69fc1d4b80b7ef388ede873a8bfacd849f"
+          }
+        },
+        {
           "client_id": "243712876576-pg175c52s5pft4vp4lo1jcgfgffq8q0r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

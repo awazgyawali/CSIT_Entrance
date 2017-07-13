@@ -188,7 +188,7 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
         spHandler.increasePlayed(code);
         spHandler.increaseTimesPlayed();
         if ((spHandler.getTimesPlayed() % 13) == 0) {
-            showDialogAd();
+            //showDialogAd(); todo
         }
         spHandler.increasePlayed(spHandler.getSubjectCode(getIntent().getIntExtra("position", 1), qNo));
         if (customViewPager.getCurrentItem() == 99) {
