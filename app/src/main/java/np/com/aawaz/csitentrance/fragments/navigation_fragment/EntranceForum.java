@@ -36,6 +36,7 @@ import java.util.Map;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.CommentsActivity;
+import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.objects.Post;
@@ -121,10 +122,12 @@ public class EntranceForum extends Fragment implements ChildEventListener {
 
     private void handleIntent() {
         String post_id = getArguments().getString("post_id");
-        if (post_id != null)
+        if (post_id != null && !MainActivity.openedIntent) {
             startActivity(new Intent(getContext(), CommentsActivity.class)
                     .putExtra("key", post_id)
                     .putExtra("message", "Entrance Forum"));
+            MainActivity.openedIntent = true;
+        }
     }
 
     private void addListener() {

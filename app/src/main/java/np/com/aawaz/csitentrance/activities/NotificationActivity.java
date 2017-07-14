@@ -50,7 +50,7 @@ public class NotificationActivity extends AppCompatActivity {
 
         SQLiteDatabase database = new NotificationDatabase(this).getReadableDatabase();
 
-        Cursor cursor = database.query("notification", new String[]{"title", "text", "time", "post_id", "tag"}, null, null, null, null, null);
+        Cursor cursor = database.query("notification", new String[]{"title", "text", "time", "post_id", "tag"}, null, null, null, null, "time DESC");
 
         while (cursor.moveToNext()) {
             Notification notification=new Notification();
@@ -62,6 +62,7 @@ public class NotificationActivity extends AppCompatActivity {
 
             notifications.add(notification);
         }
+        cursor.close();
         return notifications;
     }
 

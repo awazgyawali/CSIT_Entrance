@@ -48,9 +48,11 @@ import np.com.aawaz.csitentrance.services.ScoreUploader;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static TabLayout tabLayout;
-    public static CoordinatorLayout mainLayout;
-    static TextView titleMain;
+    public static boolean openedIntent = false;
+    Intent intent;
+
+    public TabLayout tabLayout;
+    private static TextView titleMain;
     FragmentManager manager;
     NavigationView mNavigationView;
     DrawerLayout mDrawerLayout;
@@ -76,11 +78,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         uploadInstanceId();
 
+        intent=getIntent();
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
         mNavigationView = (NavigationView) findViewById(R.id.navigationView);
         manager = getSupportFragmentManager();
-        mainLayout = (CoordinatorLayout) findViewById(R.id.mainParent);
         tabLayout = (TabLayout) findViewById(R.id.tabLayoutMain);
         appBarLayout = (AppBarLayout) findViewById(R.id.appBarMain);
         titleMain = (TextView) findViewById(R.id.titleMain);
@@ -117,15 +119,24 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         drawerToggle.syncState();
 
-        handlingIntent();
+        handlingIntent(getIntent());
     }
 
-    private void handlingIntent() {
-        if (getIntent().getStringExtra("fragment") != null) {
-            String string = getIntent().getStringExtra("fragment");
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        this.intent=intent;
+        handlingIntent(intent);
+    }
+
+    private void handlingIntent(Intent intent) {
+        if (intent.getStringExtra("fragment") != null) {
+            String string = intent.getStringExtra("fragment");
             for (int i = 0; i < navigationText.length; i++)
-                if (navigationText[i].equals(string))
+                if (navigationText[i].equals(string)) {
+                    openedIntent = false;
                     navigate(mNavigationView.getMenu().findItem(navigationId[i]));
+                }
         }
 
     }
@@ -273,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.entranceForum:
-                manager.beginTransaction().replace(R.id.fragmentHolder, EntranceForum.newInstance(getIntent().getStringExtra("post_id"))).commit();
+                manager.beginTransaction().replace(R.id.fragmentHolder, EntranceForum.newInstance(intent.getStringExtra("post_id"))).commit();
                 setTitle("Entrance Forum");
                 new EventSender().logEvent("forum");
                 item.setChecked(true);
@@ -328,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.search) {
             startActivity(new Intent(this, SearchActivity.class));
             return true;
-        } else if(item.getItemId()==R.id.notifications){
+        } else if (item.getItemId() == R.id.notifications) {
             startActivity(new Intent(this, NotificationActivity.class));
             return true;
         }

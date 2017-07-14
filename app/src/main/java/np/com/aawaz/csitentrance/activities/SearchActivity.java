@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -132,7 +133,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onCallClicked(final int position) {
                 if (phNo.get(position).equals("null"))
-                    Snackbar.make(MainActivity.mainLayout, "No phone number found.", Snackbar.LENGTH_SHORT).show();
+                    Toast.makeText(SearchActivity.this, "No phone number found.", Toast.LENGTH_SHORT).show();
                 else
                     new MaterialDialog.Builder(SearchActivity.this)
                             .title("Call Confirmation")
@@ -151,7 +152,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onWebsiteClicked(final int position) {
                 if (website.get(position).equals("null"))
-                    Snackbar.make(MainActivity.mainLayout, "No web address found.", Snackbar.LENGTH_SHORT).show();
+                    Toast.makeText(SearchActivity.this, "No web address found.", Toast.LENGTH_SHORT).show();
                 else
                     new MaterialDialog.Builder(SearchActivity.this)
                             .title("Confirmation.")
@@ -176,7 +177,7 @@ public class SearchActivity extends AppCompatActivity {
                 if (mapIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(mapIntent);
                 } else {
-                    Snackbar.make(MainActivity.mainLayout, "Google maps doesn't exist..", Snackbar.LENGTH_SHORT).show();
+                    Toast.makeText(SearchActivity.this, "Google maps doesn't exist..", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -84,7 +84,7 @@ public class Home extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewPager = (ViewPager) view.findViewById(R.id.viewPagerHome);
-        tabLayout = MainActivity.tabLayout;
+        tabLayout = ((MainActivity) getActivity()).tabLayout;
     }
 
     @Override

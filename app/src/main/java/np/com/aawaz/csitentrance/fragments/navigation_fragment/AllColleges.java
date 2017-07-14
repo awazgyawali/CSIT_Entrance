@@ -9,7 +9,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.os.AsyncTaskCompat;
 import android.support.v7.widget.RecyclerView;
@@ -17,17 +16,10 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.daimajia.slider.library.Indicators.PagerIndicator;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,16 +29,12 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.adapters.CollegesAdapter;
-import np.com.aawaz.csitentrance.custom_views.FeaturedSlideView;
 import np.com.aawaz.csitentrance.interfaces.CollegeMenuClicks;
-import np.com.aawaz.csitentrance.objects.FeaturedCollege;
 
 
-public class AllColleges extends Fragment implements ValueEventListener {
+public class AllColleges extends Fragment  {
     RecyclerView colzRecy;
-    SliderLayout adSlider;
     private ArrayList<String> names = new ArrayList<>(),
             website = new ArrayList<>(),
             address = new ArrayList<>(),
@@ -69,7 +57,6 @@ public class AllColleges extends Fragment implements ValueEventListener {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         colzRecy = (RecyclerView) view.findViewById(R.id.colzRecy);
-        adSlider = (SliderLayout) view.findViewById(R.id.featured_ad_slider);
         colzRecy.setNestedScrollingEnabled(false);
     }
 
@@ -77,17 +64,6 @@ public class AllColleges extends Fragment implements ValueEventListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setDataToArrayList();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // addFeaturedListener(); todo in next update
-    }
-
-    private void addFeaturedListener() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("ads").child("featured_colleges");
-        reference.addListenerForSingleValueEvent(this);
     }
 
 
@@ -98,7 +74,7 @@ public class AllColleges extends Fragment implements ValueEventListener {
             @Override
             public void onCallClicked(final int position) {
                 if (phNo.get(position).equals("null"))
-                    Snackbar.make(MainActivity.mainLayout, "No phone number found.", Snackbar.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "No phone number found.", Toast.LENGTH_SHORT).show();
                 else
                     new MaterialDialog.Builder(getContext())
                             .title("Call Confirmation")
@@ -117,7 +93,7 @@ public class AllColleges extends Fragment implements ValueEventListener {
             @Override
             public void onWebsiteClicked(final int position) {
                 if (website.get(position).equals("null"))
-                    Snackbar.make(MainActivity.mainLayout, "No web address found.", Snackbar.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "No web address found.", Toast.LENGTH_SHORT).show();
                 else
                     new MaterialDialog.Builder(getContext())
                             .title("Confirmation.")
@@ -142,7 +118,7 @@ public class AllColleges extends Fragment implements ValueEventListener {
                 if (mapIntent.resolveActivity(getContext().getPackageManager()) != null) {
                     startActivity(mapIntent);
                 } else {
-                    Snackbar.make(MainActivity.mainLayout, "Google maps doesn't exist..", Snackbar.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Google maps doesn't exist..", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -189,35 +165,5 @@ public class AllColleges extends Fragment implements ValueEventListener {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_all_colleges, container, false);
-    }
-
-    @Override
-    public void onDataChange(DataSnapshot dataSnapshot) {
-        for (DataSnapshot child : dataSnapshot.getChildren())
-            fillFeaturedColleges(child.getValue(FeaturedCollege.class));
-    }
-
-    private void fillFeaturedColleges(FeaturedCollege college) {
-        Bundle bundle = new Bundle();
-        bundle.putString("address", college.address);
-        bundle.putLong("phone_no", college.phone);
-        bundle.putString("destination_url", college.website);
-        bundle.putString("description", college.detail);
-
-        FeaturedSlideView textSliderView = new FeaturedSlideView(getContext());
-        // initialize a SliderLayout
-        textSliderView
-                .description(college.name)
-                .image(college.banner_image)
-                .bundle(bundle)
-                .setScaleType(BaseSliderView.ScaleType.CenterCrop);
-
-        adSlider.addSlider(textSliderView);
-        adSlider.setIndicatorVisibility(PagerIndicator.IndicatorVisibility.Invisible);
-    }
-
-    @Override
-    public void onCancelled(DatabaseError databaseError) {
-
     }
 }
