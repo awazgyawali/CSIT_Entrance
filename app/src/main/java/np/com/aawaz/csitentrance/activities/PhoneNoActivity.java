@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
@@ -60,6 +61,7 @@ public class PhoneNoActivity extends AppCompatActivity {
         verify_code = (TextInputEditText) findViewById(R.id.phone_no_code);
         vs = (ViewSwitcher) findViewById(R.id.phone_auth_vs);
         TextView change_phone_no = (TextView) findViewById(R.id.change_phone_no);
+        final TextView resendCode = (TextView) findViewById(R.id.resendCode);
         final TextView code_sent_text = (TextView) findViewById(R.id.code_sent_text);
 
         final CardView submit = (CardView) findViewById(R.id.phone_continue_button);
@@ -181,26 +183,29 @@ public class PhoneNoActivity extends AppCompatActivity {
             }
 
         };
+        resendCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requestCode();
+            }
+        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (c_code.getText().toString().length() > 1) {
-                    SPHandler.getInstance().setPhoneNo(phone.getText().toString());
-                    if (forceResendingToken == null)
-                        PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
-                                60,
-                                TimeUnit.SECONDS,
-                                PhoneNoActivity.this,
-                                mCallback);
-                    else
-                        PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
-                                60,
-                                TimeUnit.SECONDS,
-                                PhoneNoActivity.this,
-                                mCallback,
-                                forceResendingToken);
-                    dialog.show();
+                    new MaterialDialog.Builder(PhoneNoActivity.this)
+                            .title("Confirm your number.")
+                            .content(Html.fromHtml("Is <b>"+c_code.getText().toString() + phone.getText().toString()+"</b> your phone no?<br><br>This will send a verification code to your phone."))
+                            .positiveText("Continue")
+                            .negativeText("Cancel")
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    requestCode();
+                                }
+                            })
+                            .show();
                 } else {
                     Toast.makeText(PhoneNoActivity.this, "Invalid country code.", Toast.LENGTH_SHORT).show();
                 }
@@ -218,6 +223,24 @@ public class PhoneNoActivity extends AppCompatActivity {
                 signInWithPhoneAuthCredential(credential);
             }
         });
+    }
+
+    private void requestCode() {
+        SPHandler.getInstance().setPhoneNo(phone.getText().toString());
+        if (forceResendingToken == null)
+            PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
+                    60,
+                    TimeUnit.SECONDS,
+                    PhoneNoActivity.this,
+                    mCallback);
+        else
+            PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
+                    60,
+                    TimeUnit.SECONDS,
+                    PhoneNoActivity.this,
+                    mCallback,
+                    forceResendingToken);
+        dialog.show();
     }
 
     private void onVerified() {

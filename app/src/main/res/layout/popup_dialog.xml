@@ -30,7 +30,7 @@
                 android:layout_marginBottom="0dp"
                 android:layout_marginTop="0dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/students"
+                android:src="@drawable/sagarmatha"
                 app:layout_constraintBottom_toTopOf="@+id/guideline3"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
+                app:layout_constraintGuide_percent="0.52" />
 
             <TextView
                 android:id="@+id/popup_title"
@@ -53,8 +53,9 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
+                android:gravity="center"
                 android:layout_marginTop="4dp"
-                android:text="Samriddhi College"
+                android:text="Sagarmatha College of Science and Technology"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
@@ -69,8 +70,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginTop="0dp"
-                android:text="Sanothimi, Bhaktapur"
+                android:layout_marginTop="4dp"
+                android:text="Sanepa, Lalitpur"
                 android:textColor="@color/colorAccent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -87,7 +88,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="Samriddhi college announces admission open for the 2074 intake of the BSc CSIT program. Pursue your carrer with the Nepal's best IT course offered by TU.\n\n Fee Structure:- Rs 4,30,000\n\nHurry up and book your seat now.\n\n Call now at 071-4322409"
+                android:text="XYZ college announces admission open for the 2074 intake of the BSc CSIT program. Pursue your career with the Nepal's best IT course offered by TU.\n\nHurry up and book your seat now.\n Call now at 01-5527274"
                 app:layout_constraintBottom_toTopOf="@+id/view3"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"

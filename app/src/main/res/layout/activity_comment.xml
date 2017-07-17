@@ -6,7 +6,6 @@
     android:layout_margin="10dp"
     android:orientation="vertical"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="10dp"
     tools:context=".activities.CommentsActivity">
 
     <LinearLayout
@@ -74,7 +73,9 @@
                     android:id="@+id/addCommentText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Your Comment" />
+                    android:background="@color/white"
+                    android:hint="Your Comment"
+                    android:padding="8dp" />
             </android.support.design.widget.TextInputLayout>
 
             <ImageButton
@@ -83,7 +84,7 @@
                 android:layout_height="match_parent"
                 android:background="?android:selectableItemBackground"
                 android:padding="10dp"
-                android:src="@drawable/post" />
+                android:src="@drawable/post_accent" />
         </LinearLayout>
 
     </LinearLayout>

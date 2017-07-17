@@ -131,6 +131,10 @@
         <activity
             android:name=".activities.NotificationActivity"
             android:label="@string/title_activity_notification"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.PostForumActivity"
+            android:label="@string/title_activity_post_forum"
             android:theme="@style/AppTheme"></activity>
     </application>
 

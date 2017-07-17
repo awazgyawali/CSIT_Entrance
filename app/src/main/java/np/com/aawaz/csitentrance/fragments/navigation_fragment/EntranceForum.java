@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,6 +38,7 @@ import java.util.Map;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.CommentsActivity;
 import np.com.aawaz.csitentrance.activities.MainActivity;
+import np.com.aawaz.csitentrance.activities.PostForumActivity;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.objects.Post;
@@ -47,15 +49,13 @@ public class EntranceForum extends Fragment implements ChildEventListener {
 
     RecyclerView recyclerView;
 
-    AppCompatEditText questionEditText;
     ProgressBar progressBar;
     LinearLayout errorPart;
-    ImageView buttonPost;
 
     ForumAdapter adapter;
     ArrayList<String> key = new ArrayList<>();
     DatabaseReference reference;
-    private InputMethodManager imm;
+    FloatingActionButton floatingActionButton;
     private LinearLayoutManager mLinearLayoutManager;
 
     @Nullable
@@ -70,43 +70,20 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         errorPart = (LinearLayout) view.findViewById(R.id.errorPart);
         progressBar = (ProgressBar) view.findViewById(R.id.progressCircleFullFeed);
         recyclerView = (RecyclerView) view.findViewById(R.id.fullFeedRecycler);
-        buttonPost = (ImageView) view.findViewById(R.id.postForum);
-        questionEditText = (AppCompatEditText) view.findViewById(R.id.questionEditText);
+        floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fabForumPost);
 
-        questionEditText.addTextChangedListener(new TextWatcher() {
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0)
-                    buttonPost.setVisibility(View.GONE);
-                else
-                    buttonPost.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), PostForumActivity.class));
             }
         });
-
         errorPart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addListener();
             }
         });
-        buttonPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                imm.hideSoftInputFromWindow(questionEditText.getWindowToken(), 0);
-                postToFirebase(questionEditText.getText().toString());
-            }
-        });
-        buttonPost.setVisibility(View.GONE);
     }
 
     @Override
@@ -114,7 +91,6 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("forum");
         super.onActivityCreated(savedInstanceState);
-        imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         fillRecyclerView();
         addListener();
         handleIntent();
@@ -239,51 +215,6 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         dialog.getInputEditText().setSingleLine(false);
         dialog.getInputEditText().setMaxLines(7);
         dialog.show();
-    }
-
-
-    private void postToFirebase(final String message) {
-        if (canPost()) {
-            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-            Post post = new Post(currentUser.getUid(), currentUser.getDisplayName(), new Date().getTime(), message, FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString());
-            Map<String, Object> postValues = post.toMap();
-            reference.push().setValue(postValues);
-            SPHandler.getInstance().setLastPostedTime(System.currentTimeMillis());
-            questionEditText.setText("");
-        } else {
-            new MaterialDialog.Builder(getContext())
-                    .title("Opps...")
-                    .content("You can ask one question per hour, please try after " + getRemainingTime() + ".")
-                    .show();
-        }
-
-    }
-
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        SPHandler.getInstance().setForumText(questionEditText.getText().toString());
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        questionEditText.setText(SPHandler.getInstance().getForumText());
-    }
-
-    private boolean canPost() {
-        long preTime = SPHandler.getInstance().getLastPostedTime();
-        long postTime = System.currentTimeMillis();
-
-        long difference = (postTime - preTime) / (60 * 60 * 1000);
-
-        return difference >= 1;
-    }
-
-    public String getRemainingTime() {
-        long timeInMilis = (SPHandler.getInstance().getLastPostedTime() + 3600000) - System.currentTimeMillis();
-        return timeInMilis / (1000 * 60) + " minutes";
     }
 
     public static Fragment newInstance(String post_id) {

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -70,6 +71,7 @@ public class PopupDialogFragment extends DialogFragment {
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         return dialog;
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -108,8 +110,14 @@ public class PopupDialogFragment extends DialogFragment {
 
         final PopupAd adToShow = ads.get(lastAdPosition);
 
+        int image = 0;
+        if (adToShow.banner_image.equals("samriddhi"))
+            image = R.drawable.samriddhi;
+        else if (adToShow.banner_image.equals("sagarmatha"))
+            image = R.drawable.sagarmatha;
+
         Picasso.with(getContext())
-                .load(adToShow.banner_image)
+                .load(image)
                 .into(imagePopup);
 
         title.setText(adToShow.title);
