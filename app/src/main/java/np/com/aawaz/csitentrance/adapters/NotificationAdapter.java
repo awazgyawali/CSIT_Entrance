@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,7 +16,6 @@ import java.util.Date;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.activities.NewsDetailActivity;
-import np.com.aawaz.csitentrance.activities.NotificationActivity;
 import np.com.aawaz.csitentrance.objects.Notification;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.VH> {
@@ -52,12 +50,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                         context.startActivity(new Intent(context, MainActivity.class)
                                 .putExtra("fragment", "forum")
                                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-                    else {
+                    else
                         context.startActivity(new Intent(context, MainActivity.class)
                                 .putExtra("post_id", notification.post_id)
                                 .putExtra("fragment", "forum")
                                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-                    }
+
                     ((AppCompatActivity) context).finish();
                 } else if (notification.tag.equals("NEWS")) {
                     context.startActivity(new Intent(context, NewsDetailActivity.class)

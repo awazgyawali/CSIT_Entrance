@@ -84,13 +84,13 @@ public class SPHandler {
     }
 
     public int getTotalScore() {
-        return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) +getScore(YEAR2073) +
-                getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4)+getScore(MODEL5);
+        return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) + getScore(YEAR2073) +
+                getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4) + getScore(MODEL5);
     }
 
     public int getTotalPlayed() {
-        return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) +getPlayed(YEAR2073) +
-                getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4)+getPlayed(MODEL5);
+        return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) + getPlayed(YEAR2073) +
+                getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4) + getPlayed(MODEL5);
     }
 
     public boolean isResultPublished() {

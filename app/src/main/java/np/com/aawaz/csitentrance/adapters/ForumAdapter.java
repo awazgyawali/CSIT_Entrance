@@ -2,7 +2,6 @@ package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -65,7 +64,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
                     .error(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
                     .placeholder(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
                     .into(holder.profile);
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             holder.profile.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE));
         }
     }

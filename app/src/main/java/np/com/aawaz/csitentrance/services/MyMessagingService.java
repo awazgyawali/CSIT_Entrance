@@ -33,30 +33,32 @@ public class MyMessagingService extends FirebaseMessagingService {
     }
 
     private void sendNotification(RemoteMessage remoteMessage) {
-        Notification notification=new Notification();
+        Notification notification = new Notification();
 
         Intent intent;
 
-        notification.title=remoteMessage.getData().get("title");
-        notification.text=remoteMessage.getData().get("body");
+        notification.title = remoteMessage.getData().get("title");
+        notification.text = remoteMessage.getData().get("body");
+        notification.post_id = "";
+        notification.tag = "";
 
         if (remoteMessage.getData().get("fragment").equals("news")) {
             intent = new Intent(this, NewsDetailActivity.class)
                     .putExtra("news_id", remoteMessage.getData().get("news_id"));
-            notification.post_id=remoteMessage.getData().get("news_id");
-            notification.tag="NEWS";
-        }else
+            notification.post_id = remoteMessage.getData().get("news_id");
+            notification.tag = "NEWS";
+        } else
             intent = new Intent(this, MainActivity.class)
                     .putExtra("fragment", remoteMessage.getData().get("fragment"))
                     .putExtra("result_published", remoteMessage.getData().get("result_published"));
         if (remoteMessage.getData().get("fragment").equals("forum")) {
-            notification.post_id=remoteMessage.getData().get("post_id");
-            notification.tag="FORUM";
+            notification.post_id = remoteMessage.getData().get("post_id");
+            notification.tag = "FORUM";
             intent.putExtra("post_id", remoteMessage.getData().get("post_id"));
         }
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, new Random().nextInt(100) , intent,
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, new Random().nextInt(100), intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);

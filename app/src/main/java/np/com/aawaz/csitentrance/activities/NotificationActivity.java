@@ -4,15 +4,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import java.util.ArrayList;
 
@@ -53,12 +50,12 @@ public class NotificationActivity extends AppCompatActivity {
         Cursor cursor = database.query("notification", new String[]{"title", "text", "time", "post_id", "tag"}, null, null, null, null, "time DESC");
 
         while (cursor.moveToNext()) {
-            Notification notification=new Notification();
-            notification.title=cursor.getString(cursor.getColumnIndex("title"));
-            notification.text=cursor.getString(cursor.getColumnIndex("text"));
-            notification.post_id=cursor.getString(cursor.getColumnIndex("post_id"));
-            notification.tag=cursor.getString(cursor.getColumnIndex("tag"));
-            notification.time=cursor.getLong(cursor.getColumnIndex("time"));
+            Notification notification = new Notification();
+            notification.title = cursor.getString(cursor.getColumnIndex("title"));
+            notification.text = cursor.getString(cursor.getColumnIndex("text"));
+            notification.post_id = cursor.getString(cursor.getColumnIndex("post_id"));
+            notification.tag = cursor.getString(cursor.getColumnIndex("tag"));
+            notification.time = cursor.getLong(cursor.getColumnIndex("time"));
 
             notifications.add(notification);
         }

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -28,6 +28,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Feedback;
 import np.com.aawaz.csitentrance.objects.PopupAd;
 import np.com.aawaz.csitentrance.objects.SPHandler;
@@ -116,6 +117,11 @@ public class PopupDialogFragment extends DialogFragment {
         else if (adToShow.banner_image.equals("sagarmatha"))
             image = R.drawable.sagarmatha;
 
+
+        new EventSender()
+                .logEvent(adToShow.banner_image + "_popup");
+
+        imagePopup.setImageDrawable(ContextCompat.getDrawable(getContext(), image));
         Picasso.with(getContext())
                 .load(image)
                 .into(imagePopup);
@@ -159,6 +165,6 @@ public class PopupDialogFragment extends DialogFragment {
             isDataShowing = true;
         }
         final DisplayMetrics metrics = getResources().getDisplayMetrics();
-        getDialog().getWindow().setLayout((9 * metrics.widthPixels) / 10, (3 * metrics.heightPixels) / 4);
+        getDialog().getWindow().setLayout((9 * metrics.widthPixels) / 10, (6 * metrics.heightPixels) / 7);
     }
 }

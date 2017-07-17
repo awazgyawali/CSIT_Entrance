@@ -38,7 +38,7 @@ public class YearsList extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        LinearLayout que69, que70, que71, que72, que73, que1, que2, que3, que4,que5;
+        LinearLayout que69, que70, que71, que72, que73, que1, que2, que3, que4, que5;
 
         que1 = (LinearLayout) view.findViewById(R.id.question1);
         que2 = (LinearLayout) view.findViewById(R.id.question2);
@@ -131,7 +131,7 @@ public class YearsList extends Fragment {
 
     public void openFullQuestion(int position) {
         String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4,SPHandler.YEAR2073,SPHandler.MODEL5};
+                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.YEAR2073, SPHandler.MODEL5};
         Intent intent = new Intent(getContext(), FullQuestionActivity.class);
         intent.putExtra("code", codes[position]);
         intent.putExtra("position", position + 1);
@@ -142,7 +142,7 @@ public class YearsList extends Fragment {
 
     public void openQuizQuestion(int position) {
         String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4,SPHandler.YEAR2073,SPHandler.MODEL5};
+                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.YEAR2073, SPHandler.MODEL5};
         Intent intent = new Intent(getContext(), YearQuizActivity.class);
 
         intent.putExtra("code", codes[position]);

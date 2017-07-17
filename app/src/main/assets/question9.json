@@ -719,7 +719,7 @@
       "b": "mol<sup>-2</sup>L<sup>2</sup> s <sup>-1</sup>",
       "c": "mol<sup>-1</sup>LS<sup>-1</sup>",
       "d": "mol L<sup>-1</sup>s <sup>-1</sup>",
-      "ans": ""
+      "ans": "b"
     },
     {
       "question": "91. The reaction of benzene with alkyl chloride in presence of anhydrous AlCl<sub>3</sub> is",

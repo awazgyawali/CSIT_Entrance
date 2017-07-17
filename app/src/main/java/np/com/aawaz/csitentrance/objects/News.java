@@ -5,7 +5,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class News {
 
-    public String title,author;
+    public String title, author;
     public String message;
     public long time_stamp;
     public boolean featured = false;

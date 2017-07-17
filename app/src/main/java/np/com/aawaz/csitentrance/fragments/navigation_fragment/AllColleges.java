@@ -33,7 +33,7 @@ import np.com.aawaz.csitentrance.adapters.CollegesAdapter;
 import np.com.aawaz.csitentrance.interfaces.CollegeMenuClicks;
 
 
-public class AllColleges extends Fragment  {
+public class AllColleges extends Fragment {
     RecyclerView colzRecy;
     private ArrayList<String> names = new ArrayList<>(),
             website = new ArrayList<>(),

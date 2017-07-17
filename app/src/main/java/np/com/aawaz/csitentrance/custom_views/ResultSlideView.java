@@ -33,6 +33,8 @@ public class ResultSlideView extends BaseSliderView {
         TextView address = (TextView) v.findViewById(R.id.address_slide);
         TextView call = (TextView) v.findViewById(R.id.call_popup);
 
+        call.setText(getBundle().getString("button_text"));
+
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +45,7 @@ public class ResultSlideView extends BaseSliderView {
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .setValue(new Feedback(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()));
 
-                context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", String.valueOf(getBundle().getLong("phone_no")), null)));
+                context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(String.valueOf(getBundle().getString("destination_url")))));
             }
         });
 

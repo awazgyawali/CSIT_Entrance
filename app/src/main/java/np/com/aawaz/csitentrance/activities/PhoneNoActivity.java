@@ -31,7 +31,6 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.concurrent.TimeUnit;
 
@@ -196,7 +195,7 @@ public class PhoneNoActivity extends AppCompatActivity {
                 if (c_code.getText().toString().length() > 1) {
                     new MaterialDialog.Builder(PhoneNoActivity.this)
                             .title("Confirm your number.")
-                            .content(Html.fromHtml("Is <b>"+c_code.getText().toString() + phone.getText().toString()+"</b> your phone no?<br><br>This will send a verification code to your phone."))
+                            .content(Html.fromHtml("Is <b>" + c_code.getText().toString() + phone.getText().toString() + "</b> your phone no?<br><br>This will send a verification code to your phone."))
                             .positiveText("Continue")
                             .negativeText("Cancel")
                             .onPositive(new MaterialDialog.SingleButtonCallback() {

@@ -7,7 +7,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.RecyclerView;
@@ -56,7 +55,6 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void setDataToArrayList() {
-        //Reading from json file and insillizing inside arrayList
         names.clear();
         website.clear();
         address.clear();

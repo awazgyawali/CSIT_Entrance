@@ -13,109 +13,74 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.2"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/image_ad_popup"
-                android:layout_width="0dp"
+            <ScrollView
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginBottom="0dp"
-                android:layout_marginTop="0dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/sagarmatha"
-                app:layout_constraintBottom_toTopOf="@+id/guideline3"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                android:layout_weight="1">
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.52" />
 
-            <TextView
-                android:id="@+id/popup_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:gravity="center"
-                android:layout_marginTop="4dp"
-                android:text="Sagarmatha College of Science and Technology"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                app:layout_constraintHorizontal_bias="0.503"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline3" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/popup_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="4dp"
-                android:text="Sanepa, Lalitpur"
-                android:textColor="@color/colorAccent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/popup_title" />
+                    <ImageView
+                        android:id="@+id/image_ad_popup"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginTop="0dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/sagarmatha" />
 
-            <TextView
-                android:id="@+id/popup_desc"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="XYZ college announces admission open for the 2074 intake of the BSc CSIT program. Pursue your career with the Nepal's best IT course offered by TU.\n\nHurry up and book your seat now.\n Call now at 01-5527274"
-                app:layout_constraintBottom_toTopOf="@+id/view3"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/popup_address" />
+                    <TextView
+                        android:id="@+id/popup_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="center"
+                        android:text="Sagarmatha College of Science and Technology"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
 
-            <View
-                android:id="@+id/view3"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginBottom="8dp"
-                android:background="@color/grey"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                    <TextView
+                        android:id="@+id/popup_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="Sanepa, Lalitpur"
+                        android:textColor="@color/colorAccent" />
+
+                    <TextView
+                        android:id="@+id/popup_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:gravity="center"
+                        android:text="XYZ college announces admission open for the 2074 intake of the BSc CSIT program. Pursue your career with the Nepal's best IT course offered by TU.\n\nHurry up and book your seat now.\n Call now at 01-5527274" />
+
+                </LinearLayout>
+            </ScrollView>
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/call_popup"
@@ -127,9 +92,7 @@
                     android:drawableTop="@drawable/call_blue"
                     android:gravity="center"
                     android:text="Call Now"
-                    android:textColor="@color/colorPrimary"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent" />
+                    android:textColor="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/popup_knowmore"
@@ -141,11 +104,7 @@
                     android:drawableTop="@drawable/more"
                     android:gravity="center"
                     android:text="Know More"
-                    android:textColor="@color/colorPrimary"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.504"
-                    app:layout_constraintLeft_toRightOf="@+id/call_popup"
-                    app:layout_constraintRight_toLeftOf="@+id/closePopup" />
+                    android:textColor="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/closePopup"
@@ -157,12 +116,10 @@
                     android:drawableTop="@drawable/close"
                     android:gravity="center"
                     android:text="Close"
-                    android:textColor="@color/physics"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent" />
+                    android:textColor="@color/physics" />
             </LinearLayout>
+        </LinearLayout>
 
-        </android.support.constraint.ConstraintLayout>
 
         <ProgressBar
             android:layout_width="wrap_content"

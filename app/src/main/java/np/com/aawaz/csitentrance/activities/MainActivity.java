@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         uploadInstanceId();
 
-        intent=getIntent();
+        intent = getIntent();
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerMain);
         mNavigationView = (NavigationView) findViewById(R.id.navigationView);
@@ -125,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        this.intent=intent;
+        this.intent = intent;
         handlingIntent(intent);
     }
 

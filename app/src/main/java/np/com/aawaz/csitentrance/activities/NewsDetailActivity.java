@@ -30,7 +30,7 @@ public class NewsDetailActivity extends AppCompatActivity {
     Bundle bundle;
     private String mUrl;
     private String mTitle;
-    TextView time, title,author;
+    TextView time, title, author;
     WebView newsDetail;
     ViewSwitcher viewSwitcher;
 

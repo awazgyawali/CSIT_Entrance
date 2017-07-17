@@ -186,7 +186,7 @@ public class EntranceResult extends Fragment {
                     adLoading.setVisibility(View.GONE);
                     Bundle bundle = new Bundle();
                     bundle.putString("address", child.child("address").getValue(String.class));
-                    bundle.putLong("phone_no", child.child("phone_no").getValue(Long.class));
+                    bundle.putString("button_text", child.child("button_text").getValue(String.class));
                     bundle.putString("destination_url", child.child("destination_url").getValue(String.class));
                     bundle.putString("description", child.child("sub_title").getValue(String.class));
 

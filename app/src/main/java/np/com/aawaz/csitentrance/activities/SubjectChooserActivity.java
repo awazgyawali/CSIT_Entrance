@@ -54,7 +54,7 @@ public class SubjectChooserActivity extends AppCompatActivity {
     }
 
     private void handleViews() {
-        LinearLayout que69, que70, que71, que72,que73, que1, que2, que3, que4,que5;
+        LinearLayout que69, que70, que71, que72, que73, que1, que2, que3, que4, que5;
 
         que1 = (LinearLayout) findViewById(R.id.question1);
         que2 = (LinearLayout) findViewById(R.id.question2);
@@ -131,7 +131,7 @@ public class SubjectChooserActivity extends AppCompatActivity {
 
     private void clicked(int pos) {
         String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4,SPHandler.YEAR2073,SPHandler.MODEL5};
+                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.YEAR2073, SPHandler.MODEL5};
         Intent intent = new Intent(this, SubjectQuizActivity.class);
         intent.putExtra("code", codes[pos]);
         intent.putExtra("position", pos);

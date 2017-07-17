@@ -7,7 +7,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import np.com.aawaz.csitentrance.misc.MyApplication;
 
 public class EventSender {
-    Bundle bundle;
+    private Bundle bundle;
 
     public EventSender() {
         bundle = new Bundle();
@@ -19,7 +19,7 @@ public class EventSender {
 
     }
 
-    public EventSender addValue(String key, boolean value) {
+    private EventSender addValue(String key, boolean value) {
         bundle.putBoolean(key, value);
         return this;
     }
