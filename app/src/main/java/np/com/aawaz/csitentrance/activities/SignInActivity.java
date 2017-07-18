@@ -110,7 +110,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     }
 
     private void phoneIntent() {
-
         startActivity(new Intent(SignInActivity.this, PhoneNoActivity.class)
                 .putExtra("fragment", getIntent().getStringExtra("fragment")));
         finish();

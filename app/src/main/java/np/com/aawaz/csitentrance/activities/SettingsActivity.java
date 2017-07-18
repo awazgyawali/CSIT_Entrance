@@ -144,7 +144,7 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
             } else if (provider.equals("google.com")) {
                 connectGoogle.setText("Connected with Google");
                 connectGoogle.setOnClickListener(null);
-            } else if (user.getPhoneNumber() != null) {
+            } else if (!SPHandler.getInstance().getPhoneNo().equals("")) {
                 addPhoneNo.setText("Connected with phone number");
                 addPhoneNo.setOnClickListener(null);
             }

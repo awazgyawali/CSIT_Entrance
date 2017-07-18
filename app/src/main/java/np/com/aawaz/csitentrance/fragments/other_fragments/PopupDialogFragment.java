@@ -138,7 +138,7 @@ public class PopupDialogFragment extends DialogFragment {
                         .child(adToShow.title)
                         .child("students")
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                        .setValue(new Feedback(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()));
+                        .setValue(new Feedback(SPHandler.getInstance().getPhoneNo()));
 
                 startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", adToShow.phone, null)));
                 dismiss();
@@ -153,7 +153,7 @@ public class PopupDialogFragment extends DialogFragment {
                         .child(adToShow.title)
                         .child("students")
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                        .setValue(new Feedback(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()));
+                        .setValue(new Feedback(SPHandler.getInstance().getPhoneNo()));
 
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(adToShow.website)));
                 dismiss();

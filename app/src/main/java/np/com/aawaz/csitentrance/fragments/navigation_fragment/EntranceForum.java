@@ -1,9 +1,11 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -32,7 +35,10 @@ import np.com.aawaz.csitentrance.activities.CommentsActivity;
 import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.activities.PostForumActivity;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
+import np.com.aawaz.csitentrance.fragments.other_fragments.ACHSDialog;
+import np.com.aawaz.csitentrance.fragments.other_fragments.PopupDialogFragment;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
+import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Post;
 
 
@@ -48,6 +54,8 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     DatabaseReference reference;
     FloatingActionButton floatingActionButton;
     private LinearLayoutManager mLinearLayoutManager;
+    ImageView callAchs;
+    ConstraintLayout achsAd;
 
     @Nullable
     @Override
@@ -62,6 +70,25 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         progressBar = (ProgressBar) view.findViewById(R.id.progressCircleFullFeed);
         recyclerView = (RecyclerView) view.findViewById(R.id.fullFeedRecycler);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fabForumPost);
+        callAchs = (ImageView) view.findViewById(R.id.callACHS);
+        achsAd = (ConstraintLayout) view.findViewById(R.id.forum_ad);
+        new EventSender().logEvent("achs_ad");
+
+        achsAd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ACHSDialog dialog=new ACHSDialog();
+                dialog.show(getChildFragmentManager(),"achs");
+                new EventSender().logEvent("achs_full_ad");
+            }
+        });
+
+        callAchs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "01-4436383", null)));
+            }
+        });
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

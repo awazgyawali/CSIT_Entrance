@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
@@ -16,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewSwitcher;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -42,13 +42,11 @@ public class PhoneNoActivity extends AppCompatActivity {
 
 
     TextInputEditText phone, c_code;
-    TextInputEditText verify_code;
+    TextView autoVerify, counter;
     MaterialDialog verifying, dialog;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
-    private String verificationId;
-    private PhoneAuthProvider.ForceResendingToken forceResendingToken;
     private FirebaseAuth mAuth;
-    private ViewSwitcher vs;
+    CountDownTimer downTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,20 +55,20 @@ public class PhoneNoActivity extends AppCompatActivity {
         TextView detail = (TextView) findViewById(R.id.phone_string_text);
         phone = (TextInputEditText) findViewById(R.id.phone_no);
         c_code = (TextInputEditText) findViewById(R.id.c_code);
-        verify_code = (TextInputEditText) findViewById(R.id.phone_no_code);
-        vs = (ViewSwitcher) findViewById(R.id.phone_auth_vs);
-        TextView change_phone_no = (TextView) findViewById(R.id.change_phone_no);
-        final TextView resendCode = (TextView) findViewById(R.id.resendCode);
-        final TextView code_sent_text = (TextView) findViewById(R.id.code_sent_text);
+        autoVerify = (TextView) findViewById(R.id.auto_verify_in);
+        counter = (TextView) findViewById(R.id.timer);
+
+        autoVerify.setVisibility(View.GONE);
+        counter.setVisibility(View.GONE);
 
         final CardView submit = (CardView) findViewById(R.id.phone_continue_button);
-        final CardView verify = (CardView) findViewById(R.id.phone_verify_button);
 
         dialog = new MaterialDialog.Builder(PhoneNoActivity.this)
                 .content("Sending verification code")
                 .progress(true, 100)
                 .cancelable(false)
                 .build();
+
         mAuth = FirebaseAuth.getInstance();
 
         detail.setOnClickListener(new View.OnClickListener() {
@@ -81,17 +79,10 @@ public class PhoneNoActivity extends AppCompatActivity {
         });
 
         submit.setVisibility(View.INVISIBLE);
-        verify.setVisibility(View.INVISIBLE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
-        change_phone_no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                vs.showPrevious();
-            }
-        });
 
         phone.addTextChangedListener(new TextWatcher() {
             @Override
@@ -112,25 +103,6 @@ public class PhoneNoActivity extends AppCompatActivity {
 
             }
         });
-        verify_code.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 5)
-                    verify.setVisibility(View.VISIBLE);
-                else
-                    verify.setVisibility(View.INVISIBLE);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         phone.setText(SPHandler.getInstance().getPhoneNo().replace("+977", ""));
 
@@ -139,8 +111,10 @@ public class PhoneNoActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null)
-                    if (user.getPhoneNumber() != null && !user.getPhoneNumber().equals(""))
+                    if (user.getPhoneNumber() != null && !user.getPhoneNumber().equals("")) {
+                        new EventSender().logEvent("phone_verified");
                         onVerified();
+                    }
             }
         });
 
@@ -172,22 +146,27 @@ public class PhoneNoActivity extends AppCompatActivity {
 
             @Override
             public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                PhoneNoActivity.this.verificationId = verificationId;
-                PhoneNoActivity.this.forceResendingToken = forceResendingToken;
                 super.onCodeSent(verificationId, forceResendingToken);
                 dialog.dismiss();
-                vs.showNext();
-                code_sent_text.setText("Code sent to " + c_code.getText().toString() + phone.getText());
                 submit.setVisibility(View.INVISIBLE);
+                phone.setEnabled(false);
+                counter.setVisibility(View.VISIBLE);
+                autoVerify.setVisibility(View.VISIBLE);
+                downTimer = new CountDownTimer(20000, 1000) {
+
+                     @Override
+                     public void onTick(long l) {
+                         counter.setText(l / 1000 + " seconds");
+                     }
+
+                     @Override
+                     public void onFinish() {
+                         onVerified();
+                     }
+                 }.start();
             }
 
         };
-        resendCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                requestCode();
-            }
-        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,35 +189,15 @@ public class PhoneNoActivity extends AppCompatActivity {
                 }
             }
         });
-
-        verify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber() != null) {
-                    onVerified();
-                    return;
-                }
-                PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, verify_code.getText().toString());
-                signInWithPhoneAuthCredential(credential);
-            }
-        });
     }
 
     private void requestCode() {
         SPHandler.getInstance().setPhoneNo(phone.getText().toString());
-        if (forceResendingToken == null)
-            PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
-                    60,
-                    TimeUnit.SECONDS,
-                    PhoneNoActivity.this,
-                    mCallback);
-        else
-            PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
-                    60,
-                    TimeUnit.SECONDS,
-                    PhoneNoActivity.this,
-                    mCallback,
-                    forceResendingToken);
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(c_code.getText().toString() + phone.getText().toString(),
+                60,
+                TimeUnit.SECONDS,
+                PhoneNoActivity.this,
+                mCallback);
         dialog.show();
     }
 
@@ -247,7 +206,6 @@ public class PhoneNoActivity extends AppCompatActivity {
             verifying.dismiss();
         if (dialog != null)
             dialog.dismiss();
-        new EventSender().logEvent("phone_verified");
         SPHandler.getInstance().setPhoneNo(phone.getText().toString());
 
 
@@ -262,11 +220,12 @@ public class PhoneNoActivity extends AppCompatActivity {
                 .progress(true, 100)
                 .build();
         verifying.show();
-
+        downTimer.cancel();
         mAuth.getCurrentUser().linkWithCredential(credential)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
+                        new EventSender().logEvent("phone_verified");
                         onVerified();
                     }
                 })
@@ -288,6 +247,7 @@ public class PhoneNoActivity extends AppCompatActivity {
                                                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                                         @Override
                                                         public void onSuccess(AuthResult authResult) {
+                                                            new EventSender().logEvent("phone_verified");
                                                             onVerified();
                                                         }
                                                     });

@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.EventSender;
@@ -46,10 +45,7 @@ public class SplashActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    if (user.getPhoneNumber() == null)
-                        startActivity(new Intent(SplashActivity.this, PhoneNoActivity.class));
-                    else if (user.getPhoneNumber().equals(""))
+                    if (SPHandler.getInstance().getPhoneNo().equals(""))
                         startActivity(new Intent(SplashActivity.this, PhoneNoActivity.class));
                     else
                         startActivity(main_activity_intent);

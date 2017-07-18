@@ -24,7 +24,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginBottom="5dp"
-            android:src="@drawable/user_holder"
+            android:src="@drawable/account_holder"
             android:transitionName="sourceEdit"
             app:civ_border_color="#ffffff"
             app:civ_border_width="2dp" />

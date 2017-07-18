@@ -14,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.Feedback;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class ResultSlideView extends BaseSliderView {
     private final Context context;
@@ -43,7 +44,7 @@ public class ResultSlideView extends BaseSliderView {
                         .child(getDescription())
                         .child("students")
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                        .setValue(new Feedback(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()));
+                        .setValue(new Feedback(SPHandler.getInstance().getPhoneNo()));
 
                 context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(String.valueOf(getBundle().getString("destination_url")))));
             }

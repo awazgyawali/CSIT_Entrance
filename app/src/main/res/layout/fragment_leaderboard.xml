@@ -84,7 +84,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_marginTop="10dp"
-                            android:src="@drawable/user_holder" />
+                            android:src="@drawable/account_holder" />
 
                         <TextView
                             android:id="@+id/name2"
@@ -122,7 +122,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_marginTop="10dp"
-                            android:src="@drawable/user_holder" />
+                            android:src="@drawable/account_holder" />
 
                         <TextView
                             android:id="@+id/name3"
@@ -162,7 +162,7 @@
                         android:id="@+id/image1"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/user_holder" />
+                        android:src="@drawable/account_holder" />
 
                     <TextView
                         android:id="@+id/name1"
