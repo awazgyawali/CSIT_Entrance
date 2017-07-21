@@ -1,5 +1,7 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -7,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
 import android.view.MenuItem;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
@@ -55,6 +59,18 @@ public class NewsDetailActivity extends AppCompatActivity {
         time = (TextView) findViewById(R.id.each_news_time);
         title = (TextView) findViewById(R.id.each_news_title);
         author = (TextView) findViewById(R.id.each_news_author);
+
+        newsDetail.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (url != null) {
+                    view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    return true;
+                }
+                return false;
+            }
+        });
+
         if (getIntent().getStringExtra("news_id") != null) {
             fetchFromInternet(getIntent().getStringExtra("news_id"));
         } else {
