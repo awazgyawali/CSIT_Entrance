@@ -237,7 +237,7 @@ public class SPHandler {
     }
 
     public void setLastAd(int lastAd) {
-        infoEditor.putInt("last_ad", lastAd);
+        infoEditor.putInt("last_ad", lastAd).apply();
     }
 
     public void showAnswer(boolean isChecked) {

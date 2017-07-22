@@ -101,7 +101,6 @@ public class PopupDialogFragment extends DialogFragment {
     }
 
     private void fillAd() {
-        //sizing the dialog
         int lastAdPosition = SPHandler.getInstance().getLastAdPosition();
         if (lastAdPosition > ads.size()) {
             lastAdPosition = 0;

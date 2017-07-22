@@ -46,7 +46,7 @@ public class ResultSlideView extends BaseSliderView {
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .setValue(new Feedback(SPHandler.getInstance().getPhoneNo()));
 
-                context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(String.valueOf(getBundle().getString("destination_url")))));
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(getBundle().getString("destination_url")))));
             }
         });
 
