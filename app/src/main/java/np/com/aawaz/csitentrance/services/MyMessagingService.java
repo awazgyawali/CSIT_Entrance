@@ -33,58 +33,80 @@ public class MyMessagingService extends FirebaseMessagingService {
     }
 
     private void sendNotification(RemoteMessage remoteMessage) {
+
+        int identifier = new Random().nextInt();
+        if (FirebaseAuth.getInstance().getCurrentUser() == null)
+            return;
+
+        String fragment = remoteMessage.getData().get("fragment");
+        String title = remoteMessage.getData().get("title");
+        String body = remoteMessage.getData().get("body");
+
         Notification notification = new Notification();
-
-        Intent intent;
-
-        notification.title = remoteMessage.getData().get("title");
-        notification.text = remoteMessage.getData().get("body");
+        notification.title = title;
+        notification.text = body;
         notification.post_id = "";
         notification.tag = "";
 
-        if (remoteMessage.getData().get("fragment").equals("news")) {
-            intent = new Intent(this, NewsDetailActivity.class)
-                    .putExtra("news_id", remoteMessage.getData().get("news_id"));
-            notification.post_id = remoteMessage.getData().get("news_id");
-            notification.tag = "NEWS";
-        } else
-            intent = new Intent(this, MainActivity.class)
-                    .putExtra("fragment", remoteMessage.getData().get("fragment"))
-                    .putExtra("result_published", remoteMessage.getData().get("result_published"));
-        if (remoteMessage.getData().get("fragment").equals("forum")) {
-            notification.post_id = remoteMessage.getData().get("post_id");
-            notification.tag = "FORUM";
-            intent.putExtra("post_id", remoteMessage.getData().get("post_id"));
+        Intent intent;
+
+        switch (fragment) {
+            case "news":
+                identifier = Integer.valueOf("news");
+
+                intent = new Intent(this, NewsDetailActivity.class)
+                        .putExtra("news_id", remoteMessage.getData().get("news_id"));
+                notification.post_id = remoteMessage.getData().get("news_id");
+                notification.tag = "NEWS";
+                break;
+            case "forum":
+                if (notification.text.contains("commented"))
+                    identifier = Integer.valueOf(remoteMessage.getData().get("post_id"));
+
+                intent = new Intent(this, MainActivity.class)
+                        .putExtra("fragment", fragment);
+
+                notification.post_id = remoteMessage.getData().get("post_id");
+                notification.tag = "FORUM";
+                intent.putExtra("post_id", remoteMessage.getData().get("post_id"));
+                break;
+            default:
+                intent = new Intent(this, MainActivity.class)
+                        .putExtra("fragment", fragment)
+                        .putExtra("result_published", remoteMessage.getData().get("result_published"));
+                break;
         }
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, new Random().nextInt(100), intent,
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, identifier, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(),
                         R.drawable.splash_icon))
                 .setSmallIcon(R.drawable.skeleton_logo)
-                .setContentText(Html.fromHtml(remoteMessage.getData().get("body")).toString())
-                .setContentTitle(remoteMessage.getData().get("title"))
+                .setContentText(Html.fromHtml(body).toString())
+                .setContentTitle(title)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
-        if (remoteMessage.getData().get("fragment").equals("news")) {
-            notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(Html.fromHtml(remoteMessage.getData().get("body"))));
+
+        if (fragment.equals("news")) {
+            notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(Html.fromHtml(body)));
             FirebaseDatabase.getInstance().getReference().child("news").keepSynced(true);
         }
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        if (remoteMessage.getData().get("fragment").equals("forum")) {
+        if (fragment.equals("forum")) {
             FirebaseDatabase.getInstance().getReference().child("forum").keepSynced(true);
             if (!remoteMessage.getData().get("uid").equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
-                notificationManager.notify(new Random().nextInt(), notificationBuilder.build());
+                notificationManager.notify(identifier, notificationBuilder.build());
         } else
-            notificationManager.notify(new Random().nextInt() /* ID of notification */, notificationBuilder.build());
+            notificationManager.notify(identifier, notificationBuilder.build());
+
         notification.addToDatabase();
     }
 

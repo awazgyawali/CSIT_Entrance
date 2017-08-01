@@ -152,7 +152,7 @@ public class PhoneNoActivity extends AppCompatActivity {
                 phone.setEnabled(false);
                 counter.setVisibility(View.VISIBLE);
                 autoVerify.setVisibility(View.VISIBLE);
-                downTimer = new CountDownTimer(20000, 1000) {
+                downTimer = new CountDownTimer(25000, 1000) {
 
                      @Override
                      public void onTick(long l) {

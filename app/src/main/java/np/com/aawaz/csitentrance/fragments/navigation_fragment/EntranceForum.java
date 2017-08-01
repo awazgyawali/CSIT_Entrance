@@ -127,7 +127,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     private void addListener() {
         errorPart.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
-        reference.addChildEventListener(this);
+        reference.limitToLast(50).addChildEventListener(this);
     }
 
     @Override

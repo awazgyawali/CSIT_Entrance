@@ -52,32 +52,10 @@ public class EntranceFAQs extends Fragment implements ValueEventListener {
         appIndexing();
     }
 
-    private void appIndexing() {
-        mUrl = "http://csitentrance.brainants.com/forum";
-        mTitle = "CSIT Entrance FAQs";
-    }
-
-    public com.google.firebase.appindexing.Action getAction() {
-        return Actions.newView(mTitle, mUrl);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUserActions.getInstance().start(getAction());
-    }
-
-    @Override
-    public void onStop() {
-        FirebaseUserActions.getInstance().end(getAction());
-        super.onStop();
-    }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         readyAdapter();
-
         readyOneTimeListener();
     }
 
@@ -102,6 +80,7 @@ public class EntranceFAQs extends Fragment implements ValueEventListener {
 
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
+        adapter=new FAQAdapter(getContext());
         progressBar.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
         for (DataSnapshot child : dataSnapshot.getChildren()) {
@@ -116,4 +95,26 @@ public class EntranceFAQs extends Fragment implements ValueEventListener {
         progressBar.setVisibility(View.GONE);
         error.setVisibility(View.VISIBLE);
     }
+
+    private void appIndexing() {
+        mUrl = "http://csitentrance.brainants.com/forum";
+        mTitle = "CSIT Entrance FAQs";
+    }
+
+    public com.google.firebase.appindexing.Action getAction() {
+        return Actions.newView(mTitle, mUrl);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUserActions.getInstance().start(getAction());
+    }
+
+    @Override
+    public void onStop() {
+        FirebaseUserActions.getInstance().end(getAction());
+        super.onStop();
+    }
+
 }

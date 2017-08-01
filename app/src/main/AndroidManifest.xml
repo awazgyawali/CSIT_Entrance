@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name=".misc.MyApplication"
+        android:name="np.com.aawaz.csitentrance.misc.MyApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"

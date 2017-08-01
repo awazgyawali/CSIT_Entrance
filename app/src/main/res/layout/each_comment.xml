@@ -54,6 +54,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:autoLink="web"
         android:layout_marginTop="4dp"
         android:text="This is a small comment"
         android:textColor="@color/colorPrimaryText"

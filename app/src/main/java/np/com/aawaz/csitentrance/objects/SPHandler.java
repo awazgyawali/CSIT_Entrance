@@ -72,11 +72,11 @@ public class SPHandler {
     }
 
     public boolean isScoreChanged() {
-        return scoreSp.getBoolean("score_changed", true);
+        return scoreSp.getBoolean("is_score_changed", true);
     }
 
     public void setScoreChanged(boolean changed) {
-        scoreEditor.putBoolean("score_changed", changed).apply();
+        scoreEditor.putBoolean("is_score_changed", changed).apply();
     }
 
     public int getAccuracy(String name) {

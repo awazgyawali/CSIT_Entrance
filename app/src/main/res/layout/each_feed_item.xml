@@ -1,83 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="3dp"
     android:background="@color/white">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?selectableItemBackground"
-        android:padding="10dp"
-        android:orientation="vertical">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/forumPic"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/account_holder"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/postedBy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:drawablePadding="5dp"
+        android:drawableRight="@drawable/edit_grey"
+        android:gravity="center_vertical"
+        android:text="Aawaz Gyawali"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/forumPic"
+        app:layout_constraintRight_toLeftOf="@+id/commentCount"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
 
+    <TextView
+        android:id="@+id/commentCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:text="2 comments"
+        android:textColor="@color/colorSecondaryText"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/forumPic"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/account_holder" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/postedBy"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"
-                        android:drawablePadding="5dp"
-                        android:drawableRight="@drawable/edit_grey"
-                        android:gravity="center_vertical"
-                        android:text="Aawaz Gyawali"
-                        android:textColor="@color/colorPrimary"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/commentCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="2 comments"
-                        android:textColor="@color/colorSecondaryText" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/forumTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="14 days ago"
-                    android:textColor="@color/colorSecondaryText" />
-            </LinearLayout>
-        </LinearLayout>
+    <TextView
+        android:id="@+id/forumTime"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:text="14 days ago"
+        android:textColor="@color/colorSecondaryText"
+        app:layout_constraintLeft_toRightOf="@+id/forumPic"
+        app:layout_constraintTop_toBottomOf="@+id/postedBy" />
 
 
-        <TextView
-            android:id="@+id/realPost"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:minLines="3"
-            android:text="Demo ni hagi"
-            android:textColor="@color/colorPrimaryText" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/realPost"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:autoLink="web"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:minLines="3"
+        android:text="Demo jkbask ksjkjani hagi"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forumPic"
+        app:layout_constraintVertical_bias="0.0" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

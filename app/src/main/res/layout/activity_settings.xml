@@ -164,7 +164,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingTop="20dp"
-                android:text="CSIT Entrance - Version 2.0"
+                android:text="CSIT Entrance - Version 2.1.2"
                 android:textColor="@color/colorPrimaryText" />
 
             <TextView

@@ -27,12 +27,10 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     ArrayList<Comment> comments = new ArrayList<>();
 
     LayoutInflater inflater;
-    private Context context;
     private ClickListener clickEventListener;
 
     public CommentAdapter(Context context) {
         inflater = LayoutInflater.from(context);
-        this.context = context;
     }
 
     @Override

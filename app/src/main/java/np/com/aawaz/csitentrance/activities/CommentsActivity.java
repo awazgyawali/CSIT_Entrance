@@ -252,8 +252,9 @@ public class CommentsActivity extends AppCompatActivity {
     }
 
     private void maintainCommentNo() {
-        commentNumber.setText(adapter.getItemCount() + " comments");
+        commentNumber.setText(adapter.getItemCount() + getCommentMessage());
     }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -280,5 +281,9 @@ public class CommentsActivity extends AppCompatActivity {
                 .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
                 .into(profileImage);
         appIndexing();
+    }
+
+    public String getCommentMessage() {
+        return adapter.getItemCount() == 1 ? " comment" : " comments";
     }
 }

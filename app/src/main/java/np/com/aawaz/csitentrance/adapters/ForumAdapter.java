@@ -49,23 +49,23 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
-        holder.postedBy.setText(posts.get(position).author);
-        holder.realPost.setText(posts.get(position).message);
-        holder.commentCount.setText(posts.get(position).comment_count + " comments");
-        holder.time.setText(DateUtils.getRelativeTimeSpanString(posts.get(position).time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
-        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(posts.get(position).uid))
+        Post post = posts.get(holder.getAdapterPosition());
+        holder.postedBy.setText(post.author);
+        holder.realPost.setText(post.message);
+        holder.commentCount.setText(post.comment_count + getCommentMessage(post));
+        holder.time.setText(DateUtils.getRelativeTimeSpanString(post.time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
+        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(post.uid))
             holder.postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.edit_grey, 0);
         else
             holder.postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         try {
             Picasso.with(MyApplication.getAppContext())
-                    .load(posts.get(position).image_url)
-                    .error(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
-                    .placeholder(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
+                    .load(post.image_url)
+                    .error(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE))
+                    .placeholder(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE))
                     .into(holder.profile);
         } catch (IllegalArgumentException e) {
-            holder.profile.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(posts.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE));
+            holder.profile.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE));
         }
     }
 
@@ -100,6 +100,10 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
     public String getMessageAt(int position) {
         return posts.get(position).message;
+    }
+
+    private String getCommentMessage(Post post) {
+        return post.comment_count == 1 ? " comment" : " comments";
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
