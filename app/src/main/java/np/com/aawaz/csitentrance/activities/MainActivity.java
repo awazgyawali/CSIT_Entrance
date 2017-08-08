@@ -30,6 +30,8 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.AllColleges;
@@ -159,6 +161,16 @@ public class MainActivity extends AppCompatActivity {
                     .child("instance_ids")
                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                     .setValue(token);
+
+            HashMap<String, String> map = new HashMap<>();
+            map.put("name", FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+            map.put("phone_no", SPHandler.getInstance().getPhoneNo());
+
+            FirebaseDatabase.getInstance().getReference()
+                    .child("user_data")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .setValue(map);
+
             SPHandler.getInstance().instanceIdAdded();
             FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
             FirebaseMessaging.getInstance().subscribeToTopic("new");

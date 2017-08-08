@@ -27,4 +27,5 @@
     <color name="black_overlay">#66000000</color>
 
     <color name="transparent">#00000000</color>
+    <color name="admin_color">#9C27B0</color>
 </resources>

@@ -16,6 +16,8 @@
     <string name="viewResult">http://csitentrance.brainants.com/result.php?rollNo=</string>
     <string name="fetchScoreurl">http://csitentrance.brainants.com/leader_board.php</string>
     <string name="uploadScore">http://csitentrance.brainants.com/upload_score.php</string>
+    <string name="register">http://csitentrance.brainants.com/exam_reg.php</string>
+
     <string name="privacy_policy">Provide us your mobile number so that you can get great breakig updates via an SMS alert.</string>
     <string name="privacy_policy_link">https://sites.google.com/view/csit-entrance-privacy</string>
 
@@ -34,5 +36,7 @@
     </string-array>
     <string name="title_activity_notification">NotificationActivity</string>
     <string name="title_activity_post_forum">PostForumActivity</string>
+    <string name="title_activity_model_entrance">ModelEntrance</string>
+    <string name="entrance_detail">Note: You can register to the exam from the register button below. After Registration you will get a Roll No for the Entrance Exam. Result will be published within 3 days of the exam and can viewed within the application.</string>
 
 </resources>

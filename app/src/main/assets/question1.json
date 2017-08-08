@@ -15,7 +15,7 @@
       "b": "{-2,2}",
       "c": "(-2,2)",
       "d": "[-2,2]",
-      "ans": "c"
+      "ans": "d"
     },
     {
       "question": "3.If A, B and C are non-empty sets and A⊂B then A∩B is",
@@ -47,7 +47,7 @@
       "b": "7",
       "c": "13",
       "d": "-7",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "7.The matrix <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> is ",
@@ -71,7 +71,7 @@
       "b": "1",
       "c": "2",
       "d": "3",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "10.The magnitude of 2 - 3i is",
@@ -119,7 +119,7 @@
       "b": "45°",
       "c": "135°",
       "d": "90°",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "16.Center of the circle x<sup>2</sup>+y<sup>2</sup>-2x–4y+1=0 is",
@@ -135,7 +135,7 @@
       "b": "x + 2y =10",
       "c": "2x + 3y = 10",
       "d": " 2x + y = 10",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "18.<img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> is",
@@ -143,7 +143,7 @@
       "b": "6",
       "c": "9",
       "d": "0/0",
-      "ans": "b"
+      "ans": "a"
     },
     {
       "question": "19.<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAmCAIAAAC0+wkeAAAHPklEQVR4nGP5//8/wyjADVgG2gGDHYwGEAEwrAPo3/P5llJJpxACfBH7ni535CHFDHoE0I/bm3b8dwtQ46CDXWiAkc+mfk21BTeUxyFjwEmiCbQPoO8Xu6KqPs5wDaC5TdgAq5iJi4cHP/kG0DaA/rzYOyE/of7MZ/0S/wDz6oXttgzn51bWrnzExvXz6Z3nP1m1Wg6ssDzfEBXRvEdj8cWq25V5/Vtvs9i27d9Zqfv92ISsmOINSksf7IqS+Ht3mptBk9L2u3NtuKnjtn/viDKftgHEImHrrcddfipm4Y52ffb/H4+U2wYfj9mxfaohz6+rDTp6SzQUuJhEHHMS1Nv2Pp3fuD+189Tj2iZdi5nLbhZ2GlgVTp1weFvwlM1Pw5PYr1/549dbb0Fq6Hw5UR/uO/3/lw/vfwsZBeXX5rhIs0FkmISIMp/WWez7/ZOPmJVNZdmBzLMtcRMZiy8XGvIwMjB8u3PiMauKiQxI4tGp+3+FnYtntHuJMP04z8LEzCvGwwzUzCjsVBgu5DR51oI7Z3dpz5gfJUeac5kkYnbdiWbnZGVk+P/t9vJUW1fLOwevTLXjY4TIE2M+jQPo17Nzt37KBCkDI+bLqSnzHmg2hCqxgiR+Pjp565dsrBIXA8P/L3fOv+S2jbEVYQJyvt4/95xTTVccrIqBxyw7SXZOS1/QmZNZ2lxQfwGDut4/beOrv1gsZOR3mrqtzwpWKrNwQAtlRi7V4IrUumUTp57usnOG12PYzUcGNA4gUAJiUTYBJqDfD0+ceidgoicGthEYKCefsKmCE9CPR6fv/5P3lgdXcj+fnL77VzZDAVLj/XtzdOVxZk6Gt8+/MyC5ntO4cdfZRlLdwiIgzc/w+dmbH/8ZeKCG4TAfRRcS+9f9tX2dE9pm3ok9cXeqORepDsACfj07f/unVCAoAf37/vEHA7xb8+P+0Vt/5FIgCeju2eec6gYS4DTz7e7pZ+xq+iDOv3cHamOnS/RvnZynVzThQLu1jxAOT+AA/9/salkjU5ahxQ7m/vnw9CODoLYEJyx0iDIfOYDYFINLKp6tmN0G4X46mK7vezb52NEaHXaSHIYAfz48+fCfW5iL6f/vP+JG6uwftvSvvKLm+G5jV+WcJ2y2xqAC88djYAKS85AH54Wfj8/cAwacAsf/TycaAiv/te3IM+R9neeUF9u39blnrBQzSdYzfji+6s7zFC0FoC//vT00fdFDlZTlJuDsR7T5eLIYm4iGkelfZT7SHIUCODXDQtXnlZnr7Yyumdk6YVKYb2GyvqF1TlexhciMY9cXLb7inCMJTEAcagaS4AT09d7px//enli+8QBHY8tVox3awPKUUdQ134fDsyK7lX9SpZ8sK9G2M3IqGPyvczFcqiDJ8fPtq5+KSZsOVJmCw+f37RkpxJmPJ4A4tAvX7iUjVJCdKOA4+frPyTBu2spbaSuh7Lj/vVBWyL5fITAVQoG7f0OzYei/SrgpHis/kDPmwGXWtv9GGzYZVrWyK//KiDEfVwD9+3BmTl1x6eTr4UcfzLLi+nl9WmpE0eJHDkXxXPtXbDn/ht8orqHU+N7Kecu3nXvOrBo5Y9fCOAXiI3foAFwBxCRgklwaOXNqHYTLrpnelj1vSTGrfur0+paZd+ZF2OTXr7PbOXF308I3q6NMEhtnV4S36pFbVg1iQFI1z8ghrqwgzsfNoB8UoV14kUdZQ06Im0HALUiDqeTx+z/AcKSVMwcOkNcOYmRiBjZO/0F5TMxMoAocPRczMpJWKw8qAB9oHdbjQdQANAyg4THaPZqCCAC0rkZvx8q7/179nNA+N0rtxZalt/+9/jShZQ5LaYzYnqmr7v57+3lq31rxVJn9vctu/3v3YVrfWqk0uQM9S2/9+/Bm9uwDmnkOYhQ0KwclQOtqVM4EIhjfN7YazmYIbd8T2g7jqPTuSYW18xiUe3Yl99DanQMGRrMYATAaQATAEAsgIgeSqQiGWAAROZBMRUBBAH27Mr1s9mtZnsf3ZQv6M7RJnXAiF1A6UE0iINvwfy83Va9U7NldLHe91r5yU9CGcDEmajoMDyA8kExFgBlA/79enxcfsS/54BzJvsCFnuv6LbEOvv64s/cmt78YKwO7nInAzS23f4SLUWOQlghAxEAyFQFmADFya0ZXe80q6+q2UOxossDl67/f3v9mZwUlGiZ2zj8fvmGbYqABoHigmlSANYuxyZjLXGvgmHragBdo++9Hm6cuPPfxH1yaWcQmJd2SW4jt5y+Q4N/v31iFuOnRgqbKQDWJADOA/n08PXPy07gSsZ4N9wrL1FkZWOV8C2p9MZQxOat9ufHyty/HozMf1F1U6bAygfiBZCoC9AD693pzTsXbiu3poqLzXNtXBUyLUsNeDDKJ+baEFfU1tgg8f5vY7iNKhxKa+IFkKgL0AGIS9V+81x/ECtt4MQyvVi7d7BkzaOWuQQOGWEOR/mA0gAgAANy7NZXr2YVeAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\"> is equal to",
@@ -151,15 +151,15 @@
       "b": "5",
       "c": "0",
       "d": "0/0",
-      "ans": "b"
+      "ans": "a"
     },
     {
       "question": "20.The function f(x)={x+2(x>=2) and 2x(x<2)} is continuous at",
       "a": "x = 0",
       "b": "x = 2",
-      "c": "x = -2	",
+      "c": "x = -2",
       "d": " x = 1",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "21.If the derivative of x<sup>2</sup>+3x is 1, the value of x is",
@@ -439,7 +439,7 @@
       "b": "1 km s-1",
       "c": "0.5 km s-1",
       "d": "4 km s-1",
-      "ans": "b"
+      "ans": "d"
     },
     {
       "question": "56. Bolometer measures the ",
@@ -471,7 +471,7 @@
       "b": "sin<sup>-1</sup>(4/5)",
       "c": "sin<sup>-1</sup>(3/4)",
       "d": "sin<sup>-1</sup>(2/3)",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "60. A diffraction grating has 5000 lines per cm. The maximum order visible with the radiation of wavelength 600 nm in diffraction experiment",
@@ -495,7 +495,7 @@
       "b": "59 cm from 2 µC charge",
       "c": "41 cm from 2 µC charge",
       "d": "66 cm from 2 µC charge",
-      "ans": "c"
+      "ans": "b"
     },
     {
       "question": "63. An open organ pipe can produce",
@@ -548,7 +548,7 @@
     {
       "question": "69. If work function of a metal is 3.3 eV, the threshold frequency in photoelectric effect will be",
       "a": "2 ×1015 Hz",
-      "b": "8 ×1014 Hz	",
+      "b": "8 ×1014 Hz",
       "c": "4 ×1016 Hz",
       "d": "6 ×1017 Hz",
       "ans": "b"
@@ -570,12 +570,12 @@
       "ans": "a"
     },
     {
-      "question": "72. Velocity of sound in a gas is 330 ms-1 at STP. Its value at 300K will nearly be ",
-      "a": "250 ms-1",
-      "b": "300 ms-1",
-      "c": "360 ms-1",
-      "d": "450 ms-1",
-      "ans": "d"
+      "question": "72. Velocity of sound in a gas is 330 ms<sup>-1</sup> at STP. Its value at 300K will nearly be ",
+      "a": "250 ms<sup>-1</sup>",
+      "b": "300 ms<sup>-1</sup>",
+      "c": "360 ms<sup>-1</sup>",
+      "d": "450 ms<sup>-1</sup>",
+      "ans": "c"
     },
     {
       "question": "73. Time of flight T of a projectile is related to the horizontal range R by an equation gT2=2R. the angle of projection (in degrees) is",
@@ -635,7 +635,7 @@
     },
     {
       "question": "80. Which of the following compounds is used as the best anti-knocking agent?",
-      "a": "Tetraethyl lead	",
+      "a": "Tetraethyl lead",
       "b": "methane",
       "c": "methoxy propane",
       "d": "methyl cyanide",
@@ -663,7 +663,7 @@
       "b": "condensation polymer",
       "c": "Polyamide",
       "d": "polyimide",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "84. The formula of Zinc blende is",
@@ -687,7 +687,7 @@
       "b": "CO2",
       "c": "CO",
       "d": "CaO",
-      "ans": "b"
+      "ans": "a"
     },
     {
       "question": "87. The structure of ammonia molecule is",
@@ -703,7 +703,7 @@
       "b": "dibasic acid",
       "c": "Tribasic acid",
       "d": "tetrabasic acid",
-      "ans": "c"
+      "ans": "b"
     },
     {
       "question": "89. The formula of Epsom salt is",
@@ -719,7 +719,7 @@
       "b": "nitric acid",
       "c": "ammonia",
       "d": "white phosphorus",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "91. Among the following elements, the one having highest electron affinity is",
@@ -743,7 +743,7 @@
       "b": "Mol. wt/6",
       "c": "Mol. wt/3",
       "d": "Mol. wt/5",
-      "ans": "c"
+      "ans": "b"
     },
     {
       "question": "94. The weight of sodium carbonate required to prepare 100 mL of N/10 sodium carbonate solution is",
@@ -751,7 +751,7 @@
       "b": "5.3 gm",
       "c": "0.053 gm",
       "d": "5.6 gm",
-      "ans": "c"
+      "ans": "a"
     },
     {
       "question": "95. Which of the following is the unit of surface tension?",
@@ -799,7 +799,7 @@
       "b": "Always negative",
       "c": "Can be positive or negative",
       "d": "Unpredictable",
-      "ans": "b"
+      "ans": "a"
     }
   ]
 }

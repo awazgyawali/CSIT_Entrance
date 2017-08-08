@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name="np.com.aawaz.csitentrance.misc.MyApplication"
+        android:name=".misc.MyApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -133,6 +133,10 @@
         <activity
             android:name=".activities.PostForumActivity"
             android:label="@string/title_activity_post_forum"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.ModelEntranceActivity"
+            android:label="@string/title_activity_model_entrance"
             android:theme="@style/AppTheme"></activity>
     </application>
 

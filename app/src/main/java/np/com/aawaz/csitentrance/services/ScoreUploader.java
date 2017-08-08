@@ -54,6 +54,7 @@ public class ScoreUploader extends Service {
         }
         url = getString(R.string.uploadScore)
                 + "?name=" + user.getDisplayName()
+                + "&uuid=" + user.getUid()
                 + "&email=" + user.getEmail()
                 + "&score=" + SPHandler.getInstance().getTotalScore()
                 + "&image_link=" + image_link

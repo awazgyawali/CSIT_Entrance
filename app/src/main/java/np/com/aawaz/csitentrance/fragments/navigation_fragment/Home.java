@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -11,9 +12,11 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
+import np.com.aawaz.csitentrance.activities.ModelEntranceActivity;
 import np.com.aawaz.csitentrance.fragments.other_fragments.ScoreBoard;
 import np.com.aawaz.csitentrance.fragments.other_fragments.SubjectsList;
 import np.com.aawaz.csitentrance.fragments.other_fragments.YearsList;
@@ -85,6 +88,13 @@ public class Home extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewPager = (ViewPager) view.findViewById(R.id.viewPagerHome);
         tabLayout = ((MainActivity) getActivity()).tabLayout;
+        TextView modelEntranceExam = (TextView) view.findViewById(R.id.modelEntranceExam);
+        modelEntranceExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), ModelEntranceActivity.class));
+            }
+        });
     }
 
     @Override

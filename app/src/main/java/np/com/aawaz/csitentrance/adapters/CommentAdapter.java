@@ -2,7 +2,10 @@ package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.Spanned;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,20 +20,24 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.MyApplication;
 import np.com.aawaz.csitentrance.objects.Comment;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 
     ArrayList<Comment> comments = new ArrayList<>();
 
     LayoutInflater inflater;
+    private Context context;
     private ClickListener clickEventListener;
 
     public CommentAdapter(Context context) {
         inflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     @Override
@@ -40,20 +47,30 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.comment.setText(comments.get(holder.getAdapterPosition()).message);
-        holder.commenter.setText(comments.get(holder.getAdapterPosition()).author);
-        holder.time.setText(DateUtils.getRelativeTimeSpanString(comments.get(holder.getAdapterPosition()).time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
-        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(comments.get(position).uid))
+        Comment comment = comments.get(holder.getAdapterPosition());
+        holder.comment.setText(comment.message);
+        holder.commenter.setText(comment.author);
+        holder.time.setText(DateUtils.getRelativeTimeSpanString(comment.time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
+
+        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(comments.get(position).uid)) {
             holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.edit_grey, 0);
-        else
+        } else
             holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        if (SPHandler.containsDevUID(comments.get(position).uid)) {
+            holder.commenter.setTextColor(ContextCompat.getColor(context, R.color.admin_color));
+            holder.admin_tag.setVisibility(View.VISIBLE);
+        }else{
+            holder.commenter.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+            holder.admin_tag.setVisibility(View.GONE);
+        }
+
         try {
             Picasso.with(MyApplication.getAppContext())
-                    .load(comments.get(holder.getAdapterPosition()).image_url)
-                    .placeholder(TextDrawable.builder().buildRound(String.valueOf(comments.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE))
+                    .load(comment.image_url)
+                    .placeholder(TextDrawable.builder().buildRound(String.valueOf(comment.author.charAt(0)).toUpperCase(), Color.BLUE))
                     .into(holder.circleImageView);
         } catch (Exception e) {
-            holder.circleImageView.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(comments.get(holder.getAdapterPosition()).author.charAt(0)).toUpperCase(), Color.BLUE));
+            holder.circleImageView.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(comment.author.charAt(0)).toUpperCase(), Color.BLUE));
         }
         holder.core.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -63,6 +80,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             }
         });
     }
+
+
 
     public void addToTop(Comment comment) {
         comments.add(comment);
@@ -102,10 +121,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         TextView commenter, comment, time;
         CircleImageView circleImageView;
         View core;
+        FancyButton admin_tag;
 
         public ViewHolder(View itemView) {
             super(itemView);
             core = itemView;
+            admin_tag = (FancyButton) itemView.findViewById(R.id.comment_admin_tag);
             commenter = (TextView) itemView.findViewById(R.id.commenter);
             comment = (TextView) itemView.findViewById(R.id.comment);
             time = (TextView) itemView.findViewById(R.id.timeComment);

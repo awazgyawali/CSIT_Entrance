@@ -36,10 +36,10 @@ import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.activities.PostForumActivity;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
 import np.com.aawaz.csitentrance.fragments.other_fragments.ACHSDialog;
-import np.com.aawaz.csitentrance.fragments.other_fragments.PopupDialogFragment;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Post;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 
 public class EntranceForum extends Fragment implements ChildEventListener {
@@ -77,8 +77,8 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         achsAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ACHSDialog dialog=new ACHSDialog();
-                dialog.show(getChildFragmentManager(),"achs");
+                ACHSDialog dialog = new ACHSDialog();
+                dialog.show(getChildFragmentManager(), "achs");
                 new EventSender().logEvent("achs_full_ad");
             }
         });
@@ -133,6 +133,8 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     @Override
     public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
         Post newPost = dataSnapshot.getValue(Post.class);
+        if (newPost.author == null)
+            return;
         newPost.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
         adapter.addToTop(newPost);
         mLinearLayoutManager.scrollToPositionWithOffset(0, 0);
@@ -196,7 +198,7 @@ public class EntranceForum extends Fragment implements ChildEventListener {
 
             @Override
             public void itemLongClicked(View view, final int position) {
-                if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(adapter.getUidAt(position))) {
+                if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(adapter.getUidAt(position)) || SPHandler.containsDevUID(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                     new MaterialDialog.Builder(getContext())
                             .title("Select any option")
                             .items("Edit", "Delete")

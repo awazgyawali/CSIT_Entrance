@@ -4,6 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.content.ContextCompat;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.misc.MyApplication;
 
@@ -72,11 +77,11 @@ public class SPHandler {
     }
 
     public boolean isScoreChanged() {
-        return scoreSp.getBoolean("is_score_changed", true);
+        return scoreSp.getBoolean("score_changed", true);
     }
 
     public void setScoreChanged(boolean changed) {
-        scoreEditor.putBoolean("is_score_changed", changed).apply();
+        scoreEditor.putBoolean("score_changed", changed).apply();
     }
 
     public int getAccuracy(String name) {
@@ -225,11 +230,11 @@ public class SPHandler {
     }
 
     public boolean isInstanceIdAdded() {
-        return infoSp.getBoolean("instance_id", false);
+        return infoSp.getBoolean("instance_id_added", false);
     }
 
     public void instanceIdAdded() {
-        infoEditor.putBoolean("instance_id", true).apply();
+        infoEditor.putBoolean("instance_id_added", true).apply();
     }
 
     public int getLastAdPosition() {
@@ -246,5 +251,28 @@ public class SPHandler {
 
     public boolean shouldShowAnswers() {
         return infoSp.getBoolean("answerShow", true);
+    }
+
+    public static boolean containsDevUID(String uid) {
+        ArrayList<String> admins = new ArrayList<>();
+        admins.add("IJdET0udoOayA11j6BIoT6D7O0S2");
+        admins.add("R3LmmEGnMePjYtswECxiw4E3aFc2");
+        admins.add("URhcpsBTKuQ8juVPgGNeWEJn0yA3");
+        admins.add("gc9e24JKjDVsbm1Fk5uFOEE5AgI3");
+        return admins.contains(uid);
+    }
+
+    public void setRegistrationDetail(String registrationDetail) {
+        infoEditor.putString("reg_data", registrationDetail).apply();
+    }
+
+    public JSONObject getRegistrationDetail() {
+        try {
+            String data = infoSp.getString("reg_data", null);
+            if (data != null)
+                return new JSONObject(infoSp.getString("reg_data", null));
+        } catch (JSONException e) {
+        }
+        return null;
     }
 }

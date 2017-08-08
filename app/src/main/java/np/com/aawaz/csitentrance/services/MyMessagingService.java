@@ -35,6 +35,7 @@ public class MyMessagingService extends FirebaseMessagingService {
     private void sendNotification(RemoteMessage remoteMessage) {
 
         int identifier = new Random().nextInt();
+
         if (FirebaseAuth.getInstance().getCurrentUser() == null)
             return;
 
@@ -52,16 +53,14 @@ public class MyMessagingService extends FirebaseMessagingService {
 
         switch (fragment) {
             case "news":
-                identifier = Integer.valueOf("news");
+                identifier = "news".hashCode();
 
                 intent = new Intent(this, NewsDetailActivity.class)
                         .putExtra("news_id", remoteMessage.getData().get("news_id"));
-                notification.post_id = remoteMessage.getData().get("news_id");
-                notification.tag = "NEWS";
                 break;
             case "forum":
                 if (notification.text.contains("commented"))
-                    identifier = Integer.valueOf(remoteMessage.getData().get("post_id"));
+                    identifier = remoteMessage.getData().get("post_id").hashCode();
 
                 intent = new Intent(this, MainActivity.class)
                         .putExtra("fragment", fragment);
@@ -69,6 +68,7 @@ public class MyMessagingService extends FirebaseMessagingService {
                 notification.post_id = remoteMessage.getData().get("post_id");
                 notification.tag = "FORUM";
                 intent.putExtra("post_id", remoteMessage.getData().get("post_id"));
+                notification.addToDatabase();
                 break;
             default:
                 intent = new Intent(this, MainActivity.class)
@@ -107,7 +107,6 @@ public class MyMessagingService extends FirebaseMessagingService {
         } else
             notificationManager.notify(identifier, notificationBuilder.build());
 
-        notification.addToDatabase();
     }
 
     @Override

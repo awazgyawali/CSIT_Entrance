@@ -39,6 +39,7 @@ import np.com.aawaz.csitentrance.adapters.CommentAdapter;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.objects.Comment;
 import np.com.aawaz.csitentrance.objects.EventSender;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class CommentsActivity extends AppCompatActivity {
 
@@ -156,7 +157,7 @@ public class CommentsActivity extends AppCompatActivity {
             @Override
             public void itemLongClicked(View view, final int position) {
 
-                if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(adapter.getUidAt(position))) {
+                if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(adapter.getUidAt(position)) || SPHandler.containsDevUID(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                     new MaterialDialog.Builder(CommentsActivity.this)
                             .title("Select any option")
                             .items("Edit", "Delete")

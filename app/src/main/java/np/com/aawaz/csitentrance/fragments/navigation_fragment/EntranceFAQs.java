@@ -57,12 +57,13 @@ public class EntranceFAQs extends Fragment implements ValueEventListener {
         super.onActivityCreated(savedInstanceState);
         readyAdapter();
         readyOneTimeListener();
+        FirebaseDatabase.getInstance().getReference().child("faq").keepSynced(true);
     }
 
     private void readyOneTimeListener() {
         progressBar.setVisibility(View.VISIBLE);
         error.setVisibility(View.GONE);
-        FirebaseDatabase.getInstance().getReference().child("faqs").addListenerForSingleValueEvent(this);
+        FirebaseDatabase.getInstance().getReference().child("faq").addListenerForSingleValueEvent(this);
     }
 
     private void readyAdapter() {
@@ -80,7 +81,6 @@ public class EntranceFAQs extends Fragment implements ValueEventListener {
 
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
-        adapter=new FAQAdapter(getContext());
         progressBar.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
         for (DataSnapshot child : dataSnapshot.getChildren()) {
