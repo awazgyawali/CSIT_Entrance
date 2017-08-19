@@ -69,6 +69,9 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
         connectFb = (TextView) findViewById(R.id.connectFb);
         connectGoogle = (TextView) findViewById(R.id.connectGoogle);
 
+        newsSub = SPHandler.getInstance().getNewsSubscribed();
+        forumSub = SPHandler.getInstance().getForumSubscribed();
+
         news.setChecked(SPHandler.getInstance().getNewsSubscribed());
         forum.setChecked(SPHandler.getInstance().getForumSubscribed());
         showAnswer.setChecked(SPHandler.getInstance().shouldShowAnswers());

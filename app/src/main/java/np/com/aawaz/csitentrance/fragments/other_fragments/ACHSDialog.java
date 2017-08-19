@@ -32,7 +32,7 @@ import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class ACHSDialog extends DialogFragment {
     ImageView imagePopup;
-    TextView title, address, content, call, know, close;
+    TextView title, address, content, call, know,facebook, close;
     ViewSwitcher popupViewSwitcher;
     boolean isDataShowing = false;
 
@@ -40,7 +40,7 @@ public class ACHSDialog extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.popup_dialog, container, false);
+        return inflater.inflate(R.layout.achs_popup_dialog, container, false);
     }
 
 
@@ -55,6 +55,7 @@ public class ACHSDialog extends DialogFragment {
         content = (TextView) view.findViewById(R.id.popup_desc);
         call = (TextView) view.findViewById(R.id.call_popup);
         know = (TextView) view.findViewById(R.id.popup_knowmore);
+        facebook = (TextView) view.findViewById(R.id.popup_facebook);
         close = (TextView) view.findViewById(R.id.closePopup);
         popupViewSwitcher.showNext();
     }
@@ -97,7 +98,7 @@ public class ACHSDialog extends DialogFragment {
         else if (adToShow.banner_image.equals("sagarmatha"))
             image = R.drawable.sagarmatha;
         else if(adToShow.banner_image.equals("achs"))
-            image = R.drawable.achs_full;
+            image = R.drawable.achs_full_image;
 
 
         new EventSender()
@@ -142,11 +143,27 @@ public class ACHSDialog extends DialogFragment {
             }
         });
 
+
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseDatabase.getInstance().getReference()
+                        .child("ad_user_data")
+                        .child(adToShow.title)
+                        .child("students")
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .setValue(new Feedback(SPHandler.getInstance().getPhoneNo()));
+
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/achscollege/")));
+                dismiss();
+            }
+        });
+
         if (!isDataShowing) {
             popupViewSwitcher.showPrevious();
             isDataShowing = true;
         }
         final DisplayMetrics metrics = getResources().getDisplayMetrics();
-        getDialog().getWindow().setLayout((9 * metrics.widthPixels) / 10, (6 * metrics.heightPixels) / 7);
+        getDialog().getWindow().setLayout((19 * metrics.widthPixels) / 20, (19 * metrics.heightPixels) / 20);
     }
 }

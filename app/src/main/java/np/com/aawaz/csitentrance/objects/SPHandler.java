@@ -230,11 +230,11 @@ public class SPHandler {
     }
 
     public boolean isInstanceIdAdded() {
-        return infoSp.getBoolean("instance_id_added", false);
+        return infoSp.getBoolean("user_data_added", false);
     }
 
     public void instanceIdAdded() {
-        infoEditor.putBoolean("instance_id_added", true).apply();
+        infoEditor.putBoolean("user_data_added", true).apply();
     }
 
     public int getLastAdPosition() {

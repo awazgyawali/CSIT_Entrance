@@ -25,6 +25,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -155,26 +156,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void uploadInstanceId() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String token = FirebaseInstanceId.getInstance().getToken();
         if (FirebaseAuth.getInstance().getCurrentUser() != null && !SPHandler.getInstance().isInstanceIdAdded()) {
+            //for older version to run todo to be removed next year
             FirebaseDatabase.getInstance().getReference()
                     .child("instance_ids")
-                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .child(user.getUid())
                     .setValue(token);
 
-            HashMap<String, String> map = new HashMap<>();
-            map.put("name", FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("name", user.getDisplayName());
             map.put("phone_no", SPHandler.getInstance().getPhoneNo());
+            map.put("instance_id", token);
+            try {
+                map.put("image_url", user.getPhotoUrl().toString());
+            } catch (Exception e) {
+            }
+            map.put("email", user.getEmail());
+            map.put("uid", user.getUid());
+            map.put("score", SPHandler.getInstance().getTotalScore());
 
             FirebaseDatabase.getInstance().getReference()
                     .child("user_data")
-                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .child(user.getUid())
                     .setValue(map);
 
             SPHandler.getInstance().instanceIdAdded();
             FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
-            FirebaseMessaging.getInstance().subscribeToTopic("new");
-            FirebaseMessaging.getInstance().subscribeToTopic("forums");
+            if(SPHandler.getInstance().getForumSubscribed())
+                FirebaseMessaging.getInstance().subscribeToTopic("forums");
+
+            if(SPHandler.getInstance().getNewsSubscribed())
+                FirebaseMessaging.getInstance().subscribeToTopic("new");
         }
     }
 

@@ -11,6 +11,7 @@ import android.os.IBinder;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 
@@ -46,6 +47,7 @@ public class ScoreUploader extends Service {
     }
 
     private void uploader() {
+        uploadToFirebase();
         String image_link = "N/A";
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         try {
@@ -78,6 +80,17 @@ public class ScoreUploader extends Service {
             }
         });
 
+    }
+
+    private void uploadToFirebase() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            FirebaseDatabase.getInstance().getReference()
+                    .child("user_data")
+                    .child(user.getUid())
+                    .child("score")
+                    .setValue(SPHandler.getInstance().getTotalScore());
+        }
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -60,7 +61,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
 
-        FirebaseDatabase.getInstance().getReference().child("demo_entrance").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("demo_entrance").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 exam = dataSnapshot.getValue(ModelExam.class);
@@ -150,15 +151,21 @@ public class ModelEntranceActivity extends AppCompatActivity {
                 new NetworkRequester(exam.result_link, map, new ResponseListener() {
                     @Override
                     public void onSuccess(String response) {
-                        Log.d("Debug",response);
+                        Log.d("Debug", response);
                         try {
                             JSONObject object = new JSONObject(response);
+
                             if (object.getBoolean("success")) {
                                 resultText.setVisibility(View.VISIBLE);
-                                resultText.setText(object.getJSONObject("data").toString());
+                                String string = "Congratulations <b>" + object.getJSONObject("data").getString("name")
+                                        + "</b>. You have scored <b>" + object.getJSONObject("data").getInt("score")
+                                        + "</b> and your rank is <b>" + object.getJSONObject("data").getInt("rank")
+                                        + ".</b>";
+                                resultText.setText(Html.fromHtml(string));
                             } else
                                 Toast.makeText(ModelEntranceActivity.this, "Something went wrong. Please try again later.", Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
+                            e.printStackTrace();
                             Toast.makeText(ModelEntranceActivity.this, "Something went wrong. Please try again later.", Toast.LENGTH_SHORT).show();
                         }
                         dialog.dismiss();
