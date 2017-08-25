@@ -69,7 +69,7 @@
             android:layout_marginStart="8dp"
             android:gravity="center"
             android:padding="5dp"
-            android:text="Before you ask, these FAQs that might help you."
+            android:text="Before you ask, please read all FAQs."
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             app:layout_constraintHorizontal_bias="0.0"

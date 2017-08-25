@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -235,6 +236,13 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         dialog.getInputEditText().setSingleLine(false);
         dialog.getInputEditText().setMaxLines(7);
         dialog.show();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SPHandler.getInstance().clearUnreadCount();
+        NotificationManagerCompat.from(getContext()).cancel("posted".hashCode());
     }
 
     public static Fragment newInstance(String post_id) {

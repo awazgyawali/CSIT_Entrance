@@ -15,12 +15,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.activities.NewsDetailActivity;
 import np.com.aawaz.csitentrance.objects.Notification;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class MyMessagingService extends FirebaseMessagingService {
     public MyMessagingService() {
@@ -34,79 +36,94 @@ public class MyMessagingService extends FirebaseMessagingService {
 
     private void sendNotification(RemoteMessage remoteMessage) {
 
-        int identifier = new Random().nextInt();
 
         if (FirebaseAuth.getInstance().getCurrentUser() == null)
             return;
 
-        String fragment = remoteMessage.getData().get("fragment");
-        String title = remoteMessage.getData().get("title");
-        String body = remoteMessage.getData().get("body");
 
         Notification notification = new Notification();
-        notification.title = title;
-        notification.text = body;
-        notification.post_id = "";
-        notification.tag = "";
+        notification.title = remoteMessage.getData().get("title");
+        notification.text = remoteMessage.getData().get("body");
+        notification.tag = remoteMessage.getData().get("fragment");
+        notification.result_published = Boolean.parseBoolean(remoteMessage.getData().get("result_published"));
+        if (notification.tag.equals("forum")) {
+            notification.post_id = remoteMessage.getData().get("post_id");
+            notification.uid = remoteMessage.getData().get("uid");
+        } else if (notification.tag.equals("news"))
+            notification.post_id = remoteMessage.getData().get("news_id");
 
+        sendNotification(this, notification);
+    }
+
+    public static void sendNotification(Context context, Notification notification) {
         Intent intent;
+        int identifier = new Random().nextInt();
 
-        switch (fragment) {
+        switch (notification.tag) {
             case "news":
                 identifier = "news".hashCode();
-
-                intent = new Intent(this, NewsDetailActivity.class)
-                        .putExtra("news_id", remoteMessage.getData().get("news_id"));
+                intent = new Intent(context, NewsDetailActivity.class)
+                        .putExtra("news_id", notification.post_id);
                 break;
             case "forum":
                 if (notification.text.contains("commented"))
-                    identifier = remoteMessage.getData().get("post_id").hashCode();
-
-                intent = new Intent(this, MainActivity.class)
-                        .putExtra("fragment", fragment);
-
-                notification.post_id = remoteMessage.getData().get("post_id");
-                notification.tag = "FORUM";
-                intent.putExtra("post_id", remoteMessage.getData().get("post_id"));
+                    identifier = notification.post_id.hashCode();
+                else if (notification.text.contains("posted")) {
+                    identifier = "posted".hashCode();
+                    SPHandler.getInstance().addNewPostMessage(notification.title);
+                }
+                intent = new Intent(context, MainActivity.class).putExtra("fragment", notification.tag);
+                intent.putExtra("post_id", notification.post_id);
                 notification.addToDatabase();
                 break;
             default:
-                intent = new Intent(this, MainActivity.class)
-                        .putExtra("fragment", fragment)
-                        .putExtra("result_published", remoteMessage.getData().get("result_published"));
+                intent = new Intent(context, MainActivity.class)
+                        .putExtra("fragment", notification.tag)
+                        .putExtra("result_published", notification.result_published);
                 break;
         }
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, identifier, intent,
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, identifier, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(),
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),
                         R.drawable.splash_icon))
                 .setSmallIcon(R.drawable.skeleton_logo)
-                .setContentText(Html.fromHtml(body).toString())
-                .setContentTitle(title)
+                .setContentText(Html.fromHtml(notification.text).toString())
+                .setContentTitle(notification.title)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
+        int count = SPHandler.getInstance().getUnreadPostCount();
+        if (notification.text.contains("posted") && count > 1) {
+            NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+            ArrayList<String> messages = SPHandler.getInstance().getUnreadPostMessages();
+            for (int i = count; i > 0; i--) {
+                inboxStyle.addLine(messages.get(i - 1));
+            }
+            inboxStyle.setSummaryText(count + " new posts on Entrance Forum");
+            notificationBuilder.setStyle(inboxStyle);
+            notificationBuilder.setContentTitle("Entrance Forum");
+            notificationBuilder.setContentText(count + " new posts on Entrance Forum");
+        }
 
-        if (fragment.equals("news")) {
-            notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(Html.fromHtml(body)));
+        if (notification.tag.equals("news")) {
+            notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(Html.fromHtml(notification.text)));
             FirebaseDatabase.getInstance().getReference().child("news").keepSynced(true);
         }
         NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        if (fragment.equals("forum")) {
+        if (notification.tag.equals("forum")) {
             FirebaseDatabase.getInstance().getReference().child("forum").keepSynced(true);
-            if (!remoteMessage.getData().get("uid").equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+            if (!notification.uid.equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
                 notificationManager.notify(identifier, notificationBuilder.build());
         } else
             notificationManager.notify(identifier, notificationBuilder.build());
-
     }
 
     @Override

@@ -16,7 +16,7 @@
         android:gravity="center"
         android:padding="15dp"
         android:visibility="gone"
-        android:text="Want to give a Model Entrance Exam?"
+        android:text="Model Entrance Exam"
         android:textColor="@color/white"
         android:textStyle="bold"/>
 

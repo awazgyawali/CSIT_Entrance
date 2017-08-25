@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
@@ -112,10 +113,15 @@ public class PostForumActivity extends AppCompatActivity {
         } else {
             new MaterialDialog.Builder(this)
                     .title("Opps...")
-                    .content("You can ask one question per hour, please try after " + getRemainingTime() + ".")
+                    .content("You can only ask one question per hour, please try after " + getRemainingTime() + ".")
                     .show();
         }
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
 

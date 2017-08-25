@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +31,9 @@ import java.util.HashMap;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.ResponseListener;
 import np.com.aawaz.csitentrance.objects.ModelExam;
+import np.com.aawaz.csitentrance.objects.Notification;
 import np.com.aawaz.csitentrance.objects.SPHandler;
+import np.com.aawaz.csitentrance.services.MyMessagingService;
 import np.com.aawaz.csitentrance.services.NetworkRequester;
 
 public class ModelEntranceActivity extends AppCompatActivity {
@@ -140,6 +143,8 @@ public class ModelEntranceActivity extends AppCompatActivity {
         modelExamResultButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (modelExamResultInput.getText().toString().length() < 1)
+                    return;
                 HashMap<String, String> map = new HashMap<>();
                 map.put("roll", modelExamResultInput.getText().toString());
 
@@ -212,7 +217,6 @@ public class ModelEntranceActivity extends AppCompatActivity {
         regDetail = (LinearLayout) findViewById(R.id.reg_view);
         resultDetail = (LinearLayout) findViewById(R.id.result_view);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

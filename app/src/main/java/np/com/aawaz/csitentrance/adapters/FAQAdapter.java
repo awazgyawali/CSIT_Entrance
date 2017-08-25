@@ -16,6 +16,7 @@ public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.VH> {
 
     ArrayList<FAQ> faqs = new ArrayList<>();
     private Context context;
+    private int expandedItem = -1;
 
     public FAQAdapter(Context context) {
         this.context = context;
@@ -32,9 +33,34 @@ public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.VH> {
     }
 
     @Override
-    public void onBindViewHolder(VH holder, int position) {
-        holder.answer.setText(faqs.get(position).answer);
-        holder.question.setText(faqs.get(position).question);
+    public void onBindViewHolder(final VH holder, final int position) {
+        FAQ faq = faqs.get(position);
+        holder.answer.setText(faq.answer);
+        holder.question.setText((position + 1) + ". " + faq.question);
+
+        holder.question.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (expandedItem == holder.getAdapterPosition()) {
+                    holder.answer.setVisibility(View.GONE);
+                    expandedItem = -1;
+                } else if (expandedItem == -1) {
+                    holder.answer.setVisibility(View.VISIBLE);
+                    expandedItem = holder.getAdapterPosition();
+                } else {
+                    int tempExpandedItem = expandedItem;
+                    expandedItem = position;
+                    holder.answer.setVisibility(View.VISIBLE);
+                    notifyItemChanged(tempExpandedItem);
+                }
+            }
+        });
+
+        if (expandedItem == position) {
+            holder.answer.setVisibility(View.VISIBLE);
+        } else {
+            holder.answer.setVisibility(View.GONE);
+        }
     }
 
     @Override

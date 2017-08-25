@@ -57,13 +57,13 @@ public class EntranceFAQs extends Fragment implements ValueEventListener {
         super.onActivityCreated(savedInstanceState);
         readyAdapter();
         readyOneTimeListener();
-        FirebaseDatabase.getInstance().getReference().child("faq").keepSynced(true);
+        FirebaseDatabase.getInstance().getReference().child("faqs").keepSynced(true);
     }
 
     private void readyOneTimeListener() {
         progressBar.setVisibility(View.VISIBLE);
         error.setVisibility(View.GONE);
-        FirebaseDatabase.getInstance().getReference().child("faq").addListenerForSingleValueEvent(this);
+        FirebaseDatabase.getInstance().getReference().child("faqs").addListenerForSingleValueEvent(this);
     }
 
     private void readyAdapter() {

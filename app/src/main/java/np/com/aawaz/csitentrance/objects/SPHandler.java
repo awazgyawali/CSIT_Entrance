@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.content.ContextCompat;
 
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -274,5 +276,29 @@ public class SPHandler {
         } catch (JSONException e) {
         }
         return null;
+    }
+
+    public int getUnreadPostCount() {
+        return infoSp.getInt("post_count", 0);
+    }
+
+    public void addNewPostMessage(String message) {
+        ArrayList<String> messages = getUnreadPostMessages();
+        messages.add(message);
+        infoEditor.putInt("post_count", getUnreadPostCount() + 1).apply();
+        infoEditor.putString("post_message", new Gson().toJson(messages, ArrayList.class)).apply();
+    }
+
+    public ArrayList<String> getUnreadPostMessages() {
+        String content = infoSp.getString("post_message", "");
+        if (content.length() != 0)
+            return new Gson().fromJson(content, ArrayList.class);
+        else
+            return new ArrayList<String>();
+    }
+
+    public void clearUnreadCount() {
+        infoEditor.putInt("post_count", 0).apply();
+        infoEditor.putString("post_message", "").apply();
     }
 }
