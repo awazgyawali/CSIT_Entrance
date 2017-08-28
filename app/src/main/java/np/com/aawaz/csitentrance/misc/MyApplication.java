@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.google.firebase.database.FirebaseDatabase;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 
 public class MyApplication extends Application {
@@ -24,6 +26,7 @@ public class MyApplication extends Application {
 
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            Fabric.with(this, new Crashlytics());
         } catch (Exception ignored) {
             ignored.printStackTrace();
         }

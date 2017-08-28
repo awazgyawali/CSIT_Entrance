@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
-import android.text.Spanned;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +57,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         if (SPHandler.containsDevUID(comments.get(position).uid)) {
             holder.commenter.setTextColor(ContextCompat.getColor(context, R.color.admin_color));
             holder.admin_tag.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             holder.commenter.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
             holder.admin_tag.setVisibility(View.GONE);
         }
@@ -80,7 +78,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             }
         });
     }
-
 
 
     public void addToTop(Comment comment) {

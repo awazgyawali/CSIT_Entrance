@@ -22,8 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Feedback;
@@ -32,7 +30,7 @@ import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class ACHSDialog extends DialogFragment {
     ImageView imagePopup;
-    TextView title, address, content, call, know,facebook, close;
+    TextView title, address, content, call, know, facebook, close;
     ViewSwitcher popupViewSwitcher;
     boolean isDataShowing = false;
 
@@ -85,19 +83,19 @@ public class ACHSDialog extends DialogFragment {
     private void fillAd() {
         //sizing the dialog
         final PopupAd adToShow = new PopupAd();
-        adToShow.banner_image="achs";
-        adToShow.address="Dhobidhara Marg,Kathmandu (Near Kumari Hall)";
-        adToShow.phone="01-4436383";
-        adToShow.title="Asian College of Higher Studies";
-        adToShow.website="http://www.achsnepal.edu.np";
-        adToShow.detail="ACHS announces admission open for BSc CSIT 2074. <br><br>Secure your seat now. <br>For more detail, call 01-4436383.";
+        adToShow.banner_image = "achs";
+        adToShow.address = "Dhobidhara Marg,Kathmandu (Near Kumari Hall)";
+        adToShow.phone = "01-4436383";
+        adToShow.title = "Asian College of Higher Studies";
+        adToShow.website = "http://www.achsnepal.edu.np";
+        adToShow.detail = "ACHS announces admission open for BSc CSIT 2074. <br><br>Secure your seat now. <br>For more detail, call 01-4436383.";
 
         int image = 0;
         if (adToShow.banner_image.equals("samriddhi"))
             image = R.drawable.samriddhi;
         else if (adToShow.banner_image.equals("sagarmatha"))
             image = R.drawable.sagarmatha;
-        else if(adToShow.banner_image.equals("achs"))
+        else if (adToShow.banner_image.equals("achs"))
             image = R.drawable.achs_full_image;
 
 

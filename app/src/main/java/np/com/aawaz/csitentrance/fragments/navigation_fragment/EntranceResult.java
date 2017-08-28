@@ -51,6 +51,7 @@ public class EntranceResult extends Fragment {
 
     private String mUrl;
     private String mTitle;
+    private boolean resultViewing = false;
 
     private void workForViewingResult() {
         resultButton.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +67,7 @@ public class EntranceResult extends Fragment {
                     public void onSuccess(String response) {
                         resultHolder.setVisibility(View.VISIBLE);
                         progressBarResult.setVisibility(View.GONE);
+                        resultViewing = true;
                         if (response.contains("null")) {
                             resultHolder.setText("Sorry!! This roll number is not in the list.");
                         } else {
@@ -100,6 +102,8 @@ public class EntranceResult extends Fragment {
             @Override
             public void onClick(View view) {
                 revealLayout.revealMainView();
+                resultButton.show();
+                resultViewing = false;
             }
         });
 
@@ -111,7 +115,7 @@ public class EntranceResult extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0)
+                if (charSequence.length() == 0 || resultViewing)
                     resultButton.hide();
                 else
                     resultButton.show();

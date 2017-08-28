@@ -9,11 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.FullQuestionActivity;
-import np.com.aawaz.csitentrance.activities.ModelEntranceActivity;
 import np.com.aawaz.csitentrance.activities.YearQuizActivity;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.SPHandler;

@@ -28,33 +28,6 @@ public class MyMessagingService extends FirebaseMessagingService {
     public MyMessagingService() {
     }
 
-
-    @Override
-    public void onMessageReceived(RemoteMessage remoteMessage) {
-        sendNotification(remoteMessage);
-    }
-
-    private void sendNotification(RemoteMessage remoteMessage) {
-
-
-        if (FirebaseAuth.getInstance().getCurrentUser() == null)
-            return;
-
-
-        Notification notification = new Notification();
-        notification.title = remoteMessage.getData().get("title");
-        notification.text = remoteMessage.getData().get("body");
-        notification.tag = remoteMessage.getData().get("fragment");
-        notification.result_published = Boolean.parseBoolean(remoteMessage.getData().get("result_published"));
-        if (notification.tag.equals("forum")) {
-            notification.post_id = remoteMessage.getData().get("post_id");
-            notification.uid = remoteMessage.getData().get("uid");
-        } else if (notification.tag.equals("news"))
-            notification.post_id = remoteMessage.getData().get("news_id");
-
-        sendNotification(this, notification);
-    }
-
     public static void sendNotification(Context context, Notification notification) {
         Intent intent;
         int identifier = new Random().nextInt();
@@ -124,6 +97,27 @@ public class MyMessagingService extends FirebaseMessagingService {
                 notificationManager.notify(identifier, notificationBuilder.build());
         } else
             notificationManager.notify(identifier, notificationBuilder.build());
+    }
+
+    @Override
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+
+        if (FirebaseAuth.getInstance().getCurrentUser() == null)
+            return;
+
+
+        Notification notification = new Notification();
+        notification.title = remoteMessage.getData().get("title");
+        notification.text = remoteMessage.getData().get("body");
+        notification.tag = remoteMessage.getData().get("fragment");
+        notification.result_published = Boolean.parseBoolean(remoteMessage.getData().get("result_published"));
+        if (notification.tag.equals("forum")) {
+            notification.post_id = remoteMessage.getData().get("post_id");
+            notification.uid = remoteMessage.getData().get("uid");
+        } else if (notification.tag.equals("news"))
+            notification.post_id = remoteMessage.getData().get("news_id");
+
+        sendNotification(this, notification);
     }
 
     @Override

@@ -30,9 +30,9 @@ import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class PostForumActivity extends AppCompatActivity {
 
-    private InputMethodManager imm;
     ImageView buttonPost;
     AppCompatEditText questionEditText;
+    private InputMethodManager imm;
     private DatabaseReference reference;
 
 

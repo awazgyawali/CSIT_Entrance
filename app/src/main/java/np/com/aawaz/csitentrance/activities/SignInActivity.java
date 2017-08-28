@@ -126,7 +126,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     }
 
     private void askPermissionAndContinue(final Intent intent, final int req) {
-        new TedPermission(this)
+        TedPermission.with(this)
                 .setPermissionListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted() {

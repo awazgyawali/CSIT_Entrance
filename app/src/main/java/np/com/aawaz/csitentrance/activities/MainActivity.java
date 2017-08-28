@@ -51,10 +51,9 @@ import np.com.aawaz.csitentrance.services.ScoreUploader;
 public class MainActivity extends AppCompatActivity {
 
     public static boolean openedIntent = false;
-    Intent intent;
-
-    public TabLayout tabLayout;
     private static TextView titleMain;
+    public TabLayout tabLayout;
+    Intent intent;
     FragmentManager manager;
     NavigationView mNavigationView;
     DrawerLayout mDrawerLayout;
@@ -134,6 +133,10 @@ public class MainActivity extends AppCompatActivity {
     private void handlingIntent(Intent intent) {
         if (intent.getStringExtra("fragment") != null) {
             String string = intent.getStringExtra("fragment");
+            if (string.equals("model")) {
+                startActivity(new Intent(this, ModelEntranceActivity.class));
+                return;
+            }
             for (int i = 0; i < navigationText.length; i++)
                 if (navigationText[i].equals(string)) {
                     openedIntent = false;
@@ -184,10 +187,10 @@ public class MainActivity extends AppCompatActivity {
 
             SPHandler.getInstance().instanceIdAdded();
             FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
-            if(SPHandler.getInstance().getForumSubscribed())
+            if (SPHandler.getInstance().getForumSubscribed())
                 FirebaseMessaging.getInstance().subscribeToTopic("forums");
 
-            if(SPHandler.getInstance().getNewsSubscribed())
+            if (SPHandler.getInstance().getNewsSubscribed())
                 FirebaseMessaging.getInstance().subscribeToTopic("new");
         }
     }
@@ -356,6 +359,11 @@ public class MainActivity extends AppCompatActivity {
         else
             menu.findItem(R.id.search).setVisible(false);
 
+        if (getToolbarTitle().equals("Play Quiz"))
+            menu.findItem(R.id.exam).setVisible(false);
+        else
+            menu.findItem(R.id.exam).setVisible(true);
+
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -366,6 +374,9 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.notifications) {
             startActivity(new Intent(this, NotificationActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.exam) {
+            startActivity(new Intent(this, ModelEntranceActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

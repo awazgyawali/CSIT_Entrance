@@ -7,6 +7,11 @@
         android:title="Search"
         app:showAsAction="always" />
     <item
+        android:id="@+id/exam"
+        android:icon="@drawable/exam"
+        android:title="Model Entrance Exam"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/notifications"
         android:icon="@drawable/notification"
         android:title="Search"

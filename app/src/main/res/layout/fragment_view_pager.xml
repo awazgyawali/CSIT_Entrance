@@ -15,7 +15,6 @@
         android:background="@color/colorAccent"
         android:gravity="center"
         android:padding="15dp"
-        android:visibility="gone"
         android:text="Model Entrance Exam"
         android:textColor="@color/white"
         android:textStyle="bold"/>

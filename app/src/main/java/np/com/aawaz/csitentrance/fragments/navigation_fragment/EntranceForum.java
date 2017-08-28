@@ -54,9 +54,17 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     ArrayList<String> key = new ArrayList<>();
     DatabaseReference reference;
     FloatingActionButton floatingActionButton;
-    private LinearLayoutManager mLinearLayoutManager;
     ImageView callAchs;
     ConstraintLayout achsAd;
+    private LinearLayoutManager mLinearLayoutManager;
+
+    public static Fragment newInstance(String post_id) {
+        EntranceForum forum = new EntranceForum();
+        Bundle args = new Bundle();
+        args.putString("post_id", post_id);
+        forum.setArguments(args);
+        return forum;
+    }
 
     @Nullable
     @Override
@@ -243,13 +251,5 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         super.onResume();
         SPHandler.getInstance().clearUnreadCount();
         NotificationManagerCompat.from(getContext()).cancel("posted".hashCode());
-    }
-
-    public static Fragment newInstance(String post_id) {
-        EntranceForum forum = new EntranceForum();
-        Bundle args = new Bundle();
-        args.putString("post_id", post_id);
-        forum.setArguments(args);
-        return forum;
     }
 }

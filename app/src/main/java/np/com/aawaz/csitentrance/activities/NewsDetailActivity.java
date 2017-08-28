@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
 import android.view.MenuItem;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -32,11 +31,11 @@ import np.com.aawaz.csitentrance.objects.News;
 public class NewsDetailActivity extends AppCompatActivity {
 
     Bundle bundle;
-    private String mUrl;
-    private String mTitle;
     TextView time, title, author;
     WebView newsDetail;
     ViewSwitcher viewSwitcher;
+    private String mUrl;
+    private String mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

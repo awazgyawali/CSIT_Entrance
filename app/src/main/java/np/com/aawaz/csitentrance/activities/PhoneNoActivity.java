@@ -44,9 +44,9 @@ public class PhoneNoActivity extends AppCompatActivity {
     TextInputEditText phone, c_code;
     TextView autoVerify, counter;
     MaterialDialog verifying, dialog;
+    CountDownTimer downTimer;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
     private FirebaseAuth mAuth;
-    CountDownTimer downTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,16 +154,16 @@ public class PhoneNoActivity extends AppCompatActivity {
                 autoVerify.setVisibility(View.VISIBLE);
                 downTimer = new CountDownTimer(25000, 1000) {
 
-                     @Override
-                     public void onTick(long l) {
-                         counter.setText(l / 1000 + " seconds");
-                     }
+                    @Override
+                    public void onTick(long l) {
+                        counter.setText(l / 1000 + " seconds");
+                    }
 
-                     @Override
-                     public void onFinish() {
-                         onVerified();
-                     }
-                 }.start();
+                    @Override
+                    public void onFinish() {
+                        onVerified();
+                    }
+                }.start();
             }
 
         };

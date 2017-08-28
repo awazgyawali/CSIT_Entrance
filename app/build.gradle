@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.firebase.firebase-perf'
+apply plugin: 'io.fabric'
 android {
     compileSdkVersion 25
     buildToolsVersion '26.0.1'
@@ -8,8 +9,8 @@ android {
         applicationId "np.com.aawaz.csitentrance"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 52
-        versionName "2.2"
+        versionCode 53
+        versionName "2.2.1"
     }
     buildTypes {
         release {
@@ -43,6 +44,10 @@ dependencies {
     compile 'gun0912.ted:tedpermission:2.0.0'
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     compile 'com.google.code.gson:gson:2.8.1'
+
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+        transitive = true;
+    }
 
     compile 'com.google.firebase:firebase-core:11.2.0'
     compile 'com.google.firebase:firebase-messaging:11.2.0'

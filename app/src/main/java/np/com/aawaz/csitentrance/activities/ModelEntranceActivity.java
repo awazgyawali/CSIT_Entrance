@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,9 +30,7 @@ import java.util.HashMap;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.ResponseListener;
 import np.com.aawaz.csitentrance.objects.ModelExam;
-import np.com.aawaz.csitentrance.objects.Notification;
 import np.com.aawaz.csitentrance.objects.SPHandler;
-import np.com.aawaz.csitentrance.services.MyMessagingService;
 import np.com.aawaz.csitentrance.services.NetworkRequester;
 
 public class ModelEntranceActivity extends AppCompatActivity {
@@ -44,6 +41,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
     ModelExam exam;
     private LinearLayout regDetail, resultDetail;
     private TextView resultText;
+    private LinearLayout core;
 
 
     @Override
@@ -63,10 +61,11 @@ public class ModelEntranceActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
-
+        Toast.makeText(this, "Fetching data....", Toast.LENGTH_SHORT).show();
         FirebaseDatabase.getInstance().getReference().child("demo_entrance").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                core.setVisibility(View.VISIBLE);
                 exam = dataSnapshot.getValue(ModelExam.class);
                 venue.setText(exam.venue);
                 address.setText(exam.address);
@@ -213,7 +212,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
         modelExamResultInput = (TextInputEditText) findViewById(R.id.modelExamResultInput);
         modelExamResultButton = (Button) findViewById(R.id.modelExamResultButton);
         resultText = (TextView) findViewById(R.id.resultText);
-
+        core = (LinearLayout) findViewById(R.id.coreModel);
         regDetail = (LinearLayout) findViewById(R.id.reg_view);
         resultDetail = (LinearLayout) findViewById(R.id.result_view);
     }

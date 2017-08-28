@@ -52,6 +52,15 @@ public class SPHandler {
             return spHandler;
     }
 
+    public static boolean containsDevUID(String uid) {
+        ArrayList<String> admins = new ArrayList<>();
+        admins.add("IJdET0udoOayA11j6BIoT6D7O0S2");
+        admins.add("R3LmmEGnMePjYtswECxiw4E3aFc2");
+        admins.add("URhcpsBTKuQ8juVPgGNeWEJn0yA3");
+        admins.add("gc9e24JKjDVsbm1Fk5uFOEE5AgI3");
+        return admins.contains(uid);
+    }
+
     public int getScore(String name) {
         return scoreSp.getInt(name + SCORE, 0);
     }
@@ -255,19 +264,6 @@ public class SPHandler {
         return infoSp.getBoolean("answerShow", true);
     }
 
-    public static boolean containsDevUID(String uid) {
-        ArrayList<String> admins = new ArrayList<>();
-        admins.add("IJdET0udoOayA11j6BIoT6D7O0S2");
-        admins.add("R3LmmEGnMePjYtswECxiw4E3aFc2");
-        admins.add("URhcpsBTKuQ8juVPgGNeWEJn0yA3");
-        admins.add("gc9e24JKjDVsbm1Fk5uFOEE5AgI3");
-        return admins.contains(uid);
-    }
-
-    public void setRegistrationDetail(String registrationDetail) {
-        infoEditor.putString("reg_data", registrationDetail).apply();
-    }
-
     public JSONObject getRegistrationDetail() {
         try {
             String data = infoSp.getString("reg_data", null);
@@ -276,6 +272,10 @@ public class SPHandler {
         } catch (JSONException e) {
         }
         return null;
+    }
+
+    public void setRegistrationDetail(String registrationDetail) {
+        infoEditor.putString("reg_data", registrationDetail).apply();
     }
 
     public int getUnreadPostCount() {
