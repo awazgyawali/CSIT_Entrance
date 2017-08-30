@@ -41,7 +41,6 @@ public class ModelEntranceActivity extends AppCompatActivity {
     ModelExam exam;
     private LinearLayout regDetail, resultDetail;
     private TextView resultText;
-    private LinearLayout core;
 
 
     @Override
@@ -61,11 +60,9 @@ public class ModelEntranceActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
-        Toast.makeText(this, "Fetching data....", Toast.LENGTH_SHORT).show();
         FirebaseDatabase.getInstance().getReference().child("demo_entrance").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                core.setVisibility(View.VISIBLE);
                 exam = dataSnapshot.getValue(ModelExam.class);
                 venue.setText(exam.venue);
                 address.setText(exam.address);
@@ -108,7 +105,6 @@ public class ModelEntranceActivity extends AppCompatActivity {
                     new NetworkRequester(getString(R.string.register), map, new ResponseListener() {
                         @Override
                         public void onSuccess(String response) {
-                            Log.d("Debug", response);
                             try {
                                 JSONObject object = new JSONObject(response);
                                 if (object.getBoolean("success")) {
@@ -155,7 +151,6 @@ public class ModelEntranceActivity extends AppCompatActivity {
                 new NetworkRequester(exam.result_link, map, new ResponseListener() {
                     @Override
                     public void onSuccess(String response) {
-                        Log.d("Debug", response);
                         try {
                             JSONObject object = new JSONObject(response);
 
@@ -212,7 +207,6 @@ public class ModelEntranceActivity extends AppCompatActivity {
         modelExamResultInput = (TextInputEditText) findViewById(R.id.modelExamResultInput);
         modelExamResultButton = (Button) findViewById(R.id.modelExamResultButton);
         resultText = (TextView) findViewById(R.id.resultText);
-        core = (LinearLayout) findViewById(R.id.coreModel);
         regDetail = (LinearLayout) findViewById(R.id.reg_view);
         resultDetail = (LinearLayout) findViewById(R.id.result_view);
     }

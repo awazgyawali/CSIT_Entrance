@@ -32,10 +32,11 @@
         <item>Model Question 4</item>
         <item>TU Examination 2073</item>
         <item>Model Question 5 </item>
+        <item>ACHS Model Entrance Exam</item>
     </string-array>
     <string name="title_activity_notification">NotificationActivity</string>
     <string name="title_activity_post_forum">PostForumActivity</string>
     <string name="title_activity_model_entrance">ModelEntrance</string>
-    <string name="entrance_detail">Fetching.....</string>
+    <string name="entrance_detail">Get a chance to test your knowlegde with 100s if other students.\nRegister Now to get your roll no.\n</string>
 
 </resources>

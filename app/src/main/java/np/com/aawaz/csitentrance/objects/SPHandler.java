@@ -29,6 +29,7 @@ public class SPHandler {
     public static String MODEL3 = "model3";
     public static String MODEL4 = "model4";
     public static String MODEL5 = "model5";
+    public static String MODEL6 = "model6";
     private static SPHandler spHandler;
     private final SharedPreferences.Editor scoreEditor;
     private final SharedPreferences.Editor infoEditor;
@@ -101,12 +102,12 @@ public class SPHandler {
 
     public int getTotalScore() {
         return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) + getScore(YEAR2073) +
-                getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4) + getScore(MODEL5);
+                getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4) + getScore(MODEL5)+ getScore(MODEL6);
     }
 
     public int getTotalPlayed() {
         return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) + getPlayed(YEAR2073) +
-                getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4) + getPlayed(MODEL5);
+                getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4) + getPlayed(MODEL5)+ getPlayed(MODEL6);
     }
 
     public boolean isResultPublished() {
@@ -127,7 +128,8 @@ public class SPHandler {
                 new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},
                 new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH},
                 new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS}};
+                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},
+                new String[]{MATH, PHYSICS, CHEMISTRY, ENGLISH}};
         return subjects[index][questionNo / 25];
     }
 
@@ -142,7 +144,8 @@ public class SPHandler {
                 new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},
                 new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH},
                 new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS}};
+                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},
+                new String[]{MATH, PHYSICS, CHEMISTRY, ENGLISH}};
         for (int i = 0; i < 4; i++)
             if (subjects[index][i].equals(subject))
                 return i * 25;

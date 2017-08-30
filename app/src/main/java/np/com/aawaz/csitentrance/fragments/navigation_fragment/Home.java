@@ -25,6 +25,7 @@ import np.com.aawaz.csitentrance.activities.ModelEntranceActivity;
 import np.com.aawaz.csitentrance.fragments.other_fragments.ScoreBoard;
 import np.com.aawaz.csitentrance.fragments.other_fragments.SubjectsList;
 import np.com.aawaz.csitentrance.fragments.other_fragments.YearsList;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class Home extends Fragment {
 
@@ -86,6 +87,11 @@ public class Home extends Fragment {
         tabLayout.getTabAt(1).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_book));
         tabLayout.getTabAt(2).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_file));
         tabLayout.getTabAt(3).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_scoreboard));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
         FirebaseDatabase.getInstance().getReference().child("demo_entrance/live").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -101,8 +107,23 @@ public class Home extends Fragment {
 
             }
         });
-    }
+        FirebaseDatabase.getInstance().getReference().child("demo_entrance/result_published").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (Boolean.valueOf(dataSnapshot.getValue().toString()))
+                    modelEntranceExam.setText("Model Entrance Exam - View Result");
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        if (SPHandler.getInstance().getRegistrationDetail() != null){
+            modelEntranceExam.setText("Model Entrance Exam");
+        }
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

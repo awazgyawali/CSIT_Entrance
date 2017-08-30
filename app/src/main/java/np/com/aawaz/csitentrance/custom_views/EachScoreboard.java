@@ -45,7 +45,7 @@ public class EachScoreboard {
     public View getCardView(int position) {
         String[] titles = MyApplication.getAppContext().getResources().getStringArray(R.array.years);
         String[] spTexts = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5};
+                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6};
 
         TextView title = (TextView) view.findViewById(R.id.titleScoreboardCard);
         TextView played = (TextView) view.findViewById(R.id.playedScoreboard);
