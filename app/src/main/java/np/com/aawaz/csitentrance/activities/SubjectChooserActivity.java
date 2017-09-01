@@ -128,7 +128,6 @@ public class SubjectChooserActivity extends AppCompatActivity {
                 clicked(9);
             }
         });
-        que6.setVisibility(View.GONE);//todo to be removed
         que6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

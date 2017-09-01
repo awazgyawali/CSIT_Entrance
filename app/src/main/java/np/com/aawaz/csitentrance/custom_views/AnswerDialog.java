@@ -14,7 +14,12 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
+import com.google.firebase.database.FirebaseDatabase;
+
+import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.OnDismissListener;
 import np.com.aawaz.csitentrance.objects.SPHandler;
@@ -23,10 +28,11 @@ public class AnswerDialog extends DialogFragment {
 
     private String answer = "test";
     private SwitchCompat answer_settings;
-    private TextView answerText;
+    private TextView answerText, answerIsWrong;
     private QuizTextView answerWeb;
     private OnDismissListener onDismissListener;
-
+    private FancyButton optA, optB, optC, optD, optElse;
+    private ViewSwitcher recommender;
 
     public AnswerDialog() {
         // Required empty public constructor
@@ -71,6 +77,9 @@ public class AnswerDialog extends DialogFragment {
             answerText.setText(Html.fromHtml(answer));
         }
 
+        recommenderCode();
+
+
         answer_settings.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -79,12 +88,76 @@ public class AnswerDialog extends DialogFragment {
         });
     }
 
+    private void recommenderCode() {
+        answerIsWrong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recommender.showNext();
+            }
+        });
+
+        optA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase.getInstance().getReference().child("report").child("year_question").child(SPHandler.getInstance().getCurrentUid()).setValue("Something else");
+                Toast.makeText(getContext(), "Thanks for the report.", Toast.LENGTH_SHORT).show();
+                recommender.setVisibility(View.GONE);
+            }
+        });
+
+        optB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase.getInstance().getReference().child("report").child("year_question").child(SPHandler.getInstance().getCurrentUid()).setValue("Something else");
+                Toast.makeText(getContext(), "Thanks for the report.", Toast.LENGTH_SHORT).show();
+                recommender.setVisibility(View.GONE);
+            }
+        });
+
+        optC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase.getInstance().getReference().child("report").child("year_question").child(SPHandler.getInstance().getCurrentUid()).setValue("Something else");
+                Toast.makeText(getContext(), "Thanks for the report.", Toast.LENGTH_SHORT).show();
+                recommender.setVisibility(View.GONE);
+            }
+        });
+
+        optD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase.getInstance().getReference().child("report").child("year_question").child(SPHandler.getInstance().getCurrentUid()).setValue("Something else");
+                Toast.makeText(getContext(), "Thanks for the report.", Toast.LENGTH_SHORT).show();
+                recommender.setVisibility(View.GONE);
+            }
+        });
+
+        optElse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase.getInstance().getReference().child("report").child("year_question").child(SPHandler.getInstance().getCurrentUid()).setValue("Something else");
+                Toast.makeText(getContext(), "Thanks for the report.", Toast.LENGTH_SHORT).show();
+                recommender.setVisibility(View.GONE);
+            }
+        });
+
+    }
+
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         answer_settings = (SwitchCompat) view.findViewById(R.id.answerSwitch);
         answerText = (TextView) view.findViewById(R.id.answerText);
         answerWeb = (QuizTextView) view.findViewById(R.id.answerWeb);
+        recommender = (ViewSwitcher) view.findViewById(R.id.answerValidationSwitcher);
+        answerIsWrong = (TextView) view.findViewById(R.id.recomend_button);
+        optA = (FancyButton) view.findViewById(R.id.shouldBeA);
+        optB = (FancyButton) view.findViewById(R.id.shouldBeB);
+        optC = (FancyButton) view.findViewById(R.id.shouldBeC);
+        optD = (FancyButton) view.findViewById(R.id.shouldBeD);
+        optElse = (FancyButton) view.findViewById(R.id.shouldBeSomethingElse);
+        recommender.setVisibility(View.GONE);
     }
 
     @Override

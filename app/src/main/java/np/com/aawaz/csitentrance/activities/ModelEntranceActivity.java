@@ -112,7 +112,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
                                     Toast.makeText(ModelEntranceActivity.this, "Registered Successfully!", Toast.LENGTH_SHORT).show();
                                     parseRegData();
                                 } else
-                                    Toast.makeText(ModelEntranceActivity.this, "Something went wrong. Please try again later.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ModelEntranceActivity.this, "Sorry, the registration has been closed.", Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 Toast.makeText(ModelEntranceActivity.this, "Something went wrong. Please try again later.", Toast.LENGTH_SHORT).show();
                             }
@@ -162,7 +162,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
                                         + ".</b>";
                                 resultText.setText(Html.fromHtml(string));
                             } else
-                                Toast.makeText(ModelEntranceActivity.this, "Something went wrong. Please try again later.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ModelEntranceActivity.this, "Sorry, the result is not available for that roll number.", Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(ModelEntranceActivity.this, "Something went wrong. Please try again later.", Toast.LENGTH_SHORT).show();

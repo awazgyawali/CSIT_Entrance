@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.content.ContextCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -62,6 +63,10 @@ public class SPHandler {
         return admins.contains(uid);
     }
 
+    public String getCurrentUid() {
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    }
+
     public int getScore(String name) {
         return scoreSp.getInt(name + SCORE, 0);
     }
@@ -102,12 +107,12 @@ public class SPHandler {
 
     public int getTotalScore() {
         return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) + getScore(YEAR2073) +
-                getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4) + getScore(MODEL5)+ getScore(MODEL6);
+                getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4) + getScore(MODEL5) + getScore(MODEL6);
     }
 
     public int getTotalPlayed() {
         return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) + getPlayed(YEAR2073) +
-                getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4) + getPlayed(MODEL5)+ getPlayed(MODEL6);
+                getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4) + getPlayed(MODEL5) + getPlayed(MODEL6);
     }
 
     public boolean isResultPublished() {

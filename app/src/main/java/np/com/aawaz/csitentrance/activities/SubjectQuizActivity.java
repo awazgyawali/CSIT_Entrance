@@ -98,7 +98,7 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
 
         answersDrawer.setInitialForSubject(qNo, getIntent().getIntExtra("position", 1) + 1, index);
 
-        initilizeViewPager();
+        initializeViewPager();
 
         setHeader();
 
@@ -140,7 +140,7 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
         scoreText.setText("Your Score: " + score);
     }
 
-    private void initilizeViewPager() {
+    private void initializeViewPager() {
         customViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
