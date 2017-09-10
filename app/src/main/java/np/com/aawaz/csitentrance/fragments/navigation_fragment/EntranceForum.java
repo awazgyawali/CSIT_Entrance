@@ -9,6 +9,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,11 +22,11 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,9 +44,10 @@ import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 
-public class EntranceForum extends Fragment implements ChildEventListener {
+public class EntranceForum extends Fragment implements ValueEventListener, ClickListener {
 
     RecyclerView recyclerView;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     ProgressBar progressBar;
     LinearLayout errorPart;
@@ -78,10 +80,19 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         errorPart = (LinearLayout) view.findViewById(R.id.errorPart);
         progressBar = (ProgressBar) view.findViewById(R.id.progressCircleFullFeed);
         recyclerView = (RecyclerView) view.findViewById(R.id.fullFeedRecycler);
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.forumSwipeRefresh);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fabForumPost);
         callAchs = (ImageView) view.findViewById(R.id.callACHS);
         achsAd = (ConstraintLayout) view.findViewById(R.id.forum_ad);
         new EventSender().logEvent("achs_ad");
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+                addListener();
+            }
+        });
 
         achsAd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +129,6 @@ public class EntranceForum extends Fragment implements ChildEventListener {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("forum");
         super.onActivityCreated(savedInstanceState);
-        fillRecyclerView();
         addListener();
         handleIntent();
     }
@@ -134,12 +144,15 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     }
 
     private void addListener() {
+        recyclerView.setVisibility(View.GONE);
         errorPart.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
-        reference.limitToLast(50).addChildEventListener(this);
+        mLinearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLinearLayoutManager);
+        reference.limitToLast(50).addListenerForSingleValueEvent(this);
     }
 
-    @Override
+
     public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
         Post newPost = dataSnapshot.getValue(Post.class);
         if (newPost.author == null)
@@ -152,34 +165,19 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     }
 
     @Override
-    public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
-        int position = -1;
-        for (int i = 0; i < key.size(); i++) {
-            if (key.get(i).equals(dataSnapshot.getKey()))
-                position = i;
+    public void onDataChange(DataSnapshot dataSnap) {
+        fillRecyclerView();
+        adapter.notifyDataSetChanged();
+        key.clear();
+        progressBar.setVisibility(View.GONE);
+        for (DataSnapshot dataSnapshot : dataSnap.getChildren()) {
+            Post newPost = dataSnapshot.getValue(Post.class);
+            if (newPost.author == null)
+                return;
+            newPost.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
+            adapter.addToTop(newPost);
+            key.add(0, dataSnapshot.getKey());
         }
-        if (position == -1)
-            return;
-        Post post = dataSnapshot.getValue(Post.class);
-        post.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
-        adapter.editItemAtPosition(position, post);
-    }
-
-    @Override
-    public void onChildRemoved(DataSnapshot dataSnapshot) {
-        int position = -1;
-        for (int i = 0; i < key.size(); i++) {
-            if (key.get(i).equals(dataSnapshot.getKey()))
-                position = i;
-        }
-        if (position == -1)
-            return;
-        adapter.removeItemAtPosition(position);
-        key.remove(position);
-    }
-
-    @Override
-    public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
     }
 
     @Override
@@ -193,38 +191,40 @@ public class EntranceForum extends Fragment implements ChildEventListener {
     private void fillRecyclerView() {
         progressBar.setVisibility(View.GONE);
         adapter = new ForumAdapter(getContext());
+        adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
-        mLinearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(mLinearLayoutManager);
-        adapter.setClickListener(new ClickListener() {
-            @Override
-            public void itemClicked(View view, int position) {
-                startActivity(new Intent(getContext(), CommentsActivity.class)
-                        .putExtra("key", key.get(position))
-                        .putExtra("message", adapter.getMessageAt(position))
-                        .putExtra("comment_count", adapter.getCommentCount(position)));
-            }
+        recyclerView.setVisibility(View.VISIBLE);
+    }
 
-            @Override
-            public void itemLongClicked(View view, final int position) {
-                if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(adapter.getUidAt(position)) || SPHandler.containsDevUID(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
-                    new MaterialDialog.Builder(getContext())
-                            .title("Select any option")
-                            .items("Edit", "Delete")
-                            .itemsCallback(new MaterialDialog.ListCallback() {
-                                @Override
-                                public void onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
-                                    if (which == 0)
-                                        showDialogToEdit(adapter.getMessageAt(position), position);
-                                    else if (which == 1)
-                                        FirebaseDatabase.getInstance().getReference().child("forum").child(key.get(position)).removeValue();
-                                }
-                            })
-                            .build()
-                            .show();
-                }
-            }
-        });
+    @Override
+    public void itemClicked(View view, int position) {
+        startActivity(new Intent(getContext(), CommentsActivity.class)
+                .putExtra("key", key.get(position))
+                .putExtra("message", adapter.getMessageAt(position))
+                .putExtra("comment_count", adapter.getCommentCount(position)));
+    }
+
+    @Override
+    public void itemLongClicked(View view, final int position) {
+        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(adapter.getUidAt(position)) || SPHandler.containsDevUID(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+            new MaterialDialog.Builder(getContext())
+                    .title("Select any option")
+                    .items("Edit", "Delete")
+                    .itemsCallback(new MaterialDialog.ListCallback() {
+                        @Override
+                        public void onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
+                            if (which == 0)
+                                showDialogToEdit(adapter.getMessageAt(position), position);
+                            else if (which == 1) {
+                                FirebaseDatabase.getInstance().getReference().child("forum").child(key.get(position)).removeValue();
+                                key.remove(position);
+                                adapter.removeItemAtPosition(position);
+                            }
+                        }
+                    })
+                    .build()
+                    .show();
+        }
     }
 
     private void showDialogToEdit(String message, final int position) {
@@ -235,6 +235,8 @@ public class EntranceForum extends Fragment implements ChildEventListener {
                     public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
                         Map<String, Object> map = new HashMap<>();
                         map.put("message", input.toString());
+                        adapter.getItemAtPosition(position).message = input.toString();
+                        adapter.editItemAtPosition(position);
                         FirebaseDatabase.getInstance().getReference().child("forum").child(key.get(position)).updateChildren(map);
                     }
                 })

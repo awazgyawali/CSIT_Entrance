@@ -34,7 +34,7 @@ public class ScoreboardAdapter extends RecyclerView.Adapter<ScoreboardAdapter.VH
 
     @Override
     public int getItemCount() {
-        return 12;
+        return 13;
     }
 
     @Override

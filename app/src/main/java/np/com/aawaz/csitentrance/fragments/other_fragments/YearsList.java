@@ -38,7 +38,7 @@ public class YearsList extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        LinearLayout que69, que70, que71, que72, que73, que1, que2, que3, que4, que5, que6;
+        LinearLayout que69, que70, que71, que72, que73, que74, que1, que2, que3, que4, que5, que6;
 
         que1 = (LinearLayout) view.findViewById(R.id.question1);
         que2 = (LinearLayout) view.findViewById(R.id.question2);
@@ -51,6 +51,7 @@ public class YearsList extends Fragment {
         que71 = (LinearLayout) view.findViewById(R.id.question2071);
         que72 = (LinearLayout) view.findViewById(R.id.question2072);
         que73 = (LinearLayout) view.findViewById(R.id.question2073);
+        que74 = (LinearLayout) view.findViewById(R.id.question2074);
 
         que69.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,43 +80,50 @@ public class YearsList extends Fragment {
         que73.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clicked(8);
-            }
-        });//assiginig 8 to 2073 question
-        que1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 clicked(4);
             }
         });
-        que2.setOnClickListener(new View.OnClickListener() {
+        que74.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clicked(5);
             }
         });
-        que3.setOnClickListener(new View.OnClickListener() {
+
+        que1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clicked(6);
             }
         });
-        que4.setOnClickListener(new View.OnClickListener() {
+        que2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clicked(7);
             }
         });
-        que5.setOnClickListener(new View.OnClickListener() {
+        que3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicked(8);
+            }
+        });
+        que4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clicked(9);
             }
         });
-        que6.setOnClickListener(new View.OnClickListener() {
+        que5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clicked(10);
+            }
+        });
+        que6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicked(11);
             }
         });
 
@@ -137,8 +145,8 @@ public class YearsList extends Fragment {
     }
 
     public void openFullQuestion(int position) {
-        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.YEAR2073, SPHandler.MODEL5, SPHandler.MODEL6};
+        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
+                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6};
         Intent intent = new Intent(getContext(), FullQuestionActivity.class);
         intent.putExtra("code", codes[position]);
         intent.putExtra("position", position + 1);
@@ -148,8 +156,8 @@ public class YearsList extends Fragment {
     }
 
     public void openQuizQuestion(int position) {
-        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.YEAR2073, SPHandler.MODEL5, SPHandler.MODEL6};
+        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
+                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6};
         Intent intent = new Intent(getContext(), YearQuizActivity.class);
 
         intent.putExtra("code", codes[position]);

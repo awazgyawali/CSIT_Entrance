@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "243712876576-r9ahofm549ajhpq2mc0hqr7plhq4q3f7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "np.com.aawaz.csitentrance",
+            "certificate_hash": "b939d8cf6bfc38216dfb8dde1fe06753e1abe1b8"
+          }
+        },
+        {
+          "client_id": "243712876576-j5hqtg9r6av89lbs49jd9ogoh7rpaobg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "np.com.aawaz.csitentrance",
+            "certificate_hash": "08563de07a19be6fb2ae4953becee2d26465f74d"
+          }
+        },
+        {
           "client_id": "243712876576-n143tklgut5tqn5920u81b19v284jls8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

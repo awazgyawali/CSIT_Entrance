@@ -25,6 +25,7 @@ public class SPHandler {
     public static String YEAR2071 = "year2071";
     public static String YEAR2072 = "year2072";
     public static String YEAR2073 = "year2073";
+    public static String YEAR2074 = "year2074";
     public static String MODEL1 = "model1";
     public static String MODEL2 = "model2";
     public static String MODEL3 = "model3";
@@ -106,12 +107,12 @@ public class SPHandler {
     }
 
     public int getTotalScore() {
-        return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) + getScore(YEAR2073) +
+        return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) + getScore(YEAR2073) + +getScore(YEAR2074) +
                 getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4) + getScore(MODEL5) + getScore(MODEL6);
     }
 
     public int getTotalPlayed() {
-        return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) + getPlayed(YEAR2073) +
+        return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) + getPlayed(YEAR2073) + getPlayed(YEAR2074) +
                 getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4) + getPlayed(MODEL5) + getPlayed(MODEL6);
     }
 
@@ -124,33 +125,35 @@ public class SPHandler {
     }
 
     public String getSubjectCode(int index, int questionNo) {
-        String[][] subjects = {new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},
-                new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH},
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},
-                new String[]{MATH, PHYSICS, CHEMISTRY, ENGLISH}};
+        String[][] subjects = {new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//69
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//70
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//71
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//72
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//73
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//74
+                new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},//model 1
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 2
+                new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},//model 3
+                new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH},//model 4
+                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},//model 5
+                new String[]{MATH, PHYSICS, CHEMISTRY, ENGLISH}};//model 6(ACHS)
         return subjects[index][questionNo / 25];
     }
 
     public int getIndexOfQuestion(int index, String subject) {
 
-        String[][] subjects = {new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},
-                new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH},
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},
-                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},
-                new String[]{MATH, PHYSICS, CHEMISTRY, ENGLISH}};
+        String[][] subjects = {new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//69
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//70
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//71
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//72
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//73
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//74
+                new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},//model 1
+                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 2
+                new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},//model 3
+                new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH},//model 4
+                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},//model 5
+                new String[]{MATH, PHYSICS, CHEMISTRY, ENGLISH}};//model 6(ACHS)
         for (int i = 0; i < 4; i++)
             if (subjects[index][i].equals(subject))
                 return i * 25;

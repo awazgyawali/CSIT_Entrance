@@ -362,7 +362,7 @@ public class MainActivity extends AppCompatActivity {
         if (getToolbarTitle().equals("Play Quiz"))
             menu.findItem(R.id.exam).setVisible(false);
         else
-            menu.findItem(R.id.exam).setVisible(true);
+            menu.findItem(R.id.exam).setVisible(false);//todo next year trigger to turn it on
 
         return super.onPrepareOptionsMenu(menu);
     }

@@ -1,804 +1,804 @@
-//model question4
+//model question 2
 {
   "questions": [
     {
-      "question": "1._____ was present at the party.",
-      "a": "All but she",
-      "b": "All but herself",
-      "c": "All but her",
-      "d": "All but myself",
+      "question": "1. The range of relation R={(1,3),(2,5),(3, 7),(4,9)} is",
+      "a": "{1,2,3,4}",
+      "b": "{3,5,7,9}",
+      "c": "{1,5,7,3}",
+      "d": "{1,5,7,9}",
       "ans": "a"
     },
     {
-      "question": "2.Quinine is a drug ____ malaria.",
-      "a": "for",
-      "b": "to",
-      "c": "against",
+      "question": "2. If A = {1,2,3,4} then the relation on A x A where R = {(1,1),(1,2),(2,1)} is defined by",
+      "a": "{(x,y):y-2x}",
+      "b": "{(x,y):x+y=1}",
+      "c": "{(x,y):x+y<=3}",
+      "d": "{(x,y):x+y<=4}",
+      "ans": "c"
+    },
+    {
+      "question": "3. The equation of straight line parallel to y-axis and passes through (2,3) is",
+      "a": "x=2",
+      "b": "x=3",
+      "c": "y=2",
+      "d": "x=-2",
+      "ans": "a"
+    },
+    {
+      "question": "4. The equation x=0 represents",
+      "a": "the origin",
+      "b": "a line parallel to y-axis",
+      "c": "a line parallel to x-axis",
+      "d": "y-axis",
+      "ans": "d"
+    },
+    {
+      "question": "5. Two vertices of a triangle are (5,9) and (-4,1) then the third vertex if the median meets at (1,1) is",
+      "a": "(3,-1)",
+      "b": "(4,2)",
+      "c": "(2,-7)",
+      "d": "(6,3)",
+      "ans": "c"
+    },
+    {
+      "question": "6.  If (3,3) lies in the line joining the points (h,0) and (0,k) then",
+      "a": "h+k=9",
+      "b": "1/h + 1/k = 1/3",
+      "c": "hk=3",
+      "d": "3h-3k=1",
+      "ans": "b"
+    },
+    {
+      "question": "7. The value of <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> is",
+      "a": "1",
+      "b": "1/2",
+      "c": "-1",
+      "d": "0",
+      "ans": "a"
+    },
+    {
+      "question": "8. <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> =",
+      "a": "cosθ+θsinθ",
+      "b": "sinθ-θcosθ",
+      "c": "cosθ-θsinθ",
+      "d": "θtanθ",
+      "ans": "a"
+    },
+    {
+      "question": "9. Which of the following is null?",
+      "a": "{x:x<sup>2</sup>-2=0,x is irrational}",
+      "b": "{x:x<sup>2</sup>+x+x=0,x is real}",
+      "c": "the set of circles through three collinear points",
+      "d": "all of above",
+      "ans": "d"
+    },
+    {
+      "question": "10. The foot of perpendicular from (α,β,γ) on y-axis is",
+      "a": "(α,0,0)",
+      "b": "(0,β,0)",
+      "c": "(0,0,γ)",
+      "d": "(0,0,0)",
+      "ans": "b"
+    },
+    {
+      "question": "11. <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> =",
+      "a": "1/2",
+      "b": "1/4",
+      "c": "1/3",
+      "d": "1/6",
+      "ans": "a"
+    },
+    {
+      "question": "12.The equation whose roots are reciprocals of roots of the equation 3x<sup>2</sup>-5x-3=0 is",
+      "a": "3x<sup>2</sup>+5x-3=0",
+      "b": "3x<sup>2</sup>-5x-3=0",
+      "c": "3x<sup>2</sup>+5x+3=0",
+      "d": "3x<sup>2</sup>-5x+3=0",
+      "ans": "a"
+    },
+    {
+      "question": "13.If A ={x:2x+1=0 and x is an integer} then A is a",
+      "a": "disjoint set",
+      "b": "power set",
+      "c": "universal set",
+      "d": "null set",
+      "ans": "d"
+    },
+    {
+      "question": "14. The range of the function f(x) = e<sup>x</sup>+1 is",
+      "a": "R",
+      "b": "R-{0}",
+      "c": "(0,∞)",
+      "d": "(-∞,0)",
+      "ans": "a"
+    },
+    {
+      "question": "15. The equation of tangent to the circle x<sup>2</sup>+y<sup>2</sup>=8 at (2,2) is",
+      "a": "x+y=4",
+      "b": "x+y=0",
+      "c": "x-y=4",
+      "d": "x-y=0",
+      "ans": "a"
+    },
+    {
+      "question": "16. The number of real roots of the equation  ax<sup>2</sup>+bx+c=0 (b<sup>2</sup>-4ac<0) are",
+      "a": "1",
+      "b": "2",
+      "c": "4",
+      "d": "0",
+      "ans": "d"
+    },
+    {
+      "question": "17. If A,B,C are any sets then A-(BUC) is equal to",
+      "a": "(A-B)U(A-C)",
+      "b": "(A-B)∩(A-C)",
+      "c": "(A-B)UC",
+      "d": "(A-B)∩C",
+      "ans": "b"
+    },
+    {
+      "question": "18. If cosx=-1/2 and 0<x<360,then the solutions are",
+      "a": "x=60,240",
+      "b": "x=120,240",
+      "c": "x=120,120",
+      "d": "x=120,300",
+      "ans": "b"
+    },
+    {
+      "question": "19. The length of the perpendicular drawn from (2,3) to the line 8x+15y+24=0",
+      "a": "13",
+      "b": "5",
+      "c": "7",
+      "d": "8",
+      "ans": "b"
+    },
+    {
+      "question": "20. If A is symmetric as well as skew symmetric matrix then A is a",
+      "a": "square matrix",
+      "b": "scalar matrix",
+      "c": "null matrix",
+      "d": "identity matrix",
+      "ans": "c"
+    },
+    {
+      "question": "21. The mapping of f:A→B is one to one if",
+      "a": "f(A)=B",
+      "b": "f(A)⊂ B",
+      "c": "f(x)=f(y)→x=y",
+      "d": "none",
+      "ans": "c"
+    },
+    {
+      "question": "22. If sin<sup>2</sup>- 2cosx +1/4 =0 then the general value of x is equal to",
+      "a": "nπ±π/4",
+      "b": "nπ+π/4",
+      "c": "2nπ±π/6",
+      "d": "2nπ±π/3",
+      "ans": "d"
+    },
+    {
+      "question": "23. The remainder when (kx<sup>2</sup>+x+1) is divided by (x+2k) is",
+      "a": "-2k-1",
+      "b": "k-1",
+      "c": "4k<sup>3</sup>+2k",
+      "d": "4k<sup>3</sup>-2k+1",
+      "ans": "d"
+    },
+    {
+      "question": "24. The angle between the pair of lines represented by the equation  12x<sup>2</sup>-10xy+2y<sup>2</sup>+11x-5y+2=0 is",
+      "a": "tan<sup>-1</sup>1/7",
+      "b": "tan<sup>-1</sup>1/5",
+      "c": "cot<sup>-1</sup>1/7",
+      "d": "cot<sup>-1</sup>1/5",
+      "ans": "a"
+    },
+    {
+      "question": "25. In triangle ABC,if A=30°and b:c=2:√3 find angle B",
+      "a": "30°",
+      "b": "60°",
+      "c": "90°",
+      "d": "45°",
+      "ans": "c"
+    },
+    {
+      "question": "26. The word ‘Moresque’ has primary stress on the ______ syllable",
+      "a": "1st",
+      "b": "2nd",
+      "c": "3rd",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "27. Exacerbate is",
+      "a": "vex",
+      "b": "embitter",
+      "c": "exasperate",
+      "d": "all of these",
+      "ans": "c"
+    },
+    {
+      "question": "28. The antonym for ‘boisterous’ is",
+      "a": "justify",
+      "b": "placid",
+      "c": "descend",
+      "d": "deny",
+      "ans": "b"
+    },
+    {
+      "question": "29. Try to make ____ the meaning of this word",
+      "a": "out",
+      "b": "at",
+      "c": "in",
       "d": "on",
       "ans": "a"
     },
     {
-      "question": "3.During rainy season, the Koshi was",
-      "a": "overflew",
-      "b": "overflown",
-      "c": "overfly",
-      "d": "overflying",
-      "ans": "d"
+      "question": "30. She pinned him ____ the bed.",
+      "a": "on",
+      "b": "to",
+      "c": "at",
+      "d": "in",
+      "ans": "b"
     },
     {
-      "question": "4.He is as stubborn as a _____",
-      "a": "Child",
-      "b": "Bull",
-      "c": "Donkey",
-      "d": "Mule",
+      "question": "31. A wise man profits _____ the mistakes of others.",
+      "a": "with",
+      "b": "on",
+      "c": "by",
+      "d": "at",
+      "ans": "c"
+    },
+    {
+      "question": "32. My _____ overlooks the garden.",
+      "a": "room",
+      "b": "cabin",
+      "c": "apartment",
+      "d": "garden",
       "ans": "a"
     },
     {
-      "question": "5.Once you signed ____ the paper, you cannot go back.",
-      "a": "by",
-      "b": "in",
+      "question": "33. She wants someone to help her. The correct passive voice is",
+      "a": "she wants herself to be helped",
+      "b": "she wants to be helped by someone",
+      "c": "she wants being helped by someone",
+      "d": "she wants to be helped",
+      "ans": "b"
+    },
+    {
+      "question": "34. I still recall ____ her in those days.",
+      "a": "to meet",
+      "b": "meeting",
+      "c": "to meeting",
+      "d": "met",
+      "ans": "b"
+    },
+    {
+      "question": "35. When he was class 10, he _____ football.",
+      "a": "was playing",
+      "b": "played",
+      "c": "playing",
+      "d": "had played",
+      "ans": "d"
+    },
+    {
+      "question": "36. They became obliged ____ our favour.",
+      "a": "take",
+      "b": "to take",
+      "c": "to taking",
+      "d": "taking",
+      "ans": "b"
+    },
+    {
+      "question": "37. Dick, along with his friends , _____ in the river.",
+      "a": "was sunk",
+      "b": "was drowned",
+      "c": "were sunk",
+      "d": "were drowned",
+      "ans": "b"
+    },
+    {
+      "question": "38. If she had left her home early, she______ here now.",
+      "a": "would have been",
+      "b": "would be",
+      "c": "may have reached",
+      "d": "can be",
+      "ans": "a"
+    },
+    {
+      "question": "39. One should do ____ duty sincerely if one is a human being.",
+      "a": "his",
+      "b": "her",
+      "c": "one's",
+      "d": "ones",
+      "ans": "c"
+    },
+    {
+      "question": "40. The passive of \"She let us go out\" is",
+      "a": "we are let go out",
+      "b": "we were let go out",
+      "c": "we were let to go out",
+      "d": "we were allowed to go out",
+      "ans": "d"
+    },
+    {
+      "question": "41. Do you think this book is______?",
+      "a": "worth of reading",
+      "b": "worthy reading",
+      "c": "worth in reading",
+      "d": "worth of seeing",
+      "ans": "d"
+    },
+    {
+      "question": "42. Nothing but trees can be seen from my house , _______?",
+      "a": "cant' they?",
+      "b": "can they?",
+      "c": "do they?",
+      "d": "can it?",
+      "ans": "a"
+    },
+    {
+      "question": "43. Kareena and Kaeishma do not resemble _________ each other.",
+      "a": "to",
+      "b": "from",
       "c": "with",
-      "d": "out",
-      "ans": "b"
-    },
-    {
-      "question": "6.The principal told the class____ without permission.",
-      "a": "Not to enter",
-      "b": "Not to have entered",
-      "c": "Not entering",
-      "d": "Do not enter",
-      "ans": "a"
-    },
-    {
-      "question": "7. I must go____ before the shops are closed.",
-      "a": "Shopping",
-      "b": "To shop",
-      "c": "To shopping",
-      "d": "Shop",
-      "ans": "a"
-    },
-    {
-      "question": "8.A horse neighs so as goats ___",
-      "a": "Howl",
-      "b": "Roar",
-      "c": "Bleat",
-      "d": "Grunt",
+      "d": "no preposition",
       "ans": "c"
     },
     {
-      "question": "9.The teacher has authority ___ his students",
-      "a": "To",
-      "b": "Over",
-      "c": "With",
-      "d": "For",
-      "ans": "b"
-    },
-    {
-      "question": "10.This is the place ____ we lived in",
-      "a": "Where",
-      "b": "Which",
-      "c": "When",
-      "d": "How",
-      "ans": "a"
-    },
-    {
-      "question": "11.They have gone shopping,____?",
-      "a": "Haven’t they",
-      "b": "didn’t they",
-      "c": "Had they",
-      "d": "Have they",
-      "ans": "a"
-    },
-    {
-      "question": "12.Only after meeting him,___ him well",
-      "a": "Did I know",
-      "b": "Had I know",
-      "c": "Had I known",
-      "d": "I know",
-      "ans": "a"
-    },
-    {
-      "question": "13.Which of the following is not a synonym of splendid",
-      "a": "Superb",
-      "b": "Sordid",
-      "c": "Excellent",
-      "d": "Marvelous",
-      "ans": "b"
-    },
-    {
-      "question": "14.Feminine of deer is",
-      "a": "Do",
-      "b": "Doa",
-      "c": "Doe",
-      "d": "Dode",
+      "question": "44. How many syllables does the word ‘headmaster’ have?",
+      "a": "1",
+      "b": "2",
+      "c": "3",
+      "d": "4",
       "ans": "c"
     },
     {
-      "question": "15. ____ I open the present for you?",
-      "a": "Would",
-      "b": "Must",
-      "c": "Shall",
-      "d": "Do",
-      "ans": "c"
-    },
-    {
-      "question": "16.He is ___ man of high esteem",
-      "a": "an",
-      "b": "a",
-      "c": "some",
-      "d": "none",
-      "ans": "b"
-    },
-    {
-      "question": "17.He has a remarkable ____ for the arts.",
-      "a": "Talence",
-      "b": "Talency",
-      "c": "Talent",
-      "d": "Talents",
-      "ans": "c"
-    },
-    {
-      "question": "18.Snow is falling ____north of the mountains",
-      "a": "Into",
-      "b": "Over",
-      "c": "Off",
-      "d": "Down",
-      "ans": "b"
-    },
-    {
-      "question": "19.I don’t think he ___ come to the meeting tomorrow.",
-      "a": "Would",
-      "b": "Shall",
-      "c": "Used to",
-      "d": "Might",
+      "question": "45. The pair ______ has the same pronunciation.",
+      "a": "sun,son",
+      "b": "set,seat",
+      "c": "fool,full",
+      "d": "hut,hat",
       "ans": "a"
     },
     {
-      "question": "20.He is ___one eyed man.",
-      "a": "the",
-      "b": "a",
-      "c": "an",
-      "d": "none",
-      "ans": "b"
-    },
-    {
-      "question": "21.The study of the mountains",
-      "a": "geology",
-      "b": "geography",
-      "c": "chromatics",
-      "d": "orology",
-      "ans": "b"
-    },
-    {
-      "question": "22.The opposite of the word pernicious is",
-      "a": "beneficial",
-      "b": "advantageous",
-      "c": "satisfactory",
-      "d": "fair",
-      "ans": "a"
-    },
-    {
-      "question": "23.Grandma is ____ the visit of her grand children.",
-      "a": "Looking forward",
-      "b": "Looking into",
-      "c": "Looking for",
-      "d": "Looking forward to",
-      "ans": "d"
-    },
-    {
-      "question": "24.Shyam has done this work and ____.",
-      "a": "So did I",
-      "b": "So am I",
-      "c": "So have I",
-      "d": "So has I",
+      "question": "46. It’s time we ____ our lunch.",
+      "a": "had",
+      "b": "have",
+      "c": "should have",
+      "d": "will have",
       "ans": "c"
     },
     {
-      "question": "25.He____ in plane crash",
-      "a": "Died",
-      "b": "Has died",
-      "c": "Have died",
-      "d": "In dying",
+      "question": "47. “Do as you are told” is a _________ sentence.",
+      "a": "simple",
+      "b": "complex",
+      "c": "compound",
+      "d": "optative",
       "ans": "a"
     },
     {
-      "question": "26.The dimension (M<sup>1</sup>L<sup>2</sup>T<sup>-2</sup>) refers to a physical quantity that has unit:",
-      "a": "Joule",
-      "b": "Pascal",
-      "c": "Newton",
-      "d": "Watt",
-      "ans": "d"
+      "question": "48. The antonym of ‘latent’ is",
+      "a": "hidden",
+      "b": "forbidding",
+      "c": "obvious",
+      "d": "artificial",
+      "ans": "c"
     },
     {
-      "question": "27.Which of the following is not a vector quantity",
-      "a": "Angular momentum",
-      "b": "Magnetic intensity ",
-      "c": "Torque",
-      "d": "Energy",
+      "question": "49. If she had left her home early, she ______ here now.",
+      "a": "would have been",
+      "b": "would be",
+      "c": "may have reached",
+      "d": "can be",
       "ans": "a"
     },
     {
-      "question": "28.Whatever may be the direction of the two forces 6N and 2N acting on a body of mass 2Kg,the minimum acceleration of the body cannot be less than",
-      "a": "4m/s<sup>2</sup>",
-      "b": "2m/s<sup>2</sup>",
-      "c": "2.5m/s<sup>2</sup>",
-      "d": "3m/s<sup>2</sup>",
+      "question": "50. ‘Is it going to rain?’ It’s incorrect answer is",
+      "a": "i don’t hope so",
+      "b": "I hope not",
+      "c": "I don’t suppose so",
+      "d": "I suppose not",
       "ans": "b"
     },
     {
-      "question": "29.A body is moved through certain distance from rest under constant force. Then K.E. gained by the body is",
-      "a": "Directly proportional to its mass ",
-      "b": "Inversely proportional to its mass",
-      "c": "Directly proportional to square root of mass",
-      "d": "Independent of its mass",
-      "ans": "d"
-    },
-    {
-      "question": "30.A particle moves in a circle of radius 25cm at 2 rev/sec, the acceleration of the particle in m/s<sup>2</sup> is ",
-      "a": "л<sup>2</sup>",
-      "b": "4л<sup>2</sup>",
-      "c": "2л<sup>2</sup>",
-      "d": "8л<sup>2</sup>",
+      "question": "51. At top of trajectory of a projectile, the direction of its velocity and acceleration are",
+      "a": "perpendicular to each other",
+      "b": "parallel to each other",
+      "c": "anti-parallel to each other",
+      "d": "inclined at angle of 45°",
       "ans": "a"
     },
     {
-      "question": "31.The absolute zero temperature is",
-      "a": "-273°C ",
-      "b": "-273K ",
-      "c": "-273.14°C",
-      "d": "-273.16°C",
-      "ans": "d"
-    },
-    {
-      "question": "32.Melting point of ice",
-      "a": "Decrease with the decrease of pressure",
-      "b": "Increase with the increase of pressure",
-      "c": "Is independent of pressure ",
-      "d": "Decrease with the increase of pressure",
-      "ans": "d"
-    },
-    {
-      "question": "33.All gas at same temperature have same",
-      "a": "K.E",
-      "b": "Density",
-      "c": "RMS speed",
-      "d": "None of the above",
-      "ans": "d"
-    },
-    {
-      "question": "34.The rate of loss of heat from a body depends on the",
-      "a": "Temperature of the body",
-      "b": "Excess temperature of body over the surrounding",
-      "c": "Thermal capacity of the body",
-      "d": "The temperature of the surrounding",
-      "ans": "b"
-    },
-    {
-      "question": "35.The energy of molecular motion is expressed as:",
-      "a": "Friction",
-      "b": "Internal energy",
-      "c": "Temperature",
-      "d": "Potential energy",
-      "ans": "b"
-    },
-    {
-      "question": "36.The velocity of sound in air is independent of change in",
-      "a": "Pressure",
-      "b": "Density",
-      "c": "Temperature",
-      "d": "Humidity",
-      "ans": "c"
-    },
-    {
-      "question": "37.Sound waves having the following frequencies are audible to human beings",
-      "a": "5c/s",
-      "b": "27000c/s",
-      "c": "5000c/s",
-      "d": "50,000c/s",
-      "ans": "c"
-    },
-    {
-      "question": "38.When a mirror is rotated through an angle 30°keeping incident ray constant then reflected ray is rotated through an angle",
-      "a": "25°",
-      "b": "60°",
-      "c": "45°",
-      "d": "90°",
-      "ans": "b"
-    },
-    {
-      "question": "39.When light passes through glass slab",
-      "a": "Wavelength decreases",
-      "b": "Wavelength increases",
-      "c": "Velocity increases",
-      "d": "Frequency decreases",
+      "question": "52. A body of mass m is taken from the surface of earth to a height equal to a height equal to radius of earth. The change in GPE is",
+      "a": "2MgR",
+      "b": "MgR",
+      "c": "MgR/2",
+      "d": "MgR/4",
       "ans": "a"
     },
     {
-      "question": "40.In an interference pattern minima are obtained when phase difference between interfering waves is",
-      "a": "π/2",
-      "b": "2π",
-      "c": "nπ/2",
-      "d": "(2n-1)π",
+      "question": "53. The frequency of the sound of a car horn as percieved as an observer towards whom the car is moving increases due to",
+      "a": "increase in wavelength",
+      "b": "decrease in wavelength",
+      "c": "increase in velocity",
+      "d": "decrease in velocity",
+      "ans": "b"
+    },
+    {
+      "question": "54. Two metal straps that constitute the thermostat must necessarily differ in their",
+      "a": "mass",
+      "b": "length",
+      "c": "resistivity",
+      "d": "coeff. of linear expansion",
       "ans": "d"
     },
     {
-      "question": "41.X-rays are produced by energy changes in",
-      "a": "Electrons close to the nucleus",
-      "b": "Electrons far from the nucleus",
-      "c": "Electrons and protons",
-      "d": "The nucleus",
-      "ans": "d"
-    },
-    {
-      "question": "42.When a woolen sweater worm over a nylon shirt is removed. Sparking is observed due to",
-      "a": "Static electricity",
-      "b": "Current electricity",
-      "c": "None",
-      "d": "Both",
-      "ans": "b"
-    },
-    {
-      "question": "43.The potential difference between the two charged parallel plates separated by 1mm is 100V, then the electric field produced is",
-      "a": "10<sup>-5</sup>V/m",
-      "b": "10<sup>5</sup>V/m",
-      "c": "10<sup>3</sup>V/m",
-      "d": "10<sup>-3</sup>V/m",
-      "ans": "b"
-    },
-    {
-      "question": "44.The dielectric constant <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAUCAIAAAAY12rUAAABd0lEQVR4nGP5//8/AzUAC1VMGSCD/v3++esvOBwYWdjZWRhJNOjX88PzeyfMWbHjzNNvUCFGy1kPD6fKMhNt0P+vV+emB+Vt4fBKTepa0SEjxAHWy8Qtpy/DjK4Yp0H/P51ocveaJ9169GG6IT8TIYfjMujvy43pAVPEJ51dHiPHStAQ3AZ9O9Oeu+LlG65cA/E8FAk2tfxdB+r1OIg06Ou5mUueyMS0V1jyocYNI5eqryYWU3AY9Pfd1UtvGRT9UrNDhbFqItYgJi4RQRaGk8v2vwwOEScczLgNYhS0zw8T9l0WZhNWWx5pIc/PCvIgE6eMsaUGzvjDGkZMIt6zjywRya6b25S6FibI5rLs4U4N/u83pvr773JIUb+4n7tyXb0BBz6DQKGqET1xb/RETBkOYeH/jIJasc050V/YkcKd5Ez789HZz0bRzhLsvAzsyOKkGvT/y92rzHopmEmAVIOADnoj5SCBmdpJNYjDqPPUamwSVCvYAJMDcXHDkdQsAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\"> is given by the relation",
-      "a": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAUCAIAAAAY12rUAAABd0lEQVR4nGP5//8/AzUAC1VMGSCD/v3++esvOBwYWdjZWRhJNOjX88PzeyfMWbHjzNNvUCFGy1kPD6fKMhNt0P+vV+emB+Vt4fBKTepa0SEjxAHWy8Qtpy/DjK4Yp0H/P51ocveaJ9169GG6IT8TIYfjMujvy43pAVPEJ51dHiPHStAQ3AZ9O9Oeu+LlG65cA/E8FAk2tfxdB+r1OIg06Ou5mUueyMS0V1jyocYNI5eqryYWU3AY9Pfd1UtvGRT9UrNDhbFqItYgJi4RQRaGk8v2vwwOEScczLgNYhS0zw8T9l0WZhNWWx5pIc/PCvIgE6eMsaUGzvjDGkZMIt6zjywRya6b25S6FibI5rLs4U4N/u83pvr773JIUb+4n7tyXb0BBz6DQKGqET1xb/RETBkOYeH/jIJasc050V/YkcKd5Ez789HZz0bRzhLsvAzsyOKkGvT/y92rzHopmEmAVIOADnoj5SCBmdpJNYjDqPPUamwSVCvYAJMDcXHDkdQsAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">=<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAUCAIAAAB5z0iWAAAB/ElEQVR4nGP5//8/w0ADloF2AAgMNUf8+/3z119w3DGysLOzMFJPI0FH/Hp+eH7vhDkrdpx5+g0qxGg56+HhVFlmqmnE54j/X6/OTQ/K28LhlZrUtaJDRogDrJ2JW05fBq8LSNWI0xH/P51ocveaJ9169GG6IT8TPjsp1ojDEX9fbkwPmCI+6ezyGDlW4h1Apkbsjvh2pj13xcs3XLkG4nkoEmxq+bsO1Otx4DKOPI1YHfH13MwlT2Ri2iss+VCTMiOXqq8mTheQrRGbI/6+u3rpLYOiX2p2qDBuC6moEZsjmLhEBFkYTi7b/zI4RJyEJElA47cr08tmv5bleXxftqA/Q5sTvyMYBe3zw4R9l4XZhNWWR1rI87OCwpaJU8bYUgOU3H9cbrK2mCQx7dzGeDkWYjXyvt5UvVKxZ3ex3PVa+8pNQRvCxeDOxJommES8Zx9ZIpJdN7cpdS1MkM1l2cOdGvwg5v////7/+/ePJI2sd/be5PYXY2VglzMRuLnl9o9wMS68jgAlJI3oiXujJ2KV5NCrP/+tnkSNn7+9/83OCvI8Ezvnnw/f/iLJ0a0CY+YWYvv5CxR6f79/YxXiRi456eYIDhVntS83Xv725Xh05oO6iypyfqWbI5jEfFvCivoaWwSev01s9xFFzjx0bE9w6WbPmIFVZlA0agC2p+8lM05juwAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
-      "b": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAUCAIAAAAY12rUAAABd0lEQVR4nGP5//8/AzUAC1VMGSCD/v3++esvOBwYWdjZWRhJNOjX88PzeyfMWbHjzNNvUCFGy1kPD6fKMhNt0P+vV+emB+Vt4fBKTepa0SEjxAHWy8Qtpy/DjK4Yp0H/P51ocveaJ9169GG6IT8TIYfjMujvy43pAVPEJ51dHiPHStAQ3AZ9O9Oeu+LlG65cA/E8FAk2tfxdB+r1OIg06Ou5mUueyMS0V1jyocYNI5eqryYWU3AY9Pfd1UtvGRT9UrNDhbFqItYgJi4RQRaGk8v2vwwOEScczLgNYhS0zw8T9l0WZhNWWx5pIc/PCvIgE6eMsaUGzvjDGkZMIt6zjywRya6b25S6FibI5rLs4U4N/u83pvr773JIUb+4n7tyXb0BBz6DQKGqET1xb/RETBkOYeH/jIJasc050V/YkcKd5Ez789HZz0bRzhLsvAzsyOKkGvT/y92rzHopmEmAVIOADnoj5SCBmdpJNYjDqPPUamwSVCvYAJMDcXHDkdQsAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">=<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAAWCAIAAADvvEO/AAADC0lEQVR4nGP5//8/wyAGLISV/L6/fvnnoHh92jsGBUACjrD7/r2/eV/cmPbuwQ4Iu+/b/TuSKs4DlQwIuu/n05ss6rqs9HALNkDIff/e336jYslJ2KB/v3/++gsOY0YWdnYWRqJdgF8jIfd9uXdXRsUDp22/nh+e3zthzoodZ55+gwoxWs56eDhVlhm/ucRqJOC+H49vcqobYlX0/+vVuelBeVs4vFKTulZ0yAhxgE1m4pbTl8HrOJI04nff3ze33qs5YInd/59ONLl7zZNuPfow3ZCfCa8hFGnE777Pdx8oKPNhCP99uTE9YIr4pLPLY+RIyjmka0Rz378Pp2Z0X3auS1ZnB/K+P7rFp2aOEebfzrTnrnj5hivXQDwPRYJNLX/XgXo9DlyWkaER2X3/P56c3Lvrwd5VdwKi+kw5Gf68uvlFzQ1D09dzM5c8kYlpr7DkQ803jFyqvpo4HUeeRmT3MfKb5zebvtY/6zT79BdTO+5Pdx4pafKg6/j77uqltwyKfqnZocK43YIFkKURI/0xibhk6jfNOPLB1u7BLSE1G4zYZeISEWRhOLls/8vgEHEScgYBjd+uTC+b/VqW5/F92YL+DG1YnsTMH4wCNpk25d17nyn//KXhy44pL2ifHybsuyzMJqy2PNJCnp8VFFlMnDLGlhqgDPnjcpO1xSSJaec2xsuxEKuR9/Wm6pWKPbuL5a7X2lduCtoQLsaEw30MDNzGaZ6PS5cfdtH05sYWDiLes48sEcmum9uUuhYmyOay7OFODX4Q8///f////ftHkkbWO3tvcvuLsTKwy5kI3Nxy+0e4GBdO9zFwaMWHvLZfyHYoBnv8MXJpRE/cGz0RqySHXv35b/VYpXBr/Pzt/W92VpBtTOycfz58+wuTwF7+salEZjk815Bhw24N9QEztxDbz1+gMP/7/RurEDc81eMon1kU0lZOopPbQIBDxVnty42Xv305Hp35oO6iCi9siGg/0wMwifm2hBX1NbYIPH+b2O4jCk9Xg8R9DAxcutkzZmAKDxr34QAAv5RO5KHMelwAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
-      "c": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAUCAIAAAAY12rUAAABd0lEQVR4nGP5//8/AzUAC1VMGSCD/v3++esvOBwYWdjZWRhJNOjX88PzeyfMWbHjzNNvUCFGy1kPD6fKMhNt0P+vV+emB+Vt4fBKTepa0SEjxAHWy8Qtpy/DjK4Yp0H/P51ocveaJ9169GG6IT8TIYfjMujvy43pAVPEJ51dHiPHStAQ3AZ9O9Oeu+LlG65cA/E8FAk2tfxdB+r1OIg06Ou5mUueyMS0V1jyocYNI5eqryYWU3AY9Pfd1UtvGRT9UrNDhbFqItYgJi4RQRaGk8v2vwwOEScczLgNYhS0zw8T9l0WZhNWWx5pIc/PCvIgE6eMsaUGzvjDGkZMIt6zjywRya6b25S6FibI5rLs4U4N/u83pvr773JIUb+4n7tyXb0BBz6DQKGqET1xb/RETBkOYeH/jIJasc050V/YkcKd5Ez789HZz0bRzhLsvAzsyOKkGvT/y92rzHopmEmAVIOADnoj5SCBmdpJNYjDqPPUamwSVCvYAJMDcXHDkdQsAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">=<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAoCAIAAABihA14AAACGElEQVR4nGP5//8/A7UBC9VNHGSG/vv989dfcLgxsrCzszBSYOiv54fn906Ys2LHmaffoEKMlrMeHk6VZSbL0P9fr85ND8rbwuGVmtS1okNGiANsDhO3nL4MM7piogz9/+lEk7vXPOnWow/TDfmZCKonwtC/LzemB0wRn3R2eYwcKzFuIMLQb2fac1e8fMOVayCehyLBppa/60C9HgcZhn49N3PJE5mY9gpLPtQ4ZuRS9dXEYiIRhv59d/XSWwZFv9TsUGFC9hNtKBOXiCALw8ll+18Gh4gTjiLiDGUUtM8PE/ZdFmYTVlseaSHPzwoKBCZOGWNLDZzpgGCYMol4zz6yRCS7bm5T6lqYIJvLsoc7NfjJdSnIsVwa0RP3Rk8krJIEQ0kHQ9dQRkZGrOoIAuQahC4upUqVNXQjCj/AXzWRZCixVROxhpJUNRFlKKlVExGGkl41ETaUjKqJoKHkVE2EDCWraiJkKP6q6duV6WWzX8vyPL4vW9Cfoc1JpKH4qibe15uqVyr27C6Wu15rX7kpaEO4GJq1uMIUT9XEemfvTW5/MVYGdjkTgZtbbv8IF+MizlA8VdPnb+9/s7OCHMfEzvnnw7e/GCrIKFCYuYXYfv76B2T9/f6NVYgbM2eRYSiHirPalxsvf/tyPDrzQd1FFTN9kWEok5hvS1hRX2OLwPO3ie0+opj5l6zylEs3e8YMPPI0KaQB4CDlhL3uICMAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
-      "d": "None",
-      "ans": "c"
-    },
-    {
-      "question": "45.In a parallel plate capacitor force on each plate is",
-      "a": "q<sup>2</sup>/εo",
-      "b": "q<sup>2</sup>/Aεo",
-      "c": "q<sup>2</sup>/2Aεo",
-      "d": "Zero",
-      "ans": "c"
-    },
-    {
-      "question": "46.If the power of a heater is 1W and 1A of current is passed through it. Then find the resistance",
-      "a": "4.2Ω",
-      "b": "4200Ω",
-      "c": "1Ω",
-      "d": "0.1Ω",
-      "ans": "c"
-    },
-    {
-      "question": "47.Wheatstone measures",
-      "a": "Potential",
-      "b": "emf",
-      "c": "Resistance",
-      "d": "Current",
-      "ans": "c"
-    },
-    {
-      "question": "48.S.I. unit equivalent to the magnetic field Tesla(T) may be",
-      "a": "Vsm<sup>2</sup>",
-      "b": "Vsm<sup>-2</sup>",
-      "c": "Vs<sup>-1</sup>m<sup>2</sup>",
-      "d": "Vs<sup>-1</sup>m<sup>-2</sup>",
-      "ans": "b"
-    },
-    {
-      "question": "49.Which of the following is used in the core of an electromagnet",
-      "a": "Soft magnet",
-      "b": "Soft steel",
-      "c": "Soft aluminum",
-      "d": "Soft zinc",
-      "ans": "b"
-    },
-    {
-      "question": "50.A magnet is moved towards a coil through a certain distance slowly in one case and quickly in second case. The emf induced is",
-      "a": "More in first case",
-      "b": "More in second case",
-      "c": "Equal in both cases",
-      "d": "Zero in both case",
-      "ans": "b"
-    },
-    {
-      "question": "51.Deliquescent salts can be used as",
-      "a": "Oxidizing agent",
-      "b": "Cleansing agent",
-      "c": "Drying agent",
-      "d": "Antiseptic",
-      "ans": "b"
-    },
-    {
-      "question": "52.In the ideal gas equation PV=nRT, the value of gas constant depend only on",
-      "a": "The pressure of the gas",
-      "b": "The units of measurement",
-      "c": "The nature of the gas",
-      "d": "The volume of the gas",
-      "ans": "b"
-    },
-    {
-      "question": "53.Equal weights of methane and hydrogen are mixed in an empty vessel at 25°C. The fraction of total pressure exerted by hydrogen is",
-      "a": "1/2",
-      "b": "1/3",
-      "c": "1/9",
-      "d": "8/9",
-      "ans": "d"
-    },
-    {
-      "question": "54.Equivalent mass of a bivalent metal is 32.75 molecular mass of its chloride is",
-      "a": "68.25",
-      "b": "103.75",
-      "c": "101.00",
-      "d": "136.50",
-      "ans": "d"
-    },
-    {
-      "question": "55.Two electrons in an orbital are distinguished by the quantum number",
-      "a": "n",
-      "b": "l",
-      "c": "m",
-      "d": "s",
-      "ans": "d"
-    },
-    {
-      "question": "56.The bond in HCl molecule in the vapor state is an example of",
-      "a": "Non polar bond",
-      "b": "Polar covalent bond",
-      "c": "Ionic bond",
-      "d": "Pure covalent bond",
-      "ans": "c"
-    },
-    {
-      "question": "57.Electron affinity is maximum in the case of",
-      "a": "Cl",
-      "b": "F",
-      "c": "B",
-      "d": "N",
+      "question": "55. In Carnot engine, the temperature of the working substance at the end of the cycle is",
+      "a": "equal to that at the beginning",
+      "b": "less than that at the beginning",
+      "c": "more than that at the beginning",
+      "d": "depends on the amount of heat rejected to the sink",
       "ans": "a"
     },
     {
-      "question": "58.Which of the following species can act both as an acid and as a base",
-      "a": "H<sub>3</sub>O<sup>+</sup>",
-      "b": "HSO<sub>4</sub><sup>-</sup>",
-      "c": "HCO<sub>3</sub><sup>-</sup>",
-      "d": "Cl<sup>-</sup>",
+      "question": "56. The critical angle of light passing from glass to air is minimum for",
+      "a": "red",
+      "b": "green",
+      "c": "yellow",
+      "d": "violet",
+      "ans": "d"
+    },
+    {
+      "question": "57. During production of X-rays",
+      "a": "conversion of KE to radiant energy",
+      "b": "conservation of momentum",
+      "c": "conservation of mass to energy",
+      "d": "conservation of electric charge",
+      "ans": "a"
+    },
+    {
+      "question": "58. On increasing the reverse bias to a large value in PN junction diode, current",
+      "a": "increases slowly",
+      "b": "remains fixed",
+      "c": "suddenly increases",
+      "d": "decreases slowly",
+      "ans": "a"
+    },
+    {
+      "question": "59. A body is moving along a straight line by a machine delivering constant power. The distance moved by the body in time t is proportional to",
+      "a": "t<sup>1/3</sup>",
+      "b": "t<sup>3/4</sup>",
+      "c": "t<sup>3/2</sup>",
+      "d": "t<sup>2</sup>",
+      "ans": "c"
+    },
+    {
+      "question": "60. A body is moving with constant speed v in a circle of radius r. Its angular acceleration is",
+      "a": "vr",
+      "b": "v/r",
+      "c": "zero",
+      "d": "v<sup>2</sup>/r",
+      "ans": "d"
+    },
+    {
+      "question": "61. Melting point of ice",
+      "a": "increases with increased pressure",
+      "b": "decreases with increased pressure",
+      "c": "is independent of pressure",
+      "d": "is proportional to pressure",
       "ans": "b"
     },
     {
-      "question": "59.In which of the following reaction is H2 acting as oxidizing agent?",
-      "a": "CuO+H<sub>2</sub> →Cu+H<sub>2</sub>O",
-      "b": "Ca+H<sub>2</sub>→CaH<sub>2</sub>",
-      "c": "H<sub>2</sub>+Cl<sub>2</sub>→HCl",
-      "d": "N<sub>2</sub>+3H<sub>2</sub>→2NH<sub>3</sub>",
+      "question": "62. The root mean square velocity of gas molecules of mass m at a given temp is proportional to",
+      "a": "m<sup>0</sup>",
+      "b": "m",
+      "c": "m<sup>1/2</sup>",
+      "d": "m<sup>-1/2</sup>",
+      "ans": "c"
+    },
+    {
+      "question": "63. To get three images of straight object, one should have two plane mirrors of angles",
+      "a": "60°",
+      "b": "90°",
+      "c": "120°",
+      "d": "30°",
       "ans": "b"
     },
     {
-      "question": "60.When 100 ml of 1M solution of H<sub>2</sub>SO<sub>4</sub> and 20 ml of 5M NaOH are mixed, the resulting solution would be",
-      "a": "Acidic",
-      "b": "Weakly alkaline",
-      "c": "Strongly alkaline",
-      "d": "Neutral",
+      "question": "64. If T is reverberation time of an auditorium of volume v then",
+      "a": "T α 1/V",
+      "b": "T α 1/√2",
+      "c": "T α V<sup>2</sup>",
+      "d": "T α V",
       "ans": "a"
     },
     {
-      "question": "61.Which pure substance will not conduct electricity?",
-      "a": "Liquefied HCl",
-      "b": "Molten NaCl",
-      "c": "Molten KOH",
-      "d": "Liquid Na",
+      "question": "65. The force between two short electric dipoles separated by a distance r varies as",
+      "a": "r<sup>2</sup>",
+      "b": "r<sup>4</sup>",
+      "c": "r<sup>-2</sup>",
+      "d": "<sup>-4</sup>",
       "ans": "c"
     },
     {
-      "question": "62.The oxidation of SO<sub>2</sub> by O<sub>2</sub> to form SO<sub>3</sub> is an exothermic reaction. Production of SO<sub>3</sub> will be maximum",
-      "a": "If temperature is raised",
-      "b": "If temperature is decreased",
-      "c": "If concentration of SO<sub>2</sub> is decreased",
-      "d": "If concentration of O<sub>2</sub> is decreased",
+      "question": "66. The sensitivity of potentiometer can be increased by",
+      "a": "increasing the emf of the cell",
+      "b": "increasing length of potentiometer wire",
+      "c": "decreasing the length of potentiometer wire",
+      "d": "decreasing emf of battery of main current",
       "ans": "b"
     },
     {
-      "question": "63.The process which is catalyzed by one of the product is known as",
-      "a": "Acid catalysis",
-      "b": "Positive catalysis",
-      "c": "Anti-catalysis",
-      "d": "Auto-catalysis",
-      "ans": "d"
-    },
-    {
-      "question": "64.In electrolysis of CuSO<sub>4</sub> solution between Pt-electrodes",
-      "a": "O<sub>2</sub> is liberated at anode",
-      "b": "H<sub>2</sub> is liberated at cathode",
-      "c": "SO<sub>2</sub> is liberated at anode",
-      "d": "Cu++ is discharged at anode",
-      "ans": "a"
-    },
-    {
-      "question": "65.Precipitation takes place when the ionic product is",
-      "a": "Zero",
-      "b": "Unity",
-      "c": "Less than solubility product",
-      "d": "More than solubility product",
-      "ans": "d"
-    },
-    {
-      "question": "66.Living in the atmosphere of Carbon monoxide is dangerous because it",
-      "a": "Combines with hemoglobin and makes it incapable to absorb O<sub>2</sub>",
-      "b": "Dries up blood",
-      "c": "Combines with oxygen present inside to form CO<sub>2</sub>",
-      "d": "Reduces organic matter of tissues",
-      "ans": "a"
-    },
-    {
-      "question": "67.Yellow color of HNO<sub>3</sub> is due to the presence of",
-      "a": "N<sub>2</sub>O",
-      "b": "NO",
-      "c": "NO<sub>2</sub>",
-      "d": "N<sub>2</sub>O<sub>5</sub>",
-      "ans": "d"
-    },
-    {
-      "question": "68.When SO<sub>2</sub> is passed through acidified solution of H<sub>2</sub>S",
-      "a": "H<sub>2</sub>SO<sub>3</sub> is formed",
-      "b": "H<sub>2</sub>SO<sub>2</sub> is formed",
-      "c": "H<sub>2</sub>SO<sub>4</sub> is formed",
-      "d": "S is precipitated",
+      "question": "67. A proton and an alpha particle are accelerated through same kinetic field. The ratio of their de-Broglie wavelength is",
+      "a": "1:1",
+      "b": "√2:1",
+      "c": "2:1",
+      "d": "4:1",
       "ans": "c"
     },
     {
-      "question": "69.The compound having highest boiling point",
-      "a": "HF",
-      "b": "HCl",
-      "c": "HBr",
-      "d": "HI",
-      "ans": "d"
-    },
-    {
-      "question": "70.Which of the following processes involves the smelting process?",
-      "a": "Al<sub>2</sub>O<sub>3</sub>.2H<sub>2</sub>O→Al<sub>2</sub>O<sub>3</sub>+2H<sub>2</sub>O",
-      "b": "ZnCO<sub>3</sub>→Zn+CO<sub>2</sub>",
-      "c": "2PbS+O<sub>2</sub>→2PbO+2SO<sub>2</sub>",
-      "d": "Fe<sub>2</sub>O<sub>3</sub>+3C→2Fe+3CO",
-      "ans": "d"
-    },
-    {
-      "question": "71.In Down’s process for manufacture of metallic sodium a small amount of CaCl<sub>2</sub> is added to",
-      "a": "Increase the electrical conductivity",
-      "b": "Lower melting point of NaCl",
-      "c": "Increase the temperature of electrolysis",
-      "d": "Stabilize the metallic sodium",
-      "ans": "b"
-    },
-    {
-      "question": "72.Which of the following is malachite ore",
-      "a": "Cu<sub>2</sub>S",
-      "b": "Cu<sub>2</sub>O ",
-      "c": "CuCO<sub>3</sub>",
-      "d": "CuCO<sub>3</sub>.Cu(OH)<sub>2</sub>",
-      "ans": "d"
-    },
-    {
-      "question": "73.Cosmetic powders and zinc ointments contain",
-      "a": "ZnO",
-      "b": "ZnCO<sub>3</sub>",
-      "c": "Zn(NO<sub>3</sub>)<sub>2</sub>",
-      "d": "ZnSO<sub>4</sub>",
-      "ans": "b"
-    },
-    {
-      "question": "74.Rusting of iron in moist air involves",
-      "a": "Loss of electrons by Fe",
-      "b": "Gain of electrons by Fe",
-      "c": "Dehydration of Fe",
-      "d": "Hydration of Fe",
-      "ans": "a"
-    },
-    {
-      "question": "75.Aromacity of benzene is due to",
-      "a": "Ring",
-      "b": "Hyper conjugation",
-      "c": "Three double bonds",
-      "d": "Delocalization of electrons",
-      "ans": "d"
-    },
-    {
-      "question": "76.If A and B are two sets, and ɸ is null set, which of the following is true?",
-      "a": "A ⊆ A∩B",
-      "b": "B ⊆ A∩B",
-      "c": "AUB ⊆ A∩B",
-      "d": "ɸ ⊆ A∩B",
-      "ans": "d"
-    },
-    {
-      "question": "77.If x and y are any two real numbers, which of the following is true?",
-      "a": "x<y→-x>-y",
-      "b": "–x<y",
-      "c": "-y<x ",
-      "d": "x=y",
-      "ans": "a"
-    },
-    {
-      "question": "78.Which of the following is true?",
-      "a": "The set of natural numbers is dense",
-      "b": "The set of whole numbers is dense",
-      "c": "The set of integers is dense",
-      "d": "The set of real numbers is dense",
-      "ans": "c"
-    },
-    {
-      "question": "79.When is the assertion “|x|<a ↔ -a<x<a” true?",
-      "a": "xЄIR, aЄIR",
-      "b": "xЄIR, aЄC",
-      "c": "xЄC, aЄIR",
-      "d": "xЄIR, a>0, aЄIR",
-      "ans": "a"
-    },
-    {
-      "question": "80.Which of the following is false?",
-      "a": "The statement pV~p is always true",
-      "b": "The statement p^~p is always true",
-      "c": "The statement p is neither true nor false",
-      "d": "The statement ~p is either true or false",
-      "ans": "c"
-    },
-    {
-      "question": "81.When is a function f: A→B injective?",
-      "a": "For some x, yЄA, x≠y→f(x)≠f(y)",
-      "b": "For any x, yЄA, x=y→f(x)≠f(y)",
-      "c": "For any x, yЄA, x≠y→f(x)≠f(y)",
-      "d": "For any x, yЄA, x≠y→f(x)=f(y)",
-      "ans": "d"
-    },
-    {
-      "question": "82.Which of the following is true about the graph of a function f: IR→IR?",
-      "a": "A line parallel to x-axis must meet the graph",
-      "b": "A line parallel to x-axis must not meet the graph",
-      "c": "A line parallel to y-axis must not meet at two points of the graph",
-      "d": "A line parallel to y-axis must not meet the graph",
-      "ans": "c"
-    },
-    {
-      "question": "83.If a, x, y are real numbers a>0 and a<sup>x</sup>=y, then which of the following is true?",
-      "a": "log<sub>x</sub>y=a",
-      "b": "log<sub>a</sub>y=x",
-      "c": "log<sub>a</sub>x=y",
-      "d": "log<sub>y</sub>a=x",
-      "ans": "a"
-    },
-    {
-      "question": "84.Which of the following is a transcendental function?",
-      "a": "y=3x<sup>2</sup>-5",
-      "b": "y=2x/(x<sup>2</sup>+5)",
-      "c": "y=3",
-      "d": "y=sinx",
-      "ans": "d"
-    },
-    {
-      "question": "85.e<sup>x</sup>-e<sup>-x</sup>=.........",
-      "a": "coshx",
-      "b": "sinhx",
-      "c": "2sinhx",
-      "d": "2coshx",
-      "ans": "c"
-    },
-    {
-      "question": "86.When is a function f(x) increasing?",
-      "a": "x<sub>1</sub><x<sub>2</sub>→f(x<sub>1</sub>)>f(x<sub>2</sub>)",
-      "b": "x<sub>1</sub>>x<sub>2</sub>→f(x<sub>1</sub>)>f(x<sub>2</sub>)",
-      "c": "x<sub>1</sub><x<sub>2</sub>→f(x<sub>2</sub>)>f(x<sub>1</sub>)",
-      "d": "x<sub>1</sub>>x<sub>2</sub>→f(x<sub>2</sub>)>f(x<sub>1</sub>)",
-      "ans": "b"
-    },
-    {
-      "question": "87.If sinx=k, and θ is smallest of such x, then",
-      "a": "x=2nπ±θ",
-      "b": "x=nπ+θ",
-      "c": "x=nπ+(-1)nθ",
-      "d": "x=nπ+(-1)nθ",
-      "ans": "d"
-    },
-    {
-      "question": "88.Which of the following is true?",
-      "a": "Cosine law is not related with Pythagoras theorem",
-      "b": "Cosine law is a corollary of Pythagoras theorem",
-      "c": "Pythagoras theorem is a corollary of cosine law",
-      "d": "Pythagoras theorem holds for any triangle",
-      "ans": "c"
-    },
-    {
-      "question": "89.When a triangle is completely solved?",
-      "a": "When all angles are given",
-      "b": "When a side is given",
-      "c": "When two sides and angle is given",
-      "d": "When two sides are given",
-      "ans": "a"
-    },
-    {
-      "question": "90.If a, b, c, d, …… are in harmonic sequence, and k is a constant, which of the following is m harmonic sequence?",
-      "a": "a+k,b+k,d+k,…..",
-      "b": "a-k,b-k,d-k,……..",
-      "c": "a<sup>k</sup>,<sup>k</sup>k,d<sup>k</sup>,….",
-      "d": "ak,bk,dk,….",
-      "ans": "a"
-    },
-    {
-      "question": "91.1 + 1/2 + 1/4 + 1/8 + .......",
-      "a": "∞",
-      "b": "Undefined",
+      "question": "68. The minimum number of vectors of unequal magnitude required to produce a zero resultant is",
+      "a": "2",
+      "b": "3",
       "c": "4",
-      "d": "2",
-      "ans": "d"
-    },
-    {
-      "question": "92.If A is a 3x2 matrix, B is a 2x3 matrix, which of the following is true?",
-      "a": "A+B can be obtained",
-      "b": "BA cannot obtained",
-      "c": "AB and BA have different orders",
-      "d": "AB=BA",
-      "ans": "c"
-    },
-    {
-      "question": "93.If A=(a<sub>ij</sub>)<sub>3x3</sub> matrix, M<sub>ij</sub> is minor of a<sub>ij</sub>, A<sub>ij</sub> is cofactor of a<sub>ij</sub>, Which of the following is false?",
-      "a": "a<sub>11</sub>A<sub>11</sub>+a<sub>12</sub>A<sub>12</sub>+a<sub>13</sub>A<sub>13</sub>=|A|",
-      "b": "a<sub>11</sub>A<sub>11</sub>-a<sub>21</sub>A<sub>21</sub>+a<sub>31</sub>A<sub>31</sub>=|A|",
-      "c": "a<sub>11</sub>M<sub>11</sub>-a<sub>21</sub>M<sub>21</sub>+a<sub>31</sub>M<sub>13</sub>=|A|",
-      "d": "a<sub>11</sub>A<sub>12</sub>+a<sub>21</sub>A<sub>22</sub>+a<sub>31</sub>A<sub>32</sub>=|A|",
-      "ans": "d"
-    },
-    {
-      "question": "94.Which of the following about system of linear equations is true?",
-      "a": "(A+B)ˈ=A+Bˈ",
-      "b": "(Aˈ)ˈ=A",
-      "c": "(AB)ˈ=BˈAˈ",
-      "d": "(BA)ˈ=AˈBˈ",
-      "ans": "b"
-    },
-    {
-      "question": "95.Which of the following about system of linear equation is true?",
-      "a": " A consistent system has no solutions",
-      "b": "A consistent and dependent system has a unique solution",
-      "c": "An independent system always has a unique solution",
-      "d": "None of the above",
-      "ans": "b"
-    },
-    {
-      "question": "96.Which of the following is true about a complex number z?",
-      "a": "z>0",
-      "b": "z<0",
-      "c": "z=0",
-      "d": "None",
+      "d": ">4",
       "ans": "a"
     },
     {
-      "question": "97.If w is a complex cube root of unity, which of the following is false?",
-      "a": "w<sup>5</sup>=1",
-      "b": "1+w+w<sup>2</sup>=0",
-      "c": "w<sup>2</sup>=wˈ",
-      "d": "None of the above",
-      "ans": "c"
-    },
-    {
-      "question": "98.If a, b, c are real ax<sup>2</sup>+bx+c=0 roots of the equations are……if b<sup>2</sup>-Δac<0",
-      "a": "Equal",
-      "b": "Real",
-      "c": "Real but unequal",
-      "d": "Complex conjugates",
+      "question": "69. An iron ball is heated. The percentage increase will be largest on",
+      "a": "diamater",
+      "b": "surface area",
+      "c": "volume",
+      "d": "density",
       "ans": "b"
     },
     {
-      "question": "99.For which value of k the line y=x+k does not pass through origin",
-      "a": "Positive",
-      "b": "Negative",
-      "c": "Both +ve and -ve",
-      "d": "None of the above",
+      "question": "70. Wavelength of laser beam can be used as standard for",
+      "a": "time",
+      "b": "temperature",
+      "c": "angle",
+      "d": "length",
+      "ans": "a"
+    },
+    {
+      "question": "71. Velocity of waves in string depends upon",
+      "a": "length of string",
+      "b": "tension on string",
+      "c": "density of surrounding medium",
+      "d": "temperature of atmosphere",
+      "ans": "b"
+    },
+    {
+      "question": "72. Two free parallel wires carrying current in opposite directions",
+      "a": "attract each other",
+      "b": "repel each other",
+      "c": "rotate",
+      "d": "neither attract nor repel",
+      "ans": "b"
+    },
+    {
+      "question": "73. Value of relative permeability of diamagnetic substance is",
+      "a": "1",
+      "b": "<1",
+      "c": ">1",
+      "d": "very large",
+      "ans": "b"
+    },
+    {
+      "question": "74. Majority charge carrier in p-type semiconductor is",
+      "a": "electrons",
+      "b": "holes",
+      "c": "both",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "75. Which one force is strongest?",
+      "a": "gravitational",
+      "b": "electromagnetic",
+      "c": "nuclear",
+      "d": "all have same magnitude",
+      "ans": "b"
+    },
+    {
+      "question": "76. The weight of a molecule of C<sub>60</sub>H<sub>122</sub> is",
+      "a": "1.4*10<sub>-21</sub> gm",
+      "b": "5.025*10<sub>23</sub> gm",
+      "c": "1.09*10<sub>-21</sub> gm",
+      "d": "16.023*10<sub>23</sub> gm",
+      "ans": "a"
+    },
+    {
+      "question": "77. The equivalent weight of  H<sub>3</sub>PO<sub>4</sub> in reaction (P = 31)   NaOH + H<sub>3</sub>PO<sub>4</sub> → NaH<sub>2</sub>PO<sub>4</sub>+ H<sub>2</sub>O ",
+      "a": "59",
+      "b": "26",
+      "c": "98",
+      "d": "49",
       "ans": "c"
     },
     {
-      "question": "100.Angle between two straight lines given by x<sup>2</sup>-y<sup>2</sup>=0 is",
-      "a": "90°",
-      "b": "180°",
-      "c": "Unknown",
-      "d": "None of the above",
+      "question": "78. Energy of atomic orbitals in a shell is in the order",
+      "a": "s<p<d<f",
+      "b": "s>p>d>f",
+      "c": "p<d<f<s",
+      "d": "f>d>s>p",
+      "ans": "a"
+    },
+    {
+      "question": "79. Which of the following halides is not oxidized by MnO<sub>2</sub>?",
+      "a": "F",
+      "b": "Cl",
+      "c": "Br",
+      "d": "I",
+      "ans": "a"
+    },
+    {
+      "question": "80. The lightest metal is",
+      "a": "Na",
+      "b": "Hg",
+      "c": "Ca",
+      "d": "Li",
+      "ans": "d"
+    },
+    {
+      "question": "81. Unit of Faraday is",
+      "a": "ampere",
+      "b": "C",
+      "c": "C mol<sup>-2</sup>",
+      "d": "C sec<sup>-1</sup>",
+      "ans": "b"
+    },
+    {
+      "question": "82. The density of neutrons is in the order",
+      "a": "10<sup>3</sup> kgcm<sup>-3</sup>",
+      "b": "10<sup>6</sup> kgcm<sup>-3</sup>",
+      "c": "10<sup>9</sup> kgcm<sup>-3</sup>",
+      "d": "10<sup>12</sup> kgcm<sup>-3</sup>",
+      "ans": "c"
+    },
+    {
+      "question": "83. Mark the element which gives M<sup>-3</sup> ion?",
+      "a": "P",
+      "b": "N",
+      "c": "As",
+      "d": "Sn",
+      "ans": "b"
+    },
+    {
+      "question": "84. Which of the following does not cause hardening of water?",
+      "a": "CaCl<sub>2</sub>",
+      "b": "MgSO<sub>4</sub>",
+      "c": "Na<sub>2</sub>SO<sub>4</sub>",
+      "d": "FeSO<sub>4</sub>",
+      "ans": "c"
+    },
+    {
+      "question": "85. Which one of the following produces H<sub>2</sub>S gas?",
+      "a": "H<sub>2</sub>+S",
+      "b": "Sb<sub>2</sub>S<sub>3</sub>+H<sub>2</sub>",
+      "c": "FeS+H<sub>2</sub>SO<sub>4</sub>",
+      "d": "all of above",
+      "ans": "c"
+    },
+    {
+      "question": "86. Extremely hot copper wire reacts with steam to give",
+      "a": "CuO",
+      "b": "Cu<sub>2</sub>O",
+      "c": "Cu<sub>2</sub>O<sub>2</sub>",
+      "d": "CuO<sub>2</sub>",
+      "ans": "a"
+    },
+    {
+      "question": "87. Spiegeleisen is an alloy of carbon containing",
+      "a": "Fe+Mn, 5-15%; C, 60%",
+      "b": "Fe+Mn, 60%; C 15%",
+      "c": "Fe+Mn, 25%; C, 60%",
+      "d": "Fe+Mn, 25%; C, 60%",
+      "ans": "a"
+    },
+    {
+      "question": "88. First organic compound was synthesized in lab by",
+      "a": "Wohler",
+      "b": "Kekule",
+      "c": "Liebig",
+      "d": "Hannel",
+      "ans": "b"
+    },
+    {
+      "question": "89. Which of the following is more volatile?",
+      "a": "Carboxylic acid",
+      "b": "Benzene",
+      "c": "Benzoic acid",
+      "d": "Ethyl iodide",
+      "ans": "a"
+    },
+    {
+      "question": "90. The IUPAC name of CCl<sub>3</sub>.CHO is",
+      "a": "Trichloroacetaldehyde",
+      "b": "1,1,1-trichloro acetaldehyde",
+      "c": "2,2,2-trichloro ethanoyl chloride",
+      "d": "2,2,2-Trichloro ethanal",
+      "ans": "a"
+    },
+    {
+      "question": "91. Total number of compounds represented by the compound CuSO<sub>4</sub>.5H<sub>2</sub>O is",
+      "a": "27",
+      "b": "21",
+      "c": "5",
+      "d": "8",
+      "ans": "c"
+    },
+    {
+      "question": "92. The number of unpaired electrons in Cr<sup>+3</sup>  ion is",
+      "a": "6",
+      "b": "4",
+      "c": "3",
+      "d": "1",
+      "ans": "c"
+    },
+    {
+      "question": "93. Oxygen is in positive oxidation state in",
+      "a": "H<sub>2</sub>O<sub>2</sub>",
+      "b": "Cl<sub>2</sub>O",
+      "c": "F<sub>2</sub>O",
+      "d": "NaOCl",
+      "ans": "c"
+    },
+    {
+      "question": "94. Which one of the following is a metalloid?",
+      "a": "C",
+      "b": "Si",
+      "c": "Ge",
+      "d": "Pb",
+      "ans": "c"
+    },
+    {
+      "question": "95. The unit of electrochemical equivalent is",
+      "a": "gram",
+      "b": "gram/ampere",
+      "c": "gram/coulumb",
+      "d": "columb/gram",
+      "ans": "c"
+    },
+    {
+      "question": "96. The mass of neutron is of the order",
+      "a": "10<sup>-23</sup> kg",
+      "b": "10<sup>-24</sup> kg",
+      "c": "10<sup>-26</sup> kg",
+      "d": "10<sup>-27</sup> kg",
+      "ans": "d"
+    },
+    {
+      "question": "97. Pure nitrogen is obtained from",
+      "a": "NH<sub>3</sub>+NaNO<sub>2</sub>",
+      "b": "NH<sub>4</sub>Cl+NaNO<sub>3</sub>",
+      "c": "N<sub>2</sub>O+Cu",
+      "d": "N<sub>3</sub>Na",
+      "ans": "d"
+    },
+    {
+      "question": "98. Zeolites are used as",
+      "a": "gem",
+      "b": "ion exchanger",
+      "c": "pigments",
+      "d": "lubricant",
+      "ans": "b"
+    },
+    {
+      "question": "99. Blister copper is",
+      "a": "pure copper",
+      "b": "alloy of copper",
+      "c": "ore of copper",
+      "d": "copper containing 1% impurity",
+      "ans": "d"
+    },
+    {
+      "question": "100. Stainless steel contains",
+      "a": "Fe+Cr+Ni",
+      "b": "Fe+Ni+Cu",
+      "c": "Fe+Cr+Cu",
+      "d": "Fe+C+Ni",
       "ans": "a"
     }
   ]

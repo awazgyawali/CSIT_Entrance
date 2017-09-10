@@ -1,805 +1,805 @@
-//model question3
+//model question 1
 {
   "questions": [
     {
-      "question": "1. A train 110m length travel at 60 km/hr. The time in which a man walking at 6 km/hr in opposite direction pass the train is",
-      "a": "6.6 sec",
-      "b": "66 sec",
-      "c": "6 sec",
-      "d": "5.4 sec",
-      "ans": "c"
+      "question": "1. The dimension of length for coefficient of viscosity is",
+      "a": "-1",
+      "b": "+1",
+      "c": "-2",
+      "d": "+2",
+      "ans": "a"
     },
     {
-      "question": "2. The maximum velocity of a car in level road of radius 80m in which car move without skidding if coefficient of friction is 0.25 is",
-      "a": "10 m/s",
-      "b": "8 m/s",
-      "c": "12 m/s",
-      "d": "14 m/s",
+      "question": "2.What determines the nature of the path followed by a particle?",
+      "a": "Velocity",
+      "b": "Speed",
+      "c": "Acceleration",
+      "d": "None of the above",
+      "ans": "a"
+    },
+    {
+      "question": "3.During summer sault, a swimmer bends his body to",
+      "a": "Increase moment of inertia",
+      "b": "Decrease moment of inertia",
+      "c": "Decrease angular momentum",
+      "d": "Reduce angular velocity",
+      "ans": "b"
+    },
+    {
+      "question": "4.The rays of different colors fail to converge at a point after going through a converging lens. This defect is called",
+      "a": "Spherical aberration",
+      "b": "Distortion",
+      "c": "Coma",
+      "d": "Chromatic aberration",
       "ans": "d"
     },
     {
-      "question": "3. A fly wheel of mass 25 kg has a radius of 0.2m.It is making 240 rpm. The torque required to stop in rest in 20 sec is",
-      "a": "314 Nm",
-      "b": "0.628 Nm",
-      "c": "0.314 Nm",
-      "d": "1.26 Nm",
+      "question": "5.A star is going away from earth. An observer on the earth will see the wavelength of light coming from the star",
+      "a": "Decreased",
+      "b": "Increased",
+      "c": "Depends upon the velocity of star",
+      "d": "No change",
       "ans": "b"
     },
     {
-      "question": "4. A cube is subjected to a pressure of 5*10<sup>5</sup> N/m<sup>2</sup>. Each side of the cube is shortened by 1% the bulk modulus of cube",
-      "a": "8.3*10<sup>6</sup> N/m<sup>2</sup>",
-      "b": "1.67*10<sup>7</sup> N/m<sup>2</sup>",
-      "c": "3.32*10<sup>7</sup> N/m<sup>2</sup>",
-      "d": "6.4*10<sup>7</sup> N/m<sup>2</sup>",
-      "ans": "b"
-    },
-    {
-      "question": "5. A spherical liquid drop of radius R is divided into 8 equal droplets. It surface tension is T then work done in the process will be",
-      "a": "2πR<sup>2</sup>T",
-      "b": "3πR<sup>2</sup>T",
-      "c": "4πR<sup>2</sup>T",
-      "d": "2πRT<sup>2</sup>",
-      "ans": "c"
-    },
-    {
-      "question": "6. An oxygen cylinder of volume 30 litres has an initial pressure 15 atmosphere and a temperature of 27°C. Some gas is withdrawn from the cylinder and pressure drops to 11 atmosphere at 17°C. The mass of gas withdrawn is",
-      "a": "453.1 g",
-      "b": "584.1 g",
-      "c": "141 g",
-      "d": "282 g",
-      "ans": "c"
-    },
-    {
-      "question": "7. An ideal heat engine operates in Carnot cycle between 227°C and 127°C. It absorbs 10<sup>4</sup> Joule of heat from a higher temperature. The amount of heat converted into work is",
-      "a": "2000 Joule",
-      "b": "4000 Joule",
-      "c": "8000 Joule",
-      "d": "5600 Joule",
+      "question": "6.Electric flux at a point in an electric field due to a positive charge is",
+      "a": "Positive",
+      "b": "Negatine",
+      "c": "Zero",
+      "d": "None",
       "ans": "a"
     },
     {
-      "question": "8. Air column in resonance air column experiment of 100cm & 101 cm give 17 beats in 20 sec. The velocity of sound is",
-      "a": "320 m/s",
-      "b": "332 m/s",
-      "c": "343 m/s",
-      "d": "360 m/s",
+      "question": "7.A capacitor works in…………………circuit.",
+      "a": "AC",
+      "b": "DC",
+      "c": "Both a) and b)",
+      "d": "None",
+      "ans": "b"
+    },
+    {
+      "question": "8.A cyclotron is used for accelerating",
+      "a": "Mesons",
+      "b": "Leptons",
+      "c": "Prorons",
+      "d": "Atoms",
       "ans": "c"
     },
     {
-      "question": "9. Two wires of same material are stretched with the same force their diameters are 1.2mm & 1.6mm respectively. The frequency of first is 256 then frequency of 2nd is",
-      "a": "244 Hz",
-      "b": "288 Hz",
-      "c": "312 Hz",
-      "d": "344 Hz",
-      "ans": "b"
+      "question": "9.The antiparticle of electron is",
+      "a": "Positron",
+      "b": "Alpha-particle",
+      "c": "Proron",
+      "d": "Beta-particle",
+      "ans": "a"
     },
     {
-      "question": "10. Two charges of 15µC & 9 µC are at 18cm apart. The work done to bring them 3cm closer is",
-      "a": "0.625 Joule",
-      "b": "1.35 Joule",
-      "c": "2.7 Joule",
-      "d": "4.05 Joule",
-      "ans": "b"
+      "question": "10.Zener diode is used for",
+      "a": "Amplification",
+      "b": "Rectification",
+      "c": "Stabilization",
+      "d": "All of the above",
+      "ans": "c"
     },
     {
-      "question": "11. An air filled parallel plate capacitor of capacitance 12 µC is charged by 1200V. The minimum area of capacitor for dielectric strength 3*10<sup>9</sup> V/m is",
-      "a": "0.54 m<sup>2</sup>",
-      "b": "0.9 m<sup>2</sup>",
-      "c": "1.35 m<sup>2</sup>",
-      "d": "1.8 m<sup>2</sup>",
+      "question": "11.A body cannot have",
+      "a": "Zero speed and non-zero acceleration",
+      "b": "Non zero speed and zero acceleration",
+      "c": "Constant velocity and varying speed",
+      "d": "Constant speed and varying velocity",
       "ans": "d"
     },
     {
-      "question": "12. A parallel combination of three resistors take a current of 7.5A from a 30V. The two resistors of 10Ω & 12Ω then 3rd resistor is",
-      "a": "14 Ω",
-      "b": "15 Ω",
-      "c": "20 Ω",
-      "d": "30 Ω",
+      "question": "12.A hunter aims at a monkey sitting on a tree at a considerable distance. At the instant he fires at it, the monkey drops. Will the bullet hit the monkey",
+      "a": "No",
+      "b": "Yes",
+      "c": "Sometimes",
+      "d": "Never",
       "ans": "b"
     },
     {
-      "question": "13. The self-inductance of air core solenoid increases from 0.04mH to 16mH on introducing an iron core into it. The relative permeability of the core is",
-      "a": "150",
-      "b": "200",
-      "c": "400",
-      "d": "800",
+      "question": "13.Two identical rectangular strips, one of copper and other of steel, are riveted together to form a bimetallic strip. On heating, the strip will",
+      "a": "Remains straight",
+      "b": "Bend with copper on convex side",
+      "c": "Bend with steel at convex side",
+      "d": "Get twisted",
+      "ans": "b"
+    },
+    {
+      "question": "14.Suppose a tunnel is dug along a diameter of the earth. A particle is dropped from a point, a distance h directly above the tunnel, the motion of the particle is",
+      "a": "Simple harmonic",
+      "b": "Parabolic",
+      "c": "Oscillatory",
+      "d": "Linear",
+      "ans": "a"
+    },
+    {
+      "question": "15.In a region with a uniform electric field, the number of lines of force per unit area is E. If a spherical metallic conductor is placed in the area, the field inside the conductor will be",
+      "a": "Zero",
+      "b": "E",
+      "c": "More than E",
+      "d": "Less than E",
+      "ans": "a"
+    },
+    {
+      "question": "16.CRT stands for",
+      "a": "Cathode ray tube",
+      "b": "Compact ray tube",
+      "c": "Compact ray terminal",
+      "d": "Cathode ray terminal",
+      "ans": "a"
+    },
+    {
+      "question": "17.In petrol engine suction consists of",
+      "a": "Air only",
+      "b": "A mixture of air and fuel",
+      "c": "Fuel only",
+      "d": "None",
+      "ans": "b"
+    },
+    {
+      "question": "18.Transfer of electric power from primary to secondary in a transformer takes place………",
+      "a": "Electrically",
+      "b": "Electromagnetically",
+      "c": "Magnetically",
+      "d": "None",
+      "ans": "b"
+    },
+    {
+      "question": "19.The rate at which electricity is dissipated or consumed by an appliance is called electrical",
+      "a": "Current",
+      "b": "Power",
+      "c": "Potential",
+      "d": "Energy",
+      "ans": "b"
+    },
+    {
+      "question": "20.MBR stands for",
+      "a": "Master boot record",
+      "b": "Master byte record",
+      "c": "Mother board rating",
+      "d": "None",
+      "ans": "a"
+    },
+    {
+      "question": "21.Gypsum is added in cement",
+      "a": "After burning",
+      "b": "Before burning",
+      "c": "After grinding",
+      "d": "Blending",
+      "ans": "a"
+    },
+    {
+      "question": "22.Which of the following is not the example of renewable energy?",
+      "a": "Bioethanol",
+      "b": "Wind energy",
+      "c": "Tar sand",
+      "d": "Tidal energy",
       "ans": "c"
     },
     {
-      "question": "14. In an AC circuit the current is I=5sin(100t-π/2)A and potential is V=200sin(100t)volt then power consumed is",
-      "a": "20 W",
-      "b": "40 W",
-      "c": "100 W",
-      "d": "0 W",
+      "question": "23.The characteristics of fuse wire is",
+      "a": "High melting point",
+      "b": "Low melting point",
+      "c": "Low resistivity and high melting point",
+      "d": "High resistivity and low melting point",
       "ans": "d"
     },
     {
-      "question": "15. A needle placed 45cm from a lens forms an image on a screen placed 90cm on the other side of lens. The size of image of object 5cm is",
-      "a": "5 cm",
-      "b": "10 cm",
-      "c": "15 cm",
-      "d": "20 cm",
+      "question": "24.The SI unit of electric current is",
+      "a": "Ohm",
+      "b": "Ampere",
+      "c": "Volt",
+      "d": "Faraday",
       "ans": "b"
     },
     {
-      "question": "16. In Young’s double slit experiment two coherent sources are placed at 0.9mm apart and the fringes are observed one metre away. The second dark fringe is produced 1mm from the central fringe. The wavelength of light used is",
-      "a": "60*10<sup>-4</sup> m",
-      "b": "10*10<sup>-4</sup> cm",
-      "c": "10*10<sup>-5</sup> cm",
-      "d": "6*10<sup>-5</sup> cm",
-      "ans": "d"
-    },
-    {
-      "question": "17. The wavelength of electron wave of energy 50ev is",
-      "a": "1.73A°",
-      "b": "3.46A°",
-      "c": "5.19A°",
-      "d": "6.92A°",
+      "question": "25.Two bulbs in a house ,one glows brighter than other .The bulb with larger resistance is",
+      "a": "Dim bulb",
+      "b": "The brighter bulb",
+      "c": "Both have same",
+      "d": "None",
       "ans": "a"
     },
     {
-      "question": "18. A piece of metal is illuminated by monochromatic light of wavelength λ then stopping potential for photo electric current is 2.5 V<sub>o</sub>. When same surface is illuminated by light of wavelength 1.5λ then stopping potential is V<sub>o</sub>. The threshold wavelength is",
-      "a": "1.5 λ",
-      "b": "2 λ",
-      "c": "2.25 λ",
-      "d": "4 λ",
+      "question": "26.The telephone _____ several times before I answered.",
+      "a": "rang",
+      "b": "was ringing",
+      "c": "had rung",
+      "d": "has rung",
       "ans": "c"
     },
     {
-      "question": "19. The frequency of electron in 2nd Bohr’s orbit of radius 2.12 A° is",
-      "a": "8.2*10<sup>13</sup> Hz",
-      "b": "8.2*10<sup>14</sup> Hz",
-      "c": "8.2*10<sup>15</sup> Hz",
-      "d": "8.2*10<sup>16</sup> Hz",
-      "ans": "b"
-    },
-    {
-      "question": "20. Half -life of two radioactive substances A & B are 20 minutes & 40 minutes respectively. The same and equal numbers of atoms initially are taken then ratio of no of atoms left after 80 minutes is",
-      "a": "1:16",
-      "b": "4:1",
-      "c": "1:4",
-      "d": "1:1",
-      "ans": "c"
-    },
-    {
-      "question": "21. If K.E. of a body become twice its initial value, then new momentum of the body will be",
-      "a": " 2 times",
-      "b": "√2 times",
-      "c": "4 times",
-      "d": "remains unchanged",
-      "ans": "c"
-    },
-    {
-      "question": "22. When water is heated from 0°C to 10°C, its volume",
-      "a": "increases",
-      "b": "decreases",
-      "c": "doesn't change",
-      "d": "first decreases then increases",
-      "ans": "a"
-    },
-    {
-      "question": "23. Acceleration at highest point when a ball is projected is",
-      "a": "zero",
-      "b": "upwards",
-      "c": "downwards",
-      "d": "none",
-      "ans": "c"
-    },
-    {
-      "question": "24. Coefficient of thermal conductivity of metal depends on",
-      "a": "temperature difference",
-      "b": "thickness of metal",
-      "c": "area of metal plate",
-      "d": "none of the above",
+      "question": "27.Somebody likes tea, ______?",
+      "a": "Wasn’t they",
+      "b": "Didn’t they",
+      "c": "Aren’t they",
+      "d": "Don’t they",
       "ans": "d"
     },
     {
-      "question": "25. If the number of turn in a coil is doubled then its self-inductance will become",
-      "a": "double",
-      "b": "halved",
-      "c": "four times",
-      "d": "remains unchanged",
-      "ans": "c"
-    },
-    {
-      "question": "26. The number of electrons present in 3.2 grams of CH<sub>4</sub> is",
-      "a": "0.25 N<sub>A</sub>",
-      "b": "0.5 N<sub>A</sub>",
-      "c": "0.75 N<sub>A</sub>",
-      "d": "N<sub>A</sub>",
-      "ans": "d"
-    },
-    {
-      "question": "27. The vapour density of a metal chloride is 99 and the equivalent weight of metal is 63.5 . The formula of metal chloride is",
-      "a": "MCl",
-      "b": "M<sub>2</sub>Cl<sub>2</sub>",
-      "c": "MCl<sub>2</sub>",
-      "d": "M<sub>2</sub>Cl<sub>4</sub>",
-      "ans": "b"
-    },
-    {
-      "question": "28. The mole fraction of NaOH in 0.4M NaOH solution is",
-      "a": "7.5*10<sup>-3</sup>",
-      "b": "3.25*10<sup>3</sup>",
-      "c": "7.15*10<sup>-4</sup>",
-      "d": "3.25*10<sup>-4</sup>",
-      "ans": "a"
-    },
-    {
-      "question": "29. How many unpaired electrons are present in Fe<sup>3+</sup> ion",
-      "a": "3",
-      "b": "5",
-      "c": "1",
-      "d": "6",
-      "ans": "b"
-    },
-    {
-      "question": "30. Among LiCl,BeCl<sub>2</sub>,BCl<sub>3</sub> and CCl<sub>4</sub> the covalent character follow the order",
-      "a": " LiCl>BeCl<sub>2</sub> >BCl<sub>3</sub> >CCl<sub>4</sub>",
-      "b": "LiCl<BeCl<sub>2</sub> <BCl<sub>3</sub> <CCl<sub>4</sub>",
-      "c": "LiCl>BeCl<sub>2</sub> >CCl<sub>4</sub> >BCl<sub>3</sub>",
-      "d": "LiCl<BeCl<sub>2</sub> <CCl<sub>4</sub> <BCl<sub>3</sub>",
-      "ans": "b"
-    },
-    {
-      "question": "31. The ammonia is dried over",
-      "a": "the slaked lime",
-      "b": "quick lime",
-      "c": "calcium chloride",
-      "d": "phosphorus pentachloride",
-      "ans": "b"
-    },
-    {
-      "question": "32.Vertical retort is used in the extraction of zinc due to it's",
-      "a": "low boiling point",
-      "b": "high boiling point",
-      "c": "low melting point",
-      "d": "high melting point",
-      "ans": "a"
-    },
-    {
-      "question": "33. The equivalent weight of K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub> in acidic medium is",
-      "a": "M/6",
-      "b": "M/3",
-      "c": "M",
-      "d": "M/5",
-      "ans": "a"
-    },
-    {
-      "question": "34. H3O<sup>+</sup> is acid according to the theories",
-      "a": "Arrhenius+ Bronsted Lowery",
-      "b": "Arrhenius + Lewis",
-      "c": "Bronsted Lowery+Lewis",
-      "d": "Arrhenius+Bronsted Lowery+Lewis",
-      "ans": "b"
-    },
-    {
-      "question": "35. Kerosene oil is the mixture of",
-      "a": "aromatic compounds",
-      "b": "aliphatic acids",
-      "c": "alkanes",
-      "d": "alcohols",
-      "ans": "d"
-    },
-    {
-      "question": "36. A gas decolourises alkaline KMnO<sub>4</sub> solution but does not give precipitate with ammonical AgNO<sub>3</sub> solution is",
-      "a": "ethane",
-      "b": "ethylene",
-      "c": "methane",
-      "d": "ethyne",
-      "ans": "c"
-    },
-    {
-      "question": "37. An element has the general configuration (n-1)d<sup>3</sup>ns<sup>2</sup>. The element is placed in the group",
-      "a": "IIA",
-      "b": "IIB",
-      "c": "VA",
-      "d": "VB",
-      "ans": "b"
-    },
-    {
-      "question": "38.Galena is the ore of",
-      "a": "Pb",
-      "b": "Zn",
-      "c": "Hg",
-      "d": "Fe",
-      "ans": "d"
-    },
-    {
-      "question": "39. During extraction of copper from Copper pyrites the slag",
-      "a": "CaSiO<sub>3</sub>",
-      "b": "FeSiO<sub>3</sub>",
-      "c": "Mg(PO<sub>4</sub>)<sub>2</sub>",
-      "d": "MgSiO<sub>3</sub>",
-      "ans": "a"
-    },
-    {
-      "question": "40. Which of the following has highest ionic character?",
-      "a": "MgCl<sub>2</sub>",
-      "b": "CaCl<sub>2</sub>",
-      "c": "BeCl",
-      "d": "NaCl",
-      "ans": "b"
-    },
-    {
-      "question": "41. Bleaching action of Cl<sub>2</sub> in presence of moisture is",
-      "a": "oxidation",
-      "b": "reduction",
-      "c": "hydrolysis",
-      "d": "substitution",
-      "ans": "a"
-    },
-    {
-      "question": "42. Bessemer converter is used in the manufacture of",
-      "a": "cast iron",
-      "b": "pig iron",
-      "c": "silver",
-      "d": "steel",
-      "ans": "d"
-    },
-    {
-      "question": "43. Which of the following is used to remove temporary hardness of water?",
-      "a": "slaked lime",
-      "b": "plaster of paris",
-      "c": "epsom",
-      "d": "hydrolith",
-      "ans": "a"
-    },
-    {
-      "question": "44.Producer gas is",
-      "a": "CO+N<sub>2</sub>",
-      "b": "C+N<sub>2</sub>",
-      "c": "CO<sub>2</sub>+H<sub>2</sub>",
-      "d": "CO+H<sub>2</sub>O",
-      "ans": "a"
-    },
-    {
-      "question": "45. Willimite is the ore of",
-      "a": "Al",
-      "b": "Cu",
-      "c": "Zn",
-      "d": "Ca",
-      "ans": "c"
-    },
-    {
-      "question": "46. The impurities associated with minerals are collected",
-      "a": "flux",
-      "b": "gangue",
-      "c": "slag",
-      "d": "ore",
-      "ans": "b"
-    },
-    {
-      "question": "47. Which of the following is used in welding",
-      "a": "CH<sub>4</sub>",
-      "b": "C<sub>2</sub>H<sub>4</sub>",
-      "c": "C<sub>2</sub>H<sub>2</sub>",
-      "d": "C<sub>2</sub>H<sub>6</sub>",
-      "ans": "c"
-    },
-    {
-      "question": "48. The possible number of isomers of C<sub>6</sub>H<sub>14</sub> is",
-      "a": "2",
-      "b": "3",
-      "c": "4",
-      "d": "5",
-      "ans": "d"
-    },
-    {
-      "question": "49. The IUPAC name of t-butyl alcohol is",
-      "a": "Butanol-1 ",
-      "b": "Butanol-2",
-      "c": "2-methyl propanol-1",
-      "d": "2-methyl propanol-2",
-      "ans": "d"
-    },
-    {
-      "question": "50. The solubility of AgCl is minimum in",
-      "a": "pure water",
-      "b": "0.0001 M AgNO<sub>3</sub>",
-      "c": "0.1 N NaCl",
-      "d": "11.1 gmL<sup>-1</sup> CaCl<sub>2</sub> solution",
-      "ans": "d"
-    },
-    {
-      "question": "51. The word ‘interest’ has it's primary stress on the ……… syllable",
-      "a": "1st",
-      "b": "2nd",
-      "c": "3rd",
-      "d": "none",
-      "ans": "a"
-    },
-    {
-      "question": "52. The synonym of ‘abase’ is",
-      "a": "humiliate",
-      "b": "abate",
-      "c": "abortive",
-      "d": "profound",
-      "ans": "a"
-    },
-    {
-      "question": "53. The antonym of ‘scrupulous’ is",
-      "a": "disscrupulous",
-      "b": "descrupulous",
-      "c": "unscrupulous",
-      "d": "inscrupulous",
-      "ans": "a"
-    },
-    {
-      "question": "54. Which of the following is acceptable?",
-      "a": "He said that they had been working",
-      "b": "He told that they had been working",
-      "c": "he said me that they had been working",
-      "d": "none",
-      "ans": "c"
-    },
-    {
-      "question": "55. John is addicted to …………",
-      "a": "drink",
-      "b": "drunk",
-      "c": "drinks",
-      "d": "drinking",
-      "ans": "a"
-    },
-    {
-      "question": "56. The police ……………… come in time.",
-      "a": "has",
-      "b": "are",
-      "c": "have been",
-      "d": "is to",
-      "ans": "d"
-    },
-    {
-      "question": "57. The flag was hauled …………… sunset.",
+      "question": "28.You are _____ the finance committee.",
       "a": "in",
       "b": "at",
-      "c": "to",
-      "d": "into",
-      "ans": "c"
-    },
-    {
-      "question": "58. The passive voice of “Listen to me” is",
-      "a": "I should have listened to",
-      "b": "Let me be listened to",
-      "c": "I am listened to",
-      "d": "none",
-      "ans": "a"
-    },
-    {
-      "question": "59. Tick on compound sentence given below.",
-      "a": "If you do not waste, you will not want.",
-      "b": "Waste not, want not.",
-      "c": "Waste not but want not.",
-      "d": "All of these",
-      "ans": "b"
-    },
-    {
-      "question": "60. Which of the following is the correct grammatical pattern for the sentences? –“Tell him where to put it”",
-      "a": "V+O+Interrogrative phrase",
-      "b": "V+O+Interrogative phrase +to-infinitive",
-      "c": "S+Noun/Pronoun+Interrogative phrase+to-infinitive",
-      "d": "S+Noun/Pronoun+to-inifinitive phrase",
-      "ans": "a"
-    },
-    {
-      "question": "61. I had sooner ……….",
-      "a": "run than walk",
-      "b": "running than walking",
-      "c": "run than walking",
-      "d": "all of these",
-      "ans": "b"
-    },
-    {
-      "question": "62. The drowning passengers were brought ………… ashore.",
-      "a": "about",
-      "b": "off",
       "c": "on",
-      "d": "up",
+      "d": "with",
       "ans": "c"
     },
     {
-      "question": "63. I took my friend ………… a thief.",
-      "a": "at",
-      "b": "for",
-      "c": "with",
-      "d": "up",
-      "ans": "a"
+      "question": "29.I have acceded _____ his request.",
+      "a": "by",
+      "b": "to",
+      "c": "in",
+      "d": "of",
+      "ans": "b"
     },
     {
-      "question": "64.The word “religious” has ………….",
-      "a": "three vowels and four consonants",
-      "b": "five vowels and four consonants",
-      "c": "four vowels and four consonants",
-      "d": "four vowels and five consonants",
-      "ans": "a"
+      "question": "30.The two person resemble ____ each other",
+      "a": "with",
+      "b": "to",
+      "c": "of",
+      "d": "None",
+      "ans": "d"
     },
     {
-      "question": "65. The boy made some ………… remarks",
-      "a": "uncautious",
-      "b": "imcaustious",
-      "c": "incautious",
-      "d": "encautious",
+      "question": "31.The boy you met yesterday is in____class",
+      "a": "ninth",
+      "b": "the ninth",
+      "c": "the nine",
+      "d": "nine",
+      "ans": "d"
+    },
+    {
+      "question": "32.He likes being talked ___",
+      "a": "for",
+      "b": "at",
+      "c": "about",
+      "d": "with",
       "ans": "c"
     },
     {
-      "question": "66. In the sentence “Opera reached its zenith at the turn of the century “, the word”zenith” can be replaced by ………… for its opposite meaning.",
-      "a": "nadir",
-      "b": "climax",
-      "c": "apex",
-      "d": "crisis",
+      "question": "33.He _____ ages to master the subject.",
+      "a": "Has taken",
+      "b": "Will be taken",
+      "c": "Would taken",
+      "d": "Had taken",
       "ans": "a"
     },
     {
-      "question": "67. Which of the following sentences is correctly used?",
-      "a": "Heat the water until it boils away.",
-      "b": "Heat the water until it has boiled away.",
-      "c": "Heat the water until it is boiling away.",
-      "d": "Heat the water until it will boil away.",
-      "ans": "b"
-    },
-    {
-      "question": "68. There are several boys and girls in the class and everyone has finished ………… work. The blank in this sentence cannot be filled out by",
-      "a": "his",
-      "b": "their",
-      "c": "his/her",
-      "d": "her",
-      "ans": "d"
-    },
-    {
-      "question": "69. The sentence pattern “subject+transitive verb+direct object:that clauses” agrees with this sentence:",
-      "a": "He thinks that his friend has written a letter.",
-      "b": "He told his parents that he had passed the exam.",
-      "c": "I know what he has done.",
-      "d": "The policeman warned him that the road was dangerous.",
-      "ans": "a"
-    },
-    {
-      "question": "70. Pick out the sentence which is not acceptable.",
-      "a": "He worked over summer.",
-      "b": "He worked for summer.",
-      "c": "He worked during summer.",
-      "d": "He worked on summer.",
-      "ans": "d"
-    },
-    {
-      "question": "71. The indirect form of the dialogue below can be any one of the following except …………….He said to me,”Will you pass the salt, I agreed”",
-      "a": "He asked me if I would pass the salt and I said I would.",
-      "b": "He requested me to pass the salt and I accepted.",
-      "c": "He told me to pass the salt and I replied in the affirmative.",
-      "d": "When he asked me to pass the salt, I agreed.",
+      "question": "34.Only through diplomatic means can a formal agreement be _____",
+      "a": "reach",
+      "b": "to reach",
+      "c": "reached",
+      "d": "reaching",
       "ans": "c"
     },
     {
-      "question": "72. Which of the following sentences gives the meaning \"I doubt if he is honest.\"",
-      "a": "He is honest.",
-      "b": "Was he honest?",
-      "c": "Is he honest?",
-      "d": "He is honest?",
-      "ans": "d"
-    },
-    {
-      "question": "73. Which of the following sentence does not contain an affirmative?",
-      "a": "He helped me do this.",
-      "b": "Do this.",
-      "c": "I will do this.",
-      "d": "I made him do this.",
-      "ans": "b"
-    },
-    {
-      "question": "74. \"My friend went to Delhi\", which is the capital of India. This is a ……………… sentence.",
-      "a": "compound",
-      "b": "complex",
-      "c": "simple",
-      "d": "compound complex",
-      "ans": "a"
-    },
-    {
-      "question": "75. “He looks heavy eyed” means",
-      "a": "He looks angry.",
-      "b": "His eyes are red.",
-      "c": "He has a fever.",
-      "d": "He is frightened.",
-      "ans": "a"
-    },
-    {
-      "question": "76. The solution of tan<sup>-1</sup>2x+tan<sup>-1</sup>3x=π/4 is",
-      "a": "1/2",
-      "b": "1/4",
-      "c": "1/5",
-      "d": "1/6",
-      "ans": "a"
-    },
-    {
-      "question": "77. If A={1,2,3,4,5} then the number of proper subsets of A are:",
-      "a": "32",
-      "b": "31",
-      "c": "30",
-      "d": "16",
-      "ans": "b"
-    },
-    {
-      "question": "78. A,B,C are three sets such (AᴜB)=(AUC) & (A∩B)=(A∩C) then",
-      "a": "A=B",
-      "b": "B=C",
-      "c": "A=C",
-      "d": "A=B=C",
-      "ans": "b"
-    },
-    {
-      "question": "79. a.(b+c) is equal to",
-      "a": "a.b+a.c",
-      "b": "a+b.c",
-      "c": "a.b+c",
-      "d": "a.b+abc",
-      "ans": "a"
-    },
-    {
-      "question": "80.",
-      "a": "1/5 log2",
-      "b": "1/5 log3",
-      "c": "1/11 log7",
-      "d": "1/5 log11",
-      "ans": "d"
-    },
-    {
-      "question": "81. If a,b,c are in A.P. as well as in G.P. then",
-      "a": "a=b=c",
-      "b": "a≠b≠c",
-      "c": "a≠b=c",
-      "d": "a=-b=2c",
-      "ans": "a"
-    },
-    {
-      "question": "82. The equation ax<sup>2</sup>+2hxy+by<sup>2</sup>+2gx+2fy+c=0 represents a circle if",
-      "a": "a=b",
-      "b": "h=0",
-      "c": "a=b,h=0",
-      "d": "c=0,h=0,a=b",
+      "question": "35.The doctor has given _____ all helps of her recovery.",
+      "a": "in",
+      "b": "away",
+      "c": "up",
+      "d": "off",
       "ans": "c"
     },
     {
-      "question": "83. If (2,0) is the vertex & y-axis is the directrix of a parabola, then its focus is",
-      "a": "(-2,0)",
-      "b": "(4,0)",
-      "c": "(-4,0)",
-      "d": "(0,-4)",
+      "question": "36.Money paid for the use of road or bridge is known as:",
+      "a": "toll",
+      "b": "fees",
+      "c": "penalty",
+      "d": "donation",
+      "ans": "a"
+    },
+    {
+      "question": "37.No sooner _____ one of the engines caught fire",
+      "a": "We’d taken off",
+      "b": "Had we taken off",
+      "c": "We took off",
+      "d": "We’d took off",
       "ans": "b"
     },
     {
-      "question": "84. If sin<sup>2</sup>θ=3/4 then the general values of θ is",
-      "a": "nπ±π/3",
-      "b": "nπ+π/3",
-      "c": "2nπ±π/3",
-      "d": "nπ+(-1)<sup>n</sup> π/3",
+      "question": "38.I need ____ jug to store some water for tomorrow",
+      "a": "a",
+      "b": "an",
+      "c": "the",
+      "d": "some",
       "ans": "a"
     },
     {
-      "question": "85. If =   then a<sup>2</sup>,b<sup>2</sup>,c<sup>2</sup> are in",
-      "a": "A.P.",
-      "b": "G.P.",
-      "c": "H.P.",
-      "d": "none",
+      "question": "39.Does this door knob ­_____ ?",
+      "a": "Come out",
+      "b": "Come off",
+      "c": "Comes in",
+      "d": "Comes out",
+      "ans": "b"
+    },
+    {
+      "question": "40.They are happy and get along like",
+      "a": "Fish in water",
+      "b": "House on fire",
+      "c": "Best friends",
+      "d": "Twin sisters",
+      "ans": "b"
+    },
+    {
+      "question": "41.It was not until she arrived in class_____ realized she had forgotten books.",
+      "a": "And she",
+      "b": "When she",
+      "c": "she",
+      "d": "that she",
+      "ans": "d"
+    },
+    {
+      "question": "42.He is grown up now, and can look after himself. You ____ worry about him.",
+      "a": "must",
+      "b": "can not",
+      "c": "need not",
+      "d": "have to",
+      "ans": "c"
+    },
+    {
+      "question": "43.The disease _____ wide spread destruction.",
+      "a": "brought up",
+      "b": "brought",
+      "c": "brought out",
+      "d": "brought off",
+      "ans": "b"
+    },
+    {
+      "question": "44.This is the first time I _____ to a large audience.",
+      "a": "Am singing",
+      "b": "sang",
+      "c": "will sing",
+      "d": "have ever sung",
+      "ans": "d"
+    },
+    {
+      "question": "45.The western part of Nepal receives less rainfall than _____ the eastern part.",
+      "a": "It does in",
+      "b": "does",
+      "c": "in",
+      "d": "in it does",
       "ans": "a"
     },
     {
-      "question": "86. The radius of the circle passing through the foci of a ellipse  (x<sup>2</sup>/16)+(y<sup>2</sup>/9)=1 & having its centre(0,3) is",
-      "a": "1/2",
+      "question": "46.He is as stubborn as a _____",
+      "a": "child",
+      "b": "bull",
+      "c": "donkey",
+      "d": "mule",
+      "ans": "d"
+    },
+    {
+      "question": "47.The snake ______ as we approached",
+      "a": "Slipped away",
+      "b": "Ran away",
+      "c": "Slithered away",
+      "d": "Moved away",
+      "ans": "c"
+    },
+    {
+      "question": "48.The majority _____ that the king will solve the problem soon",
+      "a": "believe",
+      "b": "believes",
+      "c": "have believed",
+      "d": "believed",
+      "ans": "b"
+    },
+    {
+      "question": "49.He got into a fight yesterday afternoon while he was _____ a football match.",
+      "a": "watching",
+      "b": "looking",
+      "c": "seeing",
+      "d": "viewing",
+      "ans": "a"
+    },
+    {
+      "question": "50.He was sorry to find that he had _____ leisure left",
+      "a": "A little",
+      "b": "little",
+      "c": "some",
+      "d": "few",
+      "ans": "b"
+    },
+    {
+      "question": "51.If A and B are two sets, A-B is equal to",
+      "a": "A ⋂ B̅",
+      "b": "A ⋃ B̅",
+      "c": "A̅ ⋂ B",
+      "d": "A̅ ⋃ B",
+      "ans": "a"
+    },
+    {
+      "question": "52.If the ordered pairs (x+y,1) and (2,2x-y) are equal then",
+      "a": "x=0 y=1",
+      "b": "x=1 y=0",
+      "c": "x=1 y=1",
+      "d": "x=1 y=-1",
+      "ans": "c"
+    },
+    {
+      "question": "53.The range of the function y=x<sup>2</sup>-6x+6 is:",
+      "a": "(-3,∞)",
+      "b": "[-3,∞)",
+      "c": "(0,∞)",
+      "d": "[0,∞)",
+      "ans": "b"
+    },
+    {
+      "question": "54.What is the value of log a <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAZCAIAAAADlM/xAAAFFklEQVR4nGP5//8/A37w7+PVEx9UrOTZCagbLICFsJIf94/eZtexZqS9YygFkOgh7KV/Hx9/lrWhvXuoBgh76cfzp6JSXITTJ1bw8wYjhyY5GkkHcBcS9NLfD4+/ytmTmY/+f35EnkZKAEEv/Xj2VFyKi0zTvz95MP/q9wQtDnI0fz3NyGNGhj5CXvr7/tEPOWc2cpwE0vzgi4IDWf5hYPj94s7kk59zzHhI1UjISz+ePROX4iTPUcBIeiwlx02e3v+f7j9X1MGXPD7tL0hfy68j9OrsfY26GXkG3NAymYCX/rx99Fteg8xI+v3yHoOSNit5mr8/viekaMOERwWrtG9Nu5M278fNvoYtx5LWuPJCxAl46cfzZ+KS5EbSl0fP5NTJ1Pznzd1vyi540yynmrM2iP735x+nCDczXBy/l/68efBPQYvMcP7x7AGvggUzYYXYwNeHj+QUiMlGf59uX82aVm+CSKL4vfT9+XMJSTKz97+PD98qmJGp+ceTO9zKJgSD4/+XC7N67sTPrFFHyhsYXvrz/v5LNgVpcF77/foho7wOuZH05KGYnDN5zah/7++9U7YmEBz/Ppye1XdMp7rGVgTF76he+vtmd6lz4uP2K2u8BBjAkSQpTUJm+PftzUdmYUF2kD/+vLn/Q9GVzCr628P7Ugoe+IPj+5n6iMp1zOKrpjMwcOhWblweLw/xDLKX/r3ZM/GocYbuzrWXvnjZ8TD8evWAWV4f1dP/Pp6bW1m78hEb18+nd57/ZNVqObDKVxAk8/fVrkrfjIcN51Z6goLj2+PH0rLcROoFyn26uv+WuIMJOMB/PbvDrKLLSkjvxLvvJ2LxK7KDmUTcmxv+PVs4f/qGG9/tTDi/P38hKY8c+/8/HqmwDT4es2P7VEOeX1cbdPSWaChA8uX/d0eW3nHMNSxecvqTpysfw68X91gVDViI0svw6/GW1rLmuU+Sjh1Il2MGKr3/QtGAkzi9+L0E8ZeYfSDvpO33f5movHzAJm+EpOD72Za4iYzFlwsNeYBp4tudE49ZVUxkIGmLUci+MOv/O5nZ7UvPfnZ15Pn88KW8Lidxev//+SudOHXWP5fcLU+Ss+RZgFWSiKIDE1F6ifESA4uUixdj0p6nlVLPXkqpIEXSl1NT5j3QbAhVAqeIn49O3volG6uEHFiMgtaxqtXLL3x1NHn6QEABqaLEq5eRS8FQgeFXZMC3tE2P03JlX93+oerJToK9hLzEwKbg5fyt9NATFwYOeVNEWfL72YlT7wRM9MTAWv5/uXPyCZsqWmAxCtnEKNavuPRZ5fUHBRsOkvSyqYQF/0re+DAj/tETeVVukvQS8hIDh7q/5auOfVdsZJDL0X/fP/5ggPeagF3dW3/kUtADi1HYLlquZeXpW8oSckglFlF62ZRDwv/Hb7xhy8urglRDE6WXkJcYuHSC9W+UbbCc7YNU4LNJG6uzf9jSv/KKmuO7jV2Vc56w2RpLozf/mETsoySbp24RL65jI1Uvq2JgOFP4nD2B/mmcpOol5CUGXqMQtacd4igNB0YR7wmTwnwLk/UNrXO6ii1EZhy7vmjxFedcHZSai0nMMUokZ4pAHyfpelnk/KOYjBbz5hWRrpeQlxgFzOP9nWQFUBvCHOppK2+lrYTy4v73YtXLJOaU4ndZSRTVZOL0ssj6ZnrdUZFAbbAQpxdhCHZhJonQWa34deIEzNIxC7rI1SubsKSPTL0wQMSg11ADAIWJekJByBM9AAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
+      "a": "4",
+      "b": "3",
+      "c": "2",
+      "d": "3",
+      "ans": "d"
+    },
+    {
+      "question": "55.The value of cosA + cos(120°+A) + cos(120°-A) is",
+      "a": "0",
+      "b": "1",
+      "c": "-1",
+      "d": "2",
+      "ans": "a"
+    },
+    {
+      "question": "56.Solve : 2cos<sup>2</sup>x - 5cosx + 2 = 0 for 180°<x<360°",
+      "a": "300°",
+      "b": "60°",
+      "c": "240°",
+      "d": "360°",
+      "ans": "a"
+    },
+    {
+      "question": "57.In triangle ABC, if a = 3, b = 4 and c = 5, find cos  <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAmCAIAAACgbpf/AAACX0lEQVR4nGP5//8/A8WAhXIj6GnKt9MlWma9T53XvNgdLMxInil/H69qOayuy/7w5pH7P4KFOcky5cuJvgVSTRNdK3flnrj64Z8JJxPppvx5sLTrQewkZ9WnJqIM6w7e/R4vyU2qKf8/Hu5Zp1O1Xp6Fg91OjWH2ufOv/tgoYtOBx5TfdxZO/JIxy5gLyBbQspRjmH7w9vdcRV5STPn/bm/rpHMXxIPt+0DcXy9fMXy9fPLxLzctNuJN+XVjzoQ/3WfPBYpCgvPH+XINo/4jN78waAkRa8q/19taNhsU7hKFxwi7tIEsw+/rRx/8CBTiIM6UH1emdr2JW2GAlDgYeRR0xBmOHAfGtpEERmxjmPL39f6evKyOi+xhG69F5+pxgQV/P1jV2Ln/LQPDq8bMNtnZVQ4iTPhNYRZ1LF9+vRxVkFUhrHNDWCc2d+P2EclgMJvCyIg972MF8HKSNm4hrxgezKGLAD8udQRHzb7HJiHK9ePNex6b/Ak9KYZ8WIs6PKb8fn3jT+K2i8XqbAz/3u/L0nZ2+Sp3Z4mHILY4xG0Kh1pcmaoiuDBhEjQLd+CbuWf9je8ellwkmcIq6+SM4P37+5+BjYsVR2IiLnR/vzh/9bOIq7869oqEOFO+nJ067blbZ70NtjKXOFP+vtpWmnY4YOWOBHmcigmY8vfVzvLQXoG+HS0uItgjmaApvx+vzU9Yod6/Ic+IF38exWnK70dLYp1aWXKblZ4d3PoMLMQsoGVnrcSNxUCcpny/tnLD3Rs/C0KXIsQ02m5crFQnoT5i4PPY/IPo7D008jQpAAAav9xqbst2BwAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
+      "a": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAnCAIAAAAHNBZfAAADu0lEQVR4nGP5//8/Ax0BCz0tG+T2/bjUERw1+x6bhCjXjzfveWzyJ/SkGPIx0cy+369v/EncdrFYnY3h3/t9WdrOLl/l7izxEGSkkX0canFlqopsICaToFm4A9/MPetvfPew5KKRfayyTs4I3r+//xnYuFhJ8RyJ9iGD3y/OX/0s4uqvzkkX+76cnTrtuVtnvQ0viRrJse/vq22laYcDVu5IkCdZO8ka/r7aWR7aK9C3o8VFhLSsQIZ9vx+vzU9Yod6/Ic+Il8SEQrp9vx8tiXVqZcltVnp2cOszsBCzgJadtRI3CVaTYN/3ays33L3xsyB0KUJMo+3GxUp1NprYx+ex+QfFdclgLq+Hg32MjOSlc3wAuQkx0P7D3Zz5//vHXxYOFgq9T7T/flxj49QhwwI0DxBr359XN8mwDBMQad//j7cfbn7210eSjCKaHPu+PbgpqmZLqWVE2/fr6TUGzSB4Mfn71ZHpxTnTOSafmW3LDRX7/+XynILcuXfYuH++/qWdM2Nikja2cpwo+/6+vfFa3QbcLPr3/uTMuu7t9x8duPgqCKHi/8cDRV5Vb/su7w2V+P9wjpueZ7HKlen2fBg2EmXf59t35VW9IHo5lMN7Vqc86Tfa2opk3Ztd7Ys/2m1wl2AG8uSCC2zzw9t2tdiFiKBbSIx93x/e4Ncwg6hk4hQRAgYomopvN7ef+yFVKMcB5jFyK5tK/5iy/ca3EBtuNJXY7fv//fHFJ/x6quDG8+/n179reHPgc9HPF3ffMvCI8jJDuMx8ErwMb+68+MnAQIR9P+5t6OucPPtayP79mQoswBi79UTVCF0fCvj36yvQaGY2ZmjoMbKwAc39+fXXP2CAELSPWcA0e8JMTpeoJbeTazTZvt69JaXujDcrMLFxszMwfP35B1qU/P/98w8DAw83G6YuLPaxCknzM/wNTxfymn2xuE/30XU2TX1WfNYBE5GkmijDwZef/wJdC+T++fTsI4OIgQQ7pkpc6YVZ0idHo3fq0bdNHz9oOBHqIXCqexhxrjj38DuDFhsoK94+9ZTdwF0dizac6ZNRyDHXprZ77VErRbsAAtYxMAq7VsYJBk/f8dwtXPLfgzUTjgrFbnTHyAz47AMmLZMM37sec2x2BzEjBH8/3jxhys5r1w/cYnj3rj4t00DNMrkkTpubz65nS1tujr/LAsHfL7+p9+/sd+THVnXhy3/smgmZlu+05ZCjgVXWt7TTF8iYj+5FHr20+YfS8BhH0D4GFqWsNVMImUAaoHd7AgBgvErIq9KvRwAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
+      "b": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAnCAIAAAAHNBZfAAAD80lEQVR4nGP5//8/Ax0BCz0tG3L2/bzWFxw86Sa7pCTP79evWYzTeyfmWwsz08y+P29v/4rYeLlen4Ph/6ejxbo2HqnK99f6izDSyD5WWd/MCHUOEJORzyDAQbB/18473/1FuGhkH5uCVyCc8//Pz78MPGK8+IKTeunl18PN0/Yxu7XGq7HT1r5/rzeneJftu33vi0bm7CUxCqx4VeO07/vZev+0ja/+YpFi5Heauq3PihvCYxL1nXfKl+H/97urs510jI/vPt5tw48zweC0j9O4cdfZRrxuRXUEp3JgZXajWl3Hkdot3vwk20cM+P1417YvNv6a8OTIyMjw99cffAUkRfb9ebl3ylIel35w0P7/fGHJwut83vXmvLSyj1VMV+JQvImplIwg668Prz4LOc093BoiQbPyhUUuZvHZGNK0UGIfGWCk2cfIiLtsJxcgNyEG2n+4mzP/f//4y8LBQqH3ifbfj2tsnDpkWIDmAWLt+/PqJhmWYQIi7fv/8fbDzc/++kgy0ce+bw9uiqrZUmoZ0fb9enqNQTOIDcb9/erI9OKc6RyTz8y2hdaCDP+/XJ5TkDv3Dhv3z9e/tHNmTEzS5saStoiy7+/bG6/VbcC1zr/3J2fWdW+//+jAxVdBCBX/Px4o8qp623d5b6jE/4dz3PQ8i1WuTLfnw7CRKPs+374rr+oF0cuhHN6zOuVJv9HWViTr3uxqX/zRboM7uG6QCy6wzQ9v29ViF4LRMiTGvu8Pb/BrmEFUMnGKCAEDFE3Ft5vbz/2QKpQDtwwZGLmVTaV/TNl+41uIDTeaSuz2/f/++OITfj1VPlAK+f38+ncNbw58Lvr54u5bBh5RWFOQmU+Cl+HNnRc/GRiIsO/HvQ19nZNnXwvZvz9TgQUYY7eeqBqh60MB/359BRrNzMYMDT1GFjaguT+//voHDBCC9jELmGZPmMnpErXkdnKNJtvXu7ek1J3xZgUmNm5go/PrT1jL5f/vn38YGHi42TB1YbGPVUian+FveLqQ1+yLxX26j66zaerjb1QycEiqiTIcfPkZ2HoEBemfT88+MogYSGBp+eJKL8ySPjkavVOPvm36+EHDCXd/AAI41T2MOFece/idQYsNlBVvn3rKbuCujkUbzvTJKOSYa1PbvfaolaJdAAHrGBiFXSvjBIOn73juFi7578GaCUeFYje6Y+sm4ckP3CYZvnc95tjsDkJqcP1+vHnClJ3Xrh+4xfDuXX1apoGaZXJJnDY3n13PlrbcHH+XBYK/X35T79/Z74i1kY0v/7FrJmRavtOWQ44GYA+stNMXyJiP7kUevbT5h9LwGEfQPgYWpaw1UwiZQBqgd3sCANLBX3njYyRbAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
+      "c": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAnCAIAAAAHNBZfAAAD0klEQVR4nGP5//8/Ax0BCz0tG+T2/bzWFxw86Sa7pCTP79evWYzTeyfmWwsz08y+P29v/4rYeLlen4Ph/6ejxbo2HqnK99f6izDSyD5WWd/MCHUOEJORzyDAQbB/18473/1FuGhkH5uCVyCc8//Pz78MPGK8pAUnuenl18PN0/Yxu7XGq7HT1r5/rzeneJftu33vi0bm7CUxCqwk6ifVPiZR33mnfBn+f7+7OttJx/j47uPdNvwkJBgyw5ORUzmwMrtRra7jSO0Wb36a2Pf78a5tX2z8NeHJkZGR4e+vP6QVhyTY9+fl3ilLeVz6rbiBnP+fLyxZeJ3Pu96cl1b2sYrpShyKNzGVkhFk/fXh1Wchp7mHW0MkaFa+sMjFLD4bQ5LpFNlHFTDS7GNkJKW0Jw4gNyEG2n+4mzP/f//4y8LBQqH3ifbfj2tsnDpkWIDmAWLt+/PqJhmWYQIi7fv/8fbDzc/++kgy0ce+bw9uiqrZUmoZ0fb9enqNQTOIDcb9/erI9OKc6RyTz8y25YaK/f9yeU5B7tw7bNw/X//SzpkxMUmbG0vaIsq+v29vvFa3AddD/96fnFnXvf3+owMXXwUhVPz/eKDIq+pt3+W9oRL/H85x0/MsVrky3Z4Pw0ai7Pt8+668qhdEL4dyeM/qlCf9Rltbkax7s6t98Ue7De7g2kIuuMA2P7xtV4tdCEZbkRj7vj+8wa9hBlHJxCkiBAxQNBXfbm4/90OqUA7cVmRg5FY2lf4xZfuNbyE23Ggqsdv3//vji0/49VT5QCnk9/Pr3zW8OfC56OeLu28ZeERhjUNmPglehjd3XvxkYCDCvh/3NvR1Tp59LWT//kwFFmCM3XqiaoSuDwX8+/UVaDQzGzM09BhZ2IDm/vz66x8wQAjaxyxgmj1hJqdL1JLbyTWabF/v3pJSd8abFZjYuIHN0K8/YW2Z/79//mFg4OFmw9SFxT5WIWl+hr/h6UJesy8W9+k+us6mqU+gmckhqSbKcPDl579A1wK5fz49+8ggYiCBpS2MK70wS/rkaPROPfq26eMHDSdCPQROdQ8jzhXnHn5n0GIDZcXbp56yG7irY9GGM30yCjnm2tR2rz1qpWgXQMA6BkZh18o4weDpO567hUv+e7BmwlGh2I3u2DpOePIDt0mG712POTa7g5CaYL8fb54wZee16wduMbx7V5+WaaBmmVwSp83NZ9ezpS03x99lgeDvl9/U+3f2O2JtduPLf+yaCZmW77TlkKMB2Ccr7fQFMuaje5FHL23+oTQ8xhG0j4FFKWvNFEImkAbo3Z4AAMbNVLTl6/m2AAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
+      "d": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAnCAIAAAAHNBZfAAAD2klEQVR4nGP5//8/Ax0BCz0tG3L2/bjUERw1+x6bhCjXjzfveWzyJ/SkGPIx0cy+369v/EncdrFYnY3h3/t9WdrOLl/l7izxEGSkkX0canFlqopsICaToFm4A9/MPetvfPew5KKRfayyTs4I3r+//xnYuFhxe45i+5DB7xfnr34WcfVX56SLfV/OTp323K2z3oYXrzJ89n0/W++ftvHVXyxSjPxOU7f1WXFDuX9fbStNOxywckeCPAEP4JPmNG7cdbYRv36wZTvLQ3sF+na0uIjgywoE7SMG/H68Nj9hhXr/hjwjXrwJhRr2/X60JNaplSW3WenZwa3PwELMAlp21krcOK2myL7v11ZuuHvjZ0HoUoSYRtuNi5XqbDSxj89j8w8Sa5ehVV4PPfsYGYlJ1aQB5CbEQPsPd3Pm/+8ff1k4WCj0PtH++3GNjVOHDAvQPECsfX9e3STDMkxApH3/P95+uPnZXx9JggUydez79uCmqJotpZYRbd+vp9cYNIPgheLvV0emF+dM55h8ZrYtrAr8/+XynILcuXfYuH++/qWdM2Nikja2Upso+/6+vfFa3QbcCPr3/uTMuu7t9x8duPgqCKHi/8cDRV5Vb/su7w2V+P9wjpueZ7HKlen2fBg2EmXf59t35VW9IHo5lMN7Vqc86Tfa2opk3Ztd7Ys/2m1wl2AG8uSCC2zzw9t2tdiFiKBbSIx93x/e4Ncwg6hk4hQRAgYomopvN7ef+yFVKMcB5jFyK5tK/5iy/ca3EBtuNJXY7fv//fHFJ/x6quCm8u/n179reHPgc9HPF3ffMvCI8jJDuMx8ErwMb+68+MnAQIR9P+5t6OucPPtayP79mQoswBi79UTVCF0fCvj36yvQaGY2ZmjoMbKwAc39+fXXP2CAELSPWcA0e8JMTpeoJbeTazTZvt69JaXujDcrMLFxszMwfP35B1qU/P/98w8DAw83G6YuLPaxCknzM/wNTxfymn2xuE/30XU2TX1WfNYBE5GkmijDwZefgU1HUJD++fTsI4OIgQQ7pkpc6YVZ0idHo3fq0bdNHz9oOOHuD0AAp7qHEeeKcw+/M2ixgbLi7VNP2Q3c1bFow5k+GYUcc21qu9cetVK0CyBgHQOjsGtlnGDw9B3P3cIl/z1YM+GoUOxGd4zMgM8+YNIyyfC96zHHZncQM0Lw9+PNE6bsvHb9wC2Gd+/q0zIN1CyTS+K0ufnsera05eb4uywQ/P3ym3r/zn5HfmxVF778x66ZkGn5TlsOORpYZX1LO32BjPnoXuTRS5t/KA2PcQTtY2BRylozhZAJpAF6tycA/vlVjWtThT4AAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
+      "ans": "c"
+    },
+    {
+      "question": "58.In a triangle if A = 75° and B=60° then the ratio a:b:c is",
+      "a": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAIAAAABJ4pRAAACTklEQVR4nGP5//8/AwHw//ePvywcLIyE1AEBC2ElP64tWfI3KVUfn4UwNxE27s+rm5/UnYlwGVHG/f94+6GyFi8RYUKUcd8e3BRVs2UixiwijPv19BqDZhAbnP/76bbWvJatL9m4/n149lYsdd3mMm12oo37+/bGa3UbLijv/4cDRQ7xN4uOHM5U52D4fWdi2JSPf0lx3efbd+VVvaBJ5PfdeQUzfyeeTASaBQSsKvnr+hlQkw9+474/vMGvYQZV8/fZziUXOS36VDng8ozoaRHduP/fH198wq+nygcK/N/Pr3/X8Ibp/vHg5AMGVqmdTfF9Z24/efyKQT2oemJTqDIHLuN+3NvQ1zl59rWQ/fszFVgY/r2/9UTViBsm+/fb+28MrKKmKRPbuviYvt+Y5mkY5st9+Xy9Djt245gFTLMnzOR0iVpyO7lGk+3r3VtS6s7wNMLEzs3OwCGhKsfHDORxqkfkWuWHrNr2qEpHlRWrcaxC0vwMf8PThbxmXyzu0310nU1TH66SgU1SR4Jh2/23f6Dhxi4oysVw59VnYNxiNw7iREmfHI3eqUffNn38oOHEhZBgk3d1lazddfjhLydtUEL88+X9dwYxVVFWJM1YYpZRyDHXprZ77VErRbsAZAkuo8IqmwXt/ftzZrkLM7w9uuIcu2OHpyQzfuMYGLhNMnzvesyx2R3EjCLOqpy5fuuXrApP54nC/1+95stetzxeDsUE7OmOXTMh0/Kdthw7ugSziH3FquMVWDXhNo6BRSlrzRScmnADIopPUgAAvl3OZfQW0XEAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\"> : <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAATCAIAAABDZPnGAAAEMUlEQVR4nGP5//8/AwHw//ePvywcLIyE1NENsBBW8uPakiV/k1L18SghwufUBIQd/efVzU/qznRwCvGAoKP/f7z9UFmLl85hiR8QdPS3BzdF1WyZ6OEWogEhR/96eo1BM4gNzP55rS84eNJNdklJnt+vX7MYp/dOzLcWZibWqt+vjkwvzpnOMfnMbFtu3Mp+XOoIjpp9j01ClOvHm/c8NvkTelIM+VBCjYCj/7698VrdhgvC+fP29q+IjZfr9TkY/n86Wqxr45GqfH+tvwjhYuXf+5Mz67q333904OKrIEJ+e33jT+K2i8XqbEBt+7K0nV2+yt1Z4iGIZAsBR3++fVde1QuqnlXWNzNCnQPEZOQzCHAQ7N+18853fxEuJA3fL0+pmseU3J6lw4FsDodyeM/qlCf9RltbCXmQQy2uTFURHLdMgmbhDnwz96y/8d3DEskW/I7+/vAGv4YZTA2bglcgXOr/n59/GXjEeNFSx697aydOZHJsQHU0E6eIEDAMsVnx9USRseMqk1UXFvmKgNMAq6wTUln17+9/BjYuVtTIRHf0/++PLz7h11MFJ6Lfz69/1/DmYMAEvx5unraP2a01Xo0dj5+JAf///f33/98/7IXT7xfnr34WcfVX58Tt6B/3NvR1Tp59LWT//kwFFmCSuvVE1Qg1z/x7vTnFu2zf7XtfNDJnL4lRYIUK//r86esfoMWfvvz+/5/py4f37/8BExELFx8vO/6Sh8dq4q0fE7HLfTk7ddpzt856G15UcRRHMwuYZk+YyekSteR2co0m29e7t6TUnVHtZBL1nXfKFxghd1dnO+kYH999vNuGn/HPw+k2SgWX4KqiFYTAtGbHzYvlaqx4XY0L/H21rTTtcMDKHQny6MkBhc8qJM3P8Dc8Xchr9sXiPt1H19k09bHbyMipHFiZ3ahW13Gkdos3P7NkyNx92h/+ApPo0cKABsaGDX3WwBhi5leTJaKdgNXFO8tDewX6drS4iGDGFKaZzJI+ORq9U4++bfr4QcMJKc/+frxr2xcbf024ECMjw99foDTBwMghbeIoDRL7+FWEkZHJ0MHFhZ8s10IsWpufsEK9f0OeES/W4hRLQDAKOeba1HavPWqlaBeAJP7n5d4pS3lc+q1Aqfz/5wtLFl7n864358U0gRSAXnr8frQk1qmVJbdZ6dnBrc/ASpgFtOyslbgR7scae9wmGb53PebY7A5CLtBYxXQlDsWbmErJCLL++vDqs5DT3MOtIRKoZR6///5//zAM/P1484QpO69dP3CL4d27+rRMAzXL5JI4bXAeBxUdSKXH92srN9y98bMgdClCu0bbjYuV6mz4Hc3ArpmQaflOWw6lPGORi1l8NgarekIAWC2VdvoCGfMxpLgtJ9z6MQHB5/PY/INQ2wxHPmFRylozhSz30QOQl7kHGAAA46eSURRWjPUAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\" : 2>",
+      "b": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAATCAIAAABkynguAAADHElEQVR4nGP5//8/AwHw//ePvywcLIyE1JENWAgr+XFtyZK/San6eJQQ4RPKHPHn1c1P6s6U2EG5I/5/vP1QWYuXQr9S6IhvD26Kqtky0c4FRDji19NrDJpBbGD2z2t9wcGTbrJLSvL8fv2axTi9d2K+tTAzsVb9fnVkenHOdI7JZ2bbcpPiiL9vb7xWt+GCcP68vf0rYuPlen0Ohv+fjhbr2nikKt9f6y9CONv8e39yZl339vuPDlx8FYQpTcARn2/flVf1gtrCKuubGaHOAWIy8hkEOAj279p557u/CBeShu+Xp1TNY0puz9LhQDaHQzm8Z3XKk36jra1YbMHviO8Pb/BrmMHUsCl4BcKl/v/5+ZeBR4wXLTZ+3Vs7cSKTYwOqI5g4RYSA8YHLGnRH/P/++OITfj1VPlBS/P38+ncNbw4s2n493DxtH7Nba7waO15fEAdQHPHj3oa+zsmzr4Xs35+pwAKMyVtPVI1Q09C/15tTvMv23b73RSNz9pIYBVao8K/Pn77+AebiT19+///P9OXD+/f/gJHGwsXHy044Z6E4glnANHvCTE6XqCW3k2s02b7evSWl7oxqBpOo77xTvsAAu7s620nH+Pju4902/Ix/Hk63USq4BFcVrSAEpjU7bl4sV2MlyRGsQtL8DH/D04W8Zl8s7tN9dJ1NUx+7CYycyoGV2Y1qdR1Hard48zNLhszdp/3hLwPD16OFAQ2MDRv6rIEhyMyvJktEvYAlYTJL+uRo9E49+rbp4wcNJ6SU//vxrm1fbPw14UKMjAx/f4HigIGRQ9rEURok9vGrCCMjk6GDiws/EbbjdAQDo5Bjrk1t99qjVop2AUjif17unbKUx6XfCpRK/n++sGThdT7venNe4i0jwREMDNwmGb53PebY7A5CzoCsYroSh+JNTKVkBFl/fXj1Wchp7uHWEAnUPMrvv//fPwwDfz/ePGHKzmvXD9xiePeuPi3TQM0yuSROG5bmsUcZu2ZCpuU7bTmU/MciF7P4bAwJHkRyv6xvaacvkDEfqzSOdMOilLVmCln2kQOISbw0BwAwHxormuaNYwAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\"> : <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAIAAAABJ4pRAAACTklEQVR4nGP5//8/AwHw//ePvywcLIyE1AEBC2ElP64tWfI3KVUfn4UwNxE27s+rm5/UnYlwGVHG/f94+6GyFi8RYUKUcd8e3BRVs2UixiwijPv19BqDZhAbnP/76bbWvJatL9m4/n149lYsdd3mMm12oo37+/bGa3UbLijv/4cDRQ7xN4uOHM5U52D4fWdi2JSPf0lx3efbd+VVvaBJ5PfdeQUzfyeeTASaBQSsKvnr+hlQkw9+474/vMGvYQZV8/fZziUXOS36VDng8ozoaRHduP/fH198wq+nygcK/N/Pr3/X8Ibp/vHg5AMGVqmdTfF9Z24/efyKQT2oemJTqDIHLuN+3NvQ1zl59rWQ/fszFVgY/r2/9UTViBsm+/fb+28MrKKmKRPbuviYvt+Y5mkY5st9+Xy9Djt245gFTLMnzOR0iVpyO7lGk+3r3VtS6s7wNMLEzs3OwCGhKsfHDORxqkfkWuWHrNr2qEpHlRWrcaxC0vwMf8PThbxmXyzu0310nU1TH66SgU1SR4Jh2/23f6Dhxi4oysVw59VnYNxiNw7iREmfHI3eqUffNn38oOHEhZBgk3d1lazddfjhLydtUEL88+X9dwYxVVFWJM1YYpZRyDHXprZ77VErRbsAZAkuo8IqmwXt/ftzZrkLM7w9uuIcu2OHpyQzfuMYGLhNMnzvesyx2R3EjCLOqpy5fuuXrApP54nC/1+95stetzxeDsUE7OmOXTMh0/Kdthw7ugSziH3FquMVWDXhNo6BRSlrzRScmnADIopPUgAAvl3OZfQW0XEAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\"> :2",
+      "c": "2: <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAATCAIAAABkynguAAADHElEQVR4nGP5//8/AwHw//ePvywcLIyE1JENWAgr+XFtyZK/San6eJQQ4RPKHPHn1c1P6s6U2EG5I/5/vP1QWYuXQr9S6IhvD26Kqtky0c4FRDji19NrDJpBbGD2z2t9wcGTbrJLSvL8fv2axTi9d2K+tTAzsVb9fnVkenHOdI7JZ2bbcpPiiL9vb7xWt+GCcP68vf0rYuPlen0Ohv+fjhbr2nikKt9f6y9CONv8e39yZl339vuPDlx8FYQpTcARn2/flVf1gtrCKuubGaHOAWIy8hkEOAj279p557u/CBeShu+Xp1TNY0puz9LhQDaHQzm8Z3XKk36jra1YbMHviO8Pb/BrmMHUsCl4BcKl/v/5+ZeBR4wXLTZ+3Vs7cSKTYwOqI5g4RYSA8YHLGnRH/P/++OITfj1VPlBS/P38+ncNbw4s2n493DxtH7Nba7waO15fEAdQHPHj3oa+zsmzr4Xs35+pwAKMyVtPVI1Q09C/15tTvMv23b73RSNz9pIYBVao8K/Pn77+AebiT19+///P9OXD+/f/gJHGwsXHy044Z6E4glnANHvCTE6XqCW3k2s02b7evSWl7oxqBpOo77xTvsAAu7s620nH+Pju4902/Ix/Hk63USq4BFcVrSAEpjU7bl4sV2MlyRGsQtL8DH/D04W8Zl8s7tN9dJ1NUx+7CYycyoGV2Y1qdR1Hard48zNLhszdp/3hLwPD16OFAQ2MDRv6rIEhyMyvJktEvYAlYTJL+uRo9E49+rbp4wcNJ6SU//vxrm1fbPw14UKMjAx/f4HigIGRQ9rEURok9vGrCCMjk6GDiws/EbbjdAQDo5Bjrk1t99qjVop2AUjif17unbKUx6XfCpRK/n++sGThdT7venNe4i0jwREMDNwmGb53PebY7A5CzoCsYroSh+JNTKVkBFl/fXj1Wchp7uHWEAnUPMrvv//fPwwDfz/ePGHKzmvXD9xiePeuPi3TQM0yuSROG5bmsUcZu2ZCpuU7bTmU/MciF7P4bAwJHkRyv6xvaacvkDEfqzSOdMOilLVmCln2kQOISbw0BwAwHxormuaNYwAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\"> : <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAIAAAABJ4pRAAACTklEQVR4nGP5//8/AwHw//ePvywcLIyE1AEBC2ElP64tWfI3KVUfn4UwNxE27s+rm5/UnYlwGVHG/f94+6GyFi8RYUKUcd8e3BRVs2UixiwijPv19BqDZhAbnP/76bbWvJatL9m4/n149lYsdd3mMm12oo37+/bGa3UbLijv/4cDRQ7xN4uOHM5U52D4fWdi2JSPf0lx3efbd+VVvaBJ5PfdeQUzfyeeTASaBQSsKvnr+hlQkw9+474/vMGvYQZV8/fZziUXOS36VDng8ozoaRHduP/fH198wq+nygcK/N/Pr3/X8Ibp/vHg5AMGVqmdTfF9Z24/efyKQT2oemJTqDIHLuN+3NvQ1zl59rWQ/fszFVgY/r2/9UTViBsm+/fb+28MrKKmKRPbuviYvt+Y5mkY5st9+Xy9Djt245gFTLMnzOR0iVpyO7lGk+3r3VtS6s7wNMLEzs3OwCGhKsfHDORxqkfkWuWHrNr2qEpHlRWrcaxC0vwMf8PThbxmXyzu0310nU1TH66SgU1SR4Jh2/23f6Dhxi4oysVw59VnYNxiNw7iREmfHI3eqUffNn38oOHEhZBgk3d1lazddfjhLydtUEL88+X9dwYxVVFWJM1YYpZRyDHXprZ77VErRbsAZAkuo8IqmwXt/ftzZrkLM7w9uuIcu2OHpyQzfuMYGLhNMnzvesyx2R3EjCLOqpy5fuuXrApP54nC/1+95stetzxeDsUE7OmOXTMh0/Kdthw7ugSziH3FquMVWDXhNo6BRSlrzRScmnADIopPUgAAvl3OZfQW0XEAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
+      "d": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAIAAAABJ4pRAAACTklEQVR4nGP5//8/AwHw//ePvywcLIyE1AEBC2ElP64tWfI3KVUfn4UwNxE27s+rm5/UnYlwGVHG/f94+6GyFi8RYUKUcd8e3BRVs2UixiwijPv19BqDZhAbnP/76bbWvJatL9m4/n149lYsdd3mMm12oo37+/bGa3UbLijv/4cDRQ7xN4uOHM5U52D4fWdi2JSPf0lx3efbd+VVvaBJ5PfdeQUzfyeeTASaBQSsKvnr+hlQkw9+474/vMGvYQZV8/fZziUXOS36VDng8ozoaRHduP/fH198wq+nygcK/N/Pr3/X8Ibp/vHg5AMGVqmdTfF9Z24/efyKQT2oemJTqDIHLuN+3NvQ1zl59rWQ/fszFVgY/r2/9UTViBsm+/fb+28MrKKmKRPbuviYvt+Y5mkY5st9+Xy9Djt245gFTLMnzOR0iVpyO7lGk+3r3VtS6s7wNMLEzs3OwCGhKsfHDORxqkfkWuWHrNr2qEpHlRWrcaxC0vwMf8PThbxmXyzu0310nU1TH66SgU1SR4Jh2/23f6Dhxi4oysVw59VnYNxiNw7iREmfHI3eqUffNn38oOHEhZBgk3d1lazddfjhLydtUEL88+X9dwYxVVFWJM1YYpZRyDHXprZ77VErRbsAZAkuo8IqmwXt/ftzZrkLM7w9uuIcu2OHpyQzfuMYGLhNMnzvesyx2R3EjCLOqpy5fuuXrApP54nC/1+95stetzxeDsUE7OmOXTMh0/Kdthw7ugSziH3FquMVWDXhNo6BRSlrzRScmnADIopPUgAAvl3OZfQW0XEAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\"> :2:<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAATCAIAAABkynguAAADHElEQVR4nGP5//8/AwHw//ePvywcLIyE1JENWAgr+XFtyZK/San6eJQQ4RPKHPHn1c1P6s6U2EG5I/5/vP1QWYuXQr9S6IhvD26Kqtky0c4FRDji19NrDJpBbGD2z2t9wcGTbrJLSvL8fv2axTi9d2K+tTAzsVb9fnVkenHOdI7JZ2bbcpPiiL9vb7xWt+GCcP68vf0rYuPlen0Ohv+fjhbr2nikKt9f6y9CONv8e39yZl339vuPDlx8FYQpTcARn2/flVf1gtrCKuubGaHOAWIy8hkEOAj279p557u/CBeShu+Xp1TNY0puz9LhQDaHQzm8Z3XKk36jra1YbMHviO8Pb/BrmMHUsCl4BcKl/v/5+ZeBR4wXLTZ+3Vs7cSKTYwOqI5g4RYSA8YHLGnRH/P/++OITfj1VPlBS/P38+ncNbw4s2n493DxtH7Nba7waO15fEAdQHPHj3oa+zsmzr4Xs35+pwAKMyVtPVI1Q09C/15tTvMv23b73RSNz9pIYBVao8K/Pn77+AebiT19+///P9OXD+/f/gJHGwsXHy044Z6E4glnANHvCTE6XqCW3k2s02b7evSWl7oxqBpOo77xTvsAAu7s620nH+Pju4902/Ix/Hk63USq4BFcVrSAEpjU7bl4sV2MlyRGsQtL8DH/D04W8Zl8s7tN9dJ1NUx+7CYycyoGV2Y1qdR1Hard48zNLhszdp/3hLwPD16OFAQ2MDRv6rIEhyMyvJktEvYAlYTJL+uRo9E49+rbp4wcNJ6SU//vxrm1fbPw14UKMjAx/f4HigIGRQ9rEURok9vGrCCMjk6GDiws/EbbjdAQDo5Bjrk1t99qjVop2AUjif17unbKUx6XfCpRK/n++sGThdT7venNe4i0jwREMDNwmGb53PebY7A5CzoCsYroSh+JNTKVkBFl/fXj1Wchp7uHWEAnUPMrvv//fPwwDfz/ePGHKzmvXD9xiePeuPi3TQM0yuSROG5bmsUcZu2ZCpuU7bTmU/MciF7P4bAwJHkRyv6xvaacvkDEfqzSOdMOilLVmCln2kQOISbw0BwAwHxormuaNYwAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
+      "ans": "b"
+    },
+    {
+      "question": "59.The sum 1 + 3/2 + 5/4 + 7/8 + …… to infinity is",
+      "a": "6",
       "b": "7",
-      "c": "5",
-      "d": "4",
-      "ans": "d"
+      "c": "8",
+      "d": "9",
+      "ans": "a"
     },
     {
-      "question": "87. The area between the parabola y=x<sup>2</sup> & the line y=x is",
-      "a": "1/3",
-      "b": "1/2",
-      "c": "1/6",
-      "d": "none",
-      "ans": "c"
-    },
-    {
-      "question": "88. ",
-      "a": "2",
-      "b": "√2",
+      "question": "60.Solve for x <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> = 0",
+      "a": "-5",
+      "b": "5",
       "c": "0",
-      "d": "-2",
+      "d": "4",
       "ans": "a"
     },
     {
-      "question": "89. The ratio of the roots of the equation ax<sup>2</sup>+bx+c=0 are in the ratio 3:4 are",
-      "a": "12b<sup>2</sup>=49ac",
-      "b": "12a<sup>2</sup>=49bc",
-      "c": "7a<sup>2</sup>=144bc",
-      "d": "none",
-      "ans": "a"
-    },
-    {
-      "question": "90. The value of (1-2ω+ω<sup>2</sup>)<sup>6</sup>",
-      "a": "128",
-      "b": "64",
-      "c": "",
-      "d": "",
+      "question": "61.Simplify : <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">",
+      "a": "-i",
+      "b": "1",
+      "c": "i",
+      "d": "-1",
       "ans": "c"
     },
     {
-      "question": "91.The value ofcos<sup>-1</sup>cos(5π/4) is",
-      "a": "5π/4",
-      "b": "3π/4",
-      "c": "π/4",
-      "d": "-π/4",
+      "question": "62.Express <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAATCAIAAACsppL4AAAEQElEQVR4nGP5//8/w8CA/79//GXhYGEkSzMLlR1DPPhxjY1TB488/gAdMHf/eXWTEu0D5e7/H28/3Pzsr48kE3n6B8rd3x7cFFWzJdPRDOju/nGpIzhq9j02CVGuH2/e89jkT+hJMeQjwnRSNf56eo1BM4iNgeHntb7g4Ek32SUleX6/fs1inN47Md9amBlJ6aeD6fq+Z5OPHa3RYcfl7t+vb/xJ3HaxWJ2N4d/7fVnazi5f5e4s8RAkmOdJ1Pj37Y3X6jZcQNaft7d/RWy8XK/PwfD/09FiXRuPVOX7a/1FEBrZRDSMTP8q8zGjmIDqbg61uDJVRTYQk0nQLNyBb+ae9Te+e1hyIan5fnlK1Tym5PYsHQ7SNCKBz7fvyqt6gdzGKuubGaEONomRzyDAQbB/18473/1FEBo5tAvX7sUwAdXdrLJOzgjev7//Gdi4WNHC7Ne9tRMnMjk2oLibGI1IXn94g1/DDGw1m4JXIFz8/5+ffxl4xHjhQfvn+a6e/NTK1aIzH51Mk0UOcdz58veL81c/i7j6q3PiVEK8xv/fH198wq+nCk7yv59f/67hzYGu79fDzdP2Mbu1xqvB0zGLpEuch0T1Xk1NIdRkgtvdX85OnfbcrbPehhfC//fr86evf4BVwacvv///Z/ry4f37f8C4ZeHi42VnwqcRmGnvbejrnDz7Wsj+/ZkKLMAMcOuJqhE3Qse/15tTvMv23b73RSNz9pIYBVYk0348PPWQQT5BHt2X2N3999W20rTDASt3JMhDFfx5ON1GqeASXEW0ghCY1uy4ebFcjRW3RiBgFjDNnjCT0yVqye3kGk22r3dvSak7I/mVSdR33ilfYJzcXZ3tpGN8fPfxbht+SCL79/HWxTf8OlrCaMGNzd1/X+0sD+0V6NvR4iICN51ZMmTuPu0PfxkYvh4tDGhgbNjQZw0MMmZ+NVkWvBqBgFVImp/hb3i6kNfsi8V9uo+us2nqszJgAEZO5cDK7Ea1uo4jtVu8+cFiPx+devBfPlqeHV0xurt/P16bn7BCvX9DnhEvcr5i5JA2cZQGsT5+FWFkZDJ0cHHhJ0YjwuM+ORq9U4++bfr4QcOJC65r17YvNv6a8OKDkZHh768/sJbJv0+3Lrzm1dIWwQheFIHfj5bEOrWy5DYrPTu49RnEOgEtO2slbgIFODEaGYUcc21qu9cetVK0C4AJ/nm5d8pSHpd+K1By///5wpKF1/m8681hWePnw9PA4A5TwMjDqO7+fm3lhrs3fhaELkWIabTduFipzoYQ4Pff/+8fmilEaWTgNsnwvesxx2Z3EDy1sorpShyKNzGVkhFk/fXh1Wchp7mHW0MkoPL/P985//zfyz3T55lVpFgKIac9FHfzeWz+QVZrnEiN7JoJmZbvtOUQqZVFLmbx2Rhc6hnFog7/i8IqRd92FYtS1pop1DGJKqbQHwAAHS7SfFOCu3MAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\"> in polar form",
+      "a": "4(cos30°+isin30°)",
+      "b": "4(cos60°+isin60°)",
+      "c": "4(cos90°+isin90°)",
+      "d": "4(cos120°+isin120°)",
       "ans": "b"
     },
     {
-      "question": "92. If |a+b|=|a-b| then",
-      "a": "a is parallel to b",
-      "b": "a=3b",
-      "c": "a=2b",
-      "d": "a is perpendicular to b",
-      "ans": "d"
-    },
-    {
-      "question": "93. The locus of the equation x<sup>2</sup>-5x+6=0 is",
-      "a": "empty set",
-      "b": "a set containing two distinct points",
-      "c": "a pair of parallel lines",
-      "d": "none",
+      "question": "63.The equation whose one root is  <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAATCAIAAACLCBMQAAADjUlEQVR4nGP5//8/A63A/98//rJwsDASoZSFZo5gYPhxbcmSv0mp+niUwEOBhu748+rmJ3VnIhXTzh3/P95+qKzFS2S8084d3x7cFFWzZSJSNao7flzqCI6afY9NQpTrx5v3PDb5E3pSDPmINQsF/Hp6jUEziA3M/nmtLzh40k12SUme369fsxin907MtxZmxu2O369v/EncdrFYnY3h3/t9WdrOLl/l7izxECQmxaOCv29vvFa34YJw/ry9/Sti4+V6fQ6G/5+OFuvaeKQq31/rL4JkLKo7ONTiylQVwZ5gEjQLd+CbuWf9je8ellxIar5fnlI1jym5PUuHA487Pt++K6/qBbWIVdY3M0IdrJyRzyDAQbB/18473/1FkIxFdQerrBNSAv/39z8DGxcrWmD8urd24kQmxwa87vj+8Aa/hhnMcDYFr0C41P8/P/8y8IjxokQLnnT6+8X5q59FXP3VOXFbhwT+f3988Qm/nio4Nf1+fv27hjc2d/56uHnaPma31ng1duLc8eXs1GnP3TrrbXgh/H+/Pn/6+geYBz99+f3/P9OXD+/f/wMGMwsXHy870497G/o6J8++FrJ/f6YCCzBt3XqiasSNYt6/15tTvMv23b73RSNz9pIYBVZU67C74++rbaVphwNW7kiQhyr483C6jVLBJbiKaAUhMK3ZcfNiuRqzgGn2hJmcLlFLbifXaLJ9vXtLSt0ZNZsxifrOO+ULDLa7q7OddIyP7z7ebcOPiHIs7vj7amd5aK9A344WFxG4WcySIXP3aX/4y8Dw9WhhQANjw4Y+a6CHmfnVZIFGMApJ8zP8DU8X8pp9sbhP99F1Nk19VkyTgYCRUzmwMrtRra7jSO0Wb36c7vj9eG1+wgr1/g15RrzICZSRQ9rEURrE+vhVhJGRydDBxYUfVSuzpE+ORu/Uo2+bPn7QcOJCNnPXti82/ppwIUZGhr+//qCUsyju+P1oSaxTK0tus9Kzg1ufQQwX0LKzVuImqgBhFHLMtantXnvUStEuAEn8z8u9U5byuPRbgVLM/88Xliy8zuddb86L0x3fr63ccPfGz4LQpQgxjbYbFyvV2RAC/P77//3D4RJukwzfux5zbHYHIedKVjFdiUPxJqZSMoKsvz68+izkNPdwa4gE7vKUz2PzD8paI+yaCZmW77TlUDIli1zM4rMx+DVSu55jUcpaM4UcfVR2B7kAABWaSPw/OAkAAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\"> is",
+      "a": "x<sup>2</sup>+4x+1=0",
+      "b": "x<sup>2</sup>+4x-1=0",
+      "c": "x<sup>2</sup>-4x+1=0",
+      "d": "x<sup>2</sup>-4x-1=0",
       "ans": "c"
     },
     {
-      "question": "94. Which of the following is not true?",
-      "a": "(A-B)<sup>1</sup>=B<sup>1</sup>-A<sup>1</sup>",
-      "b": "(BA)<sup>1</sup>=A<sup>1</sup>B<sup>1</sup>",
-      "c": "(A+B)<sup>1</sup>=A<sup>1</sup>+B<sup>1</sup>",
-      "d": "(AB)<sup>-1</sup>=B<sup>-1</sup>A<sup>-1</sup>",
-      "ans": "a"
-    },
-    {
-      "question": "95. The greatest coefficient in the expansion of (1+x)<sup>12</sup> is",
-      "a": "C(12,7)",
-      "b": "C(13,8)",
-      "c": "<sup>12</sup>C<sub>8</sub>",
-      "d": "C(12,6)",
-      "ans": "d"
-    },
-    {
-      "question": "96. If (b+c+a)(b+c-a)=3bc then A is",
-      "a": " 30°",
+      "question": "64.The acute angle between the lines x-3y-6=0 and y=2x+5 is",
+      "a": "30°",
       "b": "60°",
       "c": "45°",
-      "d": "120°",
-      "ans": "b"
-    },
-    {
-      "question": "97. If G be the centroid of a triangle ABC & O is any point then OA+OB+OC is equal to",
-      "a": "OG",
-      "b": "2OG",
-      "c": "3OG",
-      "d": "none",
-      "ans": "b"
-    },
-    {
-      "question": "98. The system of linear equations x+7y=9 & 3x-2y=1 are",
-      "a": "dependent & consistent",
-      "b": "independent & inconsistent",
-      "c": "independent & consistent",
-      "d": "dependent & inconsistent",
+      "d": "135°",
       "ans": "c"
     },
     {
-      "question": "99. If a set N={ax:xЄN} then (3N∩7N) is",
-      "a": "{3,6,9,12,…..}",
-      "b": "{21,42,63,…..}",
-      "c": "{7,14,21,….}",
-      "d": "none",
+      "question": "65.Length of perpendicular from (1,1) to line 4x+3y-12=0 is",
+      "a": "2",
+      "b": "1",
+      "c": "3",
+      "d": "4",
       "ans": "b"
     },
     {
-      "question": "100. If x+y+z=xyz then tan<sup>-1</sup>x+tan<sup>-1</sup>y+tan<sup>-1</sup>z=",
-      "a": "π",
-      "b": "-π",
-      "c": "π/2",
-      "d": "2π",
+      "question": "66.The length of the intercept made by the straight line x+y=3 with the circle x<sup>2</sup>+y<sup>2</sup>-2x-3=0",
+      "a": "2",
+      "b": "2 <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAIAAAABJ4pRAAACKUlEQVR4nGP5//8/AwHw//ePvywcLIyE1AEBC2ElP64tWfI3KVUfn4UwNxE27s+rm5/UnYlwGVHG/f94+6GyFi8RYUKUcd8e3BRVs2UixiwijPv19BqDZhAbmP3zWl9w8KSb7JKSPL9fv2YxTu+dmG8tzEyCcX/f3nitbsMF4fx5e/tXxMbL9focDP8/HS3WtfFIVb6/1l8EKcoJGPf59l15VS+oelZZ38wIdQ4Qk5HPIMBBsH/Xzjvf/UW4iDXu+8Mb/BpmMDVsCl6BcKn/f37+ZeAR40XxK4Zx/78/vviEX0+VDxT4v59f/67hzYHFnl8PN0/bx+zWGq/Gjtu4H/c29HVOnn0tZP/+TAUWhn/vbz1RNeJGUf/v9eYU77J9t+990cicvSRGgRXVGhTjmAVMsyfM5HSJWnI7uUaT7evdW1LqzqhphEnUd94pX6An7q7OdtIxPr77eLcNPyN241iFpPkZ/oanC3nNvljcp/voOpumPpr1UMDIqRxYmd2oVtdxpHaLNz924yBOlPTJ0eidevRt08cPGk5Isfb78a5tX2z8NeFCjIwMf3/9QcktWGKWUcgx16a2e+1RK0W7ACTxPy/3TlnK49JvBQrN/58vLFl4nc+73pyXgHEMDNwmGb53PebY7A5CTgasYroSh+JNTKVkBFl/fXj1Wchp7uHWEAkicgW7ZkKm5TttOZRUwCIXs/hsDFb1BIxjYFHKWjMFv05SjCMXAABZjMHPJqno3wAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
+      "c": "2 <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAATCAIAAADqEDFSAAACBUlEQVR4nGP5//8/AwHw//ePvywcLIyE1LEQUsDA8OPakiV/k1L18dkGdhBhs/68uvlJ3ZmwlUSY9f/j7YfKWrxEBAVhs749uCmqZstEDXf9enqNQTOIDcz+cakjOGr2PTYJUa4fb97z2ORP6Ekx5ENYQ8Csv29vvFa34YJwfr++8Sdx28VidTaGf+/3ZWk7u3yVu7PEQxAWwQTM+nz7rryqF1Qxh1pcmaoi2I1MgmbhDnwz96y/8d3Dkosos74/vMGvYQZTwyrrhBSf//7+Z2DjYkVKdehm/f/++OITfj1VcDD8fn79u4Y3BzZbfr84f/WziKu/OicOs37c29DXOXn2tZD9+zMVWICBcuuJqhE3NqO+nJ067blbZ70NL5IgilnMAqbZE2ZyukQtuZ1co8n29e4tKXVnzOTw99W20rTDASt3JMijaEfhsApJ8zP8DU8X8pp9sbhP99F1Nk19VgyDdpaH9gr07WhxEUGzBjPsmSV9cjR6px592/Txg4YTF4rc78dr8xNWqPdvyDPixczqWOKRUcgx16a2e+1RK0W7AGSDHi2JdWplyW1WenZw6zOIvQJadtZK3Iw4zWJg4DbJ8L3rMcdmdxAzkuj3ays33L3xsyB0KUJMo+3GxUp1NjxmMbBrJmRavtOWY0cW5PPY/ANvBseRVlmUstZMwaePBLPIAgCmD7fjdyiF2wAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
+      "d": "2 <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAIAAAABJ4pRAAACB0lEQVR4nGP5//8/AwHw//ePvywcLIyE1AEBC2ElP64tWfI3KVUfn4UwNxE27s+rm5/UnYlwGVHG/f94+6GyFi8RYUKUcd8e3BRVs2UixiwijPv19BqDZhAbmP3v+XxLqaRTCEm+iH1PlzvyEG/c37c3XqvbcMG4jHw29WuqLbihPA4ZA06SXPf59l15VS9EEmEVM3Hx8ODHqR6/cd8f3uDXMCMiMeEy7v/3xxef8Oup8oEC//fz6981vDmQpL+cqA/3nf7/y4f3v4WMgvJrc1yk2XAa9+Pehr7OybOvhezfn6nAwvDv/a0nqkbccGkmiZhdd6LZOVkZGf5/u7081dbV8s7BK1Pt+BixG8csYJo9YSanS9SS28k1mmxf796SUndGSiOMLBzQoGfkUg2uSK1bNnHq6S47Zx7sxrEKSfMz/A1PF/KafbG4T/fRdTZNfVacwSQAVPz52Zsf/xl44M7DDGZmSZ8cjd6pR982ffyg4cSFkPj/ZlfLGpmyDC12MPfPh6cfGQS1JTiRiwYsscYo5JhrU9u99qiVol0AisSH46vuPE/RAgYrw7+3h6YveqiSstyEG1kJ1kTAbZLhe9djjs3uIGZk0zgVDP7XuRguVZDk+Pn21U/FpE0HqkxRTMOR7tg1EzIt32nLsaOIcpm17b/RhlUDfuMYWJSy1kzBq5Ek48gFAF/rrjXEOck1AAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
+      "ans": "c"
+    },
+    {
+      "question": "67.Evaluate <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> ",
+      "a": "0",
+      "b": "3",
+      "c": "∞",
+      "d": "5",
+      "ans": "b"
+    },
+    {
+      "question": "68.Evaluate <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">",
+      "a": "1",
+      "b": "0",
+      "c": "-1",
+      "d": "∞",
       "ans": "a"
+    },
+    {
+      "question": "69.If <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAmCAIAAADx+qScAAADNklEQVR4nGP5//8/wxABLAPtABLAqFvJA79fHZlenDOdY/KZ2bbcWOQHiVv/vT85s657+/1HBy6+CsKlaJC4lYFDObxndcqTfqOtrTjVDBK3MnGKCAETAX5Fg8StRIFRt9IGjLqVNmDEu/XH7U07/rsFqHEQreP3480Tpuy8dv3ALYZ37+rTMg3ULJNL4rRRay8auPX7xa6oqo8zXAPQxS9PqZrHlNyepYPpB1ZZ39JOXyBjPh6D0d36792xCVkxxRuUlj7YFSXx9+40N4Mmpe1359pgq6AxwZ8XeyfkJ9Sf+axf4h9gXr2w3Z6fESb3697aiROZHBuwuZUogO5WJiGrwqkTDm8LnrL5aXgS+/Urf/x66y3ADv2yL0LKeeVnrMYwu25+u8uHn4FFwtZbj7v8VMzCHe367OQ5iWi3AgGjsFNhuJDT5FkL7pzdpT1jfpQcRBGP04pP/1cQMvD7/ZOPmJVNZeEO/ffr86evf4AN+k9ffv//z/Tlw/v3/4CWsHDx8bIzUepWoKvMspNk57T0BZ05maXNxYhNCS7w69m5Wz9lgpThSebPw+k2SgWX4AqiFYTAtGbHzYvlaqxAVzMSsADec8Hm1n9vjq48zszJ8Pb5dwaSHMoACVYWZRNEsDJLhszdp/3hLwPD16OFAQ2MDRv6rIEeYeZXkyU1X2Oo//fuQG3sdIn+rZPz9IomHGi39hGCuvfL/ihZp+UfsBrD5rHl1XZvfmCwnr/9UyoQEawMjBzSJo7SINbHryKMjEyGDi4u/Mhaie/wobr1/6cTDYGV/9p25Bnyvs5zyovt2/rcM1aKGSzJ47js/f9l+I378+HJh//cwlxM/3//+MvCwUJqtBDv1t+3Z6S0XDXaoc3HyMAo6prvw+FZkd3KP6nST5aVOOM4NcNC1eeVmevtjK6Z2RutxIYkx++//98/qrmVVa3syr8yKIdRwGPlB1L744wCjpOv/5xMiYtwg8HVHsBfOQ8mt+KqnGFgsLgVX+UMA4PFrcRUzoPFrVgqZwwwaNyKUTljgkHjVozKGRMMFrdiVs6YYLC4lZjKebC4FV/lDAODxa3EVM6Dxa3EgFG30gYAANLkQkKQx6mBAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\"> and <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAAmCAIAAAD4EQTmAAAC9klEQVR4nGP5//8/wxAELAPtADLBqLupC36/OjK9OGc6x+Qzs225scgPQnf/e39yZl339vuPDlx8FYRL0SB0NwOHcnjP6pQn/UZbW3GqGYTuZuIUEQImFPyKBqG7iQKj7qYvGHU3fcGou1HBj9ubdvx3C1DjIF3r78ebJ0zZee36gVsM797Vp2UaqFkml8Rpo9aatHH394tdUVUfZ7gGkKOZVda3tNMXyJiPRxGmu389WFUZl9L3JPfi9VY9doZfN7psdCoYZz4+lizNTIy1f17snZCfUH/ms36Jf4B59cJ2e35GcpyPH2C6m00hrKF29WyfE7e+/NdjZ2RTcHVQnPpJUxDk6C/7IqScV37GahKz6+a3u3z4GVgkbL31uMtPxSzc0a7PTn0X43I3EHCq2iv/7Tr+4GeIMMfPu5v3i2YvMeECSfA4rfj0fwUhM7/fP/mIWdlUlmaOZsDhbhYxQxOhF6dufPxv+GVH6yajlr1qbMQb+evZuVs/ZYKUkTPS97P1/mkbX/3FopyR32nqtj4rsGpGRgJJCt47w54vOZTt1Ri3Hrv/Xm9n94eMZXYkpVBQcLMom6AEN6dx466zjSQYQghgdzeTgLaV5Nt9+xY832XbtFsOrujL/ihZp+UfsOph89jyars3PzC4z9/+KRWojK21TwgQ39nFUQ5yKNhoMnU3dCmsuGTEhRDmcVz2/v8y/Cb++fDkw39uYS6m/79//GXhYKFBYcKAu/zmVrdT5Hwe3+IjxkSiiZyaYaHq88rM9XZG18zsjVYiIWeQAHC5++frl+JJ/RnqpNvKKOA4+frPyZQ5iyDA7u5ftxf0vE6bRlp+pDLA31JAcffve0u673iWm91oLzweOHWRFFH1I20AoZYCirt/Pd490St7qrpjwdwFsfID1lQkpqWA4jhu+4Uv/9DPfbgAMS2Fwdn+JtxSGJTuxtZSQAOD0t3YWgpoYDC6m5iWwmB0NzEthcHobmJaCoPR3cS0FAaju4kBo+6mLwAAcpYlYKXZJ6MAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\"> find <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAmCAIAAAC6UndxAAADI0lEQVR4nGP5//8/A1UBC3WNI8bEv68PTWtqqJty3Hbbi02e/FQwkVnULi3NeuL0Z+aKnNRxIxB8f3DmKZuaoSQbtUz89eLS/T9yMUQ6EaeJ/z5eWNTQsOIuE/u3+2cO3WT1MBJ5tqo4LqXvSe7F66167Ay/bnTZ6FQwznx8LFmamaCJ/z8eqbANOByxY2efCd+vqw06+svNFPkVNBtqV8/2OXHry389dkY2BVcHxamfNAWZ0TRjM/Hb6caY/t/5F4tN+BiBvDsnHrOpGUkBQ5FJ1V75b9fxBz9DhDl+3t28XzR7iQkXEb7+fHLygofqVZGq7CDez0cnb/2WTQSHIouYoYnQi1M3Pv43/LKjdZNRy141zNjCNPHXsxNn3guamkqyggPgy52TT9hUwU5kYOBQtldj3Hrs/nu9nd0fMpbZ8TNiOgjTxP8/v/xkgGfNH/eP3PojlwqNaCYBbSvJt/v2LXi+y7ZptxzWSMAUZJM20+Zs29K/8oq649vVTSWznrA5GktDfcehYKPJ1N3QpbDikhFGCOIykVHYo29yuGdWsp6+dW53sZ34gjPXFi664pSrA3Int7qdIufz+BYfMSbsBmKNa3bV5BV3kldAeXH/e5Hkfr5+KZ7Un6GOO/+QVvb8ur2g53XaNKwxQpKJv+8t6b7jWW52o73weODURVLoiZp0E3893j3RK3uqumPB3AWx8gS0oEszMuL20LWNZZaCZTgk4XUB7ctwyqud0XoGFxg69YwUy7tjfVkxxRuUlj7YFSXx9+40N4Mmpe1359pwEzYRaz3DySRkVTh1wuFtwVM2Pw1PYr9+5Y9fb70FN7pmkuoZYEnnVBgu5DR51oI7Z3dpz5gfhaXQJameAQIes+wk2TktfUFnTmZpc2HLsaTVMwz/3hxdeZyZk+Ht8+8MOAoAUuqZf+8O1MZOl+jfOjlPr2jCgXZrHyGiai4c9cz/TycaAiv/te3IM+R9neeUF9u39blnLJaikth65rzM95SWq0Y7tIGRxSjqmu/D4VmR3co/qdJPlpWQiTjrmSv/YGUjo4DHyg+4yqgBKHsGgYkAsqONYytGZ4MAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\"> ",
+      "a": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAqCAIAAAClYzUyAAAC6UlEQVR4nGP5//8/w4ACloG1nigXfNpfkL6WX0fo1dn7GnUz8gy4GentAlZp35p2J23ej5t9DVuOJa1x5aW3CzjVnLVB9L8//zhFuJmpaz1RLoCAv0+3r2ZNqzfhGhgX/P9yYVbPnfiZNepsJBr/+9WR6cU50zkmn5lty02KC37c3rTjv1uAGgeQ/e/D6Vl9x3Sqa2xFSIqCf+9Pzqzr3n7/0YGLr4LwqMPmgu8Xu6KqPs5wDQBzztRHVK5jFl81nYGBQ7dy4/J4eSJjjkM5vGd1ypN+o62t+JShm/bnxd4J+Qn1Zz7rl/gHmFcvbLc3m3j3/UTi7EQBTJwiQsBoIKgO3QUsErbeetzlp2IW7mjXZyfDYpIBZoh+v3/yEbOyqSxdrMfmgl/Pzt36KROkjCPlgsD3s/X+aRtf/cUixcjvNHVbnxUezYRdAAoCFmUTfEHAady462wjCZaQ5IJfz87f/ikViC8IqAww8sKHJx/+cwtzMf3//eMvCwcLlashIlzAqRkWqj6vzFxvZ3TNzN5oJVILQQT4/XjzhCk7r10/cIvh3bv6tEwDNcvkkjhtjMBFdwGjgOPk6z8nk20vArDK+pZ2+gIZ8/GrGwotlJHnAkZG2qd+YHWP1DwefGFA/8Y7UWFA0+YyUS6gaXOZKBfQtLlMQkqkUXOZWBeQ01wmoqFMwAXwFjPpzWViG8p4XYBoMeNtLn+/PKVqHlNye5YOB7JuIhvKOF2A3mKegLu5/Ove2okTmRwbUF1AbEMZpwvo2WLGFQuEWsz/fn3+9PUPsPz89OX3//9MXz68f/8PWKuwcPHxsjNRwwWEWsx/Hk63USq4BOdHKwiBac2OmxfL1Vip4AJCLWZmyZC5+7Q/ABvsX48WBjQwNmzoswa6lplfTZbUug67eoItZkYOaRNHaRDr41cRRkYmQwcXF34SrcbrAnq2mLG7gIQWM7///n//MESJbSjjdAHFLWZiG8o4XUBPMPAuAACApWc0WgUzlAAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
+      "b": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAqCAIAAAClYzUyAAAC9ElEQVR4nGP5//8/w4ACloG1nlgXfNpfkL6WX0fo1dn7GnUz8gy4GentAlZp35p2J23ej5t9DVuOJa1x5aW3CzjVnLVB9L8//zhFuJmpaD2xLoCAv0+3r2ZNqzfhGhgX/P9yYVbPnfiZNepsRJv9+9WR6cU50zkmn5lty02WC37c3rTjv1uAGse/D6dn9R3Tqa6xFSEyCv69Pzmzrnv7/UcHLr4Kwq8Utwu+X+yKqvo4wzWA4fuZ+ojKdcziq6YzMHDoVm5cHi+P0Pb98pSqeUzJ7Vk6HMi6OZTDe1anPOk32tpKwLHYXfDnxd4J+Qn1Zz7rl/gHmFcvnHD3/UQcBvy6t3biRCbHBlQXMHGKCAGjgYDleFzAImHrrcddfipm4Y52fXZizCEf4IqF7/dPPmJWNpXFZf2/X58/ff0DLNA/ffn9/z/Tlw/v3/9jYGBk4eLjZWeihgt+PTt366dMkDKuJPzn4XQbpYJLcH60ghCY1uy4ebFcjZUKLgAFAYuyCc4gYJYMmbtP+8NfBoavRwsDGhgbNvRZA13LzK8mS2pNg139r2fnb/+UCsQZBAyMHNImjtIg1sevIoyMTIYOLi78JFqN1wV/Pjz58J9bmIvp/+8ff1k4WKhZExHnAk7NsFD1eWXmejuja2b2RivhKQf5/ff/+4ch+vvx5glTdl67fuAWw7t39WmZBmqWySVx2tjCFLsLGAUcJ1//OZkYL2AHrLK+pZ2+QMZ8gkqHSAtlhLmAkZGW6R4GkJvHgy8M6N94JxwGNG0oE+UCmjaUiXIBTRvKRLkAAmjUUCbWBeQ0lCGAiOYydhfAW8lANukNZQggtrmMzQWIVjKIg6+hjBcQ2VxGNw29ldxubzYRd0MZHyC2uYzuAnq2krG7gHArmeYuINRKBoLvZ+v90za++otFipHfaeq2Pis8mgm7gFArGQg4jRt3nW0kwRKSXECwlUx1gJEX6NhKxu4CElrJBACxzWWMNhKlrWQ4ILa5PPjaSPQHAJdWZzTGSXZuAAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
+      "c": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAmCAIAAADbSlUzAAADUElEQVR4nGP5//8/w6ABLAPtABQwyF3z41JHcNTse2wSolw/3rznscmf0JNiyMdEHdt+vzoyvThnOsfkM7NtuYlxze/XN/4kbrtYrM7G8O/9vixtZ5evcneWeAgyIjn49qYd/90C1DhIcci/9ydn1nVvv//owMVXQbgUYbiGQy2uTFWRDcRkEjQLd+CbuWf9je8ellwwBd8vdkVVfZzhGkCKW0AGK4f3rE550m+0tRWnGgzXsMo6OSN4//7+Z2DjYoUFzJ8XeyfkJ9Sf+axf4h9gXr2w3Z6fEd0AHICJU0QIGPL4FeFNxb9fnL/6WcTVX50TplrC1luPu/xUzMId7frsRLqDBIDPNV/OTp323K2z3oYXIfb9/slHzMqmsjRwCj7X/H21rTTtcMDKHQnySGp+PTt366dMkDJyhvh+tt4/beOrv1gMYeR3mrqtzwpb9iHBNX9f7SwP7RXo29HiIoKSuUFBw6JsghI0nMaNu842Emshqa75/XhtfsIK9f4NeUa8aGn017Pzt39KBSoT7VkKXfP70ZJYp1aW3GalZwe3PgMLMQto2VkrcYMc9ufDkw//uYW5mP7//vGXhYOF2AxFrmu+X1u54e6NnwWhSxFiGm03Llaqg4ogTs2wUPV5ZeZ6O6NrZvZGK7ERb9Hvx5snTNl57fqBWwzv3tWnZRqoWSaXxGmjhjK6a/g8Nv/AXakzCjhOvv5zMvFuQABWWd/STl8gYz4eRYO81hxQMLhdw8hI7XxCBIC3Pwd32AxsM3lwh83AAhyuoUXrmFCjGLdrCLWOSWwaE9Uoxu0a/K1jPE3j75enVM1jSm7P0kFxKDGNYtyuwd06JtA0/nVv7cSJTI4NqK4hqlGM2zXIALV1TNOmMWHXYLSOsTWN//36/OnrH2BR9enL7///mb58eP/+H7BgZ+Hi42UnIe0TcA2W1jG2pvGfh9NtlAouwfnRCkJgWrPj5sVyNVaquAZ76xhb05hZMmTuPu0PwIb616OFAQ2MDRv6rIGuZeZXkyWpQMOpGFfrGGvTmJFD2sRRGsT6+FWEkZHJ0MHFhZ8UZ+B1DZ7WMU2bxthdg6d1TKBpzO+//98/DPOIahTjdA2e1jFZTWOiGsU4XTNQYNQ1uAEAS7K1hw++X0YAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
+      "d": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAmCAIAAADbSlUzAAADYklEQVR4nGP5//8/w6ABLAPtABQwJFzz41JHcNTse2wSolw/3rznscmf0JNiyMdEkVW/Xx2ZXpwznWPymdm23CS55vfrG38St10sVmdj+Pd+X5a2s8tXuTtLPAQZYa69vWnHf7cANQ7iHPLv/cmZdd3b7z86cPFVEB51OFzDoRZXpqrIBmIyCZqFO/DN3LP+xncPSy6w7PeLXVFVH2e4BmBq/H55StU8puT2LB0Uh3Ioh/esTnnSb7S1FZ+rcbiGVdbJGcH79/c/AxsXKzhg/rzYOyE/of7MZ/0S/wDz6oXt9vyMSBp/3Vs7cSKTYwOqa5g4RYSAAY7PIfhcgwx+vzh/9bOIq786J1iDhK23Hnf5qZiFO9r12QnrJgkQds2Xs1OnPXfrrLfhhQp8v3/yEbOyqSyyU/79+vzp6x9gyfXpy+///5m+fHj//h8DAyMLFx8vOwlpn4Br/r7aVpp2OGDljgR5mMpfz87d+ikTpIycLf48nG6jVHAJzo9WEALTmh03L5arsVLFNX9f7SwP7RXo29HiIoLwIChoWJRNUIKGWTJk7j7tD38ZGL4eLQxoYGzY0GcNdC0zv5osSQUaTsW/H6/NT1ih3r8hz4gXJZk+O3/7p1QgStAwMHJImzhKg1gfv4owMjIZOri48JPiDLyu+f1oSaxTK0tus9Kzg1ufgYWYBbTsrJW4Gf98ePLhP7cwF9P/3z/+snCwMGI1gEyA3TXfr63ccPfGz4LQpQgxjbYbFyvV2Tg1w0LV55WZ6+2MrpnZG63EhqqT33//v38Y5v1+vHnClJ3Xrh+4xfDuXX1apoGaZXJJnDZGiYzdNXwem3/gqNoZBRwnX/85GYfncABWWd/STl8gYz5+dUOi1hwgMLhdw8hI1UxCHIC3Pwd32AxsM3lwh83AAgzX0KJFDAeEmsYYriHUImYguVEMAUQ1jTFcg79FzIC3UYwXENM0xnAN7hYxA8FGMT5AVNMYbypGbREz0LhRTMA1GC1iBuyNYjq4BkuLmAF7o/j72Xr/tI2v/mIxhJHfaeq2PiscPUtiXYO9RcyAvVHMady462wjsRaS6hpcLWIGHI1iKgJ01+BpEQOZNG0UY3ENnhYxkEWgUYwPENU0RncNnhYxA5mNYgggqmk8yGvNAQWDyzUAVgO1h9PBCd8AAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
+      "ans": "b"
+    },
+    {
+      "question": "70.Find the derivative of <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">",
+      "a": "sinx+cosx",
+      "b": "sinx-cosx",
+      "c": "cosx-sinx",
+      "d": "–sinx-cosx",
+      "ans": "d"
+    },
+    {
+      "question": "71.Find the interval in which the function f(x)=2x<sup>3</sup>-15x<sup>2</sup>+36x+1 is increasing",
+      "a": "(-∞,2)⋃(3,∞)",
+      "b": "(-∞,2)",
+      "c": "(3,∞)",
+      "d": "(-∞,2]⋃[3,∞)",
+      "ans": "a"
+    },
+    {
+      "question": "72.The maximum value of f(x)=2x<sup>3</sup>-3x<sup>2</sup>-36 is",
+      "a": "-81",
+      "b": "81",
+      "c": "-44",
+      "d": "44",
+      "ans": "d"
+    },
+    {
+      "question": "73.Evaluate <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> ",
+      "a": "sinx+cosx+c",
+      "b": "sinx-cosx+c",
+      "c": "cosx-sinx+c",
+      "d": "–sinx-cosx+c",
+      "ans": "c"
+    },
+    {
+      "question": "74.Calculate the integral <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">",
+      "a": "xlogx-x+c",
+      "b": "logx+c",
+      "c": "xlogx+x+c",
+      "d": "–logx+c",
+      "ans": "a"
+    },
+    {
+      "question": "75.Evaluate <img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\">",
+      "a": "л/2",
+      "b": "л/3",
+      "c": "л/4",
+      "d": "л",
+      "ans": "b"
+    },
+    {
+      "question": "76.Number of tertiary carbon atoms in 2-methyl butan-2-ol is",
+      "a": "1",
+      "b": "2",
+      "c": "3",
+      "d": "4",
+      "ans": "a"
+    },
+    {
+      "question": "77.CHCl<sub>3</sub> is stored in dark colored bottles, because it is",
+      "a": "Anesthetic",
+      "b": "Oxidized to CCl<sub>4</sub> in light ",
+      "c": "Oxidized to COCl<sub>2</sub> in light ",
+      "d": "Reduced to CHCl<sub>2</sub> in light",
+      "ans": "c"
+    },
+    {
+      "question": "78.Primary and secondary alcohols on action of reduced copper give",
+      "a": "Aldehyde only",
+      "b": "Aldehydes and ketones respectively",
+      "c": "Ketones only",
+      "d": "Ketones and aldehydes respectively",
+      "ans": "b"
+    },
+    {
+      "question": "79.The reaction C<sub>2</sub>H<sub>5</sub>ONa+C<sub>2</sub>H<sub>5</sub>I→C<sub>2</sub>H<sub>5</sub>OC<sub>2</sub>H<sub>5</sub>+NaI is called",
+      "a": "Hoffmann reaction",
+      "b": "Williamson synthesis",
+      "c": "Wurtz synthesis",
+      "d": "Wolff-Kishner reduction",
+      "ans": "b"
+    },
+    {
+      "question": "80.Acetaldehyde and benzaldehyde can be distinguished by",
+      "a": "Tollen’s test",
+      "b": "2,4-DNP test",
+      "c": "Iodoform test ",
+      "d": "Wolff-Kishner reduction",
+      "ans": "c"
+    },
+    {
+      "question": "81.Formic acid is obtained when",
+      "a": "(HCOO)<sub>2</sub>Ca is heated with (CH3COO)<sub>2</sub>Ca ",
+      "b": "(CH<sub>3</sub>COO)<sub>2</sub>Ca is heated with conc. H<sub>2</sub>SO<sub>4</sub>",
+      "c": "Glycerol is heated with (COOH)<sub>2</sub>",
+      "d": "CH<sub>3</sub>CHO is oxidized with K<sub>2</sub>CrO<sub>7</sub>+H<sub>2</sub>SO<sub>4</sub>",
+      "ans": "c"
+    },
+    {
+      "question": "82.Which of the following is the weakest base",
+      "a": "NH<sub>3</sub>",
+      "b": "CH<sub>3</sub>NH<sub>2</sub>",
+      "c": "(CH<sub>3</sub>)<sub>2</sub>NH ",
+      "d": "(CH<sub>3</sub>)<sub>3</sub>N",
+      "ans": "a"
+    },
+    {
+      "question": "83.Benzene diazonium chloride when heated with water produces",
+      "a": "Cholorobenzene",
+      "b": "Phenol",
+      "c": "Benzyl alcohol",
+      "d": "Aniline",
+      "ans": "b"
+    },
+    {
+      "question": "84.What will be the mass of 6.023 X 10<sup>23</sup> molecules of carbon dioxide?",
+      "a": "17.01g",
+      "b": "16.00g",
+      "c": "44 g",
+      "d": "56.20g",
+      "ans": "c"
+    },
+    {
+      "question": "85.What is aqua regia",
+      "a": "3HCl + HNO<sub>3</sub>",
+      "b": "HCl + 3HNO<sub>3</sub>",
+      "c": "H<sub>3</sub>PO<sub>4</sub> + H<sub>2</sub>SO<sub>4</sub>",
+      "d": "HCl",
+      "ans": "a"
+    },
+    {
+      "question": "86.Which of the following compounds are used as refrigerant?",
+      "a": "CH<sub>3</sub>COCH<sub>3</sub>",
+      "b": "CCl<sub>4</sub>",
+      "c": "CF<sub>4</sub>",
+      "d": "CCl<sub>2</sub>F<sub>2</sub>",
+      "ans": "b"
+    },
+    {
+      "question": "87.The shortest bond length is in",
+      "a": "Ethylene",
+      "b": "Benzene",
+      "c": "Ethane",
+      "d": "Acetylene",
+      "ans": "d"
+    },
+    {
+      "question": "88.Aniline reacts with diazonium salt to form",
+      "a": "Diazonium benzene ",
+      "b": "Hydrazonium benzene",
+      "c": "Aminoazobenzene ",
+      "d": "Azoxybenzene",
+      "ans": "c"
+    },
+    {
+      "question": "89.The heat of neutralization is highest in",
+      "a": "NaOH+CH<sub>3</sub>COOH",
+      "b": "HCl+NaOH",
+      "c": "NH<sub>4</sub>OH+HCl",
+      "d": "CH<sub>3</sub>COOH+NH<sub>4</sub>OH",
+      "ans": "b"
+    },
+    {
+      "question": "90.The formula of blue vitriol is:",
+      "a": "CuSO<sub>4</sub>.5H<sub>2</sub>O",
+      "b": "CuSO<sub>4</sub>",
+      "c": "CuSO<sub>4</sub>.H<sub>2</sub>O",
+      "d": "CuSO<sub>4</sub>.7H<sub>2</sub>O",
+      "ans": "a"
+    },
+    {
+      "question": "91.What is the pH of 0.1M sulphuric acid",
+      "a": "1",
+      "b": "2",
+      "c": "1.5",
+      "d": "none",
+      "ans": "a"
+    },
+    {
+      "question": "92.FeSO<sub>4</sub>.7H<sub>2</sub>O is also known as:",
+      "a": "Blue vitriol",
+      "b": "Malachite",
+      "c": "Calomel",
+      "d": "Green vitriol",
+      "ans": "d"
+    },
+    {
+      "question": "93.The product of the reaction: CH3Cl+AgCN→ is",
+      "a": "CH<sub>3</sub>CN",
+      "b": "CH<sub>3</sub>COOH",
+      "c": "CH<sub>3</sub>CONH<sub>2</sub>",
+      "d": "CH<sub>3</sub>NC",
+      "ans": "d"
+    },
+    {
+      "question": "94.How many moles of Hydrogen atom are present in 180g of water?",
+      "a": "1",
+      "b": "16",
+      "c": "18",
+      "d": "20",
+      "ans": "d"
+    },
+    {
+      "question": "95.Permanent hardness of water may be caused by:",
+      "a": "Calcium chloride",
+      "b": "Magnesium chloride",
+      "c": "Calcium sulphate and magnesium sulphate ",
+      "d": "All of the above",
+      "ans": "d"
+    },
+    {
+      "question": "96.When alcohols are heated with sodium metal then treated with alkyl halides, to give:",
+      "a": "Alkene",
+      "b": "Ether",
+      "c": "Aldehyde",
+      "d": "Alcohol",
+      "ans": "b"
+    },
+    {
+      "question": "97.The C-C-C bond angle in benzene is",
+      "a": "128ᵒ",
+      "b": "120ᵒ",
+      "c": "134ᵒ",
+      "d": "180ᵒ",
+      "ans": "b"
+    },
+    {
+      "question": "98.How many grams of calcium are present in 250 g of calcium carbonate?",
+      "a": "160g",
+      "b": "100g",
+      "c": "170g",
+      "d": "120g",
+      "ans": "b"
+    },
+    {
+      "question": "99.Normality of 2m sulphuric acid is",
+      "a": "2N",
+      "b": "N/2",
+      "c": "4N",
+      "d": "N/4",
+      "ans": "c"
+    },
+    {
+      "question": "100.The PH of normal KOH is",
+      "a": "1",
+      "b": "0",
+      "c": "14",
+      "d": "7",
+      "ans": "c"
     }
   ]
 }

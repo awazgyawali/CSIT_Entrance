@@ -56,11 +56,17 @@
             android:id="@+id/forum_ad"
             layout="@layout/achs_ad_layout" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/fullFeedRecycler"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/forumSwipeRefresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/forum_ad" />
+            android:layout_below="@+id/forum_ad"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/fullFeedRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabForumPost"
