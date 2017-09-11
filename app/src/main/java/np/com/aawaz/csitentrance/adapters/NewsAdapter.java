@@ -24,7 +24,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     private ArrayList<News> news = new ArrayList<>();
     private LayoutInflater inflater;
     private Context context;
-    private ClickListener listener;
 
 
     public NewsAdapter(Context context) {
@@ -36,18 +35,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         news.add(0, new_news);
         notifyItemInserted(0);
     }
-
-    public void removeItemAtPosition(int i) {
-        news.remove(i);
-        notifyItemRemoved(i);
-    }
-
-    public void editItemAtPosition(int i, News post) {
-        news.remove(i);
-        news.add(i, post);
-        notifyItemChanged(i);
-    }
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

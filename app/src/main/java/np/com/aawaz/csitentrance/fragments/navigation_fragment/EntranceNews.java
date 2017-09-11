@@ -3,6 +3,7 @@ package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,26 +14,24 @@ import android.widget.ProgressBar;
 
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
+import com.google.firebase.database.ValueEventListener;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.NewsAdapter;
 import np.com.aawaz.csitentrance.objects.News;
 
 
-public class EntranceNews extends Fragment implements ChildEventListener {
+public class EntranceNews extends Fragment implements ValueEventListener {
 
     RecyclerView recy;
+    SwipeRefreshLayout newsSwipe;
     NewsAdapter newsAdapter;
     ProgressBar progress;
     DatabaseReference reference;
-    ArrayList<String> key = new ArrayList<>();
     LinearLayoutManager linearLayoutManager;
     private LinearLayout errorLayout;
     private String mUrl;
@@ -72,11 +71,19 @@ public class EntranceNews extends Fragment implements ChildEventListener {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recy = (RecyclerView) view.findViewById(R.id.newsFeedRecy);
+        newsSwipe = (SwipeRefreshLayout) view.findViewById(R.id.newsSwipeRefresh);
         errorLayout = (LinearLayout) view.findViewById(R.id.errorNews);
         progress = (ProgressBar) view.findViewById(R.id.progressbarNews);
         errorLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addOneTimeListener();
+            }
+        });
+        newsSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                newsSwipe.setRefreshing(false);
                 addOneTimeListener();
             }
         });
@@ -87,52 +94,23 @@ public class EntranceNews extends Fragment implements ChildEventListener {
         reference = FirebaseDatabase.getInstance().getReference().child("news");
         errorLayout.setVisibility(View.GONE);
         progress.setVisibility(View.VISIBLE);
+        newsSwipe.setVisibility(View.GONE);
         newsAdapter = new NewsAdapter(getContext());
         linearLayoutManager = new LinearLayoutManager(getContext());
-        reference.addChildEventListener(this);
+        reference.addListenerForSingleValueEvent(this);
         recy.setLayoutManager(linearLayoutManager);
         recy.setAdapter(newsAdapter);
     }
 
 
     @Override
-    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-        newsAdapter.addToTop(dataSnapshot.getValue(News.class));
-        linearLayoutManager.scrollToPositionWithOffset(0, 0);
-        key.add(0, dataSnapshot.getKey());
+    public void onDataChange(DataSnapshot dataSnap) {
+        newsAdapter.notifyDataSetChanged();
+        for (DataSnapshot dataSnapshot : dataSnap.getChildren()) {
+            newsAdapter.addToTop(dataSnapshot.getValue(News.class));
+        }
+        newsSwipe.setVisibility(View.VISIBLE);
         progress.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
-        int position = -1;
-        for (int i = 0; i < key.size(); i++) {
-            if (key.get(i).equals(dataSnapshot.getKey()))
-                position = i;
-        }
-        if (position == -1)
-            return;
-        News post = dataSnapshot.getValue(News.class);
-        newsAdapter.editItemAtPosition(position, post);
-    }
-
-    @Override
-    public void onChildRemoved(DataSnapshot dataSnapshot) {
-        int position = -1;
-        for (int i = 0; i < key.size(); i++) {
-            if (key.get(i).equals(dataSnapshot.getKey()))
-                position = i;
-        }
-        if (position == -1)
-            return;
-        newsAdapter.removeItemAtPosition(position);
-        key.remove(position);
-    }
-
-
-    @Override
-    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
     }
 
     @Override

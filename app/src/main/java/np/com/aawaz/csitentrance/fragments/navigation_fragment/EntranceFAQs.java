@@ -4,6 +4,7 @@ package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class EntranceFAQs extends Fragment implements ValueEventListener {
 
     private String mUrl;
     private String mTitle;
+    private SwipeRefreshLayout swipeRefresh;
 
     public EntranceFAQs() {
         // Required empty public constructor
@@ -41,11 +43,19 @@ public class EntranceFAQs extends Fragment implements ValueEventListener {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyFaq);
+        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.faqsSwipeRefresh);
         progressBar = (ProgressBar) view.findViewById(R.id.progress_bar_faq);
         error = (LinearLayout) view.findViewById(R.id.error_faq);
         error.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                readyOneTimeListener();
+            }
+        });
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefresh.setRefreshing(false);
                 readyOneTimeListener();
             }
         });
@@ -55,21 +65,18 @@ public class EntranceFAQs extends Fragment implements ValueEventListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        readyAdapter();
         readyOneTimeListener();
         FirebaseDatabase.getInstance().getReference().child("faqs").keepSynced(true);
     }
 
     private void readyOneTimeListener() {
-        progressBar.setVisibility(View.VISIBLE);
-        error.setVisibility(View.GONE);
-        FirebaseDatabase.getInstance().getReference().child("faqs").addListenerForSingleValueEvent(this);
-    }
-
-    private void readyAdapter() {
         adapter = new FAQAdapter(getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        progressBar.setVisibility(View.VISIBLE);
+        swipeRefresh.setVisibility(View.GONE);
+        error.setVisibility(View.GONE);
+        FirebaseDatabase.getInstance().getReference().child("faqs").addListenerForSingleValueEvent(this);
     }
 
     @Override
@@ -81,8 +88,9 @@ public class EntranceFAQs extends Fragment implements ValueEventListener {
 
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
+        adapter.notifyDataSetChanged();
         progressBar.setVisibility(View.GONE);
-        recyclerView.setVisibility(View.VISIBLE);
+        swipeRefresh.setVisibility(View.VISIBLE);
         for (DataSnapshot child : dataSnapshot.getChildren()) {
             FAQ faq = child.getValue(FAQ.class);
             adapter.add(faq);

@@ -3,8 +3,9 @@ package np.com.aawaz.csitentrance.misc;
 import android.app.Application;
 import android.content.Context;
 
-import com.google.firebase.database.FirebaseDatabase;
 import com.crashlytics.android.Crashlytics;
+import com.google.firebase.database.FirebaseDatabase;
+
 import io.fabric.sdk.android.Fabric;
 
 
@@ -31,4 +32,5 @@ public class MyApplication extends Application {
             ignored.printStackTrace();
         }
     }
+
 }

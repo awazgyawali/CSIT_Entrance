@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -124,6 +125,20 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
             }
         });
         handleConnections();
+        maintainVerisonNumber();
+    }
+
+    private void maintainVerisonNumber() {
+        TextView versionInSettings = (TextView) findViewById(R.id.versionInSettings);
+        String appVersion;
+
+        try {
+            appVersion = " - v" + getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            appVersion = "";
+        }
+        versionInSettings.setText("CSIT Entrance" + appVersion);
     }
 
     private void handleConnections() {

@@ -312,4 +312,12 @@ public class SPHandler {
         infoEditor.putInt("post_count", 0).apply();
         infoEditor.putString("post_message", "").apply();
     }
+
+    public void addForumData(String response) {
+        infoEditor.putString("forum_data", response).apply();
+    }
+
+    public String getForumData() {
+        return infoSp.getString("forum_data", null);
+    }
 }

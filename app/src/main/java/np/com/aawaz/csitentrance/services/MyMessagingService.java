@@ -44,6 +44,7 @@ public class MyMessagingService extends FirebaseMessagingService {
                 else if (notification.text.contains("posted")) {
                     identifier = "posted".hashCode();
                     SPHandler.getInstance().addNewPostMessage(notification.title);
+                    notification.post_id = "new_post";
                 }
                 intent = new Intent(context, MainActivity.class).putExtra("fragment", notification.tag);
                 intent.putExtra("post_id", notification.post_id);

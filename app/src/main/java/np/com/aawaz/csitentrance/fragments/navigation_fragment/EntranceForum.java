@@ -22,14 +22,16 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import np.com.aawaz.csitentrance.R;
@@ -39,12 +41,16 @@ import np.com.aawaz.csitentrance.activities.PostForumActivity;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
 import np.com.aawaz.csitentrance.fragments.other_fragments.ACHSDialog;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
+import np.com.aawaz.csitentrance.interfaces.ResponseListener;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
+import np.com.aawaz.csitentrance.services.NetworkRequester;
 
-
-public class EntranceForum extends Fragment implements ValueEventListener, ClickListener {
+//todo here are some todos, firebase bhanda different use garera
+public class EntranceForum extends Fragment implements
+        // ValueEventListener,
+        ClickListener {
 
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -59,6 +65,7 @@ public class EntranceForum extends Fragment implements ValueEventListener, Click
     ImageView callAchs;
     ConstraintLayout achsAd;
     private LinearLayoutManager mLinearLayoutManager;
+    private boolean running = true;
 
     public static Fragment newInstance(String post_id) {
         EntranceForum forum = new EntranceForum();
@@ -113,7 +120,7 @@ public class EntranceForum extends Fragment implements ValueEventListener, Click
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), PostForumActivity.class));
+                startActivityForResult(new Intent(getActivity(), PostForumActivity.class), 200);
             }
         });
         errorPart.setOnClickListener(new View.OnClickListener() {
@@ -133,9 +140,17 @@ public class EntranceForum extends Fragment implements ValueEventListener, Click
         handleIntent();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 200 && resultCode == 200) {
+            addListener();//post gare pachi refresh
+        }
+    }
+
     private void handleIntent() {
         String post_id = getArguments().getString("post_id");
-        if (post_id != null && !MainActivity.openedIntent) {
+        if (post_id != null && !post_id.equals("new_post") && !MainActivity.openedIntent) {
             startActivity(new Intent(getContext(), CommentsActivity.class)
                     .putExtra("key", post_id)
                     .putExtra("message", "Entrance Forum"));
@@ -149,44 +164,88 @@ public class EntranceForum extends Fragment implements ValueEventListener, Click
         progressBar.setVisibility(View.VISIBLE);
         mLinearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLinearLayoutManager);
-        reference.limitToLast(50).addListenerForSingleValueEvent(this);
+        reference.keepSynced(true);
+
+        //reference.orderByChild("time_stamp").limitToLast(50).addListenerForSingleValueEvent(this); testing right now
+
+        new NetworkRequester("https://csit-entrance-7d58.firebaseio.com/forum.json?orderBy=%22time_stamp%22&limitToLast=50", new ResponseListener() {
+            @Override
+            public void onSuccess(String response) {
+                SPHandler.getInstance().addForumData(response);
+                if (!running)
+                    return;
+                NotificationManagerCompat.from(getContext()).cancel("posted".hashCode());
+                SPHandler.getInstance().clearUnreadCount();
+                parseResponse(response);
+            }
+
+            @Override
+            public void onFailure() {
+                if (SPHandler.getInstance().getForumData() == null) {
+                    swipeRefreshLayout.setVisibility(View.GONE);
+                    errorPart.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(getContext(), "Failed to load posts.",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    parseResponse(SPHandler.getInstance().getForumData());
+                    Toast.makeText(getContext(), "Check your internet connection.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
-
-    public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-        Post newPost = dataSnapshot.getValue(Post.class);
-        if (newPost.author == null)
-            return;
-        newPost.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
-        adapter.addToTop(newPost);
-        mLinearLayoutManager.scrollToPositionWithOffset(0, 0);
-        key.add(0, dataSnapshot.getKey());
-        progressBar.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void onDataChange(DataSnapshot dataSnap) {
+    private void parseResponse(String response) {
         fillRecyclerView();
         adapter.notifyDataSetChanged();
         key.clear();
         progressBar.setVisibility(View.GONE);
-        for (DataSnapshot dataSnapshot : dataSnap.getChildren()) {
-            Post newPost = dataSnapshot.getValue(Post.class);
-            if (newPost.author == null)
-                return;
-            newPost.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
-            adapter.addToTop(newPost);
-            key.add(0, dataSnapshot.getKey());
+        try {
+            JSONObject object = new JSONObject(response);
+            Iterator<String> keys = object.keys();
+            while (keys.hasNext()) {
+                String currentKey = keys.next();
+                Post newPost = new Gson().fromJson(object.getJSONObject(currentKey).toString(), Post.class);
+                if (newPost.author != null) {
+                    try {
+                        newPost.comment_count = object.getJSONObject(currentKey).getJSONObject("comments").length();
+                    } catch (JSONException e) {
+                        newPost.comment_count = 0;
+                    }
+                    adapter.addToTop(newPost);
+                    key.add(0, currentKey);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
-    @Override
-    public void onCancelled(DatabaseError databaseError) {
-        Toast.makeText(getContext(), "Failed to load posts.",
-                Toast.LENGTH_SHORT).show();
-        errorPart.setVisibility(View.VISIBLE);
-        progressBar.setVisibility(View.GONE);
-    }
+//    @Override
+//    public void onDataChange(DataSnapshot dataSnap) {
+//        fillRecyclerView();
+//        adapter.notifyDataSetChanged();
+//        key.clear();
+//        progressBar.setVisibility(View.GONE);
+//        for (DataSnapshot dataSnapshot : dataSnap.getChildren()) {
+//            Post newPost = dataSnapshot.getValue(Post.class);
+//            if (newPost.author == null)
+//                return;
+//            newPost.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
+//            adapter.addToTop(newPost);
+//            key.add(0, dataSnapshot.getKey());
+//        }
+//    }
+//
+//    @Override
+//    public void onCancelled(DatabaseError databaseError) {
+//        Toast.makeText(getContext(), "Failed to load posts.",
+//                Toast.LENGTH_SHORT).show();
+//        swipeRefreshLayout.setVisibility(View.GONE);
+//        errorPart.setVisibility(View.VISIBLE);
+//        progressBar.setVisibility(View.GONE);
+//    }
 
     private void fillRecyclerView() {
         progressBar.setVisibility(View.GONE);
@@ -194,6 +253,23 @@ public class EntranceForum extends Fragment implements ValueEventListener, Click
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        running = true;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        running = false;
     }
 
     @Override
@@ -246,12 +322,5 @@ public class EntranceForum extends Fragment implements ValueEventListener, Click
         dialog.getInputEditText().setSingleLine(false);
         dialog.getInputEditText().setMaxLines(7);
         dialog.show();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        SPHandler.getInstance().clearUnreadCount();
-        NotificationManagerCompat.from(getContext()).cancel("posted".hashCode());
     }
 }

@@ -41,7 +41,7 @@ import np.com.aawaz.csitentrance.objects.Comment;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
-public class CommentsActivity extends AppCompatActivity {
+public class CommentsActivity extends AppCompatActivity implements ChildEventListener {
 
     RecyclerView commentsRecyclerView;
     ProgressBar progressBar;
@@ -114,6 +114,7 @@ public class CommentsActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         FirebaseUserActions.getInstance().end(getAction());
+        reference.removeEventListener(this);
         super.onStop();
     }
 
@@ -202,58 +203,58 @@ public class CommentsActivity extends AppCompatActivity {
 
     private void addListener() {
         progressBar.setVisibility(View.VISIBLE);
-        reference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-                Comment newPost = dataSnapshot.getValue(Comment.class);
-                adapter.addToTop(newPost);
-                key.add(dataSnapshot.getKey());
-                progressBar.setVisibility(View.GONE);
-                errorMessage.setVisibility(View.GONE);
-                maintainCommentNo();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
-                int position = -1;
-                for (int i = 0; i < key.size(); i++) {
-                    if (key.get(i).equals(dataSnapshot.getKey()))
-                        position = i;
-                }
-                if (position == -1)
-                    return;
-                adapter.editItemAtPosition(position, dataSnapshot.getValue(Comment.class));
-                maintainCommentNo();
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                int position = -1;
-                for (int i = 0; i < key.size(); i++) {
-                    if (key.get(i).equals(dataSnapshot.getKey()))
-                        position = i;
-                }
-                if (position == -1)
-                    return;
-                adapter.removeItemAtPosition(position);
-                key.remove(position);
-                maintainCommentNo();
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                progressBar.setVisibility(View.GONE);
-                errorMessage.setVisibility(View.VISIBLE);
-            }
-        });
+        reference.addChildEventListener(this);
     }
 
     private void maintainCommentNo() {
         commentNumber.setText(adapter.getItemCount() + getCommentMessage());
+    }
+
+    @Override
+    public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+        Comment newPost = dataSnapshot.getValue(Comment.class);
+        adapter.addToTop(newPost);
+        key.add(dataSnapshot.getKey());
+        progressBar.setVisibility(View.GONE);
+        errorMessage.setVisibility(View.GONE);
+        maintainCommentNo();
+    }
+
+    @Override
+    public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+        int position = -1;
+        for (int i = 0; i < key.size(); i++) {
+            if (key.get(i).equals(dataSnapshot.getKey()))
+                position = i;
+        }
+        if (position == -1)
+            return;
+        adapter.editItemAtPosition(position, dataSnapshot.getValue(Comment.class));
+        maintainCommentNo();
+    }
+
+    @Override
+    public void onChildRemoved(DataSnapshot dataSnapshot) {
+        int position = -1;
+        for (int i = 0; i < key.size(); i++) {
+            if (key.get(i).equals(dataSnapshot.getKey()))
+                position = i;
+        }
+        if (position == -1)
+            return;
+        adapter.removeItemAtPosition(position);
+        key.remove(position);
+        maintainCommentNo();
+    }
+
+    @Override
+    public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+    }
+
+    @Override
+    public void onCancelled(DatabaseError databaseError) {
+        progressBar.setVisibility(View.GONE);
+        errorMessage.setVisibility(View.VISIBLE);
     }
 
 

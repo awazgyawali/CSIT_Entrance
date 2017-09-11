@@ -107,9 +107,10 @@ public class PostForumActivity extends AppCompatActivity {
             Post post = new Post(currentUser.getUid(), currentUser.getDisplayName(), new Date().getTime(), message, FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString());
             Map<String, Object> postValues = post.toMap();
             reference.push().setValue(postValues);
-            finish();
             SPHandler.getInstance().setLastPostedTime(System.currentTimeMillis());
             questionEditText.setText("");
+            setResult(200, null);
+            finish();
         } else {
             new MaterialDialog.Builder(this)
                     .title("Opps...")

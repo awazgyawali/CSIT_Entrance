@@ -164,7 +164,7 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
         qNo = spHandler.getPlayed(code);
         score = spHandler.getScore(code);
 
-        if (qNo == 99) {
+        if (qNo >= 99) {
             startActivity(new Intent(this, ReportCardActivity.class)
                     .putExtra("title", getResources().getStringArray(R.array.years)[getIntent().getIntExtra("position", 1)])
                     .putExtra("code", code)

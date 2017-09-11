@@ -6,9 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -16,11 +18,13 @@ import com.google.android.gms.ads.MobileAds;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.AnswerAdapter;
+import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class AnswersDrawer extends Fragment {
     RecyclerView recyclerView;
     AnswerAdapter adapter;
     private AdView mAdView;
+    SwitchCompat answerSwitch;
 
 
     public AnswersDrawer() {
@@ -40,6 +44,8 @@ public class AnswersDrawer extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = (RecyclerView) view.findViewById(R.id.ansRecycle);
         mAdView = (AdView) view.findViewById(R.id.adView);
+        answerSwitch = (SwitchCompat) view.findViewById(R.id.answerDrawerSwitch);
+
     }
 
     @Override
@@ -48,6 +54,18 @@ public class AnswersDrawer extends Fragment {
         AdRequest adRequest = new AdRequest.Builder().build();
         MobileAds.initialize(getContext(), "ca-app-pub-3751722582271673~2601237142");
         mAdView.loadAd(adRequest);
+        maintainAnswerDrawerSwitch();
+        answerSwitch.setChecked(SPHandler.getInstance().shouldShowAnswers());
+
+    }
+
+    private void maintainAnswerDrawerSwitch() {
+        answerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SPHandler.getInstance().showAnswer(isChecked);
+            }
+        });
     }
 
     public void setInitialData(int qNo, int code) {
