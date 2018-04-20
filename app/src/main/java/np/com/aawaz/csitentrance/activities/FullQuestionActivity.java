@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.os.AsyncTaskCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -66,7 +65,7 @@ public class FullQuestionActivity extends AppCompatActivity {
     }
 
     public void setDataToArrayList() {
-        AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {
+        new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
                 try {
@@ -93,7 +92,7 @@ public class FullQuestionActivity extends AppCompatActivity {
                 super.onPostExecute(aVoid);
                 webView.loadDataWithBaseURL("", htmlData, "text/html", "utf-8", null);
             }
-        });
+        }.execute();
     }
 
     @Override

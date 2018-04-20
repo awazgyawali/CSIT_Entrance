@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.os.AsyncTaskCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -128,7 +127,7 @@ public class AllColleges extends Fragment {
 
     public void setDataToArrayList() {
         //Reading from json file and insillizing inside arrayList
-        AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, Void>() {
+        new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
@@ -152,7 +151,7 @@ public class AllColleges extends Fragment {
                 super.onPostExecute(aVoid);
                 fillNormally();
             }
-        });
+        }.execute();
 
     }
 

@@ -173,9 +173,9 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
     public void selected(CardView submit, boolean correct, String answer) {
         spHandler.increasePlayed(subject);
         spHandler.increaseTimesPlayed();
-        if ((spHandler.getTimesPlayed() % 10) == 0) {
-            showDialogAd();
-        }
+//        if ((spHandler.getTimesPlayed() % 10) == 0) {
+//            showDialogAd();
+//        }
         if (customViewPager.getCurrentItem() != 24)
             answersDrawer.increaseSize();
         else {

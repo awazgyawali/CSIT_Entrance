@@ -2,7 +2,6 @@ package np.com.aawaz.csitentrance.services;
 
 
 import android.os.AsyncTask;
-import android.support.v4.os.AsyncTaskCompat;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -89,7 +88,7 @@ public class NetworkRequester {
     }
 
     private void startRequest() {
-        AsyncTaskCompat.executeParallel(new AsyncTask<Void, Void, String>() {
+        new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
                 OkHttpClient client = new OkHttpClient();
@@ -119,7 +118,7 @@ public class NetworkRequester {
                     listener.onSuccess(s);
                 }
             }
-        });
+        }.execute();
     }
 
 

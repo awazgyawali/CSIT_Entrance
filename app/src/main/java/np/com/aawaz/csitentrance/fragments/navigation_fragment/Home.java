@@ -120,7 +120,7 @@ public class Home extends Fragment {
             }
         });
 
-        if (SPHandler.getInstance().getRegistrationDetail() != null){
+        if (SPHandler.getInstance().getRegistrationDetail() != null) {
             modelEntranceExam.setText("Model Entrance Exam");
         }
     }

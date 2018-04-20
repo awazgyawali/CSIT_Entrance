@@ -23,8 +23,8 @@ import np.com.aawaz.csitentrance.objects.SPHandler;
 public class AnswersDrawer extends Fragment {
     RecyclerView recyclerView;
     AnswerAdapter adapter;
-    private AdView mAdView;
     SwitchCompat answerSwitch;
+    private AdView mAdView;
 
 
     public AnswersDrawer() {

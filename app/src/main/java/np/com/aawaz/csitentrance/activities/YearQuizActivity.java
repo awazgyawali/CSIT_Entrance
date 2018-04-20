@@ -187,9 +187,9 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
     public void selected(CardView submit, boolean correct, String answer) {
         spHandler.increasePlayed(code);
         spHandler.increaseTimesPlayed();
-        if ((spHandler.getTimesPlayed() % 10) == 0) {
-            showDialogAd();
-        }
+//        if ((spHandler.getTimesPlayed() % 10) == 0) {
+//            showDialogAd();
+//        }
         spHandler.increasePlayed(spHandler.getSubjectCode(getIntent().getIntExtra("position", 1), qNo));
         if (customViewPager.getCurrentItem() == 99) {
             startActivity(new Intent(YearQuizActivity.this, ReportCardActivity.class)
