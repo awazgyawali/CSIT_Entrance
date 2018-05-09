@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +37,7 @@ import java.util.HashMap;
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.AllColleges;
-import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceFAQs;
+import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceBot;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceForum;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceNews;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceResult;
@@ -62,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
     TextView name;
     CircleImageView imageView;
     String[] navigationText = new String[]{"leaderboard", "colleges",
-            "faqs", "news", "forum", "result",
+            "bot", "news", "forum", "result",
             "setting", "feedback", "share", "like", "rate"};
-    int[] navigationId = new int[]{R.id.leaderBoard, R.id.csitColleges, R.id.entranceFAQ, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.share, R.id.like, R.id.rate};
+    int[] navigationId = new int[]{R.id.leaderBoard, R.id.csitColleges, R.id.entranceBot, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.share, R.id.like, R.id.rate};
 
     public static void setTitle(String name) {
         titleMain.setText(name);
@@ -297,10 +298,10 @@ public class MainActivity extends AppCompatActivity {
                 new EventSender().logEvent("leaderboard");
                 break;
 
-            case R.id.entranceFAQ:
-                manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceFAQs()).commit();
-                setTitle("Entrance FAQs");
-                new EventSender().logEvent("faqs");
+            case R.id.entranceBot:
+                manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceBot()).commit();
+                setTitle("Entrance Bot");
+                new EventSender().logEvent("bot");
                 item.setChecked(true);
                 break;
 

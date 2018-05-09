@@ -24,10 +24,10 @@
     <group android:checkableBehavior="single" android:id="@+id/entrance">
 
         <item
-            android:id="@+id/entranceFAQ"
+            android:id="@+id/entranceBot"
             android:checkable="true"
-            android:icon="@drawable/faqs"
-            android:title="Entrance FAQs" />
+            android:icon="@drawable/bot"
+            android:title="Entrance Bot" />
         <item
             android:id="@+id/entranceNews"
             android:checkable="true"

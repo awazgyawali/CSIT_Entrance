@@ -1,5 +1,6 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,36 +12,158 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/numberComments"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="10 Comments"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/colorPrimaryText"
-            android:textStyle="bold" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/commentsRecyOfFullPost"
+            <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/forumPic"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/account_holder" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/postedBy"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="8dp"
+                                    android:layout_marginRight="4dp"
+                                    android:drawablePadding="5dp"
+                                    android:gravity="center_vertical"
+                                    android:text="Aawaz Gyawali"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textStyle="bold"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintLeft_toRightOf="@+id/forumPic"
+                                    app:layout_constraintRight_toLeftOf="@+id/commentCount"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/forumTime"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="8dp"
+                                    android:gravity="center"
+                                    android:text="14 days ago"
+                                    android:textColor="@color/colorSecondaryText" />
+                            </LinearLayout>
+
+
+                            <mehdi.sakout.fancybuttons.FancyButton
+                                android:id="@+id/post_admin_tag"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:padding="3dp"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                fancy:fb_borderColor="@color/admin_color"
+                                fancy:fb_borderWidth="1dp"
+                                fancy:fb_defaultColor="@color/transparent"
+                                fancy:fb_radius="3dp"
+                                fancy:fb_text="admin"
+                                fancy:fb_textColor="@color/admin_color"
+                                fancy:fb_textSize="10sp" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/realPost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autoLink="web"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:padding="10dp"
+                            android:text="Demo jkbask ksjkjani hagi"
+                            android:textColor="@color/colorPrimaryText" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
+
+                            <TextView
+                                android:id="@+id/numberComments"
+                                android:layout_width="0dp"
+                                android:textColor="@color/colorAccent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="10 Comments" />
+
+                            <ImageView
+                                android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:padding="10dp"
+                                android:background="?android:selectableItemBackground"
+                                android:src="@drawable/edit_grey" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:background="?android:selectableItemBackground"
+                                android:src="@drawable/delete" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/commentsRecyOfFullPost"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+
+            </android.support.v4.widget.NestedScrollView>
 
             <ProgressBar
                 android:id="@+id/progressbarSingleFeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/errorComment"
@@ -48,7 +171,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="20dp"
-                android:text="Unable to connect.\nTap to retry." />
+                android:text="Unable to connect.\nTap to retry."
+                android:visibility="gone" />
         </RelativeLayout>
 
         <LinearLayout
@@ -64,19 +188,15 @@
                 android:layout_height="35dp"
                 android:layout_margin="5dp" />
 
-            <android.support.design.widget.TextInputLayout
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/addCommentText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/addCommentText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:hint="Your Comment"
-                    android:padding="8dp" />
-            </android.support.design.widget.TextInputLayout>
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:hint="Your Comment"
+                android:padding="8dp" />
 
             <ImageButton
                 android:id="@+id/commentButton"

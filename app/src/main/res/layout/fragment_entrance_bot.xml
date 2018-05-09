@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceBot">
+
+    <include
+        layout="@layout/layout_bot_intro"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/botContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewBot"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/message_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/nothing"
+                android:hint="Start typing here..."
+                android:padding="15dp" />
+
+            <ImageView
+                android:id="@+id/message_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackground"
+                android:padding="10dp"
+                android:src="@drawable/post_accent" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
