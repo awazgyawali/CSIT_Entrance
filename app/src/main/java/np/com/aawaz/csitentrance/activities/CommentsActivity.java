@@ -125,7 +125,12 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
         Map<String, Object> postValues = comment.toMap();
 
         reference.push().setValue(postValues);
+        increaseCommentCount();
         commentEditText.setText("");
+    }
+
+    private void increaseCommentCount() {
+        FirebaseDatabase.getInstance().getReference().child("forum_data/posts/"+getIntent().getStringExtra("key")+"/comment_count").setValue(adapter.getItemCount()+1);
     }
 
     public void readyViews() {
@@ -264,7 +269,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
         setContentView(R.layout.activity_comment);
 
         DatabaseReference rootReference = FirebaseDatabase.getInstance().getReference();
-        reference = rootReference.child("forum").child(getIntent().getStringExtra("key")).child("comments");
+        reference = rootReference.child("forum_data/comments").child(getIntent().getStringExtra("key"));
 
         readyViews();
 

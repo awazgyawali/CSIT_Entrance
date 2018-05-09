@@ -2,6 +2,7 @@ package np.com.aawaz.csitentrance.services;
 
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -60,11 +61,12 @@ public class NetworkRequester {
                         .build();
                 try {
                     Response response = client.newCall(request).execute();
+                    Log.d("message",response.message());
+
                     if (response.isSuccessful())
                         return response.body().string();
                     else
                         return "fail";
-
                 } catch (IOException e) {
                     e.printStackTrace();
                     return "fail";

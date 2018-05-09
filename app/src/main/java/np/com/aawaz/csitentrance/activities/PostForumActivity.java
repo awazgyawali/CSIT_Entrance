@@ -56,7 +56,7 @@ public class PostForumActivity extends AppCompatActivity {
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reference = database.getReference().child("forum");
+        reference = database.getReference().child("forum_data/posts");
 
         questionEditText.addTextChangedListener(new TextWatcher() {
             @Override

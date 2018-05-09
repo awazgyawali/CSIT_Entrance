@@ -35,7 +35,7 @@ public class Post {
         result.put("uid", uid);
         result.put("author", author);
         result.put("time_stamp", time_stamp);
-        result.put("comments", "");
+        result.put("comment_count", 0);
         result.put("message", message);
         result.put("image_url", image_url);
 

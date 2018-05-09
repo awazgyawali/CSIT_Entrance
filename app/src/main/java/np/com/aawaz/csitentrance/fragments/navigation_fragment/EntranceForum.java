@@ -134,7 +134,7 @@ public class EntranceForum extends Fragment implements
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reference = database.getReference().child("forum");
+        reference = database.getReference().child("forum_data/posts");
         super.onActivityCreated(savedInstanceState);
         addListener();
         handleIntent();
@@ -168,7 +168,7 @@ public class EntranceForum extends Fragment implements
 
         //reference.orderByChild("time_stamp").limitToLast(50).addListenerForSingleValueEvent(this); testing right now
 
-        new NetworkRequester("https://csit-entrance-7d58.firebaseio.com/forum.json?orderBy=%22time_stamp%22&limitToLast=50", new ResponseListener() {
+        new NetworkRequester("https://csit-entrance-7d58.firebaseio.com/forum_data/posts.json?orderBy=%22time_stamp%22&limitToLast=50", new ResponseListener() {
             @Override
             public void onSuccess(String response) {
                 SPHandler.getInstance().addForumData(response);
@@ -208,11 +208,6 @@ public class EntranceForum extends Fragment implements
                 String currentKey = keys.next();
                 Post newPost = new Gson().fromJson(object.getJSONObject(currentKey).toString(), Post.class);
                 if (newPost.author != null) {
-                    try {
-                        newPost.comment_count = object.getJSONObject(currentKey).getJSONObject("comments").length();
-                    } catch (JSONException e) {
-                        newPost.comment_count = 0;
-                    }
                     adapter.addToTop(newPost);
                     key.add(0, currentKey);
                 }
