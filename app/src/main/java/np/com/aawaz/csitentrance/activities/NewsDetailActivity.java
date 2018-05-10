@@ -25,15 +25,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Date;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.custom_views.ScrollableWebView;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.News;
 
 public class NewsDetailActivity extends AppCompatActivity {
 
     Bundle bundle;
-    TextView time, title, author;
+    TextView time, title;
     WebView newsDetail;
-    ViewSwitcher viewSwitcher;
     private String mUrl;
     private String mTitle;
 
@@ -43,21 +43,13 @@ public class NewsDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_each_news);
         new EventSender().logEvent("each_news");
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_each_news);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Entrance News");
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
 
-        viewSwitcher = (ViewSwitcher) findViewById(R.id.viewSwitcherNews);
         newsDetail = (WebView) findViewById(R.id.each_news_detail);
         time = (TextView) findViewById(R.id.each_news_time);
         title = (TextView) findViewById(R.id.each_news_title);
-        author = (TextView) findViewById(R.id.each_news_author);
 
         newsDetail.setWebViewClient(new WebViewClient() {
             @Override
@@ -75,10 +67,8 @@ public class NewsDetailActivity extends AppCompatActivity {
         } else {
             bundle = getIntent().getBundleExtra("data");
             title.setText(bundle.getString("title"));
-            author.setText(bundle.getString("author"));
             newsDetail.loadDataWithBaseURL("", readyWithCSS(bundle.getString("detail")), "text/html", "UTF-8", "");
-            time.setText(convertToSimpleDate(bundle.getLong("time")));
-            viewSwitcher.showNext();
+            time.setText(bundle.getString("author")+" - "+convertToSimpleDate(bundle.getLong("time")));
             appIndexing(bundle.getString("title"));
         }
     }
@@ -89,10 +79,8 @@ public class NewsDetailActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 News news = dataSnapshot.getValue(News.class);
                 title.setText(news.title);
-                author.setText(news.author);
                 newsDetail.loadData(readyWithCSS(news.message), "text/html", "UTF-8");
                 time.setText(convertToSimpleDate(news.time_stamp));
-                viewSwitcher.showNext();
                 appIndexing(news.title);
             }
 
@@ -115,6 +103,7 @@ public class NewsDetailActivity extends AppCompatActivity {
                 "  <meta charset=\"UTF-8\">" +
                 "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
                 "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
+                "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:400,700\" rel=\"stylesheet\">" +
                 "  <title>Document</title>" +
                 "  <style>" +
                 "    body{" +
@@ -127,6 +116,7 @@ public class NewsDetailActivity extends AppCompatActivity {
                 "      font-size: 18px;" +
                 "      line-height: 1.5em;" +
                 "      text-align: justify;" +
+                "      font-family: 'Work Sans', sans-serif" +
                 "    }" +
                 "  </style>" +
                 "</head>" +

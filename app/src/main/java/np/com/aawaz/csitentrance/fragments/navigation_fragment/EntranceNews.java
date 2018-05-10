@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,11 +22,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.NewsDetailActivity;
 import np.com.aawaz.csitentrance.adapters.NewsAdapter;
+import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.objects.News;
 
 
-public class EntranceNews extends Fragment implements ValueEventListener {
+public class EntranceNews extends Fragment implements ValueEventListener, ClickListener {
 
     RecyclerView recy;
     SwipeRefreshLayout newsSwipe;
@@ -70,10 +73,10 @@ public class EntranceNews extends Fragment implements ValueEventListener {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recy = (RecyclerView) view.findViewById(R.id.newsFeedRecy);
-        newsSwipe = (SwipeRefreshLayout) view.findViewById(R.id.newsSwipeRefresh);
-        errorLayout = (LinearLayout) view.findViewById(R.id.errorNews);
-        progress = (ProgressBar) view.findViewById(R.id.progressbarNews);
+        recy = view.findViewById(R.id.newsFeedRecy);
+        newsSwipe = view.findViewById(R.id.newsSwipeRefresh);
+        errorLayout = view.findViewById(R.id.errorNews);
+        progress = view.findViewById(R.id.progressbarNews);
         errorLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,5 +127,21 @@ public class EntranceNews extends Fragment implements ValueEventListener {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_news, container, false);
+    }
+
+    @Override
+    public void itemClicked(View view, int position) {
+        News eachNews = newsAdapter.getNewsAt(position);
+        Bundle bundle = new Bundle();
+        bundle.putString("title", eachNews.title);
+        bundle.putString("author", eachNews.author);
+        bundle.putString("detail", eachNews.message);
+        bundle.putLong("time", eachNews.time_stamp);
+        startActivity(new Intent(getContext(), NewsDetailActivity.class).putExtra("data", bundle));
+    }
+
+    @Override
+    public void itemLongClicked(View view, int position) {
+
     }
 }

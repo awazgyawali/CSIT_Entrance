@@ -42,18 +42,19 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.title.setText(news.get(holder.getAdapterPosition()).title);
-        holder.newsDetail.setText(Html.escapeHtml(news.get(holder.getAdapterPosition()).message));
-        holder.time.setText(convertToSimpleDate(news.get(holder.getAdapterPosition()).time_stamp));
+        final News eachNews = news.get(position);
+        holder.title.setText(eachNews.title);
+        holder.newsDetail.setText(Html.escapeHtml(eachNews.message));
+        holder.time.setText(eachNews.author + " - " + convertToSimpleDate(eachNews.time_stamp));
 
         holder.core.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString("title", news.get(holder.getAdapterPosition()).title);
-                bundle.putString("author", news.get(holder.getAdapterPosition()).author);
-                bundle.putString("detail", news.get(holder.getAdapterPosition()).message);
-                bundle.putLong("time", news.get(holder.getAdapterPosition()).time_stamp);
+                bundle.putString("title", eachNews.title);
+                bundle.putString("author", eachNews.author);
+                bundle.putString("detail", eachNews.message);
+                bundle.putLong("time", eachNews.time_stamp);
                 context.startActivity(new Intent(context, NewsDetailActivity.class).putExtra("data", bundle));
             }
         });
@@ -66,6 +67,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return news.size();
+    }
+
+    public News getNewsAt(int position) {
+        return news.get(position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
