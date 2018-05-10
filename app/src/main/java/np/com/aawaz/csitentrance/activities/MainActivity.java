@@ -28,6 +28,7 @@ import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
@@ -160,15 +161,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void uploadInstanceId() {
+        Log.d("Hello","uploading ail ta");
+        Log.d("Hello", SPHandler.getInstance().isUserDataAdded()?"true":"false");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String token = FirebaseInstanceId.getInstance().getToken();
-        if (FirebaseAuth.getInstance().getCurrentUser() != null && !SPHandler.getInstance().isInstanceIdAdded()) {
-            //for older version to run todo to be removed next year
-            FirebaseDatabase.getInstance().getReference()
-                    .child("instance_ids")
-                    .child(user.getUid())
-                    .setValue(token);
-
+        if (FirebaseAuth.getInstance().getCurrentUser() != null && !SPHandler.getInstance().isUserDataAdded()) {
+            Log.d("Debug","Sending serve to the server");
             HashMap<String, Object> map = new HashMap<>();
             map.put("name", user.getDisplayName());
             map.put("phone_no", SPHandler.getInstance().getPhoneNo());
@@ -181,18 +179,18 @@ public class MainActivity extends AppCompatActivity {
             map.put("uid", user.getUid());
             map.put("score", SPHandler.getInstance().getTotalScore());
 
-            FirebaseDatabase.getInstance().getReference()
-                    .child("user_data")
-                    .child(user.getUid())
-                    .setValue(map);
+            FirebaseFirestore.getInstance()
+                    .collection("users")
+                    .document(user.getUid())
+                    .set(map);
 
-            SPHandler.getInstance().instanceIdAdded();
+            SPHandler.getInstance().userDataAdded();
             FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
             if (SPHandler.getInstance().getForumSubscribed())
-                FirebaseMessaging.getInstance().subscribeToTopic("forums");
+                FirebaseMessaging.getInstance().subscribeToTopic("forum");
 
             if (SPHandler.getInstance().getNewsSubscribed())
-                FirebaseMessaging.getInstance().subscribeToTopic("new");
+                FirebaseMessaging.getInstance().subscribeToTopic("news");
         }
     }
 
@@ -246,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
                             Feedback feedback = new Feedback(input.toString());
+                            FirebaseFirestore.getInstance().collection("feedbacks").add(feedback);
                             FirebaseDatabase.getInstance().getReference().child("feedback").push().setValue(feedback);
                             new EventSender().logEvent("sent_feedback");
                             Toast.makeText(MainActivity.this, "Thanks for your feedback.", Toast.LENGTH_SHORT).show();

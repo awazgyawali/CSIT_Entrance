@@ -43,7 +43,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.title.setText(news.get(holder.getAdapterPosition()).title);
-        holder.newsDetail.setText(Html.fromHtml(news.get(holder.getAdapterPosition()).message));
+        holder.newsDetail.setText(Html.escapeHtml(news.get(holder.getAdapterPosition()).message));
         holder.time.setText(convertToSimpleDate(news.get(holder.getAdapterPosition()).time_stamp));
 
         holder.core.setOnClickListener(new View.OnClickListener() {

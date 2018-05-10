@@ -2,12 +2,12 @@ package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
@@ -58,18 +58,17 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         holder.commentCount.setText(post.comment_count + getCommentMessage(post));
         holder.time.setText(getRelativeTimeSpanString(post.time_stamp));
 
-        if (SPHandler.containsDevUID(post.uid)) {
-            holder.postedBy.setTextColor(ContextCompat.getColor(context, R.color.admin_color));
+        if (SPHandler.containsDevUID(post.uid))
             holder.admin_tag.setVisibility(View.VISIBLE);
-        } else {
-            holder.postedBy.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+        else
             holder.admin_tag.setVisibility(View.GONE);
-        }
+
 
         if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(post.uid))
-            holder.postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.edit_grey, 0);
+            holder.editIcon.setVisibility(View.VISIBLE);
         else
-            holder.postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            holder.editIcon.setVisibility(View.GONE);
+
         try {
             Picasso.with(MyApplication.getAppContext())
                     .load(post.image_url)
@@ -126,6 +125,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView commentCount, realPost, postedBy, time;
+        ImageView editIcon;
         CircleImageView profile;
         FancyButton admin_tag;
 
@@ -136,7 +136,14 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
             postedBy = (TextView) itemView.findViewById(R.id.postedBy);
             admin_tag = (FancyButton) itemView.findViewById(R.id.post_admin_tag);
             time = (TextView) itemView.findViewById(R.id.forumTime);
+            editIcon = itemView.findViewById(R.id.editIcon);
             profile = (CircleImageView) itemView.findViewById(R.id.forumPic);
+            editIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.itemLongClicked(view, getAdapterPosition());
+                }
+            });
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

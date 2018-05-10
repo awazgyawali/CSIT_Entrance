@@ -66,7 +66,7 @@ public class PostForumActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0)
+                if (charSequence.toString().trim().length() == 0)
                     buttonPost.setVisibility(View.GONE);
                 else
                     buttonPost.setVisibility(View.VISIBLE);
@@ -82,7 +82,7 @@ public class PostForumActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 imm.hideSoftInputFromWindow(questionEditText.getWindowToken(), 0);
-                postToFirebase(questionEditText.getText().toString());
+                postToFirebase(questionEditText.getText().toString().trim());
             }
         });
         buttonPost.setVisibility(View.GONE);
@@ -102,7 +102,8 @@ public class PostForumActivity extends AppCompatActivity {
     }
 
     private void postToFirebase(final String message) {
-        if (canPost()) {
+        //todo change to canPost() on release build
+        if (true) {
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
             Post post = new Post(currentUser.getUid(), currentUser.getDisplayName(), new Date().getTime(), message, FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString());
             Map<String, Object> postValues = post.toMap();
@@ -127,6 +128,8 @@ public class PostForumActivity extends AppCompatActivity {
 
 
     private boolean canPost() {
+
+        //todo change in the release
         long preTime = SPHandler.getInstance().getLastPostedTime();
         long postTime = System.currentTimeMillis();
 

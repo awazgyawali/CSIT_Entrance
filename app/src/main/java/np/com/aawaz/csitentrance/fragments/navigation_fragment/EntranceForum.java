@@ -276,7 +276,7 @@ public class EntranceForum extends Fragment implements
     }
 
     @Override
-    public void itemLongClicked(View view, final int position) {
+    public void itemLongClicked(View v, final int position) {
         if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(adapter.getUidAt(position)) || SPHandler.containsDevUID(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
             new MaterialDialog.Builder(getContext())
                     .title("Select any option")

@@ -251,12 +251,12 @@ public class SPHandler {
         return infoSp.getInt("times_played", 2);
     }
 
-    public boolean isInstanceIdAdded() {
-        return infoSp.getBoolean("user_data_added", false);
+    public boolean isUserDataAdded() {
+        return infoSp.getBoolean("user_data_updated", false);
     }
 
-    public void instanceIdAdded() {
-        infoEditor.putBoolean("user_data_added", true).apply();
+    public void userDataAdded() {
+        infoEditor.putBoolean("user_data_updated", true).apply();
     }
 
     public int getLastAdPosition() {
