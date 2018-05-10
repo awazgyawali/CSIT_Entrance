@@ -287,7 +287,7 @@ public class EntranceForum extends Fragment implements
                             if (which == 0)
                                 showDialogToEdit(adapter.getMessageAt(position), position);
                             else if (which == 1) {
-                                FirebaseDatabase.getInstance().getReference().child("forum").child(key.get(position)).removeValue();
+                                FirebaseDatabase.getInstance().getReference().child("forum_data/posts").child(key.get(position)).removeValue();
                                 key.remove(position);
                                 adapter.removeItemAtPosition(position);
                             }
@@ -308,7 +308,7 @@ public class EntranceForum extends Fragment implements
                         map.put("message", input.toString());
                         adapter.getItemAtPosition(position).message = input.toString();
                         adapter.editItemAtPosition(position);
-                        FirebaseDatabase.getInstance().getReference().child("forum").child(key.get(position)).updateChildren(map);
+                        FirebaseDatabase.getInstance().getReference().child("forum_data/posts").child(key.get(position)).updateChildren(map);
                     }
                 })
                 .positiveText("Save")

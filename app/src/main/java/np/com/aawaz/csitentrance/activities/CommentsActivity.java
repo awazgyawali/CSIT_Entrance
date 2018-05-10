@@ -1,17 +1,24 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import mehdi.sakout.fancybuttons.FancyButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import com.amulyakhare.textdrawable.TextDrawable;
+
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,9 +34,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,8 +46,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.CommentAdapter;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
+import np.com.aawaz.csitentrance.misc.MyApplication;
 import np.com.aawaz.csitentrance.objects.Comment;
 import np.com.aawaz.csitentrance.objects.EventSender;
+import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class CommentsActivity extends AppCompatActivity implements ChildEventListener {
@@ -48,16 +59,18 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
 
     AppCompatEditText commentEditText;
     ImageButton commentButton;
-    CircleImageView profileImage;
-    TextView commentNumber, errorMessage;
+    CircleImageView profileImage,forumPic;
+    TextView commentNumber, errorMessage, postedBy, forumTime,realPost;
     LinearLayout commentAdder;
     CommentAdapter adapter;
     ArrayList<String> key = new ArrayList<>();
+    FancyButton adminTag;
 
     DatabaseReference reference;
 
     private String mUrl;
     private String mTitle;
+    private ConstraintLayout forumContainer;
 
     public CommentsActivity() {
         // Required empty public constructor
@@ -130,10 +143,17 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     }
 
     private void increaseCommentCount() {
-        FirebaseDatabase.getInstance().getReference().child("forum_data/posts/"+getIntent().getStringExtra("key")+"/comment_count").setValue(adapter.getItemCount()+1);
+        FirebaseDatabase.getInstance().getReference().child("forum_data/posts/" + getIntent().getStringExtra("key") + "/comment_count").setValue(adapter.getItemCount() + 1);
     }
 
     public void readyViews() {
+        forumContainer = findViewById(R.id.postContainer);
+        forumPic =findViewById(R.id.forumPic);
+        adminTag = findViewById(R.id.post_admin_tag);
+        postedBy = findViewById(R.id.postedBy);
+        forumTime = findViewById(R.id.forumTime);
+        realPost = findViewById(R.id.realPost);
+
         progressBar = (ProgressBar) findViewById(R.id.progressbarSingleFeed);
         commentsRecyclerView = (RecyclerView) findViewById(R.id.commentsRecyOfFullPost);
         commentEditText = (AppCompatEditText) findViewById(R.id.addCommentText);
@@ -273,6 +293,8 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
 
         readyViews();
 
+        fillPost();
+
         fillViews();
 
         if (getIntent().getIntExtra("comment_count", 0) == 0) {
@@ -290,6 +312,44 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
         appIndexing();
     }
 
+    private void fillPost() {
+        FirebaseDatabase.getInstance().getReference().child("forum_data/posts").child(getIntent().getStringExtra("key")).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                forumContainer.setVisibility(View.VISIBLE);
+
+                Post post = dataSnapshot.getValue(Post.class);
+                postedBy.setText(post.author);
+                realPost.setText(post.message);
+                forumTime.setText(getRelativeTimeSpanString(post.time_stamp));
+
+                if (SPHandler.containsDevUID(post.uid))
+                    adminTag.setVisibility(View.VISIBLE);
+                else
+                    adminTag.setVisibility(View.GONE);
+
+                try {
+                    Picasso.with(MyApplication.getAppContext())
+                            .load(post.image_url)
+                            .error(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE))
+                            .placeholder(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE))
+                            .into(forumPic);
+                } catch (Exception e) {
+                    forumPic.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE));
+                }
+                Log.d("Debug", post.toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private CharSequence getRelativeTimeSpanString(long time_stamp) {
+        return DateUtils.getRelativeTimeSpanString(time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE);
+    }
     public String getCommentMessage() {
         return adapter.getItemCount() == 1 ? " comment" : " comments";
     }

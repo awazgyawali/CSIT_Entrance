@@ -2,6 +2,7 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="3dp"
@@ -17,8 +18,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/forumPic"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -94,15 +95,17 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
             android:autoLink="web"
             android:ellipsize="end"
+            android:fontFamily="@font/work_sans_medium"
             android:gravity="center_vertical"
             android:text="Demo  dsjkdsjkds dsdsdsdskldslkdsklkldsklsdkjdskjdsdsjksddjskni hagi"
             android:textColor="@color/colorPrimaryText"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/forumTime"
-            app:layout_constraintTop_toBottomOf="@+id/forumPic" />
+            app:layout_constraintTop_toBottomOf="@+id/forumTime" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
