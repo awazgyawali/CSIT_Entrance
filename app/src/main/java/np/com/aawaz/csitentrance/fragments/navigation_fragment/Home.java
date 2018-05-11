@@ -73,7 +73,6 @@ public class Home extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                MainActivity.setTitle(titles[position]);
             }
 
             @Override

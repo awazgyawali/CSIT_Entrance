@@ -59,7 +59,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
 
     AppCompatEditText commentEditText;
     ImageButton commentButton;
-    CircleImageView profileImage,forumPic;
+    CircleImageView forumPic;
     TextView commentNumber, errorMessage, postedBy, forumTime,realPost;
     LinearLayout commentAdder;
     CommentAdapter adapter;
@@ -158,7 +158,6 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
         commentsRecyclerView = (RecyclerView) findViewById(R.id.commentsRecyOfFullPost);
         commentEditText = (AppCompatEditText) findViewById(R.id.addCommentText);
         commentButton = (ImageButton) findViewById(R.id.commentButton);
-        profileImage = (CircleImageView) findViewById(R.id.profileImage);
         commentNumber = (TextView) findViewById(R.id.numberComments);
         errorMessage = (TextView) findViewById(R.id.errorComment);
         commentAdder = (LinearLayout) findViewById(R.id.commentAdder);
@@ -306,9 +305,6 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
 
         commentNumber.setText(getIntent().getIntExtra("comment_count", 0) + " comments");
 
-        Picasso.with(this)
-                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
-                .into(profileImage);
         appIndexing();
     }
 

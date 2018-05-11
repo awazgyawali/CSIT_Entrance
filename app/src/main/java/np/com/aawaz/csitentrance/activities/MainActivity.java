@@ -161,12 +161,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void uploadInstanceId() {
-        Log.d("Hello","uploading ail ta");
-        Log.d("Hello", SPHandler.getInstance().isUserDataAdded()?"true":"false");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String token = FirebaseInstanceId.getInstance().getToken();
         if (FirebaseAuth.getInstance().getCurrentUser() != null && !SPHandler.getInstance().isUserDataAdded()) {
-            Log.d("Debug","Sending serve to the server");
             HashMap<String, Object> map = new HashMap<>();
             map.put("name", user.getDisplayName());
             map.put("phone_no", SPHandler.getInstance().getPhoneNo());
@@ -285,7 +282,6 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.main_home:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
-                setTitle("Play Quiz");
                 tabLayout.setVisibility(View.VISIBLE);
                 item.setChecked(true);
                 break;
@@ -397,9 +393,9 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(mNavigationView))
             mDrawerLayout.closeDrawer(mNavigationView);
-        else if (getToolbarTitle().equals("Full Question") || getToolbarTitle().equals("Scoreboard"))
+        else if (Home.viewPager != null && Home.viewPager.getCurrentItem() > 0)
             Home.viewPager.setCurrentItem(0, true);
-        else if (!getToolbarTitle().equals("Play Quiz"))
+        else if (!getToolbarTitle().equals("Home"))
             navigate(mNavigationView.getMenu().findItem(R.id.main_home));
         else
             super.onBackPressed();

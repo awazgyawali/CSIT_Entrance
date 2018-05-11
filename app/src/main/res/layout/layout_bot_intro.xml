@@ -32,18 +32,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Hi! I am Entoo."
-            android:textSize="28sp"
             android:textColor="@color/colorPrimary"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/work_sans_medium"
             android:gravity="center_horizontal"
             android:padding="10dp"
-            android:textSize="17sp"
             android:text="I try to answer your question related to the BSc CSIT program as best as I can."
-            android:textColor="@color/grey" />
+            android:textColor="@color/grey"
+            android:textSize="17sp" />
 
         <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
@@ -56,14 +57,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/work_sans_medium"
                 android:paddingBottom="10dp"
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
                 android:paddingTop="10dp"
-                android:textSize="16sp"
-                android:text="Star messaging"
+                android:text="Start messaging"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
+                android:textSize="16sp"
                 android:textStyle="bold" />
         </android.support.v7.widget.CardView>
 

@@ -20,8 +20,8 @@ public class NotificationDatabase extends SQLiteOpenHelper {
                 " time DOUBLE);");
 
         ContentValues values = new ContentValues();
-        values.put("text", "CSIT Entrance updated to 2.4");
-        values.put("title", "This update includes 2074 and a new model question.\n New Froum System(Less laggy)");
+        values.put("text", "Welcome to CSIT Entrance");
+        values.put("title", "You can start learning today by playing a quiz or ask any questions to Entoo or on the forum.");
         values.put("tag", "");
         values.put("post_id", "nothing");
         values.put("time", System.currentTimeMillis());

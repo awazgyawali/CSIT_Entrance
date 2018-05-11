@@ -2,12 +2,12 @@ package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
@@ -51,14 +51,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.time.setText(DateUtils.getRelativeTimeSpanString(comment.time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
 
         if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(comments.get(position).uid)) {
-            holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.edit_grey, 0);
+            holder.editComment.setVisibility(View.VISIBLE);
         } else
-            holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            holder.editComment.setVisibility(View.GONE);
+
+
         if (SPHandler.containsDevUID(comments.get(position).uid)) {
-            holder.commenter.setTextColor(ContextCompat.getColor(context, R.color.admin_color));
             holder.admin_tag.setVisibility(View.VISIBLE);
         } else {
-            holder.commenter.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
             holder.admin_tag.setVisibility(View.GONE);
         }
 
@@ -70,6 +70,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         } catch (Exception e) {
             holder.circleImageView.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(comment.author.charAt(0)).toUpperCase(), Color.BLUE));
         }
+
+        holder.editComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickEventListener.itemLongClicked(view, holder.getAdapterPosition());
+            }
+        });
+
         holder.core.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -119,15 +127,17 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         CircleImageView circleImageView;
         View core;
         FancyButton admin_tag;
+        ImageView editComment;
 
         public ViewHolder(View itemView) {
             super(itemView);
             core = itemView;
-            admin_tag = (FancyButton) itemView.findViewById(R.id.comment_admin_tag);
-            commenter = (TextView) itemView.findViewById(R.id.commenter);
-            comment = (TextView) itemView.findViewById(R.id.comment);
-            time = (TextView) itemView.findViewById(R.id.timeComment);
-            circleImageView = (CircleImageView) itemView.findViewById(R.id.profileComment);
+            admin_tag = itemView.findViewById(R.id.comment_admin_tag);
+            commenter = itemView.findViewById(R.id.commenter);
+            comment = itemView.findViewById(R.id.comment);
+            time = itemView.findViewById(R.id.timeComment);
+            circleImageView = itemView.findViewById(R.id.profileComment);
+            editComment = itemView.findViewById(R.id.editIcon);
         }
     }
 }
