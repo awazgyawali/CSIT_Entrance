@@ -14,7 +14,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,11 +43,10 @@ import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceNews;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceResult;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.Home;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.LeaderBoard;
-import np.com.aawaz.csitentrance.misc.MyApplication;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Feedback;
 import np.com.aawaz.csitentrance.objects.SPHandler;
-import np.com.aawaz.csitentrance.services.ScoreUploader;
+import np.com.aawaz.csitentrance.objects.Score;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -91,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         titleMain = (TextView) findViewById(R.id.titleMain);
 
 
-        setTitle("Play Quiz");
+        setTitle("Home");
         manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -156,8 +154,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void uploadScore() {
-        if (SPHandler.getInstance().isScoreChanged())
-            startService(new Intent(MyApplication.getAppContext(), ScoreUploader.class));
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (SPHandler.getInstance().isScoreChanged()) {
+            FirebaseFirestore.getInstance().collection("scores")
+                    .document(user.getUid())
+                    .set(Score.getScoreObject());
+
+            FirebaseFirestore.getInstance().collection("users")
+                    .document(user.getUid())
+                    .update("score", SPHandler.getInstance().getTotalScore());
+
+            SPHandler.getInstance().setScoreChanged(false);
+        }
     }
 
     private void uploadInstanceId() {
@@ -277,11 +285,12 @@ public class MainActivity extends AppCompatActivity {
                     .show();
             return;
         }
-        tabLayout.setVisibility(View.GONE);
         setAppBarElevation(getResources().getDimension(R.dimen.app_bar_elevation));
+        tabLayout.setVisibility(View.GONE);
         switch (id) {
             case R.id.main_home:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
+                setTitle("Home");
                 tabLayout.setVisibility(View.VISIBLE);
                 item.setChecked(true);
                 break;

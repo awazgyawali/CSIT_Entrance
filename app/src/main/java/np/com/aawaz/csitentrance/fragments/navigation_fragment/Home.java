@@ -42,7 +42,6 @@ public class Home extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        final String[] titles = {"Play Quiz", "Play Quiz", "Full Question", "Scoreboard"};
         tabLayout.removeAllTabs();
         viewPager.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
             @Override
@@ -52,17 +51,13 @@ public class Home extends Fragment {
                         return YearsList.newInstance("quiz");
                     case 1:
                         return SubjectsList.newInstance();
-                    case 2:
-                        return YearsList.newInstance("full");
-                    case 3:
-                        return ScoreBoard.newInstance();
                 }
                 return null;
             }
 
             @Override
             public int getCount() {
-                return 4;
+                return 2;
             }
         });
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -82,10 +77,10 @@ public class Home extends Fragment {
         });
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(0).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_calender));
-        tabLayout.getTabAt(1).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_book));
-        tabLayout.getTabAt(2).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_file));
-        tabLayout.getTabAt(3).setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_scoreboard));
+        tabLayout.getTabAt(0)
+                .setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_calender));
+        tabLayout.getTabAt(1)
+                .setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_book));
     }
 
     @Override

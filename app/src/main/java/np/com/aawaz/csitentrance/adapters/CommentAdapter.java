@@ -47,7 +47,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         Comment comment = comments.get(holder.getAdapterPosition());
         holder.comment.setText(comment.message);
-        holder.commenter.setText(comment.author);
+        holder.commenter.setText(comment.author+" ");
         holder.time.setText(DateUtils.getRelativeTimeSpanString(comment.time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
 
         if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(comments.get(position).uid)) {
@@ -56,11 +56,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             holder.editComment.setVisibility(View.GONE);
 
 
-        if (SPHandler.containsDevUID(comments.get(position).uid)) {
-            holder.admin_tag.setVisibility(View.VISIBLE);
-        } else {
-            holder.admin_tag.setVisibility(View.GONE);
-        }
+        if (SPHandler.containsDevUID(comment.uid))
+            holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.admin, 0);
+        else
+            holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
 
         try {
             Picasso.with(MyApplication.getAppContext())
@@ -126,13 +126,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         TextView commenter, comment, time;
         CircleImageView circleImageView;
         View core;
-        FancyButton admin_tag;
         ImageView editComment;
 
         public ViewHolder(View itemView) {
             super(itemView);
             core = itemView;
-            admin_tag = itemView.findViewById(R.id.comment_admin_tag);
             commenter = itemView.findViewById(R.id.commenter);
             comment = itemView.findViewById(R.id.comment);
             time = itemView.findViewById(R.id.timeComment);

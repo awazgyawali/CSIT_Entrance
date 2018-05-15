@@ -54,7 +54,6 @@
 
         <include
             android:id="@+id/forum_ad"
-            android:visibility="gone"
             layout="@layout/achs_ad_layout" />
 
         <android.support.v4.widget.SwipeRefreshLayout

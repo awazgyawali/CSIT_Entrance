@@ -64,7 +64,6 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     LinearLayout commentAdder;
     CommentAdapter adapter;
     ArrayList<String> key = new ArrayList<>();
-    FancyButton adminTag;
 
     DatabaseReference reference;
 
@@ -149,7 +148,6 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     public void readyViews() {
         forumContainer = findViewById(R.id.postContainer);
         forumPic =findViewById(R.id.forumPic);
-        adminTag = findViewById(R.id.post_admin_tag);
         postedBy = findViewById(R.id.postedBy);
         forumTime = findViewById(R.id.forumTime);
         realPost = findViewById(R.id.realPost);
@@ -315,14 +313,15 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
                 forumContainer.setVisibility(View.VISIBLE);
 
                 Post post = dataSnapshot.getValue(Post.class);
-                postedBy.setText(post.author);
+                postedBy.setText(post.author+" ");
                 realPost.setText(post.message);
                 forumTime.setText(getRelativeTimeSpanString(post.time_stamp));
 
                 if (SPHandler.containsDevUID(post.uid))
-                    adminTag.setVisibility(View.VISIBLE);
+                    postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.admin, 0);
                 else
-                    adminTag.setVisibility(View.GONE);
+                    postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
 
                 try {
                     Picasso.with(MyApplication.getAppContext())

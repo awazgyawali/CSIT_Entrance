@@ -48,6 +48,10 @@
     <group android:checkableBehavior="none" android:id="@+id/event">
 
         <item
+            android:id="@+id/aboutUs"
+            android:icon="@drawable/about"
+            android:title="About Us" />
+        <item
             android:id="@+id/settings"
             android:icon="@drawable/settings"
             android:title="Settings" />

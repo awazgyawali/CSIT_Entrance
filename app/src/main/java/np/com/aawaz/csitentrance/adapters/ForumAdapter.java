@@ -3,6 +3,7 @@ package np.com.aawaz.csitentrance.adapters;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.MyApplication;
@@ -55,13 +55,13 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         Post post = posts.get(holder.getAdapterPosition());
         holder.postedBy.setText(post.author);
         holder.realPost.setText(post.message);
-        holder.commentCount.setText(post.comment_count + getCommentMessage(post));
+        holder.commentCount.setText(Html.fromHtml("<u>" + post.comment_count + getCommentMessage(post)) + "</u>");
         holder.time.setText(getRelativeTimeSpanString(post.time_stamp));
 
         if (SPHandler.containsDevUID(post.uid))
-            holder.admin_tag.setVisibility(View.VISIBLE);
+            holder.postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.admin, 0);
         else
-            holder.admin_tag.setVisibility(View.GONE);
+            holder.postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
 
         if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(post.uid))
@@ -127,14 +127,12 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         TextView commentCount, realPost, postedBy, time;
         ImageView editIcon;
         CircleImageView profile;
-        FancyButton admin_tag;
 
         public ViewHolder(View itemView) {
             super(itemView);
             commentCount = (TextView) itemView.findViewById(R.id.commentCount);
             realPost = (TextView) itemView.findViewById(R.id.realPost);
             postedBy = (TextView) itemView.findViewById(R.id.postedBy);
-            admin_tag = (FancyButton) itemView.findViewById(R.id.post_admin_tag);
             time = (TextView) itemView.findViewById(R.id.forumTime);
             editIcon = itemView.findViewById(R.id.editIcon);
             profile = (CircleImageView) itemView.findViewById(R.id.forumPic);

@@ -5,57 +5,89 @@
     android:layout_height="match_parent"
     tools:context=".fragments.other_fragments.YearsList">
 
-    <android.support.constraint.ConstraintLayout
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7">
 
         <TextView
-            android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/work_sans_medium"
             android:padding="10dp"
-            android:text="Old Questions"
+            android:text="College Model Questions"
             android:textColor="@color/colorPrimary"
+            android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <LinearLayout
-            android:id="@+id/linearLayout4"
-            android:layout_width="0dp"
+        <np.com.aawaz.csitentrance.custom_views.CollegeModelCard
+            android:id="@+id/collegeModel1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:orientation="vertical"
+            android:padding="3dp" />
+
+        <np.com.aawaz.csitentrance.custom_views.CollegeModelCard
+            android:id="@+id/collegeModel2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:padding="3dp" />
+
+        <np.com.aawaz.csitentrance.custom_views.CollegeModelCard
+            android:id="@+id/collegeModel3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:padding="3dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/work_sans_medium"
+            android:padding="10dp"
+            android:text="Old Questions"
+            android:textColor="@color/colorPrimary"
+            android:textSize="17sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7">
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <android.support.v7.widget.CardView
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:id="@+id/question2069"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_margin="10dp"
                         android:background="@drawable/circle_accent"
                         android:padding="10dp"
                         android:src="@drawable/play_accent" />
@@ -64,37 +96,35 @@
                         android:id="@+id/textView8"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="TU Examination Year 2069"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center"
+                        android:text="Year 2069"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorPrimaryText"
                         android:textStyle="bold" />
+
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
-
             <android.support.v7.widget.CardView
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:id="@+id/question2070"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_margin="10dp"
                         android:background="@drawable/circle_accent"
                         android:padding="10dp"
                         android:src="@drawable/play_accent" />
@@ -102,9 +132,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="TU Examination Year 2070"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center"
+                        android:text="Year 2070"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorPrimaryText"
                         android:textStyle="bold" />
@@ -112,29 +143,32 @@
 
 
             </android.support.v7.widget.CardView>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <android.support.v7.widget.CardView
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:id="@+id/question2071"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:orientation="vertical"
+
+                    android:padding="10dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_margin="10dp"
                         android:background="@drawable/circle_accent"
                         android:padding="10dp"
                         android:src="@drawable/play_accent" />
@@ -142,9 +176,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="TU Examination Year 2071"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center"
+                        android:text="Year 2071"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorPrimaryText"
                         android:textStyle="bold" />
@@ -152,28 +187,24 @@
 
             </android.support.v7.widget.CardView>
 
-
             <android.support.v7.widget.CardView
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:id="@+id/question2072"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_margin="10dp"
                         android:background="@drawable/circle_accent"
                         android:padding="10dp"
                         android:src="@drawable/play_accent" />
@@ -181,9 +212,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="TU Examination Year 2072"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center"
+                        android:text="Year 2072"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorPrimaryText"
                         android:textStyle="bold" />
@@ -191,27 +223,32 @@
 
             </android.support.v7.widget.CardView>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <android.support.v7.widget.CardView
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:id="@+id/question2073"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:orientation="vertical"
+
+                    android:padding="10dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_margin="10dp"
                         android:background="@drawable/circle_accent"
                         android:padding="10dp"
                         android:src="@drawable/play_accent" />
@@ -219,9 +256,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="TU Examination Year 2073"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center"
+                        android:text="Year 2073"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorPrimaryText"
                         android:textStyle="bold" />
@@ -230,26 +268,23 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:id="@+id/question2074"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_margin="10dp"
                         android:background="@drawable/circle_accent"
                         android:padding="10dp"
                         android:src="@drawable/play_accent" />
@@ -257,65 +292,56 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="TU Examination Year 2074"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center"
+                        android:text="Year 2074"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorPrimaryText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
+
         </LinearLayout>
 
-
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/work_sans_medium"
             android:padding="10dp"
             android:text="Model Questions"
             android:textColor="@color/colorPrimary"
+            android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6">
-
+            android:orientation="horizontal">
 
             <android.support.v7.widget.CardView
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:id="@+id/question1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_margin="10dp"
                         android:background="@drawable/circle_accent"
                         android:padding="10dp"
                         android:src="@drawable/play_accent" />
@@ -323,9 +349,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="Model Question 1"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center"
+                        android:text="Model 1"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorPrimaryText"
                         android:textStyle="bold" />
@@ -333,28 +360,24 @@
 
             </android.support.v7.widget.CardView>
 
-
             <android.support.v7.widget.CardView
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:id="@+id/question2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_margin="10dp"
                         android:background="@drawable/circle_accent"
                         android:padding="10dp"
                         android:src="@drawable/play_accent" />
@@ -362,9 +385,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="Model Question 2"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center"
+                        android:text="Model 2"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorPrimaryText"
                         android:textStyle="bold" />
@@ -372,12 +396,19 @@
 
             </android.support.v7.widget.CardView>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <android.support.v7.widget.CardView
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp">
 
 
                 <LinearLayout
@@ -385,16 +416,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_margin="10dp"
                         android:background="@drawable/circle_accent"
                         android:padding="10dp"
                         android:src="@drawable/play_accent" />
@@ -402,9 +429,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="Model Question 3"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center"
+                        android:text="Model 3"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorPrimaryText"
                         android:textStyle="bold" />
@@ -413,12 +441,12 @@
 
             </android.support.v7.widget.CardView>
 
-
             <android.support.v7.widget.CardView
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:id="@+id/question4"
@@ -426,16 +454,12 @@
                     android:layout_height="wrap_content"
                     android:background="?android:selectableItemBackground"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_margin="10dp"
                         android:background="@drawable/circle_accent"
                         android:padding="10dp"
                         android:src="@drawable/play_accent" />
@@ -443,84 +467,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="Model Question 4"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp">
-
-                <LinearLayout
-                    android:id="@+id/question5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?android:selectableItemBackground"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="Model Question 5"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp">
-
-                <LinearLayout
-                    android:id="@+id/question6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?android:selectableItemBackground"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="ACHS Model Entrance"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center"
+                        android:text="Model 4"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorPrimaryText"
                         android:textStyle="bold" />
@@ -529,5 +479,85 @@
 
         </LinearLayout>
 
-    </android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:id="@+id/question5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/circle_accent"
+                        android:padding="10dp"
+                        android:src="@drawable/play_accent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center"
+                        android:text="Model 5"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:id="@+id/question6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/circle_accent"
+                        android:padding="10dp"
+                        android:src="@drawable/play_accent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center"
+                        android:text="Model 6"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </android.support.v4.widget.NestedScrollView>

@@ -1,165 +1,75 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+<ViewSwitcher xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragments.navigation_fragment.EntranceResult">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:layout_below="@+id/appBarResult"
-        android:background="@color/colorPrimary" />
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarResult"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        fancy:elevation="0dp">
-
-        <ViewSwitcher
-            android:id="@+id/viewSwitcherResult"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Result is not live yet."
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="We will notify you once the result has been published."
-                    android:textColor="@color/white_transparent"
-                    android:textStyle="italic" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Result is live now."
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Please enter your Roll no to view your result."
-                    android:textColor="@color/white_transparent"
-                    android:textStyle="italic" />
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:textColorHint="@color/white">
-
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/resultRollNo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:gravity="center"
-                        android:hint="Roll No"
-                        android:inputType="phone"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-
-                </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
-
-        </ViewSwitcher>
-
-    </android.support.design.widget.AppBarLayout>
-
-    <com.truizlop.fabreveallayout.FABRevealLayout
-        android:id="@+id/fab_reveal_layout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/appBarResult"
-        android:layout_marginTop="28dp">
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/resultReqButton"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/double_done" />
+            android:padding="20dp"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:fontFamily="@font/work_sans_medium"
+            android:text="Result is not\nlive yet."
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
-        <RelativeLayout
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Result is live now."
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Please enter your Roll no to view your result."
+            android:textColor="@color/colorPrimary"
+            android:textStyle="italic" />
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textColorHint="@color/colorPrimary">
 
-            <ProgressBar
-                android:id="@+id/addLoading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
-
-            <com.daimajia.slider.library.SliderLayout
-                android:id="@+id/result_ad_slider"
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/resultRollNo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/crossResult"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:padding="15dp"
-                android:src="@drawable/cross" />
-
-            <ProgressBar
-                android:id="@+id/progressBarResult"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:theme="@style/WhiteProgressBar" />
-
-            <TextView
-                android:id="@+id/resultHolder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:padding="16dp"
-                android:text="This area will contain some slider ads of the colleges, with their name and sort description image too."
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:hint="Roll No"
+                android:inputType="phone"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
 
-        </RelativeLayout>
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
 
-    </com.truizlop.fabreveallayout.FABRevealLayout>
-
-
-</RelativeLayout>
+</ViewSwitcher>

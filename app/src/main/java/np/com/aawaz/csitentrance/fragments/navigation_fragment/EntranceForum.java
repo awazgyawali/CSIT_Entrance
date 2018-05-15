@@ -5,11 +5,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -47,7 +47,6 @@ import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 import np.com.aawaz.csitentrance.services.NetworkRequester;
 
-//todo here are some todos, firebase bhanda different use garera
 public class EntranceForum extends Fragment implements
         // ValueEventListener,
         ClickListener {
@@ -63,7 +62,7 @@ public class EntranceForum extends Fragment implements
     DatabaseReference reference;
     FloatingActionButton floatingActionButton;
     ImageView callAchs;
-    ConstraintLayout achsAd;
+    CardView achsAd;
     private LinearLayoutManager mLinearLayoutManager;
     private boolean running = true;
 
@@ -84,13 +83,13 @@ public class EntranceForum extends Fragment implements
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        errorPart = (LinearLayout) view.findViewById(R.id.errorPart);
-        progressBar = (ProgressBar) view.findViewById(R.id.progressCircleFullFeed);
-        recyclerView = (RecyclerView) view.findViewById(R.id.fullFeedRecycler);
-        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.forumSwipeRefresh);
-        floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fabForumPost);
-        callAchs = (ImageView) view.findViewById(R.id.callACHS);
-        achsAd = (ConstraintLayout) view.findViewById(R.id.forum_ad);
+        errorPart =  view.findViewById(R.id.errorPart);
+        progressBar =  view.findViewById(R.id.progressCircleFullFeed);
+        recyclerView = view.findViewById(R.id.fullFeedRecycler);
+        swipeRefreshLayout =  view.findViewById(R.id.forumSwipeRefresh);
+        floatingActionButton =  view.findViewById(R.id.fabForumPost);
+        callAchs =  view.findViewById(R.id.callACHS);
+        achsAd = view.findViewById(R.id.forum_ad);
         new EventSender().logEvent("achs_ad");
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

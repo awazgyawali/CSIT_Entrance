@@ -18,7 +18,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#eee"
+            android:background="#f7f7f7"
             android:layout_weight="1">
 
             <android.support.v4.widget.NestedScrollView
@@ -48,20 +48,6 @@
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <mehdi.sakout.fancybuttons.FancyButton
-                            android:id="@+id/post_admin_tag"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginRight="8dp"
-                            android:padding="3dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/postedBy"
-                            fancy:fb_borderColor="@color/admin_color"
-                            fancy:fb_defaultColor="@color/transparent"
-                            fancy:fb_text="ADMIN"
-                            fancy:fb_textColor="@color/colorAccent"
-                            fancy:fb_textSize="12sp" />
 
                         <TextView
                             android:id="@+id/postedBy"
