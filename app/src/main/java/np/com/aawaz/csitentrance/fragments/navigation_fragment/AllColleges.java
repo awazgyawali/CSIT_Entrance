@@ -15,10 +15,13 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,6 +41,7 @@ public class AllColleges extends Fragment {
             website = new ArrayList<>(),
             address = new ArrayList<>(),
             phNo = new ArrayList<>();
+    private SliderLayout featured_slider;
 
     public static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();
@@ -55,7 +59,8 @@ public class AllColleges extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        colzRecy = (RecyclerView) view.findViewById(R.id.colzRecy);
+        colzRecy = view.findViewById(R.id.colzRecy);
+        featured_slider = view.findViewById(R.id.featured_ad_slider);
         colzRecy.setNestedScrollingEnabled(false);
     }
 
@@ -63,6 +68,26 @@ public class AllColleges extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setDataToArrayList();
+        setupFeaturedCollege();
+    }
+
+    private void setupFeaturedCollege() {
+
+
+        featured_slider.addSlider(getSliderViewWithImage(R.drawable.samriddhi_splash));
+        featured_slider.addSlider(getSliderViewWithImage(R.drawable.sagarmatha));
+        featured_slider.addSlider(getSliderViewWithImage(R.drawable.achs_full_image));
+    }
+
+    private BaseSliderView getSliderViewWithImage(final int image_src) {
+        return new BaseSliderView(getContext()) {
+            @Override
+            public View getView() {
+                ImageView v = (ImageView) LayoutInflater.from(getContext()).inflate(R.layout.featured_slider, null);
+                v.setImageResource(image_src);
+                return v;
+            }
+        };
     }
 
 

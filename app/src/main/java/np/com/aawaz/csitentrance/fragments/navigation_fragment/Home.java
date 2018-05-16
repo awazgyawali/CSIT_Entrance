@@ -22,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.activities.ModelEntranceActivity;
-import np.com.aawaz.csitentrance.fragments.other_fragments.ScoreBoard;
 import np.com.aawaz.csitentrance.fragments.other_fragments.SubjectsList;
 import np.com.aawaz.csitentrance.fragments.other_fragments.YearsList;
 import np.com.aawaz.csitentrance.objects.SPHandler;
