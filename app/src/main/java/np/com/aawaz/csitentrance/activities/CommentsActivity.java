@@ -1,11 +1,11 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
-import mehdi.sakout.fancybuttons.FancyButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,13 +17,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import com.amulyakhare.textdrawable.TextDrawable;
-
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.google.firebase.appindexing.Action;
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
@@ -60,7 +59,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     AppCompatEditText commentEditText;
     ImageButton commentButton;
     CircleImageView forumPic;
-    TextView commentNumber, errorMessage, postedBy, forumTime,realPost;
+    TextView commentNumber, errorMessage, postedBy, forumTime, realPost;
     LinearLayout commentAdder;
     CommentAdapter adapter;
     ArrayList<String> key = new ArrayList<>();
@@ -147,18 +146,19 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
 
     public void readyViews() {
         forumContainer = findViewById(R.id.postContainer);
-        forumPic =findViewById(R.id.forumPic);
+        forumPic = findViewById(R.id.forumPic);
         postedBy = findViewById(R.id.postedBy);
         forumTime = findViewById(R.id.forumTime);
         realPost = findViewById(R.id.realPost);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressbarSingleFeed);
-        commentsRecyclerView = (RecyclerView) findViewById(R.id.commentsRecyOfFullPost);
-        commentEditText = (AppCompatEditText) findViewById(R.id.addCommentText);
-        commentButton = (ImageButton) findViewById(R.id.commentButton);
-        commentNumber = (TextView) findViewById(R.id.numberComments);
-        errorMessage = (TextView) findViewById(R.id.errorComment);
-        commentAdder = (LinearLayout) findViewById(R.id.commentAdder);
+        progressBar = findViewById(R.id.progressbarSingleFeed);
+        commentsRecyclerView = findViewById(R.id.commentsRecyOfFullPost);
+        commentEditText = findViewById(R.id.addCommentText);
+        commentButton = findViewById(R.id.commentButton);
+        commentNumber = findViewById(R.id.numberComments);
+        commentNumber.setPaintFlags(commentNumber.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        errorMessage = findViewById(R.id.errorComment);
+        commentAdder = findViewById(R.id.commentAdder);
         errorMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -244,26 +244,14 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
 
     @Override
     public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
-        int position = -1;
-        for (int i = 0; i < key.size(); i++) {
-            if (key.get(i).equals(dataSnapshot.getKey()))
-                position = i;
-        }
-        if (position == -1)
-            return;
+        int position = key.indexOf(dataSnapshot.getKey());
         adapter.editItemAtPosition(position, dataSnapshot.getValue(Comment.class));
         maintainCommentNo();
     }
 
     @Override
     public void onChildRemoved(DataSnapshot dataSnapshot) {
-        int position = -1;
-        for (int i = 0; i < key.size(); i++) {
-            if (key.get(i).equals(dataSnapshot.getKey()))
-                position = i;
-        }
-        if (position == -1)
-            return;
+        int position = key.indexOf(dataSnapshot.getKey());
         adapter.removeItemAtPosition(position);
         key.remove(position);
         maintainCommentNo();
@@ -313,7 +301,11 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
                 forumContainer.setVisibility(View.VISIBLE);
 
                 Post post = dataSnapshot.getValue(Post.class);
-                postedBy.setText(post.author+" ");
+                if (post.author == null) {
+                    Toast.makeText(CommentsActivity.this, "The post has been deleted.", Toast.LENGTH_SHORT);
+                    return;
+                }
+                postedBy.setText(post.author + " ");
                 realPost.setText(post.message);
                 forumTime.setText(getRelativeTimeSpanString(post.time_stamp));
 
@@ -345,6 +337,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     private CharSequence getRelativeTimeSpanString(long time_stamp) {
         return DateUtils.getRelativeTimeSpanString(time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE);
     }
+
     public String getCommentMessage() {
         return adapter.getItemCount() == 1 ? " comment" : " comments";
     }

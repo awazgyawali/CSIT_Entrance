@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -73,7 +75,7 @@ public class EntranceForum extends Fragment implements
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         errorPart = view.findViewById(R.id.errorPart);
         progressBar = view.findViewById(R.id.progressCircleFullFeed);
@@ -82,7 +84,14 @@ public class EntranceForum extends Fragment implements
         callAchs = view.findViewById(R.id.callACHS);
         achsAd = view.findViewById(R.id.forum_ad);
         new EventSender().logEvent("achs_ad");
-
+        final SwipeRefreshLayout forumSwipeRefresh = view.findViewById(R.id.forumSwipeRefresh);
+        forumSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Snackbar.make(view, "Posts will updated in real time.", Snackbar.LENGTH_SHORT);
+                forumSwipeRefresh.setRefreshing(false);
+            }
+        });
         achsAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
