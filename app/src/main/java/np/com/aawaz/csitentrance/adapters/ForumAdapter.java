@@ -104,6 +104,12 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         notifyItemChanged(i);
     }
 
+    public void editItemAtPosition(Post post, int i) {
+        posts.remove(i);
+        posts.add(i, post);
+        notifyItemChanged(i);
+    }
+
     public Post getItemAtPosition(int i) {
         return posts.get(i);
     }

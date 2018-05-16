@@ -7,8 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,20 +16,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import np.com.aawaz.csitentrance.R;
@@ -41,18 +36,15 @@ import np.com.aawaz.csitentrance.activities.PostForumActivity;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
 import np.com.aawaz.csitentrance.fragments.other_fragments.ACHSDialog;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
-import np.com.aawaz.csitentrance.interfaces.ResponseListener;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
-import np.com.aawaz.csitentrance.services.NetworkRequester;
 
 public class EntranceForum extends Fragment implements
         // ValueEventListener,
-        ClickListener {
+        ClickListener, ChildEventListener {
 
     RecyclerView recyclerView;
-    SwipeRefreshLayout swipeRefreshLayout;
 
     ProgressBar progressBar;
     LinearLayout errorPart;
@@ -83,22 +75,13 @@ public class EntranceForum extends Fragment implements
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        errorPart =  view.findViewById(R.id.errorPart);
-        progressBar =  view.findViewById(R.id.progressCircleFullFeed);
+        errorPart = view.findViewById(R.id.errorPart);
+        progressBar = view.findViewById(R.id.progressCircleFullFeed);
         recyclerView = view.findViewById(R.id.fullFeedRecycler);
-        swipeRefreshLayout =  view.findViewById(R.id.forumSwipeRefresh);
-        floatingActionButton =  view.findViewById(R.id.fabForumPost);
-        callAchs =  view.findViewById(R.id.callACHS);
+        floatingActionButton = view.findViewById(R.id.fabForumPost);
+        callAchs = view.findViewById(R.id.callACHS);
         achsAd = view.findViewById(R.id.forum_ad);
         new EventSender().logEvent("achs_ad");
-
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeRefreshLayout.setRefreshing(false);
-                addListener();
-            }
-        });
 
         achsAd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,81 +148,9 @@ public class EntranceForum extends Fragment implements
         recyclerView.setLayoutManager(mLinearLayoutManager);
         reference.keepSynced(true);
 
-        //reference.orderByChild("time_stamp").limitToLast(50).addListenerForSingleValueEvent(this); testing right now
-
-        new NetworkRequester("https://csit-entrance-7d58.firebaseio.com/forum_data/posts.json?orderBy=%22time_stamp%22&limitToLast=50", new ResponseListener() {
-            @Override
-            public void onSuccess(String response) {
-                SPHandler.getInstance().addForumData(response);
-                if (!running)
-                    return;
-                NotificationManagerCompat.from(getContext()).cancel("posted".hashCode());
-                SPHandler.getInstance().clearUnreadCount();
-                parseResponse(response);
-            }
-
-            @Override
-            public void onFailure() {
-                if (SPHandler.getInstance().getForumData() == null) {
-                    swipeRefreshLayout.setVisibility(View.GONE);
-                    errorPart.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getContext(), "Failed to load posts.",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    parseResponse(SPHandler.getInstance().getForumData());
-                    Toast.makeText(getContext(), "Check your internet connection.",
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
-    private void parseResponse(String response) {
+        reference.orderByChild("time_stamp").limitToLast(50).addChildEventListener(this);
         fillRecyclerView();
-        adapter.notifyDataSetChanged();
-        key.clear();
-        progressBar.setVisibility(View.GONE);
-        try {
-            JSONObject object = new JSONObject(response);
-            Iterator<String> keys = object.keys();
-            while (keys.hasNext()) {
-                String currentKey = keys.next();
-                Post newPost = new Gson().fromJson(object.getJSONObject(currentKey).toString(), Post.class);
-                if (newPost.author != null) {
-                    adapter.addToTop(newPost);
-                    key.add(0, currentKey);
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
-
-//    @Override
-//    public void onDataChange(DataSnapshot dataSnap) {
-//        fillRecyclerView();
-//        adapter.notifyDataSetChanged();
-//        key.clear();
-//        progressBar.setVisibility(View.GONE);
-//        for (DataSnapshot dataSnapshot : dataSnap.getChildren()) {
-//            Post newPost = dataSnapshot.getValue(Post.class);
-//            if (newPost.author == null)
-//                return;
-//            newPost.comment_count = (int) dataSnapshot.child("comments").getChildrenCount();
-//            adapter.addToTop(newPost);
-//            key.add(0, dataSnapshot.getKey());
-//        }
-//    }
-//
-//    @Override
-//    public void onCancelled(DatabaseError databaseError) {
-//        Toast.makeText(getContext(), "Failed to load posts.",
-//                Toast.LENGTH_SHORT).show();
-//        swipeRefreshLayout.setVisibility(View.GONE);
-//        errorPart.setVisibility(View.VISIBLE);
-//        progressBar.setVisibility(View.GONE);
-//    }
 
     private void fillRecyclerView() {
         progressBar.setVisibility(View.GONE);
@@ -253,11 +164,6 @@ public class EntranceForum extends Fragment implements
     public void onResume() {
         super.onResume();
         running = true;
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
     }
 
     @Override
@@ -287,8 +193,7 @@ public class EntranceForum extends Fragment implements
                                 showDialogToEdit(adapter.getMessageAt(position), position);
                             else if (which == 1) {
                                 FirebaseDatabase.getInstance().getReference().child("forum_data/posts").child(key.get(position)).removeValue();
-                                key.remove(position);
-                                adapter.removeItemAtPosition(position);
+                                FirebaseDatabase.getInstance().getReference().child("forum_data/comments").child(key.get(position)).removeValue();
                             }
                         }
                     })
@@ -305,8 +210,6 @@ public class EntranceForum extends Fragment implements
                     public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
                         Map<String, Object> map = new HashMap<>();
                         map.put("message", input.toString());
-                        adapter.getItemAtPosition(position).message = input.toString();
-                        adapter.editItemAtPosition(position);
                         FirebaseDatabase.getInstance().getReference().child("forum_data/posts").child(key.get(position)).updateChildren(map);
                     }
                 })
@@ -316,5 +219,42 @@ public class EntranceForum extends Fragment implements
         dialog.getInputEditText().setSingleLine(false);
         dialog.getInputEditText().setMaxLines(7);
         dialog.show();
+    }
+
+    @Override
+    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+        progressBar.setVisibility(View.GONE);
+        Post newPost = dataSnapshot.getValue(Post.class);
+        String currentKey = dataSnapshot.getKey();
+        if (newPost.author != null) {
+            adapter.addToTop(newPost);
+            key.add(0, currentKey);
+        }
+    }
+
+    @Override
+    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+        Post editedPost = dataSnapshot.getValue(Post.class);
+        int index = key.indexOf(dataSnapshot.getKey());
+        if (editedPost.author != null) {
+            adapter.editItemAtPosition(editedPost, index);
+        }
+    }
+
+    @Override
+    public void onChildRemoved(DataSnapshot dataSnapshot) {
+        int index = key.indexOf(dataSnapshot.getKey());
+        adapter.removeItemAtPosition(index);
+        key.remove(index);
+    }
+
+    @Override
+    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+    }
+
+    @Override
+    public void onCancelled(DatabaseError databaseError) {
+
     }
 }
