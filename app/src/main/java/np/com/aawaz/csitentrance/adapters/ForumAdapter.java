@@ -2,8 +2,8 @@ package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,7 +55,8 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         Post post = posts.get(holder.getAdapterPosition());
         holder.postedBy.setText(post.author);
         holder.realPost.setText(post.message);
-        holder.commentCount.setText(Html.fromHtml("<u>" + post.comment_count + getCommentMessage(post)) + "</u>");
+        holder.commentCount.setText(post.comment_count + getCommentMessage(post));
+        holder.commentCount.setPaintFlags(holder.commentCount.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         holder.time.setText(getRelativeTimeSpanString(post.time_stamp));
 
         if (SPHandler.containsDevUID(post.uid))
