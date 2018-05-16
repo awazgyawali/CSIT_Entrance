@@ -34,22 +34,17 @@
         <np.com.aawaz.csitentrance.custom_views.CollegeModelCard
             android:id="@+id/collegeModel1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dp" />
+            android:layout_height="wrap_content" />
 
         <np.com.aawaz.csitentrance.custom_views.CollegeModelCard
             android:id="@+id/collegeModel2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:padding="3dp" />
+            android:layout_height="wrap_content" />
 
         <np.com.aawaz.csitentrance.custom_views.CollegeModelCard
             android:id="@+id/collegeModel3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:padding="3dp" />
+            android:layout_height="wrap_content" />
 
 
         <TextView

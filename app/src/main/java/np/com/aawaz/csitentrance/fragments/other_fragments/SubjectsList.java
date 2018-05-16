@@ -7,17 +7,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.SubjectChooserActivity;
+import np.com.aawaz.csitentrance.custom_views.SubjectCard;
 
 
 public class SubjectsList extends Fragment {
-    CardView chem, phy, math, eng;
+    SubjectCard chem, phy, math, eng;
 
     public SubjectsList() {
         // Required empty public constructor
@@ -35,10 +35,22 @@ public class SubjectsList extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        chem = (CardView) view.findViewById(R.id.chems);
-        phy = (CardView) view.findViewById(R.id.physc);
-        math = (CardView) view.findViewById(R.id.maths);
-        eng = (CardView) view.findViewById(R.id.english);
+
+        chem = view.findViewById(R.id.chems);
+        chem.setText("Chemistry")
+                .setImage(R.drawable.chemistry);
+
+        phy = view.findViewById(R.id.physc);
+        phy.setText("Physics")
+                .setImage(R.drawable.physics);
+
+        math = view.findViewById(R.id.maths);
+        math.setText("Mathematics")
+                .setImage(R.drawable.math);
+
+        eng = view.findViewById(R.id.english);
+        eng.setText("English")
+                .setImage(R.drawable.english);
     }
 
     @Override
@@ -52,7 +64,7 @@ public class SubjectsList extends Fragment {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     startActivity(new Intent(getContext(), SubjectChooserActivity.class).putExtra("index", 0),
-                            ActivityOptions.makeSceneTransitionAnimation(getActivity(), getView().findViewById(R.id.phyImage), "destinationSubject").toBundle());
+                            ActivityOptions.makeSceneTransitionAnimation(getActivity(), phy.findViewById(R.id.subject_image), "destinationSubject").toBundle());
 
                     getActivity().getWindow().setSharedElementExitTransition(null);
                 } else {
@@ -67,7 +79,7 @@ public class SubjectsList extends Fragment {
             public void onClick(View view) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     startActivity(new Intent(getContext(), SubjectChooserActivity.class).putExtra("index", 1),
-                            ActivityOptions.makeSceneTransitionAnimation(getActivity(), getView().findViewById(R.id.chemImage), "destinationSubject").toBundle());
+                            ActivityOptions.makeSceneTransitionAnimation(getActivity(), chem.findViewById(R.id.subject_image), "destinationSubject").toBundle());
                     getActivity().getWindow().setSharedElementExitTransition(null);
 
                 } else {
@@ -81,7 +93,7 @@ public class SubjectsList extends Fragment {
             public void onClick(View view) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     startActivity(new Intent(getContext(), SubjectChooserActivity.class).putExtra("index", 2),
-                            ActivityOptions.makeSceneTransitionAnimation(getActivity(), getView().findViewById(R.id.mthImage), "destinationSubject").toBundle());
+                            ActivityOptions.makeSceneTransitionAnimation(getActivity(), math.findViewById(R.id.subject_image), "destinationSubject").toBundle());
                     getActivity().getWindow().setSharedElementExitTransition(null);
                 } else {
                     startActivity(new Intent(getContext(), SubjectChooserActivity.class).putExtra("index", 2));
@@ -94,7 +106,7 @@ public class SubjectsList extends Fragment {
             public void onClick(View view) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     startActivity(new Intent(getContext(), SubjectChooserActivity.class).putExtra("index", 3),
-                            ActivityOptions.makeSceneTransitionAnimation(getActivity(), getView().findViewById(R.id.engImage), "destinationSubject").toBundle());
+                            ActivityOptions.makeSceneTransitionAnimation(getActivity(), eng.findViewById(R.id.subject_image), "destinationSubject").toBundle());
                     getActivity().getWindow().setSharedElementExitTransition(null);
                 } else {
                     startActivity(new Intent(getContext(), SubjectChooserActivity.class).putExtra("index", 3));

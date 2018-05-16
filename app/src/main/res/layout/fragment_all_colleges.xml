@@ -9,26 +9,16 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:visibility="gone"
-            android:padding="10dp"
-            android:text="Featured Colleges"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
-
         <com.daimajia.slider.library.SliderLayout
             android:id="@+id/featured_ad_slider"
             android:layout_width="match_parent"
-            android:visibility="gone"
-            android:layout_height="wrap_content" />
+            android:layout_height="200dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:fontFamily="@font/work_sans_medium"
             android:padding="10dp"
             android:text="All Colleges"
             android:textColor="@color/colorPrimary"
