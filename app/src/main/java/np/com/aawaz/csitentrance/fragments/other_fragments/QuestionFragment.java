@@ -206,14 +206,16 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     }
 
     public String getAnswer() {
-        if (getArguments().getString("ans").equals("a"))
-            return getArguments().getString("a");
-        else if (getArguments().getString("ans").equals("b"))
-            return getArguments().getString("b");
-        else if (getArguments().getString("ans").equals("c"))
-            return getArguments().getString("c");
-        else if (getArguments().getString("ans").equals("d"))
-            return getArguments().getString("d");
+        switch (getArguments().getString("ans")) {
+            case "a":
+                return getArguments().getString("a");
+            case "b":
+                return getArguments().getString("b");
+            case "c":
+                return getArguments().getString("c");
+            case "d":
+                return getArguments().getString("d");
+        }
         return null;
     }
 

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.MyApplication;
@@ -47,7 +46,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         Comment comment = comments.get(holder.getAdapterPosition());
         holder.comment.setText(comment.message);
-        holder.commenter.setText(comment.author+" ");
+        holder.commenter.setText(comment.author + " ");
         holder.time.setText(DateUtils.getRelativeTimeSpanString(comment.time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
 
         if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(comments.get(position).uid)) {

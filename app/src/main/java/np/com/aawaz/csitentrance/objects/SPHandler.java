@@ -305,7 +305,7 @@ public class SPHandler {
         if (content.length() != 0)
             return new Gson().fromJson(content, ArrayList.class);
         else
-            return new ArrayList<String>();
+            return new ArrayList<>();
     }
 
     public void clearUnreadCount() {

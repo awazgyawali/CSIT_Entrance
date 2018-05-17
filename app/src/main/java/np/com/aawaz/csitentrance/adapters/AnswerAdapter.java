@@ -118,24 +118,25 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
         }
     }
 
-    public String ansFinder(int position) {
-        if (answer.get(position).equals("a")) {
-            return a.get(position);
-        } else if (answer.get(position).equals("b")) {
-            return b.get(position);
-        } else if (answer.get(position).equals("c")) {
-            return c.get(position);
-        } else if (answer.get(position).equals("d")) {
-            return d.get(position);
-        } else {
-            return "Somthing went wrong";
+    private String ansFinder(int position) {
+        switch (answer.get(position)) {
+            case "a":
+                return a.get(position);
+            case "b":
+                return b.get(position);
+            case "c":
+                return c.get(position);
+            case "d":
+                return d.get(position);
+            default:
+                return "Somthing went wrong";
         }
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         WebView que;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             que = (WebView) itemView.findViewById(R.id.answerHolder);
 

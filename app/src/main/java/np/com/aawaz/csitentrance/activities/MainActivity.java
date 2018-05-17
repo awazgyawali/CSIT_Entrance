@@ -216,74 +216,75 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         mDrawerLayout.closeDrawer(mNavigationView);
         invalidateOptionsMenu();
-        if (id == R.id.settings) {
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-            new EventSender().logEvent("settings");
-            return;
-        } else if (id == R.id.share) {
-            Intent share = new Intent(android.content.Intent.ACTION_SEND);
-            share.setType("text/plain");
+        switch (id) {
+            case R.id.settings:
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                new EventSender().logEvent("settings");
+                return;
+            case R.id.share:
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("text/plain");
 
-            share.putExtra(Intent.EXTRA_SUBJECT, "CSIT Entrance");
-            share.putExtra(Intent.EXTRA_TEXT, "Single app for all BSc CSIT Entrance preparing students.\nhttps://b5b88.app.goo.gl/jdF1");
+                share.putExtra(Intent.EXTRA_SUBJECT, "CSIT Entrance");
+                share.putExtra(Intent.EXTRA_TEXT, "Single app for all BSc CSIT Entrance preparing students.\nhttps://b5b88.app.goo.gl/jdF1");
 
-            startActivity(Intent.createChooser(share, "Share CSIT Entrance"));
-            new EventSender().logEvent("shared_app");
-            return;
-        } else if (id == R.id.rate) {
-            new EventSender().logEvent("rated_app");
-            try {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=np.com.aawaz.csitentrance")));
-            } catch (Exception e) {
-                Toast.makeText(this, "No play store app found.", Toast.LENGTH_SHORT).show();
-            }
-            return;
-        } else if (id == R.id.like) {
-            startActivity(newFacebookIntent());
-            new EventSender().logEvent("liked_page");
-            return;
-        } else if (id == R.id.feedback) {
-            MaterialDialog dialog = new MaterialDialog.Builder(this)
-                    .title("Send Feedback")
-                    .input("Feedback text...", "", false, new MaterialDialog.InputCallback() {
-                        @Override
-                        public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                            Feedback feedback = new Feedback(input.toString());
-                            FirebaseFirestore.getInstance().collection("feedbacks").add(feedback);
-                            FirebaseDatabase.getInstance().getReference().child("feedback").push().setValue(feedback);
-                            new EventSender().logEvent("sent_feedback");
-                            Toast.makeText(MainActivity.this, "Thanks for your feedback.", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .positiveText("Send")
-                    .build();
-            dialog.getInputEditText().setLines(5);
-            dialog.getInputEditText().setSingleLine(false);
-            dialog.getInputEditText().setMaxLines(7);
-            dialog.show();
-            return;
-        } else if (id == R.id.logout) {
-            SPHandler.getInstance().clearAll();
-            new MaterialDialog.Builder(this)
-                    .title("Log out")
-                    .content("Are you sure you want to log out?")
-                    .positiveText("Log Out")
-                    .negativeText("Cancel")
-                    .onPositive(new MaterialDialog.SingleButtonCallback() {
-                        @Override
-                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                            FirebaseAuth.getInstance().signOut();
-                            if (AccessToken.getCurrentAccessToken() != null)
-                                LoginManager.getInstance().logOut();
-                            FirebaseMessaging.getInstance().unsubscribeFromTopic("allDevices");
-                            FirebaseMessaging.getInstance().unsubscribeFromTopic("new");
-                            FirebaseMessaging.getInstance().unsubscribeFromTopic("forums");
-                            startActivity(new Intent(MainActivity.this, SignInActivity.class));
-                            finish();
-                        }
-                    })
-                    .show();
-            return;
+                startActivity(Intent.createChooser(share, "Share CSIT Entrance"));
+                new EventSender().logEvent("shared_app");
+                return;
+            case R.id.rate:
+                new EventSender().logEvent("rated_app");
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=np.com.aawaz.csitentrance")));
+                } catch (Exception e) {
+                    Toast.makeText(this, "No play store app found.", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            case R.id.like:
+                startActivity(newFacebookIntent());
+                new EventSender().logEvent("liked_page");
+                return;
+            case R.id.feedback:
+                MaterialDialog dialog = new MaterialDialog.Builder(this)
+                        .title("Send Feedback")
+                        .input("Feedback text...", "", false, new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                Feedback feedback = new Feedback(input.toString());
+                                FirebaseFirestore.getInstance().collection("feedbacks").add(feedback);
+                                FirebaseDatabase.getInstance().getReference().child("feedback").push().setValue(feedback);
+                                new EventSender().logEvent("sent_feedback");
+                                Toast.makeText(MainActivity.this, "Thanks for your feedback.", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .positiveText("Send")
+                        .build();
+                dialog.getInputEditText().setLines(5);
+                dialog.getInputEditText().setSingleLine(false);
+                dialog.getInputEditText().setMaxLines(7);
+                dialog.show();
+                return;
+            case R.id.logout:
+                SPHandler.getInstance().clearAll();
+                new MaterialDialog.Builder(this)
+                        .title("Log out")
+                        .content("Are you sure you want to log out?")
+                        .positiveText("Log Out")
+                        .negativeText("Cancel")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                FirebaseAuth.getInstance().signOut();
+                                if (AccessToken.getCurrentAccessToken() != null)
+                                    LoginManager.getInstance().logOut();
+                                FirebaseMessaging.getInstance().unsubscribeFromTopic("allDevices");
+                                FirebaseMessaging.getInstance().unsubscribeFromTopic("new");
+                                FirebaseMessaging.getInstance().unsubscribeFromTopic("forums");
+                                startActivity(new Intent(MainActivity.this, SignInActivity.class));
+                                finish();
+                            }
+                        })
+                        .show();
+                return;
         }
         setAppBarElevation(getResources().getDimension(R.dimen.app_bar_elevation));
         tabLayout.setVisibility(View.GONE);
@@ -374,15 +375,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.search) {
-            startActivity(new Intent(this, SearchActivity.class));
-            return true;
-        } else if (item.getItemId() == R.id.notifications) {
-            startActivity(new Intent(this, NotificationActivity.class));
-            return true;
-        } else if (item.getItemId() == R.id.exam) {
-            startActivity(new Intent(this, ModelEntranceActivity.class));
-            return true;
+        switch (item.getItemId()) {
+            case R.id.search:
+                startActivity(new Intent(this, SearchActivity.class));
+                return true;
+            case R.id.notifications:
+                startActivity(new Intent(this, NotificationActivity.class));
+                return true;
+            case R.id.exam:
+                startActivity(new Intent(this, ModelEntranceActivity.class));
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

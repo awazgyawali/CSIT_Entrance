@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single" android:id="@+id/core">
+    <group
+        android:id="@+id/core"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/main_home"
             android:checkable="true"
@@ -21,7 +23,9 @@
 
     </group>
 
-    <group android:checkableBehavior="single" android:id="@+id/entrance">
+    <group
+        android:id="@+id/entrance"
+        android:checkableBehavior="single">
 
         <item
             android:id="@+id/entranceBot"
@@ -45,22 +49,27 @@
             android:title="Entrance Result" />
     </group>
 
-    <group android:checkableBehavior="none" android:id="@+id/event">
+    <group
+        android:id="@+id/event"
+        android:checkableBehavior="none">
 
-        <item
-            android:id="@+id/aboutUs"
-            android:icon="@drawable/about"
-            android:title="About Us" />
+
         <item
             android:id="@+id/settings"
             android:icon="@drawable/settings"
             android:title="Settings" />
         <item
+            android:id="@+id/aboutUs"
+            android:icon="@drawable/about"
+            android:title="About Us" />
+        <item
             android:id="@+id/logout"
             android:icon="@drawable/logout"
             android:title="Log Out" />
     </group>
-    <group android:checkableBehavior="none" android:id="@+id/extra">
+    <group
+        android:id="@+id/extra"
+        android:checkableBehavior="none">
         <item
             android:id="@+id/feedback"
             android:icon="@drawable/feedback"

@@ -1,13 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceBot">
 
     <include
+        android:id="@+id/intro_view"
         layout="@layout/layout_bot_intro"
         android:visibility="visible" />
+
 
     <LinearLayout
         android:id="@+id/botContainer"
@@ -16,13 +17,14 @@
         android:orientation="vertical"
         android:visibility="gone">
 
+        <include layout="@layout/achs_ad_layout" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewBot"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="5dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="match_parent"

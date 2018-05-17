@@ -1,7 +1,6 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,13 +8,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
@@ -36,6 +33,7 @@ import np.com.aawaz.csitentrance.activities.CommentsActivity;
 import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.activities.PostForumActivity;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
+import np.com.aawaz.csitentrance.custom_views.CollegeAdCard;
 import np.com.aawaz.csitentrance.fragments.other_fragments.ACHSDialog;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.objects.EventSender;
@@ -55,8 +53,7 @@ public class EntranceForum extends Fragment implements
     ArrayList<String> key = new ArrayList<>();
     DatabaseReference reference;
     FloatingActionButton floatingActionButton;
-    ImageView callAchs;
-    CardView achsAd;
+    CollegeAdCard achsAd;
     private LinearLayoutManager mLinearLayoutManager;
     private boolean running = true;
 
@@ -81,7 +78,6 @@ public class EntranceForum extends Fragment implements
         progressBar = view.findViewById(R.id.progressCircleFullFeed);
         recyclerView = view.findViewById(R.id.fullFeedRecycler);
         floatingActionButton = view.findViewById(R.id.fabForumPost);
-        callAchs = view.findViewById(R.id.callACHS);
         achsAd = view.findViewById(R.id.forum_ad);
         new EventSender().logEvent("achs_ad");
         final SwipeRefreshLayout forumSwipeRefresh = view.findViewById(R.id.forumSwipeRefresh);
@@ -92,19 +88,19 @@ public class EntranceForum extends Fragment implements
                 forumSwipeRefresh.setRefreshing(false);
             }
         });
+
+        achsAd.setName("Asian College  of Higher Studies")
+                .setAddress("Dhobidhara Marg, Kathmandu ")
+                .setLogo(R.drawable.achs)
+                .setSpecialMessage("Announces Admission open for BSc CSIT")
+                .setPhoneNumber("01-4436383");
+
         achsAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ACHSDialog dialog = new ACHSDialog();
                 dialog.show(getChildFragmentManager(), "achs");
                 new EventSender().logEvent("achs_full_ad");
-            }
-        });
-
-        callAchs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "01-4436383", null)));
             }
         });
 

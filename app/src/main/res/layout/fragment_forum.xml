@@ -52,15 +52,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
+
+        <np.com.aawaz.csitentrance.custom_views.CollegeAdCard
             android:id="@+id/forum_ad"
-            layout="@layout/achs_ad_layout" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/forumSwipeRefresh"
             android:layout_width="match_parent"
-            android:layout_below="@+id/forum_ad"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/forum_ad">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/fullFeedRecycler"

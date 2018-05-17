@@ -91,12 +91,17 @@ public class ACHSDialog extends DialogFragment {
         adToShow.detail = "ACHS announces admission open for BSc CSIT 2074. <br><br>Secure your seat now. <br>For more detail, call 01-4436383.";
 
         int image = 0;
-        if (adToShow.banner_image.equals("samriddhi"))
-            image = R.drawable.samriddhi;
-        else if (adToShow.banner_image.equals("sagarmatha"))
-            image = R.drawable.sagarmatha;
-        else if (adToShow.banner_image.equals("achs"))
-            image = R.drawable.achs_full_image;
+        switch (adToShow.banner_image) {
+            case "samriddhi":
+                image = R.drawable.samriddhi;
+                break;
+            case "sagarmatha":
+                image = R.drawable.sagarmatha;
+                break;
+            case "achs":
+                image = R.drawable.achs_full_image;
+                break;
+        }
 
 
         new EventSender()
