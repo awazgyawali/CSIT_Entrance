@@ -217,6 +217,10 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.closeDrawer(mNavigationView);
         invalidateOptionsMenu();
         switch (id) {
+            case R.id.aboutUs:
+                startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
+                new EventSender().logEvent("about_us");
+                return;
             case R.id.settings:
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 new EventSender().logEvent("settings");

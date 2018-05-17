@@ -69,22 +69,22 @@ public class LeaderBoard extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.leaderboardRecyclerView);
-        errorLayout = (LinearLayout) view.findViewById(R.id.errorScore);
-        progress = (ProgressBar) view.findViewById(R.id.progressbarScore);
-        coreLeader = (LinearLayout) view.findViewById(R.id.coreLeaderBoard);
+        mRecyclerView = view.findViewById(R.id.leaderboardRecyclerView);
+        errorLayout = view.findViewById(R.id.errorScore);
+        progress = view.findViewById(R.id.progressbarScore);
+        coreLeader = view.findViewById(R.id.coreLeaderBoard);
 
-        image1 = (CircleImageView) view.findViewById(R.id.image1);
-        image2 = (CircleImageView) view.findViewById(R.id.image2);
-        image3 = (CircleImageView) view.findViewById(R.id.image3);
+        image1 = view.findViewById(R.id.image1);
+        image2 = view.findViewById(R.id.image2);
+        image3 = view.findViewById(R.id.image3);
 
-        name1 = (TextView) view.findViewById(R.id.name1);
-        name2 = (TextView) view.findViewById(R.id.name2);
-        name3 = (TextView) view.findViewById(R.id.name3);
+        name1 = view.findViewById(R.id.name1);
+        name2 = view.findViewById(R.id.name2);
+        name3 = view.findViewById(R.id.name3);
 
-        score1 = (TextView) view.findViewById(R.id.score1);
-        score2 = (TextView) view.findViewById(R.id.score2);
-        score3 = (TextView) view.findViewById(R.id.score3);
+        score1 = view.findViewById(R.id.score1);
+        score2 = view.findViewById(R.id.score2);
+        score3 = view.findViewById(R.id.score3);
 
         topNames = new TextView[]{name1, name2, name3};
         topScores = new TextView[]{score1, score2, score3};
