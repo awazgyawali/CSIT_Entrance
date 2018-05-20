@@ -13,8 +13,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:padding="15dp">
+        android:padding="10dp">
 
 
         <TextView
@@ -25,15 +26,24 @@
             android:textColor="@color/black"
             android:textStyle="bold" />
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/leaderboard_item_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
         <TextView
             android:id="@+id/scoreboardName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:ellipsize="end"
-            android:paddingLeft="10dp"
+            android:fontFamily="@font/work_sans_medium"
             android:text="Aawaz Gyawali"
-            android:textColor="@color/colorPrimaryText" />
+            android:textColor="@color/colorPrimaryText"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/scoreboardScore"

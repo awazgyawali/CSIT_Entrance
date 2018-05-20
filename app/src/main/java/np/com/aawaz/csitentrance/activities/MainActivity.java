@@ -303,6 +303,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.leaderBoard:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new LeaderBoard()).commit();
                 setTitle("Leaderboard");
+                setAppBarElevation(0);
                 item.setChecked(true);
                 new EventSender().logEvent("leaderboard");
                 break;

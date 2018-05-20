@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
@@ -25,19 +26,19 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.LeaderboardAdapter;
-import np.com.aawaz.csitentrance.interfaces.ResponseListener;
 import np.com.aawaz.csitentrance.objects.SPHandler;
-import np.com.aawaz.csitentrance.services.NetworkRequester;
 
 
 public class LeaderBoard extends Fragment {
 
     ArrayList<String> names = new ArrayList<>();
-    ArrayList<Integer> scores = new ArrayList<>();
+    ArrayList<Long> scores = new ArrayList<>();
+    ArrayList<String> image_url = new ArrayList<>();
     RecyclerView mRecyclerView;
     ProgressBar progress;
 
@@ -51,7 +52,8 @@ public class LeaderBoard extends Fragment {
 
     CircleImageView[] circleImageViews;
 
-    private LinearLayout errorLayout, coreLeader;
+    private LinearLayout errorLayout;
+    NestedScrollView coreLeader;
     private boolean filled = false;
 
     private void fillFromLastResponse() {
@@ -103,18 +105,17 @@ public class LeaderBoard extends Fragment {
         progress.setVisibility(View.GONE);
         coreLeader.setVisibility(View.VISIBLE);
         errorLayout.setVisibility(View.GONE);
-        mRecyclerView.setAdapter(new LeaderboardAdapter(getActivity(), names, scores));
+        mRecyclerView.setAdapter(new LeaderboardAdapter(getActivity(), names, scores, image_url));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         errorLayout.setVisibility(View.GONE);
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         fillFromLastResponse();
         fetchFromInternet();
     }
-
 
     private void fetchFromInternet() {
         if (!filled) {
@@ -123,33 +124,29 @@ public class LeaderBoard extends Fragment {
             coreLeader.setVisibility(View.GONE);
         }
 
-        FirebaseFirestore.getInstance().collection("users").orderBy("score").limit(10).get().addOnCompleteListener(getActivity(), new OnCompleteListener<QuerySnapshot>() {
+        FirebaseFirestore.getInstance().collection("users").orderBy("score", Query.Direction.DESCENDING).limit(10).get().addOnCompleteListener(getActivity(), new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
+                    int i = 0;
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        Log.d("Leaderboard firestore", document.getId() + " => " + document.getData());
+                        Map<String, Object> user = document.getData();
+                        if (i < 3) {
+                            topNames[i].setText((String) user.get("name"));
+                            topScores[i].setText(String.valueOf(user.get("score")));
+                            Picasso.with(getContext())
+                                    .load((String) user.get("image_url"))
+                                    .placeholder(R.drawable.account_holder)
+                                    .into(circleImageViews[i]);
+                        } else {
+                            names.add((String) user.get("name"));
+                            scores.add((Long) user.get("score"));
+                            image_url.add((String) user.get("image_url"));
+                        }
+                        i++;
                     }
                 }
-            }
-        });
-        new NetworkRequester(getString(R.string.fetchScoreurl), new ResponseListener() {
-            @Override
-            public void onSuccess(String response) {
-                try {
-                    parser(new JSONObject(response));
-                    SPHandler.getInstance().setLeaderBoardLastResponse(response);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure() {
-                if (!filled) {
-                    errorLayout.setVisibility(View.VISIBLE);
-                    progress.setVisibility(View.GONE);
-                }
+                callFillRecyclerView();
             }
         });
     }
@@ -171,7 +168,7 @@ public class LeaderBoard extends Fragment {
                             .into(circleImageViews[i]);
                 } else {
                     names.add(jo_inside.getString("name"));
-                    scores.add(jo_inside.getInt("score"));
+                    scores.add(jo_inside.getLong("score"));
                 }
             }
             callFillRecyclerView();
