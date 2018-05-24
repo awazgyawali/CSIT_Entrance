@@ -23,7 +23,7 @@ public class BotAdapter extends RecyclerView.Adapter<BotAdapter.VH> {
 
     public void add(Message message) {
         messages.add(message);
-        notifyDataSetChanged();
+        notifyItemInserted(getItemCount() - 1);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class BotAdapter extends RecyclerView.Adapter<BotAdapter.VH> {
 
         public VH(View itemView) {
             super(itemView);
-            message =  itemView.findViewById(R.id.message_text);
+            message = itemView.findViewById(R.id.message_text);
         }
     }
 }

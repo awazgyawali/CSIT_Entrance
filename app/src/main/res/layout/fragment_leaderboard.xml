@@ -25,15 +25,6 @@
                 android:paddingBottom="40dp"
                 android:paddingTop="40dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/image1"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/account_holder"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="50dp"
@@ -47,6 +38,15 @@
                     app:layout_constraintEnd_toEndOf="@+id/image1"
                     app:layout_constraintStart_toStartOf="@+id/image1"
                     app:layout_constraintTop_toTopOf="@+id/image1" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/account_holder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/name1"
@@ -76,6 +76,16 @@
                     app:layout_constraintStart_toStartOf="@+id/name1"
                     app:layout_constraintTop_toBottomOf="@+id/name1" />
 
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="55dp"
+                    android:src="@drawable/second"
+                    app:layout_constraintEnd_toEndOf="@+id/image2"
+                    app:layout_constraintStart_toStartOf="@+id/image2"
+                    app:layout_constraintTop_toTopOf="@+id/image2" />
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/image2"
                     android:layout_width="60dp"
@@ -86,16 +96,6 @@
                     app:layout_constraintBottom_toBottomOf="@+id/image1"
                     app:layout_constraintEnd_toStartOf="@+id/image1"
                     app:layout_constraintStart_toStartOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="50dp"
-                    android:src="@drawable/second"
-                    app:layout_constraintEnd_toEndOf="@+id/image2"
-                    app:layout_constraintStart_toStartOf="@+id/image2"
-                    app:layout_constraintTop_toTopOf="@+id/image2" />
 
                 <TextView
                     android:id="@+id/name2"
@@ -125,6 +125,20 @@
                     app:layout_constraintStart_toStartOf="@+id/name2"
                     app:layout_constraintTop_toBottomOf="@+id/name2" />
 
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="55dp"
+                    android:src="@drawable/third"
+                    app:layout_constraintEnd_toEndOf="@+id/image3"
+                    app:layout_constraintStart_toStartOf="@+id/image3"
+                    app:layout_constraintTop_toTopOf="@+id/image2" />
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/image3"
                     android:layout_width="60dp"
@@ -135,20 +149,6 @@
                     app:layout_constraintBottom_toBottomOf="@+id/image1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/image1" />
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="50dp"
-                    android:src="@drawable/third"
-                    app:layout_constraintEnd_toEndOf="@+id/image3"
-                    app:layout_constraintStart_toStartOf="@+id/image3"
-                    app:layout_constraintTop_toTopOf="@+id/image2" />
 
                 <TextView
                     android:id="@+id/name3"

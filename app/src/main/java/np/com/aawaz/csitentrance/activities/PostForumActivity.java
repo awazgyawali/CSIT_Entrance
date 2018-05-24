@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ public class PostForumActivity extends AppCompatActivity {
     private DatabaseReference reference;
     OkHttpClient client;
     private CardView answerCard;
+    private ProgressBar loading_indicator_post;
     private TextView yes, no, botAnswerHolder;
 
 
@@ -70,6 +72,7 @@ public class PostForumActivity extends AppCompatActivity {
         questionEditText = findViewById(R.id.questionEditText);
         answerCard = findViewById(R.id.answerCard);
         botAnswerHolder = findViewById(R.id.botAnswerHolder);
+        loading_indicator_post = findViewById(R.id.loading_indicator_post);
         yes = findViewById(R.id.yes);
         no = findViewById(R.id.no);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -102,7 +105,6 @@ public class PostForumActivity extends AppCompatActivity {
         buttonPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                imm.hideSoftInputFromWindow(questionEditText.getWindowToken(), 0);
                 sendToAPI(questionEditText.getText().toString());
             }
         });
@@ -111,6 +113,8 @@ public class PostForumActivity extends AppCompatActivity {
     }
 
     private void sendToAPI(final String message) {
+        imm.hideSoftInputFromWindow(questionEditText.getWindowToken(), 0);
+        loading_indicator_post.setVisibility(View.VISIBLE);
         String url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" + message + "&sessionId=12345&timezone=America/New_York";
         Request request = new Request.Builder()
                 .addHeader("Authorization", "Bearer 27067ba8b5a64ac3ab6ed72f1aabd3d3")
@@ -126,6 +130,7 @@ public class PostForumActivity extends AppCompatActivity {
                 mainHandler.post(new Runnable() {
                     @Override
                     public void run() {
+                        loading_indicator_post.setVisibility(View.GONE);
                         Toast.makeText(PostForumActivity.this, "Seems like there is no internet connection. Please try again later.", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -137,6 +142,7 @@ public class PostForumActivity extends AppCompatActivity {
                     mainHandler.post(new Runnable() {
                         @Override
                         public void run() {
+                            loading_indicator_post.setVisibility(View.GONE);
                             try {
                                 JSONObject object = new JSONObject(response.body().string());
                                 String intentName = object.getJSONObject("result").getJSONObject("metadata").getString("intentName");

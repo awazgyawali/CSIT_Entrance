@@ -28,4 +28,6 @@
 
     <color name="transparent">#00000000</color>
     <color name="admin_color">#9C27B0</color>
+    <color name="twitter">#1DA1F2</color>
+    <color name="github">#242A2F</color>
 </resources>

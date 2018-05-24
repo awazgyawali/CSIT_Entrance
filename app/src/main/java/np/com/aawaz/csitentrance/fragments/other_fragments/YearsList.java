@@ -14,6 +14,7 @@ import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.FullQuestionActivity;
 import np.com.aawaz.csitentrance.activities.YearQuizActivity;
 import np.com.aawaz.csitentrance.custom_views.CollegeModelCard;
+import np.com.aawaz.csitentrance.custom_views.YearCard;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
@@ -39,7 +40,8 @@ public class YearsList extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        LinearLayout que69, que70, que71, que72, que73, que74, que1, que2, que3, que4, que5, que6;
+        YearCard que69, que70, que71, que72, que73, que74;
+        LinearLayout que1, que2, que3, que4, que5, que6;
         CollegeModelCard card1, card2, card3;
 
         card1 = view.findViewById(R.id.collegeModel1);
@@ -100,42 +102,91 @@ public class YearsList extends Fragment {
         que73 = view.findViewById(R.id.question2073);
         que74 = view.findViewById(R.id.question2074);
 
-        que69.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(0);
-            }
-        });
-        que70.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(1);
-            }
-        });
-        que71.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(2);
-            }
-        });
-        que72.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(3);
-            }
-        });
-        que73.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(4);
-            }
-        });
-        que74.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(5);
-            }
-        });
+        que69.setTitle("2069 TU Examination")
+                .setOnMenuClickedListener(new YearCard.YearCardListener() {
+                    @Override
+                    public void onPlayClicked() {
+                        openQuizQuestion(0);
+                    }
+
+                    @Override
+                    public void onViewClicked() {
+                        openFullQuestion(0);
+                    }
+                });
+
+        que70.setTitle("2070 TU Examination")
+                .setOnMenuClickedListener(new YearCard.YearCardListener() {
+                    @Override
+                    public void onPlayClicked() {
+                        openQuizQuestion(1);
+
+                    }
+
+                    @Override
+                    public void onViewClicked() {
+                        openFullQuestion(1);
+
+                    }
+                });
+
+        que71.setTitle("2071 TU Examination")
+                .setOnMenuClickedListener(new YearCard.YearCardListener() {
+                    @Override
+                    public void onPlayClicked() {
+                        openQuizQuestion(2);
+
+                    }
+
+                    @Override
+                    public void onViewClicked() {
+                        openFullQuestion(2);
+
+                    }
+                });
+
+        que72.setTitle("2072 TU Examination")
+                .setOnMenuClickedListener(new YearCard.YearCardListener() {
+                    @Override
+                    public void onPlayClicked() {
+                        openQuizQuestion(3);
+
+                    }
+
+                    @Override
+                    public void onViewClicked() {
+                        openFullQuestion(3);
+
+                    }
+                });
+
+        que73.setTitle("2073 TU Examination")
+                .setOnMenuClickedListener(new YearCard.YearCardListener() {
+                    @Override
+                    public void onPlayClicked() {
+                        openQuizQuestion(4);
+
+                    }
+
+                    @Override
+                    public void onViewClicked() {
+                        openFullQuestion(4);
+                    }
+                });
+
+        que74.setTitle("2074 TU Examination")
+                .setOnMenuClickedListener(new YearCard.YearCardListener() {
+                    @Override
+                    public void onPlayClicked() {
+                        openQuizQuestion(5);
+                    }
+
+                    @Override
+                    public void onViewClicked() {
+                        openFullQuestion(5);
+
+                    }
+                });
 
         que1.setOnClickListener(new View.OnClickListener() {
             @Override

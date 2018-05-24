@@ -88,7 +88,8 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp">
+                    android:layout_margin="3dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:id="@+id/question2069"
@@ -125,7 +126,8 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp">
+                    android:layout_margin="3dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:id="@+id/question2070"
@@ -164,7 +166,8 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp">
+                    android:layout_margin="3dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:id="@+id/question2071"
@@ -202,7 +205,8 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp">
+                    android:layout_margin="3dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:id="@+id/question2072"
@@ -239,7 +243,8 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp">
+                    android:layout_margin="3dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:id="@+id/question2073"
@@ -272,10 +277,12 @@
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
+
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp">
+                    android:layout_margin="3dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:id="@+id/question2074"
@@ -329,7 +336,8 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp">
+                    android:layout_margin="3dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:id="@+id/question1"
@@ -367,7 +375,8 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp">
+                    android:layout_margin="3dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:id="@+id/question2"
@@ -405,7 +414,8 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp">
+                    android:layout_margin="3dp"
+                    app:cardCornerRadius="10dp">
 
 
                     <LinearLayout
@@ -445,7 +455,8 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp">
+                    android:layout_margin="3dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:id="@+id/question4"
@@ -482,7 +493,8 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp">
+                    android:layout_margin="3dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:id="@+id/question5"
@@ -519,7 +531,8 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp">
+                    android:layout_margin="3dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:id="@+id/question6"

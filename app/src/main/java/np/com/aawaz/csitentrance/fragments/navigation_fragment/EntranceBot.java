@@ -86,9 +86,14 @@ public class EntranceBot extends Fragment {
 
             @Override
             public void onFailure(Call call, IOException e) {
-                delay(100);
-                adapter.add(new Message("Humm... It seems there no internet connection.", 1));
-                recyclerView.scrollToPosition(adapter.getItemCount() - 1);
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        delay(100);
+                        adapter.add(new Message("Humm... It seems there no internet connection.", 1));
+                        recyclerView.scrollToPosition(adapter.getItemCount() - 1);
+                    }
+                });
             }
 
             @Override

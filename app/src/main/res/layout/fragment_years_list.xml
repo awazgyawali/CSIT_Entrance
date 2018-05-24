@@ -60,245 +60,36 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <np.com.aawaz.csitentrance.custom_views.YearCard
+            android:id="@+id/question2069"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content" />
 
-            <android.support.v7.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:id="@+id/question2069"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/work_sans_medium"
-                        android:gravity="center"
-                        android:text="Year 2069"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:id="@+id/question2070"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/work_sans_medium"
-                        android:gravity="center"
-                        android:text="Year 2070"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-
-            </android.support.v7.widget.CardView>
-        </LinearLayout>
-
-        <LinearLayout
+        <np.com.aawaz.csitentrance.custom_views.YearCard
+            android:id="@+id/question2070"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content" />
 
-            <android.support.v7.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:id="@+id/question2071"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/work_sans_medium"
-                        android:gravity="center"
-                        android:text="Year 2071"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:id="@+id/question2072"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/work_sans_medium"
-                        android:gravity="center"
-                        android:text="Year 2072"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <np.com.aawaz.csitentrance.custom_views.YearCard
+            android:id="@+id/question2071"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content" />
 
-            <android.support.v7.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp">
+        <np.com.aawaz.csitentrance.custom_views.YearCard
+            android:id="@+id/question2072"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-                <LinearLayout
-                    android:id="@+id/question2073"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
+        <np.com.aawaz.csitentrance.custom_views.YearCard
+            android:id="@+id/question2073"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-                    android:padding="10dp">
+        <np.com.aawaz.csitentrance.custom_views.YearCard
+            android:id="@+id/question2074"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/work_sans_medium"
-                        android:gravity="center"
-                        android:text="Year 2073"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:id="@+id/question2074"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/work_sans_medium"
-                        android:gravity="center"
-                        android:text="Year 2074"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
 
         <TextView
             android:id="@+id/textView17"
