@@ -35,21 +35,23 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/quizProfilePic"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
                     app:civ_border_color="@color/white"
                     app:civ_border_width="2dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/quizName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="Aawaz Gyawali"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -58,6 +60,7 @@
                         android:id="@+id/quizScore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="Score: 63"
                         android:textColor="@color/white_transparent"
                         android:textStyle="bold" />
@@ -70,7 +73,8 @@
             android:id="@+id/viewPagerQuestion"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="3dp" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
 
 
     </RelativeLayout>

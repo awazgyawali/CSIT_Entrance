@@ -19,7 +19,7 @@ import np.com.aawaz.csitentrance.R;
 
 public class CollegeModelCard extends RelativeLayout {
     TextView name, play, view, address;
-    ImageView call, logo;
+    ImageView logo;
     Context context;
     private CollegeCardListener collegeCardListener;
 
@@ -60,27 +60,6 @@ public class CollegeModelCard extends RelativeLayout {
         return this;
     }
 
-    public CollegeModelCard setPhoneNumber(final String phone) {
-        call.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new MaterialDialog.Builder(getContext())
-                        .title("Call Confirmation")
-                        .content("Call " + phone + "?")
-                        .positiveText("Call")
-                        .negativeText("Cancel")
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null)));
-                            }
-                        })
-                        .show();
-            }
-        });
-        return this;
-    }
-
     public void setOnMenuClickedListener(CollegeCardListener collegeCardListener) {
         this.collegeCardListener = collegeCardListener;
     }
@@ -92,8 +71,7 @@ public class CollegeModelCard extends RelativeLayout {
         play = findViewById(R.id.college_model_play);
         view = findViewById(R.id.college_model_view);
         address = findViewById(R.id.college_model_address);
-        call = findViewById(R.id.college_model_call);
-        logo = findViewById(R.id.college_model_logo);
+        logo = findViewById(R.id.code_name);
 
         play.setOnClickListener(new OnClickListener() {
             @Override

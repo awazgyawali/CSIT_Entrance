@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_margin="3dp"
         android:layout_height="wrap_content"
+        android:layout_margin="3dp"
         app:cardCornerRadius="10dp">
 
         <android.support.constraint.ConstraintLayout
@@ -16,7 +15,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/college_model_logo"
+                android:id="@+id/code_name"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:contentDescription="College Logo"
@@ -34,15 +33,15 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/work_sans_medium"
                 android:maxLines="2"
                 android:text="ACHS Model Question"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/college_model_call"
-                app:layout_constraintStart_toEndOf="@+id/college_model_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/code_name"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -54,7 +53,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/work_sans_medium"
                 android:text="Sukedhara, Kathmandu"
-                app:layout_constraintEnd_toStartOf="@+id/college_model_call"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/college_model_text"
                 app:layout_constraintTop_toBottomOf="@+id/college_model_text" />
 
@@ -62,20 +61,18 @@
                 android:id="@+id/college_model_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="10dp"
                 android:background="?selectableItemBackground"
                 android:drawableLeft="@drawable/play_accent_small"
                 android:drawablePadding="8dp"
                 android:gravity="center"
-                android:paddingBottom="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:text="Play QUiz"
+                android:padding="10dp"
+                android:text="Play Quiz"
                 android:textAllCaps="true"
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/college_model_logo"
+                app:layout_constraintStart_toEndOf="@+id/code_name"
                 app:layout_constraintTop_toBottomOf="@+id/college_model_address" />
 
             <TextView
@@ -86,11 +83,9 @@
                 android:layout_marginStart="8dp"
                 android:background="?selectableItemBackground"
                 android:drawableLeft="@drawable/view_full"
-                android:drawablePadding="10dp"
+                android:drawablePadding="8dp"
                 android:gravity="center"
-                android:paddingBottom="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
+                android:padding="10dp"
                 android:text="View Question"
                 android:textAllCaps="true"
                 android:textColor="@color/colorAccent"
@@ -98,21 +93,6 @@
                 app:layout_constraintStart_toEndOf="@+id/college_model_play"
                 app:layout_constraintTop_toTopOf="@+id/college_model_play" />
 
-            <ImageView
-                android:id="@+id/college_model_call"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:gravity="center"
-                android:padding="10dp"
-                android:src="@drawable/call_blue"
-                android:text="Call"
-                android:textAllCaps="true"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/college_model_address"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/college_model_text" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

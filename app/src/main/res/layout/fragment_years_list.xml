@@ -26,6 +26,7 @@
             android:text="College Model Questions"
             android:textColor="@color/colorPrimary"
             android:textSize="17sp"
+            android:visibility="gone"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,17 +35,20 @@
         <np.com.aawaz.csitentrance.custom_views.CollegeModelCard
             android:id="@+id/collegeModel1"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content" />
 
         <np.com.aawaz.csitentrance.custom_views.CollegeModelCard
             android:id="@+id/collegeModel2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
         <np.com.aawaz.csitentrance.custom_views.CollegeModelCard
             android:id="@+id/collegeModel3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
 
         <TextView
@@ -105,244 +109,42 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+
+        <np.com.aawaz.csitentrance.custom_views.YearCard
+            android:id="@+id/model1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content" />
 
-            <android.support.v7.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp">
 
-                <LinearLayout
-                    android:id="@+id/question1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/work_sans_medium"
-                        android:gravity="center"
-                        android:text="Model 1"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:id="@+id/question2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/work_sans_medium"
-                        android:gravity="center"
-                        android:text="Model 2"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <np.com.aawaz.csitentrance.custom_views.YearCard
+            android:id="@+id/model2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <android.support.v7.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp">
+            android:layout_height="wrap_content" />
 
 
-                <LinearLayout
-                    android:id="@+id/question3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/work_sans_medium"
-                        android:gravity="center"
-                        android:text="Model 3"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:id="@+id/question4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?android:selectableItemBackground"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/work_sans_medium"
-                        android:gravity="center"
-                        android:text="Model 4"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <np.com.aawaz.csitentrance.custom_views.YearCard
+            android:id="@+id/model3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content" />
 
-            <android.support.v7.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp">
 
-                <LinearLayout
-                    android:id="@+id/question5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?android:selectableItemBackground"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+        <np.com.aawaz.csitentrance.custom_views.YearCard
+            android:id="@+id/model4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/work_sans_medium"
-                        android:gravity="center"
-                        android:text="Model 5"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+        <np.com.aawaz.csitentrance.custom_views.YearCard
+            android:id="@+id/model5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-            <android.support.v7.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp">
 
-                <LinearLayout
-                    android:id="@+id/question6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?android:selectableItemBackground"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+        <np.com.aawaz.csitentrance.custom_views.YearCard
+            android:id="@+id/model6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/circle_accent"
-                        android:padding="10dp"
-                        android:src="@drawable/play_accent" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/work_sans_medium"
-                        android:gravity="center"
-                        android:text="Model 6"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
 
     </LinearLayout>
 

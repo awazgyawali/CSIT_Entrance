@@ -71,7 +71,34 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String htm = questions.get(position) + "<br><b>Answer:</b> " + ansFinder(position);
+        String htm = "<html lang=\"en\">" +
+                "<head>" +
+                "  <meta charset=\"UTF-8\">" +
+                "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
+                "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:400,700\" rel=\"stylesheet\">" +
+                "  <title>Document</title>" +
+                "  <style>" +
+                "    body{" +
+                "      margin: 0;" +
+                "    }" +
+                "    div {" +
+                "      font-size: 18px;" +
+                "      line-height: 1.5em;" +
+                "      text-align: justify;" +
+                "      font-family: 'Work Sans', sans-serif" +
+                "    }" +
+                "  </style>" +
+                "</head>" +
+                "<body>" +
+                "<div>";
+        ;
+
+        htm = htm + questions.get(position) + "<br><b>Answer:</b> " + ansFinder(position);
+
+        htm = htm+ "</div>" +
+                "</body>" +
+                "</html>";;
         holder.que.loadDataWithBaseURL("", htm, "text/html", "UTF-8", "");
     }
 

@@ -64,6 +64,28 @@ public class FullQuestionActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
+        htmlData = "<html lang=\"en\">" +
+                "<head>" +
+                "  <meta charset=\"UTF-8\">" +
+                "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
+                "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:400,700\" rel=\"stylesheet\">" +
+                "  <title>Document</title>" +
+                "  <style>" +
+                "    body{" +
+                "      margin: 0;" +
+                "    }" +
+                "    div {" +
+                "      font-size: 18px;" +
+                "      line-height: 1.5em;" +
+                "      text-align: justify;" +
+                "      font-family: 'Work Sans', sans-serif" +
+                "    }" +
+                "  </style>" +
+                "</head>" +
+                "<body>" +
+                "<div>";
+
         setDataToArrayList();
         TextView title = (TextView) findViewById(R.id.titleFullQuestion);
         title.setText(getResources().getStringArray(R.array.years)[code - 1]);
@@ -86,6 +108,10 @@ public class FullQuestionActivity extends AppCompatActivity {
                         htmlData = htmlData + "<b>Answer: " + jo_inside.getString("ans") + "</b><br>";
                         htmlData = htmlData + "<hr>";
                     }
+
+                    htmlData = htmlData + "</div>" +
+                            "</body>" +
+                            "</html>";
                 } catch (Exception ignored) {
                 }
 

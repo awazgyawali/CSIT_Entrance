@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.EventSender;
@@ -23,6 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         context = this;
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         new EventSender().logEvent("app_opened");
         sign_in_intent = new Intent(this, SignInActivity.class);
         main_activity_intent = new Intent(context, MainActivity.class)

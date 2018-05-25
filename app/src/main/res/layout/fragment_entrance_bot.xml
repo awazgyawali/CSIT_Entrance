@@ -17,7 +17,9 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <include layout="@layout/achs_ad_layout" />
+        <include
+            layout="@layout/achs_ad_layout"
+            android:visibility="gone" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewBot"

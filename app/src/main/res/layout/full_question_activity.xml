@@ -38,6 +38,7 @@
             android:id="@+id/titleFullQuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/work_sans_medium"
             android:gravity="center"
             android:padding="10dp"
             android:text="Tu Examination Year 2069"

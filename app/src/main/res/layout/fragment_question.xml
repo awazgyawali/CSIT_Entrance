@@ -37,6 +37,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="Model Question 1"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold" />
@@ -70,6 +71,7 @@
                         android:id="@+id/questionRobo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/work_sans_medium"
                         android:gravity="center"
                         android:text="+2"
                         android:textColor="@color/colorPrimaryText"
@@ -125,6 +127,7 @@
                             android:id="@+id/optionRobo1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:fontFamily="@font/work_sans_medium"
                             android:gravity="center"
                             android:textColor="@color/colorPrimaryText"
                             android:textSize="17sp" />
@@ -168,6 +171,7 @@
                             android:id="@+id/optionRobo2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:fontFamily="@font/work_sans_medium"
                             android:gravity="center"
                             android:textColor="@color/colorPrimaryText"
                             android:textSize="17sp" />
@@ -218,6 +222,7 @@
                             android:id="@+id/optionRobo3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:fontFamily="@font/work_sans_medium"
                             android:gravity="center"
                             android:textColor="@color/colorPrimaryText"
                             android:textSize="17sp" />
@@ -262,6 +267,7 @@
                             android:id="@+id/optionRobo4"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:fontFamily="@font/work_sans_medium"
                             android:gravity="center"
                             android:textColor="@color/colorPrimaryText"
                             android:textSize="17sp" />
@@ -298,6 +304,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:fontFamily="@font/work_sans_medium"
                 android:gravity="center"
                 android:padding="15dp"
                 android:text="SUBMIT"

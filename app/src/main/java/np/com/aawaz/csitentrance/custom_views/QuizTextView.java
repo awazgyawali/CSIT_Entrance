@@ -21,15 +21,24 @@ public class QuizTextView extends WebView {
         String strBody = "<html>"
                 + "<head>"
                 + "     <style type=\"text/css\">"
+                + "     <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:400,700\" rel=\"stylesheet\">"
                 + "     #text"
                 + "         {  "
                 + "             font-size:14;"
                 + "         }"
+                + "    p {" +
+                "      font-size: 18px;" +
+                "      line-height: 1.5em;" +
+                "      text-align: justify;" +
+                "      font-family: 'Work Sans', sans-serif" +
+                "    }"
                 + "     </style>"
                 + "</head>"
                 + "<body>"
                 + "<image_url dir=\"rtl\" id=\"text\">"
+                + "<p>"
                 + data
+                + "</p>"
                 + "</image_url>"
                 + "</body>"
                 + "</html>  ";

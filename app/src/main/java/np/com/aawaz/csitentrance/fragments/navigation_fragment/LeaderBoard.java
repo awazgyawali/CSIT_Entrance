@@ -58,18 +58,6 @@ public class LeaderBoard extends Fragment {
     private boolean filled = false;
     JSONObject object = new JSONObject();
 
-    private void fillFromLastResponse() {
-        String response = SPHandler.getInstance().getLeaderBoardLastResponse();
-        if (response != null) {
-            try {
-                parser(new JSONObject(response));
-                filled = true;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -154,9 +142,14 @@ public class LeaderBoard extends Fragment {
                                     i++;
                                     array.put(userDetail);
                                 }
-                                object.put("scores", array);
-                                callFillRecyclerView();
-                                saveResponse(object);
+                                if (array.length() > 2) {
+                                    object.put("scores", array);
+                                    callFillRecyclerView();
+                                    saveResponse(object);
+                                } else {
+                                    errorLayout.setVisibility(View.VISIBLE);
+                                    progress.setVisibility(View.GONE);
+                                }
                             } else {
                                 getFromBackup();
                             }

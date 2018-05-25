@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -111,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
             }
         };
 
@@ -301,7 +303,8 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.leaderBoard:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new LeaderBoard()).commit();
-                setTitle("Leaderboard");        tabLayout.setVisibility(View.GONE);
+                setTitle("Leaderboard");
+                tabLayout.setVisibility(View.GONE);
 
                 setAppBarElevation(0);
                 item.setChecked(true);

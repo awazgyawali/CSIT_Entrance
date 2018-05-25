@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.FullQuestionActivity;
@@ -41,13 +40,12 @@ public class YearsList extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         YearCard que69, que70, que71, que72, que73, que74;
-        LinearLayout que1, que2, que3, que4, que5, que6;
+        YearCard que1, que2, que3, que4, que5, que6;
         CollegeModelCard card1, card2, card3;
 
         card1 = view.findViewById(R.id.collegeModel1);
         card1.setTitle("ACHS Model Question")
                 .setLogo(R.drawable.achs)
-                .setPhoneNumber("01-12345678")
                 .setOnMenuClickedListener(new CollegeModelCard.CollegeCardListener() {
                     @Override
                     public void onPlayClicked() {
@@ -62,7 +60,6 @@ public class YearsList extends Fragment {
         card2 = view.findViewById(R.id.collegeModel2);
         card2.setTitle("Samriddhi Model Question")
                 .setLogo(R.drawable.achs)
-                .setPhoneNumber("01-12345678")
                 .setOnMenuClickedListener(new CollegeModelCard.CollegeCardListener() {
                     @Override
                     public void onPlayClicked() {
@@ -77,7 +74,6 @@ public class YearsList extends Fragment {
         card3 = view.findViewById(R.id.collegeModel3);
         card3.setTitle("Sagarmatha Model Question")
                 .setLogo(R.drawable.achs)
-                .setPhoneNumber("01-12345678")
                 .setOnMenuClickedListener(new CollegeModelCard.CollegeCardListener() {
                     @Override
                     public void onPlayClicked() {
@@ -89,12 +85,12 @@ public class YearsList extends Fragment {
                     }
                 });
 
-        que1 = view.findViewById(R.id.question1);
-        que2 = view.findViewById(R.id.question2);
-        que3 = view.findViewById(R.id.question3);
-        que4 = view.findViewById(R.id.question4);
-        que5 = view.findViewById(R.id.question5);
-        que6 = view.findViewById(R.id.question6);
+        que1 = view.findViewById(R.id.model1);
+        que2 = view.findViewById(R.id.model2);
+        que3 = view.findViewById(R.id.model3);
+        que4 = view.findViewById(R.id.model4);
+        que5 = view.findViewById(R.id.model5);
+        que6 = view.findViewById(R.id.model6);
         que69 = view.findViewById(R.id.question2069);
         que70 = view.findViewById(R.id.question2070);
         que71 = view.findViewById(R.id.question2071);
@@ -188,43 +184,72 @@ public class YearsList extends Fragment {
                     }
                 });
 
-        que1.setOnClickListener(new View.OnClickListener() {
+        que1.setTitle("Model 1").setOnMenuClickedListener(new YearCard.YearCardListener() {
             @Override
-            public void onClick(View view) {
-                clicked(6);
+            public void onPlayClicked() {
+                openQuizQuestion(6);
             }
-        });
-        que2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(7);
-            }
-        });
-        que3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(8);
-            }
-        });
-        que4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(9);
-            }
-        });
-        que5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(10);
-            }
-        });
-        que6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(11);
-            }
-        });
 
+            @Override
+            public void onViewClicked() {
+                openFullQuestion(6);
+            }
+        });
+        que2.setTitle("Model 2").setOnMenuClickedListener(new YearCard.YearCardListener() {
+            @Override
+            public void onPlayClicked() {
+                openQuizQuestion(7);
+            }
+
+            @Override
+            public void onViewClicked() {
+                openFullQuestion(7);
+            }
+        });
+        que3.setTitle("Model 3").setOnMenuClickedListener(new YearCard.YearCardListener() {
+            @Override
+            public void onPlayClicked() {
+                openQuizQuestion(8);
+            }
+
+            @Override
+            public void onViewClicked() {
+                openFullQuestion(8);
+            }
+        });
+        que4.setTitle("Model 4").setOnMenuClickedListener(new YearCard.YearCardListener() {
+            @Override
+            public void onPlayClicked() {
+                openQuizQuestion(9);
+            }
+
+            @Override
+            public void onViewClicked() {
+                openFullQuestion(9);
+            }
+        });
+        que5.setTitle("Model 5").setOnMenuClickedListener(new YearCard.YearCardListener() {
+            @Override
+            public void onPlayClicked() {
+                openQuizQuestion(10);
+            }
+
+            @Override
+            public void onViewClicked() {
+                openFullQuestion(10);
+            }
+        });
+        que6.setTitle("Model 6").setOnMenuClickedListener(new YearCard.YearCardListener() {
+            @Override
+            public void onPlayClicked() {
+                openQuizQuestion(11);
+            }
+
+            @Override
+            public void onViewClicked() {
+                openFullQuestion(11);
+            }
+        });
     }
 
     @Override
