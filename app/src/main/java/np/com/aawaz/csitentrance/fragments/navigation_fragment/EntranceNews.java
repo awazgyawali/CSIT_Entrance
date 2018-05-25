@@ -15,11 +15,11 @@ import android.widget.ProgressBar;
 
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.NewsDetailActivity;
@@ -28,7 +28,7 @@ import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.objects.News;
 
 
-public class EntranceNews extends Fragment implements ValueEventListener, ClickListener {
+public class EntranceNews extends Fragment implements ClickListener, ChildEventListener {
 
     RecyclerView recy;
     SwipeRefreshLayout newsSwipe;
@@ -87,7 +87,6 @@ public class EntranceNews extends Fragment implements ValueEventListener, ClickL
             @Override
             public void onRefresh() {
                 newsSwipe.setRefreshing(false);
-                addOneTimeListener();
             }
         });
     }
@@ -100,20 +99,32 @@ public class EntranceNews extends Fragment implements ValueEventListener, ClickL
         newsSwipe.setVisibility(View.GONE);
         newsAdapter = new NewsAdapter(getContext());
         linearLayoutManager = new LinearLayoutManager(getContext());
-        reference.addListenerForSingleValueEvent(this);
+        reference.addChildEventListener(this);
         recy.setLayoutManager(linearLayoutManager);
         recy.setAdapter(newsAdapter);
     }
 
 
     @Override
-    public void onDataChange(DataSnapshot dataSnap) {
-        newsAdapter.notifyDataSetChanged();
-        for (DataSnapshot dataSnapshot : dataSnap.getChildren()) {
-            newsAdapter.addToTop(dataSnapshot.getValue(News.class));
-        }
+    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+        newsAdapter.addToTop(dataSnapshot.getValue(News.class));
         newsSwipe.setVisibility(View.VISIBLE);
         progress.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+        //todo key wala kaam to update news
+    }
+
+    @Override
+    public void onChildRemoved(DataSnapshot dataSnapshot) {
+        //todo key wala kam to update news
+    }
+
+    @Override
+    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
     }
 
     @Override
