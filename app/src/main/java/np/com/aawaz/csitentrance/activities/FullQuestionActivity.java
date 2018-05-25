@@ -3,7 +3,9 @@ package np.com.aawaz.csitentrance.activities;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -51,7 +53,7 @@ public class FullQuestionActivity extends AppCompatActivity {
 
         code = getIntent().getIntExtra("position", 0);
 
-        webView = (WebView) findViewById(R.id.fullQuestionWebView);
+        webView = findViewById(R.id.fullQuestionWebView);
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
@@ -59,6 +61,9 @@ public class FullQuestionActivity extends AppCompatActivity {
                 loading.setVisibility(View.GONE);
             }
         });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        }
         setDataToArrayList();
         TextView title = (TextView) findViewById(R.id.titleFullQuestion);
         title.setText(getResources().getStringArray(R.array.years)[code - 1]);

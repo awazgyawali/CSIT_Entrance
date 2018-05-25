@@ -291,7 +291,6 @@ public class MainActivity extends AppCompatActivity {
                 return;
         }
         setAppBarElevation(getResources().getDimension(R.dimen.app_bar_elevation));
-        tabLayout.setVisibility(View.GONE);
         switch (id) {
             case R.id.main_home:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new Home()).commit();
@@ -302,7 +301,8 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.leaderBoard:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new LeaderBoard()).commit();
-                setTitle("Leaderboard");
+                setTitle("Leaderboard");        tabLayout.setVisibility(View.GONE);
+
                 setAppBarElevation(0);
                 item.setChecked(true);
                 new EventSender().logEvent("leaderboard");
@@ -311,12 +311,14 @@ public class MainActivity extends AppCompatActivity {
             case R.id.entranceBot:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceBot()).commit();
                 setTitle("Entrance Bot");
+                tabLayout.setVisibility(View.GONE);
                 new EventSender().logEvent("bot");
                 item.setChecked(true);
                 break;
 
             case R.id.entranceNews:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new EntranceNews()).commit();
+                tabLayout.setVisibility(View.GONE);
                 setTitle("Entrance News");
                 new EventSender().logEvent("news");
                 item.setChecked(true);
@@ -324,6 +326,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.entranceForum:
                 manager.beginTransaction().replace(R.id.fragmentHolder, EntranceForum.newInstance(intent.getStringExtra("post_id"))).commit();
+                tabLayout.setVisibility(View.GONE);
                 setTitle("Entrance Forum");
                 new EventSender().logEvent("forum");
                 item.setChecked(true);
@@ -332,6 +335,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.csitColleges:
                 manager.beginTransaction().replace(R.id.fragmentHolder, new AllColleges()).commit();
                 setTitle("CSIT Colleges");
+                tabLayout.setVisibility(View.GONE);
                 new EventSender().logEvent("colleges");
                 item.setChecked(true);
                 break;
@@ -341,6 +345,7 @@ public class MainActivity extends AppCompatActivity {
                 setTitle("Entrance Result");
                 setAppBarElevation(0);
                 new EventSender().logEvent("result");
+                tabLayout.setVisibility(View.GONE);
                 item.setChecked(true);
                 break;
         }

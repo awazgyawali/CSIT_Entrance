@@ -47,27 +47,39 @@ public class PhoneNoActivity extends AppCompatActivity {
     CountDownTimer downTimer;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
     private FirebaseAuth mAuth;
+    private TextView skip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_no);
-        TextView detail = (TextView) findViewById(R.id.phone_string_text);
-        phone = (TextInputEditText) findViewById(R.id.phone_no);
-        c_code = (TextInputEditText) findViewById(R.id.c_code);
-        autoVerify = (TextView) findViewById(R.id.auto_verify_in);
-        counter = (TextView) findViewById(R.id.timer);
+        TextView detail = findViewById(R.id.phone_string_text);
+        phone = findViewById(R.id.phone_no);
+        c_code = findViewById(R.id.c_code);
+        autoVerify = findViewById(R.id.auto_verify_in);
+        counter = findViewById(R.id.timer);
+        skip = findViewById(R.id.skip);
 
         autoVerify.setVisibility(View.GONE);
         counter.setVisibility(View.GONE);
 
-        final CardView submit = (CardView) findViewById(R.id.phone_continue_button);
+        final CardView submit = findViewById(R.id.phone_continue_button);
 
         dialog = new MaterialDialog.Builder(PhoneNoActivity.this)
                 .content("Sending verification code")
                 .progress(true, 100)
                 .cancelable(false)
                 .build();
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SPHandler.getInstance().setPhoneNo("SKIPPED");
+                startActivity(new Intent(PhoneNoActivity.this, MainActivity.class)
+                        .putExtra("fragment", getIntent().getStringExtra("fragment")));
+                finish();
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
 

@@ -48,7 +48,8 @@ public class MyMessagingService extends FirebaseMessagingService {
                 }
                 intent = new Intent(context, MainActivity.class).putExtra("fragment", notification.tag);
                 intent.putExtra("post_id", notification.post_id);
-                notification.addToDatabase();
+                if (!notification.uid.equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+                    notification.addToDatabase();
                 break;
             default:
                 intent = new Intent(context, MainActivity.class)

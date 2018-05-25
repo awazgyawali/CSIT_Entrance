@@ -21,6 +21,7 @@ import java.io.IOException;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.BotAdapter;
+import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Message;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -108,7 +109,6 @@ public class EntranceBot extends Fragment {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-
                         }
                     });
                 }
@@ -118,6 +118,18 @@ public class EntranceBot extends Fragment {
 
     private String getMessageFromString(String jsonData) {
         String parsedMessage;
+        try {
+            String intent_name = new JSONObject(jsonData).getJSONObject("result").getJSONObject("metadata").getString("intentName");
+            if (intent_name.equals("Default Fallback Intent")) {
+                new EventSender().logEvent("bot_unhelpful");
+            } else {
+                new EventSender().logEvent("bot_helpful");
+            }
+
+        } catch (JSONException e) {
+
+        }
+
         try {
             parsedMessage = new JSONObject(jsonData).getJSONObject("result").getJSONObject("fulfillment").getString("speech");
         } catch (JSONException e) {

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +43,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final News eachNews = news.get(position);
         holder.title.setText(eachNews.title);
-        holder.newsDetail.setText(Html.escapeHtml(eachNews.message));
+        holder.newsDetail.setText(eachNews.excerpt);
         holder.time.setText(eachNews.author + " - " + convertToSimpleDate(eachNews.time_stamp));
 
         holder.core.setOnClickListener(new View.OnClickListener() {

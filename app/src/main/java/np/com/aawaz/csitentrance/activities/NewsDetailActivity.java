@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateUtils;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -44,9 +45,15 @@ public class NewsDetailActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
 
-        newsDetail = (WebView) findViewById(R.id.each_news_detail);
-        time = (TextView) findViewById(R.id.each_news_time);
-        title = (TextView) findViewById(R.id.each_news_title);
+        newsDetail = findViewById(R.id.each_news_detail);
+        time = findViewById(R.id.each_news_time);
+        title = findViewById(R.id.each_news_title);
+        findViewById(R.id.close_news).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         newsDetail.setWebViewClient(new WebViewClient() {
             @Override
@@ -65,7 +72,7 @@ public class NewsDetailActivity extends AppCompatActivity {
             bundle = getIntent().getBundleExtra("data");
             title.setText(bundle.getString("title"));
             newsDetail.loadDataWithBaseURL("", readyWithCSS(bundle.getString("detail")), "text/html", "UTF-8", "");
-            time.setText(bundle.getString("author")+" - "+convertToSimpleDate(bundle.getLong("time")));
+            time.setText(bundle.getString("author") + " - " + convertToSimpleDate(bundle.getLong("time")));
             appIndexing(bundle.getString("title"));
         }
     }

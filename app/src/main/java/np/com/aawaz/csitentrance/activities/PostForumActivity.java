@@ -33,6 +33,7 @@ import java.util.Map;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 import okhttp3.Call;
@@ -147,6 +148,7 @@ public class PostForumActivity extends AppCompatActivity {
                                 JSONObject object = new JSONObject(response.body().string());
                                 String intentName = object.getJSONObject("result").getJSONObject("metadata").getString("intentName");
                                 if (intentName.equals("Default Fallback Intent")) {
+                                    new EventSender().logEvent("bot_unhelpful");
                                     postToFirebase(message);
                                 } else {
                                     botAnswerHolder.setText(object.getJSONObject("result").getJSONObject("fulfillment").getString("speech"));
@@ -154,12 +156,14 @@ public class PostForumActivity extends AppCompatActivity {
                                     yes.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
+                                            new EventSender().logEvent("bot_helpful");
                                             finish();
                                         }
                                     });
                                     no.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
+                                            new EventSender().logEvent("bot_unhelpful");
                                             postToFirebase(message);
                                         }
                                     });
@@ -198,8 +202,8 @@ public class PostForumActivity extends AppCompatActivity {
             finish();
         } else {
             new MaterialDialog.Builder(this)
-                    .title("Ops...")
-                    .content("You can only ask one question per hour, please try after " + getRemainingTime() + ".")
+                    .title("Oops...")
+                    .content("You can only ask one question per 10 minutes, please try after " + getRemainingTime() + ".")
                     .show();
         }
     }
@@ -212,18 +216,16 @@ public class PostForumActivity extends AppCompatActivity {
 
 
     private boolean canPost() {
-
-        //todo change in the release
         long preTime = SPHandler.getInstance().getLastPostedTime();
         long postTime = System.currentTimeMillis();
 
-        long difference = (postTime - preTime) / (60 * 60 * 1000);
+        long difference = (postTime - preTime) / (10 * 60 * 1000);
 
         return difference >= 1;
     }
 
     public String getRemainingTime() {
-        long timeInMilis = (SPHandler.getInstance().getLastPostedTime() + 1800000) - System.currentTimeMillis();
+        long timeInMilis = (SPHandler.getInstance().getLastPostedTime() + 600000) - System.currentTimeMillis();
         return timeInMilis / (1000 * 60) + " minutes";
     }
 

@@ -32,15 +32,14 @@ public class AboutUsActivity extends AppCompatActivity {
         findViewById(R.id.about_fb).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendIntentToAddress("https://www.facebook.com/CSITentrance/");
+                sendIntentToAddress("https://www.facebook.com/brainants/");
             }
         });
 
         findViewById(R.id.about_twitter).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendIntentToAddress("https://twitter.com/CsitEntrance");
-
+                sendIntentToAddress("https://twitter.com/brainants");
             }
         });
 

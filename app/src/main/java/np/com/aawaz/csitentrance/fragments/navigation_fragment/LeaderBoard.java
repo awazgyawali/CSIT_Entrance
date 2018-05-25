@@ -23,6 +23,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class LeaderBoard extends Fragment {
     private LinearLayout errorLayout;
     NestedScrollView coreLeader;
     private boolean filled = false;
+    JSONObject object = new JSONObject();
 
     private void fillFromLastResponse() {
         String response = SPHandler.getInstance().getLeaderBoardLastResponse();
@@ -113,7 +115,6 @@ public class LeaderBoard extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        fillFromLastResponse();
         fetchFromInternet();
     }
 
@@ -124,31 +125,50 @@ public class LeaderBoard extends Fragment {
             coreLeader.setVisibility(View.GONE);
         }
 
-        FirebaseFirestore.getInstance().collection("users").orderBy("score", Query.Direction.DESCENDING).limit(10).get().addOnCompleteListener(getActivity(), new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    int i = 0;
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        Map<String, Object> user = document.getData();
-                        if (i < 3) {
-                            topNames[i].setText((String) user.get("name"));
-                            topScores[i].setText(String.valueOf(user.get("score")));
-                            Picasso.with(getContext())
-                                    .load((String) user.get("image_url"))
-                                    .placeholder(R.drawable.account_holder)
-                                    .into(circleImageViews[i]);
-                        } else {
-                            names.add((String) user.get("name"));
-                            scores.add((Long) user.get("score"));
-                            image_url.add((String) user.get("image_url"));
+        FirebaseFirestore.getInstance().collection("users").orderBy("score", Query.Direction.DESCENDING).limit(10).get()
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        try {
+                            if (task.isSuccessful()) {
+                                int i = 0;
+                                JSONArray array = new JSONArray();
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Map<String, Object> user = document.getData();
+                                    JSONObject userDetail = new JSONObject();
+                                    userDetail.put("name", user.get("name"));
+                                    userDetail.put("score", String.valueOf(user.get("score")));
+                                    userDetail.put("image_link", user.get("image_url"));
+                                    if (i < 3) {
+                                        topNames[i].setText((String) user.get("name"));
+                                        topScores[i].setText(String.valueOf(user.get("score")));
+                                        Picasso.with(getContext())
+                                                .load((String) user.get("image_url"))
+                                                .placeholder(R.drawable.account_holder)
+                                                .into(circleImageViews[i]);
+                                    } else {
+                                        names.add((String) user.get("name"));
+                                        scores.add((Long) user.get("score"));
+                                        image_url.add((String) user.get("image_url"));
+                                    }
+                                    i++;
+                                    array.put(userDetail);
+                                }
+                                object.put("scores", array);
+                                callFillRecyclerView();
+                                saveResponse(object);
+                            } else {
+                                getFromBackup();
+                            }
+                        } catch (Exception ignored) {
+
                         }
-                        i++;
                     }
-                }
-                callFillRecyclerView();
-            }
-        });
+                });
+    }
+
+    private void saveResponse(JSONObject object) {
+        SPHandler.getInstance().setLeaderBoardLastResponse(object.toString());
     }
 
     private void parser(JSONObject response) {
@@ -184,6 +204,16 @@ public class LeaderBoard extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_leaderboard, container, false);
+    }
+
+    public void getFromBackup() throws JSONException {
+        String response = SPHandler.getInstance().getLeaderBoardLastResponse();
+        if (response != null) {
+            parser(new JSONObject(response));
+        } else {
+            errorLayout.setVisibility(View.VISIBLE);
+            progress.setVisibility(View.GONE);
+        }
     }
 }
 

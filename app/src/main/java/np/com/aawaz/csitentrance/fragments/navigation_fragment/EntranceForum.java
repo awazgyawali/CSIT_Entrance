@@ -107,7 +107,7 @@ public class EntranceForum extends Fragment implements
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(getActivity(), PostForumActivity.class), 200);
+                startActivityForResult(new Intent(getActivity(), PostForumActivity.class), 201);
             }
         });
         errorPart.setOnClickListener(new View.OnClickListener() {
@@ -127,13 +127,6 @@ public class EntranceForum extends Fragment implements
         handleIntent();
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 200 && resultCode == 200) {
-            addListener();//post gare pachi refresh
-        }
-    }
 
     private void handleIntent() {
         String post_id = getArguments().getString("post_id");
@@ -169,6 +162,14 @@ public class EntranceForum extends Fragment implements
     public void onResume() {
         super.onResume();
         running = true;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 201 && resultCode == 200) {
+            recyclerView.scrollToPosition(adapter.getItemCount() - 1);
+        }
     }
 
     @Override
