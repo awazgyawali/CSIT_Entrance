@@ -138,6 +138,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
         reference.push().setValue(postValues);
         increaseCommentCount();
         commentEditText.setText("");
+        commentsRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
     }
 
     private void increaseCommentCount() {

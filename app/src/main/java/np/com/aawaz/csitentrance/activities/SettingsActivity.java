@@ -81,9 +81,9 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (newsSub)
-                    FirebaseMessaging.getInstance().unsubscribeFromTopic("new");
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
                 else
-                    FirebaseMessaging.getInstance().subscribeToTopic("new");
+                    FirebaseMessaging.getInstance().subscribeToTopic("news");
                 newsSub = !newsSub;
                 SPHandler.getInstance().setNewsSubscribed(newsSub);
             }
@@ -93,9 +93,9 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (forumSub)
-                    FirebaseMessaging.getInstance().unsubscribeFromTopic("forums");
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("forum");
                 else
-                    FirebaseMessaging.getInstance().subscribeToTopic("forums");
+                    FirebaseMessaging.getInstance().subscribeToTopic("forum");
                 forumSub = !forumSub;
                 SPHandler.getInstance().setForumSubscribed(forumSub);
             }
