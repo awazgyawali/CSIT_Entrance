@@ -1,35 +1,35 @@
 package np.com.aawaz.csitentrance.fragments.other_fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.activities.FullQuestionActivity;
-import np.com.aawaz.csitentrance.activities.YearQuizActivity;
-import np.com.aawaz.csitentrance.custom_views.CollegeModelCard;
-import np.com.aawaz.csitentrance.custom_views.YearCard;
-import np.com.aawaz.csitentrance.objects.EventSender;
-import np.com.aawaz.csitentrance.objects.SPHandler;
+import np.com.aawaz.csitentrance.adapters.YearListAdapter;
+import np.com.aawaz.csitentrance.objects.YearItem;
 
 public class YearsList extends Fragment {
+
+    private RecyclerView recyclerview;
 
     public YearsList() {
         // Required empty public constructor
     }
 
-    public static YearsList newInstance(String type) {
-        Bundle bundle = new Bundle();
-        bundle.putString("type", type);
-        YearsList list = new YearsList();
-        list.setArguments(bundle);
-        return list;
+    public static YearsList newInstance() {
+        return new YearsList();
     }
+
+    ArrayList<YearItem> items = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,219 +37,100 @@ public class YearsList extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        YearCard que69, que70, que71, que72, que73, que74;
-        YearCard que1, que2, que3, que4, que5, que6;
-        CollegeModelCard card1, card2, card3;
+        recyclerview = view.findViewById(R.id.yearListRecy);
+        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
 
-        card1 = view.findViewById(R.id.collegeModel1);
-        card1.setTitle("ACHS Model Question")
-                .setLogo(R.drawable.achs)
-                .setOnMenuClickedListener(new CollegeModelCard.CollegeCardListener() {
-                    @Override
-                    public void onPlayClicked() {
-                    }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-                    @Override
-                    public void onViewClicked() {
+        YearItem item = new YearItem();
+        item.type = YearItem.SECTION_TITLE;
+        item.title = "Old Questions";
+        items.add(item);
 
-                    }
-                });
+        YearItem item1 = new YearItem();
+        item1.type = YearItem.YEAR_SET;
+        item1.title = "2069 TU Examination";
+        item1.paperCode = 0;
+        items.add(item1);
 
-        card2 = view.findViewById(R.id.collegeModel2);
-        card2.setTitle("Samriddhi Model Question")
-                .setLogo(R.drawable.achs)
-                .setOnMenuClickedListener(new CollegeModelCard.CollegeCardListener() {
-                    @Override
-                    public void onPlayClicked() {
-                    }
+        YearItem item2 = new YearItem();
+        item2.type = YearItem.YEAR_SET;
+        item2.title = "2070 TU Examination";
+        item2.paperCode = 1;
+        items.add(item2);
 
-                    @Override
-                    public void onViewClicked() {
+        YearItem item3 = new YearItem();
+        item3.type = YearItem.YEAR_SET;
+        item3.title = "2071 TU Examination";
+        item3.paperCode = 2;
+        items.add(item3);
 
-                    }
-                });
+        YearItem item4 = new YearItem();
+        item4.type = YearItem.YEAR_SET;
+        item4.title = "2072 TU Examination";
+        item4.paperCode = 3;
+        items.add(item4);
 
-        card3 = view.findViewById(R.id.collegeModel3);
-        card3.setTitle("Sagarmatha Model Question")
-                .setLogo(R.drawable.achs)
-                .setOnMenuClickedListener(new CollegeModelCard.CollegeCardListener() {
-                    @Override
-                    public void onPlayClicked() {
-                    }
+        YearItem item5 = new YearItem();
+        item5.type = YearItem.YEAR_SET;
+        item5.title = "2073 TU Examination";
+        item5.paperCode = 4;
+        items.add(item5);
 
-                    @Override
-                    public void onViewClicked() {
+        YearItem item6 = new YearItem();
+        item6.type = YearItem.YEAR_SET;
+        item6.title = "2074 TU Examination";
+        item6.paperCode = 5;
+        items.add(item6);
 
-                    }
-                });
 
-        que1 = view.findViewById(R.id.model1);
-        que2 = view.findViewById(R.id.model2);
-        que3 = view.findViewById(R.id.model3);
-        que4 = view.findViewById(R.id.model4);
-        que5 = view.findViewById(R.id.model5);
-        que6 = view.findViewById(R.id.model6);
-        que69 = view.findViewById(R.id.question2069);
-        que70 = view.findViewById(R.id.question2070);
-        que71 = view.findViewById(R.id.question2071);
-        que72 = view.findViewById(R.id.question2072);
-        que73 = view.findViewById(R.id.question2073);
-        que74 = view.findViewById(R.id.question2074);
+        YearItem modelHeader = new YearItem();
+        modelHeader.type = YearItem.SECTION_TITLE;
+        modelHeader.title = "Model Questions";
+        items.add(modelHeader);
 
-        que69.setTitle("2069 TU Examination")
-                .setOnMenuClickedListener(new YearCard.YearCardListener() {
-                    @Override
-                    public void onPlayClicked() {
-                        openQuizQuestion(0);
-                    }
+        YearItem item7 = new YearItem();
+        item7.type = YearItem.YEAR_SET;
+        item7.title = "Model 1";
+        item7.paperCode = 6;
+        items.add(item7);
 
-                    @Override
-                    public void onViewClicked() {
-                        openFullQuestion(0);
-                    }
-                });
+        YearItem item8 = new YearItem();
+        item8.type = YearItem.YEAR_SET;
+        item8.title = "Model 2";
+        item8.paperCode = 7;
+        items.add(item8);
 
-        que70.setTitle("2070 TU Examination")
-                .setOnMenuClickedListener(new YearCard.YearCardListener() {
-                    @Override
-                    public void onPlayClicked() {
-                        openQuizQuestion(1);
+        YearItem item9 = new YearItem();
+        item9.type = YearItem.YEAR_SET;
+        item9.title = "Model 3";
+        item9.paperCode = 8;
+        items.add(item9);
 
-                    }
+        YearItem item10 = new YearItem();
+        item10.type = YearItem.YEAR_SET;
+        item10.title = "Model 4";
+        item10.paperCode = 9;
+        items.add(item10);
 
-                    @Override
-                    public void onViewClicked() {
-                        openFullQuestion(1);
+        YearItem item11 = new YearItem();
+        item11.type = YearItem.YEAR_SET;
+        item11.title = "Model 5";
+        item11.paperCode = 10;
+        items.add(item11);
 
-                    }
-                });
+        YearItem item12 = new YearItem();
+        item12.type = YearItem.YEAR_SET;
+        item12.title = "Model 6";
+        item12.paperCode = 11;
+        items.add(item12);
 
-        que71.setTitle("2071 TU Examination")
-                .setOnMenuClickedListener(new YearCard.YearCardListener() {
-                    @Override
-                    public void onPlayClicked() {
-                        openQuizQuestion(2);
-
-                    }
-
-                    @Override
-                    public void onViewClicked() {
-                        openFullQuestion(2);
-
-                    }
-                });
-
-        que72.setTitle("2072 TU Examination")
-                .setOnMenuClickedListener(new YearCard.YearCardListener() {
-                    @Override
-                    public void onPlayClicked() {
-                        openQuizQuestion(3);
-
-                    }
-
-                    @Override
-                    public void onViewClicked() {
-                        openFullQuestion(3);
-
-                    }
-                });
-
-        que73.setTitle("2073 TU Examination")
-                .setOnMenuClickedListener(new YearCard.YearCardListener() {
-                    @Override
-                    public void onPlayClicked() {
-                        openQuizQuestion(4);
-
-                    }
-
-                    @Override
-                    public void onViewClicked() {
-                        openFullQuestion(4);
-                    }
-                });
-
-        que74.setTitle("2074 TU Examination")
-                .setOnMenuClickedListener(new YearCard.YearCardListener() {
-                    @Override
-                    public void onPlayClicked() {
-                        openQuizQuestion(5);
-                    }
-
-                    @Override
-                    public void onViewClicked() {
-                        openFullQuestion(5);
-
-                    }
-                });
-
-        que1.setTitle("Model 1").setOnMenuClickedListener(new YearCard.YearCardListener() {
-            @Override
-            public void onPlayClicked() {
-                openQuizQuestion(6);
-            }
-
-            @Override
-            public void onViewClicked() {
-                openFullQuestion(6);
-            }
-        });
-        que2.setTitle("Model 2").setOnMenuClickedListener(new YearCard.YearCardListener() {
-            @Override
-            public void onPlayClicked() {
-                openQuizQuestion(7);
-            }
-
-            @Override
-            public void onViewClicked() {
-                openFullQuestion(7);
-            }
-        });
-        que3.setTitle("Model 3").setOnMenuClickedListener(new YearCard.YearCardListener() {
-            @Override
-            public void onPlayClicked() {
-                openQuizQuestion(8);
-            }
-
-            @Override
-            public void onViewClicked() {
-                openFullQuestion(8);
-            }
-        });
-        que4.setTitle("Model 4").setOnMenuClickedListener(new YearCard.YearCardListener() {
-            @Override
-            public void onPlayClicked() {
-                openQuizQuestion(9);
-            }
-
-            @Override
-            public void onViewClicked() {
-                openFullQuestion(9);
-            }
-        });
-        que5.setTitle("Model 5").setOnMenuClickedListener(new YearCard.YearCardListener() {
-            @Override
-            public void onPlayClicked() {
-                openQuizQuestion(10);
-            }
-
-            @Override
-            public void onViewClicked() {
-                openFullQuestion(10);
-            }
-        });
-        que6.setTitle("Model 6").setOnMenuClickedListener(new YearCard.YearCardListener() {
-            @Override
-            public void onPlayClicked() {
-                openQuizQuestion(11);
-            }
-
-            @Override
-            public void onViewClicked() {
-                openFullQuestion(11);
-            }
-        });
+        recyclerview.setAdapter(new YearListAdapter(getContext(),items));
     }
 
     @Override
@@ -257,36 +138,5 @@ public class YearsList extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_years_list, container, false);
-    }
-
-    private void clicked(int position) {
-        if (getArguments().getString("type").equals("full")) {
-            openFullQuestion(position);
-        } else {
-            openQuizQuestion(position);
-        }
-    }
-
-    public void openFullQuestion(int position) {
-        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6};
-        Intent intent = new Intent(getContext(), FullQuestionActivity.class);
-        intent.putExtra("code", codes[position]);
-        intent.putExtra("position", position + 1);
-        new EventSender().logEvent("viewed_full");
-
-        startActivity(intent);
-    }
-
-    public void openQuizQuestion(int position) {
-        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6};
-        Intent intent = new Intent(getContext(), YearQuizActivity.class);
-
-        intent.putExtra("code", codes[position]);
-        intent.putExtra("position", position);
-        new EventSender().logEvent("played_year");
-
-        startActivity(intent);
     }
 }

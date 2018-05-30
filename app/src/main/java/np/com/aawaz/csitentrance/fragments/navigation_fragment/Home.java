@@ -22,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.activities.ModelEntranceActivity;
-import np.com.aawaz.csitentrance.fragments.other_fragments.SubjectsList;
 import np.com.aawaz.csitentrance.fragments.other_fragments.YearsList;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
@@ -32,6 +31,7 @@ public class Home extends Fragment {
     public static ViewPager viewPager;
     TabLayout tabLayout;
     TextView modelEntranceExam;
+    String[] titles = {"Home", "CSIT Colleges"};
 
     public Home() {
         // Required empty public constructor
@@ -47,9 +47,9 @@ public class Home extends Fragment {
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
-                        return YearsList.newInstance("quiz");
+                        return YearsList.newInstance();
                     case 1:
-                        return SubjectsList.newInstance();
+                        return AllColleges.newInstance();
                 }
                 return null;
             }
@@ -67,6 +67,7 @@ public class Home extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
+                MainActivity.setTitle(titles[position]);
             }
 
             @Override
@@ -79,7 +80,7 @@ public class Home extends Fragment {
         tabLayout.getTabAt(0)
                 .setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_calender));
         tabLayout.getTabAt(1)
-                .setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_book));
+                .setIcon(ContextCompat.getDrawable(getContext(), R.drawable.selector_colleges));
     }
 
     @Override

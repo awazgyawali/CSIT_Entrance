@@ -9,17 +9,18 @@
             android:checked="true"
             android:icon="@drawable/home"
             android:title="Home" />
+
+        <item
+            android:id="@+id/subjectQuiz"
+            android:checkable="true"
+            android:icon="@drawable/book"
+            android:title="Subjects" />
         <item
             android:id="@+id/leaderBoard"
             android:checkable="true"
             android:icon="@drawable/leaderboard"
             android:title="Leaderboard" />
 
-        <item
-            android:id="@+id/csitColleges"
-            android:checkable="true"
-            android:icon="@drawable/school"
-            android:title="CSIT Colleges" />
 
     </group>
 

@@ -162,6 +162,7 @@ public class EntranceForum extends Fragment implements
     public void onResume() {
         super.onResume();
         running = true;
+        SPHandler.getInstance().clearUnreadCount();
     }
 
     @Override

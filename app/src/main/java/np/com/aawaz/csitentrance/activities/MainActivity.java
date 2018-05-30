@@ -23,7 +23,6 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.crashlytics.android.Crashlytics;
 import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,13 +37,13 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.fragments.navigation_fragment.AllColleges;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceBot;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceForum;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceNews;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceResult;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.Home;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.LeaderBoard;
+import np.com.aawaz.csitentrance.fragments.other_fragments.SubjectsList;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Feedback;
 import np.com.aawaz.csitentrance.objects.SPHandler;
@@ -63,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
     AppBarLayout appBarLayout;
     TextView name;
     CircleImageView imageView;
-    String[] navigationText = new String[]{"leaderboard", "colleges",
+    String[] navigationText = new String[]{"leaderboard", "subject",
             "bot", "news", "forum", "result",
             "setting", "feedback", "share", "like", "rate"};
-    int[] navigationId = new int[]{R.id.leaderBoard, R.id.csitColleges, R.id.entranceBot, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.share, R.id.like, R.id.rate};
+    int[] navigationId = new int[]{R.id.leaderBoard, R.id.subjectQuiz, R.id.entranceBot, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.share, R.id.like, R.id.rate};
 
     public static void setTitle(String name) {
         titleMain.setText(name);
@@ -336,11 +335,11 @@ public class MainActivity extends AppCompatActivity {
                 item.setChecked(true);
                 break;
 
-            case R.id.csitColleges:
-                manager.beginTransaction().replace(R.id.fragmentHolder, new AllColleges()).commit();
-                setTitle("CSIT Colleges");
+            case R.id.subjectQuiz:
+                manager.beginTransaction().replace(R.id.fragmentHolder, new SubjectsList()).commit();
+                setTitle("Subject Quiz");
                 tabLayout.setVisibility(View.GONE);
-                new EventSender().logEvent("colleges");
+                new EventSender().logEvent("subject_quiz");
                 item.setChecked(true);
                 break;
 

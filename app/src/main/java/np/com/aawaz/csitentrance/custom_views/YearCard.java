@@ -56,7 +56,7 @@ public class YearCard extends RelativeLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        name = findViewById(R.id.year_text);
+        name = findViewById(R.id.title);
         code = findViewById(R.id.code_name);
         play = findViewById(R.id.year_play);
         view = findViewById(R.id.year_view);
