@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.FullQuestionActivity;
+import np.com.aawaz.csitentrance.activities.ModelPaperDetailActivity;
 import np.com.aawaz.csitentrance.activities.YearQuizActivity;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.SPHandler;
@@ -66,6 +67,14 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
                     openFullQuestion(item.paperCode);
                 }
             });
+        } else if (item.type == YearItem.COLLEGE_MODEL) {
+            holder.core.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    context.startActivity(new Intent(context, ModelPaperDetailActivity.class)
+                            .putExtra("college", "ACHS"));
+                }
+            });
         }
     }
 
@@ -79,6 +88,7 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
         TextView address;
         ImageView logo;
         TextView play, view;
+        View core;
 
         VH(View itemView) {
             super(itemView);
@@ -86,6 +96,7 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
             address = itemView.findViewById(R.id.address);
             play = itemView.findViewById(R.id.year_play);
             view = itemView.findViewById(R.id.year_view);
+            core = itemView;
         }
     }
 

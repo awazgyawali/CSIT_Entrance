@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -31,6 +32,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.SearchActivity;
 import np.com.aawaz.csitentrance.adapters.CollegesAdapter;
 import np.com.aawaz.csitentrance.interfaces.CollegeMenuClicks;
 
@@ -42,6 +44,7 @@ public class AllColleges extends Fragment {
             address = new ArrayList<>(),
             phNo = new ArrayList<>();
     private SliderLayout featured_slider;
+    private FloatingActionButton fab;
 
     public static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();
@@ -62,6 +65,13 @@ public class AllColleges extends Fragment {
         colzRecy = view.findViewById(R.id.colzRecy);
         featured_slider = view.findViewById(R.id.featured_ad_slider);
         colzRecy.setNestedScrollingEnabled(false);
+        fab = view.findViewById(R.id.searchCollege);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), SearchActivity.class));
+            }
+        });
     }
 
     @Override

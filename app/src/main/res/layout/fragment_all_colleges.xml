@@ -1,34 +1,51 @@
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true">
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusableInTouchMode="true"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.daimajia.slider.library.SliderLayout
-            android:id="@+id/featured_ad_slider"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:visibility="gone" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/work_sans_medium"
-            android:padding="10dp"
-            android:text="All Colleges"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/colzRecy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/featured_ad_slider"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:visibility="gone" />
 
-</android.support.v4.widget.NestedScrollView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/work_sans_medium"
+                android:padding="10dp"
+                android:text="All Colleges"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/colzRecy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:id="@+id/searchCollege"
+        android:src="@drawable/search"
+        app:fabSize="normal" />
+
+</RelativeLayout>

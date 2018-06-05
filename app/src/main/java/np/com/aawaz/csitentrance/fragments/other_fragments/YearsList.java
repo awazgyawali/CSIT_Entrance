@@ -47,48 +47,38 @@ public class YearsList extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        YearItem item = new YearItem();
-        item.type = YearItem.SECTION_TITLE;
-        item.title = "Old Questions";
-        items.add(item);
+        prepareCollegeModelQuestion();
 
-        YearItem item1 = new YearItem();
-        item1.type = YearItem.YEAR_SET;
-        item1.title = "2069 TU Examination";
-        item1.paperCode = 0;
-        items.add(item1);
+        prepareOldQuestions();
 
-        YearItem item2 = new YearItem();
-        item2.type = YearItem.YEAR_SET;
-        item2.title = "2070 TU Examination";
-        item2.paperCode = 1;
-        items.add(item2);
-
-        YearItem item3 = new YearItem();
-        item3.type = YearItem.YEAR_SET;
-        item3.title = "2071 TU Examination";
-        item3.paperCode = 2;
-        items.add(item3);
-
-        YearItem item4 = new YearItem();
-        item4.type = YearItem.YEAR_SET;
-        item4.title = "2072 TU Examination";
-        item4.paperCode = 3;
-        items.add(item4);
-
-        YearItem item5 = new YearItem();
-        item5.type = YearItem.YEAR_SET;
-        item5.title = "2073 TU Examination";
-        item5.paperCode = 4;
-        items.add(item5);
-
-        YearItem item6 = new YearItem();
-        item6.type = YearItem.YEAR_SET;
-        item6.title = "2074 TU Examination";
-        item6.paperCode = 5;
-        items.add(item6);
+        prepareModelQuestion();
 
 
+        recyclerview.setAdapter(new YearListAdapter(getContext(), items));
+    }
+
+    private void prepareCollegeModelQuestion() {
+
+        YearItem modelHeader = new YearItem();
+        modelHeader.type = YearItem.SECTION_TITLE;
+        modelHeader.title = "College Model Question";
+        items.add(modelHeader);
+
+        YearItem item7 = new YearItem();
+        item7.type = YearItem.COLLEGE_MODEL;
+        item7.title = "ACHS Model Question";
+        item7.paperCode = 12;
+        items.add(item7);
+
+        YearItem item8 = new YearItem();
+        item8.type = YearItem.COLLEGE_MODEL;
+        item8.title = "Sagarmatha Model Question";
+        item8.paperCode = 13;
+        items.add(item8);
+
+    }
+
+    private void prepareModelQuestion() {
         YearItem modelHeader = new YearItem();
         modelHeader.type = YearItem.SECTION_TITLE;
         modelHeader.title = "Model Questions";
@@ -129,8 +119,49 @@ public class YearsList extends Fragment {
         item12.title = "Model 6";
         item12.paperCode = 11;
         items.add(item12);
+    }
 
-        recyclerview.setAdapter(new YearListAdapter(getContext(),items));
+    private void prepareOldQuestions() {
+        YearItem item = new YearItem();
+        item.type = YearItem.SECTION_TITLE;
+        item.title = "Old Questions";
+        items.add(item);
+
+        YearItem item1 = new YearItem();
+        item1.type = YearItem.YEAR_SET;
+        item1.title = "2069 TU Examination";
+        item1.paperCode = 0;
+        items.add(item1);
+
+        YearItem item2 = new YearItem();
+        item2.type = YearItem.YEAR_SET;
+        item2.title = "2070 TU Examination";
+        item2.paperCode = 1;
+        items.add(item2);
+
+        YearItem item3 = new YearItem();
+        item3.type = YearItem.YEAR_SET;
+        item3.title = "2071 TU Examination";
+        item3.paperCode = 2;
+        items.add(item3);
+
+        YearItem item4 = new YearItem();
+        item4.type = YearItem.YEAR_SET;
+        item4.title = "2072 TU Examination";
+        item4.paperCode = 3;
+        items.add(item4);
+
+        YearItem item5 = new YearItem();
+        item5.type = YearItem.YEAR_SET;
+        item5.title = "2073 TU Examination";
+        item5.paperCode = 4;
+        items.add(item5);
+
+        YearItem item6 = new YearItem();
+        item6.type = YearItem.YEAR_SET;
+        item6.title = "2074 TU Examination";
+        item6.paperCode = 5;
+        items.add(item6);
     }
 
     @Override
