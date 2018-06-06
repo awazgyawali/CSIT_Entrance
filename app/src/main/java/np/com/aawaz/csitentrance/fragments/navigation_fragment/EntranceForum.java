@@ -1,5 +1,7 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,7 +15,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -47,7 +48,6 @@ public class EntranceForum extends Fragment implements
     RecyclerView recyclerView;
 
     ProgressBar progressBar;
-    LinearLayout errorPart;
 
     ForumAdapter adapter;
     ArrayList<String> key = new ArrayList<>();
@@ -74,7 +74,6 @@ public class EntranceForum extends Fragment implements
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        errorPart = view.findViewById(R.id.errorPart);
         progressBar = view.findViewById(R.id.progressCircleFullFeed);
         recyclerView = view.findViewById(R.id.fullFeedRecycler);
         floatingActionButton = view.findViewById(R.id.fabForumPost);
@@ -110,12 +109,6 @@ public class EntranceForum extends Fragment implements
                 startActivityForResult(new Intent(getActivity(), PostForumActivity.class), 201);
             }
         });
-        errorPart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addListener();
-            }
-        });
     }
 
     @Override
@@ -123,10 +116,16 @@ public class EntranceForum extends Fragment implements
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("forum_data/posts");
         super.onActivityCreated(savedInstanceState);
-        addListener();
+
+        recyclerView.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+        mLinearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLinearLayoutManager);
+        reference.keepSynced(true);
+        reference.orderByChild("time_stamp").limitToLast(50).addChildEventListener(this);
+        fillRecyclerView();
         handleIntent();
     }
-
 
     private void handleIntent() {
         String post_id = getArguments().getString("post_id");
@@ -136,18 +135,6 @@ public class EntranceForum extends Fragment implements
                     .putExtra("message", "Entrance Forum"));
             MainActivity.openedIntent = true;
         }
-    }
-
-    private void addListener() {
-        recyclerView.setVisibility(View.GONE);
-        errorPart.setVisibility(View.GONE);
-        progressBar.setVisibility(View.VISIBLE);
-        mLinearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(mLinearLayoutManager);
-        reference.keepSynced(true);
-
-        reference.orderByChild("time_stamp").limitToLast(50).addChildEventListener(this);
-        fillRecyclerView();
     }
 
     private void fillRecyclerView() {
@@ -163,6 +150,8 @@ public class EntranceForum extends Fragment implements
         super.onResume();
         running = true;
         SPHandler.getInstance().clearUnreadCount();
+        NotificationManager managerCompat = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        managerCompat.cancel("posted".hashCode());
     }
 
     @Override
@@ -177,6 +166,7 @@ public class EntranceForum extends Fragment implements
     public void onStop() {
         super.onStop();
         running = false;
+        reference.removeEventListener(this);
     }
 
     @Override

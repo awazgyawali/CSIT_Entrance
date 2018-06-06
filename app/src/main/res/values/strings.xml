@@ -14,8 +14,6 @@
 
 
     <string name="viewResult">http://csitentrance.brainants.com/result.php?rollNo=</string>
-    <string name="fetchScoreurl">http://csitentrance.brainants.com/leader_board.php</string>
-    <string name="uploadScore">http://csitentrance.brainants.com/upload_score.php</string>
     <string name="register">http://csitentrance.brainants.com/exam_reg.php</string>
 
     <string name="privacy_policy">Provide us your mobile number so that you can get great breakig updates via an SMS alert.</string>

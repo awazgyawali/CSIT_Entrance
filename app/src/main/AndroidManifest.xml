@@ -35,10 +35,10 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="csitentrance.brainants.com"
+                    android:host="csitentrance.com"
                     android:scheme="http" />
                 <data
-                    android:host="csitentrance.brainants.com"
+                    android:host="csitentrance.com"
                     android:scheme="https" />
                 <data
                     android:host="csitnepal.com"

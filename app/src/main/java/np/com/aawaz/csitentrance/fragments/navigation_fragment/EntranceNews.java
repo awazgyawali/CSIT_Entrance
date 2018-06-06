@@ -66,8 +66,9 @@ public class EntranceNews extends Fragment implements ClickListener, ChildEventL
 
     @Override
     public void onStop() {
-        FirebaseUserActions.getInstance().end(getAction());
         super.onStop();
+        FirebaseUserActions.getInstance().end(getAction());
+        reference.removeEventListener(this);
     }
 
     @Override
