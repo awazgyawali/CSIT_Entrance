@@ -78,7 +78,6 @@ public class EntranceForum extends Fragment implements
         recyclerView = view.findViewById(R.id.fullFeedRecycler);
         floatingActionButton = view.findViewById(R.id.fabForumPost);
         achsAd = view.findViewById(R.id.forum_ad);
-        new EventSender().logEvent("achs_ad");
         final SwipeRefreshLayout forumSwipeRefresh = view.findViewById(R.id.forumSwipeRefresh);
         forumSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -99,7 +98,6 @@ public class EntranceForum extends Fragment implements
             public void onClick(View view) {
                 ACHSDialog dialog = new ACHSDialog();
                 dialog.show(getChildFragmentManager(), "achs");
-                new EventSender().logEvent("achs_full_ad");
             }
         });
 

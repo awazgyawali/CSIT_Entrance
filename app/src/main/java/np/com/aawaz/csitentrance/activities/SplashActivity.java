@@ -45,8 +45,6 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        new EventSender()
-                .logEvent("samriddhi_splash");
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
