@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
@@ -19,6 +20,7 @@ import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.ProfileActivity;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.MyApplication;
 import np.com.aawaz.csitentrance.objects.Comment;
@@ -44,7 +46,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        Comment comment = comments.get(holder.getAdapterPosition());
+        final Comment comment = comments.get(holder.getAdapterPosition());
         holder.comment.setText(comment.message);
         holder.commenter.setText(comment.author + " ");
         holder.time.setText(DateUtils.getRelativeTimeSpanString(comment.time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
@@ -74,6 +76,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             @Override
             public void onClick(View view) {
                 clickEventListener.itemLongClicked(view, holder.getAdapterPosition());
+            }
+        });
+
+        holder.circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, ProfileActivity.class).putExtra("uid", comment.uid));
+
             }
         });
 

@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +21,7 @@ import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.ProfileActivity;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.MyApplication;
 import np.com.aawaz.csitentrance.objects.Post;
@@ -30,14 +32,16 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
     Context context;
     LayoutInflater inflater;
+    private boolean fromForum;
     ArrayList<Post> posts = new ArrayList<>();
 
     ClickListener clickListener;
 
 
-    public ForumAdapter(Context context) {
+    public ForumAdapter(Context context, boolean fromForum) {
         this.context = context;
         inflater = LayoutInflater.from(context);
+        this.fromForum = fromForum;
     }
 
     public void setClickListener(ClickListener clickListener) {
@@ -52,7 +56,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Post post = posts.get(holder.getAdapterPosition());
+        final Post post = posts.get(holder.getAdapterPosition());
         holder.postedBy.setText(post.author);
         holder.realPost.setText(post.message);
         holder.commentCount.setText(post.comment_count + getCommentMessage(post));
@@ -79,6 +83,14 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         } catch (Exception e) {
             holder.profile.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE));
         }
+
+        holder.profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (fromForum)
+                    context.startActivity(new Intent(context, ProfileActivity.class).putExtra("uid", post.uid));
+            }
+        });
     }
 
     private CharSequence getRelativeTimeSpanString(long time_stamp) {

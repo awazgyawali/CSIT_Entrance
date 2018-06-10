@@ -176,7 +176,7 @@ public class SignUpActivity extends AppCompatActivity {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                Uri downloadUrl = taskSnapshot.getUploadSessionUri();
                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                         .setDisplayName(nameText.getText().toString())
                         .setPhotoUri(downloadUrl)

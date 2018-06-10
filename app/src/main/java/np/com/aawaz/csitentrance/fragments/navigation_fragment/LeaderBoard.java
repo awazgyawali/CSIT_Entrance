@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -31,6 +32,7 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.ProfileActivity;
 import np.com.aawaz.csitentrance.adapters.LeaderboardAdapter;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
@@ -40,6 +42,7 @@ public class LeaderBoard extends Fragment {
     ArrayList<String> names = new ArrayList<>();
     ArrayList<Long> scores = new ArrayList<>();
     ArrayList<String> image_url = new ArrayList<>();
+    ArrayList<String> uids = new ArrayList<>();
     RecyclerView mRecyclerView;
     ProgressBar progress;
 
@@ -95,7 +98,7 @@ public class LeaderBoard extends Fragment {
         progress.setVisibility(View.GONE);
         coreLeader.setVisibility(View.VISIBLE);
         errorLayout.setVisibility(View.GONE);
-        mRecyclerView.setAdapter(new LeaderboardAdapter(getActivity(), names, scores, image_url));
+        mRecyclerView.setAdapter(new LeaderboardAdapter(getActivity(), uids, names, scores, image_url));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         errorLayout.setVisibility(View.GONE);
     }
@@ -122,9 +125,10 @@ public class LeaderBoard extends Fragment {
                                 int i = 0;
                                 JSONArray array = new JSONArray();
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Map<String, Object> user = document.getData();
+                                    final Map<String, Object> user = document.getData();
                                     JSONObject userDetail = new JSONObject();
                                     userDetail.put("name", user.get("name"));
+                                    userDetail.put("uid", user.get("uid"));
                                     userDetail.put("score", String.valueOf(user.get("score")));
                                     userDetail.put("image_link", user.get("image_url"));
                                     if (i < 3) {
@@ -134,8 +138,15 @@ public class LeaderBoard extends Fragment {
                                                 .load((String) user.get("image_url"))
                                                 .placeholder(R.drawable.account_holder)
                                                 .into(circleImageViews[i]);
+                                        circleImageViews[i].setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                startActivity(new Intent(getContext(), ProfileActivity.class).putExtra("uid", user.get("uid").toString()));
+                                            }
+                                        });
                                     } else {
                                         names.add((String) user.get("name"));
+                                        uids.add((String) user.get("uid"));
                                         scores.add((Long) user.get("score"));
                                         image_url.add((String) user.get("image_url"));
                                     }

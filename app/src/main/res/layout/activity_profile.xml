@@ -8,16 +8,8 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="20dp">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/view"
@@ -28,90 +20,121 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.AppCompat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <android.support.v7.widget.CardView
+
             android:id="@+id/cardView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:background="@color/white"
+            android:elevation="5dp"
             app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintEnd_toStartOf="@+id/toolbar3"
-            app:layout_constraintStart_toEndOf="@+id/toolbar3"
+            app:layout_constraintEnd_toStartOf="@+id/toolbarProfile"
+            app:layout_constraintStart_toEndOf="@+id/toolbarProfile"
             app:layout_constraintTop_toBottomOf="@+id/view">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="60dp"
-                android:orientation="vertical">
+                android:background="@color/white"
+                android:elevation="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/view"
+                app:layout_constraintEnd_toStartOf="@+id/toolbarProfile"
+                app:layout_constraintStart_toEndOf="@+id/toolbarProfile"
+                app:layout_constraintTop_toBottomOf="@+id/view">
 
-                <TextView
-                    android:layout_width="match_parent"
+                <ProgressBar
+                    android:id="@+id/loadingData"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/work_sans_medium"
-                    android:gravity="center"
-                    android:text="Aawaz Gyawali"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="19sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/work_sans_medium"
-                    android:gravity="center"
-                    android:text="Total Score: 300" />
+                    android:layout_centerInParent="true" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="60dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:id="@+id/profileName"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:fontFamily="@font/work_sans_medium"
                         android:gravity="center"
-                        android:text="25\nPhysics"
-                        android:textColor="@color/physics" />
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:id="@+id/profileTotalScore"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="5\nChemistry"
-                        android:textColor="@color/chemistry" />
+                        android:fontFamily="@font/work_sans_medium"
+                        android:gravity="center" />
 
-                    <TextView
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="72\nMathematics"
-                        android:textColor="@color/math" />
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="39\nEnglish"
-                        android:textColor="@color/english" />
+                        <TextView
+                            android:id="@+id/physics"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="@color/physics" />
+
+                        <TextView
+                            android:id="@+id/chemistry"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="@color/chemistry" />
+
+                        <TextView
+                            android:id="@+id/math"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="@color/math" />
+
+                        <TextView
+                            android:id="@+id/english"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="@color/english" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
-
-            </LinearLayout>
-
-        </RelativeLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@mipmap/ic_launcher"
+            android:elevation="10dp"
+            android:src="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@+id/cardView2"
             app:layout_constraintEnd_toEndOf="@+id/cardView2"
             app:layout_constraintStart_toStartOf="@+id/cardView2"
@@ -129,21 +152,33 @@
             app:layout_constraintStart_toStartOf="@+id/cardView2"
             app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerMyForum"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-            <include layout="@layout/each_feed_item" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/noPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/work_sans_medium"
+            android:text="No posts on the forum."
+            android:textStyle="italic"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.v4.widget.NestedScrollView>

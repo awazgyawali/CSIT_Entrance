@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -301,7 +302,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
             public void onDataChange(DataSnapshot dataSnapshot) {
                 forumContainer.setVisibility(View.VISIBLE);
 
-                Post post = dataSnapshot.getValue(Post.class);
+                final Post post = dataSnapshot.getValue(Post.class);
                 if (post.author == null) {
                     Toast.makeText(CommentsActivity.this, "The post has been deleted.", Toast.LENGTH_SHORT);
                     return;
@@ -309,6 +310,12 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
                 postedBy.setText(post.author + " ");
                 realPost.setText(post.message);
                 forumTime.setText(getRelativeTimeSpanString(post.time_stamp));
+                forumPic.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(CommentsActivity.this, ProfileActivity.class).putExtra("uid", post.uid));
+                    }
+                });
 
                 if (SPHandler.containsDevUID(post.uid))
                     postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.admin, 0);

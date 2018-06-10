@@ -202,16 +202,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void manageHeader() {
-
-        name = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.userName);
-        TextView email = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.userEmail);
-        imageView = (CircleImageView) mNavigationView.getHeaderView(0).findViewById(R.id.user_profile);
-        name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-        email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        name =  mNavigationView.getHeaderView(0).findViewById(R.id.userName);
+        TextView email =  mNavigationView.getHeaderView(0).findViewById(R.id.userEmail);
+        imageView =  mNavigationView.getHeaderView(0).findViewById(R.id.user_profile);
+        name.setText(user.getDisplayName());
+        email.setText(user.getEmail());
         Picasso.with(this)
-                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
+                .load(user.getPhotoUrl())
                 .error(ContextCompat.getDrawable(this, R.drawable.account_holder))
                 .into(imageView);
+
+        mNavigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ProfileActivity.class).putExtra("uid", user.getUid()));
+            }
+        });
     }
 
     private void navigate(MenuItem item) {

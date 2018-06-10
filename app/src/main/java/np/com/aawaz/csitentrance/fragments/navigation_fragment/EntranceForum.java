@@ -139,7 +139,7 @@ public class EntranceForum extends Fragment implements
 
     private void fillRecyclerView() {
         progressBar.setVisibility(View.GONE);
-        adapter = new ForumAdapter(getContext());
+        adapter = new ForumAdapter(getContext(),true);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setVisibility(View.VISIBLE);
