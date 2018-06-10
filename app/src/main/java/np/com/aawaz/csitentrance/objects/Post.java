@@ -9,7 +9,7 @@ import java.util.Map;
 @IgnoreExtraProperties
 public class Post {
 
-    public String uid;
+    public String uid, key;
     public String author;
     public long time_stamp;
     public String message;

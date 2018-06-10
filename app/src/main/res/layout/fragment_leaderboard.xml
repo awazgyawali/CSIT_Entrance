@@ -5,188 +5,251 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".fragments.navigation_fragment.LeaderBoard">
+    tools:context=".fragments.navigation_fragment.Leaderboard">
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/coreLeaderBoard"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/coreLeaderBoard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:paddingBottom="40dp"
+                    android:paddingTop="40dp">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="65dp"
+                        android:src="@drawable/first"
+                        app:layout_constraintEnd_toEndOf="@+id/image1"
+                        app:layout_constraintStart_toStartOf="@+id/image1"
+                        app:layout_constraintTop_toTopOf="@+id/image1" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/image1"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/account_holder"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/name1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="Aawaz Gyawali"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/image1"
+                        app:layout_constraintStart_toStartOf="@+id/image1"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+                    <TextView
+                        android:id="@+id/score1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="540"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/name1"
+                        app:layout_constraintStart_toStartOf="@+id/name1"
+                        app:layout_constraintTop_toBottomOf="@+id/name1" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="55dp"
+                        android:src="@drawable/second"
+                        app:layout_constraintEnd_toEndOf="@+id/image2"
+                        app:layout_constraintStart_toStartOf="@+id/image2"
+                        app:layout_constraintTop_toTopOf="@+id/image2" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/image2"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/account_holder"
+                        app:layout_constraintBottom_toBottomOf="@+id/image1"
+                        app:layout_constraintEnd_toStartOf="@+id/image1"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/name2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="Roshan Gautam"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/image2"
+                        app:layout_constraintStart_toStartOf="@+id/image2"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+                    <TextView
+                        android:id="@+id/score2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="440"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/name2"
+                        app:layout_constraintStart_toStartOf="@+id/name2"
+                        app:layout_constraintTop_toBottomOf="@+id/name2" />
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="55dp"
+                        android:src="@drawable/third"
+                        app:layout_constraintEnd_toEndOf="@+id/image3"
+                        app:layout_constraintStart_toStartOf="@+id/image3"
+                        app:layout_constraintTop_toTopOf="@+id/image2" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/image3"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/account_holder"
+                        app:layout_constraintBottom_toBottomOf="@+id/image1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/image1" />
+
+                    <TextView
+                        android:id="@+id/name3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="Prasanna Mishra"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/image3"
+                        app:layout_constraintStart_toStartOf="@+id/image3"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+                    <TextView
+                        android:id="@+id/score3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="340"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/name3"
+                        app:layout_constraintStart_toStartOf="@+id/name3"
+                        app:layout_constraintTop_toBottomOf="@+id/name3" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/leaderboardRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey" />
 
         <LinearLayout
+            android:id="@+id/myLeadeboardItem"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/numbering"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:paddingBottom="40dp"
-                android:paddingTop="40dp">
+                android:fontFamily="@font/work_sans_medium"
+                android:text="-"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="65dp"
-                    android:src="@drawable/first"
-                    app:layout_constraintEnd_toEndOf="@+id/image1"
-                    app:layout_constraintStart_toStartOf="@+id/image1"
-                    app:layout_constraintTop_toTopOf="@+id/image1" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/leaderboard_item_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/image1"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/account_holder"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/scoreboardName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/work_sans_medium"
+                android:text="Aawaz Gyawali"
+                android:textColor="@color/colorPrimaryText"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/name1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/work_sans_medium"
-                    android:text="Aawaz Gyawali"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="@+id/image1"
-                    app:layout_constraintStart_toStartOf="@+id/image1"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-                <TextView
-                    android:id="@+id/score1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/work_sans_medium"
-                    android:text="540"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/name1"
-                    app:layout_constraintStart_toStartOf="@+id/name1"
-                    app:layout_constraintTop_toBottomOf="@+id/name1" />
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="55dp"
-                    android:src="@drawable/second"
-                    app:layout_constraintEnd_toEndOf="@+id/image2"
-                    app:layout_constraintStart_toStartOf="@+id/image2"
-                    app:layout_constraintTop_toTopOf="@+id/image2" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/image2"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:src="@drawable/account_holder"
-                    app:layout_constraintBottom_toBottomOf="@+id/image1"
-                    app:layout_constraintEnd_toStartOf="@+id/image1"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/name2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/work_sans_medium"
-                    android:text="Roshan Gautam"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="@+id/image2"
-                    app:layout_constraintStart_toStartOf="@+id/image2"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
-                <TextView
-                    android:id="@+id/score2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/work_sans_medium"
-                    android:text="440"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/name2"
-                    app:layout_constraintStart_toStartOf="@+id/name2"
-                    app:layout_constraintTop_toBottomOf="@+id/name2" />
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="55dp"
-                    android:src="@drawable/third"
-                    app:layout_constraintEnd_toEndOf="@+id/image3"
-                    app:layout_constraintStart_toStartOf="@+id/image3"
-                    app:layout_constraintTop_toTopOf="@+id/image2" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/image3"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/account_holder"
-                    app:layout_constraintBottom_toBottomOf="@+id/image1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/image1" />
-
-                <TextView
-                    android:id="@+id/name3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/work_sans_medium"
-                    android:text="Prasanna Mishra"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="@+id/image3"
-                    app:layout_constraintStart_toStartOf="@+id/image3"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-                <TextView
-                    android:id="@+id/score3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/work_sans_medium"
-                    android:text="340"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/name3"
-                    app:layout_constraintStart_toStartOf="@+id/name3"
-                    app:layout_constraintTop_toBottomOf="@+id/name3" />
-
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/leaderboardRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/scoreboardScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/work_sans_medium"
+                android:gravity="center"
+                android:text="02"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/errorScore"

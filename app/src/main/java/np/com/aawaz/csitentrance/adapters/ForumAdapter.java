@@ -21,6 +21,7 @@ import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.CommentsActivity;
 import np.com.aawaz.csitentrance.activities.ProfileActivity;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.MyApplication;
@@ -30,12 +31,12 @@ import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> {
 
-    Context context;
-    LayoutInflater inflater;
+    private Context context;
+    private LayoutInflater inflater;
     private boolean fromForum;
-    ArrayList<Post> posts = new ArrayList<>();
+    private ArrayList<Post> posts = new ArrayList<>();
 
-    ClickListener clickListener;
+    private ClickListener clickListener;
 
 
     public ForumAdapter(Context context, boolean fromForum) {
@@ -102,7 +103,8 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         return posts.size();
     }
 
-    public void addToTop(Post post) {
+    public void addToTop(Post post, String key) {
+        post.key = key;
         posts.add(0, post);
         notifyItemInserted(0);
     }
@@ -138,6 +140,10 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         return posts.get(position).message;
     }
 
+    public String getKeyAt(int position) {
+        return posts.get(position).key;
+    }
+
     private String getCommentMessage(Post post) {
         return post.comment_count == 1 ? " comment" : " comments";
     }
@@ -147,30 +153,40 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         ImageView editIcon;
         CircleImageView profile;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
-            commentCount = (TextView) itemView.findViewById(R.id.commentCount);
-            realPost = (TextView) itemView.findViewById(R.id.realPost);
-            postedBy = (TextView) itemView.findViewById(R.id.postedBy);
-            time = (TextView) itemView.findViewById(R.id.forumTime);
+            commentCount = itemView.findViewById(R.id.commentCount);
+            realPost = itemView.findViewById(R.id.realPost);
+            postedBy = itemView.findViewById(R.id.postedBy);
+            time = itemView.findViewById(R.id.forumTime);
             editIcon = itemView.findViewById(R.id.editIcon);
-            profile = (CircleImageView) itemView.findViewById(R.id.forumPic);
+            profile = itemView.findViewById(R.id.forumPic);
             editIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    clickListener.itemLongClicked(view, getAdapterPosition());
+                    if (clickListener != null)
+                        clickListener.itemLongClicked(view, getAdapterPosition());
                 }
             });
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    clickListener.itemClicked(view, getAdapterPosition());
+                    if (clickListener != null)
+                        clickListener.itemClicked(view, getAdapterPosition());
+                    else {
+                        context.startActivity(new Intent(context, CommentsActivity.class)
+                                .putExtra("key", getKeyAt(getAdapterPosition()))
+                                .putExtra("message", getMessageAt(getAdapterPosition()))
+                                .putExtra("comment_count", getCommentCount(getAdapterPosition())));
+                    }
+
                 }
             });
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    clickListener.itemLongClicked(v, getAdapterPosition());
+                    if (clickListener != null)
+                        clickListener.itemLongClicked(v, getAdapterPosition());
                     return true;
                 }
             });

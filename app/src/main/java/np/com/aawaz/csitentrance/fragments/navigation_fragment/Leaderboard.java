@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -37,7 +38,7 @@ import np.com.aawaz.csitentrance.adapters.LeaderboardAdapter;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 
-public class LeaderBoard extends Fragment {
+public class Leaderboard extends Fragment {
 
     ArrayList<String> names = new ArrayList<>();
     ArrayList<Long> scores = new ArrayList<>();
@@ -49,6 +50,10 @@ public class LeaderBoard extends Fragment {
     CircleImageView image1, image2, image3;
     TextView score1, score2, score3;
     TextView name1, name2, name3;
+
+    TextView myName, myScore;
+    CircleImageView myImage;
+    LinearLayout myCard;
 
     TextView[] topNames;
 
@@ -85,6 +90,11 @@ public class LeaderBoard extends Fragment {
         topScores = new TextView[]{score1, score2, score3};
         circleImageViews = new CircleImageView[]{image1, image2, image3};
 
+        myName = view.findViewById(R.id.scoreboardName);
+        myImage = view.findViewById(R.id.leaderboard_item_image);
+        myScore = view.findViewById(R.id.scoreboardScore);
+
+        myCard = view.findViewById(R.id.myLeadeboardItem);
 
         errorLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +117,16 @@ public class LeaderBoard extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         fetchFromInternet();
+
+        populateOwn();
+    }
+
+    private void populateOwn() {
+        myName.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+        Picasso.with(getContext())
+                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
+                .into(myImage);
+        myScore.setText(String.valueOf(SPHandler.getInstance().getTotalScore()));
     }
 
     private void fetchFromInternet() {
@@ -126,6 +146,9 @@ public class LeaderBoard extends Fragment {
                                 JSONArray array = new JSONArray();
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     final Map<String, Object> user = document.getData();
+                                    if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(user.get("uid"))) {
+                                        myCard.setVisibility(View.GONE);
+                                    }
                                     JSONObject userDetail = new JSONObject();
                                     userDetail.put("name", user.get("name"));
                                     userDetail.put("uid", user.get("uid"));

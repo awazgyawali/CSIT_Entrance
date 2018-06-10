@@ -97,7 +97,7 @@ class ProfileActivity : AppCompatActivity(), ValueEventListener {
         data.children.forEach {
             val newPost = it.getValue(Post::class.java)
             if (newPost!!.author != null) {
-                adapter.addToTop(newPost)
+                adapter.addToTop(newPost, it.key)
             }
         }
     }

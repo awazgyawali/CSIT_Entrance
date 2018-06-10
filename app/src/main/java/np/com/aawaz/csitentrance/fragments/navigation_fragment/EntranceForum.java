@@ -139,7 +139,7 @@ public class EntranceForum extends Fragment implements
 
     private void fillRecyclerView() {
         progressBar.setVisibility(View.GONE);
-        adapter = new ForumAdapter(getContext(),true);
+        adapter = new ForumAdapter(getContext(), true);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setVisibility(View.VISIBLE);
@@ -224,7 +224,7 @@ public class EntranceForum extends Fragment implements
         Post newPost = dataSnapshot.getValue(Post.class);
         String currentKey = dataSnapshot.getKey();
         if (newPost.author != null) {
-            adapter.addToTop(newPost);
+            adapter.addToTop(newPost, dataSnapshot.getKey());
             key.add(0, currentKey);
         }
     }

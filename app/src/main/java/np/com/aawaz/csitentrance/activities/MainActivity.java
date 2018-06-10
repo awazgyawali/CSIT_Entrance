@@ -42,7 +42,7 @@ import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceForum;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceNews;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceResult;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.Home;
-import np.com.aawaz.csitentrance.fragments.navigation_fragment.LeaderBoard;
+import np.com.aawaz.csitentrance.fragments.navigation_fragment.Leaderboard;
 import np.com.aawaz.csitentrance.fragments.other_fragments.SubjectsList;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Feedback;
@@ -309,7 +309,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.leaderBoard:
-                manager.beginTransaction().replace(R.id.fragmentHolder, new LeaderBoard()).commit();
+                manager.beginTransaction().replace(R.id.fragmentHolder, new Leaderboard()).commit();
                 setTitle("Leaderboard");
                 tabLayout.setVisibility(View.GONE);
 
