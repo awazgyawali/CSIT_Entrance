@@ -46,8 +46,8 @@ public class YearsList extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        prepareCollegeModelQuestion();
+//todo model paper aaye sangai reveal garne
+        //prepareCollegeModelQuestion();
 
         prepareOldQuestions();
 
