@@ -1,11 +1,12 @@
 package np.com.aawaz.csitentrance.adapters;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.support.v4.app.SupportActivity;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,23 +24,27 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.CommentsActivity;
 import np.com.aawaz.csitentrance.activities.ProfileActivity;
+import np.com.aawaz.csitentrance.fragments.other_fragments.ACHSDialog;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.MyApplication;
+import np.com.aawaz.csitentrance.objects.PopupAd;
 import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 
 public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> {
 
-    private Context context;
+    private SupportActivity context;
     private LayoutInflater inflater;
     private boolean fromForum;
     private ArrayList<Post> posts = new ArrayList<>();
+    private static int TYPE_AD = 1;
+    private static int TYPE_POST = 2;
 
     private ClickListener clickListener;
 
 
-    public ForumAdapter(Context context, boolean fromForum) {
+    public ForumAdapter(SupportActivity context, boolean fromForum) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.fromForum = fromForum;
@@ -49,14 +54,50 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         this.clickListener = clickListener;
     }
 
-
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(inflater.inflate(R.layout.each_feed_item, parent, false));
+    public int getItemViewType(int position) {
+        if (position == 2)
+            return TYPE_AD;
+        return TYPE_POST;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == TYPE_POST)
+            return new ViewHolder(inflater.inflate(R.layout.each_feed_item, parent, false));
+        else
+            return new ViewHolder(inflater.inflate(R.layout.orchid_ad, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        if (position == 2) {
+            holder.call.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d("DEBUG", "This is a test message");
+                }
+            });
+            holder.core.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //sizing the dialog
+                    final PopupAd adToShow = new PopupAd();
+                    adToShow.banner_image = "orchid";
+                    adToShow.address = "Bijaya chowk, Behind Maitinepal, Kathmandu";
+                    adToShow.phone = "01-4479744";
+                    adToShow.title = "Orchid International College";
+                    adToShow.website = "http://www.oic.edu.np/";
+                    adToShow.detail = "We need a a short 3 line paragraph to mention here. Please do reply in the mail.";
+
+                    ACHSDialog dialog = new ACHSDialog();
+                    dialog.setContext(context);
+                    dialog.setAd(adToShow);
+                    dialog.show(context.getFragmentManager(), "orchid");
+                }
+            });
+            return;
+        }
         final Post post = posts.get(holder.getAdapterPosition());
         holder.postedBy.setText(post.author);
         holder.realPost.setText(post.message);
@@ -84,6 +125,14 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         } catch (Exception e) {
             holder.profile.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE));
         }
+
+        holder.editIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (clickListener != null)
+                    clickListener.itemLongClicked(view, position);
+            }
+        });
 
         holder.profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,24 +199,21 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView commentCount, realPost, postedBy, time;
-        ImageView editIcon;
+        ImageView editIcon, call;
         CircleImageView profile;
+        View core;
 
         ViewHolder(View itemView) {
             super(itemView);
+            core = itemView;
             commentCount = itemView.findViewById(R.id.commentCount);
+            call = itemView.findViewById(R.id.call_orchid);
             realPost = itemView.findViewById(R.id.realPost);
             postedBy = itemView.findViewById(R.id.postedBy);
             time = itemView.findViewById(R.id.forumTime);
             editIcon = itemView.findViewById(R.id.editIcon);
             profile = itemView.findViewById(R.id.forumPic);
-            editIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (clickListener != null)
-                        clickListener.itemLongClicked(view, getAdapterPosition());
-                }
-            });
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

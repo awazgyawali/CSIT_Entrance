@@ -52,12 +52,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-        <np.com.aawaz.csitentrance.custom_views.CollegeAdCard
-            android:id="@+id/forum_ad"
-            android:layout_width="match_parent"
-            android:visibility="gone"
-            android:layout_height="wrap_content" />
+        <include
+            layout="@layout/orchid_ad"
+            android:visibility="gone" />
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/forumSwipeRefresh"

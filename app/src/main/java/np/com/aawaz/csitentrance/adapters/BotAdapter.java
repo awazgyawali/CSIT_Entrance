@@ -2,6 +2,7 @@ package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ public class BotAdapter extends RecyclerView.Adapter<BotAdapter.VH> {
 
     @Override
     public void onBindViewHolder(final VH holder, final int position) {
-        holder.message.setText(messages.get(position).text);
+        holder.message.setText(Html.fromHtml(messages.get(position).text));
     }
 
     @Override

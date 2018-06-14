@@ -1,12 +1,13 @@
 package np.com.aawaz.csitentrance.fragments.other_fragments;
 
 import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.text.Html;
 import android.util.DisplayMetrics;
@@ -30,10 +31,15 @@ import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class ACHSDialog extends DialogFragment {
     ImageView imagePopup;
-    TextView title, address, content, call, know, facebook, close;
+    TextView title, address, content, call, know, close;
     ViewSwitcher popupViewSwitcher;
     boolean isDataShowing = false;
+    private Context context;
+    private PopupAd adToShow;
 
+    public void setContext(Context context) {
+        this.context = context;
+    }
 
     @Nullable
     @Override
@@ -53,7 +59,6 @@ public class ACHSDialog extends DialogFragment {
         content = (TextView) view.findViewById(R.id.popup_desc);
         call = (TextView) view.findViewById(R.id.call_popup);
         know = (TextView) view.findViewById(R.id.popup_knowmore);
-        facebook = (TextView) view.findViewById(R.id.popup_facebook);
         close = (TextView) view.findViewById(R.id.closePopup);
         popupViewSwitcher.showNext();
     }
@@ -62,9 +67,9 @@ public class ACHSDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
-
         // request a window without the title
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         return dialog;
     }
 
@@ -80,16 +85,11 @@ public class ACHSDialog extends DialogFragment {
         fillAd();
     }
 
-    private void fillAd() {
-        //sizing the dialog
-        final PopupAd adToShow = new PopupAd();
-        adToShow.banner_image = "achs";
-        adToShow.address = "Dhobidhara Marg,Kathmandu (Near Kumari Hall)";
-        adToShow.phone = "01-4436383";
-        adToShow.title = "Asian College of Higher Studies";
-        adToShow.website = "http://www.achsnepal.edu.np";
-        adToShow.detail = "ACHS announces admission open for BSc CSIT 2074. <br><br>Secure your seat now. <br>For more detail, call 01-4436383.";
+    public void setAd(final PopupAd adToShow) {
+        this.adToShow = adToShow;
+    }
 
+    private void fillAd() {
         int image = 0;
         switch (adToShow.banner_image) {
             case "samriddhi":
@@ -101,14 +101,17 @@ public class ACHSDialog extends DialogFragment {
             case "achs":
                 image = R.drawable.achs_full_image;
                 break;
+            case "orchid":
+                image = R.drawable.orchid_splash;
+                break;
         }
 
 
         new EventSender()
                 .logEvent(adToShow.banner_image + "_popup");
 
-        imagePopup.setImageDrawable(ContextCompat.getDrawable(getContext(), image));
-        Picasso.with(getContext())
+        imagePopup.setImageDrawable(ContextCompat.getDrawable(context, image));
+        Picasso.with(context)
                 .load(image)
                 .into(imagePopup);
 
@@ -142,22 +145,6 @@ public class ACHSDialog extends DialogFragment {
                         .setValue(new Feedback(SPHandler.getInstance().getPhoneNo()));
 
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(adToShow.website)));
-                dismiss();
-            }
-        });
-
-
-        facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseDatabase.getInstance().getReference()
-                        .child("ad_user_data")
-                        .child(adToShow.title)
-                        .child("students")
-                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                        .setValue(new Feedback(SPHandler.getInstance().getPhoneNo()));
-
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/achscollege/")));
                 dismiss();
             }
         });

@@ -53,7 +53,6 @@ public class EntranceForum extends Fragment implements
     ArrayList<String> key = new ArrayList<>();
     DatabaseReference reference;
     FloatingActionButton floatingActionButton;
-    CollegeAdCard achsAd;
     private LinearLayoutManager mLinearLayoutManager;
     private boolean running = true;
 
@@ -77,7 +76,6 @@ public class EntranceForum extends Fragment implements
         progressBar = view.findViewById(R.id.progressCircleFullFeed);
         recyclerView = view.findViewById(R.id.fullFeedRecycler);
         floatingActionButton = view.findViewById(R.id.fabForumPost);
-        achsAd = view.findViewById(R.id.forum_ad);
         final SwipeRefreshLayout forumSwipeRefresh = view.findViewById(R.id.forumSwipeRefresh);
         forumSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -87,19 +85,16 @@ public class EntranceForum extends Fragment implements
             }
         });
 
-        achsAd.setName("Asian College  of Higher Studies")
-                .setAddress("Dhobidhara Marg, Kathmandu ")
-                .setLogo(R.drawable.achs)
-                .setSpecialMessage("Announces Admission open for BSc CSIT")
-                .setPhoneNumber("01-4436383");
 
-        achsAd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ACHSDialog dialog = new ACHSDialog();
-                dialog.show(getChildFragmentManager(), "achs");
-            }
-        });
+        //todo hanle orchid ko yaha
+
+//        achsAd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ACHSDialog dialog = new ACHSDialog();
+//                dialog.show(getChildFragmentManager(), "achs");
+//            }
+//        });
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +132,7 @@ public class EntranceForum extends Fragment implements
 
     private void fillRecyclerView() {
         progressBar.setVisibility(View.GONE);
-        adapter = new ForumAdapter(getContext(), true);
+        adapter = new ForumAdapter(getActivity(), true);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setVisibility(View.VISIBLE);
