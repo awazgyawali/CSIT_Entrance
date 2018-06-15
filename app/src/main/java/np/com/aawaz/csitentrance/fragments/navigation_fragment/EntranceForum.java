@@ -3,6 +3,7 @@ package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -34,10 +35,9 @@ import np.com.aawaz.csitentrance.activities.CommentsActivity;
 import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.activities.PostForumActivity;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
-import np.com.aawaz.csitentrance.custom_views.CollegeAdCard;
 import np.com.aawaz.csitentrance.fragments.other_fragments.ACHSDialog;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
-import np.com.aawaz.csitentrance.objects.EventSender;
+import np.com.aawaz.csitentrance.objects.PopupAd;
 import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
@@ -85,16 +85,29 @@ public class EntranceForum extends Fragment implements
             }
         });
 
+        view.findViewById(R.id.forum_ad).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final PopupAd adToShow = new PopupAd();
+                adToShow.banner_image = "orchid";
+                adToShow.address = "Bijaya chowk, Behind Maitinepal, Kathmandu";
+                adToShow.phone = "01-4479744";
+                adToShow.title = "Orchid International College";
+                adToShow.website = "http://www.oic.edu.np/";
+                adToShow.detail = "College aims to provide value based quality education that will enable the students to embrace the challenges of the modern world and establish the foundation for a successful future. Well equipped infrastructure, competent and committed faculty members, effective management and well disciplined students are the major four pillars of Orchid International College.";
 
-        //todo hanle orchid ko yaha
-
-//        achsAd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ACHSDialog dialog = new ACHSDialog();
-//                dialog.show(getChildFragmentManager(), "achs");
-//            }
-//        });
+                ACHSDialog dialog = new ACHSDialog();
+                dialog.setContext(getContext());
+                dialog.setAd(adToShow);
+                dialog.show(getChildFragmentManager(), "orchid");
+            }
+        });
+        view.findViewById(R.id.call_orchid).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "01-4479744", null)));
+            }
+        });
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

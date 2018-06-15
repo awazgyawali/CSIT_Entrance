@@ -54,7 +54,7 @@
 
         <include
             layout="@layout/orchid_ad"
-            android:visibility="gone" />
+            android:id="@+id/forum_ad"/>
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/forumSwipeRefresh"
