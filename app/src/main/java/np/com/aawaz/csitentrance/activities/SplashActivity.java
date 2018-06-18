@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.crashlytics.android.Crashlytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.EventSender;
@@ -31,6 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             Crashlytics.logException(e);
         }
         new EventSender().logEvent("app_opened");
+        new EventSender().logEvent("orchid_splash");
         sign_in_intent = new Intent(this, SignInActivity.class);
         main_activity_intent = new Intent(context, MainActivity.class)
                 .replaceExtras(getIntent().getExtras());

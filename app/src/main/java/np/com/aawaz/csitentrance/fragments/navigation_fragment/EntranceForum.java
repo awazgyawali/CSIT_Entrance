@@ -37,6 +37,7 @@ import np.com.aawaz.csitentrance.activities.PostForumActivity;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
 import np.com.aawaz.csitentrance.fragments.other_fragments.ACHSDialog;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
+import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.PopupAd;
 import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
@@ -85,6 +86,7 @@ public class EntranceForum extends Fragment implements
             }
         });
 
+        new EventSender().logEvent("orchid_forum");
         view.findViewById(R.id.forum_ad).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -80,27 +80,25 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
         news.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (newsSub)
-                    FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
-                else
+                if (isChecked)
                     FirebaseMessaging.getInstance().subscribeToTopic("news");
-                newsSub = !newsSub;
-                SPHandler.getInstance().setNewsSubscribed(newsSub);
+                else
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+                SPHandler.getInstance().setNewsSubscribed(isChecked);
             }
         });
 
         forum.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (forumSub)
-                    FirebaseMessaging.getInstance().unsubscribeFromTopic("forum");
-                else
+                if (isChecked)
                     FirebaseMessaging.getInstance().subscribeToTopic("forum");
-                forumSub = !forumSub;
-                SPHandler.getInstance().setForumSubscribed(forumSub);
+                else
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("forum");
+                SPHandler.getInstance().setForumSubscribed(isChecked);
             }
         });
-        showAnswer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        showAnswer.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SPHandler.getInstance().showAnswer(isChecked);
