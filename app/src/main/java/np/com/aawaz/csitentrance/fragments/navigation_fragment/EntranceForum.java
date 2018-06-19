@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
@@ -146,7 +147,6 @@ public class EntranceForum extends Fragment implements
     }
 
     private void fillRecyclerView() {
-        progressBar.setVisibility(View.GONE);
         adapter = new ForumAdapter(getActivity(), true);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
@@ -232,6 +232,8 @@ public class EntranceForum extends Fragment implements
         Post newPost = dataSnapshot.getValue(Post.class);
         String currentKey = dataSnapshot.getKey();
         if (newPost.author != null) {
+            if (mLinearLayoutManager.findFirstCompletelyVisibleItemPosition() == 0 || newPost.uid.equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+                recyclerView.scrollToPosition(0);
             adapter.addToTop(newPost, dataSnapshot.getKey());
             key.add(0, currentKey);
         }

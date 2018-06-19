@@ -58,7 +58,7 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(main_activity_intent);
                     finish();
                 }
-            }, 2000);
+            }, 5000);
         } else {
             startActivity(sign_in_intent);
             finish();
