@@ -119,6 +119,12 @@ public class YearsList extends Fragment {
         item12.title = "Model 6";
         item12.paperCode = 11;
         items.add(item12);
+
+        YearItem item13 = new YearItem();
+        item12.type = YearItem.YEAR_SET;
+        item12.title = "Model 7 (NEW)";
+        item12.paperCode = 12;
+        items.add(item13);
     }
 
     private void prepareOldQuestions() {
