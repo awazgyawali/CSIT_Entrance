@@ -322,4 +322,10 @@ public class SPHandler {
     public String getForumData() {
         return infoSp.getString("forum_data", null);
     }
+
+    public boolean isOddSplash() {
+        boolean value = infoSp.getBoolean("splash_counter", false);
+        infoEditor.putBoolean("splash_counter", !value).apply();
+        return value;
+    }
 }

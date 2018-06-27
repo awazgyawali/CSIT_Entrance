@@ -46,8 +46,8 @@ public class YearsList extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//todo model paper aaye sangai reveal garne
-        //prepareCollegeModelQuestion();
+
+        prepareCollegeModelQuestion();
 
         prepareOldQuestions();
 
@@ -61,20 +61,15 @@ public class YearsList extends Fragment {
 
         YearItem modelHeader = new YearItem();
         modelHeader.type = YearItem.SECTION_TITLE;
-        modelHeader.title = "College Model Question";
+        modelHeader.title = "College Model Questions";
         items.add(modelHeader);
 
         YearItem item7 = new YearItem();
         item7.type = YearItem.COLLEGE_MODEL;
-        item7.title = "ACHS Model Question";
+        item7.title = "Samriddhi Model Paper";
+        item7.logo = R.drawable.samriddhi_logo;
         item7.paperCode = 12;
         items.add(item7);
-
-        YearItem item8 = new YearItem();
-        item8.type = YearItem.COLLEGE_MODEL;
-        item8.title = "Sagarmatha Model Question";
-        item8.paperCode = 13;
-        items.add(item8);
 
     }
 
@@ -119,12 +114,6 @@ public class YearsList extends Fragment {
         item12.title = "Model 6";
         item12.paperCode = 11;
         items.add(item12);
-
-        YearItem item13 = new YearItem();
-        item12.type = YearItem.YEAR_SET;
-        item12.title = "Model 7 (NEW)";
-        item12.paperCode = 12;
-        items.add(item13);
     }
 
     private void prepareOldQuestions() {

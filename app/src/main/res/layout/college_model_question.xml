@@ -10,54 +10,19 @@
         android:layout_margin="3dp"
         app:cardCornerRadius="10dp">
 
-        <android.support.constraint.ConstraintLayout
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/modelAdImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="80dp"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/samriddhi_logo" />
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:contentDescription="College Logo"
-                android:src="@drawable/achs"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/logo"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/work_sans_medium"
-                    android:maxLines="2"
-                    android:text="ACHS Model Question"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/work_sans_medium"
-                    android:text="Sukedhara, Kathmandu" />
-            </LinearLayout>
-
-        </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

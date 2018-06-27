@@ -68,11 +68,12 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
                 }
             });
         } else if (item.type == YearItem.COLLEGE_MODEL) {
+            holder.logo.setImageResource(item.logo);
             holder.core.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     context.startActivity(new Intent(context, ModelPaperDetailActivity.class)
-                            .putExtra("college", "ACHS"));
+                            .putExtra("college", "samriddhi"));
                 }
             });
         }
@@ -96,6 +97,7 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
             address = itemView.findViewById(R.id.address);
             play = itemView.findViewById(R.id.year_play);
             view = itemView.findViewById(R.id.year_view);
+            logo = itemView.findViewById(R.id.modelAdImage);
             core = itemView;
         }
     }

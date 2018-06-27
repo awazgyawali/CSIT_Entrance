@@ -6,11 +6,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.objects.EventSender;
@@ -25,6 +25,13 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+
+        ImageView adImage = findViewById(R.id.adImage);
+        if (SPHandler.getInstance().isOddSplash())
+            adImage.setImageResource(R.drawable.splash_achs);
+        else
+            adImage.setImageResource(R.drawable.orchid_splash);
         context = this;
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
