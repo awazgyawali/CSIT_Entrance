@@ -91,7 +91,7 @@ public class ACHSDialog extends DialogFragment {
 
     private void fillAd() {
         int image = 0;
-        switch (adToShow.getBanner_image()) {
+        switch (adToShow.banner_image) {
             case "samriddhi":
                 image = R.drawable.samriddhi;
                 break;
@@ -102,28 +102,28 @@ public class ACHSDialog extends DialogFragment {
 
 
         new EventSender()
-                .logEvent(adToShow.getBanner_image() + "_popup");
+                .logEvent(adToShow.banner_image + "_popup");
 
         imagePopup.setImageDrawable(ContextCompat.getDrawable(context, image));
         Picasso.with(context)
                 .load(image)
                 .into(imagePopup);
 
-        title.setText(adToShow.getTitle());
-        address.setText(adToShow.getAddress());
-        content.setText(Html.fromHtml(adToShow.getDetail()));
+        title.setText(adToShow.title);
+        address.setText(adToShow.address);
+        content.setText(Html.fromHtml(adToShow.detail));
 
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseDatabase.getInstance().getReference()
                         .child("ad_user_data")
-                        .child(adToShow.getTitle())
+                        .child(adToShow.title)
                         .child("students")
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .setValue(new Feedback(SPHandler.getInstance().getPhoneNo()));
 
-                startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", adToShow.getPhone(), null)));
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", adToShow.phone, null)));
                 dismiss();
             }
         });
@@ -133,12 +133,12 @@ public class ACHSDialog extends DialogFragment {
             public void onClick(View v) {
                 FirebaseDatabase.getInstance().getReference()
                         .child("ad_user_data")
-                        .child(adToShow.getTitle())
+                        .child(adToShow.title)
                         .child("students")
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .setValue(new Feedback(SPHandler.getInstance().getPhoneNo()));
 
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(adToShow.getWebsite())));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(adToShow.website)));
                 dismiss();
             }
         });

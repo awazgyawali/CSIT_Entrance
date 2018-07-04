@@ -145,10 +145,10 @@ public class EntranceNews extends Fragment implements ClickListener, ChildEventL
     public void itemClicked(View view, int position) {
         News eachNews = newsAdapter.getNewsAt(position);
         Bundle bundle = new Bundle();
-        bundle.putString("title", eachNews.getTitle());
-        bundle.putString("author", eachNews.getAuthor());
-        bundle.putString("detail", eachNews.getMessage());
-        bundle.putLong("time", eachNews.getTime_stamp());
+        bundle.putString("title", eachNews.title);
+        bundle.putString("author", eachNews.author);
+        bundle.putString("detail", eachNews.message);
+        bundle.putLong("time", eachNews.time_stamp);
         startActivity(new Intent(getContext(), NewsDetailActivity.class).putExtra("data", bundle));
     }
 

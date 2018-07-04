@@ -17,7 +17,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
@@ -92,12 +91,12 @@ public class EntranceForum extends Fragment implements
             @Override
             public void onClick(View view) {
                 final PopupAd adToShow = new PopupAd();
-                adToShow.setBanner_image("orchid");
-                adToShow.setAddress("Bijaya chowk, Behind Maitinepal, Kathmandu");
-                adToShow.setPhone("01-4479744");
-                adToShow.setTitle("Orchid International College");
-                adToShow.setWebsite("http://www.oic.edu.np/");
-                adToShow.setDetail("College aims to provide value based quality education that will enable the students to embrace the challenges of the modern world and establish the foundation for a successful future. Well equipped infrastructure, competent and committed faculty members, effective management and well disciplined students are the major four pillars of Orchid International College.");
+                adToShow.banner_image = "orchid";
+                adToShow.address = ("Bijaya chowk, Behind Maitinepal, Kathmandu");
+                adToShow.phone = ("01-4479744");
+                adToShow.phone = ("Orchid International College");
+                adToShow.website = ("http://www.oic.edu.np/");
+                adToShow.detail = ("College aims to provide value based quality education that will enable the students to embrace the challenges of the modern world and establish the foundation for a successful future. Well equipped infrastructure, competent and committed faculty members, effective management and well disciplined students are the major four pillars of Orchid International College.");
 
                 ACHSDialog dialog = new ACHSDialog();
                 dialog.setContext(getContext());
