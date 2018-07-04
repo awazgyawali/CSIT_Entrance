@@ -74,7 +74,7 @@ public class MyMessagingService extends FirebaseMessagingService {
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
-        int count = SPHandler.getInstance().getUnreadPostCount();
+        int count = SPHandler.getInstance().getUnreadPostMessages().size();
         if (notification.getText().contains("posted") && count > 1) {
             NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
             ArrayList<String> messages = SPHandler.getInstance().getUnreadPostMessages();

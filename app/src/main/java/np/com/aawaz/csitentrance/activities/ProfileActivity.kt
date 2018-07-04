@@ -96,7 +96,7 @@ class ProfileActivity : AppCompatActivity(), ValueEventListener {
             noPost.visibility = View.VISIBLE
         data.children.forEach {
             val newPost = it.getValue(Post::class.java)
-            if (newPost!!.author != null) {
+            if (newPost?.author != null) {
                 adapter.addToTop(newPost, it.key)
             }
         }
@@ -110,7 +110,7 @@ class ProfileActivity : AppCompatActivity(), ValueEventListener {
     }
 
     private fun getUserInfo(uid: String) {
-        FirebaseFirestore.getInstance().collection("users").document(uid).get().addOnCompleteListener({
+        FirebaseFirestore.getInstance().collection("users").document(uid).get().addOnCompleteListener {
             if (it.isSuccessful) {
                 loading.visibility = View.GONE
                 val data = it.result
@@ -120,11 +120,11 @@ class ProfileActivity : AppCompatActivity(), ValueEventListener {
                         .load(data.get("image_url").toString())
                         .into(imageView)
             }
-        })
+        }
     }
 
     private fun getScoresOfUser(uid: String) {
-        FirebaseFirestore.getInstance().collection("scores").document(uid).get().addOnCompleteListener({
+        FirebaseFirestore.getInstance().collection("scores").document(uid).get().addOnCompleteListener {
             if (it.isSuccessful) {
                 loading.visibility = View.GONE
                 val data = it.result
@@ -133,7 +133,7 @@ class ProfileActivity : AppCompatActivity(), ValueEventListener {
                 english.text = "${data.get("english").toString()}\nEnglish"
                 math.text = "${data.get("math").toString()}\nMathematics"
             }
-        })
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

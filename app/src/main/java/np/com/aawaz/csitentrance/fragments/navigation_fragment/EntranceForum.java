@@ -231,8 +231,8 @@ public class EntranceForum extends Fragment implements
         progressBar.setVisibility(View.GONE);
         Post newPost = dataSnapshot.getValue(Post.class);
         String currentKey = dataSnapshot.getKey();
-        if (newPost.getAuthor() != null) {
-            if (mLinearLayoutManager.findFirstCompletelyVisibleItemPosition() == 0 || newPost.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+        if (newPost.author != null) {
+            if (mLinearLayoutManager.findFirstCompletelyVisibleItemPosition() == 0 || newPost.uid.equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
                 recyclerView.scrollToPosition(0);
             adapter.addToTop(newPost, dataSnapshot.getKey());
             key.add(0, currentKey);
@@ -243,7 +243,7 @@ public class EntranceForum extends Fragment implements
     public void onChildChanged(DataSnapshot dataSnapshot, String s) {
         Post editedPost = dataSnapshot.getValue(Post.class);
         int index = key.indexOf(dataSnapshot.getKey());
-        if (editedPost.getAuthor() != null) {
+        if (editedPost.author != null) {
             adapter.editItemAtPosition(editedPost, index);
         }
     }

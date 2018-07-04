@@ -303,21 +303,21 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
                 forumContainer.setVisibility(View.VISIBLE);
 
                 final Post post = dataSnapshot.getValue(Post.class);
-                if (post.getAuthor() == null) {
+                if (post.author == null) {
                     Toast.makeText(CommentsActivity.this, "The post has been deleted.", Toast.LENGTH_SHORT);
                     return;
                 }
-                postedBy.setText(post.getAuthor() + " ");
-                realPost.setText(post.getMessage());
-                forumTime.setText(getRelativeTimeSpanString(post.getTime_stamp()));
+                postedBy.setText(post.author + " ");
+                realPost.setText(post.message);
+                forumTime.setText(getRelativeTimeSpanString(post.time_stamp));
                 forumPic.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        startActivity(new Intent(CommentsActivity.this, ProfileActivity.class).putExtra("uid", post.getUid()));
+                        startActivity(new Intent(CommentsActivity.this, ProfileActivity.class).putExtra("uid", post.uid));
                     }
                 });
 
-                if (SPHandler.containsDevUID(post.getUid()))
+                if (SPHandler.containsDevUID(post.uid))
                     postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.admin, 0);
                 else
                     postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -325,12 +325,12 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
 
                 try {
                     Picasso.with(MyApplication.getAppContext())
-                            .load(post.getImage_url())
-                            .error(TextDrawable.builder().buildRound(String.valueOf(post.getAuthor().charAt(0)).toUpperCase(), Color.BLUE))
-                            .placeholder(TextDrawable.builder().buildRound(String.valueOf(post.getAuthor().charAt(0)).toUpperCase(), Color.BLUE))
+                            .load(post.image_url)
+                            .error(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE))
+                            .placeholder(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE))
                             .into(forumPic);
                 } catch (Exception e) {
-                    forumPic.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(post.getAuthor().charAt(0)).toUpperCase(), Color.BLUE));
+                    forumPic.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE));
                 }
                 Log.d("Debug", post.toString());
             }

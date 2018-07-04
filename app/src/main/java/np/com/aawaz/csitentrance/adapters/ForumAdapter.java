@@ -57,31 +57,31 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Post post = posts.get(holder.getAdapterPosition());
-        holder.postedBy.setText(post.getAuthor());
-        holder.realPost.setText(post.getMessage());
-        holder.commentCount.setText(post.getComment_count() + getCommentMessage(post));
+        holder.postedBy.setText(post.author);
+        holder.realPost.setText(post.message);
+        holder.commentCount.setText(post.comment_count + getCommentMessage(post));
         holder.commentCount.setPaintFlags(holder.commentCount.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        holder.time.setText(getRelativeTimeSpanString(post.getTime_stamp()));
+        holder.time.setText(getRelativeTimeSpanString(post.time_stamp));
 
-        if (SPHandler.containsDevUID(post.getUid()))
+        if (SPHandler.containsDevUID(post.uid))
             holder.postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.admin, 0);
         else
             holder.postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
 
-        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(post.getUid()))
+        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(post.uid))
             holder.editIcon.setVisibility(View.VISIBLE);
         else
             holder.editIcon.setVisibility(View.GONE);
 
         try {
             Picasso.with(MyApplication.getAppContext())
-                    .load(post.getImage_url())
-                    .error(TextDrawable.builder().buildRound(String.valueOf(post.getAuthor().charAt(0)).toUpperCase(), Color.BLUE))
-                    .placeholder(TextDrawable.builder().buildRound(String.valueOf(post.getAuthor().charAt(0)).toUpperCase(), Color.BLUE))
+                    .load(post.image_url)
+                    .error(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE))
+                    .placeholder(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE))
                     .into(holder.profile);
         } catch (Exception e) {
-            holder.profile.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(post.getAuthor().charAt(0)).toUpperCase(), Color.BLUE));
+            holder.profile.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE));
         }
 
         holder.editIcon.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +96,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
             @Override
             public void onClick(View view) {
                 if (fromForum)
-                    context.startActivity(new Intent(context, ProfileActivity.class).putExtra("uid", post.getUid()));
+                    context.startActivity(new Intent(context, ProfileActivity.class).putExtra("uid", post.uid));
             }
         });
     }
@@ -111,7 +111,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
     }
 
     public void addToTop(Post post, String key) {
-        post.setKey(key);
+        post.key = key;
         posts.add(0, post);
         notifyItemInserted(0);
     }
@@ -136,23 +136,23 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
     }
 
     public String getUidAt(int position) {
-        return posts.get(position).getUid();
+        return posts.get(position).uid;
     }
 
     public int getCommentCount(int position) {
-        return posts.get(position).getComment_count();
+        return posts.get(position).comment_count;
     }
 
     public String getMessageAt(int position) {
-        return posts.get(position).getMessage();
+        return posts.get(position).message;
     }
 
     public String getKeyAt(int position) {
-        return posts.get(position).getKey();
+        return posts.get(position).key;
     }
 
     private String getCommentMessage(Post post) {
-        return post.getComment_count() == 1 ? " comment" : " comments";
+        return post.comment_count == 1 ? " comment" : " comments";
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
