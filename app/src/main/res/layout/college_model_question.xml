@@ -20,7 +20,7 @@
             android:id="@+id/modelAdImage"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:padding="5dp"
+            android:layout_margin="8dp"
             android:scaleType="fitXY"
             android:src="@drawable/samriddhi_logo" />
 

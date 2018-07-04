@@ -28,10 +28,13 @@ public class SplashActivity extends AppCompatActivity {
 
 
         ImageView adImage = findViewById(R.id.adImage);
-        if (SPHandler.getInstance().isOddSplash())
+        if (SPHandler.getInstance().isOddSplash()) {
             adImage.setImageResource(R.drawable.splash_achs);
-        else
+            new EventSender().logEvent("achs_splash");
+        } else {
             adImage.setImageResource(R.drawable.orchid_splash);
+            new EventSender().logEvent("orchid_splash");
+        }
         context = this;
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
@@ -39,7 +42,6 @@ public class SplashActivity extends AppCompatActivity {
             Crashlytics.logException(e);
         }
         new EventSender().logEvent("app_opened");
-        new EventSender().logEvent("orchid_splash");
         sign_in_intent = new Intent(this, SignInActivity.class);
         main_activity_intent = new Intent(context, MainActivity.class)
                 .replaceExtras(getIntent().getExtras());

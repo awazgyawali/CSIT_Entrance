@@ -51,11 +51,11 @@ public class NotificationActivity extends AppCompatActivity {
 
         while (cursor.moveToNext()) {
             Notification notification = new Notification();
-            notification.title = cursor.getString(cursor.getColumnIndex("title"));
-            notification.text = cursor.getString(cursor.getColumnIndex("text"));
-            notification.post_id = cursor.getString(cursor.getColumnIndex("post_id"));
-            notification.tag = cursor.getString(cursor.getColumnIndex("tag"));
-            notification.time = cursor.getLong(cursor.getColumnIndex("time"));
+            notification.setTitle(cursor.getString(cursor.getColumnIndex("title")));
+            notification.setText(cursor.getString(cursor.getColumnIndex("text")));
+            notification.setPost_id(cursor.getString(cursor.getColumnIndex("post_id")));
+            notification.setTag(cursor.getString(cursor.getColumnIndex("tag")));
+            notification.setTime(cursor.getLong(cursor.getColumnIndex("time")));
 
             notifications.add(notification);
         }

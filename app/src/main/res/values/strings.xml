@@ -10,10 +10,8 @@
 
     <string name="close">Close</string>
     <string name="open">Open</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3751722582271673/1440606748</string>
 
 
-    <string name="viewResult">http://csitentrance.brainants.com/result.php?rollNo=</string>
     <string name="register">http://csitentrance.brainants.com/exam_reg.php</string>
 
     <string name="privacy_policy">Provide us your mobile number so that you can get great breakig updates via an SMS alert.</string>
@@ -32,6 +30,7 @@
         <item>Model Question 4</item>
         <item>Model Question 5 </item>
         <item>Model Question 6</item>
+        <item>Samriddhi Model Question</item>
         <item>Model Question 7</item>
     </string-array>
     <string name="title_activity_notification">NotificationActivity</string>

@@ -10,8 +10,6 @@
 
     </style>
 
-    <style name="Theme.Dialog" parent="Theme.AppCompat.Light.Dialog" />
-
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="AppTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
@@ -42,14 +40,4 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="FullscreenTheme" parent="AppTheme">
-        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
-        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
-    </style>
-
-    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
-        <item name="android:background">@color/black_overlay</item>
-    </style>
 </resources>

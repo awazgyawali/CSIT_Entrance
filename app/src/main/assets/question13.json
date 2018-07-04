@@ -2,7 +2,7 @@
 {
   "questions": [
     {
-      "question": "1) <b>I,your father and you</b> are going for a party.",
+      "question": "1) _________________ are going for a party.",
       "a": "You,I and your father",
       "b": "You,your father and I",
       "c": "I,you and your father",
@@ -66,7 +66,7 @@
       "ans": "c"
     },
     {
-      "question": "9) He always <b>gets on my nerves</b> means?",
+      "question": "9) What does '<b>He always gets on my nerves'</b> mean?",
       "a": "irritates",
       "b": "disturbs",
       "c": "disappoints",
@@ -154,7 +154,7 @@
       "ans": "c"
     },
     {
-      "question": "20) Sita said,\"Will you be quiet.\"",
+      "question": "20) Sita said, \"Will you be quiet.\". The indirect speech of the sentence is ",
       "a": "Sita told to be quiet.",
       "b": "Sita told us would you be quiet.",
       "c": "Sita told us will you be quiet.",
@@ -186,7 +186,7 @@
       "ans": "b"
     },
     {
-      "question": "24) Acrophobia :",
+      "question": "24) Acrophobia is",
       "a": "fear of heights",
       "b": "fear of cats",
       "c": "fear of fire",
@@ -306,7 +306,7 @@
       "ans": "d"
     },
     {
-      "question": "39) The radius of circle x<sub>2</sub>+y<sub>2</sub>-2x+6y+9=0 is",
+      "question": "39) The radius of circle x<sup>2</sup>+y<sup>2</sup>-2x+6y+9=0 is",
       "a": "2",
       "b": "5",
       "c": "3",
@@ -322,7 +322,7 @@
       "ans": "a"
     },
     {
-      "question": "41) lim <sub>x=>2</sub> x<sup>2</sup>- 4)/(x<sup>2</sup>+ 4) =",
+      "question": "41) lim <sub>x=>2</sub> (x<sup>2</sup>- 4)/(x<sup>2</sup>+ 4) =",
       "a": "1",
       "b": "0",
       "c": "-1",

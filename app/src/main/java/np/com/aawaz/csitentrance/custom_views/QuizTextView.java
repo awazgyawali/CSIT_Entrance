@@ -35,11 +35,9 @@ public class QuizTextView extends WebView {
                 + "     </style>"
                 + "</head>"
                 + "<body>"
-                + "<image_url dir=\"rtl\" id=\"text\">"
                 + "<p>"
                 + data
                 + "</p>"
-                + "</image_url>"
                 + "</body>"
                 + "</html>  ";
 

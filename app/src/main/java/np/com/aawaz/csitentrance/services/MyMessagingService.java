@@ -32,30 +32,30 @@ public class MyMessagingService extends FirebaseMessagingService {
         Intent intent;
         int identifier = new Random().nextInt();
 
-        switch (notification.tag) {
+        switch (notification.getTag()) {
             case "news":
                 identifier = "news".hashCode();
                 intent = new Intent(context, NewsDetailActivity.class)
-                        .putExtra("news_id", notification.post_id);
+                        .putExtra("news_id", notification.getPost_id());
                 break;
             case "forum":
-                if (notification.text.contains("commented"))
-                    identifier = notification.post_id.hashCode();
-                else if (notification.text.contains("posted")) {
+                if (notification.getText().contains("commented"))
+                    identifier = notification.getPost_id().hashCode();
+                else if (notification.getText().contains("posted")) {
                     identifier = "posted".hashCode();
-                    if (!notification.uid.equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
-                        SPHandler.getInstance().addNewPostMessage(notification.title);
-                    notification.post_id = "new_post";
+                    if (!notification.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+                        SPHandler.getInstance().addNewPostMessage(notification.getTitle());
+                    notification.setPost_id("new_post");
                 }
-                intent = new Intent(context, MainActivity.class).putExtra("fragment", notification.tag);
-                intent.putExtra("post_id", notification.post_id);
-                if (!notification.uid.equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+                intent = new Intent(context, MainActivity.class).putExtra("fragment", notification.getTag());
+                intent.putExtra("post_id", notification.getPost_id());
+                if (!notification.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
                     notification.addToDatabase();
                 break;
             default:
                 intent = new Intent(context, MainActivity.class)
-                        .putExtra("fragment", notification.tag)
-                        .putExtra("result_published", notification.result_published);
+                        .putExtra("fragment", notification.getTag())
+                        .putExtra("result_published", notification.getResult_published());
                 break;
         }
 
@@ -69,13 +69,13 @@ public class MyMessagingService extends FirebaseMessagingService {
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),
                         R.drawable.splash_icon))
                 .setSmallIcon(R.drawable.skeleton_logo)
-                .setContentText(Html.fromHtml(notification.text).toString())
-                .setContentTitle(notification.title)
+                .setContentText(Html.fromHtml(notification.getText()).toString())
+                .setContentTitle(notification.getTitle())
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
         int count = SPHandler.getInstance().getUnreadPostCount();
-        if (notification.text.contains("posted") && count > 1) {
+        if (notification.getText().contains("posted") && count > 1) {
             NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
             ArrayList<String> messages = SPHandler.getInstance().getUnreadPostMessages();
             for (int i = count; i > 0; i--) {
@@ -87,16 +87,16 @@ public class MyMessagingService extends FirebaseMessagingService {
             notificationBuilder.setContentText(count + " new posts on Entrance Forum");
         }
 
-        if (notification.tag.equals("news")) {
-            notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(Html.fromHtml(notification.text)));
+        if (notification.getTag().equals("news")) {
+            notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(Html.fromHtml(notification.getText())));
             FirebaseDatabase.getInstance().getReference().child("news").keepSynced(true);
         }
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        if (notification.tag.equals("forum")) {
+        if (notification.getTag().equals("forum")) {
             FirebaseDatabase.getInstance().getReference().child("forum").keepSynced(true);
-            if (!notification.uid.equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+            if (!notification.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
                 notificationManager.notify(identifier, notificationBuilder.build());
         } else
             notificationManager.notify(identifier, notificationBuilder.build());
@@ -110,15 +110,15 @@ public class MyMessagingService extends FirebaseMessagingService {
 
 
         Notification notification = new Notification();
-        notification.title = remoteMessage.getData().get("title");
-        notification.text = remoteMessage.getData().get("body");
-        notification.tag = remoteMessage.getData().get("fragment");
-        notification.result_published = Boolean.parseBoolean(remoteMessage.getData().get("result_published"));
-        if (notification.tag.equals("forum")) {
-            notification.post_id = remoteMessage.getData().get("post_id");
-            notification.uid = remoteMessage.getData().get("uid");
-        } else if (notification.tag.equals("news"))
-            notification.post_id = remoteMessage.getData().get("news_id");
+        notification.setTitle(remoteMessage.getData().get("title"));
+        notification.setText(remoteMessage.getData().get("body"));
+        notification.setTag(remoteMessage.getData().get("fragment"));
+        notification.setResult_published(Boolean.parseBoolean(remoteMessage.getData().get("result_published")));
+        if (notification.getTag().equals("forum")) {
+            notification.setPost_id(remoteMessage.getData().get("post_id"));
+            notification.setUid(remoteMessage.getData().get("uid"));
+        } else if (notification.getTag().equals("news"))
+            notification.setPost_id(remoteMessage.getData().get("news_id"));
 
         sendNotification(this, notification);
     }

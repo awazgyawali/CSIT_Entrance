@@ -3,11 +3,9 @@ package np.com.aawaz.csitentrance.adapters;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.net.Uri;
 import android.support.v4.app.SupportActivity;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +23,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.CommentsActivity;
 import np.com.aawaz.csitentrance.activities.ProfileActivity;
-import np.com.aawaz.csitentrance.fragments.other_fragments.ACHSDialog;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.MyApplication;
-import np.com.aawaz.csitentrance.objects.PopupAd;
 import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
@@ -55,37 +51,37 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(inflater.inflate(R.layout.each_feed_item, parent, false));
+        return new ViewHolder(inflater.inflate(R.layout.each_feed_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Post post = posts.get(holder.getAdapterPosition());
-        holder.postedBy.setText(post.author);
-        holder.realPost.setText(post.message);
-        holder.commentCount.setText(post.comment_count + getCommentMessage(post));
+        holder.postedBy.setText(post.getAuthor());
+        holder.realPost.setText(post.getMessage());
+        holder.commentCount.setText(post.getComment_count() + getCommentMessage(post));
         holder.commentCount.setPaintFlags(holder.commentCount.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        holder.time.setText(getRelativeTimeSpanString(post.time_stamp));
+        holder.time.setText(getRelativeTimeSpanString(post.getTime_stamp()));
 
-        if (SPHandler.containsDevUID(post.uid))
+        if (SPHandler.containsDevUID(post.getUid()))
             holder.postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.admin, 0);
         else
             holder.postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
 
-        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(post.uid))
+        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(post.getUid()))
             holder.editIcon.setVisibility(View.VISIBLE);
         else
             holder.editIcon.setVisibility(View.GONE);
 
         try {
             Picasso.with(MyApplication.getAppContext())
-                    .load(post.image_url)
-                    .error(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE))
-                    .placeholder(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE))
+                    .load(post.getImage_url())
+                    .error(TextDrawable.builder().buildRound(String.valueOf(post.getAuthor().charAt(0)).toUpperCase(), Color.BLUE))
+                    .placeholder(TextDrawable.builder().buildRound(String.valueOf(post.getAuthor().charAt(0)).toUpperCase(), Color.BLUE))
                     .into(holder.profile);
         } catch (Exception e) {
-            holder.profile.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE));
+            holder.profile.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(post.getAuthor().charAt(0)).toUpperCase(), Color.BLUE));
         }
 
         holder.editIcon.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +96,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
             @Override
             public void onClick(View view) {
                 if (fromForum)
-                    context.startActivity(new Intent(context, ProfileActivity.class).putExtra("uid", post.uid));
+                    context.startActivity(new Intent(context, ProfileActivity.class).putExtra("uid", post.getUid()));
             }
         });
     }
@@ -115,7 +111,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
     }
 
     public void addToTop(Post post, String key) {
-        post.key = key;
+        post.setKey(key);
         posts.add(0, post);
         notifyItemInserted(0);
     }
@@ -140,23 +136,23 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
     }
 
     public String getUidAt(int position) {
-        return posts.get(position).uid;
+        return posts.get(position).getUid();
     }
 
     public int getCommentCount(int position) {
-        return posts.get(position).comment_count;
+        return posts.get(position).getComment_count();
     }
 
     public String getMessageAt(int position) {
-        return posts.get(position).message;
+        return posts.get(position).getMessage();
     }
 
     public String getKeyAt(int position) {
-        return posts.get(position).key;
+        return posts.get(position).getKey();
     }
 
     private String getCommentMessage(Post post) {
-        return post.comment_count == 1 ? " comment" : " comments";
+        return post.getComment_count() == 1 ? " comment" : " comments";
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

@@ -29,7 +29,7 @@ public class BotAdapter extends RecyclerView.Adapter<BotAdapter.VH> {
 
     @Override
     public int getItemViewType(int position) {
-        return messages.get(position).messageType;
+        return messages.get(position).getMessageType();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class BotAdapter extends RecyclerView.Adapter<BotAdapter.VH> {
 
     @Override
     public void onBindViewHolder(final VH holder, final int position) {
-        holder.message.setText(Html.fromHtml(messages.get(position).text));
+        holder.message.setText(Html.fromHtml(messages.get(position).getText()));
     }
 
     @Override

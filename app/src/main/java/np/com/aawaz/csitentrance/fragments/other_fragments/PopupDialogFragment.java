@@ -111,35 +111,35 @@ public class PopupDialogFragment extends DialogFragment {
         final PopupAd adToShow = ads.get(lastAdPosition);
 
         int image = 0;
-        if (adToShow.banner_image.equals("samriddhi"))
+        if (adToShow.getBanner_image().equals("samriddhi"))
             image = R.drawable.samriddhi;
-        else if (adToShow.banner_image.equals("sagarmatha"))
+        else if (adToShow.getBanner_image().equals("sagarmatha"))
             image = R.drawable.sagarmatha;
 
 
         new EventSender()
-                .logEvent(adToShow.banner_image + "_popup");
+                .logEvent(adToShow.getBanner_image() + "_popup");
 
         imagePopup.setImageDrawable(ContextCompat.getDrawable(getContext(), image));
         Picasso.with(getContext())
                 .load(image)
                 .into(imagePopup);
 
-        title.setText(adToShow.title);
-        address.setText(adToShow.address);
-        content.setText(Html.fromHtml(adToShow.detail));
+        title.setText(adToShow.getTitle());
+        address.setText(adToShow.getAddress());
+        content.setText(Html.fromHtml(adToShow.getDetail()));
 
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseDatabase.getInstance().getReference()
                         .child("ad_user_data")
-                        .child(adToShow.title)
+                        .child(adToShow.getTitle())
                         .child("students")
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .setValue(new Feedback(SPHandler.getInstance().getPhoneNo()));
 
-                startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", adToShow.phone, null)));
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", adToShow.getPhone(), null)));
                 dismiss();
             }
         });
@@ -149,12 +149,12 @@ public class PopupDialogFragment extends DialogFragment {
             public void onClick(View v) {
                 FirebaseDatabase.getInstance().getReference()
                         .child("ad_user_data")
-                        .child(adToShow.title)
+                        .child(adToShow.getTitle())
                         .child("students")
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .setValue(new Feedback(SPHandler.getInstance().getPhoneNo()));
 
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(adToShow.website)));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(adToShow.getWebsite())));
                 dismiss();
             }
         });

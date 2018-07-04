@@ -42,18 +42,18 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final News eachNews = news.get(position);
-        holder.title.setText(eachNews.title);
-        holder.newsDetail.setText(eachNews.excerpt);
-        holder.time.setText(eachNews.author + " - " + convertToSimpleDate(eachNews.time_stamp));
+        holder.title.setText(eachNews.getTitle());
+        holder.newsDetail.setText(eachNews.getExcerpt());
+        holder.time.setText(eachNews.getAuthor() + " - " + convertToSimpleDate(eachNews.getTime_stamp()));
 
         holder.core.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString("title", eachNews.title);
-                bundle.putString("author", eachNews.author);
-                bundle.putString("detail", eachNews.message);
-                bundle.putLong("time", eachNews.time_stamp);
+                bundle.putString("title", eachNews.getTitle());
+                bundle.putString("author", eachNews.getAuthor());
+                bundle.putString("detail", eachNews.getMessage());
+                bundle.putLong("time", eachNews.getTime_stamp());
                 context.startActivity(new Intent(context, NewsDetailActivity.class).putExtra("data", bundle));
             }
         });

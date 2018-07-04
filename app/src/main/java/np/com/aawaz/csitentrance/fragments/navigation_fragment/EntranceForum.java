@@ -92,12 +92,12 @@ public class EntranceForum extends Fragment implements
             @Override
             public void onClick(View view) {
                 final PopupAd adToShow = new PopupAd();
-                adToShow.banner_image = "orchid";
-                adToShow.address = "Bijaya chowk, Behind Maitinepal, Kathmandu";
-                adToShow.phone = "01-4479744";
-                adToShow.title = "Orchid International College";
-                adToShow.website = "http://www.oic.edu.np/";
-                adToShow.detail = "College aims to provide value based quality education that will enable the students to embrace the challenges of the modern world and establish the foundation for a successful future. Well equipped infrastructure, competent and committed faculty members, effective management and well disciplined students are the major four pillars of Orchid International College.";
+                adToShow.setBanner_image("orchid");
+                adToShow.setAddress("Bijaya chowk, Behind Maitinepal, Kathmandu");
+                adToShow.setPhone("01-4479744");
+                adToShow.setTitle("Orchid International College");
+                adToShow.setWebsite("http://www.oic.edu.np/");
+                adToShow.setDetail("College aims to provide value based quality education that will enable the students to embrace the challenges of the modern world and establish the foundation for a successful future. Well equipped infrastructure, competent and committed faculty members, effective management and well disciplined students are the major four pillars of Orchid International College.");
 
                 ACHSDialog dialog = new ACHSDialog();
                 dialog.setContext(getContext());
@@ -231,8 +231,8 @@ public class EntranceForum extends Fragment implements
         progressBar.setVisibility(View.GONE);
         Post newPost = dataSnapshot.getValue(Post.class);
         String currentKey = dataSnapshot.getKey();
-        if (newPost.author != null) {
-            if (mLinearLayoutManager.findFirstCompletelyVisibleItemPosition() == 0 || newPost.uid.equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+        if (newPost.getAuthor() != null) {
+            if (mLinearLayoutManager.findFirstCompletelyVisibleItemPosition() == 0 || newPost.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
                 recyclerView.scrollToPosition(0);
             adapter.addToTop(newPost, dataSnapshot.getKey());
             key.add(0, currentKey);
@@ -243,7 +243,7 @@ public class EntranceForum extends Fragment implements
     public void onChildChanged(DataSnapshot dataSnapshot, String s) {
         Post editedPost = dataSnapshot.getValue(Post.class);
         int index = key.indexOf(dataSnapshot.getKey());
-        if (editedPost.author != null) {
+        if (editedPost.getAuthor() != null) {
             adapter.editItemAtPosition(editedPost, index);
         }
     }

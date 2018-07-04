@@ -38,28 +38,28 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void onBindViewHolder(NotificationAdapter.VH holder, int position) {
         final Notification notification = notificationArrayList.get(holder.getAdapterPosition());
 
-        holder.title.setText(notification.text);
-        holder.text.setText(notification.title);
-        holder.tag.setText(notification.tag);
-        holder.time.setText(getRelativeTime(notification.time));
+        holder.title.setText(notification.getText());
+        holder.text.setText(notification.getTitle());
+        holder.tag.setText(notification.getTag());
+        holder.time.setText(getRelativeTime(notification.getTime()));
         holder.core.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (notification.tag.equals("FORUM")) {
-                    if (notification.post_id == null)
+                if (notification.getTag().equals("FORUM")) {
+                    if (notification.getPost_id() == null)
                         context.startActivity(new Intent(context, MainActivity.class)
                                 .putExtra("fragment", "forum")
                                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
                     else
                         context.startActivity(new Intent(context, MainActivity.class)
-                                .putExtra("post_id", notification.post_id)
+                                .putExtra("post_id", notification.getPost_id())
                                 .putExtra("fragment", "forum")
                                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 
                     ((AppCompatActivity) context).finish();
-                } else if (notification.tag.equals("NEWS")) {
+                } else if (notification.getTag().equals("NEWS")) {
                     context.startActivity(new Intent(context, NewsDetailActivity.class)
-                            .putExtra("news_id", notification.post_id));
+                            .putExtra("news_id", notification.getPost_id()));
                     ((AppCompatActivity) context).finish();
                 }
             }

@@ -35,40 +35,40 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = null;
-        if (viewType == YearItem.SECTION_TITLE)
+        if (viewType == YearItem.Companion.getSECTION_TITLE())
             v = LayoutInflater.from(context).inflate(R.layout.year_header, parent, false);
-        else if (viewType == YearItem.COLLEGE_MODEL)
+        else if (viewType == YearItem.Companion.getCOLLEGE_MODEL())
             v = LayoutInflater.from(context).inflate(R.layout.college_model_question, parent, false);
-        else if (viewType == YearItem.YEAR_SET)
+        else if (viewType == YearItem.Companion.getYEAR_SET())
             v = LayoutInflater.from(context).inflate(R.layout.each_year_quiz_card, parent, false);
         return new VH(v);
     }
 
     @Override
     public int getItemViewType(int position) {
-        return items.get(position).type;
+        return items.get(position).getType();
     }
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
         final YearItem item = items.get(position);
-        holder.title.setText(item.title);
+        holder.title.setText(item.getTitle());
 
-        if (item.type == YearItem.YEAR_SET) {
+        if (item.getType() == YearItem.Companion.getYEAR_SET()) {
             holder.play.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    openQuizQuestion(item.paperCode);
+                    openQuizQuestion(item.getPaperCode());
                 }
             });
             holder.view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    openFullQuestion(item.paperCode);
+                    openFullQuestion(item.getPaperCode());
                 }
             });
-        } else if (item.type == YearItem.COLLEGE_MODEL) {
-            holder.logo.setImageResource(item.logo);
+        } else if (item.getType() == YearItem.Companion.getCOLLEGE_MODEL()) {
+            holder.logo.setImageResource(item.getLogo());
             holder.core.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

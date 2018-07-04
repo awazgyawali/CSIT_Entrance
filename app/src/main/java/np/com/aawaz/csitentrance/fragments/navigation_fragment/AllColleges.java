@@ -82,11 +82,6 @@ public class AllColleges extends Fragment {
     }
 
     private void setupFeaturedCollege() {
-
-
-        featured_slider.addSlider(getSliderViewWithImage(R.drawable.samriddhi_full));
-        featured_slider.addSlider(getSliderViewWithImage(R.drawable.sagarmatha));
-        featured_slider.addSlider(getSliderViewWithImage(R.drawable.achs_full_image));
     }
 
     private BaseSliderView getSliderViewWithImage(final int image_src) {

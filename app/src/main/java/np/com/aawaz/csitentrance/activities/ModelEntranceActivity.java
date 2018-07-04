@@ -63,11 +63,11 @@ public class ModelEntranceActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 exam = dataSnapshot.getValue(ModelExam.class);
-                venue.setText(exam.venue);
-                address.setText(exam.address);
-                date.setText(exam.date);
-                fee.setText(exam.cost);
-                detail.setText(exam.detail);
+                venue.setText(exam.getVenue());
+                address.setText(exam.getAddress());
+                date.setText(exam.getDate());
+                fee.setText(exam.getCost());
+                detail.setText(exam.getDetail());
 
                 resultDetail.setVisibility(View.VISIBLE);
             }
@@ -144,7 +144,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
                         .progress(true, 100)
                         .cancelable(false)
                         .show();
-                new NetworkRequester(exam.result_link, map, new ResponseListener() {
+                new NetworkRequester(exam.getResult_link(), map, new ResponseListener() {
                     @Override
                     public void onSuccess(String response) {
                         try {

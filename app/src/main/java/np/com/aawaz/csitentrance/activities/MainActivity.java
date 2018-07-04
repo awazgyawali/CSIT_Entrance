@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
         if (SPHandler.getInstance().isScoreChanged()) {
             FirebaseFirestore.getInstance().collection("scores")
                     .document(user.getUid())
-                    .set(Score.getScoreObject());
+                    .set(Score.Companion.getScoreObject());
 
             FirebaseFirestore.getInstance().collection("users")
                     .document(user.getUid())

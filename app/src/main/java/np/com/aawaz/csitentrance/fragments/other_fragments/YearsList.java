@@ -60,102 +60,108 @@ public class YearsList extends Fragment {
     private void prepareCollegeModelQuestion() {
 
         YearItem modelHeader = new YearItem();
-        modelHeader.type = YearItem.SECTION_TITLE;
-        modelHeader.title = "College Model Questions";
+        modelHeader.setType(YearItem.Companion.getSECTION_TITLE());
+        modelHeader.setTitle("College Model Questions");
         items.add(modelHeader);
 
         YearItem item7 = new YearItem();
-        item7.type = YearItem.COLLEGE_MODEL;
-        item7.title = "Samriddhi Model Paper";
-        item7.logo = R.drawable.samriddhi_logo;
-        item7.paperCode = 12;
+        item7.setType(YearItem.Companion.getCOLLEGE_MODEL());
+        item7.setTitle("Samriddhi Model Paper");
+        item7.setLogo(R.drawable.samriddhi_logo);
+        item7.setPaperCode(12);
         items.add(item7);
 
     }
 
     private void prepareModelQuestion() {
         YearItem modelHeader = new YearItem();
-        modelHeader.type = YearItem.SECTION_TITLE;
-        modelHeader.title = "Model Questions";
+        modelHeader.setType(YearItem.Companion.getSECTION_TITLE());
+        modelHeader.setTitle("Model Questions");
         items.add(modelHeader);
 
         YearItem item7 = new YearItem();
-        item7.type = YearItem.YEAR_SET;
-        item7.title = "Model 1";
-        item7.paperCode = 6;
+        item7.setType(YearItem.Companion.getYEAR_SET());
+        item7.setTitle("Model 1");
+        item7.setPaperCode(6);
         items.add(item7);
 
         YearItem item8 = new YearItem();
-        item8.type = YearItem.YEAR_SET;
-        item8.title = "Model 2";
-        item8.paperCode = 7;
+        item8.setType(YearItem.Companion.getYEAR_SET());
+        item8.setTitle("Model 2");
+        item8.setPaperCode(7);
         items.add(item8);
 
         YearItem item9 = new YearItem();
-        item9.type = YearItem.YEAR_SET;
-        item9.title = "Model 3";
-        item9.paperCode = 8;
+        item9.setType(YearItem.Companion.getYEAR_SET());
+        item9.setTitle("Model 3");
+        item9.setPaperCode(8);
         items.add(item9);
 
         YearItem item10 = new YearItem();
-        item10.type = YearItem.YEAR_SET;
-        item10.title = "Model 4";
-        item10.paperCode = 9;
+        item10.setType(YearItem.Companion.getYEAR_SET());
+        item10.setTitle("Model 4");
+        item10.setPaperCode(9);
         items.add(item10);
 
         YearItem item11 = new YearItem();
-        item11.type = YearItem.YEAR_SET;
-        item11.title = "Model 5";
-        item11.paperCode = 10;
+        item11.setType(YearItem.Companion.getYEAR_SET());
+        item11.setTitle("Model 5");
+        item11.setPaperCode(10);
         items.add(item11);
 
         YearItem item12 = new YearItem();
-        item12.type = YearItem.YEAR_SET;
-        item12.title = "Model 6";
-        item12.paperCode = 11;
+        item12.setType(YearItem.Companion.getYEAR_SET());
+        item12.setTitle("Model 6");
+        item12.setPaperCode(11);
         items.add(item12);
+
+        YearItem item13 = new YearItem();
+        item13.setType(YearItem.Companion.getYEAR_SET());
+        item13.setTitle("Model 7");
+        item13.setPaperCode(13);
+        items.add(item13);
     }
 
     private void prepareOldQuestions() {
         YearItem item = new YearItem();
-        item.type = YearItem.SECTION_TITLE;
-        item.title = "Old Questions";
+        item.setType(YearItem.Companion.getSECTION_TITLE());
+        item.setTitle("Old Questions");
         items.add(item);
 
         YearItem item1 = new YearItem();
-        item1.type = YearItem.YEAR_SET;
-        item1.title = "2069 TU Examination";
-        item1.paperCode = 0;
+        item1.setType(YearItem.Companion.getYEAR_SET());
+        item1.setTitle("2069 TU Examination");
+        item1.setPaperCode(0);
         items.add(item1);
 
         YearItem item2 = new YearItem();
-        item2.type = YearItem.YEAR_SET;
-        item2.title = "2070 TU Examination";
-        item2.paperCode = 1;
+        item2.setType(YearItem.Companion.getYEAR_SET());
+        item2.setTitle("2070 TU Examination");
+        item2.setPaperCode(1);
         items.add(item2);
 
         YearItem item3 = new YearItem();
-        item3.type = YearItem.YEAR_SET;
-        item3.title = "2071 TU Examination";
-        item3.paperCode = 2;
+        item3.setType(YearItem.Companion.getYEAR_SET());
+        item3.setTitle("2071 TU Examination");
+        item3.setPaperCode(2);
         items.add(item3);
 
         YearItem item4 = new YearItem();
-        item4.type = YearItem.YEAR_SET;
-        item4.title = "2072 TU Examination";
-        item4.paperCode = 3;
+        item4.setType(YearItem.Companion.getYEAR_SET());
+        item4.setTitle("2072 TU Examination");
+        item4.setPaperCode(3);
         items.add(item4);
 
         YearItem item5 = new YearItem();
-        item5.type = YearItem.YEAR_SET;
-        item5.title = "2073 TU Examination";
-        item5.paperCode = 4;
+        item5.setType(YearItem.Companion.getYEAR_SET());
+        item5.setTitle("2073 TU Examination");
+        item5.setPaperCode(4);
         items.add(item5);
 
         YearItem item6 = new YearItem();
-        item6.type = YearItem.YEAR_SET;
-        item6.title = "2074 TU Examination";
-        item6.paperCode = 5;
+        item6.setType(YearItem.Companion.getYEAR_SET());
+        item6.setTitle("2074 TU Examination");
+        item6.setPaperCode(5);
         items.add(item6);
     }
 

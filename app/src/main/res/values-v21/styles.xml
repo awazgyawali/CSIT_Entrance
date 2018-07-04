@@ -12,8 +12,6 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="Theme.Dialog" parent="Theme.AppCompat.Light.Dialog" />
-
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="AppTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>

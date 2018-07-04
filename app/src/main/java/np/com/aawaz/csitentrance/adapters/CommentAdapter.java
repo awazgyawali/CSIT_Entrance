@@ -47,17 +47,17 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final Comment comment = comments.get(holder.getAdapterPosition());
-        holder.comment.setText(comment.message);
-        holder.commenter.setText(comment.author + " ");
-        holder.time.setText(DateUtils.getRelativeTimeSpanString(comment.time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
+        holder.comment.setText(comment.getMessage());
+        holder.commenter.setText(comment.getAuthor() + " ");
+        holder.time.setText(DateUtils.getRelativeTimeSpanString(comment.getTime_stamp(), new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
 
-        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(comments.get(position).uid)) {
+        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(comments.get(position).getUid())) {
             holder.editComment.setVisibility(View.VISIBLE);
         } else
             holder.editComment.setVisibility(View.GONE);
 
 
-        if (SPHandler.containsDevUID(comment.uid))
+        if (SPHandler.containsDevUID(comment.getUid()))
             holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.admin, 0);
         else
             holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -65,11 +65,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
         try {
             Picasso.with(MyApplication.getAppContext())
-                    .load(comment.image_url)
-                    .placeholder(TextDrawable.builder().buildRound(String.valueOf(comment.author.charAt(0)).toUpperCase(), Color.BLUE))
+                    .load(comment.getImage_url())
+                    .placeholder(TextDrawable.builder().buildRound(String.valueOf(comment.getAuthor().charAt(0)).toUpperCase(), Color.BLUE))
                     .into(holder.circleImageView);
         } catch (Exception e) {
-            holder.circleImageView.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(comment.author.charAt(0)).toUpperCase(), Color.BLUE));
+            holder.circleImageView.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(comment.getAuthor().charAt(0)).toUpperCase(), Color.BLUE));
         }
 
         holder.editComment.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +82,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, ProfileActivity.class).putExtra("uid", comment.uid));
+                context.startActivity(new Intent(context, ProfileActivity.class).putExtra("uid", comment.getUid()));
 
             }
         });
@@ -124,11 +124,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     }
 
     public String getUidAt(int position) {
-        return comments.get(position).uid;
+        return comments.get(position).getUid();
     }
 
     public String getMessageAt(int position) {
-        return comments.get(position).message;
+        return comments.get(position).getMessage();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
