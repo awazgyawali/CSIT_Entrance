@@ -18,6 +18,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.BotAdapter;
@@ -75,7 +77,12 @@ public class EntranceBot extends Fragment {
     }
 
     private void sendToAPI(String message) {
-        String url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" + message + "&sessionId=12345&timezone=America/New_York";
+        String url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" +message + "&sessionId=12345&timezone=America/New_York";
+        try {
+            url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" + URLEncoder.encode(message, "UTF-8") + "&sessionId=12345&timezone=America/New_York";
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         Request request = new Request.Builder()
                 .addHeader("Authorization", "Bearer 27067ba8b5a64ac3ab6ed72f1aabd3d3")
                 .url(url)

@@ -28,6 +28,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.Map;
 
@@ -79,7 +81,7 @@ public class PostForumActivity extends AppCompatActivity {
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reference = database.getReference().child("forum_data/posts");
+        reference = database.getReference().child("text_forum_data/posts");
 
 
         questionEditText.addTextChangedListener(new TextWatcher() {
@@ -115,8 +117,12 @@ public class PostForumActivity extends AppCompatActivity {
 
     private void sendToAPI(final String message) {
         imm.hideSoftInputFromWindow(questionEditText.getWindowToken(), 0);
-        loading_indicator_post.setVisibility(View.VISIBLE);
-        String url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" + message + "&sessionId=12345&timezone=America/New_York";
+        loading_indicator_post.setVisibility(View.VISIBLE);String url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" +message + "&sessionId=12345&timezone=America/New_York";
+        try {
+            url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" + URLEncoder.encode(message, "UTF-8") + "&sessionId=12345&timezone=America/New_York";
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         Request request = new Request.Builder()
                 .addHeader("Authorization", "Bearer 27067ba8b5a64ac3ab6ed72f1aabd3d3")
                 .url(url)
@@ -173,6 +179,8 @@ public class PostForumActivity extends AppCompatActivity {
                             }
                         }
                     });
+                } else {
+                    postToFirebase(message);
                 }
             }
         });
