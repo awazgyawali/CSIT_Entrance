@@ -17,8 +17,8 @@ android {
         minSdkVersion 16
         targetSdkVersion 25
         multiDexEnabled true
-        versionCode 69
-        versionName "3.0.6"
+        versionCode 70
+        versionName "3.0.7"
     }
     buildTypes {
         release {
@@ -55,10 +55,10 @@ dependencies {
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.4'
 
     implementation 'com.google.firebase:firebase-core:16.0.1'
-    implementation 'com.google.firebase:firebase-messaging:17.0.0'
+    implementation 'com.google.firebase:firebase-messaging:17.1.0'
     implementation 'com.google.firebase:firebase-auth:16.0.2'
     implementation 'com.google.firebase:firebase-database:16.0.1'
-    implementation 'com.google.firebase:firebase-firestore:17.0.2'
+    implementation 'com.google.firebase:firebase-firestore:17.0.3'
     implementation 'com.google.firebase:firebase-storage:16.0.1'
     implementation 'com.google.firebase:firebase-perf:16.0.0'
     implementation 'com.google.firebase:firebase-appindexing:16.0.1'

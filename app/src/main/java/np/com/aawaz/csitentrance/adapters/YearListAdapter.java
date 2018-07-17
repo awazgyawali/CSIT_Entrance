@@ -104,7 +104,7 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
 
     public void openFullQuestion(int position) {
         String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8};
+                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10};
         Intent intent = new Intent(context, FullQuestionActivity.class);
         intent.putExtra("code", codes[position]);
         intent.putExtra("position", position + 1);
@@ -115,7 +115,7 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
 
     public void openQuizQuestion(int position) {
         String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8};
+                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10};
         Intent intent = new Intent(context, YearQuizActivity.class);
 
         intent.putExtra("code", codes[position]);

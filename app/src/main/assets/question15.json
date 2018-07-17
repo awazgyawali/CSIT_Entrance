@@ -1,804 +1,804 @@
 {
   "questions": [
-    {
-      "question": "1) He is a ______________",
-      "a": "young,fine, tall energetic man",
-      "b": "fine, tall energetic,young man",
-      "c": "young, tall energetic,fine man",
-      "d": "fine, young, tall energetic man",
-      "ans": "d"
-    },
-    {
-      "question": "2) If I were not busy, I __________",
-      "a": "would have gone with you",
-      "b": "would go with you",
-      "c": "will go with you",
-      "d": "shall go",
-      "ans": "b"
-    },
-    {
-      "question": "3) I wished I _________",
-      "a": "had a car",
-      "b": "had had a car",
-      "c": "have a car",
-      "d": "have car",
-      "ans": "b"
-    },
-    {
-      "question": "4) The opposite of adamant is _____________",
-      "a": "yielding",
-      "b": "decent",
-      "c": "placid",
-      "d": "baroque",
-      "ans": "a "
-    },
-    {
-      "question": "5) Torrid is _____________",
-      "a": "exceed",
-      "b": "hot",
-      "c": "savage",
-      "d": "unntidy",
-      "ans": "b"
-    },
-    {
-      "question": "6) ______,the CEO,am responsible for the errror.",
-      "a": "He",
-      "b": "We",
-      "c": "I",
-      "d": "She",
-      "ans": "c"
-    },
-    {
-      "question": "7) It's only I who _____ this work.",
-      "a": "do",
-      "b": "does",
-      "c": "did",
-      "d": "has done",
-      "ans": "a"
-    },
-    {
-      "question": "8) Which noun is incorrect?",
-      "a": "cattles",
-      "b": "police",
-      "c": "swine ",
-      "d": "vermin",
-      "ans": "b"
-    },
-    {
-      "question": "9) You don't like fish,______?",
-      "a": "did you",
-      "b": "are you",
-      "c": "do you",
-      "d": "don't you",
-      "ans": "c"
-    },
-    {
-      "question": "10) You like apples and so ______",
-      "a": "I do",
-      "b": "do I",
-      "c": "I like",
-      "d": "did I",
-      "ans": "b"
-    },
-    {
-      "question": "11) I didn't know ______",
-      "a": "how tall is she",
-      "b": "how tall she was",
-      "c": "how tall was she",
-      "d": "how tall she is",
-      "ans": "b"
-    },
-    {
-      "question": "12) The clothes are ____ sale.",
-      "a": "by",
-      "b": "at",
-      "c": "over",
-      "d": "on",
-      "ans": "d"
-    },
-    {
-      "question": "13) Take care ____ your health.",
-      "a": "for",
-      "b": "to",
-      "c": "of ",
-      "d": "by",
-      "ans": "c"
-    },
-    {
-      "question": "14) Your cold sounds _________.",
-      "a": "terribly",
-      "b": "terrible",
-      "c": "relaxation",
-      "d": "none",
-      "ans": "b"
-    },
-    {
-      "question": "15) Listen to the birds _______.",
-      "a": "sing",
-      "b": "singing",
-      "c": "to sing",
-      "d": "sonng",
-      "ans": "b"
-    },
-    {
-      "question": "16) The crane _____ the car.",
-      "a": "rose",
-      "b": "raised",
-      "c": "rise",
-      "d": "raise",
-      "ans": "b"
-    },
-    {
-      "question": "17) WET : DRY",
-      "a": "scold : praise",
-      "b": "devil : wrong",
-      "c": "rise : walk",
-      "d": "food : pleasure",
-      "ans": "a"
-    },
-    {
-      "question": "18) An unmarried man : ",
-      "a": "alibi",
-      "b": "husband",
-      "c": "bachelor",
-      "d": "doctrate",
-      "ans": "c"
-    },
-    {
-      "question": "19) Which is in passive?",
-      "a": "He may help me with this task.",
-      "b": "He is known.",
-      "c": "Who has created this nuisance.",
-      "d": "Someone stole my pen.",
-      "ans": "b"
-    },
-    {
-      "question": "20) She said to me,\"Let me go.\"",
-      "a": "She said to me let me go.",
-      "b": "she requested me to let me go.",
-      "c": "She requested me letting her go.",
-      "d": "She requested me to let her go.",
-      "ans": "d"
-    },
-    {
-      "question": "21) She sang well that shhe _______ the competition.",
-      "a": "can win",
-      "b": "shall win",
-      "c": "might win",
-      "d": "should win",
-      "ans": "c"
-    },
-    {
-      "question": "22) She always ______her class.",
-      "a": "misses",
-      "b": "will miss",
-      "c": "miss",
-      "d": "missed",
-      "ans": "a"
-    },
-    {
-      "question": "23) She got me _______ her homework.",
-      "a": "do",
-      "b": "to do",
-      "c": "did",
-      "d": "doing",
-      "ans": "b"
-    },
-    {
-      "question": "24) She is _____ LLB.",
-      "a": "a",
-      "b": "an",
-      "c": "the",
-      "d": "none",
-      "ans": "b"
-    },
-    {
-      "question": "25) Ecology is the study of",
-      "a": "birds",
-      "b": "snakes",
-      "c": "environment ",
-      "d": "dogs",
-      "ans": "c"
-    },
-    {
-      "question": "26) The common name of NaOH is",
-      "a": "caustic soda",
-      "b": "litharge",
-      "c": "lime",
-      "d": "aquaregis",
-      "ans": "a"
-    },
-    {
-      "question": "27) The mass of 1 atom of sodium is",
-      "a": "23g",
-      "b": "23mg",
-      "c": "3.82 * 10<sup>-23</sup>",
-      "d": "3.82*10<sup>-21</sup>",
-      "ans": "c"
-    },
-    {
-      "question": "28) 8 gm of NaOH present in 200ml solution. The normality of solution is",
-      "a": "1",
-      "b": "2",
-      "c": "3",
-      "d": "4",
-      "ans": "a"
-    },
-    {
-      "question": "29) 100ml of 0.3N HCl was mixed with 200ml of 0.6N H<sub>2</sub>SO<sub>4</sub>.The normality of resulting mixture is",
-      "a": "0.5",
-      "b": "1",
-      "c": "1.5",
-      "d": "2",
-      "ans": "a"
-    },
-    {
-      "question": "30) The numerical value of equilibrium coonstant does not depend on",
-      "a": "Concentration",
-      "b": "Pressure",
-      "c": "Catalyst",
-      "d": "all of the above",
-      "ans": "d"
-    },
-    {
-      "question": "31) The pH of N/100 NaOH solution which is completely ionized is",
-      "a": "7",
-      "b": "8",
-      "c": "12",
-      "d": "14",
-      "ans": "c"
-    },
-    {
-      "question": "32) Carnalite is a",
-      "a": "basic salt ",
-      "b": "double salt",
-      "c": "mixed salt",
-      "d": "complex salt",
-      "ans": "b"
-    },
-    {
-      "question": "33) Isobars have different",
-      "a": "mass number",
-      "b": "mass",
-      "c": "atomic number ",
-      "d": "none",
-      "ans": "c"
-    },
-    {
-      "question": "34) The number of orbitals in a p-subshell is",
-      "a": "1",
-      "b": "2",
-      "c": "3",
-      "d": "6",
-      "ans": "c"
-    },
-    {
-      "question": "35) The shortest period in a periodic table is ",
-      "a": "1",
-      "b": "2",
-      "c": "3",
-      "d": "4",
-      "ans": "a"
-    },
-    {
-      "question": "36) Valency of S in SO<sub>3</sub> molecule is ",
-      "a": "2",
-      "b": "4",
-      "c": "6",
-      "d": "9",
-      "ans": "b"
-    },
-    {
-      "question": "37) The oxidation state of Nickel in Ni(CO)<sub>4</sub> is",
-      "a": "0",
-      "b": "1",
-      "c": "2",
-      "d": "3",
-      "ans": "a"
-    },
-    {
-      "question": "38) Mass of 'Au' deposited from aq. Au<sup>+++</sup> using 1.5 amp for 2 hrs is (Au = 197)",
-      "a": "117.57 gm",
-      "b": "106.66gm",
-      "c": "78.38 gm",
-      "d": "39.19 gm",
-      "ans": "d"
-    },
-    {
-      "question": "39) The absolute zero temperature in celsius is",
-      "a": "-273",
-      "b": "273",
-      "c": "300",
-      "d": "0",
-      "ans": "a"
-    },
-    {
-      "question": "40) 1 mole of carbon dioxide is __________ of carbon dioxide",
-      "a": "44g",
-      "b": "22g",
-      "c": "24g",
-      "d": "88g",
-      "ans": "a"
-    },
-    {
-      "question": "41) The equivalent weight of HBr is",
-      "a": "100",
-      "b": "98",
-      "c": "81",
-      "d": "none",
-      "ans": "c"
-    },
-    {
-      "question": "42) Sodium is kept in ",
-      "a": "water",
-      "b": "alcohol",
-      "c": "kerosene",
-      "d": "ammonia",
-      "ans": "c"
-    },
-    {
-      "question": "43) Which of the following is a coinage metal",
-      "a": "Zn",
-      "b": "Cu",
-      "c": "Sn",
-      "d": "Pb",
-      "ans": "b"
-    },
-    {
-      "question": "44) The principle ore of Zinc is ",
-      "a": "Zinc blends",
-      "b": "Balamine",
-      "c": "Zincite",
-      "d": "none",
-      "ans": "a"
-    },
-    {
-      "question": "45) Ortho hydrogen has spin in ________ direction.",
-      "a": "same",
-      "b": "opposite",
-      "c": "both",
-      "d": "none",
-      "ans": "a"
-    },
-    {
-      "question": "46) When propane is heated strongly _______ is formed",
-      "a": "methane",
-      "b": "ethane ",
-      "c": "both",
-      "d": "none",
-      "ans": "c"
-    },
-    {
-      "question": "47) Ethene is formed by the dehydrogenatio of",
-      "a": "ethyl alcohol",
-      "b": "methyl alcohol",
-      "c": "methane",
-      "d": "ethane",
-      "ans": "a"
-    },
-    {
-      "question": "48) Gobar gas mainly contains",
-      "a": "butane",
-      "b": "propane ",
-      "c": "ethane",
-      "d": "methane",
-      "ans": "d"
-    },
-    {
-      "question": "49) Which of the following is an aromatic compund?",
-      "a": "ethyl alcohol",
-      "b": "benzene",
-      "c": "ethane",
-      "d": "ammonia",
-      "ans": "b"
-    },
-    {
-      "question": "50) The common name of CaO is",
-      "a": "quick lime",
-      "b": "caustic soda",
-      "c": "calamine",
-      "d": "zincite",
-      "ans": "a"
-    },
-    {
-      "question": "51) A passenger moving in a  us tosses a coin.If the coin falls behind him the bus is moving with",
-      "a": "an acceleration",
-      "b": "a deceleration",
-      "c": "a uniform speed",
-      "d": "all of the above",
-      "ans": "a"
-    },
-    {
-      "question": "52) The dimension of specific gravity is ",
-      "a": "[MLT]",
-      "b": "[MT]",
-      "c": "it is dimensionless",
-      "d": "[ML]",
-      "ans": "c"
-    },
-    {
-      "question": "53) The scalar quantity is",
-      "a": "Weight",
-      "b": "pressure",
-      "c": "torque",
-      "d": "magnetic moment",
-      "ans": "b"
-    },
-    {
-      "question": "54) A scooter is going around a circular road of radius 100m at speed of 10m/s.The angular speed of scooter is ",
-      "a": "10rad/s",
-      "b": "1rad/s",
-      "c": "0.1rad/s",
-      "d": "0.01rad/s",
-      "ans": "c"
-    },
-    {
-      "question": "55) The value of g on earth is",
-      "a": "9.8m/s",
-      "b": "9.8m/s<sup>2</sup>",
-      "c": "5m/s",
-      "d": "100m/s<sup>2</sup>",
-      "ans": "b"
-    },
-    {
-      "question": "56) Force of attraction between molecules of different substance is ",
-      "a": "adhesive force",
-      "b": "cohesive force",
-      "c": "viscous force",
-      "d": "none",
-      "ans": "a"
-    },
-    {
-      "question": "57) Light energy gives sensation of",
-      "a": "sound ",
-      "b": "touch",
-      "c": "sight",
-      "d": "none",
-      "ans": "c"
-    },
-    {
-      "question": "58) If real depth is 3m and apparent depth is 2m then the refractive index is ",
-      "a": "5",
-      "b": "1",
-      "c": "1.5",
-      "d": "6",
-      "ans": "c"
-    },
-    {
-      "question": "59) The R.I is √2 and refracting angle is 60° then the minimum deviation of light will be",
-      "a": "30°",
-      "b": "45°",
-      "c": "60°",
-      "d": "72°",
-      "ans": "a"
-    },
-    {
-      "question": "60) Short sightedness can also be called",
-      "a": "myopia",
-      "b": "hypermetropia",
-      "c": "presbyopia",
-      "d": "byopia",
-      "ans": "a"
-    },
-    {
-      "question": "61) Sound wave is audible between",
-      "a": "20 Hz to 200KHz",
-      "b": "20 Hz to 20KHz",
-      "c": "200 Hz to 2000Hz",
-      "d": "none",
-      "ans": "b"
-    },
-    {
-      "question": "62) Both light and sound wave can",
-      "a": "difract",
-      "b": "polarize",
-      "c": "travel in vaccum",
-      "d": "none",
-      "ans": "a"
-    },
-    {
-      "question": "63) Loudness of sound depends on its",
-      "a": "frequency",
-      "b": "overtones",
-      "c": "wavelength",
-      "d": "intensity",
-      "ans": "d"
-    },
-    {
-      "question": "64) If two charges of 1C are placed at 1 km apart,the foce between them will be",
-      "a": "9*10<sup>3</sup>",
-      "b": "9*10<sup>-3</sup>",
-      "c": "12*<sup>3</sup>",
-      "d": "12*<sup>-3</sup>",
-      "ans": "a"
-    },
-    {
-      "question": "65) The resistance of a wire of uniform diameter 'd' and length 'l' is R.The resistance of other wire of same material but diameter 2d and length 4l will be",
-      "a": "2R",
-      "b": "R",
-      "c": "R/2",
-      "d": "R/4",
-      "ans": "c"
-    },
-    {
-      "question": "66) The resistance of ideal voltmeter is",
-      "a": "0",
-      "b": "1",
-      "c": "infinite",
-      "d": "-1",
-      "ans": "c"
-    },
-    {
-      "question": "67) The heating element used in electric iron is made of",
-      "a": "nichrome",
-      "b": "iron",
-      "c": "tungsten",
-      "d": "constantum",
-      "ans": "a"
-    },
-    {
-      "question": "68) The unit of magnetic field is",
-      "a": "Tesla",
-      "b": "m/s",
-      "c": "ohm",
-      "d": "V",
-      "ans": "a"
-    },
-    {
-      "question": "69) Transformer is based on principle of ",
-      "a": "inertia",
-      "b": "momentum",
-      "c": "mutual induction",
-      "d": "conservation",
-      "ans": "c"
-    },
-    {
-      "question": "70) How many electrons contain in charged oil drop of charge 6.4 * 10 <sup>-19</sup>C",
-      "a": "1",
-      "b": "2",
-      "c": "3",
-      "d": "4",
-      "ans": "d"
-    },
-    {
-      "question": "71) Packets of energy(in terms of light) are known as",
-      "a": "photon",
-      "b": "sound",
-      "c": "rice",
-      "d": "proton",
-      "ans": "a"
-    },
-    {
-      "question": "72) Electrons are __________charged particles.",
-      "a": "positively",
-      "b": "neutrally",
-      "c": "negatively",
-      "d": "none",
-      "ans": "c"
-    },
-    {
-      "question": "73) Which liquid is used in thermometer?",
-      "a": "water",
-      "b": "mercury",
-      "c": "HCl",
-      "d": "none",
-      "ans": "b"
-    },
-    {
-      "question": "74) On heating a solid its dimension",
-      "a": "increases",
-      "b": "decreases",
-      "c": "does not change",
-      "d": "none",
-      "ans": "a"
-    },
-    {
-      "question": "75) The internal energy of an ideal gas does not change during ",
-      "a": "adiabatic process",
-      "b": "isothermal process",
-      "c": "isochoric process",
-      "d": "isobaric process",
-      "ans": "b"
-    },
-    {
-      "question": "76)  If x<sup>2</sup>-16=0,then x=",
-      "a": "4",
-      "b": "8",
-      "c": "16",
-      "d": "1",
-      "ans": "a"
-    },
-    {
-      "question": "77) {a} is a ",
-      "a": "equal set",
-      "b": "infinite set",
-      "c": "singleton set",
-      "d": "null set",
-      "ans": "c"
-    },
-    {
-      "question": "78) If A={1,2,3} and B={3,4,5},then AnB =",
-      "a": "{1,2,3,4,5}",
-      "b": "{3}",
-      "c": "{1,2,3}",
-      "d": "{3,4,5}",
-      "ans": "b"
-    },
-    {
-      "question": "79) The domain of the relation R defined by R={(p,2),(q,4),(r,6)} are",
-      "a": "{2,4,6}",
-      "b": "{p,q,r}",
-      "c": "{p,4,6}",
-      "d": "none",
-      "ans": "b"
-    },
-    {
-      "question": "80) If different elements in A have different images in B then it is a ",
-      "a": "one to one function",
-      "b": "onto function",
-      "c": "many to one function",
-      "d": "invalid function",
-      "ans": "a"
-    },
-    {
-      "question": "81) The value of log<sub>2</sub>8 is",
-      "a": "2",
-      "b": "8",
-      "c": "3",
-      "d": "4",
-      "ans": "c"
-    },
-    {
-      "question": "82) A matrix having only one row is",
-      "a": "row matrix",
-      "b": "column matrix",
-      "c": "single matrix",
-      "d": "null matrix",
-      "ans": "a"
-    },
-    {
-      "question": "83) If A =  <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG4AAAAtBAMAAAC9uUMKAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMonNEFRmIpnv3XZEq7vKaD56AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACHklEQVRIDe2WP2jUUBzHv7nmNU2Tu4Z20eniYBG6HF1dMpSCIFQo10JFDFZjQQqPdmgXSbmhS5cUpF06uHXNUOtQlNDBuZMgIiioo55ScBHP3yM98vLSP3elDkID73j3y/fzXn7vyIdDtfUT3V7fW4cYGvO6xaCPEdc1JYB/z7FIfrDO99P5+TiZuoj+puocdx84YMFjWC8mc8tTzZ4D2xufT4C9ek3ar8/tcftiPcI+RvAVH3Ic1cZN53bosxoqfvlA4mahYRb4jRvwemt4m+OoloRIZmB9pFDZl7gNCm5A/4HqH8f0sZnjqEbroYFyTCGTTrb9Oxi/ABqsCdyLQq5FOY5qWAe2MMApdJXutTmNgKUmeuLKHURVep5EAkWNPU+MJmZsCr62Mw7bsPg2XqHiaSumt+j6Mke1khtT2w0Lz4zRXolbCB5i+YkPOwhgX59+70mcqGmrXsnH4A726093JE6KdTJt99dJVs5ccvJpZPP/9lzy2soaUmaF/vLaUtLZ1wKX3Tp1diFcUVtHe7JH02C714CpgCs+E4mito64Bkaxhluw3VKs+EwkitpKOXrRHRoDSWlFl32mfRNXLFSmaCvlyG+gMeForU+Kz9JAQVtpOeQAjfsAe6f4TASO0VbKVcmRIXATX2CqPhNcUVsp18/xsp9bB/iMK6rPKHGMtlLOGA48Y3UXeBP4lz5Lz+SEz0Oc93/WCQueVf4LpFPGW8rHD78AAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">, then AA<sup>T</sup>",
-      "a": "0",
-      "b": "I",
-      "c": "1",
-      "d": "-1",
-      "ans": "b"
-    },
-    {
-      "question": "84) In complex number √-1 is regarded as",
-      "a": "i<sup>2</sup>",
-      "b": "i",
-      "c": "i-1",
-      "d": "i+1",
-      "ans": "b"
-    },
-    {
-      "question": "85)The modulus of (a-ib)/(a+ib) is",
-      "a": "0",
-      "b": "1",
-      "c": "2",
-      "d": "3",
-      "ans": "b"
-    },
-    {
-      "question": "86) The value of sin60°",
-      "a": "√3/2",
-      "b": "1/2",
-      "c": "1",
-      "d": "0",
-      "ans": "a"
-    },
-    {
-      "question": "87) If A+B+C=π then sin2A + sin2B + sin2C =",
-      "a": "4sinA.sinB.sinC",
-      "b": "sinA.sinB.sinC",
-      "c": "2sinA.sinB.sinC",
-      "d": "1",
-      "ans": "a"
-    },
-    {
-      "question": "88) A triangle having two sides equal is called a",
-      "a": "scalene triangle",
-      "b": "isoceles triangle",
-      "c": "equilateral triangle",
-      "d": "obtuse triangle",
-      "ans": "b"
-    },
-    {
-      "question": "89) The range of function y=cos <sup>-1</sup>x is",
-      "a": "[0,0]",
-      "b": "[1,0]",
-      "c": "[π,0)",
-      "d": "[0,π]",
-      "ans": "d"
-    },
-    {
-      "question": "90) If a line AC has points A(-6,5) and C(3,-4).Then midpoint of the line has co-ordinates",
-      "a": "(-3/2,1/2)",
-      "b": "(1,1)",
-      "c": "(1/2,3/2)",
-      "d": "(-3/2,-1/2)",
-      "ans": "a"
-    },
-    {
-      "question": "91) The slope of the line y=3x+5 is ",
-      "a": "5",
-      "b": "3/2",
-      "c": "3",
-      "d": "1",
-      "ans": "c"
-    },
-    {
-      "question": "92) If h<sup>2</sup>=ab then lines represented by ax<sup>2</sup>+2hxy + by<sup>2</sup> are",
-      "a": "parallel",
-      "b": "perpendicular",
-      "c": "coincident",
-      "d": "none",
-      "ans": "c"
-    },
-    {
-      "question": "93) The circle x<sup>2</sup>+y<sup>2</sup>-4x-6y-12=0 has a radius of",
-      "a": "25",
-      "b": "10",
-      "c": "15",
-      "d": "5",
-      "ans": "d"
-    },
-    {
-      "question": "94) 0/0 is said to be an",
-      "a": "intermediate form",
-      "b": "determinate form",
-      "c": "limit form",
-      "d": "none",
-      "ans": "a"
-    },
-    {
-      "question": "95) For a function f(x)= x<sup>2</sup>/|x| , x is not equal to zero.Then",
-      "a": "f(x) is discontinuos",
-      "b": "f(x) is continuos at x=0",
-      "c": "f'(x) exists in (-1,1)",
-      "d": "the function does not exist",
-      "ans": "b"
-    },
-    {
-      "question": "96) The derivative of sin hx is ",
-      "a": "cos hx",
-      "b": "-cos hx",
-      "c": "-sin hx",
-      "d": "sin hx",
-      "ans": "a"
-    },
-    {
-      "question": "97) ∫1/(1+x<sup>2</sup>) is",
-      "a": "tan<sup>-1</sup>x",
-      "b": "sin<sup>-1</sup>x",
-      "c": "cos<sup>-1</sup>x",
-      "d": "cot<sup>-1</sup>x",
-      "ans": "a"
-    },
-    {
-      "question": "98) The value of  ∫f'(x) is",
-      "a": "f'(x)",
-      "b": "f\"(x)",
-      "c": "1",
-      "d": "f(x)",
-      "ans": "d"
-    },
-    {
-      "question": "99) If f'(x) = 0,then the tangent line is ___________to x axis ",
-      "a": "perpendicular",
-      "b": "parallel",
-      "c": "both",
-      "d": "none",
-      "ans": "b"
-    },
-    {
-      "question": "100) The numbers 2,4,6 are in",
-      "a": "A.P",
-      "b": "H.P",
-      "c": "G.P ",
-      "d": "none",
-      "ans": "a"
-    }
-  ]
+      {
+        "question": "1)  Let A and B be two finite sets such that n(A) = 20, n(B) = 28 and n(A ∪ B) = 36, find n(A ∩ B).",
+        "a": "24",
+        "b": "12",
+        "c": "10",
+        "d": "19",
+        "ans": "b"
+      },
+      {
+        "question": "2) {2,4,6,8} and {4,8,6,2} are",
+        "a": "equal sets",
+        "b": "null sets",
+        "c": "singleton sets",
+        "d": "none",
+        "ans": "a"
+      },
+      {
+        "question": "3) If B={1,2,3},then n(B) =",
+        "a": "1",
+        "b": "2",
+        "c": "3",
+        "d": "4",
+        "ans": "c"
+      },
+      {
+        "question": "4) If f(x)=x<sup>3</sup>+8,then f(2)=",
+        "a": "16",
+        "b": "24",
+        "c": "8",
+        "d": "12",
+        "ans": "a"
+      },
+      {
+        "question": "5) If f(x) = -x<sup>2</sup> + 6x + 5.Then the range of f(x) is",
+        "a": "(∞,-∞)",
+        "b": "[1,∞]",
+        "c": "(∞,14)",
+        "d": "(-∞ , 14]",
+        "ans": "d"
+      },
+      {
+        "question": "6)  If the number of rows is not equal to the number of columns then the matrix is said to be",
+        "a": "column matrix",
+        "b": "row matrix",
+        "c": "rectangular matrix",
+        "d": "square matrix",
+        "ans": "c"
+      },
+      {
+        "question": "7) If A = <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABDBAMAAADNBF63AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdlQy780iEGaZu0Tdq4kQs7e7AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACC0lEQVRIDe2WPUsDQRCG31xiEhI1ahURIQki2F1rpWBjZyGkPhBsk87SpBILwVobtRJsgliIFgr+AX+A/0HxIBYi597OzGYS8oGgVklz7948N7e3lycbFKLoDUM+k1EUojBXKQ1hkK9UDOQPQ2ztB1B2/qrTrtxsuQFl6nSAWkkK+TNs92SCnjD1KIVcCUc9maBNTLtlMA9yIxBnmXinUy3AWp0pzgLtl+TqNQMFPOAs0LkwMTEASsw4qObjwd2OMncqOwaFFpZkxJmgfAOuVa6BRYE4E7R6f30sBbOY1Z5M0FYUPUsB5cNWT+Y5ubN9wxjCby+BV1zoLHXzRL0Waw7d7g4TvlDZevpdMptD0AWy7gVP+ngRiM0hKER+XQqpBl4la1vSbSQ/pGCOrpO2JWmgdgfKuDmxFCFSfkxoKDcjFzC0gYkAaTMndbtZYcDmVO3v0ye8dVfxXCMxh57uEgm3BLhFQi7ossUsZiCF5On9imQ2hzp5xVM5j1QUfbkBmUOQO9k/jKG/tUXvLWQOrbi2hQ2xL4jNIUjbovcWNocgbQsbYjulyBwLddmi9xZDxuZYqEsE/vLbToA1ZxRkzaHbaVvYEO5kzbEQtC16bwGZQ5C2hQ2hTmQOQdoWNsRCbA5B2ha9t7A5BPEsBx3+H1reDQZNJj6f3t0xcxrxJ8s8YYjM3l59WKe4/g1LvtoeOeXEGQAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\"> then A<sup>5</sup> =",
+        "a": "5A",
+        "b": "10A",
+        "c": "16A",
+        "d": "32A",
+        "ans": "c"
+      },
+      {
+        "question": "8) (-5 + 3i)(- 4 + 8i) =",
+        "a": "-5 + 9 i",
+        "b": "-4 - 52 i",
+        "c": "1",
+        "d": "0",
+        "ans": "b"
+      },
+      {
+        "question": "9) In complex number the value if i<sup>2</sup> is",
+        "a": "1",
+        "b": "0",
+        "c": "-1",
+        "d": "2",
+        "ans": "c"
+      },
+      {
+        "question": "10) Solve x<sup>2</sup>-3x-4=0",
+        "a": "x=-1,4",
+        "b": "x=1,1",
+        "c": "x=1,4",
+        "d": "x=-1,-4",
+        "ans": "a"
+      },
+      {
+        "question": "11) An angle in standard position whose measure is -30° has a its terminal side in",
+        "a": "Quadrant II",
+        "b": "Quadrant IV",
+        "c": "Quadrant III",
+        "d": "Quadrant I",
+        "ans": "b"
+      },
+      {
+        "question": "12) Sin t + cos<sup>2</sup>t /sint t = ",
+        "a": "sint",
+        "b": "cost",
+        "c": "cosect",
+        "d": "cot t",
+        "ans": "c"
+      },
+      {
+        "question": "13) If cos t = 0.8, then cos (2 t) = ?",
+        "a": "0.28",
+        "b": "0.4",
+        "c": "1",
+        "d": "1.6",
+        "ans": "a"
+      },
+      {
+        "question": "14) What is the measure in degrees of the angle A = 7π/6?",
+        "a": "150°",
+        "b": "210°",
+        "c": "100°",
+        "d": " 120°",
+        "ans": "b"
+      },
+      {
+        "question": "15) cos (-x) =",
+        "a": "cos x",
+        "b": "-cos x",
+        "c": "sec x",
+        "d": "-sec x",
+        "ans": "a"
+      },
+      {
+        "question": "16) If (x−9)<sup>2</sup>+(y−6)<sup>2</sup>=100,then the radius of the circle is",
+        "a": "100",
+        "b": "10",
+        "c": "25",
+        "d": "5",
+        "ans": "b"
+      },
+      {
+        "question": "17) The points A(1,4),B(3,-2) and C(-3,16) ",
+        "a": "lie in a straight line",
+        "b": "form isoceles triangle",
+        "c": "form equilateral triangle",
+        "d": "none",
+        "ans": "a"
+      },
+      {
+        "question": "18) The lines 2x-3y=5 and 6x-9y-7=0 are",
+        "a": "perpendicular",
+        "b": "parallel",
+        "c": "coincident",
+        "d": "none",
+        "ans": "b"
+      },
+      {
+        "question": "19) The value of k for which 3x<sup>2</sup>-4kxy+5y<sup>2</sup>=0 is",
+        "a": "k=-3/2",
+        "b": "k= +- √15/2",
+        "c": "k=7/3",
+        "d": "k=1/2",
+        "ans": "b"
+      },
+      {
+        "question": "20) The fixed distance in a circle is known as",
+        "a": "radius",
+        "b": "tangent",
+        "c": "normal",
+        "d": "none",
+        "ans": "a"
+      },
+      {
+        "question": "21) Find the equation of the tangent to the curve y=3x<sup>2</sup> at the point (1;3)",
+        "a": "y=6x+3",
+        "b": "y=6x+6",
+        "c": "y=6x-3",
+        "d": "y=3x-6",
+        "ans": "c"
+      },
+      {
+        "question": "22) If f(x)=|x| , then f'(3)=",
+        "a": "0",
+        "b": "1",
+        "c": "3",
+        "d": " does not exist",
+        "ans": "a"
+      },
+      {
+        "question": "23) The derivative of secx is",
+        "a": "cosx",
+        "b": "-tanx",
+        "c": "secx.tanx",
+        "d": "-secx.tanx",
+        "ans": "c"
+      },
+      {
+        "question": "24) ∫logx dx =",
+        "a": "logx + c",
+        "b": "xlogx +c",
+        "c": "xlogx +x +c",
+        "d": "xlogx-x+c",
+        "ans": "d"
+      },
+      {
+        "question": "25) The curve f(x) = x<sup>4</sup> -2x<sup>3</sup> +5 is concave upward for",
+        "a": "x>1",
+        "b": "x<1",
+        "c": "x>0",
+        "d": "x>1 or x<0",
+        "ans": "d"
+      },
+      {
+        "question": "26) The syntonymn of the word 'brevity' is",
+        "a": "conciseness",
+        "b": "sharpness",
+        "c": "quickness",
+        "d": "confidence",
+        "ans": "c"
+      },
+      {
+        "question": "27) The antoymn of the word 'serene' is ",
+        "a": "complicated",
+        "b": "showy ",
+        "c": "impure",
+        "d": "agitated",
+        "ans": "d"
+      },
+      {
+        "question": "28) Which is wrong sentence?",
+        "a": "Never does she arrive in time.",
+        "b": "Black as she is,she is beautiful",
+        "c": "both",
+        "d": "none",
+        "ans": "a"
+      },
+      {
+        "question": "29) Like humans ,zoo animals have dentists _______ their teeths.",
+        "a": "fill",
+        "b": "filled",
+        "c": "filling",
+        "d": "to be filled",
+        "ans": "c"
+      },
+      {
+        "question": "30) Were you disappointed ______your examination result.",
+        "a": "by",
+        "b": "from",
+        "c": "with",
+        "d": "at",
+        "ans": "a"
+      },
+      {
+        "question": "31) He did nothing but ______.",
+        "a": "play ",
+        "b": "to play",
+        "c": "played",
+        "d": "playing",
+        "ans": "a"
+      },
+      {
+        "question": "32) Nothing but houses can be seen from her,_________?",
+        "a": "can't they",
+        "b": "can it",
+        "c": "aren't they",
+        "d": "canthey",
+        "ans": "b"
+      },
+      {
+        "question": "33) I still recall ____her in those days.",
+        "a": "to meet",
+        "b": "meeting",
+        "c": "to meeting",
+        "d": "met",
+        "ans": "b"
+      },
+      {
+        "question": "34) Dan together with his friends,_________ in the river.",
+        "a": "was sunk",
+        "b": "was drowned",
+        "c": "were sunk",
+        "d": "were drowned",
+        "ans": "b"
+      },
+      {
+        "question": "35) She wants someone to help her.The correct passive voice is ",
+        "a": "She wants herself to be helped.",
+        "b": "she wants to be helped by someone.",
+        "c": "she wants to be helped.",
+        "d": "none",
+        "ans": "b"
+      },
+      {
+        "question": "36) He said to me,\" Who will be elected President?\"",
+        "a": "He asked me who will be president.",
+        "b": "He asked me who the president will be elected.",
+        "c": "He asked me who would be elected president.",
+        "d": "he asked me whos id elected as president.",
+        "ans": "c"
+      },
+      {
+        "question": "37) A wise man profits _________the mistakes of others.",
+        "a": "with ",
+        "b": "on",
+        "c": "by",
+        "d": "at",
+        "ans": "b"
+      },
+      {
+        "question": "38) I feel _________ to do my work.",
+        "a": "zealous",
+        "b": "jealous",
+        "c": "envious",
+        "d": "zeal",
+        "ans": "d"
+      },
+      {
+        "question": "39) Each boy and each girl __________in uniform.",
+        "a": "is",
+        "b": "are",
+        "c": "have been ",
+        "d": "were  ",
+        "ans": "a"
+      },
+      {
+        "question": "40) He goes to _______school daily.",
+        "a": "a",
+        "b": "an",
+        "c": " the",
+        "d": "X",
+        "ans": "d"
+      },
+      {
+        "question": "41) I want ______answer to the question.",
+        "a": "a",
+        "b": "an",
+        "c": "the ",
+        "d": "none",
+        "ans": "b"
+      },
+      {
+        "question": "42) A board of _________",
+        "a": "directors",
+        "b": "students",
+        "c": "cattles",
+        "d": "people",
+        "ans": "a"
+      },
+      {
+        "question": "43) Suicide is ",
+        "a": "killing of oneself",
+        "b": "killing of one's mother",
+        "c": "killing of bees",
+        "d": "none",
+        "ans": "a"
+      },
+      {
+        "question": "44) Which of the folowing is an adjective?",
+        "a": "width",
+        "b": "autumnal",
+        "c": "advantage",
+        "d": "renew",
+        "ans": "b"
+      },
+      {
+        "question": "45) He had to repent for his ________.",
+        "a": "ignore",
+        "b": "ignoring",
+        "c": "ignoble",
+        "d": "ignorance",
+        "ans": "d"
+      },
+      {
+        "question": "46) Your body needs _______.",
+        "a": "wash",
+        "b": "washed",
+        "c": "washing",
+        "d": "had washed",
+        "ans": "c"
+      },
+      {
+        "question": "47) Last year I missed ______ exam.",
+        "a": "to take",
+        "b": "taking",
+        "c": "to give",
+        "d": "giving",
+        "ans": "b"
+      },
+      {
+        "question": "48) She became _____ at last.",
+        "a": "bore",
+        "b": "boring",
+        "c": "bored ",
+        "d": "bores",
+        "ans": "c"
+      },
+      {
+        "question": "49) He parted _______ all his wealth.",
+        "a": "by",
+        "b": "at",
+        "c": "with",
+        "d": "on",
+        "ans": "c"
+      },
+      {
+        "question": "50) Let us go,______?",
+        "a": "shall we",
+        "b": "could we",
+        "c": "can we",
+        "d": "would we",
+        "ans": "c"
+      },
+      {
+        "question": "51) The SI unit of temperature is ",
+        "a": "Kelvin",
+        "b": "Celsius",
+        "c": "Fahrenheit",
+        "d": "degree",
+        "ans": "a"
+      },
+      {
+        "question": "52) Resultant of two forces of equal magnitude acting at right angle is 1414N then magnitude of either force is",
+        "a": "707N",
+        "b": "909N",
+        "c": "1000N",
+        "d": "1414N",
+        "ans": "c"
+      },
+      {
+        "question": "53) Displacement is a ",
+        "a": "vector",
+        "b": "scalar",
+        "c": "both",
+        "d": "none",
+        "ans": "a"
+      },
+      {
+        "question": "54) A body starts from rest and covers 120m in 8th sec then acceleration of body is ____m/s<sup>2</sup>",
+        "a": "2",
+        "b": "15",
+        "c": "16",
+        "d": "32",
+        "ans": "c"
+      },
+      {
+        "question": "55) The value of g is maximum at",
+        "a": "pole",
+        "b": "equator",
+        "c": "same at both",
+        "d": "none",
+        "ans": "a"
+      },
+      {
+        "question": "56) Force of attraction between molecules of different substance is ",
+        "a": "cohesive force",
+        "b": "adhesive force",
+        "c": "gravitaional force",
+        "d": "surface tension",
+        "ans": "b"
+      },
+      {
+        "question": "57) The temperature at which celsius and fahrenheit scale coincide is",
+        "a": "20°c",
+        "b": "-40°c",
+        "c": "40°F",
+        "d": "80°C",
+        "ans": "b"
+      },
+      {
+        "question": "58) A pendulum clock is made by meta of linera expansivity 1.9 * 10 <sup>-5</sup> °c keep correct time at 10°c.The time lost in a day at 15°c is",
+        "a": "2.05s",
+        "b": "4.1s",
+        "c": "5.2s",
+        "d": "8.2s",
+        "ans": "b"
+      },
+      {
+        "question": "59)  Ideal gas at 27°c is heated so asto triple its volume at constant pressure.The temperature of gas will be",
+        "a": "81°c",
+        "b": "327°c",
+        "c": "627°c",
+        "d": "900°c",
+        "ans": "c"
+      },
+      {
+        "question": "60) Good absorber are ",
+        "a": "good reflector",
+        "b": "bad reflector",
+        "c": "good emitter",
+        "d": "bad emitter",
+        "ans": "c"
+      },
+      {
+        "question": "61) Which of the following is electromagnetic wave.",
+        "a": "X-ray",
+        "b": "cathode ray",
+        "c": "positive ray",
+        "d": "B-rays",
+        "ans": "a"
+      },
+      {
+        "question": "62) The R.I of a given piece of glass is greatest for ",
+        "a": "red",
+        "b": "violet",
+        "c": "green",
+        "d": "yellow",
+        "ans": "b"
+      },
+      {
+        "question": "63) The farthest point for clear vision is",
+        "a": "25cm",
+        "b": "100cm",
+        "c": "infinity",
+        "d": "0",
+        "ans": "c"
+      },
+      {
+        "question": "64) Speed of sound in air in NTP is ",
+        "a": "900m/s",
+        "b": "1000m/s",
+        "c": "332m/s",
+        "d": "230m/s",
+        "ans": "c"
+      },
+      {
+        "question": "65) The specific charge of H-nucleus is ",
+        "a": "9.6*10<sup>7</sup>",
+        "b": "100*10<sup>7</sup>",
+        "c": "10<sup>7</sup>",
+        "d": "68.25*10<sup>7</sup>",
+        "ans": "a"
+      },
+      {
+        "question": "66) The K.E carried by emittted electron depends on",
+        "a": "intensity",
+        "b": "frequency",
+        "c": "work function",
+        "d": "momentum",
+        "ans": "b"
+      },
+      {
+        "question": "67) Balmer series lies in ",
+        "a": "visible region",
+        "b": "uv region",
+        "c": "Ir region",
+        "d": "none",
+        "ans": "a"
+      },
+      {
+        "question": "68)  In N-type semiconductor ,minority are ",
+        "a": "electrons",
+        "b": "holes",
+        "c": "both ",
+        "d": "none",
+        "ans": "b"
+      },
+      {
+        "question": "69) When 10<sup>15</sup> electrons are removed from the neutral body ,then  the charge developed in the body is",
+        "a": "1.6 * 10 <sup>-4</sup>C",
+        "b": "1.6* 10<sup>-19</sup>C",
+        "c": "100C",
+        "d": "50c",
+        "ans": "a"
+      },
+      {
+        "question": "70) If electric field is unform ,the electric lines of forces are ",
+        "a": "divergent",
+        "b": "convergent",
+        "c": "circular",
+        "d": "parallel",
+        "ans": "d"
+      },
+      {
+        "question": "71) A capacitor works on",
+        "a": "AC circuit",
+        "b": "DC circuit",
+        "c": "both ",
+        "d": "none",
+        "ans": "a"
+      },
+      {
+        "question": "72) The resistance of ideal ammeter is",
+        "a": "low",
+        "b": "high",
+        "c": "infinite",
+        "d": "zero",
+        "ans": "d"
+      },
+      {
+        "question": "73) The self inductance of straight conductor is",
+        "a": "zero",
+        "b": "very large",
+        "c": "infinity",
+        "d": "1",
+        "ans": "a"
+      },
+      {
+        "question": "74) AC is converted to DC by",
+        "a": "dynamo",
+        "b": "transformer",
+        "c": "rectifier",
+        "d": "motor",
+        "ans": "c"
+      },
+      {
+        "question": "75) The attracting power of magnet is maximum at",
+        "a": "pole",
+        "b": "equator",
+        "c": "centre of earth",
+        "d": "surface of earth",
+        "ans": "a"
+      },
+      {
+        "question": "76) The valency of Al is",
+        "a": "1",
+        "b": "2",
+        "c": "3",
+        "d": "4",
+        "ans": "c"
+      },
+      {
+        "question": "77) The equivalent weight of SO<sub>2</sub> is",
+        "a": "32",
+        "b": "664",
+        "c": "64",
+        "d": "108",
+        "ans": "a"
+      },
+      {
+        "question": "78) The pH range of Methyl orange is",
+        "a": "8.2 - 10",
+        "b": "3.4 - 4.7",
+        "c": "4.2-6.3",
+        "d": "0 - 9",
+        "ans": "b"
+      },
+      {
+        "question": "79) One gram of metal carbonate neutralzes 200ml of 0.1N HCl .The equivalent wt. of metal will be",
+        "a": "50",
+        "b": "40",
+        "c": "20",
+        "d": "100",
+        "ans": "c"
+      },
+      {
+        "question": "80) The value of equilibrim constant depends on ",
+        "a": "pressure",
+        "b": "catalyst",
+        "c": "concentration",
+        "d": "temperature",
+        "ans": "d"
+      },
+      {
+        "question": "81) The pH of pure water is",
+        "a": "14",
+        "b": "7",
+        "c": "28",
+        "d": "12",
+        "ans": "b"
+      },
+      {
+        "question": "82) Which of the following is a stron acid.",
+        "a": "HCl",
+        "b": "NaOH",
+        "c": "HNO<sub>2</sub>",
+        "d": "KOH",
+        "ans": "a"
+      },
+      {
+        "question": "83) All nucleophiles are ",
+        "a": "acid",
+        "b": "base",
+        "c": "neutral",
+        "d": "none",
+        "ans": "b"
+      },
+      {
+        "question": "84) Mohr salt is ",
+        "a": "double salt",
+        "b": "complex salt",
+        "c": "mixed salt",
+        "d": "basic salt",
+        "ans": "a"
+      },
+      {
+        "question": "85) The smallest particle of an element is called ",
+        "a": "compound",
+        "b": "atom",
+        "c": "isotope",
+        "d": "metal",
+        "ans": "b"
+      },
+      {
+        "question": "86) Azimuthal quantum number is designated as",
+        "a": "n",
+        "b": "m",
+        "c": "s",
+        "d": "l",
+        "ans": "d"
+      },
+      {
+        "question": "87) Total number of elcetrons in M shell of sodium atomm is",
+        "a": "1",
+        "b": "2",
+        "c": "8",
+        "d": "18",
+        "ans": "a"
+      },
+      {
+        "question": "88) Which is the most non-metallic",
+        "a": "Be",
+        "b": "B",
+        "c": "Al",
+        "d": "Mg",
+        "ans": "b"
+      },
+      {
+        "question": "89) Bond formed by transfer of valence electron from one atom to another is ",
+        "a": "valence bond",
+        "b": "ionic bond",
+        "c": "covalent bond",
+        "d": "none",
+        "ans": "b"
+      },
+      {
+        "question": "90) Dehydrogenation of ethyl alcohol forms",
+        "a": "ethene",
+        "b": "ethane",
+        "c": "ethyne",
+        "d": "none",
+        "ans": "a"
+      },
+      {
+        "question": "91) Liquid petroleum gas contais",
+        "a": "methane ",
+        "b": "ethane",
+        "c": "butane and isobutane",
+        "d": "water gas",
+        "ans": "c"
+      },
+      {
+        "question": "92) Propene reacts with HBr in presence of benzoylperoxide to give",
+        "a": "ethanol",
+        "b": "hexanol",
+        "c": "1-bromopropane",
+        "d": "2-bromopropane",
+        "ans": "c"
+      },
+      {
+        "question": "93) Benzene on addition of H<sub>2</sub>/Ni gives",
+        "a": "BHC",
+        "b": "cyclohexane",
+        "c": "phenol",
+        "d": "hexane",
+        "ans": "b"
+      },
+      {
+        "question": "94) Pb is a ______conductor of heat and electricity.",
+        "a": "good",
+        "b": "poor",
+        "c": "does not conduct",
+        "d": "none",
+        "ans": "b"
+      },
+      {
+        "question": "95) Amalgams are alloys of",
+        "a": "mercury",
+        "b": "aluminium",
+        "c": "gold",
+        "d": "carbon",
+        "ans": "a"
+      },
+      {
+        "question": "96) Sodium reacts with water to give",
+        "a": "NaOH and H<sub>2</sub>",
+        "b": "NaO",
+        "c": "no reaction",
+        "d": "H<sub>2</sub>O",
+        "ans": "a"
+      },
+      {
+        "question": "97) Which is a coinage metal?",
+        "a": "zinc",
+        "b": "sodium",
+        "c": "copper",
+        "d": "silicon",
+        "ans": "c"
+      },
+      {
+        "question": "98) All metal carbonates decompose to give _____on heating.",
+        "a": "HCl",
+        "b": "CO",
+        "c": "CO<sub>2</sub>",
+        "d": "C ",
+        "ans": "c"
+      },
+      {
+        "question": "99) The atomic number of NItrogen is",
+        "a": "28",
+        "b": "14",
+        "c": "12",
+        "d": "7",
+        "ans": "d"
+      },
+      {
+        "question": "100) Which is a good conductor of electricity?",
+        "a": "Diamond",
+        "b": "Graphite",
+        "c": "Coal",
+        "d": "none",
+        "ans": "b"
+      }
+    ]
 }
