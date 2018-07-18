@@ -14,7 +14,7 @@
    "b": "null sets",
    "c": "singleton sets",
    "d": "none",
-   "ans": "a "
+   "ans": "a"
  },
  {
    "question": "3) If B={1,2,3},then n(B) =",
@@ -49,12 +49,12 @@
    "ans": "c"
  },
  {
-   "question": "7) Matrix question",
-   "a": "",
-   "b": "",
-   "c": "",
-   "d": "",
-   "ans": ""
+   "question": "7) <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHEAAABECAMAAACBFyr8AAAAM1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxgEwMAAAAEHRSTlMARCKrwxC7iWbNMnaZ71Tdc3ivNAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAyxJREFUWAntmO2WnCAMhhWrMKKu93+1JSAhfrxxD+P0tKfrj92YSfJARIhpmrb51AUim+5TQBQZ6d8fB4qM9P8MsS8jRXOR+n4AD3sL45zvXAl5kswarimrZeSso/9Fb6xbVaINtH5VkMaNY4ldIhfdnhjudOI0BJNZWdtmkbEfIFI4fY6fIFqaJ7rCc1ksP5hH5rhMnViMJ3BPz/grIyHxl3DUnyMZjrNYG8KziJwFIyOX38VaDcp7YtPNwvlK9OumhXOUa08ndjQ9u5orTtTNtHJ8HtL7RLNSwC5P4YI70GC6PIX3iY0Nq6af/QVqU7lgYOacg3tib4f1ZbWF4a3vdq/cEe68nTJwv0KEJRqJMKkUUWSkr8QINxQZ6YVrpYgiI30lRrihyEgvXCtFFBntRZUY4YYio5EI10oRRUb6SoxwQ5GRXrhWiigy0ldihBuKLPTOTzfF3OKdR9tgLgTJJh7KIrIYh6zl4j4cz4edgbiZwi7OR4PQB5ELwZbKkhcN6574RWbdV/gDrvYVfjC8Ux+t0uE60Fbv6MS6J85UpVjl+HvZI2R3n4grjbulU/meGN21Oa7OOYtPq0g0sUQYVzop89G8G9dR3yvP0cQCP2btECPdRuK4EUPuIXFXcQ3KCT/GDwCXy5gT9UQskaeOL7sfiVeAoRynjC6UsMtry2p8jt/N6qIBQ21JS+uGmArQ5Zsrp6WICrSjterh6xPn2AwxyOHtAFkdp7ZtF/78O2fOEOyVi/zT74mYdgB6aeHK4TU80/fmyreniOETYPITAJZCMOxyyeieeIF4S/VDfCt9wPkvymrZi8BYa9U/tVxt5jS/P7hytsPlhpgrsYaFw/CzHvbmNoPSm1OJXImxcOCxHvXm2KD05lRiiJ92fikcoMlA6c0lg9Kbe4hIwwC9uQ8SuSu1z8JG5N7cY3OEvblELL05SNx2uWQfRs3CfgZCD3pzwjFm4W6XY3sWIBH05oRj7M3BOW5lBtuzcElUenPJsfTmniFqvblELL25Z4haby4RS29OJXIlxsIhpUUPenPFgHtzKvEQ/5nbH+IzedxH+Z+zus/EH7j7Db1pFRXE3Qt+AAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\">",
+   "a": "0",
+   "b": "1",
+   "c": "2",
+   "d": "3",
+   "ans": "1"
  },
  {
    "question": "8) (-5 + 3i)(- 4 + 8i) =",
