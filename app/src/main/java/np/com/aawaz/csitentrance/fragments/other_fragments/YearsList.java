@@ -19,6 +19,7 @@ import np.com.aawaz.csitentrance.objects.YearItem;
 
 public class YearsList extends Fragment {
 
+    ArrayList<YearItem> items = new ArrayList<>();
     private RecyclerView recyclerview;
 
     public YearsList() {
@@ -28,8 +29,6 @@ public class YearsList extends Fragment {
     public static YearsList newInstance() {
         return new YearsList();
     }
-
-    ArrayList<YearItem> items = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,12 +63,19 @@ public class YearsList extends Fragment {
         modelHeader.setTitle("College Model Questions");
         items.add(modelHeader);
 
-        YearItem item7 = new YearItem();
-        item7.setType(YearItem.Companion.getCOLLEGE_MODEL());
-        item7.setTitle("Samriddhi Model Paper");
-        item7.setLogo(R.drawable.samriddhi_logo);
-        item7.setPaperCode(12);
-        items.add(item7);
+        YearItem item1 = new YearItem();
+        item1.setType(YearItem.Companion.getCOLLEGE_MODEL());
+        item1.setTitle("samriddhi");
+        item1.setLogo(R.drawable.samriddhi_logo);
+        item1.setPaperCode(16);
+        items.add(item1);
+
+        YearItem item2 = new YearItem();
+        item2.setType(YearItem.Companion.getCOLLEGE_MODEL());
+        item2.setTitle("sagarmatha");
+        item2.setLogo(R.drawable.sagarmatha_logo);
+        item2.setPaperCode(12);
+        items.add(item2);
 
     }
 

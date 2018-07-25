@@ -73,7 +73,7 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
                 @Override
                 public void onClick(View view) {
                     context.startActivity(new Intent(context, ModelPaperDetailActivity.class)
-                            .putExtra("college", "samriddhi"));
+                            .putExtra("college", item.getTitle()));
                 }
             });
         }
@@ -82,6 +82,31 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void openFullQuestion(int position) {
+        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
+                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7,
+                SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA};
+        Intent intent = new Intent(context, FullQuestionActivity.class);
+        intent.putExtra("code", codes[position]);
+        intent.putExtra("position", position + 1);
+        new EventSender().logEvent("viewed_full");
+
+        context.startActivity(intent);
+    }
+
+    public void openQuizQuestion(int position) {
+        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
+                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7,
+                SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA};
+        Intent intent = new Intent(context, YearQuizActivity.class);
+
+        intent.putExtra("code", codes[position]);
+        intent.putExtra("position", position);
+        new EventSender().logEvent("played_year");
+
+        context.startActivity(intent);
     }
 
     class VH extends RecyclerView.ViewHolder {
@@ -100,28 +125,5 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
             logo = itemView.findViewById(R.id.modelAdImage);
             core = itemView;
         }
-    }
-
-    public void openFullQuestion(int position) {
-        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10};
-        Intent intent = new Intent(context, FullQuestionActivity.class);
-        intent.putExtra("code", codes[position]);
-        intent.putExtra("position", position + 1);
-        new EventSender().logEvent("viewed_full");
-
-        context.startActivity(intent);
-    }
-
-    public void openQuizQuestion(int position) {
-        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10};
-        Intent intent = new Intent(context, YearQuizActivity.class);
-
-        intent.putExtra("code", codes[position]);
-        intent.putExtra("position", position);
-        new EventSender().logEvent("played_year");
-
-        context.startActivity(intent);
     }
 }

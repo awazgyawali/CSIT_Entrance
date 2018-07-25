@@ -98,7 +98,7 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
                 SPHandler.getInstance().setForumSubscribed(isChecked);
             }
         });
-        showAnswer.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener() {
+        showAnswer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SPHandler.getInstance().showAnswer(isChecked);

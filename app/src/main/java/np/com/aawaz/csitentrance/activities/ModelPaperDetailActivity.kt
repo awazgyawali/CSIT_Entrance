@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_model_paper_detail.*
 import np.com.aawaz.csitentrance.R
@@ -63,13 +64,49 @@ class ModelPaperDetailActivity : AppCompatActivity() {
                 }
             }
 
+        } else if (college == "sagarmatha") {
+
+            EventSender().logEvent("sagarmatha_model_paper")
+            title = "Sagarmatha Model Paper"
+            model_banner.setImageResource(R.drawable.sagarmatha)
+            model_banner.visibility = View.GONE
+            model_name.text = "Sagarmatha Model Paper"
+            model_address.text = "Sanepa, Lalitpur"
+
+            play_quiz.setOnClickListener {
+                EventSender().logEvent("played_sagarmatha_model")
+                openQuizQuestion(16)
+            }
+
+            full_question.setOnClickListener {
+                EventSender().logEvent("viewed_sagarmatha_full")
+                openFullQuestion(16)
+            }
+            call.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "01-5527274", null)))
+            }
+            website.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://http://scst.edu.np/")))
+            }
+            maps.setOnClickListener {
+                val gmmIntentUri = Uri.parse("geo:0,0?q=" + "Sagarmatha College Science And Technology")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.`package` = "com.google.android.apps.maps"
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent)
+                } else {
+                    Toast.makeText(this, "Google maps doesn't exist..", Toast.LENGTH_SHORT).show()
+                }
+            }
+
         }
 
     }
 
 
     fun openFullQuestion(position: Int) {
-        val codes = arrayOf(SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074, SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10)
+        val codes = arrayOf(SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074, SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4,
+                SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA)
         val intent = Intent(this, FullQuestionActivity::class.java)
         intent.putExtra("code", codes[position])
         intent.putExtra("position", position + 1)
@@ -78,7 +115,7 @@ class ModelPaperDetailActivity : AppCompatActivity() {
     }
 
     fun openQuizQuestion(position: Int) {
-        val codes = arrayOf(SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074, SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10)
+        val codes = arrayOf(SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074, SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA)
         val intent = Intent(this, YearQuizActivity::class.java)
 
         intent.putExtra("code", codes[position])

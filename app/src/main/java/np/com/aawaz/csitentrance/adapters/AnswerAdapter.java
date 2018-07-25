@@ -96,9 +96,10 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
 
         htm = htm + questions.get(position) + "<br><b>Answer:</b> " + ansFinder(position);
 
-        htm = htm+ "</div>" +
+        htm = htm + "</div>" +
                 "</body>" +
-                "</html>";;
+                "</html>";
+        ;
         holder.que.loadDataWithBaseURL("", htm, "text/html", "UTF-8", "");
     }
 

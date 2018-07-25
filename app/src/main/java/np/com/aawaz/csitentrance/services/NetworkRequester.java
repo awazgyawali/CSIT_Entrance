@@ -61,7 +61,7 @@ public class NetworkRequester {
                         .build();
                 try {
                     Response response = client.newCall(request).execute();
-                    Log.d("message",response.message());
+                    Log.d("message", response.message());
 
                     if (response.isSuccessful())
                         return response.body().string();

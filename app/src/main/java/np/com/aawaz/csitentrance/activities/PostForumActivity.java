@@ -48,9 +48,9 @@ public class PostForumActivity extends AppCompatActivity {
 
     FancyButton buttonPost;
     AppCompatEditText questionEditText;
+    OkHttpClient client;
     private InputMethodManager imm;
     private DatabaseReference reference;
-    OkHttpClient client;
     private CardView answerCard;
     private ProgressBar loading_indicator_post;
     private TextView yes, no, botAnswerHolder;
@@ -117,7 +117,8 @@ public class PostForumActivity extends AppCompatActivity {
 
     private void sendToAPI(final String message) {
         imm.hideSoftInputFromWindow(questionEditText.getWindowToken(), 0);
-        loading_indicator_post.setVisibility(View.VISIBLE);String url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" +message + "&sessionId=12345&timezone=America/New_York";
+        loading_indicator_post.setVisibility(View.VISIBLE);
+        String url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" + message + "&sessionId=12345&timezone=America/New_York";
         try {
             url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" + URLEncoder.encode(message, "UTF-8") + "&sessionId=12345&timezone=America/New_York";
         } catch (UnsupportedEncodingException e) {

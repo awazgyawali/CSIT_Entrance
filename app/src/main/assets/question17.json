@@ -1,0 +1,804 @@
+{
+  "questions": [
+    {
+      "question": "1) Jenny ___________ tired.",
+      "a": "is",
+      "b": "was",
+      "c": "were",
+      "d": "has been",
+      "ans": "a"
+    },
+    {
+      "question": "2) If __________ a man on the moon, why can't they sort out paper-jams?",
+      "a": "they were to land",
+      "b": "they did land",
+      "c": "they were able to land",
+      "d": "they had landed",
+      "ans": "c"
+    },
+    {
+      "question": "3) Today is Wednesday. Yesterday it ___________ Tuesday.",
+      "a": "had been",
+      "b": "was",
+      "c": "were",
+      "d": "is",
+      "ans": "b"
+    },
+    {
+      "question": "4) It'll be fine __________ you do it the way I told you.",
+      "a": "until",
+      "b": "as long as",
+      "c": "if  ",
+      "d": "as up to",
+      "ans": "b"
+    },
+    {
+      "question": "5) Sarah would have made sure John was here __________ were coming too.",
+      "a": "if she knew",
+      "b": "is she would know",
+      "c": "if she had known you",
+      "d": "if fhe did know",
+      "ans": "c"
+    },
+    {
+      "question": "6) \" ___________ is she?\" \"She's my friend from London\"",
+      "a": "whom",
+      "b": "what",
+      "c": "who",
+      "d": "where",
+      "ans": "c"
+    },
+    {
+      "question": "7) It's Thursday today. Tomorrow it ___________ Friday.",
+      "a": "is",
+      "b": "would be",
+      "c": "was",
+      "d": "will be",
+      "ans": "d"
+    },
+    {
+      "question": "8) You're not that good at singing - __________ yourself!",
+      "a": "get upto",
+      "b": "get over",
+      "c": "get out",
+      "d": "get off",
+      "ans": "b"
+    },
+    {
+      "question": "9)___________ lots of animals in the zoo.",
+      "a": "There are",
+      "b": "There is",
+      "c": "There were",
+      "d": "They had ",
+      "ans": "c"
+    },
+    {
+      "question": "10) How many people ___________ in your family?",
+      "a": "were there",
+      "b": "are there",
+      "c": "is there",
+      "d": "will be there",
+      "ans": "b"
+    },
+    {
+      "question": "11) \"Has Steve got a sister?\" \"No, he ___________, but he's got 2 brothers.\"",
+      "a": "hasn't",
+      "b": "haven't",
+      "c": "will not have",
+      "d": "doesn't have",
+      "ans": "a"
+    },
+    {
+      "question": "12) Where ___________ Sarah live?",
+      "a": "does",
+      "b": "will",
+      "c": "had",
+      "d": "have been",
+      "ans": "a"
+    },
+    {
+      "question": "13)  ___________ to London on the train yesterday?",
+      "a": "Will Mary go",
+      "b": "Had Mary gone",
+      "c": "Did Mary go",
+      "d": "Did Mary went",
+      "ans": "c"
+    },
+    {
+      "question": "14) Jack ___________ English, Spanish and a bit of French.",
+      "a": "had spoken",
+      "b": "will speak",
+      "c": "would have spoken",
+      "d": "speaks",
+      "ans": "d"
+    },
+    {
+      "question": "15) How many times __________ not to do that?",
+      "a": "did I tell you",
+      "b": "have I told you",
+      "c": "had I told you",
+      "d": "have you been told",
+      "ans": "b"
+    },
+    {
+      "question": "16) \"What's up with him?\" \"Oh, __________ mood about something.\"",
+      "a": "he has been in a bad",
+      "b": " he will be in a bad ",
+      "c": "he's in a bad",
+      "d": "he would be ina a bad",
+      "ans": "c"
+    },
+    {
+      "question": "17) The direct question of “Where’s the bathroom?” is",
+      "a": "“Could you tell me where the bathroom is?”",
+      "b": "Where would the bathroom be?",
+      "c": "Where is the bathroom?",
+      "d": "Could I finf the bathroom",
+      "ans": "a"
+    },
+    {
+      "question": "18) My father loves me.",
+      "a": "I loved my father.",
+      "b": "I was loved by my father.",
+      "c": "I were loved by my father.",
+      "d": "I am loved by my father.",
+      "ans": "d"
+    },
+    {
+      "question": "19) Arena",
+      "a": "A place for hockey.",
+      "b": "A place for indoor games.",
+      "c": "A place for racing.",
+      "d": "A place for wrestling.",
+      "ans": "d"
+    },
+    {
+      "question": "20) Antonym of EXPAND is _____________?",
+      "a": "Congest",
+      "b": "conclude",
+      "c": "condense",
+      "d": "convert",
+      "ans": "c"
+    },
+    {
+      "question": "21) The hills are covered _____snow.",
+      "a": "in",
+      "b": "at",
+      "c": "on",
+      "d": "with",
+      "ans": "d"
+    },
+    {
+      "question": "22) I have no confidence ____her.",
+      "a": "in",
+      "b": "at",
+      "c": "on",
+      "d": "by",
+      "ans": "a"
+    },
+    {
+      "question": "23) I want ______example.",
+      "a": "a",
+      "b": "an",
+      "c": "the ",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "24) Geology means",
+      "a": "study of colours",
+      "b": "study of birds",
+      "c": "study of rocks",
+      "d": "study of zoology",
+      "ans": "c"
+    },
+    {
+      "question": "25) Today I feel ______.",
+      "a": "lazy",
+      "b": "laziness",
+      "c": "lazily",
+      "d": "lazed",
+      "ans": "a"
+    },
+    {
+      "question": "26) The SI unit of time is",
+      "a": "second",
+      "b": "minute",
+      "c": "hour",
+      "d": "year",
+      "ans": "a"
+    },
+    {
+      "question": "27) The dimension of linear momentum is ",
+      "a": "MLT",
+      "b": "M<sup>-1</sup>LT",
+      "c": "LT",
+      "d": "MLT<sup>-1</sup>",
+      "ans": "d"
+    },
+    {
+      "question": "28) Pressure is a _______quantity.",
+      "a": "vector",
+      "b": "scalar",
+      "c": "both",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "29) Two forces of equal magnitude acting at an angle 60° then angle made by resultant with either vector is",
+      "a": "25°",
+      "b": "30°",
+      "c": "45°",
+      "d": "60°",
+      "ans": "b"
+    },
+    {
+      "question": "30) A body starts from rest and cover 120m in 8th sec then acceleration of body is",
+      "a": "2m/s<sup>2</sup>",
+      "b": "15m/s<sup>2</sup>",
+      "c": "16m/s<sup>2</sup>",
+      "d": "25m/s<sup>2</sup>",
+      "ans": "c"
+    },
+    {
+      "question": "31) The force of friction is ",
+      "a": "greater than normal reaction",
+      "b": "less than normal reaction",
+      "c": "equal to normal reaction",
+      "d": "independent to normal reaction",
+      "ans": "b"
+    },
+    {
+      "question": "32) A particle is moving along a circular path with uniform speed.The angle between instantaneous velocity and acceleration is",
+      "a": "0°",
+      "b": "45°",
+      "c": "90°",
+      "d": "180°",
+      "ans": "c"
+    },
+    {
+      "question": "33) A particle executes SHM.It will experience maximum force at",
+      "a": "extreme position ",
+      "b": "mean position",
+      "c": "same at all position",
+      "d": "zero position",
+      "ans": "a"
+    },
+    {
+      "question": "34) Young's modulus of elasticity depends on",
+      "a": "length",
+      "b": "cross sectional area",
+      "c": "temperature",
+      "d": "all",
+      "ans": "c"
+    },
+    {
+      "question": "35) A body of vol. 36cc floats with 3/4 of it's volume submerged in water.The density of body is",
+      "a": "0.25g/cc",
+      "b": "0.75g/cc",
+      "c": "0.9g/cc",
+      "d": "0.1g/cc",
+      "ans": "b"
+    },
+    {
+      "question": "36) The oil spreads over surface of water due to ",
+      "a": "viscosity ",
+      "b": "surface tension",
+      "c": "buoyancy",
+      "d": "elastic force ",
+      "ans": "b"
+    },
+    {
+      "question": "37) The upper fixed point of fahrenheit scale is",
+      "a": "215",
+      "b": "220",
+      "c": "212",
+      "d": "222",
+      "ans": "c"
+    },
+    {
+      "question": "38) The circular hole of diameter 2.54cm is on aluminium plate at 0°C.The diameter of hole at 100°C will be(α of aluminium =2.3*10<sup>-5</sup>/°c)",
+      "a": "2.5248cm",
+      "b": "2.5458cm",
+      "c": "2.5468cm",
+      "d": "2.5488cm",
+      "ans": "b"
+    },
+    {
+      "question": "39) A cylinder of gas has mass 10kg and pressure 8 atm at 27°C when some gas is used then pressure drops to 6.4atm at -3°C.The mass of gas used is",
+      "a": "0.8kg",
+      "b": "1.1kg",
+      "c": "2.2kg",
+      "d": "3.3kg",
+      "ans": "b"
+    },
+    {
+      "question": "40) A tap can supply water at 10°c and another tap at 100°c.The mass of hot water mixed with cold water so that 20kg water at 35°c is obtained is",
+      "a": "1.2kg",
+      "b": "3.5kg",
+      "c": "5.5kg",
+      "d": "6.8kg",
+      "ans": "c"
+    },
+    {
+      "question": "41) A carnot engine working between 300k and 600k has output 800J.The energy supplied to engine is",
+      "a": "400J",
+      "b": "800J",
+      "c": "1200J",
+      "d": "1600J",
+      "ans": "d"
+    },
+    {
+      "question": "42)The rate of transfer of heat will be maximum in",
+      "a": "conduction",
+      "b": "convection",
+      "c": "radiation",
+      "d": "all",
+      "ans": "c"
+    },
+    {
+      "question": "43) Light from cloudless sky is",
+      "a": "fully polarized",
+      "b": "partially polarized ",
+      "c": "unpolarized",
+      "d": "cannot be said",
+      "ans": "c"
+    },
+    {
+      "question": "44) The image formed in plane mirror is always",
+      "a": "no  image formed",
+      "b": "virtual",
+      "c": "real",
+      "d": "both b and c",
+      "ans": "b"
+    },
+    {
+      "question": "45) Absolute refractive index ______when temperature increases.",
+      "a": "decreases",
+      "b": "increases",
+      "c": "does not change",
+      "d": "minute change",
+      "ans": "a"
+    },
+    {
+      "question": "46) Short sightedness is",
+      "a": "Hypermetropia",
+      "b": "Myopia",
+      "c": "byopia",
+      "d": "astigmatism",
+      "ans": "b"
+    },
+    {
+      "question": "47) Two identical spheres having charge q and -2q experience a force F at certain distance.If the spheres are kept in contact and then placed at same distance ,find force between them",
+      "a": "F ",
+      "b": "F/2",
+      "c": "F/4",
+      "d": "F/8",
+      "ans": "d"
+    },
+    {
+      "question": "48) The force on the particle when V=10<sup>7</sup>,and B=2*10<sup>-4</sup> and the angle between B and V is 90° is",
+      "a": "3.2*10<sup>-16</sup>N",
+      "b": "3.2*10<sup>16</sup>N",
+      "c": "1.2*10<sup>-12</sup>",
+      "d": "1000N",
+      "ans": "a"
+    },
+    {
+      "question": "49) Photons of energy 6eV are incident on a potassium surface of work function 2.1eV.What is cut off potential?",
+      "a": "6V",
+      "b": "2.1V",
+      "c": "3.9V",
+      "d": "8.1V",
+      "ans": "c"
+    },
+    {
+      "question": "50) The halfliffe of radium is 1600years . What is the fraction of sample undecayed after 6400 years?",
+      "a": "1/4",
+      "b": "1/8",
+      "c": "1/12",
+      "d": "1/16",
+      "ans": "d"
+    },
+    {
+      "question": "51) lim<sub>θ=>0</sub>sinθ/θ =?,when θ is measured in radian",
+      "a": "0",
+      "b": "1",
+      "c": "90",
+      "d": "1/2",
+      "ans": "b"
+    },
+    {
+      "question": "52) If 2<sup>x</sup>+2<sup>y</sup>=2<sup>x+y</sup>,then value of dy/dx at x=y=1 is",
+      "a": "1",
+      "b": "2",
+      "c": "0",
+      "d": "-1",
+      "ans": "d"
+    },
+    {
+      "question": "53) If f(x) =x+2 then f'f(x) at x=4 is",
+      "a": "5",
+      "b": "3",
+      "c": "1",
+      "d": "7",
+      "ans": "c"
+    },
+    {
+      "question": "54) If f(x)=x+9,then f(-12)=",
+      "a": "3",
+      "b": "-3",
+      "c": "21",
+      "d": "-21",
+      "ans": "b"
+    },
+    {
+      "question": "55) The derivative of sinhx is",
+      "a": "-sinhx",
+      "b": "sinhx",
+      "c": "coshx",
+      "d": "-coshx",
+      "ans": "c"
+    },
+    {
+      "question": "56) ∫x<sup>7</sup>dx =",
+      "a": "((1/8)x<sup>8</sup>)+c",
+      "b": "x<sup>8</sup>+c",
+      "c": "((1/7)x<sup>7</sup>))+c",
+      "d": "x<sup>7</sup>+c",
+      "ans": "a"
+    },
+    {
+      "question": "57) ∫secx.tanxdx=",
+      "a": "tanx+c",
+      "b": "secx+c",
+      "c": "sinx+c",
+      "d": "cotx+c",
+      "ans": "b"
+    },
+    {
+      "question": "58) ∫cotxdx=",
+      "a": "log cosx +c",
+      "b": "log tanx+c",
+      "c": "log secx +c",
+      "d": "log sinx +c",
+      "ans": "d"
+    },
+    {
+      "question": "59) The equation of line having slope 3 and making an intercept of 5 is",
+      "a": "y=3x-5",
+      "b": "y=3x+5",
+      "c": "x=3y+5",
+      "d": "x=3y-5",
+      "ans": "b"
+    },
+    {
+      "question": "60) Which of the following points are collinear?",
+      "a": "(6,-4),(5,1),(0,2)",
+      "b": "(1,-3),(6,1),(0,2)",
+      "c": "(6,4),(-3,1),(0,2)",
+      "d": "(0,9),(7,7),(9,5)",
+      "ans": "c"
+    },
+    {
+      "question": "61) The distance between parallel lines 5x+12y-30=0 and 5x+12y-4=0 is",
+      "a": "2units",
+      "b": "3units",
+      "c": "4units",
+      "d": "5units",
+      "ans": "a"
+    },
+    {
+      "question": "62) A circle having radius 3 touches both the axes.The centre of the circle is",
+      "a": "(3,-3)",
+      "b": "(-3,-3)",
+      "c": "(3,3)",
+      "d": "(-3,3)",
+      "ans": "c"
+    },
+    {
+      "question": "63) The modulus of (a-ib)/(a+ib) is equal to",
+      "a": "0",
+      "b": "1",
+      "c": "a+b",
+      "d": "-1",
+      "ans": "b"
+    },
+    {
+      "question": "64) 1, 1/2, 1/3, 1/4, .... are in",
+      "a": "A.P",
+      "b": "G.P",
+      "c": "H.P",
+      "d": "none",
+      "ans": "c"
+    },
+    {
+      "question": "65) I is an",
+      "a": "equal matrix",
+      "b": "rectangular matrix",
+      "c": "triangular matrix",
+      "d": "orthogonal matrix",
+      "ans": "d"
+    },
+    {
+      "question": "66) <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHEAAABECAMAAACBFyr8AAAAM1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxgEwMAAAAEHRSTlMARCKrw1SJdpkyZrvd7xDNn5PkRQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA51JREFUWAntWOvSoyAMBVwBUVve/2k3CRrDclG/dWc6O+VHS+kxJwkIhyil1b9qDctm+FeELcut8b/3o2W5Nf7/MY7W+YnCes3VCWdAcL6KOADBDQFNtbJH42EGxGIAZUOsMTIgvAAUR3JOfjDAAtsrImWXkUxYTyaqjAxYMBPDIsnSU+gEWvDo/IovQI/REEtY07OVGA/Ait7bSEjxcQBw8DzGDZ/s1GLMALUYc4DFOLsxqgU99xEmUqkaYwaAEMp5FBZGP8Bkdxh/wZ8TOGVsJGCVUQLU7NBg3jLAtOJsG7RcaWl+TRi1a2cVHj8ArkKYASDtuCR6Kyc5QquskVVCJMBYJWTAgOFZnKAuY8D1SQu/wXgANE55SboD0rs6YLq6jDOYcel1rK8cBkxeaz1uUDC7NwZYWAyvFV3qMhrrcK8ArJ3j26b9bjeG3wxYI7byhGOActYNtJa7jNL4Y/0v42OpFIY+KKuNvUg4+8Nuf5f7odHuYx+U1fJt7np+/c9Pi5GVGIQw2UocNwCjC47Ox0b2KHZWYsi1lPu0ugHwsIsPZ8pKsVQDwjBUGK8D9BtsGNQvvXmUSkxPvmS8AXjznFxgxGP0FVSb8QoghhDs+Wl1KDGYhAqj0HInABMxQzNSNmPMtJyGCagxslQ7A0x0ASCxLXY5P3CzmyebVIOc1hl3LXcOoDU2ohBtxshvDUi10UJbarIDPMErxSlAUYznjLsSQ7tqLtequg4YcK06vAqJGMusshJrMV4HGCR7oxoVjGiWG40fSkxNPq6eLiAMgc4NwOSdp+tZl1Eaf6z/ZXwslcLQB2X1q+XEvNztftA88k5+N4YzfD/GXapZupBGVg5sdQeo0bl0xPNfqXMA9hJfl5GlmtV6mqYybAaMuGW6sp7DAO70d3KWanQ1D+WtnAFUHKp4zwDudBmlVINzAssGeTsApERHckxCGMCd/mm1wVIFSVUO5ANg4qJ1Oc0M4E6fUUg1pXQZIuh0EkBUF1rim6ppMkQBEMhyOdAzpLhYqsFQzZ4o3FmjVyq75YxsgTuX63Jmy21ucNdyilZOpaLLANFpxcjjqey21XX/IKSfANhWKRa4Ky1ZgD+oU1nR9AyNC6nm8aZStB1gqFar0qdE7QCh+rqMQqrNpTWwzIABd4CpXFwM4M6eD+kX9ckTIdVqdzmp5aDslkp4uSW2wJ0+Y/70Q7+6WX2IIzfzZczz8cyvz8nqM/HcsPIbfuEgp0JXyaAAAAAASUVORK5CYII=\" align=\"absmiddle\" hspace=\"8\">",
+      "a": "-1",
+      "b": "0",
+      "c": "1",
+      "d": "2",
+      "ans": "b"
+    },
+    {
+      "question": "67) B={points in a line} is a __________",
+      "a": "singular set",
+      "b": "infinite set",
+      "c": "finite set",
+      "d": "null set",
+      "ans": "b"
+    },
+    {
+      "question": "68) The roots of equation x<sup>2</sup>-3x+2 =0 are",
+      "a": "1,2",
+      "b": "2,3",
+      "c": "3,4",
+      "d": "4,5",
+      "ans": "a"
+    },
+    {
+      "question": "69) The range of function f(x)=|x-1| is",
+      "a": "(-∞,0)",
+      "b": "[0,∞)",
+      "c": "(0,∞)",
+      "d": "(-∞,∞)",
+      "ans": "b"
+    },
+    {
+      "question": "70) In a triangle ABC,sinA:sinB:sinC =1:2:3.If b=4 then the perimeter of the triangle is",
+      "a": "16",
+      "b": "12",
+      "c": "8",
+      "d": "20",
+      "ans": "b"
+    },
+    {
+      "question": "71) Area of triangleis given by",
+      "a": "b*h",
+      "b": "abc/R",
+      "c": "abc/2R",
+      "d": "abc/4R",
+      "ans": "d"
+    },
+    {
+      "question": "72) In a triangle if a=5,b=6 and C=30°,Then area of triangle is",
+      "a": "5.5",
+      "b": "6.5",
+      "c": "7.5",
+      "d": "8.5",
+      "ans": "c"
+    },
+    {
+      "question": "73) The curve f(x)=x<sup>4</sup>-2x<sup>3</sup> + 5 is concave upward for",
+      "a": "x>1",
+      "b": "x<1",
+      "c": "x>0",
+      "d": "x>1 or x<0",
+      "ans": "d"
+    },
+    {
+      "question": "74) The normal to a given curve y=f(x) is paralle to x-axis if",
+      "a": "(dy/dx)=0",
+      "b": "(dy/dx)=1",
+      "c": "(dx/dy)=0",
+      "d": "(dx/dy)=1",
+      "ans": "c"
+    },
+    {
+      "question": "75) The area of region bounded by the lines y<sup>2</sup>=4x and y=2x is equal to",
+      "a": "1/3sq.units",
+      "b": "1/6 sq.units",
+      "c": "5/3 sq.units",
+      "d": "9/2 sq.units",
+      "ans": "a"
+    },
+    {
+      "question": "76) Atomic mass is mass of carbon taken as",
+      "a": "12",
+      "b": "6",
+      "c": "3",
+      "d": "24",
+      "ans": "a"
+    },
+    {
+      "question": "77) The species having a negative or positive charge are",
+      "a": "radical ",
+      "b": "atom",
+      "c": "molecule",
+      "d": "ion",
+      "ans": "d"
+    },
+    {
+      "question": "78) Ascorbic acid is another name for vitamin",
+      "a": "A",
+      "b": "B",
+      "c": "C",
+      "d": "D",
+      "ans": "c"
+    },
+    {
+      "question": "79) The mass of one mole of water molecule is",
+      "a": "22gm",
+      "b": "24gm",
+      "c": "18gm",
+      "d": "9gm",
+      "ans": "c"
+    },
+    {
+      "question": "80) The mass of one molecule of sulphuric acid is",
+      "a": "98",
+      "b": "100",
+      "c": "49",
+      "d": "50",
+      "ans": "a"
+    },
+    {
+      "question": "81) Isotopes differ in the number of",
+      "a": "electrons",
+      "b": "protons",
+      "c": "neutrons",
+      "d": "none",
+      "ans": "c"
+    },
+    {
+      "question": "82) Sulphur has charge of",
+      "a": "-3",
+      "b": "-2",
+      "c": "-1",
+      "d": "0",
+      "ans": "b"
+    },
+    {
+      "question": "83) Rutherford in his atomic model could not explain the behavior of",
+      "a": "electrons",
+      "b": "protons",
+      "c": "neutrons",
+      "d": "none",
+      "ans": "a"
+    },
+    {
+      "question": "84) Pauli's Exclusion principle state that two electrons in the same orbitals have",
+      "a": "same spins",
+      "b": "different spins",
+      "c": "opposite spins",
+      "d": "vertical spins",
+      "ans": "c"
+    },
+    {
+      "question": "85) Any reaction at an anode involves",
+      "a": "gain of electrons",
+      "b": "loss of electrons",
+      "c": "depends on electrolyte",
+      "d": "formation of gases",
+      "ans": "b"
+    },
+    {
+      "question": "86) What is the pH of a solution of 0.36 M HCl, 0.62 M NaOH, and 0.15 M HNO3?",
+      "a": "13.04",
+      "b": "9.05",
+      "c": "4.02",
+      "d": "3.64",
+      "ans": "a"
+    },
+    {
+      "question": "87) The structure of ammonia molecule is",
+      "a": "tetrahedral",
+      "b": "square",
+      "c": "trigonal pyramid",
+      "d": "V-shape",
+      "ans": "c"
+    },
+    {
+      "question": "88) The molecule of methane contains four_________atoms.",
+      "a": "carbon",
+      "b": "hydrogen",
+      "c": "oxygen",
+      "d": "nitrogen",
+      "ans": "b"
+    },
+    {
+      "question": "89) As we go from left to right across the period, the electron affinity",
+      "a": "increases",
+      "b": "decreases",
+      "c": "remains same",
+      "d": "none",
+      "ans": "a"
+    },
+    {
+      "question": "90) Epsom salt is an ore of",
+      "a": "sulphate",
+      "b": "copper",
+      "c": "zinc",
+      "d": "aluminium",
+      "ans": "a"
+    },
+    {
+      "question": "91) Anhydrous copper sulphate is",
+      "a": "blue",
+      "b": "white",
+      "c": "yellow",
+      "d": "black",
+      "ans": "b"
+    },
+    {
+      "question": "92) Hot water on reaction with Zn gives",
+      "a": "ZnH",
+      "b": "Zn<sub>2</sub>o=O",
+      "c": "ZnO",
+      "d": "ZnH<sub>2</sub>",
+      "ans": "c"
+    },
+    {
+      "question": "93) In Nepal,cobalts are located in ",
+      "a": "Baglung",
+      "b": "Phulchowki",
+      "c": "Dang",
+      "d": "Bandipur",
+      "ans": "c"
+    },
+    {
+      "question": "94) Number of neutrons present in Protium is",
+      "a": "1",
+      "b": "0",
+      "c": "2",
+      "d": "3",
+      "ans": "b"
+    },
+    {
+      "question": "95) Catalyst used in manufacture of ammonia is",
+      "a": "Fe",
+      "b": "Pt",
+      "c": "Cu",
+      "d": "Zn",
+      "ans": "a"
+    },
+    {
+      "question": "96) Which of these is an organic compound",
+      "a": "Co",
+      "b": "CaCO<sub>3</sub>",
+      "c": "CaC<sub>2</sub>",
+      "d": "CCl<sub>4</sub>",
+      "ans": "d"
+    },
+    {
+      "question": "97) Complete oxidation of ethene yields",
+      "a": "CO<sub>2</sub> and water",
+      "b": "ethanol",
+      "c": "ethanal",
+      "d": "ethanoic acid",
+      "ans": "a"
+    },
+    {
+      "question": "98) Ethy iodide when reacts with aq.KOH in suitable condition gives",
+      "a": "ethane",
+      "b": "ethyl alcohol",
+      "c": "ethene",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "99) Acetylene passed through Cu tube at 300°C gives",
+      "a": "benzene",
+      "b": "phenyl",
+      "c": "acetylene",
+      "d": "ethyne",
+      "ans": "a"
+    },
+    {
+      "question": "100) Friedel craft alkylation of benzene gives",
+      "a": "phenol",
+      "b": "benzoic acid",
+      "c": "toulene",
+      "d": "pyrolic acid",
+      "ans": "c"
+    }
+  ]
+}

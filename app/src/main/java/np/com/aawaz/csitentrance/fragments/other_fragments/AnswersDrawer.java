@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
-
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.AnswerAdapter;
 import np.com.aawaz.csitentrance.objects.SPHandler;

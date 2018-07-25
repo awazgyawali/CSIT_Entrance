@@ -18,6 +18,7 @@ class Score {
     var model8: Int = 0
     var model9: Int = 0
     var model10: Int = 0
+    var sagarmatha11: Int = 0
     var math: Int = 0
     var physics: Int = 0
     var english: Int = 0
@@ -46,6 +47,7 @@ class Score {
                 score.model8 = SPHandler.getInstance().getScore(SPHandler.MODEL8)
                 score.model9 = SPHandler.getInstance().getScore(SPHandler.MODEL9)
                 score.model10 = SPHandler.getInstance().getScore(SPHandler.MODEL10)
+                score.sagarmatha11 = SPHandler.getInstance().getScore(SPHandler.SAGARMATHA)
 
 
                 score.math = SPHandler.getInstance().getScore(SPHandler.MATH)

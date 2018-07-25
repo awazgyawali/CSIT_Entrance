@@ -1,8 +1,6 @@
 package np.com.aawaz.csitentrance.objects
 
 import android.content.ContentValues
-import android.database.sqlite.SQLiteDatabase
-
 import np.com.aawaz.csitentrance.misc.MyApplication
 import np.com.aawaz.csitentrance.services.NotificationDatabase
 

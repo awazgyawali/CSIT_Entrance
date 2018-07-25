@@ -159,11 +159,11 @@
 
 
             <TextView
+                android:id="@+id/versionInSettings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:id="@+id/versionInSettings"
                 android:paddingTop="20dp"
                 android:text="CSIT Entrance - Version 2.1.2"
                 android:textColor="@color/colorPrimaryText" />

@@ -52,8 +52,8 @@
         android:orientation="vertical">
 
         <include
-            layout="@layout/orchid_ad"
-            android:id="@+id/forum_ad"/>
+            android:id="@+id/forum_ad"
+            layout="@layout/orchid_ad" />
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/forumSwipeRefresh"

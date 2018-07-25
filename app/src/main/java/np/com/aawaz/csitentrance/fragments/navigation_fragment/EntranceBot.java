@@ -37,8 +37,8 @@ public class EntranceBot extends Fragment {
     RecyclerView recyclerView;
     View intro;
     BotAdapter adapter;
-    private LinearLayout chatContainer;
     OkHttpClient client;
+    private LinearLayout chatContainer;
 
     public EntranceBot() {
         // Required empty public constructor
@@ -77,7 +77,7 @@ public class EntranceBot extends Fragment {
     }
 
     private void sendToAPI(String message) {
-        String url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" +message + "&sessionId=12345&timezone=America/New_York";
+        String url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" + message + "&sessionId=12345&timezone=America/New_York";
         try {
             url = "https://api.dialogflow.com/v1/query?v=20150910&lang=en&query=" + URLEncoder.encode(message, "UTF-8") + "&sessionId=12345&timezone=America/New_York";
         } catch (UnsupportedEncodingException e) {

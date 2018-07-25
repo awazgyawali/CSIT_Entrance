@@ -60,11 +60,10 @@ public class Leaderboard extends Fragment {
     TextView[] topScores;
 
     CircleImageView[] circleImageViews;
-
-    private LinearLayout errorLayout;
     NestedScrollView coreLeader;
-    private boolean filled = false;
     JSONObject object = new JSONObject();
+    private LinearLayout errorLayout;
+    private boolean filled = false;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

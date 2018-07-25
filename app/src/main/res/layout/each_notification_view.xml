@@ -12,9 +12,9 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:padding="10dp"
         android:layout_height="match_parent"
-        android:background="?selectableItemBackground">
+        android:background="?selectableItemBackground"
+        android:padding="10dp">
 
         <TextView
 
@@ -25,15 +25,16 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:textSize="16sp"
             android:fontFamily="@font/work_sans_medium"
             android:text="Rameshwor also commented on a post."
             android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/notificationTime" />
 
         <TextView
+            android:id="@+id/notificationMessage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -41,11 +42,10 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:id="@+id/notificationMessage"
-            android:text="Majale milcha bhai, kina na milne."
             android:ellipsize="end"
             android:fontFamily="@font/work_sans_medium"
             android:maxLines="2"
+            android:text="Majale milcha bhai, kina na milne."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

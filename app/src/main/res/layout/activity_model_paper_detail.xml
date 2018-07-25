@@ -10,17 +10,17 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
+            android:id="@+id/model_detail_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/model_detail_toolbar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -76,10 +76,10 @@
         app:layout_constraintVertical_bias="0.45">
 
         <LinearLayout
+            android:id="@+id/play_quiz"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/play_quiz"
             android:background="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical">
@@ -108,10 +108,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/full_question"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/full_question"
             android:background="?selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical"
@@ -131,9 +131,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:gravity="center"
                 android:text="Full Question"
                 android:textColor="@color/grey"
-                android:gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
