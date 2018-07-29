@@ -6,12 +6,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.daimajia.androidanimations.library.Techniques;
@@ -125,6 +125,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
                 new MaterialDialog.Builder(getActivity()).
                         title("Report an issue")
                         .items("Question is mistake", "Options doesn't have the answer", "Unable to view the question.")
+                        .negativeText("Cancel")
                         .itemsCallback(new MaterialDialog.ListCallback() {
                             @Override
                             public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
@@ -136,8 +137,8 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
                                 values.put("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 values.put("name", FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
 
-                                Log.d("DEBUG", key);
-                                FirebaseDatabase.getInstance().getReference().child("error_reports").child(key).push().setValue(values);
+                                FirebaseDatabase.getInstance().getReference().child("error_reports").child(key).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(values);
+                                Toast.makeText(getContext(), "Thanks for the report", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .show();
