@@ -50,12 +50,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.comment.setText(comment.message);
         holder.commenter.setText(comment.author + " ");
         holder.time.setText(DateUtils.getRelativeTimeSpanString(comment.time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
-//
-//        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(comments.get(position).uid)) {
-//            holder.editComment.setVisibility(View.VISIBLE);
-//        } else
-//            holder.editComment.setVisibility(View.GONE);
-
 
         if (SPHandler.containsDevUID(comment.uid))
             holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.admin, 0);
@@ -63,11 +57,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
         if (comment.likes != null) {
-            holder.upvote.setText(comment.likes.size() + " Upvote");
-            if (comment.likes.contains(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+            holder.upvote.setText(String.valueOf(comment.likes.size()));
+            if (comment.likes.contains(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                 holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
-            else
+            } else {
                 holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.grey));
+            }
         }
         holder.upvote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,13 +79,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         } catch (Exception e) {
             holder.circleImageView.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(comment.author.charAt(0)).toUpperCase(), Color.BLUE));
         }
-
-//        holder.editComment.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                clickEventListener.itemLongClicked(view, holder.getAdapterPosition());
-//            }
-//        });
 
         holder.circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override

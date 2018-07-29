@@ -216,7 +216,8 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
                     @Override
                     public void run() {
                         try {
-                            startLikeProcess(getIntent().getStringExtra("key"), key.get(position), FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            startLikeProcess(getIntent().getStringExtra("key"), key.get(position),
+                                    FirebaseAuth.getInstance().getCurrentUser().getUid(), adapter.getUidAt(position));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -237,11 +238,12 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
 
     }
 
-    private String startLikeProcess(String post_id, String comment_id, String uid) throws Exception {
+    private String startLikeProcess(String post_id, String comment_id, String upvoter_uid, String upvoted_uid) throws Exception {
         String jsonBody = "{" + "" +
                 "\"post_id\":\"" + post_id + "\"," +
                 "\"comment_id\":\"" + comment_id + "\"," +
-                "\"uid\":\"" + uid + "\"" +
+                "\"upvoter_uid\":\"" + upvoter_uid + "\"," +
+                "\"upvoted_uid\":\"" + upvoted_uid + "\"" +
                 "}";
 
         OkHttpClient client = new OkHttpClient();

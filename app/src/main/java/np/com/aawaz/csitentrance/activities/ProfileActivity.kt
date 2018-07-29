@@ -110,29 +110,26 @@ class ProfileActivity : AppCompatActivity(), ValueEventListener {
     }
 
     private fun getUserInfo(uid: String) {
-        FirebaseFirestore.getInstance().collection("users").document(uid).get().addOnCompleteListener {
-            if (it.isSuccessful) {
-                loading.visibility = View.GONE
-                val data = it.result
-                nameText.text = data.get("name").toString()
-                totalScore.text = "Total Score: " + data.get("score").toString()
-                Picasso.with(this)
-                        .load(data.get("image_url").toString())
-                        .into(imageView)
-            }
+        FirebaseFirestore.getInstance().collection("users").document(uid).addSnapshotListener { snapshot, _ ->
+            loading.visibility = View.GONE
+            val data = snapshot?.data
+            nameText.text = data?.get("name").toString()
+            totalScore.text = "Total Score: " + data?.get("score").toString()
+            Picasso.with(this)
+                    .load(data?.get("image_url").toString())
+                    .into(imageView)
         }
     }
 
     private fun getScoresOfUser(uid: String) {
-        FirebaseFirestore.getInstance().collection("scores").document(uid).get().addOnCompleteListener {
-            if (it.isSuccessful) {
-                loading.visibility = View.GONE
-                val data = it.result
-                physics.text = "${data.get("physics").toString()}\nPhysics"
-                chemistry.text = "${data.get("chemistry").toString()}\nChemistry"
-                english.text = "${data.get("english").toString()}\nEnglish"
-                math.text = "${data.get("math").toString()}\nMathematics"
-            }
+
+        FirebaseFirestore.getInstance().collection("scores").document(uid).addSnapshotListener { snapshot, _ ->
+            loading.visibility = View.GONE
+            val data = snapshot?.data
+            physics.text = "${data?.get("physics").toString()}\nPhysics"
+            chemistry.text = "${data?.get("chemistry").toString()}\nChemistry"
+            english.text = "${data?.get("english").toString()}\nEnglish"
+            math.text = "${data?.get("math").toString()}\nMathematics"
         }
     }
 

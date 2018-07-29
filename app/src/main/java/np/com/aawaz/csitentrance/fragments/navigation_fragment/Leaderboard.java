@@ -2,7 +2,6 @@ package np.com.aawaz.csitentrance.fragments.navigation_fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
@@ -15,10 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -125,6 +124,7 @@ public class Leaderboard extends Fragment {
         Picasso.with(getContext())
                 .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
                 .into(myImage);
+
         myScore.setText(String.valueOf(SPHandler.getInstance().getTotalScore()));
     }
 
@@ -135,56 +135,56 @@ public class Leaderboard extends Fragment {
             coreLeader.setVisibility(View.GONE);
         }
 
-        FirebaseFirestore.getInstance().collection("users").orderBy("score", Query.Direction.DESCENDING).limit(10).get()
-                .addOnCompleteListener(getActivity(), new OnCompleteListener<QuerySnapshot>() {
+        FirebaseFirestore.getInstance().collection("users").orderBy("score", Query.Direction.DESCENDING).limit(10)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
                         try {
-                            if (task.isSuccessful()) {
-                                int i = 0;
-                                JSONArray array = new JSONArray();
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    final Map<String, Object> user = document.getData();
-                                    if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(user.get("uid"))) {
-                                        myCard.setVisibility(View.GONE);
-                                    }
-                                    JSONObject userDetail = new JSONObject();
-                                    userDetail.put("name", user.get("name"));
-                                    userDetail.put("uid", user.get("uid"));
-                                    userDetail.put("score", String.valueOf(user.get("score")));
-                                    userDetail.put("image_link", user.get("image_url"));
-                                    if (i < 3) {
-                                        topNames[i].setText((String) user.get("name"));
-                                        topScores[i].setText(String.valueOf(user.get("score")));
-                                        Picasso.with(getContext())
-                                                .load((String) user.get("image_url"))
-                                                .placeholder(R.drawable.account_holder)
-                                                .into(circleImageViews[i]);
-                                        circleImageViews[i].setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                startActivity(new Intent(getContext(), ProfileActivity.class).putExtra("uid", user.get("uid").toString()));
-                                            }
-                                        });
-                                    } else {
-                                        names.add((String) user.get("name"));
-                                        uids.add((String) user.get("uid"));
-                                        scores.add((Long) user.get("score"));
-                                        image_url.add((String) user.get("image_url"));
-                                    }
-                                    i++;
-                                    array.put(userDetail);
+                            names.clear();
+                            uids.clear();
+                            scores.clear();
+                            image_url.clear();
+                            int i = 0;
+                            JSONArray array = new JSONArray();
+                            for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                                final Map<String, Object> user = document.getData();
+                                if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(user.get("uid"))) {
+                                    myCard.setVisibility(View.GONE);
                                 }
-                                if (array.length() > 2) {
-                                    object.put("scores", array);
-                                    callFillRecyclerView();
-                                    saveResponse(object);
+                                JSONObject userDetail = new JSONObject();
+                                userDetail.put("name", user.get("name"));
+                                userDetail.put("uid", user.get("uid"));
+                                userDetail.put("score", String.valueOf(user.get("score")));
+                                userDetail.put("image_link", user.get("image_url"));
+                                if (i < 3) {
+                                    topNames[i].setText((String) user.get("name"));
+                                    topScores[i].setText(String.valueOf(user.get("score")));
+                                    Picasso.with(getContext())
+                                            .load((String) user.get("image_url"))
+                                            .placeholder(R.drawable.account_holder)
+                                            .into(circleImageViews[i]);
+                                    circleImageViews[i].setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            startActivity(new Intent(getContext(), ProfileActivity.class).putExtra("uid", user.get("uid").toString()));
+                                        }
+                                    });
                                 } else {
-                                    errorLayout.setVisibility(View.VISIBLE);
-                                    progress.setVisibility(View.GONE);
+                                    names.add((String) user.get("name"));
+                                    uids.add((String) user.get("uid"));
+                                    scores.add((Long) user.get("score"));
+                                    image_url.add((String) user.get("image_url"));
                                 }
+                                i++;
+                                array.put(userDetail);
+                            }
+                            if (array.length() > 2) {
+                                object.put("scores", array);
+                                callFillRecyclerView();
+                                saveResponse(object);
                             } else {
-                                getFromBackup();
+                                errorLayout.setVisibility(View.VISIBLE);
+                                progress.setVisibility(View.GONE);
                             }
                         } catch (Exception ignored) {
 
