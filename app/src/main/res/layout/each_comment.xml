@@ -18,60 +18,58 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/commenter"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:fontFamily="@font/work_sans_medium"
-        android:gravity="center_vertical"
-        android:maxLines="1"
-        android:text="Aawaz Gyawali"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintLeft_toRightOf="@+id/profileComment"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profileComment"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/commenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/work_sans_medium"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="Aawaz Gyawali"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/timeComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/work_sans_medium"
+            android:text="3 hours ago" />
+
+
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:fontFamily="@font/work_sans_medium"
+            android:text="This is a small comment"
+            android:textColor="@color/colorPrimaryText" />
+    </LinearLayout>
 
 
     <TextView
-        android:id="@+id/timeComment"
+        android:id="@+id/upvoteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginStart="8dp"
         android:fontFamily="@font/work_sans_medium"
-        android:text="3 hours ago"
-        app:layout_constraintStart_toEndOf="@+id/profileComment"
-        app:layout_constraintTop_toBottomOf="@+id/commenter" />
+        android:text="Upvote"
+        android:textStyle="bold"
 
-    <TextView
-        android:id="@+id/comment"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="3dp"
-        android:autoLink="web"
-        android:fontFamily="@font/work_sans_medium"
-        android:text="This is a small comment"
-        android:textColor="@color/colorPrimaryText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/profileComment"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeComment"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-    <ImageView
-        android:id="@+id/editIcon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="8dp"
-        android:padding="5dp"
-        android:src="@drawable/vertical_dot"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 </android.support.constraint.ConstraintLayout>

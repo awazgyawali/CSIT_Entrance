@@ -206,6 +206,11 @@ public class EntranceForum extends Fragment implements
         }
     }
 
+    @Override
+    public void upVoteClicked(View view, int position) {
+
+    }
+
     private void showDialogToEdit(String message, final int position) {
         MaterialDialog dialog = new MaterialDialog.Builder(getContext())
                 .title("Edit post")

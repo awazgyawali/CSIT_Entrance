@@ -3,12 +3,12 @@ package np.com.aawaz.csitentrance.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
@@ -50,11 +50,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.comment.setText(comment.message);
         holder.commenter.setText(comment.author + " ");
         holder.time.setText(DateUtils.getRelativeTimeSpanString(comment.time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
-
-        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(comments.get(position).uid)) {
-            holder.editComment.setVisibility(View.VISIBLE);
-        } else
-            holder.editComment.setVisibility(View.GONE);
+//
+//        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(comments.get(position).uid)) {
+//            holder.editComment.setVisibility(View.VISIBLE);
+//        } else
+//            holder.editComment.setVisibility(View.GONE);
 
 
         if (SPHandler.containsDevUID(comment.uid))
@@ -62,6 +62,19 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         else
             holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
+        if (comment.likes != null) {
+            holder.upvote.setText(comment.likes.size() + " Upvote");
+            if (comment.likes.contains(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+                holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
+            else
+                holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.grey));
+        }
+        holder.upvote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickEventListener.upVoteClicked(view, holder.getAdapterPosition());
+            }
+        });
 
         try {
             Picasso.with(MyApplication.getAppContext())
@@ -72,12 +85,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             holder.circleImageView.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(comment.author.charAt(0)).toUpperCase(), Color.BLUE));
         }
 
-        holder.editComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickEventListener.itemLongClicked(view, holder.getAdapterPosition());
-            }
-        });
+//        holder.editComment.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                clickEventListener.itemLongClicked(view, holder.getAdapterPosition());
+//            }
+//        });
 
         holder.circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,10 +145,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView commenter, comment, time;
+        TextView commenter, comment, time, upvote;
         CircleImageView circleImageView;
         View core;
-        ImageView editComment;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -144,7 +156,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             comment = itemView.findViewById(R.id.comment);
             time = itemView.findViewById(R.id.timeComment);
             circleImageView = itemView.findViewById(R.id.profileComment);
-            editComment = itemView.findViewById(R.id.editIcon);
+            upvote = itemView.findViewById(R.id.upvoteButton);
         }
     }
 }

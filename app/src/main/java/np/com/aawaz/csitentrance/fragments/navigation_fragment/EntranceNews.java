@@ -156,4 +156,9 @@ public class EntranceNews extends Fragment implements ClickListener, ChildEventL
     public void itemLongClicked(View view, int position) {
 
     }
+
+    @Override
+    public void upVoteClicked(View view, int position) {
+
+    }
 }
