@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_profile.*
 import np.com.aawaz.csitentrance.R
 import np.com.aawaz.csitentrance.adapters.ForumAdapter
 import np.com.aawaz.csitentrance.objects.Post
@@ -113,8 +114,12 @@ class ProfileActivity : AppCompatActivity(), ValueEventListener {
         FirebaseFirestore.getInstance().collection("users").document(uid).addSnapshotListener { snapshot, _ ->
             loading.visibility = View.GONE
             val data = snapshot?.data
+
+            if (data?.get("likesCount") != null)
+                upvotes.text = data["likesCount"].toString()
+
             nameText.text = data?.get("name").toString()
-            totalScore.text = "Total Score: " + data?.get("score").toString()
+            totalScore.text = data?.get("score").toString()
             Picasso.with(this)
                     .load(data?.get("image_url").toString())
                     .into(imageView)
