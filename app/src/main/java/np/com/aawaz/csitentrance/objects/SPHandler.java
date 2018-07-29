@@ -36,7 +36,7 @@ public class SPHandler {
     public static String MODEL8 = "model8";
     public static String MODEL9 = "model9";
     public static String MODEL10 = "model10";
-    public static String SAGARMATHA = "model10";
+    public static String SAGARMATHA = "model11-sagarmatha";
     private static SPHandler spHandler;
     private final SharedPreferences.Editor scoreEditor;
     private final SharedPreferences.Editor infoEditor;

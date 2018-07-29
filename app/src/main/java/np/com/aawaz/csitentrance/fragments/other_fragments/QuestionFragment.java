@@ -6,14 +6,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
@@ -25,6 +31,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
     QuizTextView question, option1, option2, option3, option4;
     TextView questionRo, option1Ro, option2Ro, option3Ro, option4Ro;
+    TextView report;
     RelativeLayout option1Listener, option2Listener, option3Listener, option4Listener;
     FancyButton option1Selected, option2Selected, option3Selected, option4Selected;
 
@@ -104,11 +111,40 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         option3Selected = (FancyButton) view.findViewById(R.id.optSelected3);
         option4Selected = (FancyButton) view.findViewById(R.id.optSelected4);
 
-        submit = (CardView) view.findViewById(R.id.AnswerFab);
+        report = view.findViewById(R.id.reportError);
+
+        submit = view.findViewById(R.id.AnswerFab);
 
         YoYo.with(Techniques.SlideOutDown)
                 .duration(0)
                 .playOn(submit);
+
+        report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new MaterialDialog.Builder(getActivity()).
+                        title("Report an issue")
+                        .items("Question is mistake", "Options doesn't have the answer", "Unable to view the question.")
+                        .itemsCallback(new MaterialDialog.ListCallback() {
+                            @Override
+                            public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                                Bundle bundle = getArguments();
+                                String key = getResources().getStringArray(R.array.years)[bundle.getInt("code")] + "-" + (bundle.getInt("position") + 1);
+
+                                HashMap values = new HashMap();
+                                values.put("issue", text);
+                                values.put("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                values.put("name", FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+
+                                Log.d("DEBUG", key);
+                                FirebaseDatabase.getInstance().getReference().child("error_reports").child(key).push().setValue(values);
+                            }
+                        })
+                        .show();
+
+            }
+        });
+
         submit.setOnClickListener(null);
 
         option1Listener.setOnClickListener(this);
