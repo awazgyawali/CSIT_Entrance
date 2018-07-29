@@ -116,10 +116,12 @@ class ProfileActivity : AppCompatActivity(), ValueEventListener {
             val data = snapshot?.data
 
             if (data?.get("likesCount") != null)
-                upvotes.text = data["likesCount"].toString()
+                upvotes.text = "Upvotes: ${data["likesCount"].toString()}"
+            else
+                upvotes.text = "Upvotes: 0"
 
             nameText.text = data?.get("name").toString()
-            totalScore.text = data?.get("score").toString()
+            totalScore.text = "Total Score: ${data?.get("score").toString()}"
             Picasso.with(this)
                     .load(data?.get("image_url").toString())
                     .into(imageView)
@@ -127,7 +129,6 @@ class ProfileActivity : AppCompatActivity(), ValueEventListener {
     }
 
     private fun getScoresOfUser(uid: String) {
-
         FirebaseFirestore.getInstance().collection("scores").document(uid).addSnapshotListener { snapshot, _ ->
             loading.visibility = View.GONE
             val data = snapshot?.data

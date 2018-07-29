@@ -129,9 +129,8 @@ public class EntranceForum extends Fragment implements
         progressBar.setVisibility(View.VISIBLE);
         mLinearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLinearLayoutManager);
-        reference.keepSynced(true);
-        reference.orderByChild("time_stamp").limitToLast(50).addChildEventListener(this);
         fillRecyclerView();
+        reference.orderByChild("time_stamp").limitToLast(50).addChildEventListener(this);
         handleIntent();
     }
 
@@ -167,13 +166,6 @@ public class EntranceForum extends Fragment implements
         if (requestCode == 201 && resultCode == 200) {
             recyclerView.scrollToPosition(adapter.getItemCount() - 1);
         }
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        running = false;
-        reference.removeEventListener(this);
     }
 
     @Override

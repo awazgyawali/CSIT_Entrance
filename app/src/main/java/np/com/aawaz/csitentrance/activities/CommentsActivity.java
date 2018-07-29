@@ -151,6 +151,10 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
         FirebaseDatabase.getInstance().getReference().child("forum_data/posts/" + getIntent().getStringExtra("key") + "/comment_count").setValue(adapter.getItemCount() + 1);
     }
 
+    private void decreaseCommentCount() {
+        FirebaseDatabase.getInstance().getReference().child("forum_data/posts/" + getIntent().getStringExtra("key") + "/comment_count").setValue(adapter.getItemCount() - 1);
+    }
+
     public void readyViews() {
         forumContainer = findViewById(R.id.postContainer);
         forumPic = findViewById(R.id.forumPic);
@@ -196,8 +200,10 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
                                 public void onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
                                     if (which == 0)
                                         showDialogToEdit(adapter.getMessageAt(position), position);
-                                    else if (which == 1)
+                                    else if (which == 1) {
                                         reference.child(key.get(position)).removeValue();
+                                        decreaseCommentCount();
+                                    }
                                 }
                             })
                             .build()

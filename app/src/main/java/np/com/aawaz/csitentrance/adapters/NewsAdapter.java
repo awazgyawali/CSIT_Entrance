@@ -31,7 +31,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     public void addToTop(News new_news) {
         news.add(0, new_news);
-        notifyItemInserted(0);
     }
 
     @Override
@@ -72,15 +71,20 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         return news.get(position);
     }
 
+    public void clearData() {
+        news.clear();
+    }
+
+
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView title, newsDetail, time;
         View core;
 
         public ViewHolder(final View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.newsTitle);
-            newsDetail = (TextView) itemView.findViewById(R.id.newsDetail);
-            time = (TextView) itemView.findViewById(R.id.newsTime);
+            title = itemView.findViewById(R.id.newsTitle);
+            newsDetail = itemView.findViewById(R.id.newsDetail);
+            time = itemView.findViewById(R.id.newsTime);
             core = itemView;
         }
     }
