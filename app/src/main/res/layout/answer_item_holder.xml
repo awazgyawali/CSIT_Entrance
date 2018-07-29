@@ -14,4 +14,12 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/colorPrimaryText" />
 
+    <TextView
+        android:id="@+id/drawerReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:padding="10dp"
+        android:text="Report" />
+
 </android.support.v7.widget.CardView>

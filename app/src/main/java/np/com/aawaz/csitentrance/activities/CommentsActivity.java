@@ -209,7 +209,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
             public void upVoteClicked(View view, final int position) {
                 final MaterialDialog md = new MaterialDialog.Builder(CommentsActivity.this)
                         .progress(true, 100)
-                        .content("Upvoting")
+                        .content("Please wait...")
                         .build();
                 md.show();
                 new Thread(new Runnable() {

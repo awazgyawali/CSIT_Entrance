@@ -7,6 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,6 +20,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import np.com.aawaz.csitentrance.R;
 
@@ -70,7 +77,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         String htm = "<html lang=\"en\">" +
                 "<head>" +
                 "  <meta charset=\"UTF-8\">" +
@@ -99,8 +106,33 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
         htm = htm + "</div>" +
                 "</body>" +
                 "</html>";
-        ;
+
         holder.que.loadDataWithBaseURL("", htm, "text/html", "UTF-8", "");
+
+        holder.report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new MaterialDialog.Builder(context).
+                        title("Report an issue")
+                        .items("Question is mistake", "Options doesn't have the answer", "Unable to view the question.")
+                        .negativeText("Cancel")
+                        .itemsCallback(new MaterialDialog.ListCallback() {
+                            @Override
+                            public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                                String key = context.getResources().getStringArray(R.array.years)[code - 1] + "-" + (holder.getAdapterPosition() + 1);
+
+                                HashMap values = new HashMap();
+                                values.put("issue", text);
+                                values.put("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                values.put("name", FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+
+                                FirebaseDatabase.getInstance().getReference().child("error_reports").child(key).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(values);
+                                Toast.makeText(context, "Thanks for the report", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .show();
+            }
+        });
     }
 
     @Override
@@ -163,10 +195,12 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
 
     class ViewHolder extends RecyclerView.ViewHolder {
         WebView que;
+        TextView report;
 
         ViewHolder(View itemView) {
             super(itemView);
-            que = (WebView) itemView.findViewById(R.id.answerHolder);
+            que = itemView.findViewById(R.id.answerHolder);
+            report = itemView.findViewById(R.id.drawerReport);
 
         }
 
