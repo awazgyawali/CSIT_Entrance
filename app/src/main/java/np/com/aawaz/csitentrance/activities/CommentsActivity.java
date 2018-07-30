@@ -213,11 +213,6 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
 
             @Override
             public void upVoteClicked(View view, final int position) {
-                final MaterialDialog md = new MaterialDialog.Builder(CommentsActivity.this)
-                        .progress(true, 100)
-                        .content("Please wait...")
-                        .build();
-                md.show();
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -227,14 +222,9 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                md.dismiss();
-                            }
-                        });
                     }
                 }).start();
+                adapter.upVoteAtPosition(position);
             }
         });
 

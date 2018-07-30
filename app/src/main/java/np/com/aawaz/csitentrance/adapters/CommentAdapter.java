@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
@@ -63,6 +64,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             } else {
                 holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.grey));
             }
+        } else {
+            holder.upvote.setText("0");
+            holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.grey));
         }
         holder.upvote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +134,19 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
     public String getMessageAt(int position) {
         return comments.get(position).message;
+    }
+
+    public void upVoteAtPosition(int position) {
+        List<String> currentLikes = comments.get(position).likes;
+        if (currentLikes == null)
+            currentLikes = new ArrayList<>();
+
+        if (currentLikes.contains(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+            currentLikes.remove(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        else
+            currentLikes.add(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        comments.get(position).likes = currentLikes;
+        notifyItemChanged(position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

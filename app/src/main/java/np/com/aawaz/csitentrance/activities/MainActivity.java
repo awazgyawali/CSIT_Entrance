@@ -312,7 +312,6 @@ public class MainActivity extends AppCompatActivity {
                 manager.beginTransaction().replace(R.id.fragmentHolder, new Leaderboard()).commit();
                 setTitle("Leaderboard");
                 tabLayout.setVisibility(View.GONE);
-
                 setAppBarElevation(0);
                 item.setChecked(true);
                 new EventSender().logEvent("leaderboard");

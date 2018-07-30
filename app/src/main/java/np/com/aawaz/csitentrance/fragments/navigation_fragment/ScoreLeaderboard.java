@@ -37,7 +37,7 @@ import np.com.aawaz.csitentrance.adapters.LeaderboardAdapter;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 
-public class Leaderboard extends Fragment {
+public class ScoreLeaderboard extends Fragment {
 
     ArrayList<String> names = new ArrayList<>();
     ArrayList<Long> scores = new ArrayList<>();
