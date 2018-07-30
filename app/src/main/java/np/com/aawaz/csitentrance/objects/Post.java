@@ -4,6 +4,7 @@ import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @IgnoreExtraProperties
@@ -15,6 +16,7 @@ public class Post {
     public String message;
     public String image_url;
     public int comment_count;
+    public List<String> likes;
 
     public Post() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)

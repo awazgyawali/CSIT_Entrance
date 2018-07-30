@@ -71,6 +71,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.grey));
             holder.upvote.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upvote_grey, 0);
         }
+
         holder.upvote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -150,6 +151,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             currentLikes.add(FirebaseAuth.getInstance().getCurrentUser().getUid());
         comments.get(position).likes = currentLikes;
         notifyItemChanged(position);
+    }
+
+    public boolean haveIVoted(int position) {
+        List<String> currentLikes = comments.get(position).likes;
+        if (currentLikes == null)
+            currentLikes = new ArrayList<>();
+
+        return (currentLikes.contains(FirebaseAuth.getInstance().getCurrentUser().getUid()));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

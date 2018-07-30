@@ -51,6 +51,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/upvoteButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/upvote_accent"
+            android:fontFamily="@font/work_sans_medium"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="0"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/editIcon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
             android:id="@+id/commentCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

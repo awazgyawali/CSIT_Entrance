@@ -216,9 +216,10 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+
                         try {
                             startLikeProcess(getIntent().getStringExtra("key"), key.get(position),
-                                    FirebaseAuth.getInstance().getCurrentUser().getUid(), adapter.getUidAt(position));
+                                    FirebaseAuth.getInstance().getCurrentUser().getUid(), adapter.getUidAt(position), adapter.haveIVoted(position));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -234,10 +235,11 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
 
     }
 
-    private String startLikeProcess(String post_id, String comment_id, String upvoter_uid, String upvoted_uid) throws Exception {
+    private String startLikeProcess(String post_id, String comment_id, String upvoter_uid, String upvoted_uid, boolean upvote) throws Exception {
         String jsonBody = "{" + "" +
                 "\"post_id\":\"" + post_id + "\"," +
                 "\"comment_id\":\"" + comment_id + "\"," +
+                "\"upvote\":" + (upvote ? "true" : "false") + "," +
                 "\"upvoter_uid\":\"" + upvoter_uid + "\"," +
                 "\"upvoted_uid\":\"" + upvoted_uid + "\"" +
                 "}";

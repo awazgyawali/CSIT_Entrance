@@ -41,6 +41,11 @@ import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.PopupAd;
 import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class EntranceForum extends Fragment implements
         // ValueEventListener,
@@ -199,8 +204,38 @@ public class EntranceForum extends Fragment implements
     }
 
     @Override
-    public void upVoteClicked(View view, int position) {
+    public void upVoteClicked(View view, final int position) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    startLikeProcess(key.get(position),
+                            FirebaseAuth.getInstance().getCurrentUser().getUid(), adapter.getUidAt(position), adapter.haveIVoted(position));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+        adapter.upVoteAtPosition(position);
+    }
 
+    private String startLikeProcess(String post_id, String upvoter_uid, String upvoted_uid, boolean upvote) throws Exception {
+        String jsonBody = "{" + "" +
+                "\"post_id\":\"" + post_id + "\"," +
+                "\"upvoter_uid\":\"" + upvoter_uid + "\"," +
+                "\"upvote\":" + (upvote ? "true" : "false") + "," +
+                "\"upvoted_uid\":\"" + upvoted_uid + "\"" +
+                "}";
+
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonBody);
+        Request request = new Request.Builder()
+                .url("https://us-central1-csit-entrance-7d58.cloudfunctions.net/likeAPost")
+                .post(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        return response.body().string();
     }
 
     private void showDialogToEdit(String message, final int position) {

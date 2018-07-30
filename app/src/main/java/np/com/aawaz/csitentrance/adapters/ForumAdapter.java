@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v4.app.SupportActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
@@ -54,6 +56,14 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         return new ViewHolder(inflater.inflate(R.layout.each_feed_item, parent, false));
     }
 
+    public boolean haveIVoted(int position) {
+        List<String> currentLikes = posts.get(position).likes;
+        if (currentLikes == null)
+            currentLikes = new ArrayList<>();
+
+        return currentLikes.contains(FirebaseAuth.getInstance().getCurrentUser().getUid());
+    }
+
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Post post = posts.get(holder.getAdapterPosition());
@@ -73,6 +83,29 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
             holder.editIcon.setVisibility(View.VISIBLE);
         else
             holder.editIcon.setVisibility(View.GONE);
+        if (post.likes != null) {
+            holder.upvote.setText(String.valueOf(post.likes.size()));
+            if (post.likes.contains(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
+                holder.upvote.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upvote_accent, 0);
+            } else {
+                holder.upvote.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upvote_grey, 0);
+                holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.grey));
+            }
+        } else {
+            holder.upvote.setText("0");
+            holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.grey));
+            holder.upvote.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upvote_grey, 0);
+        }
+
+
+        holder.upvote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (clickListener != null)
+                    clickListener.upVoteClicked(view, position);
+            }
+        });
 
         try {
             Picasso.with(MyApplication.getAppContext())
@@ -155,8 +188,21 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         return post.comment_count == 1 ? " comment" : " comments";
     }
 
+    public void upVoteAtPosition(int position) {
+        List<String> currentLikes = posts.get(position).likes;
+        if (currentLikes == null)
+            currentLikes = new ArrayList<>();
+
+        if (currentLikes.contains(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+            currentLikes.remove(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        else
+            currentLikes.add(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        posts.get(position).likes = currentLikes;
+        notifyItemChanged(position);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView commentCount, realPost, postedBy, time;
+        TextView commentCount, realPost, postedBy, time, upvote;
         ImageView editIcon, call;
         CircleImageView profile;
         View core;
@@ -171,6 +217,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
             time = itemView.findViewById(R.id.forumTime);
             editIcon = itemView.findViewById(R.id.editIcon);
             profile = itemView.findViewById(R.id.forumPic);
+            upvote = itemView.findViewById(R.id.upvoteButton);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
