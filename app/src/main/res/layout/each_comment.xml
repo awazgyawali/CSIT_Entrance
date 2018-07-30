@@ -64,12 +64,14 @@
         android:id="@+id/upvoteButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:drawablePadding="10dp"
+        android:drawableRight="@drawable/upvote_accent"
         android:fontFamily="@font/work_sans_medium"
         android:gravity="center"
-        android:paddingTop="10dp"
+        android:padding="10dp"
         android:text="0"
+        android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/profileComment"
-        app:layout_constraintTop_toBottomOf="@+id/profileComment" />
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 </android.support.constraint.ConstraintLayout>

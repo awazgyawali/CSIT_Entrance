@@ -61,12 +61,15 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             holder.upvote.setText(String.valueOf(comment.likes.size()));
             if (comment.likes.contains(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                 holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
+                holder.upvote.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upvote_accent, 0);
             } else {
+                holder.upvote.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upvote_grey, 0);
                 holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.grey));
             }
         } else {
             holder.upvote.setText("0");
             holder.upvote.setTextColor(ContextCompat.getColor(context, R.color.grey));
+            holder.upvote.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upvote_grey, 0);
         }
         holder.upvote.setOnClickListener(new View.OnClickListener() {
             @Override
