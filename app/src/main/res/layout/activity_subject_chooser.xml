@@ -575,7 +575,7 @@
                             android:layout_marginLeft="10dp"
                             android:fontFamily="@font/work_sans_medium"
                             android:gravity="center_vertical"
-                            android:text="ACHS Model Entrance"
+                            android:text="Model Question 6"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/colorPrimaryText"
                             android:textStyle="bold" />

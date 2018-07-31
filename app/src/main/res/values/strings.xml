@@ -35,6 +35,7 @@
         <item>Model Question 8</item>
         <item>Model Question 9</item>
         <item>Sagarmatha Model Question</item>
+        <item>Model Question 10</item>
     </string-array>
     <string name="title_activity_notification">NotificationActivity</string>
     <string name="title_activity_post_forum">PostForumActivity</string>
