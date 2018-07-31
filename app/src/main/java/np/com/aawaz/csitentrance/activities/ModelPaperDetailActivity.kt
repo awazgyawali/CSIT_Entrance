@@ -68,8 +68,7 @@ class ModelPaperDetailActivity : AppCompatActivity() {
 
             EventSender().logEvent("sagarmatha_model_paper")
             title = "Sagarmatha Model Paper"
-            model_banner.setImageResource(R.drawable.sagarmatha)
-            model_banner.visibility = View.GONE
+            model_banner.setImageResource(R.drawable.sagarmatha_banner)
             model_name.text = "Sagarmatha Model Paper"
             model_address.text = "Sanepa, Lalitpur"
 
