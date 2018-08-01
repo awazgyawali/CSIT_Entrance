@@ -385,7 +385,7 @@
       "ans": "b"
     },
     {
-      "question": "49) lim<sub>x=>1 (x-1)/(x+1) =",
+      "question": "49) lim<sub>x=>1</sub> (x-1)/(x+1) =",
       "a": "1",
       "b": "-1",
       "c": "0",

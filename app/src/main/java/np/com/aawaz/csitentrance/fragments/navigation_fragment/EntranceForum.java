@@ -282,8 +282,10 @@ public class EntranceForum extends Fragment implements
     @Override
     public void onChildRemoved(DataSnapshot dataSnapshot) {
         int index = key.indexOf(dataSnapshot.getKey());
-        adapter.removeItemAtPosition(index);
-        key.remove(index);
+        if (index != -1) {
+            adapter.removeItemAtPosition(index);
+            key.remove(index);
+        }
     }
 
     @Override

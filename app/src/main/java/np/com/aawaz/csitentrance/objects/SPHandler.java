@@ -245,6 +245,7 @@ public class SPHandler {
 
     public void clearAll() {
         scoreEditor.clear().apply();
+        infoEditor.clear().apply();
     }
 
     public String getLeaderBoardLastResponse() {

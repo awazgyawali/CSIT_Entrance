@@ -47,15 +47,11 @@ import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.CommentAdapter;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
 import np.com.aawaz.csitentrance.misc.MyApplication;
+import np.com.aawaz.csitentrance.misc.Singleton;
 import np.com.aawaz.csitentrance.objects.Comment;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class CommentsActivity extends AppCompatActivity implements ChildEventListener {
 
@@ -213,18 +209,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
 
             @Override
             public void upVoteClicked(View view, final int position) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        try {
-                            startLikeProcess(getIntent().getStringExtra("key"), key.get(position),
-                                    FirebaseAuth.getInstance().getCurrentUser().getUid(), adapter.getUidAt(position), adapter.haveIVoted(position));
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }).start();
+                Singleton.getInstance().upvoteComment(getIntent().getStringExtra("key"), key.get(position), FirebaseAuth.getInstance().getCurrentUser().getUid(), adapter.getUidAt(position), adapter.haveIVoted(position));
                 adapter.upVoteAtPosition(position);
             }
         });
@@ -233,26 +218,6 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
 
         addListener();
 
-    }
-
-    private String startLikeProcess(String post_id, String comment_id, String upvoter_uid, String upvoted_uid, boolean upvote) throws Exception {
-        String jsonBody = "{" + "" +
-                "\"post_id\":\"" + post_id + "\"," +
-                "\"comment_id\":\"" + comment_id + "\"," +
-                "\"upvote\":" + (upvote ? "true" : "false") + "," +
-                "\"upvoter_uid\":\"" + upvoter_uid + "\"," +
-                "\"upvoted_uid\":\"" + upvoted_uid + "\"" +
-                "}";
-
-        OkHttpClient client = new OkHttpClient();
-
-        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonBody);
-        Request request = new Request.Builder()
-                .url("https://us-central1-csit-entrance-7d58.cloudfunctions.net/likeAComment")
-                .post(body)
-                .build();
-        Response response = client.newCall(request).execute();
-        return response.body().string();
     }
 
     private void showDialogToEdit(String message, final int position) {

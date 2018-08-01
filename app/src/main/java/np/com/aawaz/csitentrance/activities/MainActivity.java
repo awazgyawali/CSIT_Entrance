@@ -29,6 +29,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
@@ -189,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
             FirebaseFirestore.getInstance()
                     .collection("users")
                     .document(user.getUid())
-                    .set(map);
+                    .set(map, SetOptions.mergeFields("name", "phone_no", "instance_id", "image_url", "email", "uid", "score"));
 
             SPHandler.getInstance().userDataAdded();
             FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
@@ -277,7 +278,6 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
                 return;
             case R.id.logout:
-                SPHandler.getInstance().clearAll();
                 new MaterialDialog.Builder(this)
                         .title("Log out")
                         .content("Are you sure you want to log out?")
@@ -287,6 +287,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                                 FirebaseAuth.getInstance().signOut();
+                                SPHandler.getInstance().clearAll();
                                 if (AccessToken.getCurrentAccessToken() != null)
                                     LoginManager.getInstance().logOut();
                                 FirebaseMessaging.getInstance().unsubscribeFromTopic("allDevices");

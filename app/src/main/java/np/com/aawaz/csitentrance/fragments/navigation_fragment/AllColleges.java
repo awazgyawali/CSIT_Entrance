@@ -98,7 +98,7 @@ public class AllColleges extends Fragment {
 
     private void fillNormally() {
         //Recycler view handler
-        CollegesAdapter adapter = new CollegesAdapter(getContext(), names, address);
+        CollegesAdapter adapter = new CollegesAdapter(getActivity(), names, address);
         adapter.setMenuClickListener(new CollegeMenuClicks() {
             @Override
             public void onCallClicked(final int position) {
