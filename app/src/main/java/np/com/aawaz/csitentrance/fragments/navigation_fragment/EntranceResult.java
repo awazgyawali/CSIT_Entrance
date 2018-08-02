@@ -39,7 +39,7 @@ public class EntranceResult extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        rollNo = (AppCompatEditText) view.findViewById(R.id.resultRollNo);
+        rollNo = view.findViewById(R.id.resultRollNo);
 
         rollNo.addTextChangedListener(new TextWatcher() {
             @Override

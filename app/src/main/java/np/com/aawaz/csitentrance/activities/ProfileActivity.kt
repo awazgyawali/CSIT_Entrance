@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance.activities
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -13,6 +14,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -22,6 +24,8 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profile.*
 import np.com.aawaz.csitentrance.R
 import np.com.aawaz.csitentrance.adapters.ForumAdapter
+import np.com.aawaz.csitentrance.interfaces.ClickListener
+import np.com.aawaz.csitentrance.misc.Singleton
 import np.com.aawaz.csitentrance.objects.Post
 
 class ProfileActivity : AppCompatActivity(), ValueEventListener {
@@ -45,6 +49,7 @@ class ProfileActivity : AppCompatActivity(), ValueEventListener {
     lateinit var toolbarProfile: Toolbar
 
     lateinit var noPost: TextView
+    var keys: ArrayList<String> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,11 +98,14 @@ class ProfileActivity : AppCompatActivity(), ValueEventListener {
     }
 
     override fun onDataChange(data: DataSnapshot) {
+        adapter.clearPosts()
+        keys.clear()
         if (data.childrenCount.toInt() == 0)
             noPost.visibility = View.VISIBLE
         data.children.forEach {
             val newPost = it.getValue(Post::class.java)
             if (newPost?.author != null) {
+                keys.add(it.key!!)
                 adapter.addToTop(newPost, it.key)
             }
         }
@@ -106,8 +114,25 @@ class ProfileActivity : AppCompatActivity(), ValueEventListener {
     private fun getForumDataOfUser(uid: String) {
         forumRecyclerView.layoutManager = LinearLayoutManager(this)
         forumRecyclerView.adapter = adapter
+        adapter.setClickListener(object : ClickListener {
+            override fun itemClicked(view: View?, position: Int) {
+                startActivity(Intent(this@ProfileActivity, CommentsActivity::class.java)
+                        .putExtra("key", adapter.getKeyAt(position))
+                        .putExtra("message", adapter.getMessageAt(position))
+                        .putExtra("comment_count", adapter.getCommentCount(position)))
+            }
+
+            override fun itemLongClicked(view: View?, position: Int) {
+            }
+
+            override fun upVoteClicked(view: View?, position: Int) {
+                Singleton.getInstance().upvoteAPost(keys[position], FirebaseAuth.getInstance().currentUser!!.uid, adapter.getUidAt(position), adapter.haveIVoted(position))
+                adapter.upVoteAtPosition(position)
+            }
+
+        })
         FirebaseDatabase.getInstance().getReference("forum_data/posts").orderByChild("uid").startAt(uid).endAt(uid)
-                .addListenerForSingleValueEvent(this)
+                .addValueEventListener(this)
     }
 
     private fun getUserInfo(uid: String) {

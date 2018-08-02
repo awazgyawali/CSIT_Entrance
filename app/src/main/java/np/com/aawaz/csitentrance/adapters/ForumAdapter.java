@@ -201,6 +201,11 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         notifyItemChanged(position);
     }
 
+    public void clearPosts() {
+        posts.clear();
+        notifyDataSetChanged();
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView commentCount, realPost, postedBy, time, upvote;
         ImageView editIcon, call;

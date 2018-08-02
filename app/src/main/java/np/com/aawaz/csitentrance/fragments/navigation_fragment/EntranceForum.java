@@ -37,6 +37,7 @@ import np.com.aawaz.csitentrance.activities.PostForumActivity;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
 import np.com.aawaz.csitentrance.fragments.other_fragments.ACHSDialog;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
+import np.com.aawaz.csitentrance.misc.Singleton;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.PopupAd;
 import np.com.aawaz.csitentrance.objects.Post;
@@ -205,38 +206,11 @@ public class EntranceForum extends Fragment implements
 
     @Override
     public void upVoteClicked(View view, final int position) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    startLikeProcess(key.get(position),
-                            FirebaseAuth.getInstance().getCurrentUser().getUid(), adapter.getUidAt(position), adapter.haveIVoted(position));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+        Singleton.getInstance().upvoteAPost(key.get(position),FirebaseAuth.getInstance().getCurrentUser().getUid(),adapter.getUidAt(position),adapter.haveIVoted(position));
         adapter.upVoteAtPosition(position);
     }
 
-    private String startLikeProcess(String post_id, String upvoter_uid, String upvoted_uid, boolean upvote) throws Exception {
-        String jsonBody = "{" + "" +
-                "\"post_id\":\"" + post_id + "\"," +
-                "\"upvoter_uid\":\"" + upvoter_uid + "\"," +
-                "\"upvote\":" + (upvote ? "true" : "false") + "," +
-                "\"upvoted_uid\":\"" + upvoted_uid + "\"" +
-                "}";
 
-        OkHttpClient client = new OkHttpClient();
-
-        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonBody);
-        Request request = new Request.Builder()
-                .url("https://us-central1-csit-entrance-7d58.cloudfunctions.net/likeAPost")
-                .post(body)
-                .build();
-        Response response = client.newCall(request).execute();
-        return response.body().string();
-    }
 
     private void showDialogToEdit(String message, final int position) {
         MaterialDialog dialog = new MaterialDialog.Builder(getContext())
