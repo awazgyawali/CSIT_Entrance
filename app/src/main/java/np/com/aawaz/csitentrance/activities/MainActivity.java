@@ -207,7 +207,9 @@ public class MainActivity extends AppCompatActivity {
         name = mNavigationView.getHeaderView(0).findViewById(R.id.userName);
         TextView email = mNavigationView.getHeaderView(0).findViewById(R.id.userEmail);
         imageView = mNavigationView.getHeaderView(0).findViewById(R.id.user_profile);
-        name.setText(user.getDisplayName());
+        if (user.getDisplayName() != null) {
+            name.setText(user.getDisplayName());
+        }
         email.setText(user.getEmail());
         Picasso.with(this)
                 .load(user.getPhotoUrl())

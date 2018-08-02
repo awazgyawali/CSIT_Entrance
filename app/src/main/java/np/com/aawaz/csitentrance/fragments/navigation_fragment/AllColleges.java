@@ -97,7 +97,8 @@ public class AllColleges extends Fragment {
 
 
     private void fillNormally() {
-        //Recycler view handler
+        if (getContext() == null)
+            return;
         CollegesAdapter adapter = new CollegesAdapter(getActivity(), names, address);
         adapter.setMenuClickListener(new CollegeMenuClicks() {
             @Override
@@ -105,7 +106,7 @@ public class AllColleges extends Fragment {
                 if (phNo.get(position).equals("null"))
                     Toast.makeText(getContext(), "No phone number found.", Toast.LENGTH_SHORT).show();
                 else
-                    new MaterialDialog.Builder(getContext())
+                    new MaterialDialog.Builder(getActivity())
                             .title("Call Confirmation")
                             .content("Call " + phNo.get(position) + "?")
                             .positiveText("Call")
