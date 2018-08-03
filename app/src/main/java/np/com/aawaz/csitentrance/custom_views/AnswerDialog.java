@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.SwitchCompat;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,13 @@ import android.view.Window;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewSwitcher;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-import mehdi.sakout.fancybuttons.FancyButton;
+import java.util.HashMap;
+
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.OnDismissListener;
 import np.com.aawaz.csitentrance.objects.SPHandler;
@@ -31,17 +34,17 @@ public class AnswerDialog extends DialogFragment {
     private TextView answerText, answerIsWrong;
     private QuizTextView answerWeb;
     private OnDismissListener onDismissListener;
-    private FancyButton optA, optB, optC, optD, optElse;
-    private ViewSwitcher recommender;
 
     public AnswerDialog() {
         // Required empty public constructor
     }
 
-    public static AnswerDialog newInstance(String answer) {
+    public static AnswerDialog newInstance(String code, String answer, int index) {
         AnswerDialog fragment = new AnswerDialog();
         Bundle args = new Bundle();
         args.putString("answer", answer);
+        args.putString("code", code);
+        args.putInt("index", index);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,7 +53,8 @@ public class AnswerDialog extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            answer = getArguments().getString("answer");
+            answer = getArguments().getString("answer", "Error");
+            Log.d("DEBUG", getArguments().toString());
         }
     }
 
@@ -92,54 +96,29 @@ public class AnswerDialog extends DialogFragment {
         answerIsWrong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recommender.showNext();
+                new MaterialDialog.Builder(getActivity()).
+                        title("Report an issue")
+                        .items("Question is mistake", "Options doesn't have the answer", "Unable to view the question.")
+                        .negativeText("Cancel")
+                        .itemsCallback(new MaterialDialog.ListCallback() {
+                            @Override
+                            public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                                Bundle bundle = getArguments();
+                                String key = bundle.getString("code","error") + "-" + (bundle.getInt("index"));
+
+                                HashMap values = new HashMap();
+                                values.put("issue", text);
+                                values.put("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                values.put("name", FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+
+                                FirebaseDatabase.getInstance().getReference().child("error_reports").child(key).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(values);
+                                Toast.makeText(getContext(), "Thanks for the report", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .show();
             }
         });
 
-        optA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference().child("report").child("year_question").child(SPHandler.getInstance().getCurrentUid()).setValue("Something else");
-                Toast.makeText(getContext(), "Thanks for the report.", Toast.LENGTH_SHORT).show();
-                recommender.setVisibility(View.GONE);
-            }
-        });
-
-        optB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference().child("report").child("year_question").child(SPHandler.getInstance().getCurrentUid()).setValue("Something else");
-                Toast.makeText(getContext(), "Thanks for the report.", Toast.LENGTH_SHORT).show();
-                recommender.setVisibility(View.GONE);
-            }
-        });
-
-        optC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference().child("report").child("year_question").child(SPHandler.getInstance().getCurrentUid()).setValue("Something else");
-                Toast.makeText(getContext(), "Thanks for the report.", Toast.LENGTH_SHORT).show();
-                recommender.setVisibility(View.GONE);
-            }
-        });
-
-        optD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference().child("report").child("year_question").child(SPHandler.getInstance().getCurrentUid()).setValue("Something else");
-                Toast.makeText(getContext(), "Thanks for the report.", Toast.LENGTH_SHORT).show();
-                recommender.setVisibility(View.GONE);
-            }
-        });
-
-        optElse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference().child("report").child("year_question").child(SPHandler.getInstance().getCurrentUid()).setValue("Something else");
-                Toast.makeText(getContext(), "Thanks for the report.", Toast.LENGTH_SHORT).show();
-                recommender.setVisibility(View.GONE);
-            }
-        });
 
     }
 
@@ -147,17 +126,10 @@ public class AnswerDialog extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        answer_settings = (SwitchCompat) view.findViewById(R.id.answerSwitch);
-        answerText = (TextView) view.findViewById(R.id.answerText);
-        answerWeb = (QuizTextView) view.findViewById(R.id.answerWeb);
-        recommender = (ViewSwitcher) view.findViewById(R.id.answerValidationSwitcher);
-        answerIsWrong = (TextView) view.findViewById(R.id.recomend_button);
-        optA = (FancyButton) view.findViewById(R.id.shouldBeA);
-        optB = (FancyButton) view.findViewById(R.id.shouldBeB);
-        optC = (FancyButton) view.findViewById(R.id.shouldBeC);
-        optD = (FancyButton) view.findViewById(R.id.shouldBeD);
-        optElse = (FancyButton) view.findViewById(R.id.shouldBeSomethingElse);
-        recommender.setVisibility(View.GONE);
+        answer_settings = view.findViewById(R.id.answerSwitch);
+        answerText = view.findViewById(R.id.answerText);
+        answerWeb = view.findViewById(R.id.answerWeb);
+        answerIsWrong = view.findViewById(R.id.recomend_button);
     }
 
     @Override

@@ -234,6 +234,8 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
 
     public void checkAnswer() {
+        if (listener == null)
+            return;
         if ((clickedAns == 1 && getArguments().getString("ans").equals("a")) || (clickedAns == 2 && getArguments().getString("ans").equals("b")) ||
                 (clickedAns == 3 && getArguments().getString("ans").equals("c")) || (clickedAns == 4 && getArguments().getString("ans").equals("d"))) {
             listener.selected(submit, true, getAnswer());

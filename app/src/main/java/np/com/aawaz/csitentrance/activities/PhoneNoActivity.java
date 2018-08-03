@@ -215,7 +215,10 @@ public class PhoneNoActivity extends AppCompatActivity {
 
     private void onVerified() {
         if (verifying != null)
-            verifying.dismiss();
+            try {
+                verifying.dismiss();
+            } catch (Exception ignored) {
+            }
         if (dialog != null)
             dialog.dismiss();
         SPHandler.getInstance().setPhoneNo(phone.getText().toString());

@@ -218,7 +218,7 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
             YoYo.with(Techniques.Shake).duration(500).playOn(submit);
         }
         if (spHandler.shouldShowAnswers() && !correct) {
-            AnswerDialog answerDialog = AnswerDialog.newInstance(answer);
+            AnswerDialog answerDialog = AnswerDialog.newInstance(code, answer, customViewPager.getCurrentItem() + 1);
             answerDialog.show(getSupportFragmentManager(), "answer");
             answerDialog.setOnDismissListener(new OnDismissListener() {
 

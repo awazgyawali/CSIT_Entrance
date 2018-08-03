@@ -65,96 +65,18 @@
                 android:textSize="17sp" />
         </RelativeLayout>
 
-        <ViewSwitcher
-            android:id="@+id/answerValidationSwitcher"
-            android:layout_width="0dp"
+
+        <TextView
+            android:id="@+id/recomend_button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
-
-            <TextView
-                android:id="@+id/recomend_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="I think the answer is wrong."
-                android:textColor="@color/colorAccent" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="3dp">
-
-                    <mehdi.sakout.fancybuttons.FancyButton
-                        android:id="@+id/shouldBeA"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="2.5dp"
-                        app:fb_borderColor="@color/colorPrimary"
-                        app:fb_borderWidth="2dp"
-                        app:fb_defaultColor="@color/white"
-                        app:fb_radius="5dp"
-                        app:fb_text="Option A"
-                        app:fb_textColor="@color/colorPrimary" />
-
-                    <mehdi.sakout.fancybuttons.FancyButton
-                        android:id="@+id/shouldBeB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="2.5dp"
-                        app:fb_borderColor="@color/colorPrimary"
-                        app:fb_borderWidth="2dp"
-                        app:fb_defaultColor="@color/white"
-                        app:fb_radius="5dp"
-                        app:fb_text="Option B"
-                        app:fb_textColor="@color/colorPrimary" />
-
-                    <mehdi.sakout.fancybuttons.FancyButton
-                        android:id="@+id/shouldBeC"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="2.5dp"
-                        app:fb_borderColor="@color/colorPrimary"
-                        app:fb_borderWidth="2dp"
-                        app:fb_defaultColor="@color/white"
-                        app:fb_radius="5dp"
-                        app:fb_text="Option C"
-                        app:fb_textColor="@color/colorPrimary" />
-
-                    <mehdi.sakout.fancybuttons.FancyButton
-                        android:id="@+id/shouldBeD"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="2.5dp"
-                        app:fb_borderColor="@color/colorPrimary"
-                        app:fb_borderWidth="2dp"
-                        app:fb_defaultColor="@color/white"
-                        app:fb_radius="5dp"
-                        app:fb_text="Option D"
-                        app:fb_textColor="@color/colorPrimary" />
-
-                    <mehdi.sakout.fancybuttons.FancyButton
-                        android:id="@+id/shouldBeSomethingElse"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="2.5dp"
-                        app:fb_borderColor="@color/colorPrimary"
-                        app:fb_borderWidth="2dp"
-                        app:fb_defaultColor="@color/white"
-                        app:fb_radius="5dp"
-                        app:fb_text="No correct answer"
-                        app:fb_textColor="@color/colorPrimary" />
-                </LinearLayout>
-            </HorizontalScrollView>
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="I think the answer is wrong."
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
 
-        </ViewSwitcher>
     </android.support.constraint.ConstraintLayout>
 </RelativeLayout>
