@@ -47,6 +47,25 @@ public class SPHandler {
     private String PLAYED = "_played";
     private String SCORE = "_score";
 
+    String[][] subjects = {new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//69
+            new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//70
+            new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//71
+            new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//72
+            new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//73
+            new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//74
+            new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},//model 1
+            new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 2
+            new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},//model 3
+            new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH},//model 4
+            new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},//model 5
+            new String[]{MATH, PHYSICS, CHEMISTRY, ENGLISH},//model 6
+            new String[]{ENGLISH, MATH, PHYSICS, CHEMISTRY},//model 7 Samriddhi
+            new String[]{ENGLISH, CHEMISTRY, PHYSICS, MATH},//model 8 (Actually 7)
+            new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 9 (Actually 8)
+            new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 10(actually 9)
+            new String[]{ENGLISH, PHYSICS, MATH, CHEMISTRY},//model 11 Sagarmatha
+            new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS}};//model 12, actually 10
+
     public SPHandler() {
         scoreSp = MyApplication.getAppContext().getSharedPreferences("play_data", Context.MODE_PRIVATE);
         scoreEditor = scoreSp.edit();
@@ -134,46 +153,10 @@ public class SPHandler {
     }
 
     public String getSubjectCode(int index, int questionNo) {
-        String[][] subjects = {new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//69
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//70
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//71
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//72
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//73
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//74
-                new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},//model 1
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 2
-                new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},//model 3
-                new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH},//model 4
-                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},//model 5
-                new String[]{MATH, PHYSICS, CHEMISTRY, ENGLISH},//model 6
-                new String[]{ENGLISH, MATH, PHYSICS, CHEMISTRY},//model 7 Samriddhi
-                new String[]{ENGLISH, CHEMISTRY, PHYSICS, MATH},//model 8 (Actually 7)
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 9 (Actually 8)
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 10(actually 9)
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 11 Sagarmatha
-                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS}};//model 12, actually 10
         return subjects[index][questionNo / 25];
     }
 
     public int getIndexOfQuestion(int index, String subject) {
-
-        String[][] subjects = {new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//69
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//70
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//71
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//72
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//73
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//74
-                new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},//model 1
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 2
-                new String[]{PHYSICS, CHEMISTRY, ENGLISH, MATH},//model 3
-                new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH},//model 4
-                new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},//model 5
-                new String[]{MATH, PHYSICS, CHEMISTRY, ENGLISH},//model 6
-                new String[]{ENGLISH, MATH, PHYSICS, CHEMISTRY},//model 7 Samriddhi
-                new String[]{ENGLISH, CHEMISTRY, PHYSICS, MATH},//model 8 (Actually 7)
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 9 (Actually 8)
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 10(actually 9)
-                new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY}};//model 11 Sagarmatha
         for (int i = 0; i < 4; i++)
             if (subjects[index][i].equals(subject))
                 return i * 25;

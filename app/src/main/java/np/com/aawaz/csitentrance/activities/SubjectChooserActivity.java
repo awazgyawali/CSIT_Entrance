@@ -1,27 +1,32 @@
 package np.com.aawaz.csitentrance.activities;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import np.com.aawaz.csitentrance.R;
-import np.com.aawaz.csitentrance.objects.EventSender;
+import np.com.aawaz.csitentrance.adapters.SubjectListAdapter;
 import np.com.aawaz.csitentrance.objects.SPHandler;
+import np.com.aawaz.csitentrance.objects.YearItem;
 
 public class SubjectChooserActivity extends AppCompatActivity {
     int position;
     String[] subjectCodes;
+    ArrayList<YearItem> items = new ArrayList<>();
+    RecyclerView recyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,109 +55,53 @@ public class SubjectChooserActivity extends AppCompatActivity {
         title.setTextColor(ContextCompat.getColor(this, subColor[position]));
         slideAnimator();
 
-        handleViews();
+        recyclerView = findViewById(R.id.subjectListRecyclerView);
+
+        prepareRecyclerView();
+
     }
 
-    private void handleViews() {
-        LinearLayout que69, que70, que71, que72, que73, que74, que1, que2, que3, que4, que5, que6;
+    private void prepareRecyclerView() {
+        addItem("College Model Questions", YearItem.Companion.getSECTION_TITLE(), -1);
+        addItem("Samriddhi Model Question", YearItem.Companion.getYEAR_SET(), 12);
+        addItem("Sagarmatha Model Question", YearItem.Companion.getYEAR_SET(), 16);
 
-        que1 = (LinearLayout) findViewById(R.id.question1);
-        que2 = (LinearLayout) findViewById(R.id.question2);
-        que3 = (LinearLayout) findViewById(R.id.question3);
-        que4 = (LinearLayout) findViewById(R.id.question4);
-        que5 = (LinearLayout) findViewById(R.id.question5);
-        que6 = (LinearLayout) findViewById(R.id.question6);
-        que69 = (LinearLayout) findViewById(R.id.question2069);
-        que70 = (LinearLayout) findViewById(R.id.question2070);
-        que71 = (LinearLayout) findViewById(R.id.question2071);
-        que72 = (LinearLayout) findViewById(R.id.question2072);
-        que73 = (LinearLayout) findViewById(R.id.question2073);
-        que74 = (LinearLayout) findViewById(R.id.question2074);
+        addItem("Old Questions", YearItem.Companion.getSECTION_TITLE(), -1);
+        addItem("2069 TU Examination", YearItem.Companion.getYEAR_SET(), 0);
+        addItem("2070 TU Examination", YearItem.Companion.getYEAR_SET(), 1);
+        addItem("2071 TU Examination", YearItem.Companion.getYEAR_SET(), 2);
+        addItem("2072 TU Examination", YearItem.Companion.getYEAR_SET(), 3);
+        addItem("2073 TU Examination", YearItem.Companion.getYEAR_SET(), 4);
+        addItem("2074 TU Examination", YearItem.Companion.getYEAR_SET(), 5);
 
-        que69.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(0);
-            }
-        });
-        que70.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(1);
-            }
-        });
-        que71.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(2);
-            }
-        });
-        que72.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(3);
-            }
-        });
-        que73.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(4);
-            }
-        });
-        que74.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(5);
-            }
-        });
-        que1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(6);
-            }
-        });
-        que2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(7);
-            }
-        });
-        que3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(8);
-            }
-        });
-        que4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(9);
-            }
-        });
-        que5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(10);
-            }
-        });
-        que6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clicked(11);
-            }
-        });
+
+        addItem("Model Questions", YearItem.Companion.getSECTION_TITLE(), -1);
+        addItem("Model Paper 1", YearItem.Companion.getYEAR_SET(), 6);
+        addItem("Model Paper 2", YearItem.Companion.getYEAR_SET(), 7);
+        addItem("Model Paper 3", YearItem.Companion.getYEAR_SET(), 8);
+        addItem("Model Paper 4", YearItem.Companion.getYEAR_SET(), 9);
+        addItem("Model Paper 5", YearItem.Companion.getYEAR_SET(), 10);
+        addItem("Model Paper 6", YearItem.Companion.getYEAR_SET(), 11);
+        addItem("Model Paper 7", YearItem.Companion.getYEAR_SET(), 13);
+        addItem("Model Paper 8", YearItem.Companion.getYEAR_SET(), 14);
+        addItem("Model Paper 9", YearItem.Companion.getYEAR_SET(), 15);
+        addItem("Model Paper 10", YearItem.Companion.getYEAR_SET(), 17);
+
+        SubjectListAdapter adapter = new SubjectListAdapter(this, subjectCodes[position], items);
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void clicked(int pos) {
-        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6};
-        Intent intent = new Intent(this, SubjectQuizActivity.class);
-        intent.putExtra("code", codes[pos]);
-        intent.putExtra("position", pos);
-        intent.putExtra("subject", subjectCodes[position]);
-        startActivity(intent);
-        new EventSender().logEvent("played_subject");
+    private void addItem(String title, int type, int paperCode) {
+        YearItem item = new YearItem();
+        item.setType(type);
+        item.setTitle(title);
+        item.setPaperCode(paperCode);
+
+        items.add(item);
     }
+
 
     private void slideAnimator() {
         if (Build.VERSION.SDK_INT >= 21) {
@@ -169,4 +118,5 @@ public class SubjectChooserActivity extends AppCompatActivity {
             finish();
         return super.onOptionsItemSelected(item);
     }
+
 }

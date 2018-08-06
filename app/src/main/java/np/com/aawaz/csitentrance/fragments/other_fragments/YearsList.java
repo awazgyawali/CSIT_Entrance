@@ -67,14 +67,14 @@ public class YearsList extends Fragment {
         item1.setType(YearItem.Companion.getCOLLEGE_MODEL());
         item1.setTitle("samriddhi");
         item1.setLogo(R.drawable.samriddhi_logo);
-        item1.setPaperCode(16);
+        item1.setPaperCode(12);
         items.add(item1);
 
         YearItem item2 = new YearItem();
         item2.setType(YearItem.Companion.getCOLLEGE_MODEL());
         item2.setTitle("sagarmatha");
         item2.setLogo(R.drawable.sagarmatha_logo);
-        item2.setPaperCode(12);
+        item2.setPaperCode(16);
         items.add(item2);
 
     }
@@ -87,61 +87,61 @@ public class YearsList extends Fragment {
 
         YearItem item7 = new YearItem();
         item7.setType(YearItem.Companion.getYEAR_SET());
-        item7.setTitle("Model 1");
+        item7.setTitle("Model Paper 1");
         item7.setPaperCode(6);
         items.add(item7);
 
         YearItem item8 = new YearItem();
         item8.setType(YearItem.Companion.getYEAR_SET());
-        item8.setTitle("Model 2");
+        item8.setTitle("Model Paper 2");
         item8.setPaperCode(7);
         items.add(item8);
 
         YearItem item9 = new YearItem();
         item9.setType(YearItem.Companion.getYEAR_SET());
-        item9.setTitle("Model 3");
+        item9.setTitle("Model Paper 3");
         item9.setPaperCode(8);
         items.add(item9);
 
         YearItem item10 = new YearItem();
         item10.setType(YearItem.Companion.getYEAR_SET());
-        item10.setTitle("Model 4");
+        item10.setTitle("Model Paper 4");
         item10.setPaperCode(9);
         items.add(item10);
 
         YearItem item11 = new YearItem();
         item11.setType(YearItem.Companion.getYEAR_SET());
-        item11.setTitle("Model 5");
+        item11.setTitle("Model Paper 5");
         item11.setPaperCode(10);
         items.add(item11);
 
         YearItem item12 = new YearItem();
         item12.setType(YearItem.Companion.getYEAR_SET());
-        item12.setTitle("Model 6");
+        item12.setTitle("Model Paper 6");
         item12.setPaperCode(11);
         items.add(item12);
 
         YearItem item13 = new YearItem();
         item13.setType(YearItem.Companion.getYEAR_SET());
-        item13.setTitle("Model 7");
+        item13.setTitle("Model Paper 7");
         item13.setPaperCode(13);
         items.add(item13);
 
         YearItem item14 = new YearItem();
         item14.setType(YearItem.Companion.getYEAR_SET());
-        item14.setTitle("Model 8");
+        item14.setTitle("Model Paper 8");
         item14.setPaperCode(14);
         items.add(item14);
 
         YearItem item15 = new YearItem();
         item15.setType(YearItem.Companion.getYEAR_SET());
-        item15.setTitle("Model 9");
+        item15.setTitle("Model Paper 9");
         item15.setPaperCode(15);
         items.add(item15);
 
         YearItem item16 = new YearItem();
         item16.setType(YearItem.Companion.getYEAR_SET());
-        item16.setTitle("Model 10");
+        item16.setTitle("Model Paper 10");
         item16.setPaperCode(17);
         items.add(item16);
     }

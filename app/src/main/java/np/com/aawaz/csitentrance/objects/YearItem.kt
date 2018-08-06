@@ -12,4 +12,5 @@ class YearItem {
         var COLLEGE_MODEL = 2
         var YEAR_SET = 3
     }
+
 }

@@ -136,7 +136,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
     }
 
     private CharSequence getRelativeTimeSpanString(long time_stamp) {
-        if (time_stamp > System.currentTimeMillis())
+        if ((time_stamp - 5000) > System.currentTimeMillis())
             return "PINNED";
         return DateUtils.getRelativeTimeSpanString(time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE);
     }

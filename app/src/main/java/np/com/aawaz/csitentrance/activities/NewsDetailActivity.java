@@ -82,6 +82,8 @@ public class NewsDetailActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 News news = dataSnapshot.getValue(News.class);
+                if (news == null)
+                    return;
                 title.setText(news.title);
                 newsDetail.loadData(readyWithCSS(news.message), "text/html", "UTF-8");
                 time.setText(convertToSimpleDate(news.time_stamp));
