@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,7 +15,6 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -40,6 +40,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -61,7 +62,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     AppCompatEditText commentEditText;
     ImageButton commentButton;
     CircleImageView forumPic;
-    TextView commentNumber, errorMessage, postedBy, forumTime, realPost;
+    TextView commentNumber, errorMessage, postedBy, forumTime, realPost, upVoteButton;
     LinearLayout commentAdder;
     CommentAdapter adapter;
     ArrayList<String> key = new ArrayList<>();
@@ -157,6 +158,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
         postedBy = findViewById(R.id.postedBy);
         forumTime = findViewById(R.id.forumTime);
         realPost = findViewById(R.id.realPost);
+        upVoteButton = findViewById(R.id.upvoteButton);
 
         progressBar = findViewById(R.id.progressbarSingleFeed);
         commentsRecyclerView = findViewById(R.id.commentsRecyOfFullPost);
@@ -172,6 +174,12 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
             }
         });
         errorMessage.setVisibility(View.GONE);
+        upVoteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     private void fillViews() {
@@ -313,9 +321,9 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     }
 
     private void fillPost() {
-        FirebaseDatabase.getInstance().getReference().child("forum_data/posts").child(getIntent().getStringExtra("key")).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("forum_data/posts").child(getIntent().getStringExtra("key")).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(final DataSnapshot dataSnapshot) {
                 forumContainer.setVisibility(View.VISIBLE);
 
                 final Post post = dataSnapshot.getValue(Post.class);
@@ -333,6 +341,22 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
                     }
                 });
 
+                if (post.likes != null) {
+                    upVoteButton.setText(String.valueOf(post.likes.size()));
+                    if (post.likes.contains(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                        upVoteButton.setTextColor(ContextCompat.getColor(CommentsActivity.this, R.color.colorAccent));
+                        upVoteButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upvote_accent, 0);
+                    } else {
+                        upVoteButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upvote_grey, 0);
+                        upVoteButton.setTextColor(ContextCompat.getColor(CommentsActivity.this, R.color.grey));
+                    }
+                } else {
+                    post.likes = new ArrayList<>();
+                    upVoteButton.setText("0");
+                    upVoteButton.setTextColor(ContextCompat.getColor(CommentsActivity.this, R.color.grey));
+                    upVoteButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upvote_grey, 0);
+                }
+
                 if (SPHandler.containsDevUID(post.uid))
                     postedBy.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.admin, 0);
                 else
@@ -348,7 +372,13 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
                 } catch (Exception e) {
                     forumPic.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(post.author.charAt(0)).toUpperCase(), Color.BLUE));
                 }
-                Log.d("Debug", post.toString());
+                upVoteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Singleton.getInstance().upvoteAPost(dataSnapshot.getKey(), FirebaseAuth.getInstance().getCurrentUser().getUid(), post.uid, post.likes.contains(FirebaseAuth.getInstance().getCurrentUser().getUid()));
+//todo lcally chage garera jhukkaune
+                    }
+                });
             }
 
             @Override
@@ -359,6 +389,8 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     }
 
     private CharSequence getRelativeTimeSpanString(long time_stamp) {
+        if (time_stamp > System.currentTimeMillis())
+            return "PINNED";
         return DateUtils.getRelativeTimeSpanString(time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE);
     }
 

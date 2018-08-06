@@ -102,6 +102,20 @@
                             app:layout_constraintStart_toStartOf="@+id/forumTime"
                             app:layout_constraintTop_toBottomOf="@+id/forumTime" />
 
+                        <TextView
+                            android:id="@+id/upvoteButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            android:drawableRight="@drawable/upvote_accent"
+                            android:fontFamily="@font/work_sans_medium"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="0"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
                     </android.support.constraint.ConstraintLayout>
 
                     <View

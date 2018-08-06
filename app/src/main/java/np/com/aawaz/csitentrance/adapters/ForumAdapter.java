@@ -71,6 +71,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         holder.realPost.setText(post.message);
         holder.commentCount.setText(post.comment_count + getCommentMessage(post));
         holder.commentCount.setPaintFlags(holder.commentCount.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
         holder.time.setText(getRelativeTimeSpanString(post.time_stamp));
 
         if (SPHandler.containsDevUID(post.uid))
@@ -135,6 +136,8 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
     }
 
     private CharSequence getRelativeTimeSpanString(long time_stamp) {
+        if (time_stamp > System.currentTimeMillis())
+            return "PINNED";
         return DateUtils.getRelativeTimeSpanString(time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE);
     }
 
