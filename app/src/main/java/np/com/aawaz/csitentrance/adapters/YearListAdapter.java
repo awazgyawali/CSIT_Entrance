@@ -26,6 +26,10 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
     private final Context context;
     private final ArrayList<YearItem> items;
 
+    private String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
+            SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7,
+            SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA, SPHandler.MODEL12, SPHandler.MODEL13};
+
     public YearListAdapter(Context context, ArrayList<YearItem> items) {
         this.context = context;
         this.items = items;
@@ -85,9 +89,6 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
     }
 
     public void openFullQuestion(int position) {
-        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7,
-                SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA, SPHandler.MODEL12};
         Intent intent = new Intent(context, FullQuestionActivity.class);
         intent.putExtra("code", codes[position]);
         intent.putExtra("position", position + 1);
@@ -97,9 +98,6 @@ public class YearListAdapter extends RecyclerView.Adapter<YearListAdapter.VH> {
     }
 
     public void openQuizQuestion(int position) {
-        String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
-                SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7,
-                SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA, SPHandler.MODEL12};
         Intent intent = new Intent(context, YearQuizActivity.class);
 
         intent.putExtra("code", codes[position]);

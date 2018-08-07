@@ -1,0 +1,804 @@
+{
+  "questions": [
+    {
+      "question": "1)_________________ arrived early.",
+      "a": "We,you and they",
+      "b": "They,we and you",
+      "c": "You,we and they",
+      "d": "They,you and we",
+      "ans": "a"
+    },
+    {
+      "question": "2)Tomorrow is seminar for ____teachers.",
+      "a": "we,you and they",
+      "b": "us",
+      "c": "they",
+      "d": "ours",
+      "ans": "b"
+    },
+    {
+      "question": "3) It is one of the best books that _____ highly demanded.",
+      "a": "is",
+      "b": "are",
+      "c": "have",
+      "d": "were",
+      "ans": "b"
+    },
+    {
+      "question": "4) This is the appropriate time,_________?",
+      "a": "is it",
+      "b": "wasn't it",
+      "c": "isn't it",
+      "d": "aren't there",
+      "ans": "c"
+    },
+    {
+      "question": "5) Tell me where _________?",
+      "a": "are you going",
+      "b": "you are going",
+      "c": "are you going",
+      "d": "you are going",
+      "ans": "d"
+    },
+    {
+      "question": "6) He died _____1960.",
+      "a": "in",
+      "b": "on",
+      "c": "by",
+      "d": "for",
+      "ans": "a"
+    },
+    {
+      "question": "7) The room is 10 feet ________ 15 feet.",
+      "a": "with",
+      "b": "by",
+      "c": "in",
+      "d": "at",
+      "ans": "b"
+    },
+    {
+      "question": "8) She yearns _______ good looks.",
+      "a": "for",
+      "b": "in",
+      "c": "by",
+      "d": "from",
+      "ans": "a"
+    },
+    {
+      "question": "9) The candle was put ______ in the wind.",
+      "a": "off",
+      "b": "through",
+      "c": "down",
+      "d": "out",
+      "ans": "d"
+    },
+    {
+      "question": "10) The expression <b> to smell a rat</b> means",
+      "a": "a bad smell",
+      "b": "to suspect",
+      "c": "to misunderstand",
+      "d": "to hide",
+      "ans": "b"
+    },
+    {
+      "question": "11) I know his address.",
+      "a": "S+V+D.O",
+      "b": "S+D.O",
+      "c": "S+adv.+N+D.O",
+      "d": "S+adv.+D.O",
+      "ans": "a"
+    },
+    {
+      "question": "12) If she _______to come,I would be delighted.",
+      "a": "is",
+      "b": "was ",
+      "c": "had been",
+      "d": "were",
+      "ans": "d"
+    },
+    {
+      "question": "13) I could hear it ___________.",
+      "a": "rain",
+      "b": "raining",
+      "c": "to rain",
+      "d": "rained",
+      "ans": "b"
+    },
+    {
+      "question": "14) Air ______ fast.",
+      "a": "flows",
+      "b": "flies",
+      "c": "flown",
+      "d": "flowing",
+      "ans": "b"
+    },
+    {
+      "question": "15) FROG : CROAK",
+      "a": "hare : leveret",
+      "b": "liquor : intoxication",
+      "c": "serpent : hiss",
+      "d": "brake : car",
+      "ans": "c"
+    },
+    {
+      "question": "16) The collection of flags is called",
+      "a": "bigot",
+      "b": "belfry",
+      "c": "bunting",
+      "d": "bellicose",
+      "ans": "c"
+    },
+    {
+      "question": "17) The synonym of appropriate is",
+      "a": "unnecessary",
+      "b": "requirement",
+      "c": "obtained",
+      "d": "puzzling",
+      "ans": "b"
+    },
+    {
+      "question": "18) I fininshed ______the work.",
+      "a": "doing",
+      "b": "do",
+      "c": "to do",
+      "d": "done",
+      "ans": "a"
+    },
+    {
+      "question": "19) We hate him.",
+      "a": "He has hated by us.",
+      "b": "He is hated by us.",
+      "c": "He was hated by us.",
+      "d": "He will hated by us.",
+      "ans": "b"
+    },
+    {
+      "question": "20) The indirect speech of :What time does the bank open? is",
+      "a": "Do you know will the bank open?",
+      "b": "Do you know when the banl opened?",
+      "c": "Do you know when the bank opens?",
+      "d": "Do you know what time the bank opens?",
+      "ans": "d"
+    },
+    {
+      "question": "21) He ______that the law may be changed.",
+      "a": "is thinking",
+      "b": "think",
+      "c": "thought",
+      "d": "thinks",
+      "ans": "d"
+    },
+    {
+      "question": "22) I ________ to Chitwan.",
+      "a": "have gone",
+      "b": "went",
+      "c": "is going",
+      "d": "was going",
+      "ans": "a"
+    },
+    {
+      "question": "23) He said()\"Hari is a good boy.\"",
+      "a": "(.)",
+      "b": "(?)",
+      "c": "(,)",
+      "d": "(-)",
+      "ans": "c"
+    },
+    {
+      "question": "24) She is ___FBI agent.",
+      "a": "a",
+      "b": "an",
+      "c": "the ",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "25) The antonym of Genuine is",
+      "a": "TRUE",
+      "b": "facsimile",
+      "c": "pure",
+      "d": "original",
+      "ans": "b"
+    },
+    {
+      "question": "26) For which of the species Bohr's theory is not applicable?",
+      "a": "Be<sup>3+</sup>",
+      "b": "Li<sup>2+</sup>",
+      "c": "He<sup>2+</sup>",
+      "d": "H ",
+      "ans": "c"
+    },
+    {
+      "question": "27) Which of the following is largest ion?",
+      "a": "Na<sup>+</sup>",
+      "b": "Mg<sup>2+</sup>",
+      "c": "O<sup>2-</sup>",
+      "d": "F<sup>-</sup>",
+      "ans": "c"
+    },
+    {
+      "question": "28) The oxidation no. of cobalt in K[Co(CO)<sub>4</sub>] is",
+      "a": "1",
+      "b": "-1",
+      "c": "3",
+      "d": "-6",
+      "ans": "b"
+    },
+    {
+      "question": "29) When 1 ampere current flows for 1 second through a conductor the quantity of electricity is called",
+      "a": "1 Faraday",
+      "b": "1 Coulumb",
+      "c": "EMF",
+      "d": "1 ohm",
+      "ans": "b"
+    },
+    {
+      "question": "30) Determine the volume of water to  be added to  N/2 HCl to prepare 500cm<sup>3</sup> of N/10 solution?",
+      "a": "200 cm<sup>3</sup>",
+      "b": "300cm<sup>3</sup>",
+      "c": "400cm<sup>3</sup>",
+      "d": "500cm<sup>3</sup>",
+      "ans": "c"
+    },
+    {
+      "question": "31) Which of the following is more acidic?",
+      "a": "CO",
+      "b": "CO<sub>2</sub>",
+      "c": "SO<sub>2</sub>",
+      "d": "SO<sub>3</sub>",
+      "ans": "d"
+    },
+    {
+      "question": "32) 0.5gm of metal on oxidation gave 0.79 gm of its oxide.The equivalent mass of metal is",
+      "a": "10",
+      "b": "14",
+      "c": "20",
+      "d": "40",
+      "ans": "b"
+    },
+    {
+      "question": "33) What is the molarity of H<sub>2</sub>SO<sub>4</sub> solution that has density of 1.84g/cc at 35°C and contains 98% by weight?",
+      "a": "4.18M",
+      "b": "8.14M",
+      "c": "18.4M",
+      "d": "18M",
+      "ans": "c"
+    },
+    {
+      "question": "34) The atomic no. of Ar is",
+      "a": "8",
+      "b": "12",
+      "c": "18",
+      "d": "20",
+      "ans": "c"
+    },
+    {
+      "question": "35) The value of m for n=1 and l=0 is",
+      "a": "0",
+      "b": "1",
+      "c": "-1",
+      "d": "2",
+      "ans": "a"
+    },
+    {
+      "question": "36) CaO is an ",
+      "a": "acidic oxide",
+      "b": "basic oxide",
+      "c": "neutral oxide",
+      "d": "amphoteric oxide",
+      "ans": "b"
+    },
+    {
+      "question": "37) Which one of the following compounds is coloured?",
+      "a": "NO",
+      "b": "N<sub>2</sub>O",
+      "c": "NO<sub>2</sub>",
+      "d": "NH<sub>3</sub>",
+      "ans": "c"
+    },
+    {
+      "question": "38) Elements in group VIIA are known as",
+      "a": "inert",
+      "b": "halogens",
+      "c": "alkali ",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "39) The element which exhibits maximum catenation property is",
+      "a": "C",
+      "b": "Sn",
+      "c": "Ge",
+      "d": "Pb",
+      "ans": "a"
+    },
+    {
+      "question": "40)Water can be tested by",
+      "a": "smell",
+      "b": "taste",
+      "c": "colour",
+      "d": "anhydrous CoCl<sub>2</sub>",
+      "ans": "d"
+    },
+    {
+      "question": "41) Which metal can't be obtained by electrolysis of it's aqueous solution?",
+      "a": "Cu",
+      "b": "Mg",
+      "c": "Cr",
+      "d": "Ni",
+      "ans": "b"
+    },
+    {
+      "question": "42) In goldschmidt aluminnothermic process resucing agent used is ",
+      "a": "coke",
+      "b": "Al powder",
+      "c": "Au molten",
+      "d": "Ca",
+      "ans": "b"
+    },
+    {
+      "question": "43) IUPAC name of H<sub>2</sub>C=CHCN is",
+      "a": "ethenenitrile",
+      "b": "vinylcyanide",
+      "c": "cyanoethane",
+      "d": "2-propenenitrile",
+      "ans": "d"
+    },
+    {
+      "question": "44) Hydrolysis of calcium carbide produces",
+      "a": "methane",
+      "b": "ethane",
+      "c": "acetylene",
+      "d": "ethylene",
+      "ans": "c"
+    },
+    {
+      "question": "45) The IUPAC name of HC≡CH is",
+      "a": "ethane",
+      "b": "ethyne",
+      "c": "ethylene",
+      "d": "ethane",
+      "ans": "b"
+    },
+    {
+      "question": "46) Ethyl iodide when reduced by Zn-Cu couple,which of the following will be formed",
+      "a": "Zinc ethyl",
+      "b": "ethanol",
+      "c": "ethane",
+      "d": "none",
+      "ans": "c"
+    },
+    {
+      "question": "47) Friedel craft acylation of benzene gives",
+      "a": "acetophenone",
+      "b": "toulene",
+      "c": "benzoic acid",
+      "d": "phenol",
+      "ans": "a"
+    },
+    {
+      "question": "48) Halogenation of C<sub>6</sub>H<sub>6</sub> gives",
+      "a": "C<sub>6</sub>H<sub>5</sub>OH",
+      "b": "C<sub>6</sub>H<sub>5</sub>N",
+      "c": "C<sub>6</sub>H<sub>5</sub>Cl",
+      "d": "C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub>",
+      "ans": "c"
+    },
+    {
+      "question": "49) Zinc white is",
+      "a": "ZnO",
+      "b": "ZnS",
+      "c": "ZnH",
+      "d": "ZnO<sub>2</sub>",
+      "ans": "a"
+    },
+    {
+      "question": "50) Conc.HNO<sub>3</sub> is known by the common name",
+      "a": "muriatic acid",
+      "b": "baryta",
+      "c": "aqua fortis",
+      "d": "nitrolim",
+      "ans": "c"
+    },
+    {
+      "question": "51) A particle executes SHM with a frequency 'f'.The frequency with which it's KE oscillates is",
+      "a": "0",
+      "b": "f/2",
+      "c": "f",
+      "d": "2f",
+      "ans": "d"
+    },
+    {
+      "question": "52) The unit of thrust is",
+      "a": "N",
+      "b": "J",
+      "c": "W",
+      "d": "C",
+      "ans": "a"
+    },
+    {
+      "question": "53) Moment of inertia is",
+      "a": "scalar",
+      "b": "vector",
+      "c": "axial vector",
+      "d": "polar vector",
+      "ans": "a"
+    },
+    {
+      "question": "54) The displacement of body from a fixed point at  any instant is given by x=5t<sup>2</sup>+6t+4 then acceleration after 3sec will be",
+      "a": "3m/s<sup>2</sup>",
+      "b": "5m/s<sup>2</sup>",
+      "c": "10m/s<sup>2</sup> ",
+      "d": "16m/s<sup>2</sup>",
+      "ans": "c"
+    },
+    {
+      "question": "55) A rifle shoots bullet with a velocity of 500m/s on a target at 50m away.The rifle must aim the target to hit it",
+      "a": "5cm below",
+      "b": "exactly at the target",
+      "c": "5cm above the target",
+      "d": "at the ground",
+      "ans": "c"
+    },
+    {
+      "question": "56) The inertia of a body depends on ",
+      "a": "velocity",
+      "b": "mass",
+      "c": "area",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "57) The frictional force of air on a body of mass 0.25kg falling with an acceleration of 9.2m/s<sup>2</sup> is",
+      "a": "2.5N",
+      "b": "2.3N",
+      "c": "0.2N",
+      "d": "0.12N",
+      "ans": "c"
+    },
+    {
+      "question": "58) A body of mass 1kg tied to one end of a string  is revolved in a horizontal circle of radius 0.1m with a speed of 3 revolution per sec then the tension on the string is",
+      "a": "1.88N",
+      "b": "12.2N",
+      "c": "17.8N",
+      "d": "35.5N",
+      "ans": "d"
+    },
+    {
+      "question": "59) Atmosphere of earth is due to ",
+      "a": "Gravity",
+      "b": "Sun",
+      "c": "Clouds",
+      "d": "rotation of earth",
+      "ans": "a"
+    },
+    {
+      "question": "60) Spokes in a bicycle is used to ",
+      "a": "increase mass",
+      "b": "increase moment of inertia",
+      "c": "give better mass",
+      "d": "drive easily",
+      "ans": "b"
+    },
+    {
+      "question": "61) The thermometer used to measure temperature of sun is",
+      "a": "pyrometer",
+      "b": "gas thermometer",
+      "c": "magnetic thermometer",
+      "d": "thermocouple thermometer",
+      "ans": "a"
+    },
+    {
+      "question": "62) A piece of metal wire has a length of 100cm at 5°C.Its length at 478K will be (α of metal=17*10<sup>-6</sup>/°c)",
+      "a": "100.34cm",
+      "b": "200.34cm",
+      "c": "100.80cm",
+      "d": "101.2cm",
+      "ans": "a"
+    },
+    {
+      "question": "63) The severe burn is produced by",
+      "a": "boiling water",
+      "b": "steam",
+      "c": "hot air",
+      "d": "water",
+      "ans": "b"
+    },
+    {
+      "question": "64) K.E per unit volume of gas is",
+      "a": "P ",
+      "b": "3P/2",
+      "c": "2P/3",
+      "d": "4P/3",
+      "ans": "b"
+    },
+    {
+      "question": "65) Black body does not radiate when it's temperature is",
+      "a": "100K",
+      "b": "0K",
+      "c": "273K",
+      "d": "300K",
+      "ans": "b"
+    },
+    {
+      "question": "66) Two coherent monochromatic light beam of intensities I and 4I are superposed.What is the ratio of max and min possible intensities in resulting beam",
+      "a": "2:1",
+      "b": "1:3",
+      "c": "1:9",
+      "d": "9:1",
+      "ans": "d"
+    },
+    {
+      "question": "67) Optical fibres use the phenomenon of",
+      "a": "refraction",
+      "b": "T.I.R",
+      "c": "polarization",
+      "d": "interference",
+      "ans": "b"
+    },
+    {
+      "question": "68) The refractive index is √2 and refracting angle is 60° then minimum deviation of light will be",
+      "a": "30°",
+      "b": "45°",
+      "c": "60°",
+      "d": "72°",
+      "ans": "a"
+    },
+    {
+      "question": "69) A charge enclosed by a sphere of radius 'r' and flux through it is'Ф'.If radius is made double and charge is also double then the flux is",
+      "a": "Ф",
+      "b": "2Ф",
+      "c": "3Ф",
+      "d": "4Ф",
+      "ans": "b"
+    },
+    {
+      "question": "70) The current that flows through a conductor of length 0.01m is bent into an arc of circle of radius 0.02m to produce magnetic field of 0.1*10<sup>-4</sup>T at it's centre will be",
+      "a": "A",
+      "b": "2A",
+      "c": "4A",
+      "d": "15A",
+      "ans": "c"
+    },
+    {
+      "question": "71) How long will it take to heat 2litres of water from 25°C in an electric kettle taking 5amp from a 220V supply?",
+      "a": "32sec",
+      "b": "136sec",
+      "c": "573sec",
+      "d": "2078sec",
+      "ans": "c"
+    },
+    {
+      "question": "72)The S.I unit of self inductance is",
+      "a": "Henry",
+      "b": "weber ",
+      "c": "newton",
+      "d": "kg",
+      "ans": "a"
+    },
+    {
+      "question": "73) A.C  measuring instrument measures its",
+      "a": "r.m.s value",
+      "b": "peak value",
+      "c": "average value",
+      "d": "square of current and voltage",
+      "ans": "a"
+    },
+    {
+      "question": "74) Photons of energy 6eV are incident on a potassium surface of work function 2.1eV.What is cut-off potential?",
+      "a": "6V",
+      "b": "2.1V",
+      "c": "3.9V",
+      "d": "8.1V",
+      "ans": "c"
+    },
+    {
+      "question": "75) Which series of hydrogen atom lie in infrared region",
+      "a": "Lyman",
+      "b": "Balmer",
+      "c": "Bracket,Paschen and Pfund",
+      "d": "all of the above",
+      "ans": "c"
+    },
+    {
+      "question": "76) If n(X)=55 and n(Y)=50 and n(X U Y)=90,then the value of n(X n Y) =",
+      "a": "15",
+      "b": "95",
+      "c": "105",
+      "d": "40",
+      "ans": "a"
+    },
+    {
+      "question": "77) If f(x)= -x-3,then f(3)=",
+      "a": "0",
+      "b": "-3",
+      "c": "3",
+      "d": "-6",
+      "ans": "d"
+    },
+    {
+      "question": "78) If f and g are two functions which are inverse of each other,then fog(x) is",
+      "a": "1/x",
+      "b": "x",
+      "c": "2/x",
+      "d": "0",
+      "ans": "b"
+    },
+    {
+      "question": "79) The range of sinx is",
+      "a": "[1,1]",
+      "b": "[1,-1]",
+      "c": "[-1,1]",
+      "d": "[-1,-1]",
+      "ans": "c"
+    },
+    {
+      "question": "80) The value of x on log<sub>x</sub>(1+x)=6 is",
+      "a": "63",
+      "b": "32",
+      "c": "16",
+      "d": "54",
+      "ans": "a"
+    },
+    {
+      "question": "81) If K is a scalar nad I is a unit matrix of order 3,then adj.(KI) =",
+      "a": "K<sup>3</sub>I",
+      "b": "K<sup>2</sup>I",
+      "c": "-K<sup>3</sub>I",
+      "d": "-K<sup>2</sup>I",
+      "ans": "b"
+    },
+    {
+      "question": "82) The lines represented by Ax<sup>2</sup>+2Bxy+Hy<sup>2</sup>=0 are perpendicular if",
+      "a": "A+B=0",
+      "b": "A+H=0",
+      "c": "A-B=0",
+      "d": "A-h=0",
+      "ans": "b"
+    },
+    {
+      "question": "83) The locus of the equation xy=0 is",
+      "a": "a st.line",
+      "b": "a pair of perpendicular lines",
+      "c": "a hyperbola",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "84) If 3,4 are intercepts of a line L=0 ,then distance of L=0 from origin is",
+      "a": "5units",
+      "b": "12units",
+      "c": "5/12 units",
+      "d": "12/5 units",
+      "ans": "d"
+    },
+    {
+      "question": "85) The equation 4x<sup>2</sup> + 12xy + 9y<sup>2</sup> +2gx + 2fy + c =0 will represent two parallel st.line if",
+      "a": "g=4,f=9,c=0",
+      "b": "g=2,f=3,c=1",
+      "c": "g=2,f=3,c=any number",
+      "d": "g=4,f=9,c=0",
+      "ans": "c"
+    },
+    {
+      "question": "86) If (-1,4) and (3,-2) are end points of diameter of circles,then the equation of circle is",
+      "a": "(x-1)<sup>2</sup>+(y-1)<sup>2</sup>=13",
+      "b": "(x+1)<sup>2</sup>+(y+1)<sup>2</sup>=13",
+      "c": "(x-1)<sup>2</sup>+(y+1)<sup>2</sup>=13",
+      "d": "(x+1)<sup>2</sup>+(y-1)<sup>2</sup>=13",
+      "ans": "a"
+    },
+    {
+      "question": "87) cos<sup>-1</sup>(-x) is equal to",
+      "a": "-cos<sup>-1</sup>x",
+      "b": "π-cos<sup>-1</sup>x",
+      "c": "-cos<sup>-1</sup>x-π",
+      "d": "π/2 -cos<sup>-1</sup>x",
+      "ans": "b"
+    },
+    {
+      "question": "88) If 2sec2θ =tanα+cotα,then the value of  θ+α equals",
+      "a": "π/2",
+      "b": "π/3",
+      "c": "π/6",
+      "d": "π/4",
+      "ans": "d"
+    },
+    {
+      "question": "89) If tan(x+y)=33 and x=tan<sup>-1</sup>3,then y equals to ",
+      "a": "3/10",
+      "b": "tan<sup>-1</sup>(3/10)",
+      "c": "tan<sup>-1</sup>(3/8)",
+      "d": "10/3",
+      "ans": "b"
+    },
+    {
+      "question": "90) The number of values of k so that system of equations (k+1)x+8y=4k , kx+(k+3y)=3k-1 will have infinite solution is",
+      "a": "0",
+      "b": "1",
+      "c": "2",
+      "d": "infinite",
+      "ans": "b"
+    },
+    {
+      "question": "91) Roots of the equation 2x<sup>2</sup>-5x+1=0 and x<sup>2</sup>+5x+2=0 are",
+      "a": "reciprocal and of same sign",
+      "b": "reciprocal and of opposite sign",
+      "c": "equal in magnitude",
+      "d": "none of these",
+      "ans": "b"
+    },
+    {
+      "question": "92) The area of the curve x<sup>2</sup>+y<sup>2</sup>=2ax is:",
+      "a": "πab",
+      "b": "2πab",
+      "c": "πa<sup>2</sup>",
+      "d": "πa<sup>2</sup>/2",
+      "ans": "c"
+    },
+    {
+      "question": "93) The argument of (1-i) is:",
+      "a": "π/4",
+      "b": "-π/4",
+      "c": "π/2",
+      "d": "π/3",
+      "ans": "b"
+    },
+    {
+      "question": "94) ∫<sub>-1</sub><sup>1</sup>xsin<sup>2</sup>xdx =",
+      "a": "2/3",
+      "b": "3/2",
+      "c": "0",
+      "d": "1",
+      "ans": "c"
+    },
+    {
+      "question": "95)lim<sub>x=>0</sub> (e<sup>2x</sup>-1)/x =",
+      "a": "-1",
+      "b": "1",
+      "c": "2",
+      "d": "infinity",
+      "ans": "c"
+    },
+    {
+      "question": "96)If x<sup>2</sup>+y<sup>2</sup> =a<sup>2</sup>,then dy/dx =",
+      "a": "x/y",
+      "b": "2y/x",
+      "c": "-y/x",
+      "d": "-x/y",
+      "ans": "d"
+    },
+    {
+      "question": "97) The distance of a particle in time t sec is given by s=t<sup>3</sup>-6t<sup>2</sup>-4t-8.Then its acceleration vanishes at t=",
+      "a": "1",
+      "b": "2",
+      "c": "3",
+      "d": "4",
+      "ans": "b"
+    },
+    {
+      "question": "98) The fourth term of G.P is 2.Then the product of first seventh term is",
+      "a": "2<sup>5</sup>",
+      "b": "2<sup>6</sup>",
+      "c": "2<sup>7</sup>",
+      "d": "2<sup>4</sup>",
+      "ans": "c"
+    },
+    {
+      "question": "99) The matrix (2  3) is a _____",
+      "a": "colum matrix",
+      "b": "row matrix",
+      "c": "null matrix",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "100) The value of determinant <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAABECAMAAAC8hUuaAAAAM1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxgEwMAAAAEHRSTlMARCKrwxC7iWbNMnaZ71Tdc3ivNAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA4FJREFUWAntWGtzrCAMBbwKFV///9eWRAFBTnbd7c505pYP7eZ1DgHEGKW0+show5ruI2QAFqjfnQKABerfz9afpgiSONT90N7WE4BSzvnOFZosmC2MKckSm7Fue8xmA1O/ATrjxjFxKSWxBbcn2KYh+M3gDJvlxPUTbASHc/sEm6X8WiNsxmLzbry/kkotU3c+eGfWnvZzTXSI7d8e88S+keM4n8/CHpr/5szNAZtt/CtOosk2Dmn4I66bK4Cz6LcoRdgoH/+juslW+naUlt1MqT2kmU6JT1OJsJVvVD9mMxsBdmn6JdBAk+jS4xFhS6f0GD5mUzackH6OS1rhuGA0c8pbYuvtsH1Zaf8Z21vflY/VidJ5OyWylMTJgX6CSVRet0UAC9S34asAAAvUVfBtEcAC9W34KgDAAnUVfFsEsOCKuQ1fBQBYMIkq+LYIYIH6NnwVAGCBugq+LQLYqEbvrbs8B06ErcJZXRVMlUsQnZ+koiyaM47IVhZMFza+cvkVcDGRIplz4SWywbt2R1/pwu7WXbj+TeZceL3DNlPRYcGbLVR90fwkW1kwXWdPGpwb+5M5F15SblXB1GTr8b6RP5szDmJLxVEumJpsA3hpH87ZzDj55pq6NOzpbZoLphabl8lOZsZBuVHhUhVMDbZFJjvMGUdiqwqmK5umU4cJoznjZLbrSlYF04VtnLTWS/46qxySOeNktsJ3V5cFU+FAwkyfglsqFmt7Niccka2Of1v+Y3t7CQ+A37GS6eb6qbQYJ99cBSxIufB5QQCwQP0CQRECYIG6CH1BALBA/QJBEQJgd/XivRVqE8s312YLwFIY2bhYP/FHp8S2UJ/DYzqr9TiO8J4k3pXubEe9m5W+UCU27rkAhxCq6H2jnPSl7Dpi42LC0i8AxmruBSyMSbjNYfDrTSk9ToHDcKvAURtDYjPbqrW0KyGeZoxGqH5ObFQJSmzKrNuX/CWgpdSCjdjUSsszUf8GsfHNZY2exQ6WkiajAzyzjeGUGLtR66R9Ie77RnmJ1amBhXIoJTkjXmnjFv2o5jrS5qMbaFuDt75lCLrFhrGm7g63aNFKhqfI7C1O1OgkkukLUEX1QLk5em75G0RgUx15jdI5GKSpECOzDWFN/b6k7atgn0ToYFFHHA9+eLF5nLY5dLlMgpFywzCvWv7YXl25Ou4/XMl6CT4qfwMhdhRygS2jaQAAAABJRU5ErkJggg==\" align=\"absmiddle\" hspace=\"8\">",
+      "a": "20",
+      "b": "-15",
+      "c": "0",
+      "d": "12",
+      "ans": "d"
+    }
+  ]
+}
