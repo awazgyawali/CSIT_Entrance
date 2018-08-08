@@ -65,7 +65,8 @@ public class SPHandler {
             new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 9 (Actually 8)
             new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 10(actually 9)
             new String[]{ENGLISH, PHYSICS, MATH, CHEMISTRY},//model 11 Sagarmatha
-            new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS}};//model 12, actually 10
+            new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},//model 12, actually 10
+            new String[]{ENGLISH, CHEMISTRY, PHYSICS, MATH}};// model 13, actually 12
 
     public SPHandler() {
         scoreSp = MyApplication.getAppContext().getSharedPreferences("play_data", Context.MODE_PRIVATE);

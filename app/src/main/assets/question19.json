@@ -642,9 +642,9 @@
     },
     {
       "question": "81) If K is a scalar nad I is a unit matrix of order 3,then adj.(KI) =",
-      "a": "K<sup>3</sub>I",
+      "a": "K<sup>3</sup>I",
       "b": "K<sup>2</sup>I",
-      "c": "-K<sup>3</sub>I",
+      "c": "-K<sup>3</sup>I",
       "d": "-K<sup>2</sup>I",
       "ans": "b"
     },
