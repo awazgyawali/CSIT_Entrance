@@ -15,7 +15,7 @@
       "b": "{x: -∞ < x < ∞}",
       "c": "{x: ∞ < x < ∞}",
       "d": "{x: x ≥ 0}",
-      "ans": "c"
+      "ans": "b"
     },
     {
       "question": "3. The statement is",
@@ -29,7 +29,7 @@
       "question": "4. If (2x-1,3) = (3,y+3), then",
       "a": "x=1, y=0",
       "b": "x=-1, y=-3",
-      "c": "x=2, y=-6",
+      "c": "x=2, y=0",
       "d": "x=0, y= -1",
       "ans": "c"
     },
@@ -50,7 +50,7 @@
       "ans": "d"
     },
     {
-      "question": "7. The balue of sin(tan<sup>-1</sup> x) is",
+      "question": "7. The value of sin(tan<sup>-1</sup> x) is",
       "a": "x",
       "b": "1/(1+x<sup>2</sup>)",
       "c": "1/√(1+x<sup>2</sup>)",

@@ -82,7 +82,7 @@
       "ans": "a"
     },
     {
-      "question": "11.1 and 2 are the roots of",
+      "question": "11. 1 and 2 are the roots of",
       "a": "x<sup>2</sup>-3x+2=0",
       "b": "x<sup>2</sup>+3x+2=0",
       "c": "x<sup>2</sup>+x+2=0",
@@ -154,7 +154,7 @@
       "ans": "b"
     },
     {
-      "question": "20.The function f(x)={x+2(x>=2) and 2x(x<2)} is continuous at",
+      "question": "20.The function f(x)={x+2(x>=2) and <br/> 2x(x<2)} is continuous at",
       "a": "x = 0",
       "b": "x = 2",
       "c": "x = -2",
@@ -186,9 +186,9 @@
       "ans": "a"
     },
     {
-      "question": "24.2<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAtCAIAAACxjaXwAAAEVklEQVR4nGP5//8/w6ABLAPtABSAxzV/Xh2dUVqyzXHN5gRp5gF2zf/vzx6z66r8W/OHPg7B7xpGTjlj/Z97GenoliGUbgYADBHX/P96e8+6lUefPOBevkolNNBBnmMgXcPIreoaWwNEdHAEYdcMCBharvnzbGtdau2qUzfeSsfO3jI1RIamzsdv+K+bEyJb2Pp2r99irdcwq2tnXVCyNNNAuebLye6JT6w3agtKfgiPCP8T6yVOS6cQcM3362t3PPkXy8zAJOLcuNyZtg4h5Jp/76+ceMrw69svShpAf18fmtbUUDfluO22F5s8+cl3za/Xt14yMPz89OMfBa5hFrVLS7OeOP2ZuSInYdV4XPP308vPDAw/Pv+kxDVA8P3BmadsaoaSbBS55v/vb78YGH5/pyimgEH84tL9P3IxxAQNXtf8+wMMlX9/cTec/707NiErpniD0tIHu6Ik/t6d5mbQpLT97lwb7n8fLyxqaFhxl4n92/0zh26yehhJsbw71oddMVGuIQyYhKwKp044vC14yuan4Uns16/88eutt+D+//FIhW3A4YgdO/tM+H5dbdDRX26myIlDMbFhQxRgFHYqDBdymjxrwZ2zu7RnzI+SY/l2qjGm/3f+xWITPmDL8dudE4/Z1Iyk2LArRjWN8oKexyw7SXZOS1/QmZNZ2lyMDJ9PTl7wUL0qUpUdJPvz0clbv2UTYakGXTEaIMY1eNvG/94cXXmcmZPh7fPvYIW/np04817Q1FSSFST7/8udk0/YVCFBg6mYBNcwMjIBdbCw4em9/Ht3oDZ2ukT/1sl5ekUTDrRb+wj9//nlJwM84f+4f+TWH7lUcNBgUYzuInyuYWEHyjJyseGonP5/OtEQWPmvbUeeIe/rPKe82L6tzz1jJaXNtDnbtvSvvKLu+HZ1U8msJ2yOxtJs2BVLofkUn2vYeIBRzyrJhz1wft+ekdJy1WiHNjCtMoq65vtweFZkt/JPqvTomxzumZWsp2+d211sJ77gzLWFi87LfMeu2E+WlTjXMLFzA2NbRFUUeyHKqlZ25V8ZzOUCHis/wMul5BV3kldA2XH/eyEMXIqRAd6Y4mBlEDbQFaFTtxera/6+PjipYxtPTE30369/BG0Cdbjo5hhM1/x/s7OyqO+4Aluorcxp7qgOB0E6dn4xXMMoYOhrxnb8wrLEOOO4hQuseennFmwxxa5deeJLzoefHAI8rPQdE8CRihlZeQVZsUnQGgyV/tS3K9PLZr+W5Xl8X7agP0ObmMYSzVzz7+Wm6pWKPbuL5a7X2lduCtoQLkbj3gs+1/y4s/cmt78YKwO7nInAzS23f4SL0aHcweWav9/e/2ZnBQUHEzvnnw/f/tLeKXhcw8wtxPbzF6i38Pf7N1YhbvrUDrhcw6HirPblxsvfvhyPznxQd1Glx1gSbtcwifm2hBX1NbYIPH+b2O4jSockjMc1DAxcutkzZtDFDQgwuEo/AIA5zbdEL+28AAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\"> is equal to",
+      "question": "24.  2<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAtCAIAAACxjaXwAAAEVklEQVR4nGP5//8/w6ABLAPtABSAxzV/Xh2dUVqyzXHN5gRp5gF2zf/vzx6z66r8W/OHPg7B7xpGTjlj/Z97GenoliGUbgYADBHX/P96e8+6lUefPOBevkolNNBBnmMgXcPIreoaWwNEdHAEYdcMCBharvnzbGtdau2qUzfeSsfO3jI1RIamzsdv+K+bEyJb2Pp2r99irdcwq2tnXVCyNNNAuebLye6JT6w3agtKfgiPCP8T6yVOS6cQcM3362t3PPkXy8zAJOLcuNyZtg4h5Jp/76+ceMrw69svShpAf18fmtbUUDfluO22F5s8+cl3za/Xt14yMPz89OMfBa5hFrVLS7OeOP2ZuSInYdV4XPP308vPDAw/Pv+kxDVA8P3BmadsaoaSbBS55v/vb78YGH5/pyimgEH84tL9P3IxxAQNXtf8+wMMlX9/cTec/707NiErpniD0tIHu6Ik/t6d5mbQpLT97lwb7n8fLyxqaFhxl4n92/0zh26yehhJsbw71oddMVGuIQyYhKwKp044vC14yuan4Uns16/88eutt+D+//FIhW3A4YgdO/tM+H5dbdDRX26myIlDMbFhQxRgFHYqDBdymjxrwZ2zu7RnzI+SY/l2qjGm/3f+xWITPmDL8dudE4/Z1Iyk2LArRjWN8oKexyw7SXZOS1/QmZNZ2lyMDJ9PTl7wUL0qUpUdJPvz0clbv2UTYakGXTEaIMY1eNvG/94cXXmcmZPh7fPvYIW/np04817Q1FSSFST7/8udk0/YVCFBg6mYBNcwMjIBdbCw4em9/Ht3oDZ2ukT/1sl5ekUTDrRb+wj9//nlJwM84f+4f+TWH7lUcNBgUYzuInyuYWEHyjJyseGonP5/OtEQWPmvbUeeIe/rPKe82L6tzz1jJaXNtDnbtvSvvKLu+HZ1U8msJ2yOxtJs2BVLofkUn2vYeIBRzyrJhz1wft+ekdJy1WiHNjCtMoq65vtweFZkt/JPqvTomxzumZWsp2+d211sJ77gzLWFi87LfMeu2E+WlTjXMLFzA2NbRFUUeyHKqlZ25V8ZzOUCHis/wMul5BV3kldA2XH/eyEMXIqRAd6Y4mBlEDbQFaFTtxera/6+PjipYxtPTE30369/BG0Cdbjo5hhM1/x/s7OyqO+4Aluorcxp7qgOB0E6dn4xXMMoYOhrxnb8wrLEOOO4hQuseennFmwxxa5deeJLzoefHAI8rPQdE8CRihlZeQVZsUnQGgyV/tS3K9PLZr+W5Xl8X7agP0ObmMYSzVzz7+Wm6pWKPbuL5a7X2lduCtoQLkbj3gs+1/y4s/cmt78YKwO7nInAzS23f4SL0aHcweWav9/e/2ZnBQUHEzvnnw/f/tLeKXhcw8wtxPbzF6i38Pf7N1YhbvrUDrhcw6HirPblxsvfvhyPznxQd1Glx1gSbtcwifm2hBX1NbYIPH+b2O4jSockjMc1DAxcutkzZtDFDQgwuEo/AIA5zbdEL+28AAAAAElFTkSuQmCC\" align=\"absmiddle\" hspace=\"8\"> is equal to",
       "a": "0",
-      "b": "1",
+      "b": "1/2",
       "c": "-1",
       "d": "2",
       "ans": "b"
@@ -619,10 +619,10 @@
     },
     {
       "question": "78. Al<sub>4</sub>C<sub>3</sub> reacts with water to give",
-      "a": "option",
-      "b": "option",
-      "c": "option",
-      "d": "option",
+      "a": "C<sub>2</sub>H<sub>4</sub>",
+      "b": "C<sub>2</sub>H<sub>2</sub>",
+      "c": "H<sub>2</sub>",
+      "d": "CH<sub>4</sub>",
       "ans": "d"
     },
     {
@@ -771,10 +771,10 @@
     },
     {
       "question": "97. The actual electronic configuration of copper is",
-      "a": "[Ar]4s<sub>2</sub>3d<sub>8</sub>",
-      "b": "[Ar]4s<sub>1</sub>3d<sub>10</sub>",
-      "c": "[Ar]4s<sub>2</sub>3d<sub>10</sub>",
-      "d": "[Ar]4s<sub>2</sub>3d<sub>8</sub>",
+      "a": "[Ar]4s<sup>2</sup>3d<sup>8</sup>",
+      "b": "[Ar]4s<sup>1</sup>3d<sup>10</sup>",
+      "c": "[Ar]4s<sup>2</sup>3d<sup>10</sup>",
+      "d": "[Ar]4s<sup>2</sup>3d<sup>8</sup>",
       "ans": "b"
     },
     {
