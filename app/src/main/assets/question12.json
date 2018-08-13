@@ -91,7 +91,7 @@
       "ans": "c"
     },
     {
-      "question": "12. If f(x) = 3x - 1 and g(x) = x<sup></sup>, then fog(x) =",
+      "question": "12. If f(x) = 3x - 1 and g(x) = x<sup>2</sup>, then fog(x) =",
       "a": "(3x - 1)<sup>2</sup>",
       "b": "3x<sup>2</sup> - 1",
       "c": "3x<sup>3</sup> - x<sup>2</sup>",
@@ -136,7 +136,7 @@
       "b": "(-4,1)",
       "c": "(1,-2)",
       "d": "(-2,1/2)",
-      "ans": "d"
+      "ans": "b"
     },
     {
       "question": "18. Altitude of equivalent triangle of side ‘a’ is",

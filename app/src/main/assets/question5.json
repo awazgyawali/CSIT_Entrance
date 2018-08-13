@@ -422,7 +422,7 @@
       "a": "14m",
       "b": "2m",
       "c": "8m",
-      "d": "(8<sup>2+</sup>6<sup></sup>2)",
+      "d": "(8<sup>2</sup>+6<sup>2</sup>)m",
       "ans": "d"
     },
     {
@@ -458,7 +458,7 @@
       "ans": "d"
     },
     {
-      "question": "58. The temperature of a substance increase by 270̊ C. This increase is\nequal to",
+      "question": "58. The temperature of a substance increase by 27 C. This increase is\nequal to",
       "a": "300 K",
       "b": "0 K",
       "c": "27 K",
