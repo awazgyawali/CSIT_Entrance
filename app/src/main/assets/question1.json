@@ -103,7 +103,7 @@
       "b": "π/3",
       "c": "2nπ±π/3",
       "d": "2nπ+π/3",
-      "ans": "a"
+      "ans": "c"
     },
     {
       "question": "14.The length of the perpendicular from (0,0) to the line x + y + 1 = 0 is",
@@ -139,8 +139,8 @@
     },
     {
       "question": "18.<img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> is",
-      "a": "12",
-      "b": "6",
+      "a": "4",
+      "b": "12",
       "c": "9",
       "d": "0/0",
       "ans": "a"
@@ -148,10 +148,10 @@
     {
       "question": "19.<img src=\"data:image/png;base64,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\" align=\"absmiddle\" hspace=\"8\"> is equal to",
       "a": "6",
-      "b": "5",
+      "b": "-55",
       "c": "0",
       "d": "0/0",
-      "ans": "a"
+      "ans": "b"
     },
     {
       "question": "20.The function f(x)={x+2(x>=2) and 2x(x<2)} is continuous at",

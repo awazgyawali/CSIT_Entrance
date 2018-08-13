@@ -698,12 +698,12 @@
       "ans": "c"
     },
     {
-      "question": "88. ",
-      "a": "2",
-      "b": "√2",
-      "c": "0",
-      "d": "-2",
-      "ans": "a"
+      "question": "88) The slope of line joining the points (7,9) and (9,7) is",
+      "a": "1",
+      "b": "90",
+      "c": "-1",
+      "d": "-90",
+      "ans": "c"
     },
     {
       "question": "89. The ratio of the roots of the equation ax<sup>2</sup>+bx+c=0 are in the ratio 3:4 are",
@@ -717,8 +717,8 @@
       "question": "90. The value of (1-2ω+ω<sup>2</sup>)<sup>6</sup>",
       "a": "128",
       "b": "64",
-      "c": "",
-      "d": "",
+      "c": "729",
+      "d": "342",
       "ans": "c"
     },
     {

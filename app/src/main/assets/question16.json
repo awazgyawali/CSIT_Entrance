@@ -129,12 +129,12 @@
       "ans": "a"
     },
     {
-      "question": "17) The roots of equation x<sup>2</sup> -3x-18=0 are",
+      "question": "17) The roots of equation x<sup>2</sup> - 3x - 18 = 0 are",
       "a": "2 and 6",
       "b": "3 and 6",
       "c": "-3 and 6",
       "d": "3 and -6",
-      "ans": "d"
+      "ans": "c"
     },
     {
       "question": "18) The centroid of a triangle whose vertices are A(-1,0),B(5,-2) and C(8,2) is",
@@ -409,12 +409,12 @@
       "ans": "a"
     },
     {
-      "question": "52)Watt-sec is a unit of",
+      "question": "52) Watt-sec is a unit of",
       "a": "momentum",
       "b": "force",
       "c": "energy",
       "d": "power",
-      "ans": "b"
+      "ans": "c"
     },
     {
       "question": "53) Forces of 3N, 4N and 12N act at a point in mutually perpendicular direction. The magnitude of the resultant force in newton is",
