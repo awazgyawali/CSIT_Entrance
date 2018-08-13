@@ -206,7 +206,7 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
         }
 
         if (spHandler.shouldShowAnswers() && !correct) {
-            AnswerDialog answerDialog = AnswerDialog.newInstance(answer, code, index);
+            AnswerDialog answerDialog = AnswerDialog.newInstance(code, answer, index);
             answerDialog.show(getSupportFragmentManager(), "answer");
             answerDialog.setOnDismissListener(new OnDismissListener() {
 

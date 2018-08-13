@@ -201,7 +201,7 @@
       "ans": "c"
     },
     {
-      "question": "26) A set {x:x<sup>2</sup>+4} where x is a real number is a",
+      "question": "26) A set {x:x<sup>2</sup>+4 = 0} where x is a real number is a",
       "a": "Null set",
       "b": "Finite set",
       "c": "infinite set",

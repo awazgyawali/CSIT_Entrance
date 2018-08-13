@@ -17,7 +17,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 25
         multiDexEnabled true
-        versionCode 78
+        versionCode 79
         versionName "3.1.2"
     }
     buildTypes {
