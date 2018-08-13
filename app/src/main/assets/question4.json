@@ -15,7 +15,7 @@
       "b": "{x: -∞ < x < ∞}",
       "c": "{x: ∞ < x < ∞}",
       "d": "{x: x ≥ 0}",
-      "ans": "c"
+      "ans": "b"
     },
     {
       "question": "3. The statement is",
@@ -50,7 +50,7 @@
       "ans": "d"
     },
     {
-      "question": "7. The balue of sin(tan<sup>-1</sup> x) is",
+      "question": "7. The value of sin(tan<sup>-1</sup> x) is",
       "a": "x",
       "b": "1/(1+x<sup>2</sup>)",
       "c": "1/√(1+x<sup>2</sup>)",
