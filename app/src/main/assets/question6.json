@@ -214,7 +214,7 @@
       "a": "nor",
       "b": "four",
       "c": "sew",
-      "d": "Four",
+      "d": "Flour",
       "ans": "b"
     },
     {
@@ -442,7 +442,7 @@
       "ans": "d"
     },
     {
-      "question": "56. A bridge of steel has length 700m, the temperature varies from 243 K to 313 K. The change in length of the bridge for above seasonal variation in temperature is (α<sub>steel</sub> = 11  10<sup>-6</sup>/K)<br>None of the option is correct",
+      "question": "56. A bridge of steel has length 700m, the temperature varies from 243 K to 313 K. The change in length of the bridge for above seasonal variation in temperature is (α<sub>steel</sub> = 11 x 10<sup>-6</sup>/K)<br>None of the option is correct",
       "a": "15.4 cm",
       "b": "15.4 mm",
       "c": "15.8 cm",
@@ -638,7 +638,7 @@
       "a": "1.333333333",
       "b": "+4/3",
       "c": "+2/3",
-      "d": "+5/3",
+      "d": "+8/3",
       "ans": "d"
     },
     {
