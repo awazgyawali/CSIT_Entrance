@@ -258,11 +258,11 @@ public class SPHandler {
     }
 
     public boolean isUserDataAdded() {
-        return infoSp.getBoolean("user_data_updated", false);
+        return infoSp.getBoolean("is_user_data_updated", false);
     }
 
     public void userDataAdded() {
-        infoEditor.putBoolean("user_data_updated", true).apply();
+        infoEditor.putBoolean("is_user_data_updated", true).apply();
     }
 
     public int getLastAdPosition() {

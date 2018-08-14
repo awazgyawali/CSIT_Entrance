@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +35,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
+import java.util.Calendar;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -185,12 +187,14 @@ public class MainActivity extends AppCompatActivity {
             }
             map.put("email", user.getEmail());
             map.put("uid", user.getUid());
+            map.put("last_signed_in", getDateFromMilis(user.getMetadata().getLastSignInTimestamp()));
+            map.put("account_created_at", getDateFromMilis(user.getMetadata().getCreationTimestamp()));
             map.put("score", SPHandler.getInstance().getTotalScore());
 
             FirebaseFirestore.getInstance()
                     .collection("users")
                     .document(user.getUid())
-                    .set(map, SetOptions.mergeFields("name", "phone_no", "instance_id", "image_url", "email", "uid", "score"));
+                    .set(map, SetOptions.mergeFields("name", "phone_no", "instance_id", "image_url", "email", "uid", "score", "last_signed_in", "account_created_at"));
 
             SPHandler.getInstance().userDataAdded();
             FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
@@ -200,6 +204,13 @@ public class MainActivity extends AppCompatActivity {
             if (SPHandler.getInstance().getNewsSubscribed())
                 FirebaseMessaging.getInstance().subscribeToTopic("news");
         }
+    }
+
+    private String getDateFromMilis(long timestamp) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(timestamp);
+
+        return cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH) + " " + cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE);
     }
 
     private void manageHeader() {
