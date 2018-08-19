@@ -10,4 +10,5 @@ class ModelExam {
     var detail: String? = null
     var result_link: String? = null
     var result_published: Boolean = false
+    var can_reg: Boolean = true
 }

@@ -15,6 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +39,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
     TextView venue, address, date, fee, detail, registerNow, registeredName, registeredRoll;
     TextInputEditText modelExamResultInput;
     Button modelExamResultButton;
+    SliderLayout mockEntranceSlider;
 
     ModelExam exam;
     private LinearLayout regDetail, resultDetail;
@@ -52,14 +56,17 @@ public class ModelEntranceActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        setTitle("Model Entrance Exam");
+        getSupportActionBar().setTitle("");
 
         bindViews();
+        mockEntranceSlider.addSlider(getSlide("https://scontent.fktm7-1.fna.fbcdn.net/v/t31.0-8/21316208_1510633865667887_1719989955509467391_o.jpg?_nc_cat=0&oh=6f837a9728b03583efc52339f7d72349&oe=5C01612F"));
+        mockEntranceSlider.addSlider(getSlide("https://scontent.fktm7-1.fna.fbcdn.net/v/t31.0-8/21200683_1509849439079663_54078487823343609_o.jpg?_nc_cat=0&oh=c9fb52dec08777e4dd0e4046159bcd17&oe=5BFC38D1"));
+        mockEntranceSlider.addSlider(getSlide("https://scontent.fktm7-1.fna.fbcdn.net/v/t31.0-8/21272906_1509849189079688_4628729443948047894_o.jpg?_nc_cat=0&oh=1594e220d941d6a8619edd4a3475befb&oe=5C0A1912"));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
-        FirebaseDatabase.getInstance().getReference().child("demo_entrance").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("mock_test").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 exam = dataSnapshot.getValue(ModelExam.class);
@@ -69,7 +76,18 @@ public class ModelEntranceActivity extends AppCompatActivity {
                 fee.setText(exam.getCost());
                 detail.setText(exam.getDetail());
 
-                resultDetail.setVisibility(View.VISIBLE);
+                if (exam.getCan_reg())
+                    registerNow.setVisibility(View.VISIBLE);
+                else {
+                    registerNow.setText("Registration closed");
+                    registerNow.setEnabled(false);
+                    registerNow.setBackgroundColor(ContextCompat.getColor(ModelEntranceActivity.this, R.color.grey));
+                }
+
+                if (exam.getResult_published())
+                    resultDetail.setVisibility(View.VISIBLE);
+                else
+                    resultDetail.setVerticalGravity(View.GONE);
             }
 
             @Override
@@ -204,6 +222,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
         modelExamResultButton = (Button) findViewById(R.id.modelExamResultButton);
         resultText = (TextView) findViewById(R.id.resultText);
         regDetail = (LinearLayout) findViewById(R.id.reg_view);
+        mockEntranceSlider = findViewById(R.id.mockEntranceSlider);
         resultDetail = (LinearLayout) findViewById(R.id.result_view);
     }
 
@@ -212,5 +231,11 @@ public class ModelEntranceActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
+    }
+
+    public BaseSliderView getSlide(String image_url) {
+        DefaultSliderView slide = new DefaultSliderView(this);
+        slide.image(image_url);
+        return slide;
     }
 }
