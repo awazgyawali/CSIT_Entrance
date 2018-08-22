@@ -1,9 +1,12 @@
 package np.com.aawaz.csitentrance.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -23,20 +26,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.DiscussionActivity;
+import np.com.aawaz.csitentrance.objects.Question;
 
 
 public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder> {
-    LayoutInflater inflater;
-    int size, code;
+    private LayoutInflater inflater;
+    private int size, code;
     Context context;
 
     //Array list decleration
-    ArrayList<String> questions = new ArrayList<>();
-    ArrayList<String> a = new ArrayList<>();
-    ArrayList<String> b = new ArrayList<>();
-    ArrayList<String> c = new ArrayList<>();
-    ArrayList<String> d = new ArrayList<>();
-    ArrayList<String> answer = new ArrayList<>();
+    private ArrayList<Question> questions = new ArrayList<>();
 
     public AnswerAdapter(Context context, int size, int code) {
         inflater = LayoutInflater.from(context);
@@ -54,7 +54,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
         setDataToArrayList(startFrom);
     }
 
-    public static String AssetJSONFile(String filename, Context c) throws IOException {
+    private static String AssetJSONFile(String filename, Context c) throws IOException {
         AssetManager manager = c.getAssets();
 
         InputStream file = manager.open(filename);
@@ -65,8 +65,9 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
         return new String(formArray);
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.answer_item_holder, parent, false);
         return new ViewHolder(view);
     }
@@ -77,7 +78,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         String htm = "<html lang=\"en\">" +
                 "<head>" +
                 "  <meta charset=\"UTF-8\">" +
@@ -99,9 +100,8 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
                 "</head>" +
                 "<body>" +
                 "<div>";
-        ;
 
-        htm = htm + questions.get(position) + "<br><b>Answer:</b> " + ansFinder(position);
+        htm = htm + questions.get(position).getQuestion() + "<br><b>Answer:</b> " + ansFinder(position);
 
         htm = htm + "</div>" +
                 "</body>" +
@@ -121,8 +121,8 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
                             public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
                                 String key = context.getResources().getStringArray(R.array.years)[code - 1] + "-" + (holder.getAdapterPosition() + 1);
 
-                                HashMap values = new HashMap();
-                                values.put("issue", text);
+                                HashMap<String, String> values = new HashMap<>();
+                                values.put("issue", text.toString());
                                 values.put("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 values.put("name", FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
 
@@ -133,6 +133,27 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
                         .show();
             }
         });
+
+        holder.core.setOnTouchListener(new View.OnTouchListener() {
+            private final static long MAX_TOUCH_DURATION = 100;
+            private long m_DownTime;
+
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_UP:
+                        context.startActivity(new Intent(context, DiscussionActivity.class)
+                                .putExtra("code", code)
+                                .putExtra("position", holder.getAdapterPosition())
+                        );
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -140,26 +161,22 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
         return size;
     }
 
-    public void setDataToArrayList() {
+    private void setDataToArrayList() {
         //Reading from json file and insillizing inside arrayList
         try {
             JSONObject obj = new JSONObject(AssetJSONFile("question" + code + ".json", context));
             JSONArray m_jArry = obj.getJSONArray("questions");
             for (int i = 0; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
-                questions.add(jo_inside.getString("question"));
-                a.add(jo_inside.getString("a"));
-                b.add(jo_inside.getString("b"));
-                c.add(jo_inside.getString("c"));
-                d.add(jo_inside.getString("d"));
-                answer.add(jo_inside.getString("ans"));
+                Question q = new Question(jo_inside.getString("question"), jo_inside.getString("a"), jo_inside.getString("b"), jo_inside.getString("c"), jo_inside.getString("d"), jo_inside.getString("ans"));
+                questions.add(q);
             }
 
         } catch (Exception ignored) {
         }
     }
 
-    public void setDataToArrayList(int startFrom) {
+    private void setDataToArrayList(int startFrom) {
         //Reading from json file and insillizing inside arrayList
         int endAt = startFrom + 25;
         try {
@@ -167,27 +184,24 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
             JSONArray m_jArry = obj.getJSONArray("questions");
             for (int i = startFrom; i < endAt; i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
-                questions.add(jo_inside.getString("question"));
-                a.add(jo_inside.getString("a"));
-                b.add(jo_inside.getString("b"));
-                c.add(jo_inside.getString("c"));
-                d.add(jo_inside.getString("d"));
-                answer.add(jo_inside.getString("ans"));
+                Question q = new Question(jo_inside.getString("question"), jo_inside.getString("a"), jo_inside.getString("b"), jo_inside.getString("c"), jo_inside.getString("d"), jo_inside.getString("ans"));
+                questions.add(q);
             }
         } catch (Exception ignored) {
         }
     }
 
     private String ansFinder(int position) {
-        switch (answer.get(position)) {
+        Question que = questions.get(position);
+        switch (que.getAns()) {
             case "a":
-                return a.get(position);
+                return que.getA();
             case "b":
-                return b.get(position);
+                return que.getB();
             case "c":
-                return c.get(position);
+                return que.getC();
             case "d":
-                return d.get(position);
+                return que.getD();
             default:
                 return "Somthing went wrong";
         }
@@ -196,12 +210,13 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
     class ViewHolder extends RecyclerView.ViewHolder {
         WebView que;
         TextView report;
+        View core;
 
         ViewHolder(View itemView) {
             super(itemView);
             que = itemView.findViewById(R.id.answerHolder);
             report = itemView.findViewById(R.id.drawerReport);
-
+            core = itemView;
         }
 
     }

@@ -1,5 +1,15 @@
 package np.com.aawaz.csitentrance.misc;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import np.com.aawaz.csitentrance.objects.Question;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -20,6 +30,32 @@ public class Singleton {
         }
         return sInstance;
     }
+
+    public Question getQuestionAt(Context context, int code, int position) {
+        Question q = null;
+        try {
+            JSONObject obj = new JSONObject(AssetJSONFile("question" + (code + 1) + ".json", context));
+            JSONArray m_jArry = obj.getJSONArray("questions");
+            JSONObject jo_inside = m_jArry.getJSONObject(position);
+            q = new Question(jo_inside.getString("question"), jo_inside.getString("a"), jo_inside.getString("b"), jo_inside.getString("c"), jo_inside.getString("d"), jo_inside.getString("ans"));
+        } catch (Exception ignored) {
+            ignored.printStackTrace();
+        }
+
+        return q;
+    }
+
+    public static String AssetJSONFile(String filename, Context c) throws IOException {
+        AssetManager manager = c.getAssets();
+
+        InputStream file = manager.open(filename);
+        byte[] formArray = new byte[file.available()];
+        file.read(formArray);
+        file.close();
+
+        return new String(formArray);
+    }
+
 
     public void upvoteComment(final String key, final String s, final String uid, final String uidAt, final boolean b) {
         new Thread(new Runnable() {

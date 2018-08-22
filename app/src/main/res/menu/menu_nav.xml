@@ -16,6 +16,11 @@
             android:icon="@drawable/book"
             android:title="Subjects" />
         <item
+            android:id="@+id/questionDiscussion"
+            android:checkable="true"
+            android:icon="@drawable/replay"
+            android:title="Question Discussion" />
+        <item
             android:id="@+id/leaderBoard"
             android:checkable="true"
             android:icon="@drawable/leaderboard"

@@ -40,16 +40,12 @@ import np.com.aawaz.csitentrance.fragments.other_fragments.PopupDialogFragment;
 import np.com.aawaz.csitentrance.fragments.other_fragments.QuestionFragment;
 import np.com.aawaz.csitentrance.interfaces.OnDismissListener;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
+import np.com.aawaz.csitentrance.objects.Question;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class SubjectQuizActivity extends AppCompatActivity implements QuizInterface {
 
-    ArrayList<String> questions = new ArrayList<>();
-    ArrayList<String> a = new ArrayList<>();
-    ArrayList<String> b = new ArrayList<>();
-    ArrayList<String> c = new ArrayList<>();
-    ArrayList<String> d = new ArrayList<>();
-    ArrayList<String> answer = new ArrayList<>();
+    ArrayList<Question> questions = new ArrayList<>();
 
     DrawerLayout drawerLayout;
     AnswersDrawer answersDrawer;
@@ -147,11 +143,6 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
                 return QuestionFragment.newInstance(getIntent().getIntExtra("position", 1),
                         position,
                         questions.get(position),
-                        a.get(position),
-                        b.get(position),
-                        c.get(position),
-                        d.get(position),
-                        answer.get(position),
                         subject)
                         .setListener(SubjectQuizActivity.this);
             }
@@ -237,12 +228,8 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
             JSONArray m_jArry = obj.getJSONArray("questions");
             for (int i = index; i < maxSize; i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
-                questions.add(jo_inside.getString("question"));
-                a.add(jo_inside.getString("a"));
-                b.add(jo_inside.getString("b"));
-                c.add(jo_inside.getString("c"));
-                d.add(jo_inside.getString("d"));
-                answer.add(jo_inside.getString("ans"));
+                Question q = new Question(jo_inside.getString("question"), jo_inside.getString("a"), jo_inside.getString("b"), jo_inside.getString("c"), jo_inside.getString("d"), jo_inside.getString("ans"));
+                questions.add(q);
             }
         } catch (Exception ignored) {
             ignored.printStackTrace();

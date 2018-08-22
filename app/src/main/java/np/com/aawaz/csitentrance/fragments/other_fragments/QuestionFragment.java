@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance.fragments.other_fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,15 +24,17 @@ import java.util.HashMap;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.DiscussionActivity;
 import np.com.aawaz.csitentrance.custom_views.QuizTextView;
 import np.com.aawaz.csitentrance.interfaces.QuizInterface;
+import np.com.aawaz.csitentrance.objects.Question;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class QuestionFragment extends Fragment implements View.OnClickListener {
 
     QuizTextView question, option1, option2, option3, option4;
     TextView questionRo, option1Ro, option2Ro, option3Ro, option4Ro;
-    TextView report;
+    TextView report, discuss;
     RelativeLayout option1Listener, option2Listener, option3Listener, option4Listener;
     FancyButton option1Selected, option2Selected, option3Selected, option4Selected;
 
@@ -44,17 +47,18 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
-    public static QuestionFragment newInstance(int code, int position, String question, String a, String b,
-                                               String c, String d, String ans) {
+
+    public static QuestionFragment newInstance(int code, int position, Question question) {
+
         QuestionFragment fragment = new QuestionFragment();
         Bundle args = new Bundle();
 
-        args.putString("question", question);
-        args.putString("a", a);
-        args.putString("b", b);
-        args.putString("c", c);
-        args.putString("d", d);
-        args.putString("ans", ans);
+        args.putString("question", question.getQuestion());
+        args.putString("a", question.getA());
+        args.putString("b", question.getB());
+        args.putString("c", question.getC());
+        args.putString("d", question.getD());
+        args.putString("ans", question.getAns());
 
         args.putInt("code", code);
         args.putInt("position", position);
@@ -63,17 +67,17 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         return fragment;
     }
 
-    public static QuestionFragment newInstance(int code, int position, String question, String a, String b,
-                                               String c, String d, String ans, String subject) {
+
+    public static QuestionFragment newInstance(int code, int position, Question question, String subject) {
         QuestionFragment fragment = new QuestionFragment();
         Bundle args = new Bundle();
 
-        args.putString("question", question);
-        args.putString("a", a);
-        args.putString("b", b);
-        args.putString("c", c);
-        args.putString("d", d);
-        args.putString("ans", ans);
+        args.putString("question", question.getQuestion());
+        args.putString("a", question.getA());
+        args.putString("b", question.getB());
+        args.putString("c", question.getC());
+        args.putString("d", question.getD());
+        args.putString("ans", question.getAns());
 
         args.putInt("code", code);
         args.putInt("position", position);
@@ -112,6 +116,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         option4Selected = (FancyButton) view.findViewById(R.id.optSelected4);
 
         report = view.findViewById(R.id.reportError);
+        discuss = view.findViewById(R.id.discussQuestion);
 
         submit = view.findViewById(R.id.AnswerFab);
 
@@ -146,6 +151,13 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+        discuss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDiscussion();
+            }
+        });
+
         submit.setOnClickListener(null);
 
         option1Listener.setOnClickListener(this);
@@ -167,6 +179,14 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
             tag.setTextColor(SPHandler.getInstance().getSubjectColor(getArguments().getString("subject")));
             tag.setBorderColor(SPHandler.getInstance().getSubjectColor(getArguments().getString("subject")));
         }
+    }
+
+    private void openDiscussion() {
+        Bundle bundle = getArguments();
+        startActivity(new Intent(getContext(), DiscussionActivity.class)
+                .putExtra("code", bundle.getInt("code"))
+                .putExtra("position", bundle.getInt("position"))
+        );
     }
 
     @Override
@@ -309,4 +329,5 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         }
 
     }
+
 }

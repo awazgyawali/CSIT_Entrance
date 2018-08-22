@@ -29,6 +29,7 @@ import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 
+    private boolean shouldShowUpvote = true;
     ArrayList<Comment> comments = new ArrayList<>();
 
     LayoutInflater inflater;
@@ -38,6 +39,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     public CommentAdapter(Context context) {
         inflater = LayoutInflater.from(context);
         this.context = context;
+    }
+
+    public CommentAdapter(Context context, boolean shouldShowUpvote) {
+        this(context);
+        this.shouldShowUpvote = shouldShowUpvote;
     }
 
     @Override
@@ -72,6 +78,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             holder.upvote.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.upvote_grey, 0);
         }
 
+        if (!shouldShowUpvote) {
+            holder.upvote.setVisibility(View.GONE);
+        }
         holder.upvote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
