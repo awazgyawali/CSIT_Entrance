@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +36,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
     private LayoutInflater inflater;
     private int size, code;
     Context context;
+    private int startFrom=0;
 
     //Array list decleration
     private ArrayList<Question> questions = new ArrayList<>();
@@ -51,6 +54,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
         this.size = size;
         this.code = code;
         this.context = context;
+        this.startFrom = startFrom;
         setDataToArrayList(startFrom);
     }
 
@@ -101,14 +105,26 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
                 "<body>" +
                 "<div>";
 
+        htm = htm + "<p onclick=\"ok.performClick(" + position + ");\">";
         htm = htm + questions.get(position).getQuestion() + "<br><b>Answer:</b> " + ansFinder(position);
+        htm = htm + "</p>";
 
         htm = htm + "</div>" +
                 "</body>" +
                 "</html>";
 
         holder.que.loadDataWithBaseURL("", htm, "text/html", "UTF-8", "");
+        WebSettings ws = holder.que.getSettings();
+        ws.setJavaScriptEnabled(true);
+        holder.que.addJavascriptInterface(new Object() {
 
+            @JavascriptInterface
+            public void performClick(int pos) {
+                context.startActivity(new Intent(context, DiscussionActivity.class)
+                        .putExtra("code", code-1)
+                        .putExtra("position", pos+startFrom));
+            }
+        }, "ok");
         holder.report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

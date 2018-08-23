@@ -143,7 +143,7 @@ public class SubjectQuizActivity extends AppCompatActivity implements QuizInterf
                 return QuestionFragment.newInstance(getIntent().getIntExtra("position", 1),
                         position,
                         questions.get(position),
-                        subject)
+                        subject, index )
                         .setListener(SubjectQuizActivity.this);
             }
 

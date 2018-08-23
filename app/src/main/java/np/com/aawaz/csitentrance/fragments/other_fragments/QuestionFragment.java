@@ -68,7 +68,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    public static QuestionFragment newInstance(int code, int position, Question question, String subject) {
+    public static QuestionFragment newInstance(int code, int position, Question question, String subject, int startFrom) {
         QuestionFragment fragment = new QuestionFragment();
         Bundle args = new Bundle();
 
@@ -79,6 +79,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         args.putString("d", question.getD());
         args.putString("ans", question.getAns());
 
+        args.putInt("startFrom", startFrom);
         args.putInt("code", code);
         args.putInt("position", position);
 
@@ -92,28 +93,28 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        question = (QuizTextView) view.findViewById(R.id.questionWeb);
-        option1 = (QuizTextView) view.findViewById(R.id.optionWeb1);
-        option2 = (QuizTextView) view.findViewById(R.id.optionWeb2);
-        option3 = (QuizTextView) view.findViewById(R.id.optionWeb3);
-        option4 = (QuizTextView) view.findViewById(R.id.optionWeb4);
+        question = view.findViewById(R.id.questionWeb);
+        option1 = view.findViewById(R.id.optionWeb1);
+        option2 = view.findViewById(R.id.optionWeb2);
+        option3 = view.findViewById(R.id.optionWeb3);
+        option4 = view.findViewById(R.id.optionWeb4);
 
-        questionRo = (TextView) view.findViewById(R.id.questionRobo);
-        option1Ro = (TextView) view.findViewById(R.id.optionRobo1);
-        option2Ro = (TextView) view.findViewById(R.id.optionRobo2);
-        option3Ro = (TextView) view.findViewById(R.id.optionRobo3);
-        option4Ro = (TextView) view.findViewById(R.id.optionRobo4);
+        questionRo = view.findViewById(R.id.questionRobo);
+        option1Ro = view.findViewById(R.id.optionRobo1);
+        option2Ro = view.findViewById(R.id.optionRobo2);
+        option3Ro = view.findViewById(R.id.optionRobo3);
+        option4Ro = view.findViewById(R.id.optionRobo4);
 
-        option1Listener = (RelativeLayout) view.findViewById(R.id.option1);
-        option2Listener = (RelativeLayout) view.findViewById(R.id.option2);
-        option3Listener = (RelativeLayout) view.findViewById(R.id.option3);
-        option4Listener = (RelativeLayout) view.findViewById(R.id.option4);
+        option1Listener = view.findViewById(R.id.option1);
+        option2Listener = view.findViewById(R.id.option2);
+        option3Listener = view.findViewById(R.id.option3);
+        option4Listener = view.findViewById(R.id.option4);
 
 
-        option1Selected = (FancyButton) view.findViewById(R.id.optSelected1);
-        option2Selected = (FancyButton) view.findViewById(R.id.optSelected2);
-        option3Selected = (FancyButton) view.findViewById(R.id.optSelected3);
-        option4Selected = (FancyButton) view.findViewById(R.id.optSelected4);
+        option1Selected = view.findViewById(R.id.optSelected1);
+        option2Selected = view.findViewById(R.id.optSelected2);
+        option3Selected = view.findViewById(R.id.optSelected3);
+        option4Selected = view.findViewById(R.id.optSelected4);
 
         report = view.findViewById(R.id.reportError);
         discuss = view.findViewById(R.id.discussQuestion);
@@ -166,8 +167,8 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         option4Listener.setOnClickListener(this);
 
 
-        FancyButton tag = (FancyButton) view.findViewById(R.id.subjectTag);
-        TextView yearTitleQuiz = (TextView) view.findViewById(R.id.yearTitleQuiz);
+        FancyButton tag = view.findViewById(R.id.subjectTag);
+        TextView yearTitleQuiz = view.findViewById(R.id.yearTitleQuiz);
         yearTitleQuiz.setText(getResources().getStringArray(R.array.years)[getArguments().getInt("code")]);
 
         if (getArguments().getString("subject") == null) {
@@ -183,9 +184,11 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
     private void openDiscussion() {
         Bundle bundle = getArguments();
+        int startFrom = bundle.getInt("startFrom", 0);
+
         startActivity(new Intent(getContext(), DiscussionActivity.class)
                 .putExtra("code", bundle.getInt("code"))
-                .putExtra("position", bundle.getInt("position"))
+                .putExtra("position", bundle.getInt("position") + startFrom)
         );
     }
 

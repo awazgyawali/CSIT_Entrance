@@ -18,7 +18,7 @@
         <item
             android:id="@+id/questionDiscussion"
             android:checkable="true"
-            android:icon="@drawable/replay"
+            android:icon="@drawable/discussion"
             android:title="Question Discussion" />
         <item
             android:id="@+id/leaderBoard"

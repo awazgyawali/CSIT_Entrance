@@ -1,6 +1,7 @@
 package np.com.aawaz.csitentrance.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -8,8 +9,12 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
@@ -46,7 +51,7 @@ public class FullQuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.full_question_activity);
         setSupportActionBar((Toolbar) findViewById(R.id.toolabrFullQuestion));
-        loading = (ProgressBar) findViewById(R.id.loading_full);
+        loading =  findViewById(R.id.loading_full);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("");
@@ -54,6 +59,18 @@ public class FullQuestionActivity extends AppCompatActivity {
         code = getIntent().getIntExtra("position", 0);
 
         webView = findViewById(R.id.fullQuestionWebView);
+        WebSettings ws = webView.getSettings();
+        ws.setJavaScriptEnabled(true);
+        webView.addJavascriptInterface(new Object() {
+
+            @JavascriptInterface
+            public void performClick(int pos) {
+                startActivity(new Intent(FullQuestionActivity.this, DiscussionActivity.class)
+                .putExtra("code",code-1)
+                .putExtra("position", pos));
+            }
+        }, "ok");
+
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
@@ -100,12 +117,14 @@ public class FullQuestionActivity extends AppCompatActivity {
                     JSONArray m_jArry = obj.getJSONArray("questions");
                     for (int i = 0; i < m_jArry.length(); i++) {
                         JSONObject jo_inside = m_jArry.getJSONObject(i);
+                        htmlData = htmlData + "<p onclick=\"ok.performClick("+ i+");\">";
                         htmlData = htmlData + jo_inside.getString("question") + "<br>";
                         htmlData = htmlData + "a) " + jo_inside.getString("a") + "<br>";
                         htmlData = htmlData + "b) " + jo_inside.getString("b") + "<br>";
                         htmlData = htmlData + "c) " + jo_inside.getString("c") + "<br>";
                         htmlData = htmlData + "d) " + jo_inside.getString("d") + "<br>";
                         htmlData = htmlData + "<b>Answer: " + jo_inside.getString("ans") + "</b><br>";
+                        htmlData = htmlData + "</p>";
                         htmlData = htmlData + "<hr>";
                     }
 
