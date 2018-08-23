@@ -44,7 +44,7 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
 
     boolean newsSub,
             forumSub;
-    SwitchCompat news, forum, showAnswer;
+    SwitchCompat news, forum,discussion, showAnswer;
     TextView clearAll, connectFb, connectGoogle;
     CallbackManager callBackManager = CallbackManager.Factory.create();
     private int RC_SIGN_IN = 100;
@@ -61,9 +61,10 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Settings");
 
-        news = (SwitchCompat) findViewById(R.id.notifNews);
-        forum = (SwitchCompat) findViewById(R.id.notifForum);
-        showAnswer = (SwitchCompat) findViewById(R.id.answer_button);
+        news =  findViewById(R.id.notifNews);
+        forum =  findViewById(R.id.notifForum);
+        discussion =  findViewById(R.id.notifDiscussion);
+        showAnswer =  findViewById(R.id.answer_button);
 
         clearAll = (TextView) findViewById(R.id.clearAll);
         addPhoneNo = (TextView) findViewById(R.id.add_phone_number);
@@ -98,12 +99,25 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
                 SPHandler.getInstance().setForumSubscribed(isChecked);
             }
         });
+
+        discussion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                    FirebaseMessaging.getInstance().subscribeToTopic("discussion");
+                else
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("discussion");
+                SPHandler.getInstance().setDiscussionSubscribed(isChecked);
+            }
+        });
+
         showAnswer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SPHandler.getInstance().showAnswer(isChecked);
             }
         });
+
         clearAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +136,7 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
 
             }
         });
+
         handleConnections();
         maintainVerisonNumber();
     }

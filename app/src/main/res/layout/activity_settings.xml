@@ -64,6 +64,18 @@
                     android:padding="20dp"
                     android:text="Forum"
                     android:textColor="@color/black" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ccc" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/notifDiscussion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Discussion"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 

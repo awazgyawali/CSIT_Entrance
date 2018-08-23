@@ -15,8 +15,9 @@
             android:checkable="true"
             android:icon="@drawable/book"
             android:title="Subjects" />
+
         <item
-            android:id="@+id/questionDiscussion"
+            android:id="@+id/discussion"
             android:checkable="true"
             android:icon="@drawable/discussion"
             android:title="Question Discussion" />
@@ -38,6 +39,7 @@
             android:checkable="true"
             android:icon="@drawable/bot"
             android:title="Entrance Bot" />
+
         <item
             android:id="@+id/entranceNews"
             android:checkable="true"

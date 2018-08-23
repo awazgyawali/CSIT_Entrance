@@ -40,6 +40,7 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.fragments.navigation_fragment.DiscussionFragment;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceBot;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceForum;
 import np.com.aawaz.csitentrance.fragments.navigation_fragment.EntranceNews;
@@ -65,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
     AppBarLayout appBarLayout;
     TextView name;
     CircleImageView imageView;
-    String[] navigationText = new String[]{"leaderboard", "subject",
+    String[] navigationText = new String[]{"leaderboard","discussion", "subject",
             "bot", "news", "forum", "result",
             "setting", "feedback", "share", "like", "rate"};
-    int[] navigationId = new int[]{R.id.leaderBoard, R.id.subjectQuiz, R.id.entranceBot, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.share, R.id.like, R.id.rate};
+    int[] navigationId = new int[]{R.id.leaderBoard,R.id.discussion, R.id.subjectQuiz, R.id.entranceBot, R.id.entranceNews, R.id.entranceForum, R.id.entranceResult, R.id.settings, R.id.feedback, R.id.share, R.id.like, R.id.rate};
 
     public static void setTitle(String name) {
         titleMain.setText(name);
@@ -200,6 +201,9 @@ public class MainActivity extends AppCompatActivity {
             FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
             if (SPHandler.getInstance().getForumSubscribed())
                 FirebaseMessaging.getInstance().subscribeToTopic("forum");
+
+            if (SPHandler.getInstance().getDiscussionSubscribed())
+                FirebaseMessaging.getInstance().subscribeToTopic("discussion");
 
             if (SPHandler.getInstance().getNewsSubscribed())
                 FirebaseMessaging.getInstance().subscribeToTopic("news");
@@ -336,6 +340,14 @@ public class MainActivity extends AppCompatActivity {
                 setTitle("Entrance Bot");
                 tabLayout.setVisibility(View.GONE);
                 new EventSender().logEvent("bot");
+                item.setChecked(true);
+                break;
+
+            case R.id.discussion:
+                manager.beginTransaction().replace(R.id.fragmentHolder, new DiscussionFragment()).commit();
+                setTitle("Question Discussion");
+                tabLayout.setVisibility(View.GONE);
+                new EventSender().logEvent("discussion");
                 item.setChecked(true);
                 break;
 

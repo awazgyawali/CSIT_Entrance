@@ -220,6 +220,14 @@ public class SPHandler {
         scoreEditor.putBoolean("forumSub", newsSubscribed).apply();
     }
 
+    public boolean getDiscussionSubscribed() {
+        return scoreSp.getBoolean("discussionSub", true);
+    }
+
+    public void setDiscussionSubscribed(boolean discussionSubscribed) {
+        scoreEditor.putBoolean("discussionSub", discussionSubscribed).apply();
+    }
+
     public boolean getNewsSubscribed() {
         return scoreSp.getBoolean("newsSub", true);
     }
