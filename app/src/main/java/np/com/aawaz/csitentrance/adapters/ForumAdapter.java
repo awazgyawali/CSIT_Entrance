@@ -157,10 +157,6 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
         notifyItemRemoved(i);
     }
 
-    public void editItemAtPosition(int i) {
-        notifyItemChanged(i);
-    }
-
     public void editItemAtPosition(Post post, int i) {
         posts.remove(i);
         posts.add(i, post);

@@ -149,27 +149,6 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
                         .show();
             }
         });
-
-        holder.core.setOnTouchListener(new View.OnTouchListener() {
-            private final static long MAX_TOUCH_DURATION = 100;
-            private long m_DownTime;
-
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_UP:
-                        context.startActivity(new Intent(context, DiscussionActivity.class)
-                                .putExtra("code", code)
-                                .putExtra("position", holder.getAdapterPosition())
-                        );
-                        break;
-                    default:
-                        break;
-                }
-                return false;
-            }
-        });
     }
 
     @Override

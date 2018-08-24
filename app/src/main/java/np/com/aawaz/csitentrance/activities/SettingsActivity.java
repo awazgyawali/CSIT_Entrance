@@ -76,6 +76,7 @@ public class SettingsActivity extends AppCompatActivity implements GoogleApiClie
 
         news.setChecked(SPHandler.getInstance().getNewsSubscribed());
         forum.setChecked(SPHandler.getInstance().getForumSubscribed());
+        discussion.setChecked(SPHandler.getInstance().getDiscussionSubscribed());
         showAnswer.setChecked(SPHandler.getInstance().shouldShowAnswers());
 
         news.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
