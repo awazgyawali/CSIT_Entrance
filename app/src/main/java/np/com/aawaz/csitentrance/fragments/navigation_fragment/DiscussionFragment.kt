@@ -1,6 +1,8 @@
 package np.com.aawaz.csitentrance.fragments.navigation_fragment
 
 
+import android.app.NotificationManager
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -17,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_discussion.*
 import np.com.aawaz.csitentrance.R
 import np.com.aawaz.csitentrance.adapters.DiscussionAdapter
 import np.com.aawaz.csitentrance.objects.Discussion
+import np.com.aawaz.csitentrance.objects.SPHandler
 
 class DiscussionFragment : Fragment(), ChildEventListener {
     val keys: ArrayList<String?> = ArrayList()
@@ -29,6 +32,13 @@ class DiscussionFragment : Fragment(), ChildEventListener {
 
     override fun onChildMoved(p0: DataSnapshot, p1: String?) {
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        SPHandler.getInstance().clearUnreadDiscussionCount()
+        val managerCompat = context!!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        managerCompat.cancel("opened".hashCode())
     }
 
     override fun onChildChanged(dataSnapshot: DataSnapshot, p1: String?) {

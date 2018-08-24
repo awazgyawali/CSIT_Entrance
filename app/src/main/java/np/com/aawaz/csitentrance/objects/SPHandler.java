@@ -340,4 +340,28 @@ public class SPHandler {
         infoEditor.putBoolean("splash_counter", !value).apply();
         return value;
     }
+
+    public void addNewDiscussionMessage(String message) {
+        ArrayList<String> messages = getUnreadDiscussionMessages();
+        messages.add(message);
+        infoEditor.putInt("discussion_count", getUnreadDiscussionCount() + 1).apply();
+        infoEditor.putString("discussion_message", new Gson().toJson(messages, ArrayList.class)).apply();
+    }
+
+    public ArrayList<String> getUnreadDiscussionMessages() {
+        String content = infoSp.getString("discussion_message", "");
+        if (content.length() != 0)
+            return new Gson().fromJson(content, ArrayList.class);
+        else
+            return new ArrayList<>();
+    }
+    public int getUnreadDiscussionCount() {
+        return infoSp.getInt("discussion_count", 0);
+    }
+
+    public void clearUnreadDiscussionCount() {
+        infoEditor.putInt("discussion_count", 0).apply();
+        infoEditor.putString("discussion_message", "").apply();
+    }
+
 }

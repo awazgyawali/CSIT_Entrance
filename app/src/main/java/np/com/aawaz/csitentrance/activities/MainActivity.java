@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle.syncState();
 
         handlingIntent(getIntent());
+        new EventSender().logEvent("main_activity");
     }
 
     @Override
