@@ -28,7 +28,7 @@ class DiscussionFragment : Fragment(), ChildEventListener {
     lateinit var adapter: DiscussionAdapter
 
     companion object {
-        fun newInstance(post_id: String): Fragment {
+        fun newInstance(post_id: String?): Fragment {
             val forum = DiscussionFragment()
             val args = Bundle()
             args.putString("fragment", "discussion")
@@ -36,8 +36,6 @@ class DiscussionFragment : Fragment(), ChildEventListener {
             forum.arguments = args
             return forum
         }
-
-        val i = 10;
     }
 
 
@@ -69,7 +67,7 @@ class DiscussionFragment : Fragment(), ChildEventListener {
     private fun handleIntent() {
         val post_id = arguments?.getString("post_id")
         val fragment = arguments?.getString("fragment")
-        if (post_id != null && post_id != "new_post" && !MainActivity.openedIntent &&fragment != null && fragment != "discussion") {
+        if (post_id != null && post_id != "new_post" && !MainActivity.openedIntent &&fragment != null && fragment == "discussion") {
             val arr = post_id.split("-")
             startActivity(Intent(context, DiscussionActivity::class.java)
                     .putExtra("code", arr[0].toInt())

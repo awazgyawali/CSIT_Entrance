@@ -21,7 +21,7 @@ public class QuizTextView extends WebView {
         String strBody = "<html>"
                 + "<head>"
                 + "     <style type=\"text/css\">"
-                + "     <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:400,700\" rel=\"stylesheet\">"
+                + "     <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:500,700\" rel=\"stylesheet\">"
                 + "     #text"
                 + "         {  "
                 + "             font-size:14;"

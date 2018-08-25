@@ -35,7 +35,7 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
 
 
     private fun readyCommentButton() {
-        EventSender().logEvent("opened_comments")
+        EventSender().logEvent("opened_discussion_post")
 
         addCommentTextDiscussion.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
@@ -184,6 +184,7 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
 
         val rootReference = FirebaseDatabase.getInstance().reference
         reference = rootReference.child("discussion/comments").child("${intent.getIntExtra("code", 0)}-${intent.getIntExtra("position", 0)}")
+        questionPaper.text = resources.getStringArray(R.array.years)[intent.getIntExtra("code", 0)]
 
         fillPost()
 
@@ -207,7 +208,7 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
                 "  <meta charset=\"UTF-8\">" +
                 "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
                 "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
-                "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:400,700\" rel=\"stylesheet\">" +
+                "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:500,700\" rel=\"stylesheet\">" +
                 "  <title>Document</title>" +
                 "  <style>" +
                 "    body{" +

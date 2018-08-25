@@ -86,7 +86,7 @@ public class FullQuestionActivity extends AppCompatActivity {
                 "  <meta charset=\"UTF-8\">" +
                 "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
                 "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
-                "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:400,700\" rel=\"stylesheet\">" +
+                "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:500,700\" rel=\"stylesheet\">" +
                 "  <title>Document</title>" +
                 "  <style>" +
                 "    body{" +

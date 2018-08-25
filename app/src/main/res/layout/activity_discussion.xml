@@ -39,12 +39,27 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/questionPaper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:padding="10dp"
+                        android:text="TU Model Question 1"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#eee" />
+
                     <WebView
                         android:id="@+id/questionViewDiscussion"
                         android:layout_width="match_parent"
+                        android:layout_margin="10dp"
                         android:layout_height="wrap_content"
-
-                        android:layout_margin="15dp" />
+ />
 
                     <View
                         android:layout_width="match_parent"
