@@ -56,7 +56,15 @@ class DiscussionFragment : Fragment(), ChildEventListener {
         adapter.addNewPost(dataSnapshot.getValue(Discussion::class.java))
     }
 
-    override fun onChildRemoved(p0: DataSnapshot) {
+    override fun onChildRemoved(dataSnapshot: DataSnapshot) {
+        var index: Int =-1
+        keys.forEach {
+            index++
+            if(it == dataSnapshot.key){
+                adapter.deleteItemAt(index)
+                keys.removeAt(index)
+            }
+        }
     }
 
 

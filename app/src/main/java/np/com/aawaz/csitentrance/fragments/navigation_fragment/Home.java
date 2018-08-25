@@ -86,8 +86,8 @@ public class Home extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
-        FirebaseDatabase.getInstance().getReference().child("mock_test/live").addListenerForSingleValueEvent(new ValueEventListener() {
+//todo mock_test ma lane ref
+        FirebaseDatabase.getInstance().getReference().child("demo_entrance/live").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (Boolean.valueOf(dataSnapshot.getValue().toString()))
@@ -101,7 +101,7 @@ public class Home extends Fragment {
 
             }
         });
-        FirebaseDatabase.getInstance().getReference().child("mock_test/result_published").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("demo_entrance/result_published").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (Boolean.valueOf(dataSnapshot.getValue().toString()))
