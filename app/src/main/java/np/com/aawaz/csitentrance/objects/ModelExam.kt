@@ -8,6 +8,7 @@ class ModelExam {
     var date: String? = null
     var time: String? = null
     var detail: String? = null
+    var register_link: String? = null
     var result_link: String? = null
     var result_published: Boolean = false
     var can_reg: Boolean = true

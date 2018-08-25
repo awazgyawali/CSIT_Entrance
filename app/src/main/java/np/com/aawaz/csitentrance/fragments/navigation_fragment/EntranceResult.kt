@@ -14,7 +14,10 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.afollestad.materialdialogs.MaterialDialog
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_result.*
 import nl.dionsegijn.konfetti.KonfettiView
 import nl.dionsegijn.konfetti.models.Shape
@@ -34,6 +37,8 @@ class EntranceResult : Fragment() {
     private lateinit var konfettiView: KonfettiView
     private lateinit var resultText: TextView
     private lateinit var progressBar: ProgressBar
+    private lateinit var published: ResultPublished
+
 
     private lateinit var imm: InputMethodManager
 
@@ -54,28 +59,18 @@ class EntranceResult : Fragment() {
 
         submitButton.setOnClickListener {
             val roll = rollNo.text.toString()
-            val rollInt = roll.toInt()
-            konfettiView.build()
-                    .addColors(Color.RED, Color.BLUE, Color.MAGENTA)
-                    .setDirection(0.0, 359.0)
-                    .setSpeed(1f, 5f)
-                    .setFadeOutEnabled(true)
-                    .setTimeToLive(2000L)
-                    .addShapes(Shape.RECT, Shape.CIRCLE)
-                    .addSizes(Size(12))
-                    .setPosition(-50f, konfettiView.width + 50f, -50f, -50f)
-                    .streamFor(rollInt*2, 5000L)
 
             imm.hideSoftInputFromWindow(view.windowToken, 0)
             if (roll.isNotEmpty()) {
                 progressBar.visibility = View.VISIBLE
-                NetworkRequester(getString(R.string.result_link) + roll, object : ResponseListener {
+                NetworkRequester(published.result_url + roll, object : ResponseListener {
                     override fun onSuccess(res: String) {
                         try {
                             val response = JSONObject(res)
                             if (response.getBoolean("success")) {
                                 resultText.visibility = View.VISIBLE
                                 resultText.text = Html.fromHtml(response.getJSONObject("data").getString("result"))
+
                                 konfettiView.build()
                                         .addColors(Color.RED, Color.BLUE, Color.MAGENTA)
                                         .setDirection(0.0, 359.0)
@@ -85,7 +80,7 @@ class EntranceResult : Fragment() {
                                         .addShapes(Shape.RECT, Shape.CIRCLE)
                                         .addSizes(Size(12))
                                         .setPosition(-50f, konfettiView.width + 50f, -50f, -50f)
-                                        .streamFor(300, 5000L)
+                                        .streamFor(response.getJSONObject("data").getInt("score") * 2, 5000L)
                             } else {
                                 MaterialDialog.Builder(context!!).title("Oops").content("Sorry, Your roll number is not in the list.").show()
                             }
@@ -127,7 +122,8 @@ class EntranceResult : Fragment() {
             handlePublished()
         FirebaseDatabase.getInstance().reference.child("result_published").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.getValue(Boolean::class.javaPrimitiveType!!)!!) {
+                published = dataSnapshot.getValue(ResultPublished::class.java)!!
+                if (published.is_published) {
                     handlePublished()
                     SPHandler.getInstance().setResultPublished()
                 } else {
@@ -152,5 +148,11 @@ class EntranceResult : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_result, container, false)
+    }
+
+    class ResultPublished {
+        @field:JvmField
+        var is_published: Boolean = false
+        var result_url: String = ""
     }
 }

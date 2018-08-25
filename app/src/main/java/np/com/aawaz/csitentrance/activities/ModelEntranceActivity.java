@@ -116,7 +116,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
                             .cancelable(false)
                             .show();
 
-                    new NetworkRequester(getString(R.string.register), map, new ResponseListener() {
+                    new NetworkRequester(exam.getRegister_link(), map, new ResponseListener() {
                         @Override
                         public void onSuccess(String response) {
                             try {
