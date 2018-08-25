@@ -345,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.discussion:
-                manager.beginTransaction().replace(R.id.fragmentHolder, new DiscussionFragment()).commit();
+                manager.beginTransaction().replace(R.id.fragmentHolder, DiscussionFragment.Companion.newInstance(intent.getStringExtra("post_id"))).commit();
                 setTitle("Question Discussion");
                 tabLayout.setVisibility(View.GONE);
                 new EventSender().logEvent("discussion");

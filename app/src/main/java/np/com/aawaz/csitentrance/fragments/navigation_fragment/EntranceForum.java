@@ -42,11 +42,6 @@ import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.PopupAd;
 import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class EntranceForum extends Fragment implements
         // ValueEventListener,
@@ -66,6 +61,7 @@ public class EntranceForum extends Fragment implements
     public static Fragment newInstance(String post_id) {
         EntranceForum forum = new EntranceForum();
         Bundle args = new Bundle();
+        args.putString("fragment", "forum");
         args.putString("post_id", post_id);
         forum.setArguments(args);
         return forum;
@@ -142,7 +138,8 @@ public class EntranceForum extends Fragment implements
 
     private void handleIntent() {
         String post_id = getArguments().getString("post_id");
-        if (post_id != null && !post_id.equals("new_post") && !MainActivity.openedIntent) {
+        String fragment = getArguments().getString("fragment");
+        if (post_id != null && !post_id.equals("new_post") && !MainActivity.openedIntent && fragment != null && fragment.equals("forum")) {
             startActivity(new Intent(getContext(), CommentsActivity.class)
                     .putExtra("key", post_id)
                     .putExtra("message", "Entrance Forum"));
@@ -206,10 +203,9 @@ public class EntranceForum extends Fragment implements
 
     @Override
     public void upVoteClicked(View view, final int position) {
-        Singleton.getInstance().upvoteAPost(key.get(position),FirebaseAuth.getInstance().getCurrentUser().getUid(),adapter.getUidAt(position),adapter.haveIVoted(position));
+        Singleton.getInstance().upvoteAPost(key.get(position), FirebaseAuth.getInstance().getCurrentUser().getUid(), adapter.getUidAt(position), adapter.haveIVoted(position));
         adapter.upVoteAtPosition(position);
     }
-
 
 
     private void showDialogToEdit(String message, final int position) {

@@ -57,6 +57,18 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 
                     ((AppCompatActivity) context).finish();
+                } else if (notification.getTag().equals("DISCUSSION")) {
+                    if (notification.getPost_id() == null)
+                        context.startActivity(new Intent(context, MainActivity.class)
+                                .putExtra("fragment", "discussion")
+                                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+                    else
+                        context.startActivity(new Intent(context, MainActivity.class)
+                                .putExtra("post_id", notification.getPost_id())
+                                .putExtra("fragment", "discussion")
+                                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+
+                    ((AppCompatActivity) context).finish();
                 } else if (notification.getTag().equals("NEWS")) {
                     context.startActivity(new Intent(context, NewsDetailActivity.class)
                             .putExtra("news_id", notification.getPost_id()));

@@ -49,6 +49,7 @@ public class MyMessagingService extends FirebaseMessagingService {
                 }
                 intent = new Intent(context, MainActivity.class).putExtra("fragment", notification.getTag());
                 intent.putExtra("post_id", notification.getPost_id());
+                intent.putExtra("fragment", "forum");
                 if (!notification.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
                     notification.addToDatabase();
                 break;
@@ -63,6 +64,7 @@ public class MyMessagingService extends FirebaseMessagingService {
                 }
                 intent = new Intent(context, MainActivity.class).putExtra("fragment", notification.getTag());
                 intent.putExtra("discussion_id", notification.getPost_id());
+                intent.putExtra("fragment", "discussion");
                 if (!notification.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
                     notification.addToDatabase();
                 break;

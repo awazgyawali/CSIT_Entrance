@@ -3,6 +3,7 @@ package np.com.aawaz.csitentrance.fragments.navigation_fragment
 
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -15,8 +16,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_discussion.*
-
 import np.com.aawaz.csitentrance.R
+import np.com.aawaz.csitentrance.activities.DiscussionActivity
+import np.com.aawaz.csitentrance.activities.MainActivity
 import np.com.aawaz.csitentrance.adapters.DiscussionAdapter
 import np.com.aawaz.csitentrance.objects.Discussion
 import np.com.aawaz.csitentrance.objects.SPHandler
@@ -24,6 +26,19 @@ import np.com.aawaz.csitentrance.objects.SPHandler
 class DiscussionFragment : Fragment(), ChildEventListener {
     val keys: ArrayList<String?> = ArrayList()
     lateinit var adapter: DiscussionAdapter
+
+    companion object {
+        fun newInstance(post_id: String): Fragment {
+            val forum = DiscussionFragment()
+            val args = Bundle()
+            args.putString("fragment", "discussion")
+            args.putString("post_id", post_id)
+            forum.arguments = args
+            return forum
+        }
+
+        val i = 10;
+    }
 
 
     override fun onCancelled(p0: DatabaseError) {
@@ -42,12 +57,24 @@ class DiscussionFragment : Fragment(), ChildEventListener {
     }
 
     override fun onChildChanged(dataSnapshot: DataSnapshot, p1: String?) {
-        var index: Int =-1
+        var index: Int = -1
         keys.forEach {
             index++
-            if(it == dataSnapshot.key){
-                adapter.editPost(dataSnapshot.getValue(Discussion::class.java),index)
+            if (it == dataSnapshot.key) {
+                adapter.editPost(dataSnapshot.getValue(Discussion::class.java), index)
             }
+        }
+    }
+
+    private fun handleIntent() {
+        val post_id = arguments?.getString("post_id")
+        val fragment = arguments?.getString("fragment")
+        if (post_id != null && post_id != "new_post" && !MainActivity.openedIntent &&fragment != null && fragment != "discussion") {
+            val arr = post_id.split("-")
+            startActivity(Intent(context, DiscussionActivity::class.java)
+                    .putExtra("code", arr[0].toInt())
+                    .putExtra("position", arr[1].toInt()))
+            MainActivity.openedIntent = true
         }
     }
 
@@ -57,10 +84,10 @@ class DiscussionFragment : Fragment(), ChildEventListener {
     }
 
     override fun onChildRemoved(dataSnapshot: DataSnapshot) {
-        var index: Int =-1
+        var index: Int = -1
         keys.forEach {
             index++
-            if(it == dataSnapshot.key){
+            if (it == dataSnapshot.key) {
                 adapter.deleteItemAt(index)
                 keys.removeAt(index)
             }
@@ -73,11 +100,11 @@ class DiscussionFragment : Fragment(), ChildEventListener {
         readyRecyclerview()
 
         FirebaseDatabase.getInstance().reference.child("/discussion/posts").orderByChild("time_stamp").limitToLast(50).addChildEventListener(this)
-
+        handleIntent()
     }
 
     private fun readyRecyclerview() {
-        adapter= DiscussionAdapter(activity!!)
+        adapter = DiscussionAdapter(activity!!)
         discussionRecylerView.layoutManager = LinearLayoutManager(context)
         discussionRecylerView.adapter = adapter
     }
