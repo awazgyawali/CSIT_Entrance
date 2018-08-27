@@ -327,8 +327,8 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
                 forumContainer.setVisibility(View.VISIBLE);
 
                 final Post post = dataSnapshot.getValue(Post.class);
-                if (post.author == null) {
-                    Toast.makeText(CommentsActivity.this, "The post has been deleted.", Toast.LENGTH_SHORT);
+                if (post!= null && post.author == null) {
+                    Toast.makeText(CommentsActivity.this, "The post has been deleted.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 postedBy.setText(post.author + " ");

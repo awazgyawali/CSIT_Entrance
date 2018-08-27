@@ -181,7 +181,12 @@ public class PostForumActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    postToFirebase(message);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            postToFirebase(message);
+                        }
+                    });
                 }
             }
         });

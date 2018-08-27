@@ -53,6 +53,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:fontFamily="@font/work_sans_medium"
                             android:gravity="center"
                             android:text="Orchid International COllege"
                             android:textAppearance="?android:textAppearanceMedium"
@@ -64,6 +65,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="8dp"
+                            android:fontFamily="@font/work_sans_medium"
                             android:layout_marginRight="8dp"
                             android:text="Bijaya chowk, Chabahil, Kathmandu"
                             android:textColor="@color/colorAccent" />
@@ -72,6 +74,7 @@
                             android:id="@+id/popup_desc"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:fontFamily="@font/work_sans_medium"
                             android:layout_margin="8dp"
                             android:gravity="center"
                             android:text="XYZ college announces admission open for the 2074 intake of the BSc CSIT program. Pursue your career with the Nepal's best IT course offered by TU.\n\nHurry up and book your seat now.\n Call now at 01-5527274" />
@@ -91,6 +94,7 @@
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/work_sans_medium"
                         android:background="?selectableItemBackground"
                         android:drawablePadding="10dp"
                         android:drawableTop="@drawable/call_blue"
@@ -102,6 +106,7 @@
                         android:id="@+id/popup_knowmore"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
+                        android:fontFamily="@font/work_sans_medium"
                         android:layout_weight="1"
                         android:background="?selectableItemBackground"
                         android:drawablePadding="10dp"
@@ -113,6 +118,7 @@
                     <TextView
                         android:id="@+id/closePopup"
                         android:layout_width="0dp"
+                        android:fontFamily="@font/work_sans_medium"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:background="?selectableItemBackground"

@@ -67,7 +67,7 @@ class DiscussionFragment : Fragment(), ChildEventListener {
     private fun handleIntent() {
         val post_id = arguments?.getString("post_id")
         val fragment = arguments?.getString("fragment")
-        if (post_id != null && post_id != "new_post" && !MainActivity.openedIntent &&fragment != null && fragment == "discussion") {
+        if (post_id != null && post_id != "new_post" && !MainActivity.openedIntent && fragment != null && fragment == "discussion") {
             val arr = post_id.split("-")
             startActivity(Intent(context, DiscussionActivity::class.java)
                     .putExtra("code", arr[0].toInt())
@@ -77,6 +77,8 @@ class DiscussionFragment : Fragment(), ChildEventListener {
     }
 
     override fun onChildAdded(dataSnapshot: DataSnapshot, p1: String?) {
+        if (nothingFound != null)
+            nothingFound.visibility = View.GONE
         keys.add(0, dataSnapshot.key)
         adapter.addNewPost(dataSnapshot.getValue(Discussion::class.java))
     }

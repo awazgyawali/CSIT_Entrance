@@ -43,8 +43,6 @@
     <string name="title_activity_model_entrance">ModelEntrance</string>
     <string name="entrance_detail">With the grand success of Model Entrance exam last year, CSIT Entrance teams is proud to announce Grand Model entrance exam for this year. Come join the exam and test yourself with more than 200 fellow students.\n\nRegister now to get your roll number.</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="result_link">http://csitentrance.com/api/result?roll=</string>
 
 </resources>
