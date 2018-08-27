@@ -77,7 +77,7 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
 
     private fun fillViews() {
         commentsRecyDiscussion.layoutManager = LinearLayoutManager(this)
-        adapter = CommentAdapter(this, false)
+        adapter = CommentAdapter(this, true)
         commentsRecyDiscussion.adapter = adapter
         adapter.setClickEventListener(object : ClickListener {
             override fun itemClicked(view: View, position: Int) {
@@ -102,6 +102,9 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
             }
 
             override fun upVoteClicked(view: View, position: Int) {
+                val post_id = "${intent.getIntExtra("code", 0)}-${intent.getIntExtra("position", 0)}"
+                Singleton.getInstance().upvoteDiscussionComment(post_id, key[position], FirebaseAuth.getInstance().currentUser!!.uid, adapter.getUidAt(position), adapter.haveIVoted(position))
+                adapter.upVoteAtPosition(position)
             }
         })
 

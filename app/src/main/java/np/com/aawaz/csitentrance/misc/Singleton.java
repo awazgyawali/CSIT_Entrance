@@ -3,6 +3,8 @@ package np.com.aawaz.csitentrance.misc;
 import android.content.Context;
 import android.content.res.AssetManager;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -72,6 +74,38 @@ public class Singleton {
     }
 
 
+    public void upvoteDiscussionComment(@Nullable final String key, @NotNull final String s, @NotNull final String uid, @Nullable final String uidAt, final boolean b) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    startLikeADiscussionCommentProcess(key, s,
+                            uid, uidAt, !b);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    private void startLikeADiscussionCommentProcess(String post_id, String comment_id, String upvoter_uid, String upvoted_uid, boolean upvote) throws Exception {
+        String jsonBody = "{" + "" +
+                "\"post_id\":\"" + post_id + "\"," +
+                "\"comment_id\":\"" + comment_id + "\"," +
+                "\"upvote\":" + (upvote ? "true" : "false") + "," +
+                "\"upvoter_uid\":\"" + upvoter_uid + "\"," +
+                "\"upvoted_uid\":\"" + upvoted_uid + "\"" +
+                "}";
+
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonBody);
+        Request request = new Request.Builder()
+                .url("https://us-central1-csit-entrance-7d58.cloudfunctions.net/likeADiscussionComment")
+                .post(body)
+                .build();
+        client.newCall(request).execute();
+    }
+
     private void startLikeACommentProcess(String post_id, String comment_id, String upvoter_uid, String upvoted_uid, boolean upvote) throws Exception {
         String jsonBody = "{" + "" +
                 "\"post_id\":\"" + post_id + "\"," +
@@ -122,5 +156,7 @@ public class Singleton {
                 .build();
         client.newCall(request).execute();
     }
+
+
 }
 
