@@ -60,8 +60,8 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
 
 
     override fun onStop() {
-        reference.removeEventListener(this)
         super.onStop()
+        reference.removeEventListener(this)
     }
 
     private fun sendPostRequestThroughGraph(message: String) {

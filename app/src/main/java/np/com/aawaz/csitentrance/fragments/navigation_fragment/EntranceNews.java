@@ -106,6 +106,11 @@ public class EntranceNews extends Fragment implements ClickListener, ValueEventL
         recy.setAdapter(newsAdapter);
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        reference.removeEventListener(this);
+    }
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

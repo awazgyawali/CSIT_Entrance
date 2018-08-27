@@ -63,6 +63,7 @@ public class ScoreLeaderboard extends Fragment {
     JSONObject object = new JSONObject();
     private LinearLayout errorLayout;
     private boolean filled = false;
+    private Query query;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -135,8 +136,8 @@ public class ScoreLeaderboard extends Fragment {
             coreLeader.setVisibility(View.GONE);
         }
 
-        FirebaseFirestore.getInstance().collection("users").orderBy("score", Query.Direction.DESCENDING).limit(10)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+        query =FirebaseFirestore.getInstance().collection("users").orderBy("score", Query.Direction.DESCENDING).limit(10);
+               query .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
                         try {

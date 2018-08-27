@@ -185,11 +185,12 @@ public class MainActivity extends AppCompatActivity {
             map.put("instance_id", token);
             try {
                 map.put("image_url", user.getPhotoUrl().toString());
-            } catch (Exception e) {
+                map.put("last_signed_in", getDateFromMilis(user.getMetadata().getLastSignInTimestamp()));
+            } catch (NullPointerException e) {
+                e.printStackTrace();
             }
             map.put("email", user.getEmail());
             map.put("uid", user.getUid());
-            map.put("last_signed_in", getDateFromMilis(user.getMetadata().getLastSignInTimestamp()));
             map.put("account_created_at", getDateFromMilis(user.getMetadata().getCreationTimestamp()));
             map.put("score", SPHandler.getInstance().getTotalScore());
 

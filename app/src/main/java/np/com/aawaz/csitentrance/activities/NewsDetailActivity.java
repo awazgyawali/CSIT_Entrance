@@ -66,8 +66,12 @@ public class NewsDetailActivity extends AppCompatActivity {
             }
         });
 
-        if (getIntent().getStringExtra("news_id") != null) {
+        Intent intent = getIntent();
+        if (intent.getStringExtra("news_id") != null) {
             fetchFromInternet(getIntent().getStringExtra("news_id"));
+        }else if(Intent.ACTION_VIEW.equals(intent.getAction())){
+            Uri uri = intent.getData();
+            fetchFromInternet(uri.getLastPathSegment());
         } else {
             bundle = getIntent().getBundleExtra("data");
             title.setText(bundle.getString("title"));

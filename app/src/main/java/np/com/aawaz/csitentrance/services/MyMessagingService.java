@@ -97,7 +97,7 @@ public class MyMessagingService extends FirebaseMessagingService {
         if (notification.getText().contains("posted") && post_count > 1) {
             NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
             ArrayList<String> messages = SPHandler.getInstance().getUnreadPostMessages();
-            for (int i = post_count; i > 0; i--) {
+            for (int i = messages.size(); i > 0; i--) {
                 inboxStyle.addLine(messages.get(i - 1));
             }
             inboxStyle.setSummaryText(post_count + " new posts on Entrance Forum");
@@ -109,7 +109,7 @@ public class MyMessagingService extends FirebaseMessagingService {
         if (notification.getText().contains("opened") && discussion_count > 1) {
             NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
             ArrayList<String> messages = SPHandler.getInstance().getUnreadDiscussionMessages();
-            for (int i = discussion_count; i > 0; i--) {
+            for (int i = messages.size(); i > 0; i--) {
                 inboxStyle.addLine(messages.get(i - 1));
             }
             inboxStyle.setSummaryText(discussion_count + " new discussions opened.");

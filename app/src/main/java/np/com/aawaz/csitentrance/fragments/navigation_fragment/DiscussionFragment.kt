@@ -26,6 +26,7 @@ import np.com.aawaz.csitentrance.objects.SPHandler
 class DiscussionFragment : Fragment(), ChildEventListener {
     val keys: ArrayList<String?> = ArrayList()
     lateinit var adapter: DiscussionAdapter
+    val ref = FirebaseDatabase.getInstance().reference.child("/discussion/posts");
 
     companion object {
         fun newInstance(post_id: String?): Fragment {
@@ -84,13 +85,10 @@ class DiscussionFragment : Fragment(), ChildEventListener {
     }
 
     override fun onChildRemoved(dataSnapshot: DataSnapshot) {
-        var index: Int = -1
-        keys.forEach {
-            index++
-            if (it == dataSnapshot.key) {
-                adapter.deleteItemAt(index)
-                keys.removeAt(index)
-            }
+        val index = keys.indexOf(dataSnapshot.getKey());
+        if (index != -1) {
+            adapter.deleteItemAt(index)
+            keys.removeAt(index)
         }
     }
 
@@ -99,7 +97,7 @@ class DiscussionFragment : Fragment(), ChildEventListener {
         super.onActivityCreated(savedInstanceState)
         readyRecyclerview()
 
-        FirebaseDatabase.getInstance().reference.child("/discussion/posts").orderByChild("time_stamp").limitToLast(50).addChildEventListener(this)
+        ref.orderByChild("time_stamp").limitToLast(50).addChildEventListener(this)
         handleIntent()
     }
 
@@ -112,5 +110,10 @@ class DiscussionFragment : Fragment(), ChildEventListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_discussion, container, false)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        ref.removeEventListener(this)
     }
 }

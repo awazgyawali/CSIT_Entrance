@@ -267,4 +267,11 @@ public class EntranceForum extends Fragment implements
     public void onCancelled(DatabaseError databaseError) {
 
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        reference.removeEventListener(this);
+
+    }
 }
