@@ -31,12 +31,13 @@ import java.util.HashMap;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.ResponseListener;
+import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.ModelExam;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 import np.com.aawaz.csitentrance.services.NetworkRequester;
 
 public class ModelEntranceActivity extends AppCompatActivity {
-    TextView venue, address, date, fee, detail, registerNow, registeredName, registeredRoll;
+    TextView venue, address,time,  date, fee, detail, registerNow, registeredName, registeredRoll;
     TextInputEditText modelExamResultInput;
     Button modelExamResultButton;
     SliderLayout mockEntranceSlider;
@@ -74,10 +75,14 @@ public class ModelEntranceActivity extends AppCompatActivity {
                 address.setText(exam.getAddress());
                 date.setText(exam.getDate());
                 fee.setText(exam.getCost());
+                time.setText(exam.getTime());
                 detail.setText(exam.getDetail());
 
-                if (exam.getCan_reg())
-                    registerNow.setVisibility(View.VISIBLE);
+                if (exam.getCan_reg()){
+                    registerNow.setText("Registration Now");
+                    registerNow.setEnabled(true);
+                    registerNow.setBackgroundColor(ContextCompat.getColor(ModelEntranceActivity.this, R.color.colorAccent));
+                }
                 else {
                     registerNow.setText("Registration closed");
                     registerNow.setEnabled(false);
@@ -97,7 +102,6 @@ public class ModelEntranceActivity extends AppCompatActivity {
         });
 
         if (SPHandler.getInstance().getRegistrationDetail() == null) {
-            registerNow.setVisibility(View.VISIBLE);
             regDetail.setVisibility(View.GONE);
 
             registerNow.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +126,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
                             try {
                                 JSONObject object = new JSONObject(response);
                                 if (object.getBoolean("success")) {
+                                    new EventSender().logEvent("model_registered");
                                     SPHandler.getInstance().setRegistrationDetail(object.getJSONObject("data").toString());
                                     Toast.makeText(ModelEntranceActivity.this, "Registered Successfully!", Toast.LENGTH_SHORT).show();
                                     parseRegData();
@@ -142,6 +147,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
                 }
             });
         } else {
+            registerNow.setVisibility(View.GONE);
             parseRegData();
         }
 
@@ -209,6 +215,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
     private void bindViews() {
         venue = (TextView) findViewById(R.id.modelExamVenue);
         address = (TextView) findViewById(R.id.modelExamAddress);
+        time = (TextView) findViewById(R.id.modelExamTime);
         date = (TextView) findViewById(R.id.modelExamDate);
         fee = (TextView) findViewById(R.id.modelExamFee);
         detail = (TextView) findViewById(R.id.modelExamDetail);
