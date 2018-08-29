@@ -151,6 +151,12 @@ public class YearsList extends Fragment {
         item17.setTitle("Model Paper 11");
         item17.setPaperCode(18);
         items.add(item17);
+
+        YearItem item18 = new YearItem();
+        item18.setType(YearItem.Companion.getYEAR_SET());
+        item18.setTitle("Model Paper 12");
+        item18.setPaperCode(19);
+        items.add(item18);
     }
 
     private void prepareOldQuestions() {

@@ -187,7 +187,6 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
 
         val rootReference = FirebaseDatabase.getInstance().reference
         reference = rootReference.child("discussion/comments").child("${intent.getIntExtra("code", 0)}-${intent.getIntExtra("position", 0)}")
-        questionPaper.text = resources.getStringArray(R.array.years)[intent.getIntExtra("code", 0)]
 
         fillPost()
 
@@ -206,38 +205,69 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
 
     private fun fillPost() {
         val question = Singleton.getInstance().getQuestionAt(this, intent.getIntExtra("code", 0), intent.getIntExtra("position", 0))
-        val htmlData: String = "<html lang=\"en\">" +
-                "<head>" +
-                "  <meta charset=\"UTF-8\">" +
-                "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
-                "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
-                "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:500,700\" rel=\"stylesheet\">" +
-                "  <title>Document</title>" +
-                "  <style>" +
-                "    body{" +
-                "      margin: 0;" +
-                "    }" +
-                "    div {" +
-                "      font-size: 18px;" +
-                "      line-height: 1.5em;" +
-                "      text-align: justify;" +
-                "      font-family: 'Work Sans', sans-serif" +
-                "    }" +
-                "  </style>" +
-                "</head>" +
-                "<body>" +
-                "<div>" + question.question +
-                "<br>" + "a) " + question.a +
-                "<br>" + "b) " + question.b +
-                "<br>" + "c) " + question.c +
-                "<br>" + "d) " + question.d +
-                "<br>" + "<b>Answer: " +
-                question.ans +
-                "</b><br>" +
-                "</div>" +
-                "</body>" +
-                "</html>"
+        var htmlData = "";
+        if (question == null) {
+            htmlData = "<html lang=\"en\">" +
+                    "<head>" +
+                    "  <meta charset=\"UTF-8\">" +
+                    "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                    "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
+                    "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:500,700\" rel=\"stylesheet\">" +
+                    "  <title>Document</title>" +
+                    "  <style>" +
+                    "    body{" +
+                    "      margin: 0;" +
+                    "    }" +
+                    "    div {" +
+                    "      font-size: 18px;" +
+                    "      line-height: 1.5em;" +
+                    "      text-align: justify;" +
+                    "      font-family: 'Work Sans', sans-serif" +
+                    "    }" +
+                    "  </style>" +
+                    "</head>" +
+                    "<body>" +
+                    "<div>" +
+                    " Question doesn't exist in this version of the app, please update to get this question set."+
+                    "</div>" +
+                    "</body>" +
+                    "</html>"
+            questionPaper.text = ""
 
+        } else {
+            htmlData = "<html lang=\"en\">" +
+                    "<head>" +
+                    "  <meta charset=\"UTF-8\">" +
+                    "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                    "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
+                    "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:500,700\" rel=\"stylesheet\">" +
+                    "  <title>Document</title>" +
+                    "  <style>" +
+                    "    body{" +
+                    "      margin: 0;" +
+                    "    }" +
+                    "    div {" +
+                    "      font-size: 18px;" +
+                    "      line-height: 1.5em;" +
+                    "      text-align: justify;" +
+                    "      font-family: 'Work Sans', sans-serif" +
+                    "    }" +
+                    "  </style>" +
+                    "</head>" +
+                    "<body>" +
+                    "<div>" + question.question +
+                    "<br>" + "a) " + question.a +
+                    "<br>" + "b) " + question.b +
+                    "<br>" + "c) " + question.c +
+                    "<br>" + "d) " + question.d +
+                    "<br>" + "<b>Answer: " +
+                    question.ans +
+                    "</b><br>" +
+                    "</div>" +
+                    "</body>" +
+                    "</html>"
+            questionPaper.text = resources.getStringArray(R.array.years)[intent.getIntExtra("code", 0)]
+        }
         questionViewDiscussion.loadDataWithBaseURL("", htmlData, "text/html", "utf-8", null)
     }
 }

@@ -1,0 +1,805 @@
+{
+  "questions": [
+    {
+      "question": "1) I offered ___________ him.",
+      "a": "help",
+      "b": "helping",
+      "c": "to help",
+      "d": "helps",
+      "ans": "c"
+    },
+    {
+      "question": "2) Leave the child _______ his mother.",
+      "a": "to",
+      "b": "with",
+      "c": "for",
+      "d": "on",
+      "ans": "a"
+    },
+    {
+      "question": "3) Draw the curtain",
+      "a": "Let the curtain drawn.",
+      "b": "Let the curtain be drawn",
+      "c": "Let the curtain be drew",
+      "d": "Let the curtain be draw",
+      "ans": "b"
+    },
+    {
+      "question": "4) The word 'public' can be used as",
+      "a": "noun",
+      "b": "verb",
+      "c": "adjectve",
+      "d": "both a and c",
+      "ans": "d"
+    },
+    {
+      "question": "5) A pair of socks _________ washed.",
+      "a": "are",
+      "b": "was",
+      "c": "were",
+      "d": "have been",
+      "ans": "b"
+    },
+    {
+      "question": "6) _____, _______ and _______ are going for a party.",
+      "a": "You, I, your father",
+      "b": "I, You, Your father",
+      "c": "Your Father, I , You",
+      "d": "You, Your Father, I",
+      "ans": "b"
+    },
+    {
+      "question": "7) I think Sita ________ translate this document.",
+      "a": "have to",
+      "b": "has",
+      "c": "will have to ",
+      "d": "will have",
+      "ans": "c"
+    },
+    {
+      "question": "8) What's the name of the man _______",
+      "a": "who borrowed his car",
+      "b": "which car you borrowed",
+      "c": "whose car your borrowed.",
+      "d": "whom car you borrowed",
+      "ans": "c"
+    },
+    {
+      "question": "9) Prem has been working at the office ______ four months.",
+      "a": "since",
+      "b": "for",
+      "c": "before",
+      "d": "by",
+      "ans": "b"
+    },
+    {
+      "question": "10) He boated on ______ Phewa.",
+      "a": "a",
+      "b": "an",
+      "c": " the",
+      "d": "none",
+      "ans": "d"
+    },
+    {
+      "question": "11) Sita said, 'Will you be queit.'",
+      "a": "Sita told to be quiet.",
+      "b": "Sita told us that we should be quiet.",
+      "c": "Sita told us will you be quiet.",
+      "d": "Sta told us to be quiet.",
+      "ans": "d"
+    },
+    {
+      "question": "12) The expression 'get on my nerves' means.",
+      "a": "disappoint",
+      "b": "get worried",
+      "c": "disturb",
+      "d": "leave alone",
+      "ans": "c"
+    },
+    {
+      "question": "13) Tell me where _______ .",
+      "a": "are you going",
+      "b": "you are going?",
+      "c": "are you going?",
+      "d": "you are going",
+      "ans": "d"
+    },
+    {
+      "question": "14) He did not know the answer and ________.",
+      "a": "neither did I",
+      "b": "neither have I",
+      "c": "either did I",
+      "d": "either have I",
+      "ans": "a"
+    },
+    {
+      "question": "15) He used to drive, _____________?",
+      "a": "Does he",
+      "b": "Didn't he",
+      "c": "Do he",
+      "d": "Can't he",
+      "ans": "b"
+    },
+    {
+      "question": "16) The synonyms of brief is ",
+      "a": "limited",
+      "b": "little",
+      "c": "small",
+      "d": "short",
+      "ans": "d"
+    },
+    {
+      "question": "17) The killing of own wife is ",
+      "a": "fratricide",
+      "b": "matricide",
+      "c": "uxoricide",
+      "d": "wificide",
+      "ans": "c"
+    },
+    {
+      "question": "18) The synonyms of genuine is ",
+      "a": "true ",
+      "b": "sincere",
+      "c": "pure",
+      "d": "onginal",
+      "ans": "b"
+    },
+    {
+      "question": "19) The antonyms of dull is",
+      "a": "numorous",
+      "b": "clever",
+      "c": "normal",
+      "d": "shy",
+      "ans": "b"
+    },
+    {
+      "question": "20) A government run by a king ",
+      "a": "Anarchy",
+      "b": "Bureaucracy",
+      "c": "Oligarchy",
+      "d": "Monarchy",
+      "ans": "a"
+    },
+    {
+      "question": "21) She is <u>shrewd</u>.",
+      "a": "Ignorant",
+      "b": "Clever",
+      "c": "Trivial",
+      "d": "Pompous",
+      "ans": "b"
+    },
+    {
+      "question": "22) The antonym of tranquil is ",
+      "a": "Peaceful",
+      "b": "Calm",
+      "c": "Senere",
+      "d": "Noisy",
+      "ans": "d"
+    },
+    {
+      "question": "23) Do you smell something __________ in the kitchen?",
+      "a": "burns",
+      "b": "to burn",
+      "c": "burn",
+      "d": "burning",
+      "ans": "d"
+    },
+    {
+      "question": "24) He died _________ 1960.",
+      "a": "in",
+      "b": "on",
+      "c": "by",
+      "d": "for",
+      "ans": "a"
+    },
+    {
+      "question": "25) Feeble:",
+      "a": "strong",
+      "b": "masculine",
+      "c": "weak",
+      "d": "amazing",
+      "ans": "c"
+    },
+    {
+      "question": "26) If a, b and c are in AP and K is constants, then Ka, Kb and Kc are in",
+      "a": "AP",
+      "b": "GP",
+      "c": "HP",
+      "d": "none",
+      "ans": "a"
+    },
+    {
+      "question": "27) The number of non empty subset of set A = {1,2,3,4} is:",
+      "a": "14",
+      "b": "15",
+      "c": "17",
+      "d": "18",
+      "ans": "b"
+    },
+    {
+      "question": "28) The maximum value of sinx + cosx is",
+      "a": "1",
+      "b": "2",
+      "c": "√2",
+      "d": "√3",
+      "ans": "c"
+    },
+    {
+      "question": "29) The distance between two parallel lines 4x+3y=5 and 4x+3y-1=0 is:",
+      "a": "6/5",
+      "b": "4/5",
+      "c": "1",
+      "d": "1/5",
+      "ans": "b"
+    },
+    {
+      "question": "30) The domain of sin(3x+2) is:",
+      "a": "[-1,-1/3]",
+      "b": "(-3, 1/3)",
+      "c": "[-3, 1/3]",
+      "d": "(-1,-1/3)",
+      "ans": "a"
+    },
+    {
+      "question": "31) The sum of first 'n' natural numbers is 36. The value of n is",
+      "a": "11",
+      "b": "10",
+      "c": "9",
+      "d": "8",
+      "ans": "d"
+    },
+    {
+      "question": "32) If x + 1/x = 2, then value of x<sup>99</sup> + 1/x<sup>99</sup> = ",
+      "a": "2",
+      "b": "99",
+      "c": "100",
+      "d": "1000",
+      "ans": "a"
+    },
+    {
+      "question": "33) If asinA = bsinB, then the triangle is",
+      "a": "right angled",
+      "b": "isoceles",
+      "c": "equitateral",
+      "d": "scalene",
+      "ans": "b"
+    },
+    {
+      "question": "34) d(secx)/dx =",
+      "a": "secx.tanx",
+      "b": "sec<sup>2</sup>x",
+      "c": "cosx",
+      "d": "cos<sup>2</sup>x",
+      "ans": "a"
+    },
+    {
+      "question": "35) If M<sup>-1</sup> denotes invers of matrix M, then (AB)<sup>-1</sup> is equal to",
+      "a": "A<sup>-1</sup>B<sup>-1</sup>",
+      "b": "BA",
+      "c": "B<sup>-1</sup>A<sup>-1</sup>",
+      "d": "AB",
+      "ans": "d"
+    },
+    {
+      "question": "36) cos(tan<sup>-1</sup>x)",
+      "a": "√(1+x<sup>2</sup>)",
+      "b": "1/√(1+x<sup>2</sup>)",
+      "c": "1+x<sup>2</sub>",
+      "d": "√(1-x<sup>2</sup>)",
+      "ans": "b"
+    },
+    {
+      "question": "37) If x<sup>2</sup> + y<sup>2</sup> = a<sup>2</sup>, then dy/dx=",
+      "a": "x/y",
+      "b": "2y/x",
+      "c": "-y/x",
+      "d": "-x/y",
+      "ans": "d"
+    },
+    {
+      "question": "38) The bisector of the internal angles of a triangle at a point which is called ",
+      "a": "centroid",
+      "b": "circumcenter",
+      "c": "incenter",
+      "d": "orthocenter",
+      "ans": "c"
+    },
+    {
+      "question": "39) ∫ |x| dx =",
+      "a": "x<sup>2</sup>/2 + C",
+      "b": "|x|<sup>2</sup>/2 + C",
+      "c": "(x|x|)/2 + C",
+      "d": "x/|x| + C",
+      "ans": "c"
+    },
+    {
+      "question": "40) For a matrix A = <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAtBAMAAAAjA0SqAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMonNEO9Uq2YiRLt23ZkcVqKbAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABRklEQVQ4EWOQ//+JAR3s//+FQdjFAV2YgcUFKI4hChKAiqugS0LEhQMQ4hw9FXD1bAUIcQ0G/waYOexAFgy8ZmAFqoKYwzoBJgqiEeqnMmQgmaQNlIOob+fwCoDryCuBi+9JgIsCGaICMPWfU5DF2YF6weYwBohOgEsUMjD9hIrzFPAmLIBKcH5jYP8AFWdu4BWBiTOoMLgegIrzOnBoQJUzMPDolAHZEHfCBeGM4S3OduIg3Kcc53bBw+ENQzlcvIVhfgI0fLgMGGbCxS8ysF+AhbMCXJSBIYKBCRb+/B1NQK1wAFc//wHDNrgoMP0kQM2Rb2BoRRLfA2SDwx+oIN8BLsFzACbO34AsngNSAVbPrsBwFsQBA64GhgNQcc4LDFZQUQYGuVXLHkDFGeTOLYCLx///XwAThwvCGbRPD7jKAbgTUBkASrJqmmjoaGkAAAAASUVORK5CYII=\" > to be singular matrix, the value of K is",
+      "a": "-9",
+      "b": "9",
+      "c": "36",
+      "d": "-36",
+      "ans": "b"
+    },
+    {
+      "question": "41) The value of w<sup>2</sup> + w is",
+      "a": "0",
+      "b": "-1",
+      "c": "1",
+      "d": "2",
+      "ans": "b"
+    },
+    {
+      "question": "42) The argument of (1-i) is:",
+      "a": "π/4",
+      "b": "π/2",
+      "c": "π/3",
+      "d": "-π/4",
+      "ans": "d"
+    },
+    {
+      "question": "43) If the slope of a line is zero, then the line is ",
+      "a": "only x-axis",
+      "b": "only y-axis",
+      "c": "parallel to x-axis",
+      "d": "parallel to y-axis",
+      "ans": "c"
+    },
+    {
+      "question": "44) One root of the equation is √5 + 3 , then the other root is",
+      "a": "3 + √5",
+      "b": "3 - √5",
+      "c": "- √5 - 3",
+      "d": "√3 - √5",
+      "ans": "b"
+    },
+    {
+      "question": "45) The GM of two number is 6 and the AM is 6.5, then the numbers are",
+      "a": "3,12",
+      "b": "4,9",
+      "c": "2,18",
+      "d": "7,6",
+      "ans": "b"
+    },
+    {
+      "question": "46) <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFcAAAApBAMAAACyzqjuAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAECIyu6tEZt2Z781UdomKp3poAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB90lEQVQ4EbWUsUsbURzHv3dnE0lCEsSlIOYtUujQhjY6iIOD1EkURJ3Ew1qEYiEQ2lSMURyc4+TiEJwd9B/QEwQRVLIEUWgbwXItFJEg7ZjeM3nv3V3fmcvQN+S+v8/vw4+75PIDJCdyVpBQDxTDsEdHgtVWZCh7kcWzkmSMDB0ZXU8+GY5Op+4o7cU02om9xosV3VGLYgmfERLlQ4rpLsDKD/h+ehQgrHy4yuVgthL8unGezzlcyOVh9Dm1eiWVo7vKtW85tJmNCzk1ZJ0RWksnJ4hQ7Ukux6HYJZalclhHhgn2a13usCNAMe33zHvdo/tJQBslwVXOmoUY0QrNHN6PER6bhxbl1LZ28OzkMDfpZ7JSRSKt/cF7PzKq1o+p/EbCr0zoePpS1LzPnfWGEDqZy49P/2+yNvOm9/41/Xg7M/74PTTt0mf2edRarYDjrS//6tpFyQ3VTBKKMbXg5kAYWTdUDUrW3BgE75By07pc5JityzGU8VzQ/MJHAqjmuR45HZxlnK3LeVziJYOYVXdCSes/lsZ6xDQNztuJcmudH4Nl9HNoBIqNfMMZDY11+ZTMYU40omON/E0wgK3LDevbuBCNcJrmkIErwQC2LivQzIpoJEjAKtoIJgTzSIHiCl6hJx6Mq9seisDa1sAvHf1JLP8kguIvvCOOKcGuxhEAAAAASUVORK5CYII=\"> = ",
+      "a": "1",
+      "b": "3",
+      "c": "energy",
+      "d": "3e",
+      "ans": "b"
+    },
+    {
+      "question": "47) The circle and a square have the same perimeter, then",
+      "a": "area of square is larger",
+      "b": "area of both are same",
+      "c": "area of circle is π times that of square",
+      "d": "area of circle is larger",
+      "ans": "d"
+    },
+    {
+      "question": "48) The nature of the roots of equations x<sup>2</sup> - 6x + 9 = 0 are ",
+      "a": "real and equal",
+      "b": "irrational roots",
+      "c": "rational and equal",
+      "d": "imaginary and unreal",
+      "ans": "a"
+    },
+    {
+      "question": "49) The general solution of the equation sin<sup>2</sup>ϴ= 1/4",
+      "a": "2nπ ± π/3",
+      "b": "nπ ± π/3",
+      "c": "nπ ± π/6",
+      "d": "nπ + (-1)<sup>n</sup> π/6",
+      "ans": "c"
+    },
+    {
+      "question": "50) The center of the circle x<sup>2</sup> + y<sup>2</sup> - 2x + 6y + 9 =0 is",
+      "a": "(1,-3)",
+      "b": "(3,2)",
+      "c": "(-2,1)",
+      "d": "(3,1)",
+      "ans": "a"
+    },
+    {
+      "question": "51) At what degree centegrade and ferenheit scale is same.",
+      "a": "0°",
+      "b": "-40°",
+      "c": "36°",
+      "d": "-25°",
+      "ans": "b"
+    },
+    {
+      "question": "52) Bernoulli's theorem deals with the conservation of ",
+      "a": "mass",
+      "b": "pressure",
+      "c": "energy",
+      "d": "heat",
+      "ans": "c"
+    },
+    {
+      "question": "53) Polarization of light proves,",
+      "a": "quantum nature of light",
+      "b": "corpuscular nature of light",
+      "c": "transverse nature of light",
+      "d": "longitudinal nature of light",
+      "ans": "c"
+    },
+    {
+      "question": "54) Temperature coeffecient of resistance of semiconductor material is",
+      "a": "zero",
+      "b": "positive",
+      "c": "negative",
+      "d": "infinite",
+      "ans": "c"
+    },
+    {
+      "question": "55) The rare view mirror of car is ",
+      "a": "convex mirror",
+      "b": "concave mirror",
+      "c": "plane mirror",
+      "d": "any of them",
+      "ans": "a"
+    },
+    {
+      "question": "56) Two masses of 1 kg and 4 kg have same K.E. The ratio of their linear momentum is",
+      "a": "2:1",
+      "b": "1:2",
+      "c": "1:4",
+      "d": "4:1",
+      "ans": "b"
+    },
+    {
+      "question": "57) The energy of H-atom corrosponding to n = 2 is",
+      "a": "-13.6 eV",
+      "b": "13.6 eV",
+      "c": "-3.4 eV",
+      "d": "-2.72 eV",
+      "ans": "c"
+    },
+    {
+      "question": "58) SI unit of radioactivity is",
+      "a": "becquerel",
+      "b": "Rotherford",
+      "c": "Currie",
+      "d": "all",
+      "ans": "a"
+    },
+    {
+      "question": "59) The ratio of escape velocity to orbital velocity is",
+      "a": "1:1",
+      "b": "1:2",
+      "c": "√2:1",
+      "d": "1:√2",
+      "ans": "c"
+    },
+    {
+      "question": "60) The efficiency of carnot engine operating between 300K and 500K is",
+      "a": "2/5",
+      "b": "3/5",
+      "c": "6/5",
+      "d": "2/3",
+      "ans": "a"
+    },
+    {
+      "question": "61) An ideal gas is exapngind in such a way that PT<sup>2</sup> = const, the coefficient of volume exapnsion of the gas is",
+      "a": "1/T",
+      "b": "2/T",
+      "c": "3/T",
+      "d": "4/T",
+      "ans": "c"
+    },
+    {
+      "question": "62) In forward biasing is that in which applied voltage.",
+      "a": "increase the barrier potential",
+      "b": "cancels the barrier potential",
+      "c": "is equal to 1.5 volts",
+      "d": "none of the above",
+      "ans": "b"
+    },
+    {
+      "question": "63) The internal energy of a gas molecule of an ideal gas depends on",
+      "a": "pressure only",
+      "b": "volume only",
+      "c": "temperature only",
+      "d": "all",
+      "ans": "c"
+    },
+    {
+      "question": "64) A wave of frequency 500Hz travel between a distance of 600m in 2 sec. The number of wave length are",
+      "a": "300",
+      "b": "800",
+      "c": "1000",
+      "d": "2000",
+      "ans": "c"
+    },
+    {
+      "question": "65) The boiling water is changing into steam. Under this condition, the specific heat capacity of water is",
+      "a": "zero",
+      "b": "one",
+      "c": "less than 1",
+      "d": "infinity",
+      "ans": "d"
+    },
+    {
+      "question": "66) The particle is executing SHM with time period T. Time taken in completing 3/8 oscillation from mean position is",
+      "a": "3/8 T",
+      "b": "5/8 T",
+      "c": "5/12 T",
+      "d": "7/12 T",
+      "ans": "c"
+    },
+    {
+      "question": "67) Which thermometer is most sensitive",
+      "a": "mercury",
+      "b": "alcohol",
+      "c": "gas",
+      "d": "platinum",
+      "ans": "c"
+    },
+    {
+      "question": "68) Force of attraction between plates of parallel plate capacitor is",
+      "a": "Q<sup>2</sup>/EoA",
+      "b": "2Q/EoA<sup>2</sup>",
+      "c": "EoA/2Q",
+      "d": "Q<sup>2</sup>/2EoA",
+      "ans": "d"
+    },
+    {
+      "question": "69) 5 registors of resistance 'R' are connected in series and then in parallel. Then ration of equivalent resistance is",
+      "a": "25",
+      "b": "1/5",
+      "c": "1/25",
+      "d": "1",
+      "ans": "a"
+    },
+    {
+      "question": "70) The magnetic field intensity at the center of square of side 'l'm is",
+      "a": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAApBAMAAAB5FUwQAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAZnaZu0QQIlTdMqvvic3RLNidAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABi0lEQVQ4Ea2TvUvDQBjGn9Q0aWvzQSfH4OSmouLH1D8hDs7t4CIocRBxkoIgiIODi5uZ3IQ6KLoFHASnLjpJ7SgIUkFswaG+d5eQNOS66Du893ueJ7nLXRIgLn1A1Y11isb9lDEsd4ZlWq2kDaYr866wtWrMzNk6vwWUut4XseHGzJ136kUfdyJeTzB3PqmXbbyK+CnBzMn3hC/u1jpMEV9D9RkaAevQ+tBmgFxDMHrw6oQwyaRSHVzS05kh5wMccd9r8GGS+gcwxQSx0cQc90/qbCg41Go+OiGbNs4IgWXeV5Gj7VUVmxRjy9e+L1hyylppYe2ADqfHluZc843A1m8gTqs8GPxQcl+hxrm9dDjrlh619hebL6zpTkRvESRHz4lUeFaRFGM+krTtUaW0RqX/m7GPV1rd/13rr7PpzsgZXhIvKuPC4naGGVubMWbRcZbJvH06vQBXsngxV6B1HyRxCXsGoAeSGHgeo3+pKY2rKv1S0m0rLQuwdmX7Nl3Lh6fIJt+A6sKYSMa/XaBy19t3l+oAAAAASUVORK5CYII=\">",
+      "b": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAApBAMAAACFAGfaAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAIkSrMruZEInNdlTdZu9nJmnNAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABd0lEQVQ4Ea2TP0vDQBjGn7aaS/o34OZgg6tQO/gBOjlKESdByBcQImjRqaKr1uLQTRoQXFziqksE3YuLXUS/QLFiQVQwvpfeGdI0g9CDe9/n9z735i7kAgxH0aMhdDgthTGgRDXQYaVUwhzQDnIXqwGyo3dH0AEeUZRANa0sDFbFHVKuIEqFjtCqgR7UfuAs6kLv8Uw9KQNrfqnBY43mJRd1BwWdfXCJFs2pEwdocloHSsi4XLJvHrUm0mQibQOHUEySyPidyQE0Ttc0z5Dli6C4FIB7PFFMdmBjgPq2RZA1KQDPOt9meX7BpPZGDjOWfOn8pk3Oq+eV1dZN7QErld32BlVo608/UdD8TSTREb+kLuhSiWxILkkRyd1IZXIFfpvGjslt8b8nzcYtV3txDm7jHPYS52TKUSfR9rwfpDpRR9HtKyA/+u1oYSXh7ANz0RZAtUzgfJwzjSowvDMjdhd94G1rpMrxlG4o6485G3NBP+qx89fzC+M1aIw22k1hAAAAAElFTkSuQmCC\">",
+      "c": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAlBAMAAADVbCZJAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMondmWarRBB2IlTNu+/WTiiaAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABFklEQVQoFZXPsUvDQBTH8W/ShrQxITc4OAZdHIqTm4MFddHBTC4uXUTBJf+BRXE1/RMyCjqIgrgJDi4u/gknOLkXSkX0JbTJNYv0DXe/98m74wJYEWWdb55KbnRLgNc8H5gyFHAXDXHHIpdNkWMCJRlbyzLIZUzal4wv2c1EXM2D9JDeySFE7B7bhTz34X555UX5MRuFbBVr0CVUrdFS3qxP5UzZOvZO8L5zsfY/s87e005ifbQ6P3ExBG+Tvdryl86Uq2daaZyoLvP3v/Wa/4r/T3iD+sza9MfLD42sjJNwVQceDbmVh2uODNltL2TwVYnFjQ2ergRWm9DumfIeQGA+x4lCCK+zashPQkXqVMAFQYJ9WMgfOyZEFmFeuDEAAAAASUVORK5CYII=\">",
+      "d": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAApBAMAAAB5FUwQAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAMondmWarRBB2IlTNu+/WTiiaAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABqUlEQVQ4EbVTPUvDUBQ9SRuTpo0N4uBYdNCh6OLmYERFUMROQnEpiCi4ZBFHi9JR21UczCioICriZnFw0aE/IUInpy6KVKTemzRNG5JF6B3OPR/JfXkvCeCX2qJq+DrABvSA0Suve2VQzQUNRwsZ11ZqyK+aLmc8nN3lFjMYAdGUiuqPyx18cXDdcK1jxHRsutzBT0Z52HAExjGYw5TLGeUmYylucINSZaS7t6E5OxRtNioUKwaQuCGh0NpNlItEkTIIZIviIXJTbGkVyDbumKLM15fAw9+AM7ZOaQMFLDDFU5HgdnTsWceBjiqJZIWm5DBDFJh3EJpBe69JOVJ7SCCtK98jnEwz0HoGIDV5aWFp/54GiXZO3UH7hIS1ugXU8xQPtlpfyK48LprCu5L95XntOq967NUj3b1MD+WWc1ae8LrcIbbHQruUCbX7YvLHG1mNviz576Fq53hDR0x2vaiQC2JWiOlbJz4NYw9hJntXdHo2tqLi5UTSAj4iYgGXIqDaETEwEad/qRAZ1zT6rCO3LWXSQPrCirg9ZaZ1lKWIFEfQTIgb3fEfbyRwTFY0J6UAAAAASUVORK5CYII=\">",
+      "ans": "a"
+    },
+    {
+      "question": "71) Which of the following is constant during uniform circular motion?",
+      "a": "velocity",
+      "b": "acceleration",
+      "c": "speed",
+      "d": "force",
+      "ans": "c"
+    },
+    {
+      "question": "72) A piece of iron floats in jar containing water, when the ice melts then the level of water _________",
+      "a": "rises",
+      "b": "falls",
+      "c": "same",
+      "d": "none",
+      "ans": "c"
+    },
+    {
+      "question": "73) The value of Young's Modulus of elasticity for a perfectly elastic body is",
+      "a": "0",
+      "b": "positive",
+      "c": "negative",
+      "d": "infinite",
+      "ans": "d"
+    },
+    {
+      "question": "74) The ratio of KE per unit molecule of Hydrogen and Oxygen at same temperature is ",
+      "a": "1",
+      "b": ">1",
+      "c": "<1",
+      "d": "0",
+      "ans": "a"
+    },
+    {
+      "question": "75) The uncertainity in position is 10<sup>-15</sup>m. The maximum uncertainity in momentum is",
+      "a": "2.5*10<sup>-20</sup> kgms<sup>-1</sup>",
+      "b": "5.3*10<sup>-20</sup> kgms<sup>-1</sup>",
+      "c": "3.35*10<sup>-20</sup> kgms<sup>-1</sup>",
+      "d": "4.7*10sup>-20</sup> kgms<sup>-1</sup>",
+      "ans": "b"
+    },
+    {
+      "question": "76) What is the equivalent weight of H<sub>3</sub>PO<sub>3</sub>",
+      "a": "3",
+      "b": "2",
+      "c": "1",
+      "d": "4",
+      "ans": "b"
+    },
+    {
+      "question": "77) Oxidation Number of Oxygen is highest in",
+      "a": "H<sub>2</sub>O<sub>2</sub>",
+      "b": "KO<sub>2</sub>",
+      "c": "Fe<sub>2</sub>O<sub>4</sub>",
+      "d": "OF<sub>2</sub>",
+      "ans": "d"
+    },
+    {
+      "question": "78) Number of possible orbitals in d-sub shell is",
+      "a": "1",
+      "b": "3",
+      "c": "5",
+      "d": "7",
+      "ans": "c"
+    },
+    {
+      "question": "79) Which doesn't follow Markonikov's rule?",
+      "a": "2-butene",
+      "b": "1-butene",
+      "c": "Propane",
+      "d": "1-pentene",
+      "ans": "a"
+    },
+    {
+      "question": "80) Which of the following salts of Ca and Mg causes temporary hardness of water?",
+      "a": "carbonates",
+      "b": "sulphats",
+      "c": "bicarbonates",
+      "d": "chlorides",
+      "ans": "c"
+    },
+    {
+      "question": "81) Which of the following is aromatic compound?",
+      "a": "benzene-hexachloride",
+      "b": "anthacene",
+      "c": "cyclohoxene",
+      "d": "cyclobutadiene",
+      "ans": "b"
+    },
+    {
+      "question": "82) Which one has highest electron affinity?",
+      "a": "I",
+      "b": "Br",
+      "c": "F",
+      "d": "Cl",
+      "ans": "d"
+    },
+    {
+      "question": "83) Ostwald dilution law is applicable for",
+      "a": "strong electrolyte",
+      "b": "weak electrolyte",
+      "c": "both",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "84) Which of the following is most acidic",
+      "a": "Ethane",
+      "b": "ethylene",
+      "c": "acetylene",
+      "d": "benzene",
+      "ans": "c"
+    },
+    {
+      "question": "85) Galena is the ore of ",
+      "a": "Zinc",
+      "b": "Lead",
+      "c": "Silver",
+      "d": "Iron",
+      "ans": "b"
+    },
+    {
+      "question": "86) Sodium is extracted by",
+      "a": "Down's Process",
+      "b": "Dow's Process",
+      "c": "Ostwald's Process",
+      "d": "Kaster-Kelner Process",
+      "ans": "a"
+    },
+    {
+      "question": "87) First organic compound syntesized in lab is",
+      "a": "Methane",
+      "b": "Urea",
+      "c": "Ethane",
+      "d": "Ethylene",
+      "ans": "b"
+    },
+    {
+      "question": "88) The number of mole per kilogram is called",
+      "a": "Molality",
+      "b": "Molarity",
+      "c": "Normality",
+      "d": "Solubility",
+      "ans": "a"
+    },
+    {
+      "question": "89) Which of the following is ampotheric oxide?",
+      "a": "ZnO",
+      "b": "BeO",
+      "c": "Al<sub>2</sub>O<sub>3</sub>",
+      "d": "All",
+      "ans": "d"
+    },
+    {
+      "question": "90) Which of the following is obtained when iron is treated with conc.HNO<sub>3</sub>?",
+      "a": "Fe(NO<sub>3</sub>)<sub>3</sub>",
+      "b": "Fe(NO<sub>3</sub>)<sub>2</sub>",
+      "c": "Fe<sub>3</sub>O<sub>4</sub>",
+      "d": "Fe<sub>2</sub>O<sub>3</sub>",
+      "ans": "c"
+    },
+    {
+      "question": "91) The structure of NH<sub>3</sub> is\n",
+      "a": "Linear",
+      "b": "Pyramidal",
+      "c": "Triangular",
+      "d": "Triangular bipyramidal",
+      "ans": "b"
+    },
+    {
+      "question": "92) Which of these have same number of hydrogen atoms as 32 gm of Methane?",
+      "a": "18 gm",
+      "b": "36 gm",
+      "c": "54 gm",
+      "d": "72 gm",
+      "ans": "d"
+    },
+    {
+      "question": "93) Which of the following salts undergoes catonic hydrolysis?",
+      "a": "Na<sub>2</sub>CO<sub>3</sub>",
+      "b": "CuSO<sub>4</sub>",
+      "c": "Cu",
+      "d": "CH<sub>3</sub>COOK",
+      "ans": "b"
+    },
+    {
+      "question": "94) BF<sub>3</sub> is an acid according to",
+      "a": "Arrhenius",
+      "b": "Lewis",
+      "c": "Bronsted and Lowry",
+      "d": "Ostwald",
+      "ans": "b"
+    },
+    {
+      "question": "95) The reaction NaX + Conc H<sub>2</sub>SO<sub>4</sub> --> NaHSO<sub>4</sub> + HX.X is, ",
+      "a": "Cl",
+      "b": "Br",
+      "c": "I",
+      "d": "all",
+      "ans": "a"
+    },
+    {
+      "question": "96) Number of grams of Ca deposited by 0.5 Faraday of electric charge is",
+      "a": "10",
+      "b": "5",
+      "c": "24",
+      "d": "15",
+      "ans": "a"
+    },
+    {
+      "question": "97) Which of the following has polar bond but non-polar molecule?",
+      "a": "CO",
+      "b": "CO<sub>2</sub>",
+      "c": "HF",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "98) The modern periodic table is based on",
+      "a": "atomic wt",
+      "b": "equivalent wt",
+      "c": "atomic number",
+      "d": "valency",
+      "ans": "c"
+    },
+    {
+      "question": "99) The number of water in 1 liter of water is",
+      "a": "18",
+      "b": "18 * 1000",
+      "c": "Na",
+      "d": "55.55 Na",
+      "ans": "d"
+    },
+    {
+      "question": "100) Which of the following doesn't give ppt with H<sub>2</sub>S?",
+      "a": "acidified CuSO<sub>4</sub>",
+      "b": "alkaline NiSO<sub>4</sub>",
+      "c": "acidified ZnSO<sub>4</sub>",
+      "d": "alkaline MnSO<sub>4</sub>",
+      "ans": "c"
+    }
+
+  ]
+}

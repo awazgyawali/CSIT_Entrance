@@ -55,28 +55,37 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
     override fun onBindViewHolder(holder: VH, position: Int) {
         val discussion = discussions[position]
         val question = Singleton.getInstance().getQuestionAt(context, discussion.paper_code.toInt(), discussion.question_no.toInt())
-        val answer = ansFinder(question);
+        if (question == null) {
+            holder.questionTextView.text = "Question doesn't exist in this version of the app. Please update the app."
+            holder.que.visibility = View.GONE
+            holder.questionTextView.visibility = View.VISIBLE
+            holder.questionPaper.text = "CSIT Entrance"
+            holder.commentCount.setOnClickListener {}
+            holder.questionPaper.setOnClickListener{}
+            holder.questionTextView.setOnClickListener{}
+        } else {
+            val answer = ansFinder(question)
+            if (question.question.contains("<img") || answer.contains("<img"))
+                setupFromWebView(discussion, question, answer, holder)
+            else
+                setupFromTextView(discussion, question, answer, holder)
 
-        if (question.question.contains("<img") || answer.contains("<img"))
-            setupFromWebView(discussion, question, answer, holder)
-        else
-            setupFromTextView(discussion, question, answer, holder)
+            holder.questionPaper.text = context.resources.getStringArray(R.array.years)[discussion.paper_code.toInt()]
+            holder.questionPaper.setOnClickListener {
+                context.startActivity(Intent(context, DiscussionActivity::class.java)
+                        .putExtra("code", discussion.paper_code.toInt())
+                        .putExtra("position", discussion.question_no.toInt()))
+            }
+
+            holder.commentCount.setOnClickListener {
+                context.startActivity(Intent(context, DiscussionActivity::class.java)
+                        .putExtra("code", discussion.paper_code.toInt())
+                        .putExtra("position", discussion.question_no.toInt()))
+            }
+        }
+
 
         holder.commentCount.text = (discussion.comment_count.toString() + " comments")
-
-        holder.questionPaper.text = context.resources.getStringArray(R.array.years)[discussion.paper_code.toInt()]
-
-        holder.questionPaper.setOnClickListener {
-            context.startActivity(Intent(context, DiscussionActivity::class.java)
-                    .putExtra("code", discussion.paper_code.toInt())
-                    .putExtra("position", discussion.question_no.toInt()))
-        }
-
-        holder.commentCount.setOnClickListener {
-            context.startActivity(Intent(context, DiscussionActivity::class.java)
-                    .putExtra("code", discussion.paper_code.toInt())
-                    .putExtra("position", discussion.question_no.toInt()))
-        }
     }
 
     private fun setupFromTextView(discussion: Discussion, question: Question?, answer: String, holder: VH) {

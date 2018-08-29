@@ -96,13 +96,6 @@
                     android:textColor="@color/colorAccent"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/modelExamAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/work_sans_medium"
-                    android:gravity="center_vertical" />
 
                 <TextView
                     android:id="@+id/modelExamDate"
@@ -118,10 +111,22 @@
 
 
                 <TextView
+                    android:id="@+id/modelExamAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
+                    android:drawableLeft="@drawable/maps"
+                    android:drawablePadding="5dp"
+                    android:fontFamily="@font/work_sans_medium"
+                    android:gravity="center"
+                    android:padding="5dp" />
+
+
+                <TextView
                     android:id="@+id/modelExamTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
                     android:drawableLeft="@drawable/clock"
                     android:drawablePadding="5dp"
                     android:fontFamily="@font/work_sans_medium"

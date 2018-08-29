@@ -87,6 +87,7 @@ public class SubjectChooserActivity extends AppCompatActivity {
         addItem("Model Paper 9", YearItem.Companion.getYEAR_SET(), 15);
         addItem("Model Paper 10", YearItem.Companion.getYEAR_SET(), 17);
         addItem("Model Paper 11", YearItem.Companion.getYEAR_SET(), 18);
+        addItem("Model Paper 12", YearItem.Companion.getYEAR_SET(), 19);
 
         SubjectListAdapter adapter = new SubjectListAdapter(this, subjectCodes[position], items);
 

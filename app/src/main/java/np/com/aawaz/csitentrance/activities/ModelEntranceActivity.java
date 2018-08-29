@@ -1,5 +1,7 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -219,6 +221,20 @@ public class ModelEntranceActivity extends AppCompatActivity {
         date = (TextView) findViewById(R.id.modelExamDate);
         fee = (TextView) findViewById(R.id.modelExamFee);
         detail = (TextView) findViewById(R.id.modelExamDetail);
+        address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + venue.getText().toString());
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                } else {
+                    Toast.makeText(ModelEntranceActivity.this, "Google maps doesn't exist..", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         registerNow = (TextView) findViewById(R.id.modelExamRegister);
 

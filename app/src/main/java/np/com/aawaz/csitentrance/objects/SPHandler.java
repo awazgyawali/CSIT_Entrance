@@ -39,6 +39,7 @@ public class SPHandler {
     public static String SAGARMATHA = "model11-sagarmatha";
     public static String MODEL12 = "model12";
     public static String MODEL13 = "model13";
+    public static String MODEL14 = "model14";
 
     private static SPHandler spHandler;
     private final SharedPreferences.Editor scoreEditor;
@@ -66,7 +67,9 @@ public class SPHandler {
             new String[]{MATH, ENGLISH, PHYSICS, CHEMISTRY},//model 10(actually 9)
             new String[]{ENGLISH, PHYSICS, MATH, CHEMISTRY},//model 11 Sagarmatha
             new String[]{ENGLISH, MATH, CHEMISTRY, PHYSICS},//model 12, actually 10
-            new String[]{ENGLISH, CHEMISTRY, PHYSICS, MATH}};// model 13, actually 12
+            new String[]{ENGLISH, CHEMISTRY, PHYSICS, MATH}
+            ,// model 13, actually 11
+            new String[]{ENGLISH, MATH, PHYSICS, CHEMISTRY}};
 
     public SPHandler() {
         scoreSp = MyApplication.getAppContext().getSharedPreferences("play_data", Context.MODE_PRIVATE);
@@ -137,13 +140,13 @@ public class SPHandler {
     public int getTotalScore() {
         return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) + getScore(YEAR2073) + +getScore(YEAR2074) +
                 getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4) + getScore(MODEL5) + getScore(MODEL6) + getScore(MODEL7) +
-                getScore(MODEL8) + getScore(MODEL9) + getScore(MODEL10) + getScore(SAGARMATHA) + getScore(MODEL12)+ getScore(MODEL13);
+                getScore(MODEL8) + getScore(MODEL9) + getScore(MODEL10) + getScore(SAGARMATHA) + getScore(MODEL12)+ getScore(MODEL13)+ getScore(MODEL14);
     }
 
     public int getTotalPlayed() {
         return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) + getPlayed(YEAR2073) + getPlayed(YEAR2074) +
                 getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4) + getPlayed(MODEL5) + getPlayed(MODEL6) + getPlayed(MODEL7) +
-                getPlayed(MODEL8) + getPlayed(MODEL9) + getPlayed(MODEL10) + getPlayed(SAGARMATHA) + getPlayed(MODEL12)+ getPlayed(MODEL13);
+                getPlayed(MODEL8) + getPlayed(MODEL9) + getPlayed(MODEL10) + getPlayed(SAGARMATHA) + getPlayed(MODEL12)+ getPlayed(MODEL13)+ getPlayed(MODEL14);
     }
 
     public boolean isResultPublished() {
