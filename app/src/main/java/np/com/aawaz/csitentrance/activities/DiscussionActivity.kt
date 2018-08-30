@@ -1,5 +1,8 @@
 package np.com.aawaz.csitentrance.activities
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -10,10 +13,14 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
+import com.esafirm.imagepicker.features.ImagePicker
+import com.esafirm.imagepicker.model.Image
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_discussion.*
 import np.com.aawaz.csitentrance.R
 import np.com.aawaz.csitentrance.adapters.CommentAdapter
@@ -22,6 +29,7 @@ import np.com.aawaz.csitentrance.misc.Singleton
 import np.com.aawaz.csitentrance.objects.Comment
 import np.com.aawaz.csitentrance.objects.EventSender
 import np.com.aawaz.csitentrance.objects.SPHandler
+import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -32,6 +40,8 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
     internal lateinit var adapter: CommentAdapter
     internal lateinit var reference: DatabaseReference
     internal var key: ArrayList<String> = ArrayList()
+    private var image: Image? = null
+    private lateinit var imm: InputMethodManager
 
 
     private fun readyCommentButton() {
@@ -51,27 +61,93 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
             }
         })
         commentDiscussionButton.setOnClickListener {
-            if (addCommentTextDiscussion.text.toString().isNotEmpty())
-                sendPostRequestThroughGraph(addCommentTextDiscussion.text.toString())
-            else
-                Toast.makeText(this, "Comment cannot be empty.", Toast.LENGTH_SHORT).show()
+            when {
+                image != null -> uploadImageToFirebase()
+                addCommentTextDiscussion.text.toString().isNotEmpty() -> sendPostRequestThroughGraph(addCommentTextDiscussion.text.toString(), null)
+                else -> Toast.makeText(this, "Comment cannot be empty.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        attachImageInComment.setOnClickListener {
+            ImagePicker.create(this)
+                    .single()
+                    .theme(R.style.AppHalfTheme)
+                    .toolbarImageTitle("Select an Image")
+                    .includeVideo(false)
+                    .start()
+        }
+        removeAttachment.setOnClickListener {
+            image = null
+            itemSelected.visibility = View.GONE
         }
     }
 
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroy() {
+        super.onDestroy()
         reference.removeEventListener(this)
     }
 
-    private fun sendPostRequestThroughGraph(message: String) {
+    private fun uploadImageToFirebase() {
+        val fileName = random().replace("/", "") + "." + image?.name!!.split(".")[1];
+        val ref = FirebaseStorage.getInstance().getReference("discussion").child(fileName)
+
+        val file = Uri.fromFile(File(image?.path))
+        val uploadTask = ref.putFile(file)
+
+        val progressDialog = MaterialDialog.Builder(this)
+                .content("Uploading....")
+                .progress(false, 100)
+                .autoDismiss(false)
+                .cancelable(false)
+                .build()
+
+        progressDialog.show()
+
+        uploadTask.addOnProgressListener {
+            val data = it.bytesTransferred / it.totalByteCount * 100;
+            val progress = data.toInt()
+            progressDialog.setProgress(progress)
+        }
+
+        uploadTask.addOnSuccessListener {
+            sendPostRequestThroughGraph(addCommentTextDiscussion.text.toString(), fileName)
+            progressDialog.dismiss()
+            image = null
+            itemSelected.visibility = View.GONE
+        }
+
+
+        uploadTask.addOnFailureListener {
+            progressDialog.dismiss()
+            it.printStackTrace()
+            Toast.makeText(this, "Unable to upload image, please try again later.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun random(): String {
+        val generator = Random()
+        val randomStringBuilder = StringBuilder(50)
+        var tempChar: Char
+        for (i in 0 until 30) {
+            tempChar = (generator.nextInt(96) + 32).toChar()
+            randomStringBuilder.append(tempChar)
+        }
+        return randomStringBuilder.toString()
+    }
+
+    private fun sendPostRequestThroughGraph(message: String, imagePath: String?) {
         val currentUser = FirebaseAuth.getInstance().currentUser
 
-        val comment = Comment(currentUser!!.uid, currentUser.displayName, System.currentTimeMillis(), message, currentUser.photoUrl!!.toString())
+        val comment = Comment(currentUser!!.uid, currentUser.displayName, System.currentTimeMillis(), message, currentUser.photoUrl!!.toString(), imagePath)
         val postValues = comment.toMap()
 
         reference.push().setValue(postValues)
         addCommentTextDiscussion.setText("")
+        Toast.makeText(this, "Comment added.", Toast.LENGTH_SHORT).show()
+
+        imm.hideSoftInputFromWindow(currentFocus.windowToken, 0)
+
+
         commentsRecyDiscussion.scrollToPosition(adapter.itemCount - 1)
     }
 
@@ -157,6 +233,7 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
             if (snapshot.key == key[i]) {
                 adapter.removeItemAtPosition(i)
                 key.removeAt(i)
+                break
             }
         }
     }
@@ -172,6 +249,7 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_discussion)
+        imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
 
         val toolbar = findViewById<View>(R.id.toolbarDiscussion) as Toolbar
@@ -192,6 +270,27 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
 
         fillViews()
 
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
+            val image = ImagePicker.getFirstImageOrNull(data)
+            if (image != null) {
+                this.image = image
+
+                setupAttachmentView()
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun setupAttachmentView() {
+        itemSelected.visibility = View.VISIBLE
+        imageName.text = image?.name
+        itemSelected.setOnClickListener {
+            startActivity(Intent(this, ImageViewingActivity::class.java).putExtra("path", image?.path).putExtra("local", true))
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -228,7 +327,7 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
                     "</head>" +
                     "<body>" +
                     "<div>" +
-                    " Question doesn't exist in this version of the app, please update to get this question set."+
+                    " Question doesn't exist in this version of the app, please update to get this question set." +
                     "</div>" +
                     "</body>" +
                     "</html>"

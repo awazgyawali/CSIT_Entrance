@@ -9,10 +9,13 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -21,8 +24,10 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.ImageViewingActivity;
 import np.com.aawaz.csitentrance.activities.ProfileActivity;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
+import np.com.aawaz.csitentrance.misc.GlideApp;
 import np.com.aawaz.csitentrance.misc.MyApplication;
 import np.com.aawaz.csitentrance.objects.Comment;
 import np.com.aawaz.csitentrance.objects.SPHandler;
@@ -62,6 +67,21 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.admin, 0);
         else
             holder.commenter.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+        if (comment.attached_image != null) {
+            holder.attachedImage.setVisibility(View.VISIBLE);
+            StorageReference ref = FirebaseStorage.getInstance().getReference().child("discussion/" + comment.attached_image);
+            GlideApp.with(context).load(ref).placeholder(R.drawable.placeholder).into(holder.attachedImage);
+            holder.attachedImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    context.startActivity(new Intent(context, ImageViewingActivity.class).putExtra("path", comment.attached_image).putExtra("local", false));
+                }
+            });
+        } else {
+            holder.attachedImage.setVisibility(View.GONE);
+            holder.attachedImage.setOnClickListener(null);
+        }
 
         if (comment.likes != null) {
             holder.upvote.setText(String.valueOf(comment.likes.size()));
@@ -174,6 +194,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView commenter, comment, time, upvote;
         CircleImageView circleImageView;
+        ImageView attachedImage;
         View core;
 
         public ViewHolder(View itemView) {
@@ -183,6 +204,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             comment = itemView.findViewById(R.id.comment);
             time = itemView.findViewById(R.id.timeComment);
             circleImageView = itemView.findViewById(R.id.profileComment);
+            attachedImage = itemView.findViewById(R.id.attachedImage);
             upvote = itemView.findViewById(R.id.upvoteButton);
         }
     }

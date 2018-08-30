@@ -57,6 +57,11 @@
             android:fontFamily="@font/work_sans_medium"
             android:text="This is a small comment"
             android:textColor="@color/colorPrimaryText" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:id="@+id/attachedImage"
+            android:scaleType="centerCrop"
+            android:layout_height="150dp" />
     </LinearLayout>
 
 

@@ -73,24 +73,32 @@
         <activity
             android:name=".activities.SettingsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="csitentrance" android:host="settings" />
+
+                <data
+                    android:host="settings"
+                    android:scheme="csitentrance" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activities.SearchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysVisible" >
+            android:windowSoftInputMode="stateAlwaysVisible">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="csitentrance" android:host="search" />
+
+                <data
+                    android:host="search"
+                    android:scheme="csitentrance" />
             </intent-filter>
         </activity>
         <activity
@@ -101,12 +109,16 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.NewsDetailActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="csitentrance" android:host="news_detail" />
+
+                <data
+                    android:host="news_detail"
+                    android:scheme="csitentrance" />
             </intent-filter>
         </activity>
         <activity
@@ -156,30 +168,38 @@
         <activity
             android:name=".activities.PostForumActivity"
             android:label="@string/title_activity_post_forum"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="csitentrance" android:host="post" />
+
+                <data
+                    android:host="post"
+                    android:scheme="csitentrance" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.ModelEntranceActivity"
             android:label="@string/title_activity_model_entrance"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="csitentrance" android:host="mock_test" />
+
+                <data
+                    android:host="mock_test"
+                    android:scheme="csitentrance" />
             </intent-filter>
         </activity>
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.AboutUsActivity" />
         <activity android:name=".activities.ModelPaperDetailActivity" />
         <activity android:name=".activities.DiscussionActivity" />
+        <activity android:name=".activities.ImageViewingActivity"></activity>
     </application>
 
 </manifest>

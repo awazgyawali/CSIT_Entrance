@@ -15,18 +15,20 @@ public class Comment {
     public long time_stamp;
     public String message;
     public String image_url;
+    public String attached_image;
     public List<String> likes;
 
     public Comment() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public Comment(String uid, String author, long time_stamp, String message, String image_url) {
+    public Comment(String uid, String author, long time_stamp, String message, String image_url, String attached_image) {
         this.uid = uid;
         this.author = author;
         this.time_stamp = time_stamp;
         this.message = message;
         this.image_url = image_url;
+        this.attached_image = attached_image;
     }
 
 
@@ -38,6 +40,7 @@ public class Comment {
         result.put("time_stamp", time_stamp);
         result.put("message", message);
         result.put("image_url", image_url);
+        result.put("attached_image", attached_image);
         return result;
     }
 

@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -16,6 +17,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -40,7 +42,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -66,6 +67,8 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     LinearLayout commentAdder;
     CommentAdapter adapter;
     ArrayList<String> key = new ArrayList<>();
+    private InputMethodManager imm;
+
 
     DatabaseReference reference;
 
@@ -135,12 +138,14 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     private void sendPostRequestThroughGraph(final String message) {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        Comment comment = new Comment(currentUser.getUid(), currentUser.getDisplayName(), System.currentTimeMillis(), message, currentUser.getPhotoUrl().toString());
+        Comment comment = new Comment(currentUser.getUid(), currentUser.getDisplayName(), System.currentTimeMillis(), message, currentUser.getPhotoUrl().toString(), null);
         Map<String, Object> postValues = comment.toMap();
 
         reference.push().setValue(postValues);
         increaseCommentCount();
         commentEditText.setText("");
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+
         commentsRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
     }
 
@@ -298,6 +303,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
+        imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
         DatabaseReference rootReference = FirebaseDatabase.getInstance().getReference();
         reference = rootReference.child("forum_data/comments").child(getIntent().getStringExtra("key"));
@@ -327,7 +333,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
                 forumContainer.setVisibility(View.VISIBLE);
 
                 final Post post = dataSnapshot.getValue(Post.class);
-                if (post!= null && post.author == null) {
+                if (post != null && post.author == null) {
                     Toast.makeText(CommentsActivity.this, "The post has been deleted.", Toast.LENGTH_SHORT).show();
                     return;
                 }

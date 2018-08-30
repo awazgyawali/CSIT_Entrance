@@ -81,7 +81,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
                 detail.setText(exam.getDetail());
 
                 if (exam.getCan_reg()){
-                    registerNow.setText("Registration Now");
+                    registerNow.setText("Register Now");
                     registerNow.setEnabled(true);
                     registerNow.setBackgroundColor(ContextCompat.getColor(ModelEntranceActivity.this, R.color.colorAccent));
                 }

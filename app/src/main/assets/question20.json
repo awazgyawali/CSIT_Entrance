@@ -158,7 +158,7 @@
       "b": "Bureaucracy",
       "c": "Oligarchy",
       "d": "Monarchy",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "21) She is <u>shrewd</u>.",
@@ -273,12 +273,12 @@
       "ans": "a"
     },
     {
-      "question": "35) If M<sup>-1</sup> denotes invers of matrix M, then (AB)<sup>-1</sup> is equal to",
+      "question": "35) If M<sup>-1</sup> denotes inverse of matrix M, then (AB)<sup>-1</sup> is equal to",
       "a": "A<sup>-1</sup>B<sup>-1</sup>",
       "b": "BA",
       "c": "B<sup>-1</sup>A<sup>-1</sup>",
       "d": "AB",
-      "ans": "d"
+      "ans": "c"
     },
     {
       "question": "36) cos(tan<sup>-1</sup>x)",
@@ -593,11 +593,11 @@
       "ans": "a"
     },
     {
-      "question": "75) The uncertainity in position is 10<sup>-15</sup>m. The maximum uncertainity in momentum is",
+      "question": "75) The uncertainty in position is 10<sup>-15</sup>m. The maximum uncertainty in momentum is",
       "a": "2.5*10<sup>-20</sup> kgms<sup>-1</sup>",
       "b": "5.3*10<sup>-20</sup> kgms<sup>-1</sup>",
       "c": "3.35*10<sup>-20</sup> kgms<sup>-1</sup>",
-      "d": "4.7*10sup>-20</sup> kgms<sup>-1</sup>",
+      "d": "4.7*10<sup>-20</sup> kgms<sup>-1</sup>",
       "ans": "b"
     },
     {
