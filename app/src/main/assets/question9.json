@@ -175,7 +175,7 @@
       "b": "decreases",
       "c": "doesn't change",
       "d": "first decreases then increases",
-      "ans": "a"
+      "ans": "d"
     },
     {
       "question": "23. Acceleration at highest point when a ball is projected is",

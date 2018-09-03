@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -96,6 +97,18 @@ public class SignUpActivity extends AppCompatActivity {
                             .addOnSuccessListener(SignUpActivity.this, new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
+
+                                    final ActionCodeSettings actionCodeSettings =
+                                            ActionCodeSettings.newBuilder()
+                                                    .setUrl("https://www.example.com/finishSignUp?cartId=1234")
+                                                    .setHandleCodeInApp(true)
+                                                    .setAndroidPackageName(
+                                                            "np.com.aawaz.csitentrance",
+                                                            true,
+                                                            "16"   )
+                                                    .build();
+
+                                    authResult.getUser().sendEmailVerification(actionCodeSettings);
                                     uploadImage();
                                 }
                             })

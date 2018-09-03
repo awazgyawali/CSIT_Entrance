@@ -169,8 +169,7 @@
                 android:id="@+id/reg_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -194,6 +193,8 @@
                         android:layout_marginRight="8dp"
                         android:layout_marginStart="8dp"
                         android:text="Aawaz Gyawali"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/edit"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="@color/colorAccent"
                         android:textStyle="bold"

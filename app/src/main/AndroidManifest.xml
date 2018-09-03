@@ -199,7 +199,8 @@
         <activity android:name=".activities.AboutUsActivity" />
         <activity android:name=".activities.ModelPaperDetailActivity" />
         <activity android:name=".activities.DiscussionActivity" />
-        <activity android:name=".activities.ImageViewingActivity"></activity>
+        <activity android:name=".activities.ImageViewingActivity" />
+        <activity android:name=".activities.SearchForum"></activity>
     </application>
 
 </manifest>

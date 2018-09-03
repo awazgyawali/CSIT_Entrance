@@ -154,7 +154,6 @@
       "ans": "b"
     },
     {
-      //changed quesiton so answer differnent
       "question": "20.The maximum value of f(x)=2x<sup>3</sup>-3x<sup>2</sup>-36 is",
       "a": "-81",
       "b": "81",
@@ -312,7 +311,7 @@
       "b": "conservative",
       "c": "evolutionary",
       "d": "revolutionary",
-      "ans": "d"
+      "ans": "b"
     },
     {
       "question": "40. Greed is terrible ......",
