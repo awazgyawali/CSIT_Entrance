@@ -77,6 +77,14 @@ public class YearsList extends Fragment {
         item2.setPaperCode(16);
         items.add(item2);
 
+        YearItem item3 = new YearItem();
+        item3.setType(YearItem.Companion.getCOLLEGE_MODEL());
+        item3.setTitle("cab");
+        item3.setLogo(R.drawable.cab);
+        item3.setPaperCode(20);
+        items.add(item3);
+
+
     }
 
     private void prepareModelQuestion() {

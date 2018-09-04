@@ -65,6 +65,7 @@ public class SubjectChooserActivity extends AppCompatActivity {
         addItem("College Model Questions", YearItem.Companion.getSECTION_TITLE(), -1);
         addItem("Samriddhi Model Question", YearItem.Companion.getYEAR_SET(), 12);
         addItem("Sagarmatha Model Question", YearItem.Companion.getYEAR_SET(), 16);
+        addItem("CAB Model Question", YearItem.Companion.getYEAR_SET(), 20);
 
         addItem("Old Questions", YearItem.Companion.getSECTION_TITLE(), -1);
         addItem("2069 TU Examination", YearItem.Companion.getYEAR_SET(), 0);

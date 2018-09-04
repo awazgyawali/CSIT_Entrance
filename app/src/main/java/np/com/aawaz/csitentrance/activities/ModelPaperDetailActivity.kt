@@ -17,7 +17,7 @@ class ModelPaperDetailActivity : AppCompatActivity() {
 
 
     val codes = arrayOf(SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074, SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4,
-            SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA, SPHandler.MODEL12, SPHandler.MODEL13, SPHandler.MODEL14)
+            SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA, SPHandler.MODEL12, SPHandler.MODEL13, SPHandler.MODEL14, SPHandler.MODEL15)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,10 +88,44 @@ class ModelPaperDetailActivity : AppCompatActivity() {
                 startActivity(Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "01-5527274", null)))
             }
             website.setOnClickListener {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://http://scst.edu.np/")))
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://scst.edu.np/")))
             }
             maps.setOnClickListener {
                 val gmmIntentUri = Uri.parse("geo:0,0?q=" + "Sagarmatha College Science And Technology")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.`package` = "com.google.android.apps.maps"
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent)
+                } else {
+                    Toast.makeText(this, "Google maps doesn't exist..", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        } else if (college == "cab") {
+
+            EventSender().logEvent("cab_model_paper")
+            title = "CAB Model Paper"
+            model_banner.setImageResource(R.drawable.cab_banner)
+            model_name.text = "CAB Model Paper"
+            model_address.text = "Gangahiti, Chabahil"
+
+            play_quiz.setOnClickListener {
+                EventSender().logEvent("played_cab_model")
+                openQuizQuestion(20)
+            }
+
+            full_question.setOnClickListener {
+                EventSender().logEvent("viewed_cab_full")
+                openFullQuestion(20)
+            }
+            call.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "01-4476119", null)))
+            }
+            website.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://cab.edu.np/")))
+            }
+            maps.setOnClickListener {
+                val gmmIntentUri = Uri.parse("geo:0,0?q=" + "College of Applied Business")
                 val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                 mapIntent.`package` = "com.google.android.apps.maps"
                 if (mapIntent.resolveActivity(getPackageManager()) != null) {
