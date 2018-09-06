@@ -59,6 +59,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final Comment comment = comments.get(holder.getAdapterPosition());
+        if(comment.author==null)
+            comment.author = "Deleted Comment";
         holder.comment.setText(comment.message);
         holder.commenter.setText(comment.author + " ");
         holder.time.setText(DateUtils.getRelativeTimeSpanString(comment.time_stamp, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE));
@@ -114,7 +116,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                     .placeholder(TextDrawable.builder().buildRound(String.valueOf(comment.author.charAt(0)).toUpperCase(), Color.BLUE))
                     .into(holder.circleImageView);
         } catch (Exception e) {
-            if (comment.author.length() > 0)
+            if ( comment.author.length() > 0)
                 holder.circleImageView.setImageDrawable(TextDrawable.builder().buildRound(String.valueOf(comment.author.charAt(0)).toUpperCase(), Color.BLUE));
         }
 

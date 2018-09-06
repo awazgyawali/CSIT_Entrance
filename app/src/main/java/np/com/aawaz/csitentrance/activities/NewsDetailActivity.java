@@ -14,8 +14,6 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.appindexing.FirebaseUserActions;
-import com.google.firebase.appindexing.builders.Actions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -32,8 +30,6 @@ public class NewsDetailActivity extends AppCompatActivity {
     Bundle bundle;
     TextView time, title;
     WebView newsDetail;
-    private String mUrl;
-    private String mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +65,7 @@ public class NewsDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getStringExtra("news_id") != null) {
             fetchFromInternet(getIntent().getStringExtra("news_id"));
-        }else if(Intent.ACTION_VIEW.equals(intent.getAction())){
+        } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
             Uri uri = intent.getData();
             fetchFromInternet(uri.getLastPathSegment());
         } else {
@@ -77,7 +73,6 @@ public class NewsDetailActivity extends AppCompatActivity {
             title.setText(bundle.getString("title"));
             newsDetail.loadDataWithBaseURL("", readyWithCSS(bundle.getString("detail")), "text/html", "UTF-8", "");
             time.setText(bundle.getString("author") + " - " + convertToSimpleDate(bundle.getLong("time")));
-            appIndexing(bundle.getString("title"));
         }
     }
 
@@ -91,7 +86,6 @@ public class NewsDetailActivity extends AppCompatActivity {
                 title.setText(news.title);
                 newsDetail.loadData(readyWithCSS(news.message), "text/html", "UTF-8");
                 time.setText(convertToSimpleDate(news.time_stamp));
-                appIndexing(news.title);
             }
 
             @Override
@@ -134,24 +128,6 @@ public class NewsDetailActivity extends AppCompatActivity {
         String footer = "</body>" +
                 "</html>";
         return initial + string + footer;
-    }
-
-
-    private void appIndexing(String mTitle) {
-        mUrl = "http://csitentrance.brainants.com/news";
-        this.mTitle = mTitle;
-        FirebaseUserActions.getInstance().start(getAction());
-    }
-
-
-    public com.google.firebase.appindexing.Action getAction() {
-        return Actions.newView(mTitle, mUrl);
-    }
-
-    @Override
-    public void onStop() {
-        FirebaseUserActions.getInstance().end(getAction());
-        super.onStop();
     }
 
     @Override

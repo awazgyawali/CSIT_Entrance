@@ -17,8 +17,8 @@ android {
         minSdkVersion 16
         targetSdkVersion 25
         multiDexEnabled true
-        versionCode 88
-        versionName "3.3.0"
+        versionCode 90
+        versionName "3.3.1"
     }
     buildTypes {
         release {

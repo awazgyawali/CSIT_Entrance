@@ -103,7 +103,7 @@ public class ModelEntranceActivity extends AppCompatActivity {
                 if (exam.getResult_published())
                     resultDetail.setVisibility(View.VISIBLE);
                 else
-                    resultDetail.setVerticalGravity(View.GONE);
+                    resultDetail.setVisibility(View.INVISIBLE);
             }
 
             @Override

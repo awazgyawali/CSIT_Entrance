@@ -310,8 +310,9 @@ public class MainActivity extends AppCompatActivity {
                                 if (AccessToken.getCurrentAccessToken() != null)
                                     LoginManager.getInstance().logOut();
                                 FirebaseMessaging.getInstance().unsubscribeFromTopic("allDevices");
-                                FirebaseMessaging.getInstance().unsubscribeFromTopic("new");
-                                FirebaseMessaging.getInstance().unsubscribeFromTopic("forums");
+                                FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+                                FirebaseMessaging.getInstance().unsubscribeFromTopic("forum");
+                                FirebaseMessaging.getInstance().unsubscribeFromTopic("discussion");
                                 startActivity(new Intent(MainActivity.this, SignInActivity.class));
                                 finish();
                             }

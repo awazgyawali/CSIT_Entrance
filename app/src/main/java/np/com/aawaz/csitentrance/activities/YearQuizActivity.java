@@ -130,11 +130,14 @@ public class YearQuizActivity extends AppCompatActivity implements QuizInterface
         CircleImageView quizProf = (CircleImageView) findViewById(R.id.quizProfilePic);
         TextView name = (TextView) findViewById(R.id.quizName);
         scoreText = (TextView) findViewById(R.id.quizScore);
-        Picasso.with(this)
-                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
-                .into(quizProf);
+        if (FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null)
+            Picasso.with(this)
+                    .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
+                    .into(quizProf);
 
-        name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+
+        if (FirebaseAuth.getInstance().getCurrentUser().getDisplayName() != null)
+            name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
 
         scoreText.setText("Your Score: " + spHandler.getScore(code));
     }

@@ -94,29 +94,35 @@ public class MyMessagingService extends FirebaseMessagingService {
                 .setContentIntent(pendingIntent);
         int post_count = SPHandler.getInstance().getUnreadPostCount();
         int discussion_count = SPHandler.getInstance().getUnreadDiscussionCount();
-        if (notification.getText().contains("posted") && post_count > 1) {
-            NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-            ArrayList<String> messages = SPHandler.getInstance().getUnreadPostMessages();
-            for (int i = messages.size(); i > 0; i--) {
-                inboxStyle.addLine(messages.get(i - 1));
-            }
-            inboxStyle.setSummaryText(post_count + " new posts on Entrance Forum");
-            notificationBuilder.setStyle(inboxStyle);
-            notificationBuilder.setContentTitle("Entrance Forum");
-            notificationBuilder.setContentText(post_count + " new posts on Entrance Forum");
-        }
+        if (notification.getText().contains("posted"))
+            if (post_count > 1) {
+                NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+                ArrayList<String> messages = SPHandler.getInstance().getUnreadPostMessages();
+                for (int i = messages.size(); i > 0; i--) {
+                    inboxStyle.addLine(messages.get(i - 1));
+                }
+                inboxStyle.setSummaryText(post_count + " new posts on Entrance Forum");
+                notificationBuilder.setStyle(inboxStyle);
+                notificationBuilder.setSound(null);
 
-        if (notification.getText().contains("opened") && discussion_count > 1) {
-            NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-            ArrayList<String> messages = SPHandler.getInstance().getUnreadDiscussionMessages();
-            for (int i = messages.size(); i > 0; i--) {
-                inboxStyle.addLine(messages.get(i - 1));
+                notificationBuilder.setContentTitle("Entrance Forum");
+                notificationBuilder.setContentText(post_count + " new posts on Entrance Forum");
             }
-            inboxStyle.setSummaryText(discussion_count + " new discussions opened.");
-            notificationBuilder.setStyle(inboxStyle);
-            notificationBuilder.setContentTitle("Question Discussion");
-            notificationBuilder.setContentText(discussion_count + " new discussions opened.");
-        }
+
+        if (notification.getText().contains("opened"))
+            if (discussion_count > 1) {
+                NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+                ArrayList<String> messages = SPHandler.getInstance().getUnreadDiscussionMessages();
+                for (int i = messages.size(); i > 0; i--) {
+                    inboxStyle.addLine(messages.get(i - 1));
+                }
+                inboxStyle.setSummaryText(discussion_count + " new discussions opened.");
+                notificationBuilder.setStyle(inboxStyle);
+                notificationBuilder.setSound(null);
+
+                notificationBuilder.setContentTitle("Question Discussion");
+                notificationBuilder.setContentText(discussion_count + " new discussions opened.");
+            }
 
         if (notification.getTag().equals("news")) {
             notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(Html.fromHtml(notification.getText())));
@@ -143,14 +149,23 @@ public class MyMessagingService extends FirebaseMessagingService {
         notification.setText(remoteMessage.getData().get("body"));
         notification.setTag(remoteMessage.getData().get("fragment"));
         notification.setResult_published(Boolean.parseBoolean(remoteMessage.getData().get("result_published")));
-        if (notification.getTag().equals("forum")) {
-            notification.setPost_id(remoteMessage.getData().get("post_id"));
-            notification.setUid(remoteMessage.getData().get("uid"));
-        } else if(notification.getTag().equals("discussion")){
-            notification.setPost_id(remoteMessage.getData().get("post_id"));
-            notification.setUid(remoteMessage.getData().get("uid"));
-        }else if (notification.getTag().equals("news"))
-            notification.setPost_id(remoteMessage.getData().get("news_id"));
+
+        if (notification.getTag() == null)
+            notification.setTag("random");
+        if (notification.getUid() == null)
+            notification.setUid("random");
+
+        switch (notification.getTag()) {
+            case "forum":
+                notification.setPost_id(remoteMessage.getData().get("post_id"));
+                break;
+            case "discussion":
+                notification.setPost_id(remoteMessage.getData().get("post_id"));
+                break;
+            case "news":
+                notification.setPost_id(remoteMessage.getData().get("news_id"));
+                break;
+        }
 
         sendNotification(this, notification);
     }

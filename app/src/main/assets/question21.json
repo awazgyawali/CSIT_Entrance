@@ -225,7 +225,7 @@
       "ans": "d"
     },
     {
-      "question": "29. An equation ax<sup>2</sup> + bx<sup>2</sup> + c has reciprocal roots if\n",
+      "question": "29. An equation ax<sup>2</sup> + bx + c = 0 has reciprocal roots if\n",
       "a": "b=c",
       "b": "a=0",
       "c": "a=c",
@@ -273,7 +273,7 @@
       "ans": "c"
     },
     {
-      "question": "35.  If f = {(1, 2), (3, 5), (4, 1)} and g = {(2, 3), (5, 1), (1, 65)}, then\t(gof)(3) =",
+      "question": "35.  If f = {(1, 2), (3, 5), (4, 1)} and g = {(2, 3), (5, 1), (1, 6)}, then\t(gof)(3) =",
       "a": "1",
       "b": "3",
       "c": "5",
@@ -297,7 +297,7 @@
       "ans": "a"
     },
     {
-      "question": "38. The angle between the lines x - √(3y)=5 and √(3x) + y = 4 is",
+      "question": "38. The angle between the lines x - √3y=5 and √3x + y = 4 is",
       "a": "30<sup>o</sup>",
       "b": "60<sup>o</sup>",
       "c": "90<sup>o</sup>",
@@ -385,7 +385,7 @@
       "ans": "a"
     },
     {
-      "question": "49. If n(U) = 123, n(A) = 80, n(B) = 65, the maximum value of n(A∪B) is",
+      "question": "49. If n(U) = 125, n(A) = 80, n(B) = 65, the maximum value of n(A∪B) is",
       "a": "145",
       "b": "125",
       "c": "100",
@@ -546,7 +546,7 @@
     },
     {
       "question": "69. A solid and another hollow metal cylinder of same dimension and material is heated by applying same amount of heat, then expansion will be,",
-      "a": "Greater than hollow",
+      "a": "Greater in hollow",
       "b": "Greater in solid",
       "c": "equal in both",
       "d": "None",
