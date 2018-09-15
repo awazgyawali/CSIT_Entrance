@@ -1,804 +1,805 @@
 {
   "questions":[
     {
-      "question": "1) ______,the students, are having a test.",
-      "a": "Us",
-      "b": "We",
-      "c": "Them",
-      "d": "I",
+      "question": "1) A mass of 2 kg lies on a plane making an angle 30° to the horizontal Resolve its weight along and perpendicular to the plane. (g = 10 ms<sup>−2</sup>)",
+      "a": "10/ √3 N",
+      "b": "10√3 N",
+      "c": "10N",
+      "d": "10/ 2√3 N",
       "ans": "b"
     },
     {
-      "question": "2) The brave ____ admired.",
-      "a": "is",
-      "b": "are",
-      "c": "has been",
-      "d": "was",
+      "question": "2) Density of oil is 0.8 gm/cm<sup>3</sup>. Find its value in MKS system.",
+      "a": "0.8 kg/m<sup>3</sup>",
+      "b": "0.8 x 10<sup>3</sup> kg/m<sup>3</sup>",
+      "c": "0.4 x 10<sup>6</sup> kg/m<sup>3</sup>",
+      "d": "0.4x 10<sup>3</sup> kg/m<sup>3</sup>",
       "ans": "b"
     },
     {
-      "question": "3) Let's have a party,________?",
-      "a": "can you",
-      "b": "will you",
-      "c": "shall we",
-      "d": "shouldn't we",
-      "ans": "c"
-    },
-    {
-      "question": "4) You like apples and so ________.",
-      "a": "I do",
-      "b": "I like",
-      "c": "do I",
-      "d": "did I",
-      "ans": "c"
-    },
-    {
-      "question": "5) I didn't know how tall ______.",
-      "a": "is she",
-      "b": "she was",
-      "c": "was she",
-      "d": "she is",
+      "question": "3) The ratio of the numerically values of the average velocity and average speed of a body is always",
+      "a": "Unity",
+      "b": "Unity or more",
+      "c": "Unity or less",
+      "d": "less than Unity",
       "ans": "b"
     },
     {
-      "question": "6) I live _____ the park.",
-      "a": "by",
-      "b": "with",
-      "c": "over ",
-      "d": "from",
-      "ans": "a "
-    },
-    {
-      "question": "7) I count ________ you.",
-      "a": "on",
-      "b": "to",
-      "c": "at",
-      "d": "by",
-      "ans": "a"
-    },
-    {
-      "question": "8) He looks very \"RUN DOWN\".",
-      "a": "strong",
-      "b": "weak",
-      "c": "superior",
-      "d": "none",
-      "ans": "b"
-    },
-    {
-      "question": "9) \"Small Fry\" means",
-      "a": "a less important person",
-      "b": "a VIP",
-      "c": "a middle class person",
-      "d": "none",
-      "ans": "a"
-    },
-    {
-      "question": "10) Birds fly.",
-      "a": "S + D.O",
-      "b": "S + O",
-      "c": "S+V",
-      "d": "S+I.O",
-      "ans": "c"
-    },
-    {
-      "question": "11) ___________you complete the work,you can't go out.",
-      "a": "If",
-      "b": "Because",
-      "c": "As",
-      "d": "Unless",
-      "ans": "d"
-    },
-    {
-      "question": "12) She became ___________at last.",
-      "a": "bore",
-      "b": "boring",
-      "c": "bored",
-      "d": "bores",
-      "ans": "c"
-    },
-    {
-      "question": "13) We saw them _____out.",
-      "a": "going",
-      "b": "go",
-      "c": "goes",
-      "d": "went",
-      "ans": "b"
-    },
-    {
-      "question": "14) The crane _______ the car.",
-      "a": "rose",
-      "b": "raised",
-      "c": "rise",
-      "d": "raise",
-      "ans": "b"
-    },
-    {
-      "question": "15) One who acts against religion",
-      "a": "heretic",
-      "b": "atheist",
-      "c": "blasphemous",
-      "d": "sacilege",
-      "ans": "a"
-    },
-    {
-      "question": "16) Synonym: Franchise ",
-      "a": "right to vote",
-      "b": "prohibited",
-      "c": "disqualified",
-      "d": "unqualified",
-      "ans": "a"
-    },
-    {
-      "question": "17) Antonymn: Release",
-      "a": "liberate",
-      "b": "emancipate",
-      "c": "free",
-      "d": "confine",
-      "ans": "d"
-    },
-    {
-      "question": "18) It is impossible ___________ optimistic.",
-      "a": "remaining",
-      "b": "to remain",
-      "c": "to remaining",
-      "d": "remained",
-      "ans": "b"
-    },
-    {
-      "question": "19) Somebody has cheated me.",
-      "a": "I am cheated by someone.",
-      "b": "Me has been cheated.",
-      "c": "I have been cheated.",
-      "d": "I has been cheated by someone.",
-      "ans": "d"
-    },
-    {
-      "question": "20) \"Did you come from France\"?, said Sara to boy.",
-      "a": "Sara asked the boy if he had come from France.",
-      "b": "Sara asked the boy if he come from France.",
-      "c": "Sara asked the boy if he came from France.",
-      "d": "Sara said the boy did he come from France.",
-      "ans": "a"
-    },
-    {
-      "question": "21) She thanked me for what I _________.",
-      "a": "did",
-      "b": "do",
-      "c": "have done",
-      "d": "had done",
-      "ans": "d"
-    },
-    {
-      "question": "22) \"Dinner is ready ()\"said Krishna.",
-      "a": ";",
-      "b": ":",
-      "c": ",",
-      "d": "?",
-      "ans": "c"
-    },
-    {
-      "question": "23) Where ________________?",
-      "a": "did you cut your hair",
-      "b": "have you cut your hair",
-      "c": "did you have your hair cut",
-      "d": "did you have cut you hair",
-      "ans": "c"
-    },
-    {
-      "question": "24) She bought ____ pair of shoes.",
-      "a": "a",
-      "b": "an",
-      "c": "the ",
-      "d": "none",
-      "ans": "a"
-    },
-    {
-      "question": "25) ______ cows give milk.",
-      "a": "A",
-      "b": "An",
-      "c": "The",
-      "d": "none",
-      "ans": "d"
-    },
-    {
-      "question": "26) The SI unit of luminous intensity is",
-      "a": "candela",
-      "b": "amp",
-      "c": "mole",
-      "d": "light",
-      "ans": "a"
-    },
-    {
-      "question": "27) Planck's constant has same dimension as",
-      "a": "energy",
-      "b": "power",
-      "c": "linear momentum",
-      "d": "angular momentum",
-      "ans": "d"
-    },
-    {
-      "question": "46) The magnetic field of 2*10<sup>-2</sup>T acts at right angles to a coil of area 100cm<sup>2</sup> with 50 turns.The average induced emf in the coil is 0.1V when it is removed from field in time 't'.The value of 't' is",
-      "a": "0°",
-      "b": "60°",
-      "c": "90°",
-      "d": "120°",
-      "ans": "d"
-    },
-    {
-      "question": "29) A bullet fired into a fixed target loses half of its velocity after penetrating 3 cm.The further distance travelled before coming to rest is",
-      "a": "4cm",
-      "b": "3cm",
-      "c": "2cm",
-      "d": "1cm",
-      "ans": "d"
-    },
-    {
-      "question": "30) A bomb is released from a horizontally flying aeroplane.The trajectory of bomb is",
-      "a": "straight line",
-      "b": "circle",
-      "c": "hyperbola",
-      "d": "parabola",
-      "ans": "d"
-    },
-    {
-      "question": "31) The minimum acceleration of a fireman sliding down a rope whose breaking strength is two third of its weight is",
-      "a": "g/5",
-      "b": "g/3",
-      "c": "g/2",
-      "d": "g",
-      "ans": "b"
-    },
-    {
-      "question": "32) A bent bow used for shooting arrow posseses ",
-      "a": "kinetic energy",
-      "b": "potential energy",
-      "c": "electrical energy",
-      "d": "pressure energy",
-      "ans": "b"
-    },
-    {
-      "question": "33) The weight of a body at the centre of the earth will be",
-      "a": "0",
-      "b": "infinity",
-      "c": "finite and positive",
-      "d": "finite and negative",
-      "ans": "a"
-    },
-    {
-      "question": "34) The length of a wire increases by 8mm when a load of 5kg is hung from it.Keeping all conditions same,radius is made double then elongation will be",
-      "a": "1mm",
-      "b": "2mm",
-      "c": "4mm",
-      "d": "8mm",
-      "ans": "b"
-    },
-    {
-      "question": "35) The lift of an aeroplane is based on",
-      "a": "torricali's theorem",
-      "b": "Bernoulli's Theorem",
-      "c": "law of gravitation",
-      "d": "conservation of linear momentum",
-      "ans": "b"
-    },
-    {
-      "question": "36) A constant volume gas thermometer works on",
-      "a": "Boyle's Law",
-      "b": "Pascal's Law",
-      "c": "Newton's Law",
-      "d": "Charle's Law",
-      "ans": "d"
-    },
-    {
-      "question": "37) The sine of angle made by line with 0°c axis when graph is plotted between °c and °F is",
-      "a": "5/9",
-      "b": "9/√106",
-      "c": "5/√106",
-      "d": "14/√106",
-      "ans": "b"
-    },
-    {
-      "question": "38) When vapour condensed into liquid ",
-      "a": "it absorbs heat",
-      "b": "it evolve heat",
-      "c": "temperature decreases",
-      "d": "temperature increases",
-      "ans": "c"
-    },
-    {
-      "question": "39) The efficiency of carnot engine operating  between 300K and 500K is",
-      "a": "2/3",
-      "b": "2/5",
-      "c": "0.3",
-      "d": "3/5",
-      "ans": "b"
-    },
-    {
-      "question": "40) A closed organ pipe and an open organ pipe are tuned to the same fundamental frequency.The ratio of their length is",
-      "a": "1:1",
-      "b": "1:2",
-      "c": "1:4",
-      "d": "2:1",
-      "ans": "b"
-    },
-    {
-      "question": "41) A bomb is exploded on the moon then sound is heard on earth after",
-      "a": "2hr 18 min",
-      "b": "24hr",
-      "c": "365 days",
-      "d": "never",
-      "ans": "d"
-    },
-    {
-      "question": "42) The device to produce plane polarized light is",
-      "a": "a crystal",
-      "b": "a biprism",
-      "c": "a grating",
-      "d": "nicol prism",
-      "ans": "d"
-    },
-    {
-      "question": "43) A plane mirror is approaching you at 5cm per seconf.You can see your image in it.At what speed will your image approach you.",
-      "a": "10cm/sec",
-      "b": "5cm/sec",
-      "c": "20cm/sec",
-      "d": "15cm/sec",
-      "ans": "a"
-    },
-    {
-      "question": "44) A person cannot see objects nearer than 500cm from the eye.The power of the glasses that allow him to read a book 25cm from the eye is",
-      "a": "-3D",
-      "b": "3D",
-      "c": "3.8D",
-      "d": "-3.8D",
-      "ans": "c"
-    },
-    {
-      "question": "45) A wire of length L is drawn such that its diameter is reduced to half of its original diameter. The initial resistance of wire eas 10Ω then it's new resistance will be",
-      "a": "40Ω",
-      "b": "80Ω",
-      "c": "120Ω",
-      "d": "160Ω",
-      "ans": "d"
-    },
-    {
-      "question": "46) The magnetic field of 2*10<sup>-2</sup>T acts at right angles to a coil of area 100cm<sup>2</sup> with 50 turns.The average induced emf in the coil is 0.1V,when it is removed from the field in time 't'.The value of 't' is",
-      "a": "0.01s",
-      "b": "0.1s",
-      "c": "0.5s",
-      "d": "1s",
-      "ans": "b"
-    },
-    {
-      "question": "47) A charge is enclosed by a sphere of radius 'r' and flux throug it is 'ϕ'.If the radius is made double and charge is also double ,then the flux is",
-      "a": "ϕ",
-      "b": "2ϕ",
-      "c": "3ϕ",
-      "d": "4ϕ",
-      "ans": "b"
-    },
-    {
-      "question": "48) 10% of radioactive substance decayed in 5 years then % of substance that will decay in 20 years is",
-      "a": "40%",
-      "b": "50%",
-      "c": "65.60%",
-      "d": "34.40%",
-      "ans": "d"
-    },
-    {
-      "question": "49) Light of wavelength 4000Å is incident on a metal plate whose work function is 2eV.The maximum K.E of the emitted photoelectron would be",
-      "a": "2eV",
-      "b": "1.5eV ",
-      "c": "1.1eV",
-      "d": "0.5eV",
-      "ans": "c"
-    },
-    {
-      "question": "50) The helium atom does not contain",
-      "a": "two protons",
-      "b": "two electrons",
-      "c": "two neutrons",
-      "d": "six electrons",
-      "ans": "d"
-    },
-    {
-      "question": "51) If sets A abd B are defined as A={(x,y):y = e<sup>x</sup> ,x∈R},B={(x,y):y=x,x∈R} then",
-      "a": "B⊆A",
-      "b": "A⊆B",
-      "c": "A∩B=ϕ",
-      "d": "A U B = A",
-      "ans": "c"
-    },
-    {
-      "question": "52) The domain of the function f(x)=√(x-1) + √(6-x) is",
-      "a": "[1,∞)",
-      "b": "(-∞,6)",
-      "c": "[1,6]",
-      "d": "ϕ",
-      "ans": "c"
-    },
-    {
-      "question": "53)  Let two numbers have arithmetic mean 9 and geometric mean 4.Then these numbers are the roots of the quadratic equation ",
-      "a": "x<sup>2</sup>+18x-16=0",
-      "b": "x<sup>2</sup>-18x+16=0",
-      "c": "x<sup>2</sup>+18x+16=0",
-      "d": "x<sup>2</sup>-18x-16=0",
-      "ans": "b"
-    },
-    {
-      "question": "54) The value of 1/(log<sub>3</sub>12) + 1/(log<sub>4</sub>12) is",
-      "a": "0",
-      "b": "1/2",
-      "c": "1",
-      "d": "2",
-      "ans": "c"
-    },
-    {
-      "question": "55) If a,b are the roots of equation x<sup>2</sup> -px +q=0 then 1/a + 1/b  =",
-      "a": "1/p",
-      "b": "1/q",
-      "c": "1/2p",
-      "d": "p/q",
-      "ans": "d"
-    },
-    {
-      "question": "56) In a triangle ABC ,if sinAsinB = ab/c<sup>2</sup> .Then the triangle is ",
-      "a": "equilateral",
-      "b": "isoceles",
-      "c": "right angled",
-      "d": "obtuse angled",
-      "ans": "c"
-    },
-    {
-      "question": "57) If secθ and tanθ are roots of ax<sup>2</sup>+bx+c=0 (a,b≠ϕ) then value of secθ - tanθ  is",
-      "a": "-a/b",
-      "b": "-b/a",
-      "c": "a<sup>2</sup>/b<sup>2</sup>",
-      "d": "2a/b",
-      "ans": "a"
-    },
-    {
-      "question": "58) If sin<sup>-1</sup>x + sin<sup>-1</sup>(1-x) + cos<sup>-1</sup>x =0 then x=",
-      "a": "0",
-      "b": "1",
-      "c": "-1",
-      "d": "2",
-      "ans": "d"
-    },
-    {
-      "question": "59) If sinθ =1/2 and cosθ =-√3 /2 then general value of θ is",
-      "a": "2nπ+5π/6",
-      "b": "2nπ+π/6",
-      "c": "2nπ+7π/6",
-      "d": "2nπ + π/4",
-      "ans": "a"
-    },
-    {
-      "question": "60) Equation of chord to the circle x<sup>2</sup>+y<sup>2</sup> =16 having (1,2) as midpoint is ",
-      "a": "x+2y=1",
-      "b": "2x+y=5",
-      "c": "x+2y=5",
-      "d": "x-2y=5",
-      "ans": "c"
-    },
-    {
-      "question": "61)If the lines mx<sup>2-nxy-y<sup>2</sup>=0 make angles α and β with +ve axis,then tan( α+β)=",
-      "a": "-n/(1+m)",
-      "b": "-m/(1+n)",
-      "c": "m/(1+n)",
-      "d": "n/(1+m)",
-      "ans": "a"
-    },
-    {
-      "question": "62) If 3x+y+k=0 is a tangent to the circle x<sup>2</sup>+y<sup>2</sup>=10,the value of k are",
-      "a": "±7",
-      "b": "±5",
-      "c": "±10",
-      "d": "9",
-      "ans": "c"
-    },
-    {
-      "question": "63) (2  5) is a ",
-      "a": "diagonal matrix",
-      "b": "square matrix",
-      "c": "collumn matrix",
-      "d": "row matrix",
-      "ans": "d"
-    },
-    {
-      "question": "64)The transpose of a matrix having order m*n becomes",
-      "a": "-m*n",
-      "b": "m*n",
-      "c": "n*m",
-      "d": "-n*m",
-      "ans": "c"
-    },
-    {
-      "question": "65) lim<sub>x-->0</sub> |x|/x =",
-      "a": "1",
-      "b": "-1",
+      "question": "4) A particle is projectile angle 𝜃 with the horizontal with the speed “u” find the velocity perpendicular to\ninitial velocity.",
+      "a": "ucot𝜃",
+      "b": "utan𝜃",
       "c": "0",
-      "d": "does not exist",
+      "d": "usin𝜃",
+      "ans": "a"
+    },
+    {
+      "question": "5) When milk is churned cream gets separated due to",
+      "a": "centripetal forces",
+      "b": "centrifugal force",
+      "c": "fraction force",
+      "d": "gravitational force",
+      "ans": "b"
+    },
+    {
+      "question": "6) A metal sheet with a circular hole is heated. The hole",
+      "a": "gets larger",
+      "b": "gets smaller",
+      "c": "remains same",
+      "d": "gets different",
+      "ans": "a"
+    },
+    {
+      "question": "7) Calculate change in entropy to convert 1 gm water at 100°𝐶 to steam",
+      "a": "2.5 cal/°C",
+      "b": "2.4 cal/°C",
+      "c": "2 cal/°C",
+      "d": "1.4 cal/°C",
       "ans": "d"
     },
     {
-      "question": "66) The function f(x)=1/x at x=0 is",
-      "a": "continuos",
-      "b": "discontinuos",
-      "c": "both",
-      "d": "none",
+      "question": "8) Certain perfect gas is found obey PV<sup>3/2</sup> = constant. During adiabatic process. If such a gas at initial\ntemperature T is adiabatically compressed to half the initial volume. find its final temperature will be",
+      "a": "T",
+      "b": "2T ",
+      "c": "√2 T",
+      "d": "T / 2",
+      "ans": "c"
+    },
+    {
+      "question": "9) In certain process the pressure of one mole ideal gas varies with volumes according to relations P = <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAAsBAMAAAAjhHPxAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAdlTNu2ar7yIyRBCJmd30n4FiAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABlUlEQVQ4EeWUP0jDQBTGv1Rjk6atKCgoDi0ugg51ca6DS10CgrMiFgSH4iS6VAQ3bQd3DwrOEQdBEIro4CB00UEcRBAcBRf/QX13Seud15DB0Qd5973f+3J/khBADaN/VAVaNYOixhRg5rCsAK2Iu1jXoAIqZbukAK04gJFnGpVB3NuuuzLQdOJ8bNHT6H8Czaj468OIjTQipjjCaoSjhrkIh4XrTg6rKuipyM+dHDs+TGZo7GF+oebZoOTjkKX2RGXWgUHnATgEYuNbxJyCaLRTugwz7eUAEpXmF2BdfrSbQtQoH8MFkvVWI3CYzAf3NExwR6LkA+CX45H4QMKj5T9DHO/Ed4d5c6Ozw3lrcTy1lLqK1Z4bk4rjtrg0VeQv0n4BeumrIqk6AJMRpNP/zBGyitiHIQ66Jm6hpO5DnMBe4M1gz87F6xUvYTJKFNN0GS4l7U9iMqIU83R13zToljwvpXACfUJj3FsBupjUlWUqA+yjAOzJVNZOnr+5TeBOporOAln6jGzaSkgYVaT6gLOQto6/Aecfc3KRdJ3/AAAAAElFTkSuQmCC\" /> , where a, b are constants when the volume of the gas V= b, find the temperature of the gas.",
+      "a": "2a/Rb",
+      "b": "2ab/R",
+      "c": "ab/2R",
+      "d": "a/Rb",
+      "ans": "c"
+    },
+    {
+      "question": "10) The equation of plane progressive wave motion is y = a sin2𝜋/𝜆 (ut − x). Velocity of particle is",
+      "a": "y dv/dx",
+      "b": "v dy/dx",
+      "c": "-y dv/dx",
+      "d": "-v dy/dx",
+      "ans": "d"
+    },
+    {
+      "question": "11) The wave length of light received from a velocity way is 0.4% .higher than that from the same sources on with .The velocity of Milky way with respect to earth will be .",
+      "a": "5×10<sup>6</sup> m/s",
+      "b": "1.2×10<sup>6</sup> m/s",
+      "c": "0.2×10<sup>6</sup> m/s",
+      "d": "2×10<sup>6</sup> m/s",
       "ans": "b"
     },
     {
-      "question": "67) The rate of chamge of diagonal length R of a square with respect to its area A is",
-      "a": "√A",
-      "b": "1/R",
-      "c": "R",
-      "d": "√R",
+      "question": "12) Two waves are approaching each other with a velocity 20 m/s and frequency f. The distance between two consecutive nodes is",
+      "a": "20 / n",
+      "b": "10 / n",
+      "c": "5 / n ",
+      "d": "n / n",
       "ans": "b"
     },
     {
-      "question": "68) <sub>0</sub>∫<sup>1</sup> tan<sup>-1</sup>x/(1+x<sup>2</sup>) dx is equal to",
-      "a": "π<sup>2</sup>/4",
-      "b": "π<sup>2</sup>/32",
-      "c": "1",
+      "question": "13) A long string with charge per unit length 𝜆 on it passes through a cube of side a. The minimum flux through the cube is.",
+      "a": "𝜆a / e<sup>0</sup>",
+      "b": "√2𝜆a / e<sup>0</sup>",
+      "c": "√3𝜆a / e<sup>0</sup>",
+      "d": "2𝜆a / e<sup>0</sup>",
+      "ans": "a"
+    },
+    {
+      "question": "14) Infinities changes , each of a column are being on x-axis at x=1m, 2m, 4m,8m,.......... .the electric potential due to these at x = 0 will be",
+      "a": "1 kg volt",
+      "b": "2 kg volt ",
+      "c": "4 kg volt",
       "d": "0",
       "ans": "b"
     },
     {
-      "question": "69) If y=e<sup>(1+log<sub>e</sub>x) then dy/dx =",
-      "a": "e",
-      "b": "0",
-      "c": "log x e<sup>logx</sup>",
-      "d": "1",
+      "question": "15) No current flows if the internals of a cell are joined with 125 cm length of potcutio meter wire. If a 20Ω resistance is connected in parallel to call balancing length is reduced by 25 cm. find the internal resistance of cell",
+      "a": "5Ω",
+      "b": "2.5Ω",
+      "c": "7.5Ω",
+      "d": "10Ω",
       "ans": "a"
     },
     {
-      "question": "70) 5/i<sup>3</sup> =",
-      "a": "5",
-      "b": "5i",
-      "c": "5/i",
-      "d": "-5i",
-      "ans": "b"
+      "question": "16) A coil carrying electric current is placed in uniform magnetic field",
+      "a": "Torque is formed",
+      "b": "emf is induces",
+      "c": "both a and b",
+      "d": "non of above",
+      "ans": "a"
     },
     {
-      "question": "71) The moduli of (1+i)<sup>10</sup> is",
-      "a": "8",
-      "b": "16",
-      "c": "32",
-      "d": "64",
+      "question": "17) The period of oscillation of a freely suspended bar magnet is 4 second If it is emf into two equal pass\nwire then the time period of each part will be",
+      "a": "4s",
+      "b": "2s",
+      "c": "0.5s",
+      "d": "0.25s",
+      "ans": "a"
+    },
+    {
+      "question": "18) When a glass slab is placed on a dot on a paper .It appears displaced by 4 cm, viewed normally. what is\nthe thickness of slab if the refractive index 1.5",
+      "a": "13m",
+      "b": "14m",
+      "c": "12m",
+      "d": "11m",
       "ans": "c"
     },
     {
-      "question": "72) The function f(x)=x<sup>5</sup> + x is ",
-      "a": "odd function",
-      "b": "even function",
-      "c": "none",
-      "d": "bieven function",
+      "question": "19) Two plane mirrors are inclined to each other at some angle. A ray of light incident at 30° on one after\nreflection from other retraces its path .The angle between the mirror is",
+      "a": "30º",
+      "b": "45º",
+      "c": "60º",
+      "d": "90º",
       "ans": "a"
     },
     {
-      "question": "73) The point at which internal bisectors of the angles of a triangle intersect is called ",
-      "a": "centroid",
-      "b": "mid-point",
-      "c": "incentre",
-      "d": "circum centre",
+      "question": "20) What cause chromatics aberration?",
+      "a": "Non-paraxial rays",
+      "b": "paraxial rays",
+      "c": "variation of focal length with color",
+      "d": "Difference in radii of curvature of the bounding surface of the lens",
       "ans": "c"
     },
     {
-      "question": "74) The value of k such that 3x<sup>2</sup>-8xy+ky<sup>2</sup>=0 represent two mutually perpendicular lines is",
-      "a": "3",
-      "b": "-3",
-      "c": "2",
-      "d": "-2",
+      "question": "21) A single slit diffraction pattern is obtained using a beam of red light. If the red light is replaced by the blue light then the diffraction pattern",
+      "a": "remains unchanged",
+      "b": "becomer narrower",
+      "c": "becomes broader",
+      "d": "will disappear",
       "ans": "b"
     },
     {
-      "question": "75) The period of the function f(x)=sinx is",
-      "a": "2π",
-      "b": "π",
-      "c": "-π",
-      "d": "-2π",
-      "ans": "a"
-    },
-    {
-      "question": "76) Equivalent weight of a metal is 12,equivalent weight of its carbonate is",
-      "a": "60",
-      "b": "30",
-      "c": "24",
-      "d": "42",
-      "ans": "d"
-    },
-    {
-      "question": "77)0.6 gm of magnesium would completely react with ",
-      "a": "500cc of N/2 acid",
-      "b": "500cc of N/5 acid",
-      "c": "100cc of N acid",
-      "d": "5cc of 10N acid",
-      "ans": "d"
-    },
-    {
-      "question": "78) To a mixture of 20cc of N/5 HCl and 50cc of N/20 H<sub>2</sub>SO<sub>4</sub>,20cc of N/2 NaOH is added.The resulting solution is",
-      "a": "acidic",
-      "b": "alkaline",
-      "c": "neutral",
-      "d": "feebly acidic",
+      "question": "22) Find the ratio of the area of orbit of first excited state of electron to the area of orbit of ground level for hydrogen atom.",
+      "a": "1:16",
+      "b": "16:1",
+      "c": "4:1",
+      "d": "1:4",
       "ans": "b"
     },
     {
-      "question": "79)Time required to decompose 200 ml water completely by using 5 ampere current is",
-      "a": "119.14hr",
-      "b": "136.2hr",
-      "c": "312hr",
-      "d": "208hr",
-      "ans": "a"
-    },
-    {
-      "question": "80) pH of a mixture formed by mixing equal volume of solution having pH value 2 and 4 is",
-      "a": "2.29",
-      "b": "1.61",
-      "c": "3.8",
-      "d": "4.21",
-      "ans": "a"
-    },
-    {
-      "question": "81) The compound acting as both oxidant and reductant is",
-      "a": "K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>",
-      "b": "BaO",
-      "c": "KmnO<sub>4</sub>",
-      "d": "H<sub>2</sub>O<sub>2</sub>",
-      "ans": "d"
-    },
-    {
-      "question": "82) In which of these compounds ,the O.N of bold lettered element is not zero",
-      "a": "<b>C</b>H<sub>2</sub>Cl<sub>2</sub>",
-      "b": "CaO<b>Cl</b><sub>2</sub>",
-      "c": "<b>Na</b>/Hg",
-      "d": "<b>Ni</b>(CO)<sub>4</sub>",
-      "ans": "b"
-    },
-    {
-      "question": "83) Isoelectronic species pair of CO is",
-      "a": "N<sub>2</sub>",
-      "b": "O<sub>2</sub><sup>++<sup>",
-      "c": "Si",
-      "d": "all",
-      "ans": "d"
-    },
-    {
-      "question": "84) Total number of orbital present in M shell is",
-      "a": "6",
-      "b": "9",
-      "c": "12",
-      "d": "18",
-      "ans": "b"
-    },
-    {
-      "question": "85) Type of bond present in ammonium chloride are",
-      "a": "ionic",
-      "b": "covalent ",
-      "c": "coordinate covalent",
-      "d": "all",
-      "ans": "d"
-    },
-    {
-      "question": "86) Which of the following have largest size",
-      "a": "F",
-      "b": "Br",
-      "c": "I<sup>-</sup>",
-      "d": "I",
+      "question": "23) The fossil bone has a 14𝐶 : 12𝐶 ratio , which is [ 1/16 ] of that in a living animals bone. If the half-life of 14𝐶 is 5730 years , then the age of the fossil bone is",
+      "a": "11460 years",
+      "b": "17190 years",
+      "c": "22920 years",
+      "d": "45840 years",
       "ans": "c"
     },
     {
-      "question": "87) Acccording to lewis concept a base is defined as",
-      "a": "proton donor",
-      "b": "proton acceptor",
-      "c": "an electron pair acceptor",
-      "d": "an electron pair donor",
+      "question": "24) The De-Brogile wave length of an electron moving in the nth Bohr orbit of radius r is given by",
+      "a": "2πr / n",
+      "b": "nπr",
+      "c": "nr / 2π",
+      "d": "nr / π",
+      "ans": "a"
+    },
+    {
+      "question": "25) In Millikan’s oil drop experiment, an oil drop’s observed to more vertically upward. The upward motion of the drop is due to",
+      "a": "gravity",
+      "b": "viscosity",
+      "c": "buoyancy",
+      "d": "electric field",
       "ans": "d"
     },
     {
-      "question": "88) A solution of a salt of strong acid with strong base is",
-      "a": "Amphoteric",
-      "b": "Neutral",
-      "c": "Acidic",
-      "d": "alkaline",
+      "question": "26) My pen and _____ are both black.",
+      "a": "your",
+      "b": "yours",
+      "c": "our",
+      "d": "ours",
       "ans": "b"
     },
     {
-      "question": "89) Composition of Rinmann's Green is",
-      "a": "NiSO<sub>4</sub>",
-      "b": "CoOZnO",
-      "c": "CoOFCO",
-      "d": "Na<sub>2</sub>ZnO<sub>2</sub>",
+      "question": "27) The climate of Kathmandu is like _______ of Pokhara.",
+      "a": "those",
+      "b": "that",
+      "c": "which",
+      "d": "when",
       "ans": "b"
     },
     {
-      "question": "90) Which is used as flux during extraction of Zinc",
-      "a": "SiO<sub>2</sub>",
-      "b": "P<sub>2</sub>O<sub>5</sub>",
-      "c": "CaO",
+      "question": "28) The lecture and the poet ______ popular in this city.",
+      "a": "is",
+      "b": "are",
+      "c": "was",
+      "d": "has",
+      "ans": "b"
+    },
+    {
+      "question": "29) Every man, women and child _____ money.",
+      "a": "gets",
+      "b": "get",
+      "c": "have got",
+      "d": "getting",
+      "ans": "a"
+    },
+    {
+      "question": "30) She seldom goes out, ___?",
+      "a": "doesn't she",
+      "b": "isn't she",
+      "c": "does she",
+      "d": "do she",
+      "ans": "c"
+    },
+    {
+      "question": "31) Let them go now, ______?",
+      "a": "will you",
+      "b": "shall you",
+      "c": "will they",
+      "d": "shall I",
+      "ans": "a"
+    },
+    {
+      "question": "32) I am taller than you ____ two inches?",
+      "a": "with",
+      "b": "by",
+      "c": "at",
+      "d": "of",
+      "ans": "b"
+    },
+    {
+      "question": "33) I have six other copies _____ this.",
+      "a": "across",
+      "b": "through",
+      "c": "besides",
+      "d": "besides",
+      "ans": "d"
+    },
+    {
+      "question": "34) If I had labored, _________.",
+      "a": "I would have topped the list",
+      "b": "I would top the list.",
+      "c": "I will top the list.",
+      "d": "I top the list",
+      "ans": "a"
+    },
+    {
+      "question": "35) If I were you, ________.",
+      "a": "I would have accepted her.",
+      "b": "I well accept her.",
+      "c": "I would accepts her.",
+      "d": "I accept her.",
+      "ans": "c"
+    },
+    {
+      "question": "36) What is the passive form of “Did Rekha post letter?”",
+      "a": "Were letters posted by Rekha?",
+      "b": "Are letters posted by her?",
+      "c": "Where letters being posted by Rekha?",
+      "d": "Letters were posted by her?",
+      "ans": "a"
+    },
+    {
+      "question": "37) What is the passive form of “Help the girl”?",
+      "a": "Let the girl help",
+      "b": "Let the girls be helped.",
+      "c": "Let girl be helped.",
+      "d": "The girl helps.",
+      "ans": "b"
+    },
+    {
+      "question": "38) I last ____her at the station.",
+      "a": "see",
+      "b": "seen",
+      "c": "saw",
+      "d": "had seen",
+      "ans": "c"
+    },
+    {
+      "question": "39) He _______ a novel all this morning.",
+      "a": "has been reading",
+      "b": "has read",
+      "c": "reads",
+      "d": "read",
+      "ans": "a"
+    },
+    {
+      "question": "40) I met an alien ............alien was very intelligent.",
+      "a": "a",
+      "b": "an",
+      "c": "the",
+      "d": "none",
+      "ans": "c"
+    },
+    {
+      "question": "41) ...................poverty is a curse.",
+      "a": "a",
+      "b": "an",
+      "c": "the",
       "d": "none",
       "ans": "d"
     },
     {
-      "question": "91) Metals og group IB are called",
-      "a": "alkali metals",
-      "b": "alkaline metals",
-      "c": "coinage metals",
-      "d": "electrochemical metals",
-      "ans": "c"
+      "question": "42) What is a synonym of gloomy?",
+      "a": "dark",
+      "b": "bright",
+      "c": "day",
+      "d": "clear",
+      "ans": "a"
     },
     {
-      "question": "92) H<sub>2</sub>S reacts with O<sub>2</sub> to give",
-      "a": "H<sub>2</sub>SO<sub>4</sub>",
-      "b": "SO<sub>2</sub>",
-      "c": "S",
-      "d": "SO<sub>3</sub>",
-      "ans": "c"
-    },
-    {
-      "question": "93) Ammonia can be manufactured by",
-      "a": "downs process",
-      "b": "ostwalds process",
-      "c": "habers process",
-      "d": "brine process",
-      "ans": "c"
-    },
-    {
-      "question": "94) Carnalite is an ore of",
-      "a": "zinc",
-      "b": "iron",
-      "c": "copper",
-      "d": "magnesium",
-      "ans": "d"
-    },
-    {
-      "question": "95) Which of the following is an allotrope of carbon",
-      "a": "diamond",
-      "b": "coal",
-      "c": "coke",
-      "d": "all",
-      "ans": "d"
-    },
-    {
-      "question": "96) Bleaching action of SO<sub>2</sub> is due to",
-      "a": "acidic nature",
-      "b": "reduction",
-      "c": "oxidation",
-      "d": "H<sub>2</sub> molecule",
+      "question": "43) What is the antonym of fancy?",
+      "a": "modern",
+      "b": "simple",
+      "c": "tough",
+      "d": "stylish",
       "ans": "b"
     },
     {
-      "question": "97) No of σ bonds in benzene molecule is",
-      "a": "6",
-      "b": "9",
-      "c": "12",
-      "d": "10",
-      "ans": "c"
-    },
-    {
-      "question": "98) Ethyne with Bayer's reagent produces",
-      "a": "glyoxal",
-      "b": "oxalic acid",
-      "c": "acetic acid",
-      "d": "formic acid",
+      "question": "44) What is an synonym of lure.",
+      "a": "hate",
+      "b": "tempt",
+      "c": "main",
+      "d": "reject",
       "ans": "b"
     },
     {
-      "question": "99) Which can convert benzene diazonium chloride into benzene?",
-      "a": "H<sub>3</sub>PO<sub>3</sub>",
-      "b": "H<sub>3</sub>PO<sub>4</sub>",
-      "c": "H<sub>3</sub>PO<sub>2</sub>",
-      "d": "HCl",
+      "question": "45) What is the antonym of virtue?",
+      "a": "pious",
+      "b": "vice",
+      "c": "pure",
+      "d": "young",
+      "ans": "b"
+    },
+    {
+      "question": "46) The worh 'head' takes the prefix __________.",
+      "a": "be-",
+      "b": "mis-",
+      "c": "dis-",
+      "d": "re-",
+      "ans": "a"
+    },
+    {
+      "question": "47) The word ‘length’ takes the suffix __________.",
+      "a": "-ify",
+      "b": "-ize",
+      "c": "-en",
+      "d": "-ise",
       "ans": "c"
     },
     {
-      "question": "100) Hetero atom present in oxetane is",
-      "a": "N",
-      "b": "O ",
-      "c": "S",
+      "question": "48) The past participle of ‘bleed’ is ____________.",
+      "a": "bleeded",
+      "b": "bleeding",
+      "c": "bled",
+      "d": "bleeds",
+      "ans": "c"
+    },
+    {
+      "question": "49) Were I Asmita ________________.",
+      "a": "I would refused",
+      "b": "I will refuse",
+      "c": "I would have refused",
+      "d": "none",
+      "ans": "a"
+    },
+    {
+      "question": "50)  What is the passive form of ‘He had been selling meat?’",
+      "a": "meat is being said by him",
+      "b": "meat has been sold by him",
+      "c": "meat had been being sold",
+      "d": "none",
+      "ans": "d"
+    },
+    {
+      "question": "51) Which of the following is not true?",
+      "a": "(A ⋂ B) ⊂ A",
+      "b": "A ⊂ (A ⋂ B)",
+      "c": "(A - B) ⊂ A",
+      "d": "A ⊂ (A - B)",
+      "ans": "d"
+    },
+    {
+      "question": "52) The range of the function 𝑦 = 𝑥<sup>3</sup> is",
+      "a": "[0, ∞)",
+      "b": "(-∞, ∞)",
+      "c": "(-∞, 0]",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "53) If log<sub>a</sub>x. log<sub>5</sub>a = 2, then the value of x =",
+      "a": "5",
+      "b": "25",
+      "c": "32",
+      "d": "64",
+      "ans": "b"
+    },
+    {
+      "question": "54) A line is of length 10 units, and one end is at (2,-3). If the abscissa of the other end is 10, then its ordinates is:",
+      "a": "2, 7",
+      "b": "7, 2",
+      "c": "3, -9",
+      "d": "4, 2",
+      "ans": "c"
+    },
+    {
+      "question": "55) If the equation x<sup>2</sup> + y<sup>2</sup> + 2gx + 2fy +1 = 0 represents a pair of line , then",
+      "a": "f<sup>2</sup> - g<sup>2</sup> = 1",
+      "b": "f<sup>2</sup> + g<sup>2</sup> = 1",
+      "c": "g<sup>2</sup> - f<sup>2</sup> = 1",
+      "d": "f<sup>2</sup> + g<sup>2</sup> = 1/2",
+      "ans": "b"
+    },
+    {
+      "question": "56) The tangents to the circle x<sup>2</sup> + y<sup>2</sup> = 169 at the points (5,12) and (−5, −12)",
+      "a": "parrallel",
+      "b": "at right angles",
+      "c": "inclined at 45º",
+      "d": "inclined at 60º",
+      "ans": "a"
+    },
+    {
+      "question": "57) The circle x<sup>2</sup> + y<sup>2</sup> − 8x + 4y + 4 = 0 touches",
+      "a": "x-axis",
+      "b": "y-axis",
+      "c": "both axis",
+      "d": "doesnot touch axis",
+      "ans": "b"
+    },
+    {
+      "question": "58) The derivation of tan<sup>-1</sup> (a+x)/(1-ax) =",
+      "a": "0",
+      "b": "x/(a+x)",
+      "c": "1/(1+x<sup>2</sup>)",
+      "d": "2a/(1+x<sup>2</sup>)",
+      "ans": "c"
+    },
+    {
+      "question": "59) If 3 sin(xy) + 4 cos(xy) = 5, then dy/dx =",
+      "a": "2y/x",
+      "b": "-1",
+      "c": "x/y",
+      "d": "-y/x",
+      "ans": "d"
+    },
+    {
+      "question": "60) <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAtBAMAAADbz30YAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAECIyu6tEZt2Z781UdomKp3poAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADAUlEQVRIDc1WS2gTURQ9M5MPzacJInZRsaMLpYgmmHajUCuodKGo1OrODLiRCjIKMkh/QQS3RRAXQglKFXddKopGUGwxhYgWF1oIuFJQQlrSjRLvm7bpS97LZGyjeGFm7rvn3PO+87jAP7NQeqUr//BsxqFXK/vZAeUgRV9uKMeAuSgHVLubMwifqg41aAXHAe/JuqQnhAzURWXAGAXVkgxhMX+BXjGDuU4Wsq74riE033bVQJ8J7HxUxX6T1TE7GgfRPDepu0GahLNdwve2QHxLzAxNYXKsXC495fkt+WC+JaekQbTA2XK5fHGKh2X+V0SNGIxphHsxmUgk9j3mWUPQMASUQLRAP8G7Uzws8w8uxomNCXhz6GMENuWuw2THyXloP8oCiOZJUSPQcMp4ncZ94AEiOuxN+Ulpq6YWadmKCBVAtOVNyaxidb6eDNKhlKEWMO1DMF9zbDRS2lFAMMdoeE4aDY+NJ6qNt+Zz/ilMhKE8Az5E+a6vI6xfxxwYDe10sA/xKPmbatrwWRa0O9FWEz3v6Kh9HMlUMfZal9E5Yto0YMSq/fW0E7o/VZWx0UZEp6E302grm2t/QbDrnvZi18zL4TPNGWlEV4roMLUlDDZLEEVEDKWEjo0I3h4gO8cUaA1J0B7m8gGmC+QPjX4ezgRBDluX2yRBhyk3GJaWtEZ/OXC05NHuxQR7nU/2O/DWoP3Q0mutJnj/m6BYObgeoXokezdeuySSysG1IOYxU6sHSeWwMUGxctCSuU6HY7Mn+74yKtkIJZVDhS9zfL3wGgxQ6ZEJipUDY9e3QBxqmsFe0jy9XdwUsXKIsJuj+jrg9GNj5aUF1vaZXJRzxcqBAyVuLAPfwrYfZDckKIWEykFOq0QrU1ZuwZ5LBVlxhMqBxWl96hltCpUUZC1ROUWsHIj3Sc61oz3ZL/a3lb29ElWhcgC0t3aKi9criaAkzd8uCcpCWrc7QdOt4FbZlMWeVcOtYHbaFNPFiH/+W06MSiMXXAkCB6TZ6w/SfVMv+Tf7OwiNnk876QAAAABJRU5ErkJggg==\" />",
+      "a": "√2",
+      "b": "1/√2",
+      "c": "-1",
+      "d": "-√2",
+      "ans": "a"
+    },
+    {
+      "question": "61) <img src=\"data:image/gif;base64,R0lGODlhhgAtALMAAP///wAAAO7u7tzc3MzMzERERFRUVLq6upiYmCIiImZmZhAQEDIyMqqqqoiIiHZ2diH5BAEAAAAALAAAAACGAC0AAAT+EMhJq704a9DcU1u4dZ9onmiKCo5kPKrJunBs3/h1MBLC55hd7wcsGk0DSelYSQKWzKi0knBOJ9Wrlmk4bF3er/jmIACs0/J5zEY1GoJB6/qOz9t4DuJxaCAMAwMBgwE1OB0OAwgIIIKEhnljB0kDCw0AC2ZRcAEIEgp3kZGXAAcLWgQCBKdKBqKvEw+uJwQFtre4oRMOswAFILCvDJ5bBcQAncGiAgFOYVIBAhINCcp4pgAIARIEaEcEzRIMmpFxeQQKDQQNDw3PUX+LD95tteHZ1dZHBsfK9+j6jmQKeC/gEUEGCxoEsiOAAmnWwtVakIQAg2YIGqQTkLHLwo/+GO4xc8KMGDhi2ECqnFCwZRhmL7etzKPAgM2bOA21tCKyJ8QKhIIKHUq0qNGjSJMSzbGTJUmfM1U2ldDz6c+oYmri3KqTp1cJI8FGw2qQgIEABQ6YRUtgbVq3as8aIKeF4ysEV8niALaM78oBdG2ogXVA10djQIjAUgxSYYxF1hyQEkNvwyogBSqf62XDTzoHhif0YqFgkV9uDxgkeHAM9JsfiDj+eceKgh8+fgABQaSIUYXaMQRc4tcnwwFilxZIKxBYAuIJz20CEDApGQfFwEtRsoSpuQpOxEBRkJkjy/QH6NOnT1CAW3sACd45neBDtCcv1Ha9P5NvAqmURaToclkrFCSQVwzZXSCAAk4g0AIzBwKIyTEUTaCAIQbcMUB/FciSQS24hBgaALxA55eBN7zRQHuTZPCQhZfscYGHEgjixIASLPBMQQIkKE4/RTyHTD8+nsDOHhlpAEkCDjiIAWLUgaNfKWeQl98zPoZFZRFjccAhJqJ8aUECZsyh3BkMwOBJfZ/AcEdmE2CjDTeapQCOE+NQYFYkB3B2wZHOtNPAABlKw9oEBDzgwE+QcZPOOu3Id0M8e3gjWR4CFMBAnUxkOgY/GTCmlwoPeBfFQDoAOaoKp0mBkIKtrpqCXVc09GIFeAERAQA7\" />",
+      "a": "1/2p",
+      "b": "2p",
+      "c": "-2p",
+      "d": "p+1",
+      "ans": "b"
+    },
+    {
+      "question": "62) x<sup>x</sup> has a stationary point at",
+      "a": "x = e",
+      "b": "x = 1/e",
+      "c": "x = 1",
+      "d": "x = √e",
+      "ans": "b"
+    },
+    {
+      "question": "63) The area bounded by the curve y<sup>2</sup> = 4ax, the y-axis and the abscissa y = 2a is",
+      "a": "2a<sup>2</sup> / 3",
+      "b": "4a<sup>2</sup> / 3",
+      "c": "a<sup>2</sup> / 3",
+      "d": "4a<sup>2</sup> ",
+      "ans": "a"
+    },
+    {
+      "question": "64) The interval in which the function y(x) = 2x<sup>3</sup> − 9x<sup>2</sup> + 12x − 20 is decreasing is",
+      "a": "(2, ∞)",
+      "b": "(-∞, 2)",
+      "c": "[0, ∞]",
+      "d": "(1, 2)",
+      "ans": "d"
+    },
+    {
+      "question": "65) ∫ dx/(e<sup>x</sup> + 9e<sup>-x</sup>) = ",
+      "a": "ln(e<sup>2x</sup> + 9)",
+      "b": "ln(e<sup>x</sup> + 9e<sup>-x</sup>)",
+      "c": "1/3 tan<sup>-1</sup>(e<sup>x</sup> / 3)",
+      "d": "tan<sup>-1</sup>(e<sup>x</sup> / 3)",
+      "ans": "c"
+    },
+    {
+      "question": "66) <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL0AAAAwBAMAAAC212YFAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAmWZ2IhCJzd1Uq++7RDKac4AcAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADRElEQVRYCe1VPWgTYRh+crmkuUvuEipWOgjnqYVWSkOrg1MPwZ8toUMRRBPrIF00KugkdHDSJZYOrQ6G6mIVGsFBwZ8oOOigQYpQl54oBUFo/akiVOv7fZdLk/RyYpPbfOHue9/3+fm+vJfkADvEFxObTLvwYu3DZS9sy57//cujcErE23u9fb5Omzar59Ob5eTs09pvRFconNGGu4GlfQ17uBkEMwzt3OzGaQQLpUmtxg804uGmTWU5+taN0wjWYzB1YGMjHm7aaQ7uUdw4jWAPmFi8d7ERDxet+N0FbAIk/GyCiYuF/K0GHG3vQ+RmTfMvpTDFCOINB1posboZyE7OQrZ6Ur4aq19xwScneqpQq7oA2z9g1GL1au4v5RzguXRtk05ROn8tAnSvbfEOF/g0B/RktropTRRm1ukfMqqtePWqqql3SENDWeYv6duULZD6BrqKkDpmuyxa6fxS5xik3hPAqG5wkAT+3VcriOWdHpczSiKaWmQ10d/g2EDYPJzQpAxmxPthk/Xt+bThLDbgEJR0MM5BEjzFVAWRs+km/rAzth7HYJKtRD+KZDGB4jj8BWQVeiY8rPMLGZh0RYvBWMACZVA9aRN9UyzSTCF95rrS7Y6+nWfkv7Bs0h5ogxwHgjnWJtk5LgtrAF0pU115aYEyq+/aREYuRfCLndEasH9r5I8reTwCHiJqAC0aNVhY508YAF3X6Hi3LFCmWqUPWSZyNt0iv+yM1sASUJpPJIu8NFIUFzGuACmDbiy6+X2B5poAzuA5whYoY4EGWSwRK+YTJsvVOA/BZJWMSFKNBdNxmmqbX8n34INFsvxDBnaGDH8Oz/DOAmk+yf3p7lWiRafNR+yMrYPl+Su6DrU1GdQwv0tt/zhctGiWvzikJ8XWXuC1rlmgDGV47PqRVaLtOhezs8qVzd8xLP+1UF1Bv7aW7PL/wJ+Og6Ku/7ThwGbf/3+LuoJLjj516Y5satYVLDsq1vd+cbBSvzo0m9gSKn9eTfS1rXyLdubN2pLB+63eWHPXaBoZQfNug4Sp5NSCd/474M+Jee/8n8Afo/9gz+I3nZ+9F7yJU0IOSkEpeOMOnD6YBDJ+zSt/gb3N5zu8sv8DAqu3B1exYNEAAAAASUVORK5CYII=\"/>",
+      "a": "e<sup>π/2</sup>",
+      "b": "e<sup>-π/2</sup>",
+      "c": "0",
+      "d": "1",
+      "ans": "a"
+    },
+    {
+      "question": "67) If cot<sup>-1</sup>x + cot<sup>-1</sup>y = π/2, then the value of xy = ",
+      "a": "-1",
+      "b": "0",
+      "c": "1",
+      "d": "2",
+      "ans": "c"
+    },
+    {
+      "question": "68) The general solution of tan3x = 1 is :",
+      "a": "nπ + π/4",
+      "b": "nπ/3 + π/12",
+      "c": "2nπ",
+      "d": "nπ±π/4",
+      "ans": "b"
+    },
+    {
+      "question": "69) The value of the determinant <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAABECAMAAACiTHspAAAAM1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxgEwMAAAAEHRSTlMARCKrwxC7iWbNMlTvmd12fRRhkAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAtBJREFUWAntmNuWqyAMQFGPBaEX//9rJ1EDCYaCztjzUh+qYsg2oLhXjenMxVtn+uFiBAC+jMYxTmM13q6ae2L01s1XM6Ds3zOcfpdUx39lBGe74IZ+N78+PKAt8Jcrq2O4O9NBx1odENPfg7n7nDG6pXGw7IJkuOBf1sFlZPxbw9T5CMZ0d5YmHsL6MMPJnU+BZMDVHhEIAMyyqQy4YvlwrKHLL7Z75OD2GGCbJvxNlXm4Q9hqYwUh03IzS7T4eUKG18Sbsjr8VmOdMc4wbXxEKOs8GnNLNw3NktFhJ6ykwoC5cDAcfv9Ywfs0wpQIuGB0w6vzD3xWiDHa2zzZ3dPjH8EHG0Qm6LVszjqLtaRNMJzpnziciZECjxy9biJaMNIVqiO1tB7hU/uUBYqiUp7TjBHecotven07zTAO5qOeHyPOM9ryE2NbS9o7HYxka8nBnu3hnxqrwprXfqOVyM/W8fUSmo7CcsXfQblOU8cD+9MMRT8IS95B55KRhIY9V2odmn5sOaN3qAwmNMh45yWaflBOWO3EqijqgK8TCQ1bS9Q6Vi2J+pHS49HmHXCkagkJTW2s4Du00w8CkXfQuagDGklo6oy9fmw5o3cUGFFomhiZfqw5k3doDC40xCh4CXTf68eaM3mHxuBCQwyKU/eZfqgx0JjPB8VVGYp+UN98X9ASvpbkXZbzA/qh9sfGah3t+nGeUezZfgHr+HpJ23hV57wtzduozzK+XhIno7BgsfkofAdjhvrBeUauH8RK4kEtgpGEpl7HTj+2jEw8NAYTGmS885Klu9SPLSMTD43BhKbuJVw/KNm2J/GAU0VM4v8p9bEyuX4kEIkHtYj5SEJTZ+z0gzKaKB7UIhlRaKqMvX6sGbl4FBmr0BCj6CV7/VgzcvHQGVFoiEFhv9rLsYJUq9D8KUOISRKaP2XwQWBCcxmD/Z9yHSMV9SFGAl529AOethMnXRaW7gAAAABJRU5ErkJggg==\" /> = ",
+      "a": "4xyz",
+      "b": "x+y+z",
+      "c": "0",
+      "d": "1 + 1/x + 1/y + 1/z",
+      "ans": "c"
+    },
+    {
+      "question": "70) If A = <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABEBAMAAAAo4ZX4AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMARCKrw3ZUzbtm7zIQiZnbOJRvAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABwElEQVRIDe2VMUvDQBiG36S0ps3QjCKIgRYcWxAHN/+CiGLBQYRWcCquInQSugVE3KS4CQ6dXdqf4OTuP9CuOni963f3xgS7iEUwFPrm+tD77u57EniYc0WozSH85sKQUmvHFde+jpCtZRlLQ2G8Hs5zkEuUm4IER7jKQd7hDQSpDrEyQ4r7JzLqTxB+yE0jxmhsauljQ0ZDhUzkZqSQWCF1lLvYktEcZFvtbiXBnSC+qsVNNMSamagRhwNB8IaSvalGODXljlDsRcL0UXSLTrBrkMp4/SkRRG1dLFlt3ZlBvOfjzbEMl1ovEoH2bd4BuN9nKXtGC0XqmdnTA/70AL6/fnlFqa7nypwB3PVMkAHc9YyQAdz1jDgDUl2PvU5XMGdAqqWDpGC7zhmQQm5QsB1okOkBpLr+HpXYTmQN4K5XdT0KAWcAqOvDVxzYp19gDQB3/YN/UZa/cQaAu361UzsU5N8AuxPZ8JOSsAGc9axmIjaAMyFsAGdC2ADODmEDOEPboGvh9uYMbYNC6tP3gvqYizO0Df5XA7I2mEXzc5+yscEgZEDWBoOwAZy1DQZhAzhrGwwyW03+199D8tfBo5+lwo303rD49gAAAABJRU5ErkJggg==\"/> , then A<sup>2</sup> =",
+      "a": "A<sup>n</sup> a<sup>n</sup>",
+      "b": "Aa<sup>n+1</sup>",
+      "c": "a<sup>n-1</sup>A",
+      "d": "a<sup>n+2</sup>A",
+      "ans": "c"
+    },
+    {
+      "question": "71) The sum of the all two digits number which when divided by 4 yield remainder 1 is:",
+      "a": "1020",
+      "b": "950",
+      "c": "1210",
+      "d": "11500",
+      "ans": "c"
+    },
+    {
+      "question": "72) The value of <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQIAAAAqBAMAAACq6UiMAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVGYimYnNMu/ddhBEq7tuJisWAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEHUlEQVRYCe2XTWgTQRTH/5u0SdykaRQvFsQYrUiqNOAHCEIWwUsRidCTFyNUQfAQsNKTuBTBi8WgBw9eVhFERVmKeBIbBUWkhyKIFAlYPFU9pFXwYHV9M7Obzk6ahjSpInQg8zL73pv3dna+fsD/VrTbd4HA1p6EL3HN5E1XAD3pApBaf8tn1KbGAMqIzgAPbbnDaIa3XIEOq2sKzxLQP8hG7fkfy2MPQgZAIVjZxWu1eoVgBkP0tKxqWm+HctRHP/2CC7yzpTM4RbpAhapsiVu1XG1Yn0FPbwFaalt3qjeB2SRw8BLvVmQQ2w6mJKHdH99dwnzqGOLXKM3XRsvBWQcduVCuw4qaeInjWQMzGOt3nIXTvG+RwXikwJQknmaTWj74HfFE5K3jOK/y3KrVagfC2AEsYBD2xSR2YmxkZOTcGSmDUhZMSaK0CfrH8DwCZuQ9We0vthqc+49SPYroD1z8XZhIYIs9yx7TV+gol0+Xy2xmDIIpmTiMLis6B+1nnAWPGFS1XILf6IN+g0Yza7PZnaQM+Eyc4x27M/EyNTabIHEF3RnMUwZiJiZaDk8dhCn0ngpCVjwBsyuHe2ALwrcatWKJKUkEK9gUwzvoRbAF0abVeB165joeIm6HjWARZxE9CTyy+duJMejMWUxJIpDHYR0HECrhCe1IX7hRy9W+VB/2ppOIpVLA8J0SrfXbaXd4RQbhQzZTkuhM4vwDhAeOUNR0alV2ZeV93HmgPP2bTfEt/mbEtVhrI7BaI0An2L8tq/Via/02OQLjTdq75n1MrtDXixgQe6rhtZuTj5m50ZyPah3l/npBeV5DGi6IuIKORg4sMQtQfdNHS55a6lTxD9z5SkoR5Q0zC0m27G8taSg84gFLvsY3YAfnGvNMH7IJLwoPToe+rwxRy73bLH32hgxxRaLTX/FdV8B0Y565ga6ixzM6u2d88sX3kcbSGXjAcqHGN5LEicY8M4rOiscz4SmKbtJPYhKZNEQGKo94wBKp8aWephvzDI1gsRqFRaefzCQyaYgMFB6pAkt3jS9AF/VGPEMhJxZ5pkIX8SKIRxaZRCYNkYHCI1VgWWervkDcqqop0tL+wGdUo9wUGYyStcckccqIk0Y9HoEHLCID2Re4j6q6rj90C9UolEHUZDyyyCQyaYh3YCAi8wifiQQskRpfaJZL1svxDHpoz6DRZ4uSz0LTzyQyaYgMVB7xgIXPRB/P4AX0xjwTS8KqRjEpE1qNMpPIpCEyUHnEAxaxGmXf8JHJjY15ZnjyueFF4auRdhUfk0ikITJQecQDFrEjyb4Rx/nVmGeuOs6UxzN8R3pG41CnuPOgjjZPO3gdlft4eX9mxHflzkLdbuy6GlLQ58Qyvsx1WX9mQBOHFYPXTVftO51Xesto1w3lDycFCXsOi5f1AAAAAElFTkSuQmCC\" /> is",
+      "a": "cos𝜃+𝑖sin𝜃",
+      "b": "cos3𝜃+𝑖sin3𝜃",
+      "c": "cos1𝜃+𝑖sin2𝜃",
+      "d": "cos4𝜃+𝑖sin2𝜃",
+      "ans": "b"
+    },
+    {
+      "question": "73) The value of(2 + 5w + 2w<sup>2</sup>)<sup>6</sup> =",
+      "a": "729",
+      "b": "512",
+      "c": "256",
+      "d": "128",
+      "ans": "a"
+    },
+    {
+      "question": "74) In a quadratic equation with leading coefficient 1, a student reads the coefficient 16 of x wrongly as 19 and obtain the roots -15 and -4. The correct roots are",
+      "a": "6, 10",
+      "b": "-6, -10",
+      "c": "8,8",
+      "d": "-8,-8",
+      "ans": "b"
+    },
+    {
+      "question": "75) The system of equation x + 2y = 1, −2y−4y = 2 has",
+      "a": "\nonly one solution",
+      "b": "finitely many solutions",
+      "c": "no solution",
+      "d": "infinitely many solutions",
+      "ans": "c"
+    },
+    {
+      "question": "76) One gram of molecule of a gas at NTP occupies 22.4 liters”. This fact was derived from",
+      "a": "Dalton’s theory",
+      "b": "Avogadro’s hypothesis",
+      "c": "Berzelius hypothesis",
+      "d": "Law of gaseous volume",
+      "ans": "b"
+    },
+    {
+      "question": "77) 2.24 liter of dry CO<sub>2</sub> gas at NTP weights",
+      "a": "0.044 gm",
+      "b": "0.44 gm",
+      "c": "4.4 gm",
+      "d": "44 gm",
+      "ans": "c"
+    },
+    {
+      "question": "78) Maximum number of electron that can be accommodated in a sub shell is",
+      "a": "n<sup>2</sup>",
+      "b": "2n<sup>2</sup>",
+      "c": "2(2l + 1)",
+      "d": "(2l + 1)",
+      "ans": "c"
+    },
+    {
+      "question": "79) Which has maximum bond angle?",
+      "a": "CO<sub>2</sub>",
+      "b": "H<sub>2</sub>O",
+      "c": "NH<sub>3</sub>",
+      "d": "CH<sub>4</sub>",
+      "ans": "d"
+    },
+    {
+      "question": "80) Oxidation number of Cl in CaCl<sub>2</sub>",
+      "a": "-1 and +1",
+      "b": "+2",
+      "c": "-2",
+      "d": "0",
+      "ans": "a"
+    },
+    {
+      "question": "81) Which of the following represents correct order of ionic radii?",
+      "a": "𝐿𝑖+ <𝑁𝑎+ <𝐾+ <𝑅𝑏+",
+      "b": "𝐿𝑖+ >𝑁𝑎+ >𝐾+ >𝑅𝑏+",
+      "c": "𝐿𝑖+ =𝑁𝑎+ =𝐾+ =𝑅𝑏+",
+      "d": "𝑅𝑏+ >𝐾+ <𝑁𝑎+ >𝑙𝑖+",
+      "ans": "a"
+    },
+    {
+      "question": "82) The degree of dissociation of an electrolyte",
+      "a": "Decreases with dilution",
+      "b": "Increase with dilution",
+      "c": "May Increase or decrease with dilution",
+      "d": "It is not affected by dilution law",
+      "ans": "b"
+    },
+    {
+      "question": "83)  Half-life is independent of initial concentration in",
+      "a": "Second order",
+      "b": "First order",
+      "c": "Third order",
+      "d": "Zero order",
+      "ans": "b"
+    },
+    {
+      "question": "84) A process is spontaneous at all temperature if",
+      "a": "DH < 0, DS < 0",
+      "b": "DH<0, DS> 0",
+      "c": "DH = 0, DS < 0",
+      "d": "DH> 0, DS > 0",
+      "ans": "b"
+    },
+    {
+      "question": "85) The production of hydrogen by reaction 3Fe + 4 H<sub>2</sub>O(Steam) ----------> Fe<sub>3</sub>O<sub>4</sub> + 4 H<sub>2</sub> is called",
+      "a": "Bosch process",
+      "b": "Lane process",
+      "c": "Electrolysis process",
+      "d": "Merck’s process",
+      "ans": "b"
+    },
+    {
+      "question": "86) Which of the following oxides are basic and amphoteric respectively?",
+      "a": " 𝐶𝑎𝑂 , 𝑀𝑔𝑂",
+      "b": "𝑀𝑔𝑂, 𝑍𝑛𝑂",
+      "c": "𝑍𝑛𝑂, 𝐶𝑎𝑂",
+      "d": "𝑆𝑖𝑂,𝑍𝑛𝑂",
+      "ans": "b"
+    },
+    {
+      "question": "87) The substance used for dehydrating moist NH<sub>3</sub> is",
+      "a": "Anhydroces CaCl<sub>2</sub>",
+      "b": "P<sub>2</sub>O<sub>5</sub>",
+      "c": "H<sub>2</sub>SO<sub>5</sub>",
+      "d": "CaO",
+      "ans": "d"
+    },
+    {
+      "question": "88) SO<sub>2</sub> can be used as",
+      "a": "Bleaching action",
+      "b": "Antichlor",
+      "c": "Disinfectant",
+      "d": "all of these",
+      "ans": "d"
+    },
+    {
+      "question": "89) Molecular formula of phosphoric is",
+      "a": "P<sub>4</sub>",
+      "b": "P<sub>3</sub>",
+      "c": "P<sub>2</sub>",
       "d": "P",
+      "ans": "a"
+    },
+    {
+      "question": "90) Strongest acid among the following is",
+      "a": "HF",
+      "b": "HCl",
+      "c": "HBr",
+      "d": "HI",
+      "ans": "d"
+    },
+    {
+      "question": "91) The blister copper is obtained by",
+      "a": "Bessemerization",
+      "b": "Poling",
+      "c": "roasting",
+      "d": "retiming",
+      "ans": "a"
+    },
+    {
+      "question": "92) In the Lassaignes’s test , the violet color is due to",
+      "a": "Fe<sub>4</sub>[Fe(CN)<sub>6</sub>]<sub>3</sub>",
+      "b": "Fe<sub>4</sub>[Fe(CN)<sub>4</sub> NOS]",
+      "c": "Na<sub>2</sub>[Fe(CN)<sub>3</sub>]",
+      "d": "Na<sub>2</sub>[Fe (CN)<sub>5</sub>NO]",
       "ans": "b"
+    },
+    {
+      "question": "93) The IUPAC name of (CN<sub>3</sub>)<sub>3</sub>C − CH(OH) − CH<sub>3</sub> is",
+      "a": "2, 2 – dimethyl -3- butanol",
+      "b": "1, 2 – dimethyl-2 –butanol",
+      "c": "1, 2 – dimethyl-4 – propanol",
+      "d": "1,1,1 - tri methyl - 2 - propanol",
+      "ans": "a"
+    },
+    {
+      "question": "94) Which of the following named reaction converts a Ketone into a hydrocarbon?",
+      "a": "Riemer – Tiemann reactions",
+      "b": "Friedal – Craft reaction",
+      "c": "Wolfkishner reductions",
+      "d": "perkin reaction",
+      "ans": "c"
+    },
+    {
+      "question": "95)  <img src=\"data:image/gif;base64,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\" />. Identify Z in the chemical reaction",
+      "a": "CH<sup>3</sup>CH(NH<sup>2</sup>)CH(NH<sup>2</sup>)",
+      "b": "CH<sup>3</sup>CHOHCH<sup>3</sup>",
+      "c": "CH<sup>3</sup>CH(OH)CH(OH)",
+      "d": "CH<sup>3</sup>C ≡ CH",
+      "ans": "d"
+    },
+    {
+      "question": "96) Dark red color is obtained in victor Mayer’s method detects the presence of",
+      "a": "Primary amine",
+      "b": "primary alcohol",
+      "c": "Secondary amine",
+      "d": "secondary alcohol",
+      "ans": "b"
+    },
+    {
+      "question": "97) Aldehyde and ketone can be distinguished by treating them with",
+      "a": "Gradnard ‘s reagent",
+      "b": "Baeyer’s reagent",
+      "c": "Tollens’s reagent",
+      "d": "2,4–DNP",
+      "ans": "c"
+    },
+    {
+      "question": "98) PVC is a",
+      "a": "Condensation polymer",
+      "b": "Addition polymer",
+      "c": "Copolymer",
+      "d": "thermosetting polymer",
+      "ans": "b"
+    },
+    {
+      "question": "99) Isoelectric point is the pH at which",
+      "a": "Amino acid becomes acidic",
+      "b": "An amino acid becomes basic",
+      "c": "Zwitter ion has +ve charge",
+      "d": "Zwitter ion has zero charge",
+      "ans": "d"
+    },
+    {
+      "question": "100) Substances which brings the body temperature down are known as",
+      "a": "Antipyretics",
+      "b": "Analgesics",
+      "c": "Antibiotics",
+      "d": "Antiemetic",
+      "ans": "a"
     }
   ]
+
 }

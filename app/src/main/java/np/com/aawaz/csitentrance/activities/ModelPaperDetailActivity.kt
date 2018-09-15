@@ -17,7 +17,7 @@ class ModelPaperDetailActivity : AppCompatActivity() {
 
 
     val codes = arrayOf(SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074, SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4,
-            SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA, SPHandler.MODEL12, SPHandler.MODEL13, SPHandler.MODEL14, SPHandler.MODEL15, SPHandler.MODEL16)
+            SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7, SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA, SPHandler.MODEL12, SPHandler.MODEL13, SPHandler.MODEL14, SPHandler.MODEL15, SPHandler.MODEL16, SPHandler.ACHS)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,7 +94,7 @@ class ModelPaperDetailActivity : AppCompatActivity() {
                 val gmmIntentUri = Uri.parse("geo:0,0?q=" + "Sagarmatha College Science And Technology")
                 val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                 mapIntent.`package` = "com.google.android.apps.maps"
-                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                if (mapIntent.resolveActivity(packageManager) != null) {
                     startActivity(mapIntent)
                 } else {
                     Toast.makeText(this, "Google maps doesn't exist..", Toast.LENGTH_SHORT).show()
@@ -128,7 +128,41 @@ class ModelPaperDetailActivity : AppCompatActivity() {
                 val gmmIntentUri = Uri.parse("geo:0,0?q=" + "College of Applied Business")
                 val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                 mapIntent.`package` = "com.google.android.apps.maps"
-                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                if (mapIntent.resolveActivity(packageManager) != null) {
+                    startActivity(mapIntent)
+                } else {
+                    Toast.makeText(this, "Google maps doesn't exist..", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        } else if (college == "achs") {
+
+            EventSender().logEvent("achs_model_paper")
+            title = "ACHS Model Paper"
+            model_banner.setImageResource(R.drawable.splash_achs)
+            model_name.text = "ACHS Model Paper"
+            model_address.text = "Putalisadak Kathmandu"
+
+            play_quiz.setOnClickListener {
+                EventSender().logEvent("played_achs_model")
+                openQuizQuestion(22)
+            }
+
+            full_question.setOnClickListener {
+                EventSender().logEvent("viewed_achs_full")
+                openFullQuestion(22)
+            }
+            call.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "01-4476119", null)))
+            }
+            website.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://achsnepal.edu.np/")))
+            }
+            maps.setOnClickListener {
+                val gmmIntentUri = Uri.parse("geo:0,0?q=" + title)
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.`package` = "com.google.android.apps.maps"
+                if (mapIntent.resolveActivity(packageManager) != null) {
                     startActivity(mapIntent)
                 } else {
                     Toast.makeText(this, "Google maps doesn't exist..", Toast.LENGTH_SHORT).show()

@@ -71,7 +71,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
     private void clicked(int pos) {
         String[] codes = {SPHandler.YEAR2069, SPHandler.YEAR2070, SPHandler.YEAR2071, SPHandler.YEAR2072, SPHandler.YEAR2073, SPHandler.YEAR2074,
                 SPHandler.MODEL1, SPHandler.MODEL2, SPHandler.MODEL3, SPHandler.MODEL4, SPHandler.MODEL5, SPHandler.MODEL6, SPHandler.MODEL7,
-                SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA, SPHandler.MODEL12, SPHandler.MODEL13, SPHandler.MODEL14, SPHandler.MODEL15, SPHandler.MODEL16};
+                SPHandler.MODEL8, SPHandler.MODEL9, SPHandler.MODEL10, SPHandler.SAGARMATHA, SPHandler.MODEL12, SPHandler.MODEL13, SPHandler.MODEL14, SPHandler.MODEL15, SPHandler.MODEL16, SPHandler.ACHS};
         Intent intent = new Intent(context, SubjectQuizActivity.class);
         intent.putExtra("code", codes[pos]);
         intent.putExtra("position", pos);
