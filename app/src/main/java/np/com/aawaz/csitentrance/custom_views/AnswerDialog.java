@@ -2,6 +2,7 @@ package np.com.aawaz.csitentrance.custom_views;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.activities.DiscussionActivity;
 import np.com.aawaz.csitentrance.interfaces.OnDismissListener;
 import np.com.aawaz.csitentrance.misc.FirebasePaths;
 import np.com.aawaz.csitentrance.objects.SPHandler;
@@ -32,7 +34,7 @@ public class AnswerDialog extends DialogFragment {
 
     private String answer = "test";
     private SwitchCompat answer_settings;
-    private TextView answerText, answerIsWrong;
+    private TextView answerText, discussion_button;
     private QuizTextView answerWeb;
     private OnDismissListener onDismissListener;
 
@@ -66,6 +68,7 @@ public class AnswerDialog extends DialogFragment {
 
         // request a window without the title
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         return dialog;
     }
 
@@ -94,29 +97,16 @@ public class AnswerDialog extends DialogFragment {
     }
 
     private void recommenderCode() {
-        answerIsWrong.setOnClickListener(new View.OnClickListener() {
+        discussion_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new MaterialDialog.Builder(getActivity()).
-                        title("Report an issue")
-                        .items("Question is mistake", "Options doesn't have the answer", "Unable to view the question.")
-                        .negativeText("Cancel")
-                        .itemsCallback(new MaterialDialog.ListCallback() {
-                            @Override
-                            public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                                Bundle bundle = getArguments();
-                                String key = bundle.getString("code","error") + "-" + (bundle.getInt("index"));
+                Bundle bundle = getArguments();
+                int startFrom = bundle.getInt("startFrom", 0);
 
-                                HashMap values = new HashMap();
-                                values.put("issue", text);
-                                values.put("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                values.put("name", FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-
-                                FirebaseDatabase.getInstance().getReference().child(FirebasePaths.ERROR_REPORTS).child(key).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(values);
-                                Toast.makeText(getContext(), "Thanks for the report", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .show();
+                startActivity(new Intent(getContext(), DiscussionActivity.class)
+                        .putExtra("code", bundle.getInt("code"))
+                        .putExtra("position", bundle.getInt("index")-1 + startFrom)
+                );
             }
         });
 
@@ -130,7 +120,7 @@ public class AnswerDialog extends DialogFragment {
         answer_settings = view.findViewById(R.id.answerSwitch);
         answerText = view.findViewById(R.id.answerText);
         answerWeb = view.findViewById(R.id.answerWeb);
-        answerIsWrong = view.findViewById(R.id.recomend_button);
+        discussion_button = view.findViewById(R.id.discussion_button);
     }
 
     @Override

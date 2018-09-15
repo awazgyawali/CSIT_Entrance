@@ -34,7 +34,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
     QuizTextView question, option1, option2, option3, option4;
     TextView questionRo, option1Ro, option2Ro, option3Ro, option4Ro;
-    TextView report, discuss;
+    TextView  discuss;
     RelativeLayout option1Listener, option2Listener, option3Listener, option4Listener;
     FancyButton option1Selected, option2Selected, option3Selected, option4Selected;
 
@@ -116,7 +116,6 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         option3Selected = view.findViewById(R.id.optSelected3);
         option4Selected = view.findViewById(R.id.optSelected4);
 
-        report = view.findViewById(R.id.reportError);
         discuss = view.findViewById(R.id.discussQuestion);
 
         submit = view.findViewById(R.id.AnswerFab);
@@ -124,33 +123,6 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         YoYo.with(Techniques.SlideOutDown)
                 .duration(0)
                 .playOn(submit);
-
-        report.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new MaterialDialog.Builder(getActivity()).
-                        title("Report an issue")
-                        .items("Question is mistake", "Options doesn't have the answer", "Unable to view the question.")
-                        .negativeText("Cancel")
-                        .itemsCallback(new MaterialDialog.ListCallback() {
-                            @Override
-                            public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                                Bundle bundle = getArguments();
-                                String key = getResources().getStringArray(R.array.years)[bundle.getInt("code")] + "-" + (bundle.getInt("position") + 1);
-
-                                HashMap values = new HashMap();
-                                values.put("issue", text);
-                                values.put("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                values.put("name", FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-
-                                FirebaseDatabase.getInstance().getReference().child("error_reports").child(key).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(values);
-                                Toast.makeText(getContext(), "Thanks for the report", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .show();
-
-            }
-        });
 
         discuss.setOnClickListener(new View.OnClickListener() {
             @Override
