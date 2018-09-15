@@ -5,6 +5,8 @@
 app.iml
 .DS_Store
 /build
+/.idea
+app.iml
 /captures
 *.apk
 google-services.json

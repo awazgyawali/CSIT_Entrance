@@ -10,6 +10,8 @@ class Discussion {
 
     lateinit var paper_code: String
     lateinit var question_no: String
+    lateinit var question_message: String
+    lateinit var image_url: String
     var time_stamp: Long = 0
     var comment_count: Int = 0
 

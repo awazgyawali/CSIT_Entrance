@@ -11,6 +11,7 @@ import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
 import kotlinx.android.synthetic.main.activity_ask_on_discussion.*
 import np.com.aawaz.csitentrance.R
+import np.com.aawaz.csitentrance.objects.Discussion
 
 class AskOnDiscussionActivity : AppCompatActivity() {
 
@@ -42,11 +43,16 @@ class AskOnDiscussionActivity : AppCompatActivity() {
         }
 
         submitDiscussion.setOnClickListener {
-
+            val discussion = Discussion()
+            discussion.comment_count = 0
+            discussion.question_message = discussionQuestionText.text.toString()
+            discussion.time_stamp= System.currentTimeMillis()
+            discussion.paper_code = "50"
+            discussion.question_no = "50"
         }
 
-        removeAttachment.setOnClickListener {_->
-            removeAttachment.visibility= View.GONE
+        removeAttachment.setOnClickListener { _ ->
+            removeAttachment.visibility = View.GONE
             choosedImage.text = "Add an Image"
             choosedImage.setOnClickListener {
 
@@ -61,7 +67,7 @@ class AskOnDiscussionActivity : AppCompatActivity() {
         choosedImage.setOnClickListener {
             startActivity(Intent(this, ImageViewingActivity::class.java).putExtra("path", image?.path).putExtra("local", true))
         }
-        removeAttachment.visibility= View.VISIBLE
+        removeAttachment.visibility = View.VISIBLE
     }
 
 
