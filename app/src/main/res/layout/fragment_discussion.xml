@@ -21,4 +21,14 @@
         android:padding="20dp"
         android:text="No discussion posts found."
         android:textSize="18sp" />
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        app:fabSize="normal"
+        android:src="@drawable/post"
+        android:id="@+id/askOnDiscussion"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>
