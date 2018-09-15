@@ -39,6 +39,7 @@
         <item>Model Question 11</item>
         <item>Model Question 12</item>
         <item>CAB Model Paper</item>
+        <item>Model Question 13</item>
     </string-array>
     <string name="title_activity_notification">NotificationActivity</string>
     <string name="title_activity_post_forum">PostForumActivity</string>
