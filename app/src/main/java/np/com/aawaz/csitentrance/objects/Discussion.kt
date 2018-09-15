@@ -10,8 +10,8 @@ class Discussion {
 
     lateinit var paper_code: String
     lateinit var question_no: String
-    lateinit var question_message: String
-    lateinit var image_url: String
+    var question_message: String? = null
+    var image_url: String? = null
     var time_stamp: Long = 0
     var comment_count: Int = 0
 
@@ -24,16 +24,5 @@ class Discussion {
         this.question_no = question_no
         this.time_stamp = time_stamp
         this.comment_count = comment_count
-    }
-
-
-    @Exclude
-    fun toMap(): Map<String, Any> {
-        val result = HashMap<String, Any>()
-        result["paper_code"] = paper_code
-        result["question_no"] = question_no
-        result["time_stamp"] = time_stamp
-        result["comment_count"] = comment_count
-        return result
     }
 }
