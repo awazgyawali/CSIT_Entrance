@@ -21,13 +21,14 @@ import np.com.aawaz.csitentrance.activities.AskOnDiscussionActivity
 import np.com.aawaz.csitentrance.activities.DiscussionActivity
 import np.com.aawaz.csitentrance.activities.MainActivity
 import np.com.aawaz.csitentrance.adapters.DiscussionAdapter
+import np.com.aawaz.csitentrance.misc.FirebasePaths
 import np.com.aawaz.csitentrance.objects.Discussion
 import np.com.aawaz.csitentrance.objects.SPHandler
 
 class DiscussionFragment : Fragment(), ChildEventListener {
     val keys: ArrayList<String?> = ArrayList()
     lateinit var adapter: DiscussionAdapter
-    val ref = FirebaseDatabase.getInstance().reference.child("/discussion/posts");
+    val ref = FirebaseDatabase.getInstance().reference.child(FirebasePaths.DISCUSSION_POSTS)
 
     companion object {
         fun newInstance(post_id: String?): Fragment {

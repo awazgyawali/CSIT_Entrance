@@ -21,6 +21,7 @@ import java.util.Random;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
 import np.com.aawaz.csitentrance.activities.NewsDetailActivity;
+import np.com.aawaz.csitentrance.misc.FirebasePaths;
 import np.com.aawaz.csitentrance.objects.Notification;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
@@ -126,7 +127,7 @@ public class MyMessagingService extends FirebaseMessagingService {
 
         if (notification.getTag().equals("news")) {
             notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(Html.fromHtml(notification.getText())));
-            FirebaseDatabase.getInstance().getReference().child("news").keepSynced(true);
+            FirebaseDatabase.getInstance().getReference().child(FirebasePaths.NEWS).keepSynced(true);
         }
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);

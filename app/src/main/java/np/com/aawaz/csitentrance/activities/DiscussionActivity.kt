@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.activity_discussion.*
 import np.com.aawaz.csitentrance.R
 import np.com.aawaz.csitentrance.adapters.CommentAdapter
 import np.com.aawaz.csitentrance.interfaces.ClickListener
+import np.com.aawaz.csitentrance.misc.FirebasePaths
 import np.com.aawaz.csitentrance.misc.Singleton
 import np.com.aawaz.csitentrance.objects.Comment
 import np.com.aawaz.csitentrance.objects.EventSender
@@ -264,7 +265,7 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
         }
 
         val rootReference = FirebaseDatabase.getInstance().reference
-        reference = rootReference.child("discussion/comments").child("${intent.getIntExtra("code", 0)}-${intent.getIntExtra("position", 0)}")
+        reference = rootReference.child(FirebasePaths.DISCUSSION_COMMENTS).child("${intent.getIntExtra("code", 0)}-${intent.getIntExtra("position", 0)}")
 
         fillPost()
 

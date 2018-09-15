@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Date;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.misc.FirebasePaths;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.News;
 
@@ -77,7 +78,7 @@ public class NewsDetailActivity extends AppCompatActivity {
     }
 
     private void fetchFromInternet(String post_id) {
-        FirebaseDatabase.getInstance().getReference().child("news").child(post_id).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child(FirebasePaths.NEWS).child(post_id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 News news = dataSnapshot.getValue(News.class);
