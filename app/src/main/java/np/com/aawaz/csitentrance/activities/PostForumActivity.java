@@ -35,6 +35,7 @@ import java.util.Map;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.misc.FirebasePaths;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.Post;
 import np.com.aawaz.csitentrance.objects.SPHandler;
@@ -81,7 +82,7 @@ public class PostForumActivity extends AppCompatActivity {
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reference = database.getReference().child("forum_data/posts");
+        reference = database.getReference().child(FirebasePaths.FORUM_POSTS);
 
 
         questionEditText.addTextChangedListener(new TextWatcher() {
