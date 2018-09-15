@@ -48,6 +48,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.adapters.CommentAdapter;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
+import np.com.aawaz.csitentrance.misc.FirebasePaths;
 import np.com.aawaz.csitentrance.misc.MyApplication;
 import np.com.aawaz.csitentrance.misc.Singleton;
 import np.com.aawaz.csitentrance.objects.Comment;
@@ -150,11 +151,11 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     }
 
     private void increaseCommentCount() {
-        FirebaseDatabase.getInstance().getReference().child("forum_data/posts/" + getIntent().getStringExtra("key") + "/comment_count").setValue(adapter.getItemCount() + 1);
+        FirebaseDatabase.getInstance().getReference().child(FirebasePaths.FORUM_POSTS + getIntent().getStringExtra("key") + "/comment_count").setValue(adapter.getItemCount() + 1);
     }
 
     private void decreaseCommentCount() {
-        FirebaseDatabase.getInstance().getReference().child("forum_data/posts/" + getIntent().getStringExtra("key") + "/comment_count").setValue(adapter.getItemCount() - 1);
+        FirebaseDatabase.getInstance().getReference().child(FirebasePaths.FORUM_POSTS + getIntent().getStringExtra("key") + "/comment_count").setValue(adapter.getItemCount() - 1);
     }
 
     public void readyViews() {
@@ -306,7 +307,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
         DatabaseReference rootReference = FirebaseDatabase.getInstance().getReference();
-        reference = rootReference.child("forum_data/comments").child(getIntent().getStringExtra("key"));
+        reference = rootReference.child(FirebasePaths.FORUM_COMMENTS).child(getIntent().getStringExtra("key"));
 
         readyViews();
 
@@ -327,7 +328,7 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     }
 
     private void fillPost() {
-        FirebaseDatabase.getInstance().getReference().child("forum_data/posts").child(getIntent().getStringExtra("key")).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child(FirebasePaths.FORUM_POSTS).child(getIntent().getStringExtra("key")).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(final DataSnapshot dataSnapshot) {
                 forumContainer.setVisibility(View.VISIBLE);

@@ -37,6 +37,7 @@ import np.com.aawaz.csitentrance.activities.PostForumActivity;
 import np.com.aawaz.csitentrance.adapters.ForumAdapter;
 import np.com.aawaz.csitentrance.fragments.other_fragments.ACHSDialog;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
+import np.com.aawaz.csitentrance.misc.FirebasePaths;
 import np.com.aawaz.csitentrance.misc.Singleton;
 import np.com.aawaz.csitentrance.objects.EventSender;
 import np.com.aawaz.csitentrance.objects.PopupAd;
@@ -124,7 +125,7 @@ public class EntranceForum extends Fragment implements
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reference = database.getReference().child("forum_data/posts");
+        reference = database.getReference().child(FirebasePaths.FORUM_POSTS);
         super.onActivityCreated(savedInstanceState);
 
         recyclerView.setVisibility(View.GONE);
@@ -191,8 +192,8 @@ public class EntranceForum extends Fragment implements
                             if (which == 0)
                                 showDialogToEdit(adapter.getMessageAt(position), position);
                             else if (which == 1) {
-                                FirebaseDatabase.getInstance().getReference().child("forum_data/posts").child(key.get(position)).removeValue();
-                                FirebaseDatabase.getInstance().getReference().child("forum_data/comments").child(key.get(position)).removeValue();
+                                FirebaseDatabase.getInstance().getReference().child(FirebasePaths.FORUM_POSTS).child(key.get(position)).removeValue();
+                                FirebaseDatabase.getInstance().getReference().child(FirebasePaths.FORUM_COMMENTS).child(key.get(position)).removeValue();
                             }
                         }
                     })
@@ -216,7 +217,7 @@ public class EntranceForum extends Fragment implements
                     public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
                         Map<String, Object> map = new HashMap<>();
                         map.put("message", input.toString());
-                        FirebaseDatabase.getInstance().getReference().child("forum_data/posts").child(key.get(position)).updateChildren(map);
+                        FirebaseDatabase.getInstance().getReference().child(FirebasePaths.FORUM_POSTS).child(key.get(position)).updateChildren(map);
                     }
                 })
                 .positiveText("Save")
