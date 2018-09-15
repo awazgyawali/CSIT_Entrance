@@ -154,7 +154,7 @@ public class MyMessagingService extends FirebaseMessagingService {
             NotificationChannel forum = new NotificationChannel("forum", "FORUM", NotificationManager.IMPORTANCE_DEFAULT);
             notificationManager.createNotificationChannel(forum);
 
-            //for forum
+            //for discussion
             NotificationChannel discussion = new NotificationChannel("discussion", "DISCUSSION", NotificationManager.IMPORTANCE_DEFAULT);
             notificationManager.createNotificationChannel(discussion);
 
