@@ -157,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         uploadScore();
-        FirebaseDatabase.getInstance().getReference().child("ads").keepSynced(true);
     }
 
     private void uploadScore() {
@@ -284,7 +283,6 @@ public class MainActivity extends AppCompatActivity {
                             public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
                                 Feedback feedback = new Feedback(input.toString());
                                 FirebaseFirestore.getInstance().collection("feedbacks").add(feedback);
-                                FirebaseDatabase.getInstance().getReference().child("feedback").push().setValue(feedback);
                                 new EventSender().logEvent("sent_feedback");
                                 Toast.makeText(MainActivity.this, "Thanks for your feedback.", Toast.LENGTH_SHORT).show();
                             }

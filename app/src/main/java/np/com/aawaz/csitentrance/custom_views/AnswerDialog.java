@@ -19,6 +19,7 @@ import android.widget.TextView;
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.DiscussionActivity;
 import np.com.aawaz.csitentrance.interfaces.OnDismissListener;
+import np.com.aawaz.csitentrance.misc.FirebasePaths;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class AnswerDialog extends DialogFragment {
@@ -91,10 +92,6 @@ public class AnswerDialog extends DialogFragment {
             @Override
             public void onClick(View view) {
                 openDiscussion();
-            }
-        });
-
-
     }
 
 
