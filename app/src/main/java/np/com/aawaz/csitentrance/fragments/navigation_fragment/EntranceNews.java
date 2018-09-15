@@ -26,6 +26,7 @@ import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.NewsDetailActivity;
 import np.com.aawaz.csitentrance.adapters.NewsAdapter;
 import np.com.aawaz.csitentrance.interfaces.ClickListener;
+import np.com.aawaz.csitentrance.misc.FirebasePaths;
 import np.com.aawaz.csitentrance.objects.News;
 
 
@@ -95,7 +96,7 @@ public class EntranceNews extends Fragment implements ClickListener, ValueEventL
 
 
     private void addOneTimeListener() {
-        reference = FirebaseDatabase.getInstance().getReference().child("news");
+        reference = FirebaseDatabase.getInstance().getReference().child(FirebasePaths.NEWS);
         errorLayout.setVisibility(View.GONE);
         progress.setVisibility(View.VISIBLE);
         newsSwipe.setVisibility(View.GONE);

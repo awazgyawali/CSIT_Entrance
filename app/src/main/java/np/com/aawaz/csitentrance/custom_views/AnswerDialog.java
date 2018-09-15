@@ -25,6 +25,7 @@ import java.util.HashMap;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.interfaces.OnDismissListener;
+import np.com.aawaz.csitentrance.misc.FirebasePaths;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
 public class AnswerDialog extends DialogFragment {
@@ -111,7 +112,7 @@ public class AnswerDialog extends DialogFragment {
                                 values.put("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 values.put("name", FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
 
-                                FirebaseDatabase.getInstance().getReference().child("error_reports").child(key).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(values);
+                                FirebaseDatabase.getInstance().getReference().child(FirebasePaths.ERROR_REPORTS).child(key).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(values);
                                 Toast.makeText(getContext(), "Thanks for the report", Toast.LENGTH_SHORT).show();
                             }
                         })
