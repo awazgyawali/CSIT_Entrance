@@ -1,7 +1,6 @@
 package np.com.aawaz.csitentrance.objects;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.v4.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -13,6 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import np.com.aawaz.csitentrance.R;
+import np.com.aawaz.csitentrance.Utils.Preferences;
 import np.com.aawaz.csitentrance.misc.MyApplication;
 
 public class SPHandler {
@@ -44,10 +44,10 @@ public class SPHandler {
     public static String MODEL16 = "model16";
 
     private static SPHandler spHandler;
-    private final SharedPreferences.Editor scoreEditor;
-    private final SharedPreferences.Editor infoEditor;
-    SharedPreferences scoreSp;
-    SharedPreferences infoSp;
+    private final Preferences scoreEditor;
+    private final Preferences infoEditor;
+    Preferences scoreSp;
+    Preferences infoSp;
     private String PLAYED = "_played";
     private String SCORE = "_score";
 
@@ -75,11 +75,9 @@ public class SPHandler {
             new String[]{ENGLISH, PHYSICS, MATH, CHEMISTRY}};
 
     public SPHandler() {
-        scoreSp = MyApplication.getAppContext().getSharedPreferences("play_data", Context.MODE_PRIVATE);
-        scoreEditor = scoreSp.edit();
+        scoreSp = scoreEditor = new Preferences("play_data", Context.MODE_PRIVATE);
+        infoSp = infoEditor = new Preferences("info", Context.MODE_PRIVATE);
 
-        infoSp = MyApplication.getAppContext().getSharedPreferences("info", Context.MODE_PRIVATE);
-        infoEditor = infoSp.edit();
     }
 
     public static SPHandler getInstance() {
