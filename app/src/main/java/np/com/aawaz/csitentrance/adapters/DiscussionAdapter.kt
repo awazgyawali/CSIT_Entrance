@@ -17,7 +17,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
 import np.com.aawaz.csitentrance.R
 import np.com.aawaz.csitentrance.activities.DiscussionActivity
-import np.com.aawaz.csitentrance.activities.ImageViewingActivity
 import np.com.aawaz.csitentrance.misc.GlideApp
 import np.com.aawaz.csitentrance.misc.Singleton
 import np.com.aawaz.csitentrance.objects.Discussion
@@ -37,16 +36,16 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
 
     override fun getItemCount() = discussions.size
 
-    fun addNewPost(discussion: Discussion?, key:String) {
+    fun addNewPost(discussion: Discussion?, key: String) {
         discussions.add(0, discussion!!)
         keys.add(0, key)
         notifyItemInserted(0)
     }
 
-    fun editPost(key:String,discussion: Discussion?, position: Int) {
+    fun editPost(key: String, discussion: Discussion?, position: Int) {
         keys.removeAt(position)
         discussions.removeAt(position)
-        keys.add(position,key)
+        keys.add(position, key)
         discussions.add(position, discussion!!)
         notifyItemChanged(position)
     }
@@ -70,12 +69,17 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
                 holder.discussionImage.visibility = View.VISIBLE
                 val ref = FirebaseStorage.getInstance().reference.child("discussion/" + discussion.image_url)
                 GlideApp.with(context).load(ref).placeholder(R.drawable.placeholder).into(holder.discussionImage)
-                holder.discussionImage.setOnClickListener{ context.startActivity(Intent(context, ImageViewingActivity::class.java).putExtra("path", discussion.image_url).putExtra("local", false)) }
+                holder.discussionImage.setOnClickListener {
+                    openCustomDiscussion(discussion, keys[position])
+                }
             }
             holder.questionPaper.text = "CSIT Entrance"
             holder.questionTextView.text = discussion.question_message
             holder.questionTextView.visibility = View.VISIBLE
             holder.que.visibility = View.GONE
+            holder.questionPaper.setOnClickListener {
+                openCustomDiscussion(discussion, keys[position])
+            }
             holder.questionTextView.setOnClickListener {
                 openCustomDiscussion(discussion, keys[position])
             }
@@ -116,9 +120,9 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
         holder.commentCount.text = (discussion.comment_count.toString() + " comments")
     }
 
-    private fun openCustomDiscussion(discussion: Discussion,key: String) {
+    private fun openCustomDiscussion(discussion: Discussion, key: String) {
         context.startActivity(Intent(context, DiscussionActivity::class.java)
-                .putExtra("key",key)
+                .putExtra("key", key)
                 .putExtra("discussion", Gson().toJson(discussion)))
     }
 
