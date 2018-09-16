@@ -84,6 +84,13 @@ public class YearsList extends Fragment {
         item3.setPaperCode(20);
         items.add(item3);
 
+        YearItem item4 = new YearItem();
+        item4.setType(YearItem.Companion.getCOLLEGE_MODEL());
+        item4.setTitle("achs");
+        item4.setLogo(R.drawable.achs_logo);
+        item4.setPaperCode(22);
+        items.add(item4);
+
 
     }
 
