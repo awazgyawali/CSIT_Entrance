@@ -21,15 +21,15 @@ import com.esafirm.imagepicker.model.Image
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_discussion.*
 import np.com.aawaz.csitentrance.R
 import np.com.aawaz.csitentrance.adapters.CommentAdapter
 import np.com.aawaz.csitentrance.interfaces.ClickListener
 import np.com.aawaz.csitentrance.misc.FirebasePaths
+import np.com.aawaz.csitentrance.misc.GlideApp
 import np.com.aawaz.csitentrance.misc.Singleton
-import np.com.aawaz.csitentrance.objects.Comment
-import np.com.aawaz.csitentrance.objects.EventSender
-import np.com.aawaz.csitentrance.objects.SPHandler
+import np.com.aawaz.csitentrance.objects.*
 import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
@@ -265,12 +265,29 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
         }
 
         val rootReference = FirebaseDatabase.getInstance().reference
-        reference = rootReference.child(FirebasePaths.DISCUSSION_COMMENTS).child("${intent.getIntExtra("code", 0)}-${intent.getIntExtra("position", 0)}")
 
-        fillPost()
+        reference = if (intent.getStringExtra("discussion") == null)
+            rootReference.child(FirebasePaths.DISCUSSION_COMMENTS).child("${intent.getIntExtra("code", 0)}-${intent.getIntExtra("position", 0)}")
+        else {
+            rootReference.child(FirebasePaths.DISCUSSION_COMMENTS).child(intent.getStringExtra("key"))
+        }
 
+
+
+        if (intent.getStringExtra("discussion") == null) {
+            val question: Question = Singleton.getInstance().getQuestionAt(this, intent.getIntExtra("code", 0), intent.getIntExtra("position", 0))
+            fillPost(question)
+        } else {
+            val discussion = Gson().fromJson(intent.getStringExtra("discussion"), Discussion::class.java)
+            fillPost(discussion.question_message)
+            if (discussion.image_url != null) {
+                discussionImage.visibility = View.VISIBLE
+                val ref = FirebaseStorage.getInstance().reference.child("discussion/" + discussion.image_url)
+                GlideApp.with(this).load(ref).placeholder(R.drawable.placeholder).into(discussionImage)
+                discussionImage.setOnClickListener { startActivity(Intent(this, ImageViewingActivity::class.java).putExtra("path", discussion.image_url).putExtra("local", false)) }
+            }
+        }
         fillViews()
-
     }
 
 
@@ -303,71 +320,71 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun fillPost() {
-        val question = Singleton.getInstance().getQuestionAt(this, intent.getIntExtra("code", 0), intent.getIntExtra("position", 0))
-        var htmlData = "";
-        if (question == null) {
-            htmlData = "<html lang=\"en\">" +
-                    "<head>" +
-                    "  <meta charset=\"UTF-8\">" +
-                    "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
-                    "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
-                    "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:500,700\" rel=\"stylesheet\">" +
-                    "  <title>Document</title>" +
-                    "  <style>" +
-                    "    body{" +
-                    "      margin: 0;" +
-                    "    }" +
-                    "    div {" +
-                    "      font-size: 18px;" +
-                    "      line-height: 1.5em;" +
-                    "      text-align: justify;" +
-                    "      font-family: 'Work Sans', sans-serif" +
-                    "    }" +
-                    "  </style>" +
-                    "</head>" +
-                    "<body>" +
-                    "<div>" +
-                    " Question doesn't exist in this version of the app, please update to get this question set." +
-                    "</div>" +
-                    "</body>" +
-                    "</html>"
-            questionPaper.text = ""
+    private fun fillPost(question: String?) {
+        val htmlData = "<html lang=\"en\">" +
+                "<head>" +
+                "  <meta charset=\"UTF-8\">" +
+                "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
+                "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:500,700\" rel=\"stylesheet\">" +
+                "  <title>Document</title>" +
+                "  <style>" +
+                "    body{" +
+                "      margin: 0;" +
+                "    }" +
+                "    div {" +
+                "      font-size: 18px;" +
+                "      line-height: 1.5em;" +
+                "      text-align: justify;" +
+                "      font-family: 'Work Sans', sans-serif" +
+                "    }" +
+                "  </style>" +
+                "</head>" +
+                "<body>" +
+                "<div>" + question
+        "</div>" +
+                "</body>" +
+                "</html>"
 
-        } else {
-            htmlData = "<html lang=\"en\">" +
-                    "<head>" +
-                    "  <meta charset=\"UTF-8\">" +
-                    "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
-                    "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
-                    "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:500,700\" rel=\"stylesheet\">" +
-                    "  <title>Document</title>" +
-                    "  <style>" +
-                    "    body{" +
-                    "      margin: 0;" +
-                    "    }" +
-                    "    div {" +
-                    "      font-size: 18px;" +
-                    "      line-height: 1.5em;" +
-                    "      text-align: justify;" +
-                    "      font-family: 'Work Sans', sans-serif" +
-                    "    }" +
-                    "  </style>" +
-                    "</head>" +
-                    "<body>" +
-                    "<div>" + question.question +
-                    "<br>" + "a) " + question.a +
-                    "<br>" + "b) " + question.b +
-                    "<br>" + "c) " + question.c +
-                    "<br>" + "d) " + question.d +
-                    "<br>" + "<b>Answer: " +
-                    question.ans +
-                    "</b><br>" +
-                    "</div>" +
-                    "</body>" +
-                    "</html>"
-            questionPaper.text = resources.getStringArray(R.array.years)[intent.getIntExtra("code", 0)]
-        }
+        questionPaper.text = "CSIT Entrance"
+        questionViewDiscussion.loadDataWithBaseURL("", htmlData, "text/html", "utf-8", null)
+
+    }
+
+    private fun fillPost(question: Question) {
+        var htmlData = "";
+        htmlData = "<html lang=\"en\">" +
+                "<head>" +
+                "  <meta charset=\"UTF-8\">" +
+                "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
+                "  <link href=\"https://fonts.googleapis.com/css?family=Work+Sans:500,700\" rel=\"stylesheet\">" +
+                "  <title>Document</title>" +
+                "  <style>" +
+                "    body{" +
+                "      margin: 0;" +
+                "    }" +
+                "    div {" +
+                "      font-size: 18px;" +
+                "      line-height: 1.5em;" +
+                "      text-align: justify;" +
+                "      font-family: 'Work Sans', sans-serif" +
+                "    }" +
+                "  </style>" +
+                "</head>" +
+                "<body>" +
+                "<div>" + question.question +
+                "<br>" + "a) " + question.a +
+                "<br>" + "b) " + question.b +
+                "<br>" + "c) " + question.c +
+                "<br>" + "d) " + question.d +
+                "<br>" + "<b>Answer: " +
+                question.ans +
+                "</b><br>" +
+                "</div>" +
+                "</body>" +
+                "</html>"
+        questionPaper.text = resources.getStringArray(R.array.years)[intent.getIntExtra("code", 0)]
         questionViewDiscussion.loadDataWithBaseURL("", htmlData, "text/html", "utf-8", null)
     }
 }

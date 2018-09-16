@@ -13,11 +13,13 @@ import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
 import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_ask_on_discussion.*
 import np.com.aawaz.csitentrance.R
 import np.com.aawaz.csitentrance.misc.FirebasePaths
+import np.com.aawaz.csitentrance.objects.Comment
 import np.com.aawaz.csitentrance.objects.Discussion
 import java.io.File
 import java.util.*
@@ -127,7 +129,17 @@ class AskOnDiscussionActivity : AppCompatActivity() {
         discussion.paper_code = "100"
         discussion.question_no = "0"
 
-        FirebaseDatabase.getInstance().reference.child(FirebasePaths.DISCUSSION_POSTS).push().setValue(discussion)
+        val post_ref = FirebaseDatabase.getInstance().reference.child(FirebasePaths.DISCUSSION_POSTS).push()
+
+        //adding an comment
+        val comment_ref = FirebaseDatabase.getInstance().reference.child(FirebasePaths.DISCUSSION_COMMENTS).child(post_ref.key!!).push()
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val comment = Comment(currentUser!!.uid, currentUser.displayName, System.currentTimeMillis(), "Help me on this question.", currentUser.photoUrl!!.toString(), null)
+        comment_ref.setValue(comment)
+
+        //setting the question data
+        post_ref.setValue(discussion)
+
 
         Toast.makeText(this, "Discussion posted.", Toast.LENGTH_SHORT).show()
         finish()
@@ -152,6 +164,7 @@ class AskOnDiscussionActivity : AppCompatActivity() {
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if (id == android.R.id.home) {

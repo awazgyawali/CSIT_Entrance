@@ -28,6 +28,7 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
 
     private var inflater = LayoutInflater.from(context)
     private var discussions = ArrayList<Discussion>()
+    private var keys = ArrayList<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val view = inflater.inflate(R.layout.discussion_item_holder, parent, false)
@@ -36,13 +37,16 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
 
     override fun getItemCount() = discussions.size
 
-    fun addNewPost(discussion: Discussion?) {
+    fun addNewPost(discussion: Discussion?, key:String) {
         discussions.add(0, discussion!!)
+        keys.add(0, key)
         notifyItemInserted(0)
     }
 
-    fun editPost(discussion: Discussion?, position: Int) {
+    fun editPost(key:String,discussion: Discussion?, position: Int) {
+        keys.removeAt(position)
         discussions.removeAt(position)
+        keys.add(position,key)
         discussions.add(position, discussion!!)
         notifyItemChanged(position)
     }
@@ -73,10 +77,10 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
             holder.questionTextView.visibility = View.VISIBLE
             holder.que.visibility = View.GONE
             holder.questionTextView.setOnClickListener {
-                openCustomDiscussion(discussion)
+                openCustomDiscussion(discussion, keys[position])
             }
             holder.commentCount.setOnClickListener {
-                openCustomDiscussion(discussion)
+                openCustomDiscussion(discussion, keys[position])
             }
 
         } else if (question == null) {
@@ -112,8 +116,9 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
         holder.commentCount.text = (discussion.comment_count.toString() + " comments")
     }
 
-    private fun openCustomDiscussion(discussion: Discussion) {
+    private fun openCustomDiscussion(discussion: Discussion,key: String) {
         context.startActivity(Intent(context, DiscussionActivity::class.java)
+                .putExtra("key",key)
                 .putExtra("discussion", Gson().toJson(discussion)))
     }
 
@@ -188,6 +193,8 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
 
     fun deleteItemAt(index: Int) {
         discussions.removeAt(index)
+        keys.removeAt(0)
+
         notifyItemRemoved(index)
     }
 

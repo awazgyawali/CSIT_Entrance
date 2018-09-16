@@ -62,7 +62,7 @@ class DiscussionFragment : Fragment(), ChildEventListener {
         keys.forEach {
             index++
             if (it == dataSnapshot.key) {
-                adapter.editPost(dataSnapshot.getValue(Discussion::class.java), index)
+                adapter.editPost(dataSnapshot.key!!, dataSnapshot.getValue(Discussion::class.java), index)
             }
         }
     }
@@ -83,7 +83,7 @@ class DiscussionFragment : Fragment(), ChildEventListener {
         if (nothingFound != null)
             nothingFound.visibility = View.GONE
         keys.add(0, dataSnapshot.key)
-        adapter.addNewPost(dataSnapshot.getValue(Discussion::class.java))
+        adapter.addNewPost(dataSnapshot.getValue(Discussion::class.java), dataSnapshot.key!!)
     }
 
     override fun onChildRemoved(dataSnapshot: DataSnapshot) {

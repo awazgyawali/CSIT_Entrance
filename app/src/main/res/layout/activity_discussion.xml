@@ -60,6 +60,16 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp" />
 
+                    <ImageView
+                        android:id="@+id/discussionImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:visibility="gone"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:scaleType="centerCrop" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
