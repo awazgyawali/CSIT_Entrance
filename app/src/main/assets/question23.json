@@ -276,7 +276,7 @@
       "question": "35) If I were you, ________.",
       "a": "I would have accepted her.",
       "b": "I well accept her.",
-      "c": "I would accepts her.",
+      "c": "I would accept her.",
       "d": "I accept her.",
       "ans": "c"
     },
@@ -386,7 +386,7 @@
     },
     {
       "question": "49) Were I Asmita ________________.",
-      "a": "I would refused",
+      "a": "I would refuse",
       "b": "I will refuse",
       "c": "I would have refused",
       "d": "none",
@@ -565,7 +565,7 @@
       "a": "1020",
       "b": "950",
       "c": "1210",
-      "d": "11500",
+      "d": "1500",
       "ans": "c"
     },
     {
