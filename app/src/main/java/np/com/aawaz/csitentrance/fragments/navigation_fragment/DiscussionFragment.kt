@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_discussion.*
 import np.com.aawaz.csitentrance.R
+import np.com.aawaz.csitentrance.activities.AskOnDiscussionActivity
 import np.com.aawaz.csitentrance.activities.DiscussionActivity
 import np.com.aawaz.csitentrance.activities.MainActivity
 import np.com.aawaz.csitentrance.adapters.DiscussionAdapter
@@ -61,7 +62,7 @@ class DiscussionFragment : Fragment(), ChildEventListener {
         keys.forEach {
             index++
             if (it == dataSnapshot.key) {
-                adapter.editPost(dataSnapshot.getValue(Discussion::class.java), index)
+                adapter.editPost(dataSnapshot.key!!, dataSnapshot.getValue(Discussion::class.java), index)
             }
         }
     }
@@ -82,7 +83,7 @@ class DiscussionFragment : Fragment(), ChildEventListener {
         if (nothingFound != null)
             nothingFound.visibility = View.GONE
         keys.add(0, dataSnapshot.key)
-        adapter.addNewPost(dataSnapshot.getValue(Discussion::class.java))
+        adapter.addNewPost(dataSnapshot.getValue(Discussion::class.java), dataSnapshot.key!!)
     }
 
     override fun onChildRemoved(dataSnapshot: DataSnapshot) {
@@ -97,6 +98,10 @@ class DiscussionFragment : Fragment(), ChildEventListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         readyRecyclerview()
+
+        askOnDiscussion.setOnClickListener {
+            startActivity(Intent(context, AskOnDiscussionActivity::class.java))
+        }
 
         ref.orderByChild("time_stamp").limitToLast(50).addChildEventListener(this)
         handleIntent()

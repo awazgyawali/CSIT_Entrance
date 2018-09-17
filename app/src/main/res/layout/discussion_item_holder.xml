@@ -34,7 +34,6 @@
             android:id="@+id/answerHolder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="tested"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/colorPrimaryText" />
 
@@ -42,10 +41,18 @@
             android:id="@+id/questionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:fontFamily="@font/work_sans_medium"
             android:lineSpacingMultiplier="1.3"
             android:textColor="@color/black"
             android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/discussionImage"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop" />
 
 
         <TextView

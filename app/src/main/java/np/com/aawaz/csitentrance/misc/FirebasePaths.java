@@ -11,6 +11,7 @@ public class FirebasePaths {
 
     public static String NEWS = "/news";
 
+
     public static String ERROR_REPORTS = "/error_reports";
 
 

@@ -11,9 +11,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
+import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.storage.FirebaseStorage
+import com.google.gson.Gson
 import np.com.aawaz.csitentrance.R
 import np.com.aawaz.csitentrance.activities.DiscussionActivity
+import np.com.aawaz.csitentrance.misc.GlideApp
 import np.com.aawaz.csitentrance.misc.Singleton
 import np.com.aawaz.csitentrance.objects.Discussion
 import np.com.aawaz.csitentrance.objects.Question
@@ -23,6 +27,7 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
 
     private var inflater = LayoutInflater.from(context)
     private var discussions = ArrayList<Discussion>()
+    private var keys = ArrayList<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val view = inflater.inflate(R.layout.discussion_item_holder, parent, false)
@@ -31,13 +36,16 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
 
     override fun getItemCount() = discussions.size
 
-    fun addNewPost(discussion: Discussion?) {
+    fun addNewPost(discussion: Discussion?, key: String) {
         discussions.add(0, discussion!!)
+        keys.add(0, key)
         notifyItemInserted(0)
     }
 
-    fun editPost(discussion: Discussion?, position: Int) {
+    fun editPost(key: String, discussion: Discussion?, position: Int) {
+        keys.removeAt(position)
         discussions.removeAt(position)
+        keys.add(position, key)
         discussions.add(position, discussion!!)
         notifyItemChanged(position)
     }
@@ -55,14 +63,38 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
     override fun onBindViewHolder(holder: VH, position: Int) {
         val discussion = discussions[position]
         val question = Singleton.getInstance().getQuestionAt(context, discussion.paper_code.toInt(), discussion.question_no.toInt())
-        if (question == null) {
+        holder.discussionImage.visibility = View.GONE
+        if (discussion.paper_code == "100") {
+            if (discussion.image_url != null) {
+                holder.discussionImage.visibility = View.VISIBLE
+                val ref = FirebaseStorage.getInstance().reference.child("discussion/" + discussion.image_url)
+                GlideApp.with(context).load(ref).placeholder(R.drawable.placeholder).into(holder.discussionImage)
+                holder.discussionImage.setOnClickListener {
+                    openCustomDiscussion(discussion, keys[position])
+                }
+            }
+            holder.questionPaper.text = "CSIT Entrance"
+            holder.questionTextView.text = discussion.question_message
+            holder.questionTextView.visibility = View.VISIBLE
+            holder.que.visibility = View.GONE
+            holder.questionPaper.setOnClickListener {
+                openCustomDiscussion(discussion, keys[position])
+            }
+            holder.questionTextView.setOnClickListener {
+                openCustomDiscussion(discussion, keys[position])
+            }
+            holder.commentCount.setOnClickListener {
+                openCustomDiscussion(discussion, keys[position])
+            }
+
+        } else if (question == null) {
             holder.questionTextView.text = "Question doesn't exist in this version of the app. Please update the app."
             holder.que.visibility = View.GONE
             holder.questionTextView.visibility = View.VISIBLE
             holder.questionPaper.text = "CSIT Entrance"
             holder.commentCount.setOnClickListener {}
-            holder.questionPaper.setOnClickListener{}
-            holder.questionTextView.setOnClickListener{}
+            holder.questionPaper.setOnClickListener {}
+            holder.questionTextView.setOnClickListener {}
         } else {
             val answer = ansFinder(question)
             if (question.question.contains("<img") || answer.contains("<img"))
@@ -86,6 +118,12 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
 
 
         holder.commentCount.text = (discussion.comment_count.toString() + " comments")
+    }
+
+    private fun openCustomDiscussion(discussion: Discussion, key: String) {
+        context.startActivity(Intent(context, DiscussionActivity::class.java)
+                .putExtra("key", key)
+                .putExtra("discussion", Gson().toJson(discussion)))
     }
 
     private fun setupFromTextView(discussion: Discussion, question: Question?, answer: String, holder: VH) {
@@ -159,6 +197,8 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
 
     fun deleteItemAt(index: Int) {
         discussions.removeAt(index)
+        keys.removeAt(0)
+
         notifyItemRemoved(index)
     }
 
@@ -167,5 +207,6 @@ class DiscussionAdapter(private var context: Context) : RecyclerView.Adapter<Dis
         val commentCount: TextView = itemView.findViewById(R.id.commentCount)
         val questionPaper: TextView = itemView.findViewById(R.id.questionPaper)
         val questionTextView: TextView = itemView.findViewById(R.id.questionTextView)
+        val discussionImage: ImageView = itemView.findViewById(R.id.discussionImage)
     }
 }
