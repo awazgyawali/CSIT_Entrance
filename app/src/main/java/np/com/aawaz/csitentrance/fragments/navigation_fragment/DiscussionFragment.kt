@@ -72,10 +72,12 @@ class DiscussionFragment : Fragment(), ChildEventListener {
         val fragment = arguments?.getString("fragment")
         if (post_id != null && post_id != "new_post" && !MainActivity.openedIntent && fragment != null && fragment == "discussion") {
             val arr = post_id.split("-")
-            startActivity(Intent(context, DiscussionActivity::class.java)
-                    .putExtra("code", arr[0].toInt())
-                    .putExtra("position", arr[1].toInt()))
-            MainActivity.openedIntent = true
+            if (arr[0] != ""){
+                startActivity(Intent(context, DiscussionActivity::class.java)
+                        .putExtra("code", arr[0].toInt())
+                        .putExtra("position", arr[1].toInt()))
+                MainActivity.openedIntent = true
+            }
         }
     }
 
@@ -103,7 +105,7 @@ class DiscussionFragment : Fragment(), ChildEventListener {
             startActivity(Intent(context, AskOnDiscussionActivity::class.java))
         }
 
-        ref.orderByChild("time_stamp").limitToLast(50).addChildEventListener(this)
+        ref.orderByChild("time_stamp").limitToLast(80).addChildEventListener(this)
         handleIntent()
     }
 

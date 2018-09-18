@@ -151,11 +151,11 @@ public class CommentsActivity extends AppCompatActivity implements ChildEventLis
     }
 
     private void increaseCommentCount() {
-        FirebaseDatabase.getInstance().getReference().child(FirebasePaths.FORUM_POSTS + getIntent().getStringExtra("key") + "/comment_count").setValue(adapter.getItemCount() + 1);
+        FirebaseDatabase.getInstance().getReference().child(FirebasePaths.FORUM_POSTS).child(getIntent().getStringExtra("key") + "/comment_count").setValue(adapter.getItemCount() + 1);
     }
 
     private void decreaseCommentCount() {
-        FirebaseDatabase.getInstance().getReference().child(FirebasePaths.FORUM_POSTS + getIntent().getStringExtra("key") + "/comment_count").setValue(adapter.getItemCount() - 1);
+        FirebaseDatabase.getInstance().getReference().child(FirebasePaths.FORUM_POSTS).child(getIntent().getStringExtra("key") + "/comment_count").setValue(adapter.getItemCount() - 1);
     }
 
     public void readyViews() {

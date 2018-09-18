@@ -179,7 +179,13 @@ class DiscussionActivity : AppCompatActivity(), ChildEventListener {
             }
 
             override fun upVoteClicked(view: View, position: Int) {
-                val post_id = "${intent.getIntExtra("code", 0)}-${intent.getIntExtra("position", 0)}"
+                val post_id: String = if (intent.getStringExtra("discussion") == null)
+                    "${intent.getIntExtra("code", 0)}-${intent.getIntExtra("position", 0)}"
+                else {
+                    intent.getStringExtra("key")
+
+                }
+
                 Singleton.getInstance().upvoteDiscussionComment(post_id, key[position], FirebaseAuth.getInstance().currentUser!!.uid, adapter.getUidAt(position), adapter.haveIVoted(position))
                 adapter.upVoteAtPosition(position)
             }
