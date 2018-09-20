@@ -80,7 +80,7 @@ class EntranceResult : Fragment() {
                                         .addShapes(Shape.RECT, Shape.CIRCLE)
                                         .addSizes(Size(12))
                                         .setPosition(-50f, konfettiView.width + 50f, -50f, -50f)
-                                        .streamFor(response.getJSONObject("data").getInt("score") * 2, 5000L)
+                                        .streamFor(response.getJSONObject("data").getInt("score") * 2, 3000L)
                             } else {
                                 MaterialDialog.Builder(context!!).title("Oops").content("Sorry, Your roll number is not in the list.").show()
                             }
