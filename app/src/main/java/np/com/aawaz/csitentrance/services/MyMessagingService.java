@@ -1,5 +1,6 @@
 package np.com.aawaz.csitentrance.services;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 
@@ -29,10 +31,10 @@ public class MyMessagingService extends FirebaseMessagingService {
     public MyMessagingService() {
     }
 
-    public static void sendNotification(Context context, Notification notification) {
+    public  void sendNotification(Context context, Notification notification) {
         Intent intent;
         int identifier = new Random().nextInt();
-
+        createNotificationChannel(notification.getTag());
         switch (notification.getTag()) {
             case "news":
                 identifier = "news".hashCode();
@@ -91,6 +93,7 @@ public class MyMessagingService extends FirebaseMessagingService {
                 .setContentText(Html.fromHtml(notification.getText()).toString())
                 .setContentTitle(notification.getTitle())
                 .setAutoCancel(true)
+                .setChannelId(notification.getTag())
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
         int post_count = SPHandler.getInstance().getUnreadPostCount();
@@ -139,6 +142,29 @@ public class MyMessagingService extends FirebaseMessagingService {
             notificationManager.notify(identifier, notificationBuilder.build());
     }
 
+    private void createNotificationChannel(String channel_name) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            //for general
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            NotificationChannel general = new NotificationChannel(channel_name, channel_name.toUpperCase(), NotificationManager.IMPORTANCE_HIGH);
+            notificationManager.createNotificationChannel(general);
+
+            //for forum
+            NotificationChannel forum = new NotificationChannel("forum", "FORUM", NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(forum);
+
+            //for discussion
+            NotificationChannel discussion = new NotificationChannel("discussion", "DISCUSSION", NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(discussion);
+
+            //for news
+            NotificationChannel news = new NotificationChannel("news", "NEWS", NotificationManager.IMPORTANCE_HIGH);
+            notificationManager.createNotificationChannel(news);
+        }
+    }
+
+
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
@@ -152,7 +178,7 @@ public class MyMessagingService extends FirebaseMessagingService {
         notification.setResult_published(Boolean.parseBoolean(remoteMessage.getData().get("result_published")));
 
         if (notification.getTag() == null)
-            notification.setTag("random");
+            notification.setTag("regular");
         if (notification.getUid() == null)
             notification.setUid("random");
 
