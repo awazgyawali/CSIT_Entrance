@@ -43,6 +43,7 @@ public class SPHandler {
     public static String MODEL15 = "model15-cab";
     public static String MODEL16 = "model16";
     public static String ACHS = "achs_model";
+    public static String MODEL17 = "model17";
 
     private static SPHandler spHandler;
     private final SharedPreferences.Editor scoreEditor;
@@ -74,7 +75,8 @@ public class SPHandler {
             new String[]{ENGLISH, MATH, PHYSICS, CHEMISTRY},
             new String[]{ENGLISH, MATH, PHYSICS, CHEMISTRY},
             new String[]{ENGLISH, PHYSICS, MATH, CHEMISTRY},
-            new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY}};
+            new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},
+            new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH}};
 
     public SPHandler() {
         scoreSp = MyApplication.getAppContext().getSharedPreferences("play_data", Context.MODE_PRIVATE);
@@ -145,13 +147,13 @@ public class SPHandler {
     public int getTotalScore() {
         return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) + getScore(YEAR2073) + +getScore(YEAR2074) +
                 getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4) + getScore(MODEL5) + getScore(MODEL6) + getScore(MODEL7) +
-                getScore(MODEL8) + getScore(MODEL9) + getScore(MODEL10) + getScore(SAGARMATHA) + getScore(MODEL12) + getScore(MODEL13) + getScore(MODEL14) + getScore(MODEL15)+ getScore(MODEL16)+ getScore(ACHS);
+                getScore(MODEL8) + getScore(MODEL9) + getScore(MODEL10) + getScore(SAGARMATHA) + getScore(MODEL12) + getScore(MODEL13) + getScore(MODEL14) + getScore(MODEL15)+ getScore(MODEL16)+ getScore(ACHS)+ getScore(MODEL17);
     }
 
     public int getTotalPlayed() {
         return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) + getPlayed(YEAR2073) + getPlayed(YEAR2074) +
                 getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4) + getPlayed(MODEL5) + getPlayed(MODEL6) + getPlayed(MODEL7) +
-                getPlayed(MODEL8) + getPlayed(MODEL9) + getPlayed(MODEL10) + getPlayed(SAGARMATHA) + getPlayed(MODEL12) + getPlayed(MODEL13) + getPlayed(MODEL14) + getPlayed(MODEL15)+ getPlayed(MODEL16)+ getPlayed(ACHS);
+                getPlayed(MODEL8) + getPlayed(MODEL9) + getPlayed(MODEL10) + getPlayed(SAGARMATHA) + getPlayed(MODEL12) + getPlayed(MODEL13) + getPlayed(MODEL14) + getPlayed(MODEL15)+ getPlayed(MODEL16)+ getPlayed(ACHS)+ getPlayed(MODEL17);
     }
 
     public boolean isResultPublished() {
