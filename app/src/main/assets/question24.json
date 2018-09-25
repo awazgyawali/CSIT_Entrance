@@ -1,0 +1,805 @@
+{
+  "questions":[
+    {
+      "question": "1) It is known to us that they pride __________as superior.",
+      "a": "himself",
+      "b": "ourselves",
+      "c": "themselves",
+      "d": "yourselves",
+      "ans": "c"
+    },
+    {
+      "question": "2) She is as good as _______ am in English.",
+      "a": "I",
+      "b": "he",
+      "c": "me",
+      "d": "her",
+      "ans": "a"
+    },
+    {
+      "question": "3) The socks ____ torn.",
+      "a": "is",
+      "b": "was",
+      "c": "are",
+      "d": "has been",
+      "ans": "c"
+    },
+    {
+      "question": "4) I am chosen for the concert,_______?",
+      "a": "am I",
+      "b": "am I not",
+      "c": "don't I",
+      "d": "do I",
+      "ans": "b"
+    },
+    {
+      "question": "5) I seldom smoke and ______ do they.",
+      "a": "always",
+      "b": "sometimes",
+      "c": "must",
+      "d": "neither",
+      "ans": "d"
+    },
+    {
+      "question": "6) He was admitted ____ the hospital.",
+      "a": "in",
+      "b": "on",
+      "c": "at",
+      "d": "by",
+      "ans": "a"
+    },
+    {
+      "question": "7) Bear ________ me in this matter.",
+      "a": "by",
+      "b": "with",
+      "c": "to",
+      "d": "after",
+      "ans": "b"
+    },
+    {
+      "question": "8) She turned _______ for the party late.",
+      "a": "down ",
+      "b": "up",
+      "c": "of",
+      "d": "out",
+      "ans": "b"
+    },
+    {
+      "question": "9) Out of the blue means",
+      "a": "lightening",
+      "b": "suddenly",
+      "c": "euphoria",
+      "d": "out of the gloom",
+      "ans": "b"
+    },
+    {
+      "question": "10) All the best,Ram!",
+      "a": "Object + Adjunct",
+      "b": "Subject + Verb",
+      "c": "Subject + Adjunct",
+      "d": "Subject + Verb + Object + Adjunct",
+      "ans": "a"
+    },
+    {
+      "question": "11) _________ I completed the work,I would have left earlier.",
+      "a": "Had",
+      "b": "Have had",
+      "c": "Were",
+      "d": "Have",
+      "ans": "a"
+    },
+    {
+      "question": "12) The teacher seemed ________.",
+      "a": "bore",
+      "b": "relaxed",
+      "c": "happiness",
+      "d": "quickly",
+      "ans": "b"
+    },
+    {
+      "question": "13) Listen to the birds __________.",
+      "a": "sing",
+      "b": "singing",
+      "c": "to sing",
+      "d": "song",
+      "ans": "b"
+    },
+    {
+      "question": "14) _____ down.",
+      "a": "Lay",
+      "b": "Lain",
+      "c": "Lied",
+      "d": "Lie",
+      "ans": "d"
+    },
+    {
+      "question": "15) A person who always doubts is",
+      "a": "theist",
+      "b": "atheist",
+      "c": "skeptical",
+      "d": "taciturn",
+      "ans": "c"
+    },
+    {
+      "question": "16) The synonymn of enigma is",
+      "a": "similar",
+      "b": "likeable",
+      "c": "mysterious",
+      "d": "decaying",
+      "ans": "c"
+    },
+    {
+      "question": "17) The antonym of cynical is",
+      "a": "unfriendly",
+      "b": "friendly",
+      "c": "unsociable ",
+      "d": "hostile",
+      "ans": "b"
+    },
+    {
+      "question": "18) Last year I missed _______ exam.",
+      "a": "to take",
+      "b": "taking",
+      "c": "to give",
+      "d": "giving",
+      "ans": "b"
+    },
+    {
+      "question": "19) My friends don't eat meat.",
+      "a": "Meat is don't eaten by my friends.",
+      "b": "Meat is eaten by my friends.",
+      "c": "Meats are eaten by my friends.",
+      "d": "Meat is not eaten by my friends.",
+      "ans": "d"
+    },
+    {
+      "question": "20) \"Call the first witness\",said the judge.",
+      "a": "The judge commanded to call the first witness.",
+      "b": "The judge commanded not to call the first witness.",
+      "c": "The judge said to them to call tge first witness.",
+      "d": "The judge commanded them to call the first witness.",
+      "ans": "d"
+    },
+    {
+      "question": "21) I ________ the movie last month.",
+      "a": "will see",
+      "b": "will be seeing",
+      "c": "saw",
+      "d": "had seen",
+      "ans": "c"
+    },
+    {
+      "question": "22) When are we meeting again().",
+      "a": "(?)",
+      "b": "(,)",
+      "c": "(!)",
+      "d": "(.)",
+      "ans": "a"
+    },
+    {
+      "question": "23) Sita will have her father _______ to the authorities.",
+      "a": "talked",
+      "b": "to talk",
+      "c": "talk",
+      "d": "to talking",
+      "ans": "c"
+    },
+    {
+      "question": "24) _______ beds are expensive nowadays.",
+      "a": "A",
+      "b": "An",
+      "c": "The",
+      "d": "None",
+      "ans": "d"
+    },
+    {
+      "question": "25) _________beds he bought are expensive.",
+      "a": "A",
+      "b": "An",
+      "c": "The",
+      "d": "none",
+      "ans": "c"
+    },
+    {
+      "question": "26) Fraday's constant",
+      "a": "depends on amount of charge passed through the electrolyte",
+      "b": "depends on amount of electrolyte",
+      "c": "depends on current on the electrolyte",
+      "d": "is a universal constant",
+      "ans": "d"
+    },
+    {
+      "question": "27) Np and Ne be the number of holes and conduction electrons in a p-type semiconductor then",
+      "a": "Np>Ne",
+      "b": "Np=Ne",
+      "c": "Np<Ne",
+      "d": "Np≠Ne",
+      "ans": "a"
+    },
+    {
+      "question": "28) Wavelength of X-rays coming from a coolidge tube depends on the",
+      "a": "target material",
+      "b": "alternating voltage",
+      "c": "seperation between target and voltage",
+      "d": "temperature of filament",
+      "ans": "b"
+    },
+    {
+      "question": "29) The current in a coil changes from 0 to 2A in 0.05s,if the induced emf is 80V,the self inductance of the coil is",
+      "a": "0.5H",
+      "b": "1H",
+      "c": "1.5H",
+      "d": "2H",
+      "ans": "d"
+    },
+    {
+      "question": "30) A uniform wire of resistance 50Ω is cut into 5 equal parts.These parts are now connected in parralel.The equivalent resistance of the combination is",
+      "a": "2Ω",
+      "b": "10Ω",
+      "c": "250Ω",
+      "d": "6250Ω",
+      "ans": "a"
+    },
+    {
+      "question": "31) Which one of the following equation represents a wave travelling along Y-axis?",
+      "a": "x=Asin(ky -ψt)",
+      "b": "y=Asin(kx-ψt)",
+      "c": "y=Asin(ky)cos(ψt)",
+      "d": "y=Acos(ky)sin(ψt)",
+      "ans": "a"
+    },
+    {
+      "question": "32) When a wave goes from one medium to another,there is no change in the",
+      "a": "velocity",
+      "b": "frequency",
+      "c": "amplitude",
+      "d": "wavelength",
+      "ans": "b"
+    },
+    {
+      "question": "33) A small angled prism of angle A has refractive index μ .The angle of deviation produced by the prism is expressed as",
+      "a": "A(μ-1)",
+      "b": "μ(A-1)",
+      "c": "A(μ+1)",
+      "d": "μ(A+1)",
+      "ans": "a"
+    },
+    {
+      "question": "34) The relation between Celsius scale(C) and fahrenheit scale(F) is",
+      "a": "9C=5F+160",
+      "b": "9C+160=5F",
+      "c": "5C=9F+160",
+      "d": "5C+160=9F",
+      "ans": "b"
+    },
+    {
+      "question": "35) When a liquid is cooled,it's surface tension",
+      "a": "decreases",
+      "b": "increases",
+      "c": "remains unchanged",
+      "d": "decreases at the begining and remains constant at very low temperature",
+      "ans": "b"
+    },
+    {
+      "question": "36) Water has least volume at ",
+      "a": "0°C",
+      "b": "100°C",
+      "c": "4°C",
+      "d": "273°C",
+      "ans": "c"
+    },
+    {
+      "question": "37) M<sup>-1</sup>L<sup>3</sup>T<sup>-2</sup> is the dimension of",
+      "a": "Surface tension",
+      "b": "Coefficient of viscocity",
+      "c": "gravitational constant",
+      "d": "pressure gradient",
+      "ans": "c"
+    },
+    {
+      "question": "38) Two bodies one held from 1m above the other directly are released simultaneously and fall freely under gravity.After 3s their relative seperation will be",
+      "a": "0.98m",
+      "b": "1m",
+      "c": "4.9m",
+      "d": "9.8m",
+      "ans": "b"
+    },
+    {
+      "question": "39) A man in a train moving with a constant velocity drops a ball on the platform.The path of the ball as seen by an observer standing at the platform is",
+      "a": "st.line",
+      "b": "circle ",
+      "c": "parabola",
+      "d": "hyperbola",
+      "ans": "c"
+    },
+    {
+      "question": "40) A simple pendulum 9.8m swings with an amplitude of 0.2m.The velocity of the pendulum at its lowest point is",
+      "a": "9.8m/s",
+      "b": "6.28m/s",
+      "c": "1m/s",
+      "d": "0.2m/s",
+      "ans": "d"
+    },
+    {
+      "question": "41) A body of mass m is tied to the end of a string and whirled in a vertical circle of radius R,the velocity of the body when it passes through the lowest point is",
+      "a": "√gR",
+      "b": "√5gR",
+      "c": "√3gR",
+      "d": "zero",
+      "ans": "b"
+    },
+    {
+      "question": "42) The velocity  of sound is water is 1400m/s.The density of water is 1000kg/m<sup>3</sup>.The bulk modulus of elasticity of water should be",
+      "a": "5*10<sup>11</sup>N/m<sup>2</sup>",
+      "b": "1.96*10<sup>9</sup>N/m<sup>2</sup>",
+      "c": "4*10<sup>9</sup>N/m<sup>2</sup>",
+      "d": "5*10<sup>11</sup>dyne/cm<sup>2</sup>",
+      "ans": "b"
+    },
+    {
+      "question": "43) Two tuning forks of frequencies 515Hz and 512Hz are vibrating.The beat frequency produced is ",
+      "a": "4Hz",
+      "b": "8Hz",
+      "c": "1028Hz",
+      "d": "516Hz",
+      "ans": "a"
+    },
+    {
+      "question": "44) In photoelectric emission ,the number of electrons ejected per second is proportional to ",
+      "a": "intensity of light",
+      "b": "frequency of light",
+      "c": "wavelength of light",
+      "d": "work function of material",
+      "ans": "a"
+    },
+    {
+      "question": "45) What happens when some charge is placed on a soap bubble?",
+      "a": "it's radius decreases",
+      "b": "its radius increases",
+      "c": "bubble collapses",
+      "d": "none",
+      "ans": "b"
+    },
+    {
+      "question": "46) Two charges q1 =2μC and q2=-1μC are kept at points x=0 and x=6 respectively.Electric potential will be zero at points x=",
+      "a": "1,5",
+      "b": "2,9",
+      "c": "4,12",
+      "d": "-2,2",
+      "ans": "c"
+    },
+    {
+      "question": "47) The capacitance of earth viewed as spherical conductor of radius 6400km is",
+      "a": "711μF",
+      "b": "0.71μF",
+      "c": "980F",
+      "d": "1420F",
+      "ans": "b"
+    },
+    {
+      "question": "48) The angle between the vectors 3i+4j+5k and 3i+4j-5k is",
+      "a": "0°",
+      "b": "30°",
+      "c": "60°",
+      "d": "90°",
+      "ans": "d"
+    },
+    {
+      "question": "49) The SI unit of temperature is",
+      "a": "C",
+      "b": "F",
+      "c": "Rn",
+      "d": "K",
+      "ans": "d"
+    },
+    {
+      "question": "50) The ratio of displacement and distance is ",
+      "a": "always less than 1",
+      "b": "equal to 1",
+      "c": "more than 1",
+      "d": "equal or less than 1",
+      "ans": "d"
+    },
+    {
+      "question": "51) The number of ions contained in a solution of potassium ferrocyanide would be",
+      "a": "2",
+      "b": "3",
+      "c": "4",
+      "d": "5",
+      "ans": "d"
+    },
+    {
+      "question": "52) What is the mass of aluminium in 204g of aluminium oxide?",
+      "a": "26g",
+      "b": "27g",
+      "c": "54g",
+      "d": "108g",
+      "ans": "c"
+    },
+    {
+      "question": "53) At 25°C the solubility of PbBr<sub>2</sub> is 2.3*10<sup>-2</sup>M.What is the K<sub>sp</sub> of PbBr<sub>2</sub>?",
+      "a": "2.4*10<sup>-5</sup>",
+      "b": "4.8*10<sup>-5</sup>",
+      "c": "5.3*10<sup>-4</sup>",
+      "d": "1.2*10<sup>-5</sup>",
+      "ans": "b"
+    },
+    {
+      "question": "54) A catalyst",
+      "a": "changes equilibrium position",
+      "b": "Increases rate of both forward and reverse reaction",
+      "c": "Increases the rate of forward reaction",
+      "d": "Increases rate of forward reaction and decreases the rate of reverse reaction",
+      "ans": "b"
+    },
+    {
+      "question": "55) The precipitation occurs if the ionic concentration is",
+      "a": "less than K<sub>sp</sub>",
+      "b": "is present in any amount",
+      "c": "more than K<sub>sp</sub>",
+      "d": "equal to K<sub>sp</sub>",
+      "ans": "c"
+    },
+    {
+      "question": "56) The rate of diffusion of methane at a given temperature is twice than that of gas X.The molecular mass of X is",
+      "a": "64",
+      "b": "32",
+      "c": "16",
+      "d": "8",
+      "ans": "a"
+    },
+    {
+      "question": "57)Among the following NaOH,Ca(OH)<sub>2</sub>,KOH and Zn(OH)<sub>2</sub>, the weakest base is",
+      "a": "NaOH",
+      "b": "Ca(OH)<sub>2</sub>",
+      "c": "KOH",
+      "d": "Zn(OH)<sub>2</sub>",
+      "ans": "d"
+    },
+    {
+      "question": "58) Which of the following set of quantum number represent the highest energy of an atom?",
+      "a": "n=3,l=2,m=1,s=+1/2",
+      "b": "n=3,l=1,m=1,s=+1/2",
+      "c": "n=3,l=0,m=1,s=+1/2",
+      "d": "n=3,l=0,m=0,s=+1/2",
+      "ans": "a"
+    },
+    {
+      "question": "59) The density(in g m/L) of a 3.6M sulphuric acid solution that is 29% H<sub>2</sub>SO<sub>4</sub> (Molar mass=98 g/mol) by mass will be",
+      "a": "1.64",
+      "b": "1.88",
+      "c": "1.22",
+      "d": "1.45",
+      "ans": "c"
+    },
+    {
+      "question": "60)50ml Na<sub>2</sub>CO<sub>3</sub> was titrated with 65.8ml of3M HCl.If the density of Na<sub>2</sub>CO<sub>3</sub> is 1.25g/ml,what % of Na<sub>2</sub>CO<sub>3</sub> by weight does it contain",
+      "a": "10.50%",
+      "b": "16.80%",
+      "c": "19.10%",
+      "d": "33.50%",
+      "ans": "b"
+    },
+    {
+      "question": "61) A first order reaction is found to have a rate constant K=5.5*10<sub>-14</sub>S<sup>-1</sup>.What is the half life of the reaction?",
+      "a": "1.26*10<sup>13</sup>S",
+      "b": "12.6*10<sup>15</sup>S",
+      "c": "6.12*10<sup>12</sup>S",
+      "d": "2.16*10<sup>16</sup>S",
+      "ans": "a"
+    },
+    {
+      "question": "62) The metal which cannot displace hydrogen from dil.HCl is",
+      "a": "Al",
+      "b": "Cu",
+      "c": "Fe",
+      "d": "Zn",
+      "ans": "b"
+    },
+    {
+      "question": "63) Which is the most volatile compound?",
+      "a": "HI",
+      "b": "HCl",
+      "c": "HBr",
+      "d": "HF",
+      "ans": "b"
+    },
+    {
+      "question": "64) Which of the following is not correct about isotopes of same element?",
+      "a": "same type of nuclei",
+      "b": "different physical properties",
+      "c": "same cheical properties",
+      "d": "same number of electron",
+      "ans": "a"
+    },
+    {
+      "question": "65) Sodium is a powerful",
+      "a": "reducing agent",
+      "b": "oxidizing agent",
+      "c": "bleaching agent",
+      "d": "all",
+      "ans": "a"
+    },
+    {
+      "question": "66) Which of the following is a metalloid?",
+      "a": "Ge",
+      "b": "Na-Hg",
+      "c": "Fe",
+      "d": "Cu",
+      "ans": "a"
+    },
+    {
+      "question": "67) In Down's process the graphite is used as",
+      "a": "anode ",
+      "b": "cathode ",
+      "c": "electrolyte",
+      "d": "battery",
+      "ans": "a"
+    },
+    {
+      "question": "68) Washing soda is manufactured by",
+      "a": "Ostwald's process",
+      "b": "Solvay's ammonia soda process",
+      "c": "caster kellner process",
+      "d": "haber's process",
+      "ans": "b"
+    },
+    {
+      "question": "69) Willimite is an ore of",
+      "a": "Cu",
+      "b": "Fe",
+      "c": "Zn",
+      "d": "Ag",
+      "ans": "c"
+    },
+    {
+      "question": "70) HgCl<sub>2</sub> is named as",
+      "a": "mercury chloride",
+      "b": "mercuric chloride",
+      "c": "mercurous chloride",
+      "d": "mercury trichloride",
+      "ans": "b"
+    },
+    {
+      "question": "71) Hydrolysis of Sucrose gives",
+      "a": "Two molecules of glucose",
+      "b": "Two molecules of fructose",
+      "c": "One molecules of each of fructose and glucose",
+      "d": "One molecule each of glucose and mannose",
+      "ans": "c"
+    },
+    {
+      "question": "72)Treatment of ethylacetate with sodium ethoxide in ethanol produces ethyl acetoacetate.This reaction is known as",
+      "a": "Wolf-kishner reduction",
+      "b": "Aldol condensation",
+      "c": "Claisen condensation",
+      "d": "Williamson synthesis",
+      "ans": "c"
+    },
+    {
+      "question": "73) Which of the following compound is aromatic?",
+      "a": "napthalene",
+      "b": "benzene hexachloride",
+      "c": "cyclohexane",
+      "d": "tetrahydrofuran",
+      "ans": "a"
+    },
+    {
+      "question": "74) If nitrobenzene is subjected to Friedel Craft's alkylation,the substitution occurs at",
+      "a": "ortho position",
+      "b": "para position",
+      "c": "meta position",
+      "d": "a and b",
+      "ans": "c"
+    },
+    {
+      "question": "75) The polymer obtained by condensation polymerization is",
+      "a": "Polyethene",
+      "b": "Teflon",
+      "c": "Kevlar",
+      "d": "PVC",
+      "ans": "c"
+    },
+    {
+      "question": "76) A' - B' =",
+      "a": "B-A ",
+      "b": "A - B",
+      "c": "A U B",
+      "d": "A",
+      "ans": "a"
+    },
+    {
+      "question": "77) If f : R-> R and g:R->R be function defined by f(x) = 2x and g(x) = x<sup>2</sup> + 2 for x∈R then",
+      "a": "(fog)(2)=12",
+      "b": "(gof)(2)=18",
+      "c": "(gog)(1)=11",
+      "d": "(fof)(1)=5",
+      "ans": "b"
+    },
+    {
+      "question": "78) If sin<sup>-1</sup>x + sin<sup>-1</sup>y = 2π/3 ,then cos<sup>-1</sup>x + cos<sup>-1</sup>y equals",
+      "a": "2π/3",
+      "b": "π/3",
+      "c": "π/6",
+      "d": "π/2",
+      "ans": "b"
+    },
+    {
+      "question": "79) General value of tan<sup>2</sup>x + cos<sup>2</sup>x = 2 is ",
+      "a": "nπ+π/4",
+      "b": "nπ-π/4",
+      "c": "both a and b",
+      "d": "2nπ+π/4",
+      "ans": "c"
+    },
+    {
+      "question": "80) In an equilateral triangle,the radius(r) and circum-radius(R) are connected by ",
+      "a": "r.R = 1/2 * (side)<sup>2</sup>",
+      "b": "r.R=3(side)<sup>2</sup>",
+      "c": "r.R=1/6 * (side)<sup>2</sup>",
+      "d": "r.R = 1/12 * (side)<sup>2</sup>",
+      "ans": "c"
+    },
+    {
+      "question": "81) In a triangle, if a=5,b=6 and C=30° then the area of the triangle is",
+      "a": "2.5",
+      "b": "6.5",
+      "c": "7.5",
+      "d": "9",
+      "ans": "c"
+    },
+    {
+      "question": "82) If α and its reciprocal be roots of the equation ax<sup>2</sup>+bx+c=0,then which of the following is true?",
+      "a": "α<sup>2</sup>+α+b=0",
+      "b": "α<sup>2</sup>+bα+1=0",
+      "c": "α<sup>2</sup>-bα+1=0",
+      "d": "aα<sup>2</sup>+bα+a=0",
+      "ans": "d"
+    },
+    {
+      "question": "83) The inequality |2x-3| < 1 is valid when x lies in the interval",
+      "a": "(1,2)",
+      "b": "(2,3)",
+      "c": "(1,4)",
+      "d": "(3,4)",
+      "ans": "a"
+    },
+    {
+      "question": "84) Fourth roots of unity i.e z<sup>4</sup>=1 are",
+      "a": "±1",
+      "b": "±i",
+      "c": "±1,±i",
+      "d": "1,ω,ω<sup>2</sup>",
+      "ans": "c"
+    },
+    {
+      "question": "85) (a+bω+cω<sup>2</sup>)/(aω+bω<sup>2</sup>+c) =",
+      "a": "1",
+      "b": "ω",
+      "c": "ω<sup>2</sup>",
+      "d": "0",
+      "ans": "c"
+    },
+    {
+      "question": "86) The coordinate of the point which divides the line segment joining the points (2,-6) and (-6,18) in the ratio 1:3 externally are",
+      "a": "(2,-6)",
+      "b": "(6,-18)",
+      "c": "(1,-3)",
+      "d": "(-4,12)",
+      "ans": "b"
+    },
+    {
+      "question": "87) A st.line meets the axes at A and B such that the centroid of triangle ABC is (a,a).Then the equation of the line AB is",
+      "a": "x+y=a",
+      "b": "x-y=3a",
+      "c": "x+y=2a",
+      "d": "x+y=3a",
+      "ans": "d"
+    },
+    {
+      "question": "88) If the equation x<sup>2</sup>+y<sup>2</sup>+2gx+2fy+1=0 represents a pair of lines then",
+      "a": "g<sup>2</sup>-f<sup>2</sup>=1",
+      "b": "g<sup>2</sup>+f<sup>2</sup>=1",
+      "c": "-g<sup>2</sup>+f<sup>2</sup>=1/2",
+      "d": "g<sup>2</sup>+f<sup>2</sup>=1/2",
+      "ans": "b"
+    },
+    {
+      "question": "89) The three lines given by y<sup>3</sup>-9x<sup>2</sup>y=0",
+      "a": "are all parallel",
+      "b": "form a triangle",
+      "c": "are such that two of them are parallel",
+      "d": "are concurrent",
+      "ans": "d"
+    },
+    {
+      "question": "90) The parametric equation of the curve x=5+3cosθ and y=7+3sinθ represents",
+      "a": "a parabola",
+      "b": "an ellipse",
+      "c": "a hyperbola",
+      "d": "a circle",
+      "ans": "d"
+    },
+    {
+      "question": "91) The line 3x+4y+6=0 intersects a circle at points A and B.The length of AB is 6 units and centre of circle is (2,2).Then,the distance CB is equal to",
+      "a": "5 units",
+      "b": "3 units",
+      "c": "4 units",
+      "d": "2 units",
+      "ans": "a"
+    },
+    {
+      "question": "92) lim<sub>x->0<sup>+</sup></sub> (e<sup>1/x</sup>)/(e<sup>1/x</sup>+1) =",
+      "a": "1",
+      "b": "0",
+      "c": "-1",
+      "d": "does not exist",
+      "ans": "a"
+    },
+    {
+      "question": "93) For all real values of x sinx and cos x are",
+      "a": "continuos",
+      "b": "discontinous",
+      "c": "both",
+      "d": "none",
+      "ans": "a"
+    },
+    {
+      "question": "94) The derivative of cos<sup>-1</sup>(sinx) with respect to x is",
+      "a": "0",
+      "b": "1",
+      "c": "-1",
+      "d": "infinity",
+      "ans": "c"
+    },
+    {
+      "question": "95) The derivative of coshx with respect to x is",
+      "a": "coshx",
+      "b": "sinhx",
+      "c": "-coshx",
+      "d": "-sinhx",
+      "ans": "b"
+    },
+    {
+      "question": "96) ∫|x|dx is equal to",
+      "a": "|x|",
+      "b": "|x|<sup>2</sup>/2",
+      "c": "x<sup>2</sup>/2",
+      "d": "x|x|/2",
+      "ans": "d"
+    },
+    {
+      "question": "97) <sub>1</sub>∫<sup>e</sup>lnx dx =",
+      "a": "e+2",
+      "b": "0",
+      "c": "1",
+      "d": "1/2",
+      "ans": "c"
+    },
+    {
+      "question": "98) For two matrices A and B , (A+B)<sup>T</sup>=",
+      "a": "A<sup>T</sup>",
+      "b": "B<sup>T</sup>",
+      "c": "A<sup>T</sup>+B<sup>T</sup>",
+      "d": "(AB)<sup>T</sup>",
+      "ans": "c"
+    },
+    {
+      "question": "99) <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAM8AAABECAMAAAARKJF2AAAAM1BMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxgEwMAAAAEHRSTlMARCKrw3ZUzbtm7zIQiZnd97YFuQAAAAlwSFlzAAAOxAAADsQBlSsOGwAABHNJREFUaAXtWu2SozAMS+GA0g+O93/as0NDErBMAmHKzi0/tq0syzIBhvXEmJv5oYdsvKp/aDvAOICv3yQwDuD/qp+qrg71ezTfsABYCABrfp/3hxbejB3NN1YAGAewaqo9+Aw5mm9YABgHsOnlx6Htc+jVdqegInA037AAMA5gtZ+/KbeP0s/RfMMCwPgHbpq27cKzHtlpm6bq+4HjTJRuH12A8vrWlkL5Vjh0sDDQV31jLwsnoPZzJ2od3RWx3GskwtAYsyZOJ2GNRwLm3lKBO85fC4f5r1tFBuo31ZoLoX7+EKnnE1Pb9id7BAX3z/P15CV51xLRJmwImIZaMfc3zBcCoYGbaf9Oxnyhio2vD9vmg1t5uLtiqOnoOv7LZ4SPhtfuPpiYaEP2T4yvBWx8vMH8OLDON8PHiS+E1ocffSO1YpfAOwxPz7TKZuwlIqdIeCgwxUeRZ0sKAmE+nezpcgl4Sj/PkUTpkgguseh6M2Z8GV5yich+JDz0M8U7kWf7EQTCfDoRlhYKKP2Yx8tUHV3dU5L9G8k9eQG7J52mNdGyBTwUeJGd6kGXjMCbaq4DYf50ezHT87R+bu+WnqYNLcJ8xHJ137/59hKINkPAI4H23bd0+8B8IRDlv92p9oW0fuYu/JdILn70eZL2LRIgYsXXbMaxzF+mZvYTFX/QpZZ7RAKU3H+euKk6y/xlXmY/Ybq7G0Ms+/tgXy+y02DC/n5u3ThsnS1Y9hOohrGjV4SCx/5+CpooKIX6kV8bChY+SUp73zmp5KmyaH2it+pTHZQV/+2n7Pksrfa7PqXPaFm93/Upez5Lq2WvTzDU2evFDXX25bfNPNQRBPL7mYc6gloS5IY6SeQVKRjqrGIEoH7Q+44f6khqKZgb6qRwBY4f6ghB6mc2bscnPL3h+Q1okyXcUEeUSwDdUCeBKlPcUEeMAuMAZgke3dFQR1RLAN1QJ4EKKJ+hjhwFxgHMGp+hjiy3jbqhzjYTMPR/I73xxOttHuqAclvwPNTZIqK4nYWiILpRfJvLzN4NdZaB1N9uqJPKX/Lmoc4yYH8D4wCmlD1DnWXl3KHOMl/5DYwDmIT2DHWW9XOHOst85TcwDmCelyliqaHSQ52gLjAOYHPNoc7+foLMa34FC+FfG65pG7oCxkGbUOYyAWAcwJexDY0A4wCGMpcJAOMAdraLbLVxYrs+kQNgHMCf0mW22uzqY8sBMA5gZ6HIVhsntusTOQDGAexKJ221cWTp8zQBYBzAzlrSVhtHlj5PEwDGAczW3E4ZyWYSdqoAMA5g8jvvlEnyLpDOFQDGwWuDuKdH8KxAfquNQtJCugAwDtqkf394EDLv6dHqgtjJAsA4gPFWG+B+BQdbbVaxJGBDABgHcLhTJqn6iiRsyVlxVGBDABgHcLhTRq2Kg36rDeaoEV0AGAewstVG9RAE/VabAMz5qgsA4wDOqfsdLjAO4O94zKkKjAM4R/k7XGAcwN/xmFMVGAdwjvJ3uMA4gL/jMafqjzWe06T5B4nrGnT+2uYMAAAAAElFTkSuQmCC\"/>",
+      "a": "0",
+      "b": "apqrd",
+      "c": "1",
+      "d": "p+q+r",
+      "ans": "a"
+    },
+    {
+      "question": "100) If a,b,c are in A.P , then 3<sup>a</sup>,3<sup>b</sup>,3<sup>c</sup> are in",
+      "a": "A.P",
+      "b": "G.P",
+      "c": "H.P",
+      "d": "none",
+      "ans": "b"
+    }
+  ]
+
+}
