@@ -74,6 +74,7 @@ public class SubjectChooserActivity extends AppCompatActivity {
         addItem("2072 TU Examination", YearItem.Companion.getYEAR_SET(), 3);
         addItem("2073 TU Examination", YearItem.Companion.getYEAR_SET(), 4);
         addItem("2074 TU Examination", YearItem.Companion.getYEAR_SET(), 5);
+        addItem("2075 TU Examination", YearItem.Companion.getYEAR_SET(), 24);
 
 
         addItem("Model Questions", YearItem.Companion.getSECTION_TITLE(), -1);

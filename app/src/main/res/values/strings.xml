@@ -42,6 +42,8 @@
         <item>Model Question 13</item>
         <item>ACHS Model Question</item>
         <item>Model Question 14</item>
+
+        <item>TU Examination 2075</item>
     </string-array>
     <string name="title_activity_notification">NotificationActivity</string>
     <string name="title_activity_post_forum">PostForumActivity</string>

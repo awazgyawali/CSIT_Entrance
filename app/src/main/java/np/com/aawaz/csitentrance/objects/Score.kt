@@ -8,6 +8,7 @@ class Score {
     var q2072: Int = 0
     var q2073: Int = 0
     var q2074: Int = 0
+    var q2075: Int = 0
     var model1: Int = 0
     var model2: Int = 0
     var model3: Int = 0
@@ -44,6 +45,7 @@ class Score {
                 score.q2072 = SPHandler.getInstance().getScore(SPHandler.YEAR2072)
                 score.q2073 = SPHandler.getInstance().getScore(SPHandler.YEAR2073)
                 score.q2074 = SPHandler.getInstance().getScore(SPHandler.YEAR2074)
+                score.q2075 = SPHandler.getInstance().getScore(SPHandler.YEAR2075)
 
                 score.model1 = SPHandler.getInstance().getScore(SPHandler.MODEL1)
                 score.model2 = SPHandler.getInstance().getScore(SPHandler.MODEL2)

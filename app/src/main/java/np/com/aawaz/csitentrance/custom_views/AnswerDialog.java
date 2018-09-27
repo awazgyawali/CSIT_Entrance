@@ -42,10 +42,11 @@ public class AnswerDialog extends DialogFragment {
         // Required empty public constructor
     }
 
-    public static AnswerDialog newInstance(String code, String answer, int index) {
+    public static AnswerDialog newInstance(int paperCode,String code, String answer, int index) {
         AnswerDialog fragment = new AnswerDialog();
         Bundle args = new Bundle();
         args.putString("answer", answer);
+        args.putInt("paperCode", paperCode);
         args.putString("code", code);
         args.putInt("index", index);
         fragment.setArguments(args);
@@ -103,8 +104,9 @@ public class AnswerDialog extends DialogFragment {
                 Bundle bundle = getArguments();
                 int startFrom = bundle.getInt("startFrom", 0);
 
+
                 startActivity(new Intent(getContext(), DiscussionActivity.class)
-                        .putExtra("code", bundle.getInt("code"))
+                        .putExtra("code", bundle.getInt("paperCode"))
                         .putExtra("position", bundle.getInt("index")-1 + startFrom)
                 );
             }

@@ -227,6 +227,13 @@ public class YearsList extends Fragment {
         item6.setTitle("2074 TU Examination");
         item6.setPaperCode(5);
         items.add(item6);
+
+        YearItem item7 = new YearItem();
+        item7.setType(YearItem.Companion.getYEAR_SET());
+        item7.setTitle("2075 TU Examination");
+        item7.setPaperCode(24);
+        items.add(item7);
+
     }
 
     @Override

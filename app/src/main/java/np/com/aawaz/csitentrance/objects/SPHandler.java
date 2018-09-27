@@ -26,6 +26,7 @@ public class SPHandler {
     public static String YEAR2072 = "year2072";
     public static String YEAR2073 = "year2073";
     public static String YEAR2074 = "year2074";
+    public static String YEAR2075 = "year2075";
     public static String MODEL1 = "model1";
     public static String MODEL2 = "model2";
     public static String MODEL3 = "model3";
@@ -76,7 +77,8 @@ public class SPHandler {
             new String[]{ENGLISH, MATH, PHYSICS, CHEMISTRY},
             new String[]{ENGLISH, PHYSICS, MATH, CHEMISTRY},
             new String[]{PHYSICS, ENGLISH, MATH, CHEMISTRY},
-            new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH}};
+            new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH},
+            new String[]{ENGLISH, PHYSICS, CHEMISTRY, MATH}};//todo add according to todays paper
 
     public SPHandler() {
         scoreSp = MyApplication.getAppContext().getSharedPreferences("play_data", Context.MODE_PRIVATE);
@@ -145,13 +147,13 @@ public class SPHandler {
     }
 
     public int getTotalScore() {
-        return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) + getScore(YEAR2073) + +getScore(YEAR2074) +
+        return getScore(YEAR2069) + getScore(YEAR2070) + getScore(YEAR2071) + getScore(YEAR2072) + getScore(YEAR2073) + getScore(YEAR2074)+getScore(YEAR2075) +
                 getScore(MODEL1) + getScore(MODEL2) + getScore(MODEL3) + getScore(MODEL4) + getScore(MODEL5) + getScore(MODEL6) + getScore(MODEL7) +
                 getScore(MODEL8) + getScore(MODEL9) + getScore(MODEL10) + getScore(SAGARMATHA) + getScore(MODEL12) + getScore(MODEL13) + getScore(MODEL14) + getScore(MODEL15)+ getScore(MODEL16)+ getScore(ACHS)+ getScore(MODEL17);
     }
 
     public int getTotalPlayed() {
-        return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) + getPlayed(YEAR2073) + getPlayed(YEAR2074) +
+        return getPlayed(YEAR2069) + getPlayed(YEAR2070) + getPlayed(YEAR2071) + getPlayed(YEAR2072) + getPlayed(YEAR2073) + getPlayed(YEAR2074) +getPlayed(YEAR2075) +
                 getPlayed(MODEL1) + getPlayed(MODEL2) + getPlayed(MODEL3) + getPlayed(MODEL4) + getPlayed(MODEL5) + getPlayed(MODEL6) + getPlayed(MODEL7) +
                 getPlayed(MODEL8) + getPlayed(MODEL9) + getPlayed(MODEL10) + getPlayed(SAGARMATHA) + getPlayed(MODEL12) + getPlayed(MODEL13) + getPlayed(MODEL14) + getPlayed(MODEL15)+ getPlayed(MODEL16)+ getPlayed(ACHS)+ getPlayed(MODEL17);
     }
