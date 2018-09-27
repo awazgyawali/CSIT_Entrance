@@ -6,7 +6,7 @@ apply plugin: 'io.fabric'
 apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
-    buildToolsVersion '28.0.2'
+    buildToolsVersion '28.0.3'
 
     dexOptions {
         keepRuntimeAnnotatedClasses false
@@ -17,8 +17,8 @@ android {
         minSdkVersion 16
         targetSdkVersion 28
         multiDexEnabled true
-        versionCode 98
-        versionName "3.6.0"
+        versionCode 99
+        versionName "3.6.1"
     }
     buildTypes {
         release {

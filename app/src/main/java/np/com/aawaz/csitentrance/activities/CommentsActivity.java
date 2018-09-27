@@ -2,6 +2,7 @@ package np.com.aawaz.csitentrance.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;

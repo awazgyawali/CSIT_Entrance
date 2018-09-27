@@ -126,7 +126,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.CommentsActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent" />
         <activity
             android:name=".activities.SubjectQuizActivity"
