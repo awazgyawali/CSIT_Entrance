@@ -57,40 +57,40 @@ public class YearsList extends Fragment {
     }
 
     private void prepareCollegeModelQuestion() {
-
-        YearItem modelHeader = new YearItem();
-        modelHeader.setType(YearItem.Companion.getSECTION_TITLE());
-        modelHeader.setTitle("College Model Questions");
-        items.add(modelHeader);
-
-        YearItem item1 = new YearItem();
-        item1.setType(YearItem.Companion.getCOLLEGE_MODEL());
-        item1.setTitle("samriddhi");
-        item1.setLogo(R.drawable.samriddhi_logo);
-        item1.setPaperCode(12);
-        items.add(item1);
-
-        YearItem item2 = new YearItem();
-        item2.setType(YearItem.Companion.getCOLLEGE_MODEL());
-        item2.setTitle("sagarmatha");
-        item2.setLogo(R.drawable.sagarmatha_logo);
-        item2.setPaperCode(16);
-        items.add(item2);
-
-        YearItem item3 = new YearItem();
-        item3.setType(YearItem.Companion.getCOLLEGE_MODEL());
-        item3.setTitle("cab");
-        item3.setLogo(R.drawable.cab);
-        item3.setPaperCode(20);
-        items.add(item3);
-
-        YearItem item4 = new YearItem();
-        item4.setType(YearItem.Companion.getCOLLEGE_MODEL());
-        item4.setTitle("achs");
-        item4.setLogo(R.drawable.achs_logo);
-        item4.setPaperCode(22);
-        items.add(item4);
-
+//
+//        YearItem modelHeader = new YearItem();
+//        modelHeader.setType(YearItem.Companion.getSECTION_TITLE());
+//        modelHeader.setTitle("College Model Questions");
+//        items.add(modelHeader);
+//
+//        YearItem item1 = new YearItem();
+//        item1.setType(YearItem.Companion.getCOLLEGE_MODEL());
+//        item1.setTitle("samriddhi");
+//        item1.setLogo(R.drawable.samriddhi_logo);
+//        item1.setPaperCode(12);
+//        items.add(item1);
+//
+//        YearItem item2 = new YearItem();
+//        item2.setType(YearItem.Companion.getCOLLEGE_MODEL());
+//        item2.setTitle("sagarmatha");
+//        item2.setLogo(R.drawable.sagarmatha_logo);
+//        item2.setPaperCode(16);
+//        items.add(item2);
+//
+//        YearItem item3 = new YearItem();
+//        item3.setType(YearItem.Companion.getCOLLEGE_MODEL());
+//        item3.setTitle("cab");
+//        item3.setLogo(R.drawable.cab);
+//        item3.setPaperCode(20);
+//        items.add(item3);
+//
+//        YearItem item4 = new YearItem();
+//        item4.setType(YearItem.Companion.getCOLLEGE_MODEL());
+//        item4.setTitle("achs");
+//        item4.setLogo(R.drawable.achs_logo);
+//        item4.setPaperCode(22);
+//        items.add(item4);
+//
 
     }
 
@@ -184,6 +184,31 @@ public class YearsList extends Fragment {
         item20.setTitle("Model Paper 14");
         item20.setPaperCode(23);
         items.add(item20);
+
+        YearItem item1 = new YearItem();
+        item1.setType(YearItem.Companion.getYEAR_SET());
+        item1.setTitle("Model Paper 15");
+        item1.setPaperCode(12);
+        items.add(item1);
+
+        YearItem item2 = new YearItem();
+        item2.setType(YearItem.Companion.getYEAR_SET());
+        item2.setTitle("Model Paper 16");
+        item2.setPaperCode(16);
+        items.add(item2);
+
+        YearItem item3 = new YearItem();
+        item3.setType(YearItem.Companion.getYEAR_SET());
+        item3.setTitle("Model Paper 17");
+        item3.setPaperCode(20);
+        items.add(item3);
+
+        YearItem item4 = new YearItem();
+        item4.setType(YearItem.Companion.getYEAR_SET());
+        item4.setTitle("Model Paper 18");
+        item4.setPaperCode(22);
+        items.add(item4);
+
     }
 
     private void prepareOldQuestions() {
