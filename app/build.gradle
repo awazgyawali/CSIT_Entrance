@@ -17,7 +17,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 28
         multiDexEnabled true
-        versionCode 100
+        versionCode 101
         versionName "3.7"
     }
     buildTypes {

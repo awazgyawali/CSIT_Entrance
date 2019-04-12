@@ -22,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import np.com.aawaz.csitentrance.R;
 import np.com.aawaz.csitentrance.activities.MainActivity;
-import np.com.aawaz.csitentrance.activities.ModelEntranceActivity;
 import np.com.aawaz.csitentrance.fragments.other_fragments.YearsList;
 import np.com.aawaz.csitentrance.objects.SPHandler;
 
@@ -87,25 +86,14 @@ public class Home extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        FirebaseDatabase.getInstance().getReference().child("mock_test/live").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("new_app_live").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                modelEntranceExam.setVisibility(View.VISIBLE);
                 if (Boolean.valueOf(dataSnapshot.getValue().toString()))
-                    modelEntranceExam.setVisibility(View.VISIBLE);
+                    modelEntranceExam.setText("We are on a newer application, join us there.");
                 else
-                    modelEntranceExam.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        FirebaseDatabase.getInstance().getReference().child("mock_test/result_published").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (Boolean.valueOf(dataSnapshot.getValue().toString()))
-                    modelEntranceExam.setText("Model Entrance Exam - View Result");
+                    modelEntranceExam.setText("We are coming up with a brand new application soon.");
             }
 
             @Override
@@ -128,7 +116,11 @@ public class Home extends Fragment {
         modelEntranceExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), ModelEntranceActivity.class));
+
+                String url = "https://play.google.com/store/apps/details?id=com.edugate.csitentrance";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
             }
         });
     }

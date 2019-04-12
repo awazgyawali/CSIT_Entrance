@@ -15,10 +15,9 @@
         android:background="@color/colorAccent"
         android:gravity="center"
         android:padding="15dp"
-        android:text="Model Entrance Exam - Register Here"
+        android:text="-"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:visibility="gone" />
+        android:textStyle="bold"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPagerHome"
