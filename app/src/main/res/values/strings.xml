@@ -1,53 +1,5 @@
 <resources>
 
     <string name="app_name">CSIT Entrance</string>
-    <string name="title_activity_quiz">Quiz Activity</string>
-    <string name="title_activity_full_question">Full Question</string>
-
-
-    <string name="facebook_app_id">768172639946667</string>
-
-
-    <string name="close">Close</string>
-    <string name="open">Open</string>
-
-
-    <string name="register">http://csitentrance.brainants.com/exam_reg.php</string>
-
-    <string name="privacy_policy">Provide us your mobile number so that you can get great breakig updates via an SMS alert.</string>
-    <string name="privacy_policy_link">https://sites.google.com/view/csit-entrance-privacy</string>
-
-    <string-array name="years">
-        <item>TU Examination 2069</item>
-        <item>TU Examination 2070</item>
-        <item>TU Examination 2071</item>
-        <item>TU Examination 2072</item>
-        <item>TU Examination 2073</item>
-        <item>TU Examination 2074</item>
-        <item>Model Question 1</item>
-        <item>Model Question 2</item>
-        <item>Model Question 3</item>
-        <item>Model Question 4</item>
-        <item>Model Question 5 </item>
-        <item>Model Question 6</item>
-        <item>Model Question 15</item>
-        <item>Model Question 7</item>
-        <item>Model Question 8</item>
-        <item>Model Question 9</item>
-        <item>Model Question 16</item>
-        <item>Model Question 10</item>
-        <item>Model Question 11</item>
-        <item>Model Question 12</item>
-        <item>Model Question 17</item>
-        <item>Model Question 13</item>
-        <item>Model Question 18</item>
-        <item>Model Question 14</item>
-    </string-array>
-    <string name="title_activity_notification">NotificationActivity</string>
-    <string name="title_activity_post_forum">PostForumActivity</string>
-    <string name="title_activity_model_entrance">ModelEntrance</string>
-    <string name="entrance_detail">With the grand success of Model Entrance exam last year, CSIT Entrance teams is proud to announce Grand Model entrance exam for this year. Come join the exam and test yourself with more than 200 fellow students.\n\nRegister now to get your roll number.</string>
-
-    <string name="result_link">http://csitentrance.com/api/result?roll=</string>
 
 </resources>

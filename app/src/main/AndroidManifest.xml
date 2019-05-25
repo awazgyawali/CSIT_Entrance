@@ -8,16 +8,13 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name=".misc.MyApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+
 
         <activity
             android:name=".activities.SplashActivity"
@@ -53,154 +50,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.MainActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.YearQuizActivity"
-            android:label="@string/title_activity_quiz"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.FullQuestionActivity"
-            android:label="@string/title_activity_full_question"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
-        <activity
-            android:name=".activities.SettingsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="settings"
-                    android:scheme="csitentrance" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activities.SearchActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysVisible">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="search"
-                    android:scheme="csitentrance" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activities.SignInActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.SignUpActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.NewsDetailActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="news_detail"
-                    android:scheme="csitentrance" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activities.SubjectChooserActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.CommentsActivity"
-            android:theme="@style/Theme.Transparent" />
-        <activity
-            android:name=".activities.SubjectQuizActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.ReportCardActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.PhoneNoActivity"
-            android:screenOrientation="portrait" />
-
-        <service android:name=".services.MyMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-        <service android:name=".services.MyInstanceIdService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
-
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-
-        <provider
-            android:name="com.facebook.FacebookContentProvider"
-            android:authorities="com.facebook.app.FacebookContentProvider768172639946667"
-            android:exported="true" />
-
-        <activity
-            android:name=".activities.NotificationActivity"
-            android:label="@string/title_activity_notification"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".activities.PostForumActivity"
-            android:label="@string/title_activity_post_forum"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="post"
-                    android:scheme="csitentrance" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activities.ModelEntranceActivity"
-            android:label="@string/title_activity_model_entrance"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="mock_test"
-                    android:scheme="csitentrance" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.ProfileActivity" />
-        <activity android:name=".activities.AboutUsActivity" />
-        <activity android:name=".activities.ModelPaperDetailActivity" />
-        <activity android:name=".activities.DiscussionActivity" />
-        <activity android:name=".activities.ImageViewingActivity" />
-        <activity android:name=".activities.SearchForum" />
-        <activity android:name=".activities.AskOnDiscussionActivity"></activity>
     </application>
 
 </manifest>
